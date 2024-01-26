@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.custom-login-form-container {
+    width: 30%;
+}
+
+.custom-login-form {
+    width: 100%;
+    background-color: #f2f2f2;
+    margin: 0 auto;
+}
+
+.login-card {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+
+.custom-input-fields {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background: #fcfcfc;
+    font-size: 1rem;
+    color: black;
+    font-family: 'Poppins', FontAwesome, sans-serif;
+
+}
+
+input[name="btnLogin"]:hover {
+    background-color: #0a58ca !important;
+}
+
+.bg-steam-green {
+    background-color: #55C052 !important;
+}
+
+.custom-active {
+    background-color: #469d44;
+}
+
+.bg-custom-white {
+    background: #f2f2f2;
+    border-bottom: 1px solid #ddd;
+}
+
+.custom-banner {
+    height: 35px;
+    padding: 2px;
+}
+
+.custom-banner h5 {
+    margin: 7px;
+    padding-left: 10px;
+    text-transform: uppercase;
+    font-size: medium;
+    font-weight: bold;
+    font-family: Arial, serif;
+}
+
+.custom-width-max-content {
+    width: max-content;
+    padding: 0.5em !important;
+}
+
+.custom-width-max-content:hover {
+    background-color: #5dcb5b;
+}
+
+.custom-active:hover {
+    background-color: #469d44;
+}
+
+/*Custom Stepper css start*/
+.custom-stepper {
+    width: 20%;
+    height: 6.5em;
+    text-align: center;
+    padding-top: 2px;
+}
+
+.custom-stepper:hover {
+    background: #f3f3f3;
+    cursor: pointer;
+}
+
+.step-number {
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+    background: #6c757d;
+    margin: 0 auto;
+    display: grid;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+.step-number::after {
+    content: '';
+    background-color: #f2f2f2;
+    width: 15em;
+    height: .5em;
+    margin-left: 5em;
+    position: absolute;
+    transform: translateZ(-1px);
+}
+
+.custom-stepper:last-child .step-number::after {
+    width: 0;
+    height: 0;
+}
+
+.step-number span {
+    font-size: 1.5em;
+    color: white;
+    text-align: center;
+}
+
+.custom-step-complete .step-number {
+    background: #5dcb5b;
+}
+
+.custom-step-complete .step-number::after {
+    background-color: #5dcb5b !important;
+}
+
+.card-footer:not(.show) {
+    display: none;
+}
+
+/*Custom Stepper css end*/
+
+.custom-course {
+    width: 300px;
+    height: 6.5em;
+    outline: 1px solid rgba(0, 0, 0, .125);
+}
+
+/*accordion custom start*/
+.accordion-button:not(.collapsed) {
+    background-color: rgba(108, 117, 125, 0.3) !important;
+    box-shadow: none !important;
+    color: #333 !important;
+
+}
+
+.accordion-button:focus {
+    z-index: 3;
+    border-color: #FFF !important;
+    outline: 0;
+    box-shadow: none !important;
+}
+
+/*accordion custom end*/
+
+/* Custom css for table*/
+.custom-table th {
+    background-color: #55C052;
+    padding: 5px;
+    color: white;
+    border: 1px solid white;
+    text-align: center;
+    font-family: Arial, serif !important;
+    text-transform: uppercase;
+    font-size: medium;
+
+}
+.text-steam-green{
+    color: #55C052!important;
+}
+
+.custom-table td {
+    background-color: white;
+    padding: 10px;
+    color: black;
+    border: 1px solid lightgrey;
+    text-align: center;
+}
+
+.custom-table {
+    width: 100%;
+}
+.custom-table tr:hover td{
+    background: rgba(104, 225, 100,0.41) !important;
+    border: 1px solid white;
+}
+
+/*custom css for select*/
+.custom-select {
+    background-color: #e9ecef !important;
+    box-shadow: none !important;
+    border: 1px solid #ced4da !important;
+}
+
+/*custom Alert css*/
+.custom-alert {
+    z-index: 1090 !important;
+    position: fixed !important;
+    top: 5px;
+    right: 10px;
+    border-color: transparent !important;
+}
+
+label.required::after {
+    content: "\002a";
+    color: red;
+    margin-left: 3px;
+    bottom: 2px;
+    position: relative;
+}
+
+/*Chosen Custom css*/
+.chosen-container-single .chosen-single {
+    padding: 6px 0 0 10px !important;
+    height: 38px !important;
+    border-radius: 0 !important;
+    background: #eee !important;
+    background-clip: padding-box !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.chosen-container-single .chosen-single div b {
+    position: relative;
+    top: 7px !important;
+}
+
+input {
+    box-shadow: none !important;
+}
+
+.btn-close-red{
+    background: red!important;
+    border-color: red!important;
+}
+
+
+/*Medium devices responsive*/
+@media (max-width: 870px) {
+    .custom-login-form-container {
+        width: 65%;
+    }
+
+    .custom-stepper {
+        width: 40%;
+    }
+
+    .step-number::after {
+        display: none;
+    }
+
+    .custom-stepper p {
+        font-size: small;
+    }
+}
+
+/*Small devices responsive*/
+@media (max-width: 600px) {
+    .custom-login-form-container {
+        width: 95%;
+    }
+
+    .custom-stepper {
+        width: 40%;
+        margin-left: 10px;
+    }
+
+    .step-number {
+        width: 50px;
+        height: 50px;
+    }
+
+    .custom-stepper p {
+        font-size: smaller;
+        margin-top: 10px;
+
+    }
+}

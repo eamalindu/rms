@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.slideInDown {
+    -webkit-animation-name: slideInDown;
+    animation-name: slideInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+#rmsCard {
+    background: linear-gradient( #55C152 50%, #55C152, #07a500, #07a500 50%);
+    background-size: 100% 200%;
+    color: white;
+    /*transition effect for background*/
+    transition: all ease-in-out 1s;
+    outline: 3px solid #07a500;
+}
+
+#rmsCard:hover {
+
+    transition: all ease-in-out 0.5s;
+    cursor: pointer;
+    background-position: 100% 100%;
+
+}
+
+#crmCard {
+    background: linear-gradient(rebeccapurple, rebeccapurple 50%, #5000a1 50%, #5000a1);
+    background-size: 100% 200%;
+    color: white;
+    /*transition effect for background*/
+    transition: all ease-in-out 1s;
+    outline: 3px solid #5000a1;
+}
+
+#crmCard:hover {
+    transition: all ease-in-out 0.5s;
+    cursor: pointer;
+    background-position: 100% 100%;
+}
+
+@-webkit-keyframes slideInDown {
+    0% {
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+        visibility: visible;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDown {
+    0% {
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+        visibility: visible;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
