@@ -478,7 +478,7 @@
                                                 <label class="fw-bold required" for="studentDOB">Date of Birth</label>
                                             </div>
                                             <div class="input-group mb-3 w-25">
-                                                <input class="form-control rounded-0" id="studentDOB" onchange="inputTextValidator(this,'^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$','student','studentDOB')" required
+                                                <input class="form-control rounded-0" id="studentDOB" required
                                                        type="text">
                                                 <span class="input-group-text rounded-0"><i class="fas fa-calendar-alt"></i></span>
                                             </div>
@@ -2767,23 +2767,21 @@
 <script src="/resources/js/external-modalFunction.js" type="text/javascript"></script>
 <script src="/resources/js/controllerJS/new-registration.js"></script>
 <script>
-    $('#studentDOB').daterangepicker({
-        "drops": "up",
-        "singleDatePicker": true,
-        "showDropdowns": true,
-        "autoApply": true,
-        maxDate: new Date(),
-        locale: {
-            format: 'YYYY-MM-DD'
-        }
-    });
-</script>
-<script>
     $(document).ready(function () {
         $("#studentLang").chosen({width: '25%', disable_search: true});
         $("#studentIdOption").chosen({width: '100px', disable_search: true});
         $("#studentGuardianRelationship").chosen({width: '25%', disable_search: true});
         $("#studentCity").chosen({width: '100%'});
+        $('#studentDOB').daterangepicker({
+            "drops": "up",
+            "singleDatePicker": true,
+            "showDropdowns": true,
+            "autoApply": true,
+            maxDate: new Date(),
+            locale: {
+                format: 'YYYY-MM-DD'
+            }
+        });
 
         //reset chosen select using jquery
         $('button[type=reset]').on('click', function () {
