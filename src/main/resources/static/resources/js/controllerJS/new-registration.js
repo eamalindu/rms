@@ -12,6 +12,7 @@ window.addEventListener("load",()=>{
         {property: 'lectureHours',dataType: 'text'},   ]
 
     fillDataIntoTableWithActions(tblCourses,courses,displayPropertyListForCourse,rowClickFunction);
+    $('#tblCourses').DataTable();
 
 });
 
