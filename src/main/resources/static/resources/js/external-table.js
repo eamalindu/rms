@@ -125,3 +125,59 @@ const fillDataIntoTable = (tabledID, dataList, displayPropertyList,viewFunction,
 
     });
 }
+
+const fillDataIntoTableWithActions = (tabledID, dataList, displayPropertyList,rowClickFunction) => {
+    //access the table via querySelector
+    //const table = document.querySelector('#tblEmp');
+
+    //children 0 -> thead
+    //children 1 -> tbody
+    const tbody = tabledID.children[1];
+    //clear the table body
+    tbody.innerHTML = '';
+
+    dataList.forEach((element, index) => {
+
+        //creating a tr element
+        const tr = document.createElement('tr');
+
+        //there are seven columns in the table, so we have to create seven tds
+        const tdIndex = document.createElement('td');
+        //use foreach loop to add text to the created tds
+        tdIndex.innerText = index + 1;
+
+        //there are seven columns in the table, so we have to create seven tds
+        const tdIndexS = document.createElement('td');
+
+        const radio = document.createElement('input');
+        radio.type = 'radio';
+        radio.name ='radio';
+        tr.onclick = () => {rowClickFunction(element,index)};
+
+        tdIndexS.appendChild(radio);
+        //append the remaining tds to the tr
+        tr.appendChild(tdIndexS);
+        tr.appendChild(tdIndex);
+
+        displayPropertyList.forEach((ob, ind) => {
+            const td = document.createElement('td');
+
+            //if datatype is text, get the property from the displayPropertyList and use that property to get the value from the employee array
+            if (ob.dataType === 'text') {
+                //template -> element[ob.displayPropertyListColumnName] = element['fullName']
+                td.innerText = element[ob.property];
+            }
+            if (ob.dataType === 'function') {
+                //calling the getEmployeeStatus function and passing records of employee array one by one
+                td.innerHTML = ob.property(element);
+            }
+
+            tr.appendChild(td);
+        })
+
+        //append the tr to tbody
+        tbody.appendChild(tr);
+
+
+    });
+}
