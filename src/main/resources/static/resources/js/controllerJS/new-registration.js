@@ -164,5 +164,6 @@ window.addEventListener("load",()=>{
 });
 
 const rowClickFunction = (ob,index)=>{
+    textSelectedCourse.innerText = ob.code;
 
 }
