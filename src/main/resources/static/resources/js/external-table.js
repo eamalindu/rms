@@ -135,6 +135,7 @@ const fillDataIntoTableWithActions = (tabledID, dataList, displayPropertyList,ro
     const tbody = tabledID.children[1];
     //clear the table body
     tbody.innerHTML = '';
+    let lastClickedRow = null; // To keep track of the last clicked row
 
     dataList.forEach((element, index) => {
 
@@ -146,17 +147,16 @@ const fillDataIntoTableWithActions = (tabledID, dataList, displayPropertyList,ro
         //use foreach loop to add text to the created tds
         tdIndex.innerText = index + 1;
 
-        //there are seven columns in the table, so we have to create seven tds
-        const tdIndexS = document.createElement('td');
+        tr.onclick = () => {
+            if (lastClickedRow) {
+                lastClickedRow.classList.remove('bg-info');
+            }
 
-        // const radio = document.createElement('input');
-        // radio.type = 'radio';
-        // radio.name ='radio';
-        tr.onclick = () => {rowClickFunction(element,index)};
+            // Add the 'highlight' class to the clicked row
+            tr.classList.add('bg-info');
+            lastClickedRow = tr;
 
-        //tdIndexS.appendChild(radio);
-        //append the remaining tds to the tr
-        tr.appendChild(tdIndexS);
+            rowClickFunction(element,index)};
         tr.appendChild(tdIndex);
 
         displayPropertyList.forEach((ob, ind) => {
