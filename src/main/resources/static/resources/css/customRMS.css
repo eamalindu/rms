@@ -68,11 +68,11 @@ input[name="btnLogin"]:hover {
 
 .custom-width-max-content {
     width: max-content;
-    padding: 0.5em !important;
+    padding: 0.5em;
 }
 
 .custom-width-max-content:hover {
-    background-color: #5dcb5b;
+    background-color: #469d44;
     cursor: pointer;
 }
 
