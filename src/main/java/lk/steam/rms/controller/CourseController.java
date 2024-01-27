@@ -1,7 +1,7 @@
 package lk.steam.rms.controller;
 
-import lk.steam.ims.dao.CourseDAO;
-import lk.steam.ims.entity.Course;
+import lk.steam.rms.dao.CourseDAO;
+import lk.steam.rms.entity.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

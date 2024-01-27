@@ -148,3 +148,9 @@ let previous3 = () =>{
     document.querySelector('#btn-add-payment .step-number span').innerText = '5';
 
 }
+
+window.addEventListener("load",()=>{
+
+    courses =  ajaxGetRequest("/Course");
+
+})
