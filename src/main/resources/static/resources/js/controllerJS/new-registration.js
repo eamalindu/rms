@@ -148,20 +148,3 @@ let previous3 = () =>{
     document.querySelector('#btn-add-payment .step-number span').innerText = '5';
 
 }
-
-//input validation (search student)
-let input_search_student = document.querySelector('#input-search-student');
-input_search_student.addEventListener('keyup',()=>{
-    const pattern = '^[0][7][01245678][0-9]{7}$';
-    const regexPattern = new RegExp(pattern);
-
-    if(regexPattern.test(input_search_student.value)){
-        input_search_student.classList.add('is-valid');
-        input_search_student.classList.remove('is-invalid')
-    }
-    else{
-        input_search_student.classList.remove('is-valid');
-        input_search_student.classList.add('is-invalid');
-
-    }
-});
