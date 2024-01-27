@@ -54,24 +54,14 @@
             </ul>
             <!-- Navbar Right side -->
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link text-white custom-width-max-content"
-                                        href="Inquiries">Inquiries</a></li>
-                <li class="nav-item"><a class="nav-link text-white custom-width-max-content"
-                                        href="Schedules">Schedules</a>
+                <li class="nav-item">
+                    <a class="nav-link text-white custom-width-max-content" href="Inquiries">Registrations</a>
                 </li>
-                <li class="nav-item dropdown-center custom-width-max-content p-0">
-                    <button aria-expanded="false"
-                            class="nav-link btn text-white dropdown-toggle custom-width-max-content border-0"
-                            data-bs-toggle="dropdown">Reports
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end rounded-0">
-                        <li><a class="dropdown-item" href="Reports-All">All</a></li>
-                        <li><a class="dropdown-item" href="#">Registered</a></li>
-                        <li><a class="dropdown-item" href="#">Dropped</a></li>
-                        <li><a class="dropdown-item" href="#">Not Followed-Up</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link text-white custom-width-max-content" href="Schedules">Courses</a>
                 </li>
-                <li class="nav-item"><a class="nav-link text-white custom-width-max-content" href="Performance.html">Performance</a>
+                <li class="nav-item">
+                    <a class="nav-link text-white custom-width-max-content" href="Performance.html">Batches</a>
                 </li>
                 <li class="nav-item"><a class="nav-link text-white custom-width-max-content" href="Administrations">Administration</a>
                 </li>
@@ -83,6 +73,9 @@
                     <ul class="dropdown-menu dropdown-menu-end rounded-0">
                         <li><a class="dropdown-item" href="#">Logout</a></li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link text-white custom-width-max-content" href="#"><i class="fa-solid fa-bell" aria-hidden="true"></i></a>
                 </li>
 
             </ul>
@@ -2748,9 +2741,11 @@
 
     </div>
 </div>
-<script src="resources/js/alert-function.js"></script>
-<script src="resources/js/external-validator.js"></script>
-<script src="new-registration.js"></script>
+<script src="/resources/js/external-validator.js" type="text/javascript"></script>
+<script src="/resources/js/external-commonFunction.js" type="text/javascript"></script>
+<script src="/resources/js/external-table.js" type="text/javascript"></script>
+<script src="/resources/js/external-modalFunction.js" type="text/javascript"></script>
+<script src="/resources/js/controllerJS/new-registration.js"></script>
 <script>
     $('#studentDOB').daterangepicker({
         "drops": "up",
