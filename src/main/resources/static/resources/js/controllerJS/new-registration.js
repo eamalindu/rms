@@ -13,32 +13,17 @@ let footer_4 = document.querySelector('#step-student');
 let footer_5 = document.querySelector('#step-add-payment');
 
 let next0 = () => {
-    //bard generated
-    const radioButtons = document.querySelectorAll('input[type="radio"][name="btnradio"]');
-    function validateRadioButtons() {
-        let selectedRadioButton = null;
-        for (const radioButton of radioButtons) {
-            if (radioButton.checked) {
-                selectedRadioButton = radioButton;
-                break;
-            }
-        }
 
-        if (selectedRadioButton === null) {
-           showCustomModal('Please Select a Course to Continue','warning')
-            return false;
-        }
-
-        return true;
-    }
-
-    if(validateRadioButtons()) {
-
+    if(registration.courseID !=null) {
+        console.log(registration);
         //footer_1 should have a selected at least one before executing the bellow code
         footer_1.classList.remove('show');
         footer_2.classList.add('show');
         step1.classList.add('custom-step-complete');
         document.querySelector('#btn-course .step-number span').innerText = '✔';
+    }
+    else{
+        showCustomModal("Please Select a Course !","warning");
     }
 
 }
@@ -151,6 +136,8 @@ let previous3 = () =>{
 
 window.addEventListener("load",()=>{
 
+    registration = {};
+
     courses =  ajaxGetRequest("/Course/findall");
     displayPropertyListForCourse = [
         {property: 'name',dataType: 'text'},
@@ -164,6 +151,7 @@ window.addEventListener("load",()=>{
 });
 
 const rowClickFunction = (ob,index)=>{
-    textSelectedCourse.innerText = ob.code;
+    textSelectedCourse.innerText = ob.name;
+    registration.courseID =ob;
 
 }
