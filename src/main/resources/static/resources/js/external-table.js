@@ -149,11 +149,10 @@ const fillDataIntoTableWithActions = (tabledID, dataList, displayPropertyList,ro
 
         tr.onclick = () => {
             if (lastClickedRow) {
-                lastClickedRow.classList.remove('bg-info');
+                lastClickedRow.classList.remove('selected');
             }
-
             // Add the 'highlight' class to the clicked row
-            tr.classList.add('bg-info');
+            tr.classList.add('selected');
             lastClickedRow = tr;
 
             rowClickFunction(element,index)};
