@@ -149,12 +149,12 @@ const fillDataIntoTableWithActions = (tabledID, dataList, displayPropertyList,ro
         //there are seven columns in the table, so we have to create seven tds
         const tdIndexS = document.createElement('td');
 
-        const radio = document.createElement('input');
-        radio.type = 'radio';
-        radio.name ='radio';
+        // const radio = document.createElement('input');
+        // radio.type = 'radio';
+        // radio.name ='radio';
         tr.onclick = () => {rowClickFunction(element,index)};
 
-        tdIndexS.appendChild(radio);
+        //tdIndexS.appendChild(radio);
         //append the remaining tds to the tr
         tr.appendChild(tdIndexS);
         tr.appendChild(tdIndex);

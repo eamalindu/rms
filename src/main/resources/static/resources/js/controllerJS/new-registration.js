@@ -151,6 +151,18 @@ let previous3 = () =>{
 
 window.addEventListener("load",()=>{
 
-    courses =  ajaxGetRequest("/Course");
+    courses =  ajaxGetRequest("/Course/findall");
+    displayPropertyListForCourse = [
+        {property: 'name',dataType: 'text'},
+        {property: 'code',dataType: 'text'},
+        {property: 'duration',dataType: 'text'},
+        {property: 'minimumRequirment',dataType: 'text'},
+        {property: 'lectureHours',dataType: 'text'},   ]
 
-})
+    fillDataIntoTableWithActions(tblCourses,courses,displayPropertyListForCourse,rowClickFunction);
+
+});
+
+const rowClickFunction = (ob,index)=>{
+
+}
