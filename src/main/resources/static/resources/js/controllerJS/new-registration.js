@@ -1,3 +1,25 @@
+window.addEventListener("load",()=>{
+
+    registration = {};
+
+    courses =  ajaxGetRequest("/Course/findall");
+    displayPropertyListForCourse = [
+        {property: 'name',dataType: 'text'},
+        {property: 'code',dataType: 'text'},
+        {property: 'duration',dataType: 'text'},
+        {property: 'minimumRequirment',dataType: 'text'},
+        {property: 'lectureHours',dataType: 'text'},   ]
+
+    fillDataIntoTableWithActions(tblCourses,courses,displayPropertyListForCourse,rowClickFunction);
+
+});
+
+const rowClickFunction = (ob,index)=>{
+    textSelectedCourse.innerText = ob.name;
+    registration.courseID =ob;
+
+}
+
 //get all the steppers
 let step1 = document.querySelector('#btn-course');
 let step2 = document.querySelector('#btn-batch');
@@ -131,27 +153,5 @@ let previous3 = () =>{
 
     document.querySelector('#btn-student .step-number span').innerText = '4';
     document.querySelector('#btn-add-payment .step-number span').innerText = '5';
-
-}
-
-window.addEventListener("load",()=>{
-
-    registration = {};
-
-    courses =  ajaxGetRequest("/Course/findall");
-    displayPropertyListForCourse = [
-        {property: 'name',dataType: 'text'},
-        {property: 'code',dataType: 'text'},
-        {property: 'duration',dataType: 'text'},
-        {property: 'minimumRequirment',dataType: 'text'},
-        {property: 'lectureHours',dataType: 'text'},   ]
-
-    fillDataIntoTableWithActions(tblCourses,courses,displayPropertyListForCourse,rowClickFunction);
-
-});
-
-const rowClickFunction = (ob,index)=>{
-    textSelectedCourse.innerText = ob.name;
-    registration.courseID =ob;
 
 }
