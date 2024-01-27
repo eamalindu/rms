@@ -2,95 +2,112 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Login | STEAM IMS</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>User Login | STEAM RMS</title>
     <!-- Favicon Icon -->
-    <link href="/resources/images/icon-sq.png" rel="icon" type="image/png" />
+    <link href="/resources/images/icon-sq.png" rel="icon" type="image/png"/>
     <!-- Bootstrap CSS File-->
-    <link href="/resources/bootstrap-5.2.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/resources/bootstrap-5.2.3/css/bootstrap.min.css" rel="stylesheet"/>
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/07941f149f.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-    *{
-        margin: 0;
-        padding: 0;
-        font-family: 'Poppins', sans-serif;
-    }
-    .bg-purple{
-        background: rebeccapurple;
-    }
-    .bg-green{
-        background: #55C052;
-    }
-    .form-control{
-        font-family: 'Poppins', FontAwesome, sans-serif;
-    }
-    .border-purple{
-        border-color: rebeccapurple!important;
-    }
-    .border-green{
-        border-color: #55C052!important;
-    }
-    .login-card{
-        width: 350px;
-        background-color: white;
-        
 
-    }
-    .background{
-        background-image: url("/resources/images/loginBackground.jpg");
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: bottom;
-        background-color: #17212B;
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
 
-    }
-    .bg-light-white{
+        .bg-purple {
+            background: rebeccapurple;
+        }
 
-        background: #f4f4f4;
-    }
-    .form-control:focus {
-    border-color: rebeccapurple!important;
-    box-shadow: none;
-}
+        .bg-green {
+            background: #55C052;
+        }
+
+        .form-control {
+            font-family: 'Poppins', FontAwesome, sans-serif;
+        }
+
+        .border-purple {
+            border-color: rebeccapurple !important;
+        }
+
+        .border-green {
+            border-color: #55C052 !important;
+        }
+
+        .login-card {
+            width: 350px;
+            background-color: white;
+
+
+        }
+
+        .background {
+            background-image: url("/resources/images/loginBackground.jpg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: bottom;
+            background-color: #17212B;
+
+        }
+
+        .bg-light-white {
+
+            background: #f4f4f4;
+        }
+
+        .form-control:focus {
+            border-color: #55C052 !important;
+            box-shadow: none;
+        }
+
+        #btnLogin:hover {
+            filter: brightness(50%);
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="container-fluid p-0">
-        <div class="row p-0 m-0">
-            <div class="col-6 vh-100 background d-flex align-items-center justify-content-center">
-                <div class="text-center">
-                
+<div class="container-fluid p-0">
+    <div class="row p-0 m-0">
+        <div class="col-6 vh-100 background d-flex align-items-center justify-content-center">
+            <div class="text-center">
+
             </div>
+        </div>
+        <div class="col-6 d-flex bg-light-white align-items-center justify-content-center">
+
+            <div class="p-2">
+                <a href="login"><img class="mx-auto d-block mb-3" src="/resources/images/logo-sq.png" width="15%"></a>
+
+                <form action="login" class="login-card p-3 mx-auto" method="post">
+                    <h1 class="h5 fw-bold">User Login</h1>
+                    <label for="email">Enter Your Username</label>
+                    <input class="form-control mb-3 rounded-0" id="email" name="email" placeholder="example@domain.com"
+                           required type="text">
+                    <label for="password">Enter Your Password</label>
+                    <input class="form-control mb-3 rounded-0" id="password" name="password" placeholder="********"
+                           required type="password">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input rounded-0" id="rememberMeCheckBox" type="checkbox" value="Yes">
+                        <label class="form-check-label" for="rememberMeCheckBox">Remember Me</label>
+                    </div>
+                    <button class="btn btn-primary bg-green border-green float-end" id="btnLogin">Login</button>
+                    <p></p>
+                </form>
+                <p class="text-muted mb-0 mt-2 text-center"><small><a class="text-muted" href="">Lost Your Password?</a></small>
+                </p>
             </div>
-            <div class="col-6 d-flex bg-light-white align-items-center justify-content-center">
-    
-                <div class="p-2">
-                    <a href="login"><img src="/resources/images/logo-sq.png" class="mx-auto d-block mb-3" width="15%"></a>
-                
-                    <form action="login" class="login-card p-3 mx-auto" method="post">
-                        <h1 class="h5 fw-bold">User Login</h1>
-                        <label for="email">Enter Your Username</label>
-                        <input type="text"  class="form-control mb-3 rounded-0" id="email" name="email" placeholder="example@domain.com" required>
-                        <label for="password">Enter Your Password</label>
-                        <input type="password" class="form-control mb-3 rounded-0" id="password" name="password" placeholder="********" required>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input rounded-0" type="checkbox" id="rememberMeCheckBox" value="Yes">
-                            <label class="form-check-label" for="rememberMeCheckBox">Remember Me</label>
-                          </div>
-                        <button class="btn btn-primary bg-green border-green float-end">Login</button>
-                       <p></p>
-                    </form>
-                    <p class="text-muted mb-0 mt-2 text-center"><small><a class="text-muted" href="">Lost Your Password?</a></small></p>
-            </div>
-            </div>
-    
         </div>
 
-    </div>       
+    </div>
 
-    
-    
+</div>
+
+
 </body>
 </html>
