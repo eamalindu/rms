@@ -1,6 +1,7 @@
 window.addEventListener("load",()=>{
 
     registration = {};
+    student ={};
 
     courses =  ajaxGetRequest("/Course/findall");
     displayPropertyListForCourse = [
@@ -15,7 +16,7 @@ window.addEventListener("load",()=>{
 });
 
 const rowClickFunction = (ob,index)=>{
-    textSelectedCourse.innerText = ob.name;
+    textSelectedCourse.innerText = ob.name+" ("+ob.code+")";
     registration.courseID =ob;
 
 }
