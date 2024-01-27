@@ -246,11 +246,20 @@ input {
     background: red!important;
     border-color: red!important;
 }
+
+.active>.page-link{
+    background-color: #55C052;
+    border-color: #55C052;
+}
+
 /*Overriding datatable css*/
 .dataTables_filter input, select{
     border-radius: 0!important;
 }
-
+:root{
+    --dt-row-selected : unset;
+    --dt-row-selected-text :unset;
+}
 .loading-overlay{
     width: 100%;
     min-height: 100%;
