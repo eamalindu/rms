@@ -45,7 +45,9 @@ let next0 = () => {
         footer_2.classList.add('show');
         step1.classList.add('custom-step-complete');
         document.querySelector('#btn-course .step-number span').innerText = '✔';
-    }
+
+        //get all the batches(from selected course) and fill them into the tables
+    }c
     else{
         showCustomModal("Please Select a Course !","warning");
     }
