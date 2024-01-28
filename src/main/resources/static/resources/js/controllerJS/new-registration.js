@@ -62,6 +62,8 @@ let next0 = () => {
         document.querySelector('#btn-course .step-number span').innerText = '✔';
 
         //get all the batches(from selected course) and fill them into the tables
+
+
     }
     else{
         showCustomModal("Please Select a Course !","warning");

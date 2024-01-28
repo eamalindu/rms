@@ -4,10 +4,7 @@ import lk.steam.rms.dao.BatchDAO;
 import lk.steam.rms.entity.Batch;
 import lk.steam.rms.entity.Course;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,10 +20,6 @@ public class BatchController {
         return batchDAO.findAll();
     }
 
-    @GetMapping(value = "/getWeekDayBatchByCourse",produces = "application/json")
-    public List<Batch> getWeekDayBatchByCourse(@RequestBody Course course){
-        return batchDAO.getWeekDayBatchByCourse(course.getId());
-    }
 
 
 
