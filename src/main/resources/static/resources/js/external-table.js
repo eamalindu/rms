@@ -126,7 +126,7 @@ const fillDataIntoTable = (tabledID, dataList, displayPropertyList,viewFunction,
     });
 }
 
-const fillDataIntoTableWithActions = (tabledID, dataList, displayPropertyList,rowClickFunction) => {
+const fillDataIntoTableWithRadio = (tabledID, dataList, displayPropertyList,radioFunction) => {
     //access the table via querySelector
     //const table = document.querySelector('#tblEmp');
 
@@ -147,7 +147,13 @@ const fillDataIntoTableWithActions = (tabledID, dataList, displayPropertyList,ro
         //use foreach loop to add text to the created tds
         tdIndex.innerText = index + 1;
 
-        tr.onclick = () => {
+        const tdIndexS = document.createElement('td');
+
+        const radio = document.createElement('input');
+        radio.type = 'radio';
+        radio.name ='radio';
+
+        radio.onchange = () => {
             if (lastClickedRow) {
                 lastClickedRow.classList.remove('selected');
             }
@@ -155,8 +161,12 @@ const fillDataIntoTableWithActions = (tabledID, dataList, displayPropertyList,ro
             tr.classList.add('selected');
             lastClickedRow = tr;
 
-            rowClickFunction(element,index)};
-        tr.appendChild(tdIndex);
+            radioFunction(element,index)};
+
+            tdIndexS.appendChild(radio);
+        //append the remaining tds to the tr
+            tr.appendChild(tdIndexS);
+            tr.appendChild(tdIndex);
 
         displayPropertyList.forEach((ob, ind) => {
             const td = document.createElement('td');

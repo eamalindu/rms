@@ -11,7 +11,7 @@ window.addEventListener("load",()=>{
         {property: 'minimumRequirment',dataType: 'text'},
         {property: 'lectureHours',dataType: 'text'},   ]
 
-    fillDataIntoTableWithActions(tblCourses,courses,displayPropertyListForCourse,rowClickFunction);
+    fillDataIntoTableWithRadio(tblCourses,courses,displayPropertyListForCourse,radioFunction);
     $('#tblCourses').DataTable();
 
 });
@@ -20,7 +20,7 @@ const getDuration=(ob)=>{
     return ob.duration +" Months";
 }
 
-const rowClickFunction = (ob,index)=>{
+const radioFunction = (ob,index)=>{
     textSelectedCourse.innerText = ob.name+" ("+ob.code+")";
     registration.courseID =ob;
 
