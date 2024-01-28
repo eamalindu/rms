@@ -28,18 +28,17 @@ public class Course {
 
     @Column(name ="minimumrequirements",length = 45)
     @NotNull
-    private String minimumRequirment; //45
+    private String minimumRequirement; //45
 
     @Column(name = "duration")
     @NotNull
     private Integer duration;
 
-    @Column(name = "fee")
-    @NotNull
-    private Integer fee;
-
     @Column(name = "lecturehours")
     @NotNull
     private Integer lectureHours;
 
+    @Column(name = "status")
+    @NotNull
+    private Boolean status;
 }
