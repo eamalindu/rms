@@ -2,7 +2,6 @@ package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.BatchDAO;
 import lk.steam.rms.entity.Batch;
-import lk.steam.rms.entity.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +19,9 @@ public class BatchController {
         return batchDAO.findAll();
     }
 
-
-
+    @GetMapping("getBatch/{courseId}")
+    public List<Batch> getBatchesByCourseId(@PathVariable Integer courseId) {
+        return batchDAO.getBatchesByCourseId(courseId);
+    }
 
 }

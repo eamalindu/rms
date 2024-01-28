@@ -55,7 +55,7 @@ public class Batch {
     @NotNull
     private String description;
 
-    @Column(name = "totalFee")
+    @Column(name = "totalfee")
     @NotNull
     private BigDecimal totalFee;
 
