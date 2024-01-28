@@ -126,7 +126,7 @@ const fillDataIntoTable = (tabledID, dataList, displayPropertyList,viewFunction,
     });
 }
 
-const fillDataIntoTableWithRadio = (tabledID, dataList, displayPropertyList,radioFunction) => {
+const fillDataIntoTableWithRadio = (tabledID, dataList, displayPropertyList,radioFunction,radioName) => {
     //access the table via querySelector
     //const table = document.querySelector('#tblEmp');
 
@@ -151,7 +151,7 @@ const fillDataIntoTableWithRadio = (tabledID, dataList, displayPropertyList,radi
 
         const radio = document.createElement('input');
         radio.type = 'radio';
-        radio.name ='radio';
+        radio.name =radioName;
 
         radio.onchange = () => {
             if (lastClickedRow) {

@@ -11,7 +11,7 @@ window.addEventListener("load",()=>{
         {property: 'minimumRequirment',dataType: 'text'},
         {property: 'lectureHours',dataType: 'text'},   ]
 
-    fillDataIntoTableWithRadio(tblCourses,courses,displayPropertyListForCourse,radioFunction);
+    fillDataIntoTableWithRadio(tblCourses,courses,displayPropertyListForCourse,radioFunction,'course');
     $('#tblCourses').DataTable();
 
 });
