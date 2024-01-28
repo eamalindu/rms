@@ -94,11 +94,18 @@ let next0 = () => {
 
 }
 let next1 = () => {
-    //footer_2 should have a selected at least one before executing the bellow code
-    footer_2.classList.remove('show');
-    footer_3.classList.add('show');
-    step2.classList.add('custom-step-complete');
-    document.querySelector('#btn-batch .step-number span').innerText = '✔';
+
+    if(registration.batchID !=null) {
+        console.log(registration);
+        //footer_2 should have a selected at least one before executing the bellow code
+        footer_2.classList.remove('show');
+        footer_3.classList.add('show');
+        step2.classList.add('custom-step-complete');
+        document.querySelector('#btn-batch .step-number span').innerText = '✔';
+    }
+    else{
+        showCustomModal("Please Select a Batch !","warning");
+    }
 }
 let next2 = () => {
     footer_3.classList.remove('show');
@@ -202,8 +209,11 @@ let previous3 = () =>{
 
 const radioFunctionForWeekDay = (ob,index)=>{
 
+    registration.batchID = ob;
 }
 
 const radioFunctionForWeekEnd = (ob,index)=>{
+
+    registration.batchID = ob;
 
 }
