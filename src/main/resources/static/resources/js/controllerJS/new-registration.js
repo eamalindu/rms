@@ -148,6 +148,7 @@ let previous0 = () => {
     document.querySelector('#btn-student .step-number span').innerText = '4';
     document.querySelector('#btn-add-payment .step-number span').innerText = '5';
 
+    //all the values should be null expect the course
     registration.batchID = null;
 
 }
