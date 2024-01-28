@@ -66,6 +66,17 @@ let next0 = () => {
         weekDayBatches = ajaxGetRequest("/Batch/getWeekDayBatch/"+registration.courseID.id);
         weekEndBatches = ajaxGetRequest("/Batch/getWeekEndBatch/"+registration.courseID.id);
 
+        displayPropertyListForWeekDay = [
+            {property: 'batchCode',dataType: 'text'},
+            {property: 'commenceDate',dataType: 'text'},
+            {property: 'endDate',dataType: 'text'},
+            {property: 'seatCount',dataType: 'text'},
+            {property: 'description',dataType: 'text'},
+
+        ];
+        fillDataIntoTableWithRadio(tblWeekDayBatches,weekDayBatches,displayPropertyListForWeekDay,radioFunctionForWeekDay,'batch');
+
+
     }
     else{
         showCustomModal("Please Select a Course !","warning");
@@ -176,5 +187,9 @@ let previous3 = () =>{
 
     document.querySelector('#btn-student .step-number span').innerText = '4';
     document.querySelector('#btn-add-payment .step-number span').innerText = '5';
+
+}
+
+const radioFunctionForWeekDay = (ob,index)=>{
 
 }
