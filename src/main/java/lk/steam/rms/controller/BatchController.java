@@ -23,9 +23,9 @@ public class BatchController {
         return batchDAO.findAll();
     }
 
-    @GetMapping(value = "/getByCourse",produces = "application/json")
-    public List<Batch> getByCourse(@RequestBody Course course){
-        return batchDAO.getBatchByCourse(course.getId());
+    @GetMapping(value = "/getWeekDayBatchByCourse",produces = "application/json")
+    public List<Batch> getWeekDayBatchByCourse(@RequestBody Course course){
+        return batchDAO.getWeekDayBatchByCourse(course.getId());
     }
 
 
