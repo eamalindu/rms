@@ -213,16 +213,30 @@ let previous3 = () =>{
 const radioFunctionForWeekDay = (ob,index)=>{
 
     registration.batchID = ob;
-    txtTotalFeeFullPayment.value = ob.totalFee;
-    txtRegistrationFeeFullPayment.value = ob.registrationFee;
-    txtRemainingFeeFullPayment.value =ob.remainingFee;
+    txtTotalFeeFullPayment.value = parseFloat(ob.totalFee).toFixed(2);
+    txtRegistrationFeeFullPayment.value = parseFloat(ob.registrationFee).toFixed(2);
+    txtRemainingFeeFullPayment.value =parseFloat(ob.remainingFee).toFixed(2);
+    txtFinalFeeFullPayment.value = parseFloat(ob.remainingFee + ob.registrationFee).toFixed(2);
 }
 
 const radioFunctionForWeekEnd = (ob,index)=>{
 
     registration.batchID = ob;
-    txtTotalFeeFullPayment.value = ob.totalFee;
-    txtRegistrationFeeFullPayment.value = ob.registrationFee;
-    txtRemainingFeeFullPayment.value =ob.remainingFee;
+    txtTotalFeeFullPayment.value = parseFloat(ob.totalFee).toFixed(2);
+    txtRegistrationFeeFullPayment.value = parseFloat(ob.registrationFee).toFixed(2);
+    txtRemainingFeeFullPayment.value =parseFloat(ob.remainingFee).toFixed(2);
+    txtFinalFeeFullPayment.value = parseFloat(ob.remainingFee + ob.registrationFee).toFixed(2);
 
 }
+
+radioCashDiscountFullPayment.addEventListener('change',()=>{
+    if(radioCashDiscountFullPayment.checked) {
+        let remainFee = parseFloat(txtRemainingFeeFullPayment.value).toFixed(2);
+        let finalFee = parseFloat((remainFee * 90) / 100).toFixed(2);
+        let registrationFee = parseFloat(txtRegistrationFeeFullPayment.value).toFixed(2);
+        txtRemainingFeeFullPayment.value = finalFee;
+        txtFinalFeeFullPayment.value = (parseFloat(parseFloat(registrationFee) + parseFloat(finalFee)).toFixed(2));
+    }
+
+
+})
