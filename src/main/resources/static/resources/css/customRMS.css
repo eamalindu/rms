@@ -168,7 +168,7 @@ input[name="btnLogin"]:hover {
     padding: 5px;
     color: white;
     border: 1px solid white;
-    text-align: center;
+    text-align: center!important;
     font-family: Arial, serif !important;
     text-transform: uppercase;
     font-size: medium;
@@ -194,7 +194,7 @@ input[name="btnLogin"]:hover {
     border: 1px solid white;
 }
 .custom-table tr.selected{
-    background-color: palegreen!important;
+    background-color: lightgoldenrodyellow!important;
 }
 
 /*custom css for select*/
