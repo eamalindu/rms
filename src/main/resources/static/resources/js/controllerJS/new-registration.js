@@ -213,10 +213,16 @@ let previous3 = () =>{
 const radioFunctionForWeekDay = (ob,index)=>{
 
     registration.batchID = ob;
+    txtTotalFeeFullPayment.value = ob.totalFee;
+    txtRegistrationFeeFullPayment.value = ob.registrationFee;
+    txtRemainingFeeFullPayment.value =ob.remainingFee;
 }
 
 const radioFunctionForWeekEnd = (ob,index)=>{
 
     registration.batchID = ob;
+    txtTotalFeeFullPayment.value = ob.totalFee;
+    txtRegistrationFeeFullPayment.value = ob.registrationFee;
+    txtRemainingFeeFullPayment.value =ob.remainingFee;
 
 }
