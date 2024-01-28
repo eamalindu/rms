@@ -63,7 +63,8 @@ let next0 = () => {
 
         //get all the batches(from selected course) and fill them into the tables
 
-        weekDayBatches = ajaxGetRequest("/Batch/getBatch/"+registration.courseID.id);
+        weekDayBatches = ajaxGetRequest("/Batch/getWeekDayBatch/"+registration.courseID.id);
+        weekEndBatches = ajaxGetRequest("/Batch/getWeekEndBatch/"+registration.courseID.id);
 
     }
     else{
