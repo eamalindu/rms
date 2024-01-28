@@ -7,7 +7,7 @@ window.addEventListener("load",()=>{
     displayPropertyListForCourse = [
         {property: 'name',dataType: 'text'},
         {property: 'code',dataType: 'text'},
-        {property: 'duration',dataType: 'text'},
+        {property: getDuration,dataType: 'function'},
         {property: 'minimumRequirment',dataType: 'text'},
         {property: 'lectureHours',dataType: 'text'},   ]
 
@@ -15,6 +15,10 @@ window.addEventListener("load",()=>{
     $('#tblCourses').DataTable();
 
 });
+
+const getDuration=(ob)=>{
+    return ob.duration +" Months";
+}
 
 const rowClickFunction = (ob,index)=>{
     textSelectedCourse.innerText = ob.name+" ("+ob.code+")";
