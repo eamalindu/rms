@@ -8,8 +8,10 @@ window.addEventListener("load",()=>{
         {property: 'name',dataType: 'text'},
         {property: 'code',dataType: 'text'},
         {property: getDuration,dataType: 'function'},
-        {property: 'minimumRequirment',dataType: 'text'},
-        {property: 'lectureHours',dataType: 'text'},   ]
+        {property: 'minimumRequirement',dataType: 'text'},
+        {property: 'lectureHours',dataType: 'text'},
+        {property: getStatus,dataType: 'function'},
+    ]
 
     fillDataIntoTableWithRadio(tblCourses,courses,displayPropertyListForCourse,radioFunction,'course');
     $('#tblCourses').DataTable();
@@ -18,6 +20,15 @@ window.addEventListener("load",()=>{
 
 const getDuration=(ob)=>{
     return ob.duration +" Months";
+}
+
+const getStatus=(ob)=>{
+    if(ob.status){
+        return '<span class="badge rounded-0" style="background: #3FB618">Active</span>';
+    }
+    else{
+        return '<span class="badge rounded-0" style="background: #FF0039">Inactive</span>';
+    }
 }
 
 const radioFunction = (ob,index)=>{
