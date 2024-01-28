@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface BatchDAO extends JpaRepository<Batch,Integer> {
 
-    @Query(value = "SELECT b from Batch b where b.courseID=?1")
-    List<Batch> getBatchByCourse(Course course);
+    @Query(value = "SELECT b from Batch b where b.courseID.id=?1")
+    List<Batch> getBatchByCourse(Integer courseID);
 
 
 }
