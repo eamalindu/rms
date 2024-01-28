@@ -148,6 +148,8 @@ let previous0 = () => {
     document.querySelector('#btn-student .step-number span').innerText = '4';
     document.querySelector('#btn-add-payment .step-number span').innerText = '5';
 
+    registration.batchID = null;
+
 }
 let previous1 = () => {
     //footer_1 value should be present in order to execute the following code -> use if
