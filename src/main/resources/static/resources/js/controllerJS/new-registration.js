@@ -74,7 +74,17 @@ let next0 = () => {
             {property: 'description',dataType: 'text'},
 
         ];
+
+        displayPropertyListForWeekEnd = [
+            {property: 'batchCode',dataType: 'text'},
+            {property: 'commenceDate',dataType: 'text'},
+            {property: 'endDate',dataType: 'text'},
+            {property: 'seatCount',dataType: 'text'},
+            {property: 'description',dataType: 'text'},
+
+        ];
         fillDataIntoTableWithRadio(tblWeekDayBatches,weekDayBatches,displayPropertyListForWeekDay,radioFunctionForWeekDay,'batch');
+        fillDataIntoTableWithRadio(tblWeekEndBatches,weekEndBatches,displayPropertyListForWeekEnd,radioFunctionForWeekEnd,'batch');
 
 
     }
@@ -191,5 +201,9 @@ let previous3 = () =>{
 }
 
 const radioFunctionForWeekDay = (ob,index)=>{
+
+}
+
+const radioFunctionForWeekEnd = (ob,index)=>{
 
 }
