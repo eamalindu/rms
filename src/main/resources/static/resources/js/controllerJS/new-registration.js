@@ -268,4 +268,9 @@ const loadFee = (ob)=>{
     txtRegistrationFeeFullPayment.value = parseFloat(ob.registrationFee).toFixed(2);
     txtCourseFeeFullPayment.value = parseFloat(ob.remainingFee).toFixed(2);
 
+    txtTotalDiscountFeeFullPayment.value = "0.00";
+    txtFinalTotalFeeFullPayment.value = parseFloat(ob.totalFee).toFixed(2);
+    txtFinalCourseFeeFullPayment.value = parseFloat(ob.remainingFee).toFixed(2);
+    txtFinalRegistrationFeeFullPayment.value =  parseFloat(ob.registrationFee).toFixed(2);
+
 }
