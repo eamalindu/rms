@@ -300,7 +300,7 @@
                                             </div>
                                             <div class="form-check ms-2">
                                                 <input class="form-check-input" id="radioCashDiscountFullPayment"
-                                                       name="flexRadioDefault" type="radio">
+                                                       name="flexRadioDefault" type="radio" onchange="calculateDiscount(this,registration.batchID.totalFee,registration.batchID.registrationFee,registration.batchID.remainingFee,10)">
                                                 <label class="form-check-label" for="radioCashDiscountFullPayment">10% for Cash
                                                     Payments</label>
                                             </div>
@@ -315,34 +315,35 @@
                                             <div class="w-100">
                                                 <h6 class="text-secondary text-uppercase fw-bold">Payment Breakdown</h6>
                                                 <div class="mb-2 d-flex align-items-center justify-content-between">
-                                                    <label for="txtTotalFeeFullPayment" class="form-label fw-bold">Total Fee (Rs.)</label>
+                                                    <label for="txtTotalFeeFullPayment" class="form-label fw-bold mb-0">Total Fee (Rs.)</label>
                                                     <input class="form-control rounded-0 border-0 bg-custom-white text-end fw-bold" id="txtTotalFeeFullPayment" style="width: 300px" disabled>
                                                 </div>
                                                 <div class="mb-2 ps-3 d-flex align-items-center justify-content-between">
-                                                    <label for="txtRegistrationFeeFullPayment" class="form-label text-muted">Registration Fee (Rs.)</label>
+                                                    <label for="txtRegistrationFeeFullPayment" class="form-label text-muted mb-0">Registration Fee (Rs.)</label>
                                                     <input class="form-control rounded-0 border-0 bg-custom-white text-end text-muted" id="txtRegistrationFeeFullPayment" style="width: 300px" disabled>
                                                 </div>
                                                 <div class="mb-2 ps-3 d-flex align-items-center justify-content-between">
-                                                    <label for="txtCourseFeeFullPayment" class="form-label text-muted">Course Fee (Rs.)</label>
+                                                    <label for="txtCourseFeeFullPayment" class="form-label text-muted mb-0">Course Fee (Rs.)</label>
                                                     <input class="form-control rounded-0 border-0 bg-custom-white text-end text-muted" id="txtCourseFeeFullPayment" style="width: 300px" disabled>
                                                 </div>
 
-                                                <div class="mb-2 d-flex align-items-center justify-content-between">
-                                                    <label for="txtTotalDiscountFeeFullPayment" class="form-label text-success fw-bold text-danger">Total Discount Received (Rs.)</label>
+                                                <div class="mb-2 d-flex align-items-center bg-danger bg-opacity-50 justify-content-between">
+                                                    <label for="txtTotalDiscountFeeFullPayment" class="form-label text-success fw-bold text-danger mb-0">Total Discount Received (Rs.)</label>
                                                     <input class="form-control rounded-0 border-0 bg-custom-white fw-bold text-end text-danger" id="txtTotalDiscountFeeFullPayment" style="width: 300px" disabled>
                                                 </div>
 
-                                                <div class="mb-2 d-flex align-items-center justify-content-between">
-                                                    <label for="txtFinalTotalFeeFullPayment" class="form-label text-success fw-bold">Final Payable Amount (Rs.)</label>
-                                                    <input class="form-control rounded-0 border-0 bg-custom-white fw-bold text-end text-success" id="txtFinalTotalFeeFullPayment" style="width: 300px" disabled>
-                                                </div>
+
                                                 <div class="mb-2 ps-3 d-flex align-items-center justify-content-between">
-                                                    <label for="txtFinalCourseFeeFullPayment" class="form-label text-muted">Discounted Course Fee (Rs.)</label>
+                                                    <label for="txtFinalCourseFeeFullPayment" class="form-label text-muted mb-0">Discounted Course Fee (Rs.)</label>
                                                     <input class="form-control rounded-0 border-0 bg-custom-white text-muted text-end" id="txtFinalCourseFeeFullPayment" style="width: 300px" disabled>
                                                 </div>
                                                 <div class="mb-2 ps-3 d-flex align-items-center justify-content-between">
-                                                    <label for="txtFinalRegistrationFeeFullPayment" class="form-label text-muted">Registration Fee (Rs.)</label>
+                                                    <label for="txtFinalRegistrationFeeFullPayment" class="form-label text-muted mb-0">Registration Fee (Rs.)</label>
                                                     <input class="form-control rounded-0 border-0 bg-custom-white text-end text-muted" id="txtFinalRegistrationFeeFullPayment" style="width: 300px" disabled>
+                                                </div>
+                                                <div class="mb-2 d-flex align-items-center justify-content-between">
+                                                    <label for="txtFinalTotalFeeFullPayment" class="form-label text-success fw-bold mb-0">Final Payable Amount (Rs.)</label>
+                                                    <input class="form-control rounded-0 border-0 bg-custom-white fw-bold text-end text-success" id="txtFinalTotalFeeFullPayment" style="width: 300px" disabled>
                                                 </div>
 
 
