@@ -251,10 +251,10 @@ const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount
         finalTotalFee =  finalCourseFee + registrationFee;
 
         //display final amounts
-        txtTotalDiscountFeeFullPayment.value = discountReceived;
-        txtFinalTotalFeeFullPayment.value = finalTotalFee;
-        txtFinalCourseFeeFullPayment.value = finalCourseFee;
-        txtFinalRegistrationFeeFullPayment.value = registrationFee;
+        txtTotalDiscountFeeFullPayment.value = parseFloat(discountReceived).toFixed(2);
+        txtFinalTotalFeeFullPayment.value = parseFloat(finalTotalFee).toFixed(2);
+        txtFinalCourseFeeFullPayment.value = parseFloat(finalCourseFee).toFixed(2);
+        txtFinalRegistrationFeeFullPayment.value = parseFloat(registrationFee).toFixed(2);
 
     }
     else{
