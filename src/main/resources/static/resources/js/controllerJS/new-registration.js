@@ -242,8 +242,8 @@ const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount
     if(elementID.checked){
         //set default fees (without discount calculation just as is)
         txtTotalFeeFullPayment.value = parseFloat(totalFee).toFixed(2);
-        txtRegistrationFeeFullPayment.value = registrationFee;
-        txtCourseFeeFullPayment.value = courseFee;
+        txtRegistrationFeeFullPayment.value = parseFloat(registrationFee).toFixed(2);
+        txtCourseFeeFullPayment.value = parseFloat(courseFee).toFixed(2);
 
         //calculate discount amount and update relevant fields
         discountReceived = (courseFee * (discount)/100);
@@ -266,7 +266,6 @@ const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount
 const loadFee = (ob)=>{
     txtTotalFeeFullPayment.value = parseFloat(ob.totalFee).toFixed(2);
     txtRegistrationFeeFullPayment.value = parseFloat(ob.registrationFee).toFixed(2);
-    txtRemainingFeeFullPayment.value =parseFloat(ob.remainingFee).toFixed(2);
-    txtFinalFeeFullPayment.value = parseFloat(ob.remainingFee + ob.registrationFee).toFixed(2);
+    txtCourseFeeFullPayment.value = parseFloat(ob.remainingFee).toFixed(2);
 
 }
