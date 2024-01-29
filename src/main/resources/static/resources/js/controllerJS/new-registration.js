@@ -213,30 +213,60 @@ let previous3 = () =>{
 const radioFunctionForWeekDay = (ob,index)=>{
 
     registration.batchID = ob;
-    txtTotalFeeFullPayment.value = parseFloat(ob.totalFee).toFixed(2);
-    txtRegistrationFeeFullPayment.value = parseFloat(ob.registrationFee).toFixed(2);
-    txtRemainingFeeFullPayment.value =parseFloat(ob.remainingFee).toFixed(2);
-    txtFinalFeeFullPayment.value = parseFloat(ob.remainingFee + ob.registrationFee).toFixed(2);
+    loadFee(ob);
 }
 
 const radioFunctionForWeekEnd = (ob,index)=>{
 
     registration.batchID = ob;
+    loadFee(ob);
+
+}
+
+// radioCashDiscountFullPayment.addEventListener('change',()=>{
+//     if(radioCashDiscountFullPayment.checked) {
+//         let remainFee = parseFloat(txtRemainingFeeFullPayment.value).toFixed(2);
+//         let discountFee = parseFloat((remainFee*10)/100).toFixed(2);
+//         let finalFee = parseFloat((remainFee * 90) / 100).toFixed(2);
+//         let registrationFee = parseFloat(txtRegistrationFeeFullPayment.value).toFixed(2);
+//         txtRemainingFeeFullPayment.value = finalFee;
+//         txtDiscountedFeeFullPayment.value = discountFee;
+//         txtFinalFeeFullPayment.value = (parseFloat(parseFloat(registrationFee) + parseFloat(finalFee)).toFixed(2));
+//     }
+//
+//
+// });
+
+const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount)=>{
+
+    if(elementID.checked){
+        //set default fees (without discount calculation just as is)
+        txtTotalFeeFullPayment.value = parseFloat(totalFee).toFixed(2);
+        txtRegistrationFeeFullPayment.value = registrationFee;
+        txtCourseFeeFullPayment.value = courseFee;
+
+        //calculate discount amount and update relevant fields
+        discountReceived = (courseFee * (discount)/100);
+        finalCourseFee = (courseFee - discountReceived);
+        finalTotalFee =  finalCourseFee + registrationFee;
+
+        //display final amounts
+        txtTotalDiscountFeeFullPayment.value = discountReceived;
+        txtFinalTotalFeeFullPayment.value = finalTotalFee;
+        txtFinalCourseFeeFullPayment.value = finalCourseFee;
+        txtFinalRegistrationFeeFullPayment.value = registrationFee;
+
+    }
+    else{
+        loadFee(registration.batchID)
+    }
+
+}
+
+const loadFee = (ob)=>{
     txtTotalFeeFullPayment.value = parseFloat(ob.totalFee).toFixed(2);
     txtRegistrationFeeFullPayment.value = parseFloat(ob.registrationFee).toFixed(2);
     txtRemainingFeeFullPayment.value =parseFloat(ob.remainingFee).toFixed(2);
     txtFinalFeeFullPayment.value = parseFloat(ob.remainingFee + ob.registrationFee).toFixed(2);
 
 }
-
-radioCashDiscountFullPayment.addEventListener('change',()=>{
-    if(radioCashDiscountFullPayment.checked) {
-        let remainFee = parseFloat(txtRemainingFeeFullPayment.value).toFixed(2);
-        let finalFee = parseFloat((remainFee * 90) / 100).toFixed(2);
-        let registrationFee = parseFloat(txtRegistrationFeeFullPayment.value).toFixed(2);
-        txtRemainingFeeFullPayment.value = finalFee;
-        txtFinalFeeFullPayment.value = (parseFloat(parseFloat(registrationFee) + parseFloat(finalFee)).toFixed(2));
-    }
-
-
-});
