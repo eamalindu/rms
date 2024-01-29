@@ -257,9 +257,6 @@ const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount
         txtFinalRegistrationFeeFullPayment.value = parseFloat(registrationFee).toFixed(2);
 
     }
-    else{
-        loadFee(registration.batchID)
-    }
 
 }
 
