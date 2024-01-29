@@ -294,7 +294,7 @@
 
                                             <div class="form-check ms-2">
                                                 <input checked class="form-check-input" id="radioStandardFullPayment"
-                                                       name="flexRadioDefault" type="radio">
+                                                       name="flexRadioDefault" type="radio" onchange="calculateDiscount(this,registration.batchID.totalFee,registration.batchID.registrationFee,registration.batchID.remainingFee,0)">
                                                 <label class="form-check-label" for="radioStandardFullPayment">Standard
                                                     (0%)</label>
                                             </div>
@@ -306,7 +306,7 @@
                                             </div>
                                             <div class="form-check ms-2">
                                                 <input class="form-check-input" id="radioCardDiscountFullPayment"
-                                                       name="flexRadioDefault" type="radio">
+                                                       name="flexRadioDefault" type="radio" onchange="calculateDiscount(this,registration.batchID.totalFee,registration.batchID.registrationFee,registration.batchID.remainingFee,7.5)">
                                                 <label class="form-check-label" for="radioCardDiscountFullPayment">7.5% for Card
                                                     Payments (Visa)</label>
                                             </div>
@@ -315,7 +315,7 @@
                                             <div class="w-100">
                                                 <h6 class="text-secondary text-uppercase fw-bold">Payment Breakdown</h6>
                                                 <div class="mb-2 d-flex align-items-center justify-content-between">
-                                                    <label for="txtTotalFeeFullPayment" class="form-label fw-bold mb-0">Total Fee (Rs.)</label>
+                                                    <label for="txtTotalFeeFullPayment" class="form-label fw-bold mb-0 px-2 text-bg-dark">Total Fee (Rs.)</label>
                                                     <input class="form-control rounded-0 border-0 bg-custom-white text-end fw-bold" id="txtTotalFeeFullPayment" style="width: 300px" disabled>
                                                 </div>
                                                 <div class="mb-2 ps-3 d-flex align-items-center justify-content-between">
