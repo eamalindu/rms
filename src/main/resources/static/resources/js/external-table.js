@@ -61,7 +61,7 @@ const fillDataIntoTable = (tabledID, dataList, displayPropertyList,viewFunction,
         //const btnView = document.createElement('button');
 
         //add relevant classes for the created buttons
-        btnView.classList.add('btn','p-0', 'fw-bold', 'text-purple','btn-sm');
+        btnView.classList.add('btn','p-0', 'fw-bold', 'text-steam-green','btn-sm');
 
         //setting attribute to btnEdit so that it will trigger the offcanvas
         btnView.setAttribute('data-bs-target',`#${offCanvasID}`);
