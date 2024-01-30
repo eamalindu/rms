@@ -269,15 +269,17 @@ const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount
 
 }
 
-const loadFee = (ob)=>{
-    txtTotalFeeFullPayment.value = parseFloat(ob.totalFee).toFixed(2);
-    txtRegistrationFeeFullPayment.value = parseFloat(ob.registrationFee).toFixed(2);
-    txtCourseFeeFullPayment.value = parseFloat(ob.remainingFee).toFixed(2);
+const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFullPayment)=>{
+    totalFeeInputID.value = parseFloat(ob.totalFee).toFixed(2);
+    registrationFeeInputID.value = parseFloat(ob.registrationFee).toFixed(2);
+    courseFeeInputID.value = parseFloat(ob.remainingFee).toFixed(2);
 
-    txtTotalDiscountFeeFullPayment.value = "0.00";
-    txtFinalTotalFeeFullPayment.value = parseFloat(ob.totalFee).toFixed(2);
-    txtFinalCourseFeeFullPayment.value = parseFloat(ob.remainingFee).toFixed(2);
-    txtFinalRegistrationFeeFullPayment.value =  parseFloat(ob.registrationFee).toFixed(2);
+    if(isFullPayment) {
+        txtTotalDiscountFeeFullPayment.value = "0.00";
+        txtFinalTotalFeeFullPayment.value = parseFloat(ob.totalFee).toFixed(2);
+        txtFinalCourseFeeFullPayment.value = parseFloat(ob.remainingFee).toFixed(2);
+        txtFinalRegistrationFeeFullPayment.value = parseFloat(ob.registrationFee).toFixed(2);
+    }
 
 }
 
