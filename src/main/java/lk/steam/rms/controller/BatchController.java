@@ -4,6 +4,7 @@ import lk.steam.rms.dao.BatchDAO;
 import lk.steam.rms.entity.Batch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -28,5 +29,10 @@ public class BatchController {
     public List<Batch> getWeekendBatchesByCourseId(@PathVariable Integer courseId) {
         return batchDAO.getWeekendBatchesByCourseId(courseId);
     }
-
+    @GetMapping()
+    public ModelAndView batchUI(){
+        ModelAndView batchView = new ModelAndView();
+        batchView.setViewName("batch.html");
+        return batchView;
+    }
 }
