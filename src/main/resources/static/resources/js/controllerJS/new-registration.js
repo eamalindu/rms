@@ -185,21 +185,26 @@ let previous1 = () => {
 
 }
 let previous2 = () => {
-    step3.classList.remove('custom-step-complete');
-    step4.classList.remove('custom-step-complete');
-    step5.classList.remove('custom-step-complete');
+    if(registration.courseID!==undefined) {
+        step3.classList.remove('custom-step-complete');
+        step4.classList.remove('custom-step-complete');
+        step5.classList.remove('custom-step-complete');
 
 
-    footer_1.classList.remove('show');
-    footer_2.classList.remove('show');
-    footer_3.classList.add('show');
-    footer_4.classList.remove('show');
-    footer_5.classList.remove('show');
+        footer_1.classList.remove('show');
+        footer_2.classList.remove('show');
+        footer_3.classList.add('show');
+        footer_4.classList.remove('show');
+        footer_5.classList.remove('show');
 
-    document.querySelector('#btn-payment-str .step-number span').innerText = '3';
-    document.querySelector('#btn-student .step-number span').innerText = '4';
-    document.querySelector('#btn-add-payment .step-number span').innerText = '5';
+        document.querySelector('#btn-payment-str .step-number span').innerText = '3';
+        document.querySelector('#btn-student .step-number span').innerText = '4';
+        document.querySelector('#btn-add-payment .step-number span').innerText = '5';
+    }
+    else{
+        showCustomModal("Please Select a Batch !","warning");
 
+    }
 
 
 }
