@@ -280,6 +280,7 @@ const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFu
     registrationFeeInputID.value = parseFloat(ob.registrationFee).toFixed(2);
     courseFeeInputID.value = parseFloat(ob.remainingFee).toFixed(2);
 
+    tblInstallments.children[1].innerHTML = '';
 
     if(isFullPayment) {
         txtTotalDiscountFeeFullPayment.value = "0.00";
