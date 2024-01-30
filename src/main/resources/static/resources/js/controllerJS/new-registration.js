@@ -102,6 +102,10 @@ let next1 = () => {
         footer_3.classList.add('show');
         step2.classList.add('custom-step-complete');
         document.querySelector('#btn-batch .step-number span').innerText = '✔';
+
+        //check the standard 0% discount radio
+        radioStandardFullPayment.checked = true;
+
     }
     else{
         showCustomModal("Please Select a Batch !","warning");
@@ -274,5 +278,9 @@ const loadFee = (ob)=>{
     txtFinalTotalFeeFullPayment.value = parseFloat(ob.totalFee).toFixed(2);
     txtFinalCourseFeeFullPayment.value = parseFloat(ob.remainingFee).toFixed(2);
     txtFinalRegistrationFeeFullPayment.value =  parseFloat(ob.registrationFee).toFixed(2);
+
+}
+
+const calculateInstallments =()=>{
 
 }
