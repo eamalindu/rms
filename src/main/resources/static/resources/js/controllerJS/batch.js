@@ -29,7 +29,7 @@ const getCourseName = (ob)=>{
 
 const getWeekDay = (ob)=>{
     if(ob.isWeekday){
-        return "WeekDay";
+        return "Weekday";
     }
     else{
         return "Weekend";
