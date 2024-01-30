@@ -192,6 +192,7 @@ input[name="btnLogin"]:hover {
 .custom-table tr:hover td{
     background: rgb(25, 69, 157,0.41) !important;
     border: 1px solid white;
+    color: white;
 }
 .custom-table tr.selected{
     background-color: white!important;
