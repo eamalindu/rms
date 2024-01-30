@@ -40,11 +40,11 @@ input[name="btnLogin"]:hover {
 }
 
 .bg-steam-green {
-    background-color: #55C052 !important;
+    background-color: #19459D !important;
 }
 
 .custom-active {
-    background-color: #469d44;
+    background-color: #13357a;
 }
 
 .bg-custom-white {
@@ -72,12 +72,12 @@ input[name="btnLogin"]:hover {
 }
 
 .custom-width-max-content:hover {
-    background-color: #5dcb5b;
+    background-color: #153a85;
     cursor: pointer;
 }
 
 .custom-active:hover {
-    background-color: #5dcb5b;
+    background-color: #13357a;
 }
 
 /*Custom Stepper css start*/
@@ -164,7 +164,7 @@ input[name="btnLogin"]:hover {
 
 /* Custom css for table*/
 .custom-table th {
-    background-color: #55C052;
+    background-color: #19459D;
     padding: 5px;
     color: white;
     border: 1px solid white;
@@ -175,7 +175,7 @@ input[name="btnLogin"]:hover {
 
 }
 .text-steam-green{
-    color: #55C052!important;
+    color: #19459D!important;
 }
 
 .custom-table td {
@@ -190,7 +190,7 @@ input[name="btnLogin"]:hover {
     width: 100%;
 }
 .custom-table tr:hover td{
-    background: rgba(104, 225, 100,0.41) !important;
+    background: rgb(25, 69, 157,0.41) !important;
     border: 1px solid white;
 }
 .custom-table tr.selected{
@@ -247,8 +247,8 @@ input {
 }
 
 .active>.page-link{
-    background-color: #55C052;
-    border-color: #55C052;
+    background-color: #19459D;
+    border-color: #19459D;
 }
 
 /*Overriding datatable css*/
