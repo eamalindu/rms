@@ -20,7 +20,7 @@ const refreshBatchTable =()=>{
         {property:'createdBy',dataType:'text'},
     ];
 
-    fillDataIntoTable(tblBatch,batches,displayPropertyListForBatches,rowView,'')
+    fillDataIntoTable(tblBatch,batches,displayPropertyListForBatches,rowView,'offcanvasBatchSheet')
 }
 
 const getCourseName = (ob)=>{
