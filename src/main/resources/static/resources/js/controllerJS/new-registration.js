@@ -280,7 +280,6 @@ const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFu
     registrationFeeInputID.value = parseFloat(ob.registrationFee).toFixed(2);
     courseFeeInputID.value = parseFloat(ob.remainingFee).toFixed(2);
 
-    installmentsDetails.innerText = '';
 
     if(isFullPayment) {
         txtTotalDiscountFeeFullPayment.value = "0.00";
@@ -297,22 +296,49 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
         const installmentFee = courseFee / installments;
         let currentDate = new Date();
 
-        installmentsDetails.innerText = '';
+        const tbody = tblInstallments.children[1];
+        //clear the table body
+        tbody.innerHTML = '';
+
         // Display the first installment
-        const firstText = document.createElement('p');
-        firstText.innerText = "1) Installment " + parseFloat(installmentFee + registrationFee).toFixed(2) + " Date: " + currentDate.toISOString().slice(0, 10);
-        installmentsDetails.appendChild(firstText);
+        const firstTR = document.createElement('tr');
+
+        const firstTD = document.createElement('td');
+        firstTD.innerText = "1";
+        firstTR.appendChild(firstTD);
+
+        const secondTD = document.createElement('td');
+        secondTD.innerText = parseFloat(installmentFee + registrationFee).toFixed(2);
+        firstTR.appendChild(secondTD);
+
+        const thirdTD = document.createElement('td');
+        thirdTD.innerText = currentDate.toISOString().slice(0, 10);
+        firstTR.appendChild(thirdTD);
+        tbody.appendChild(firstTR);
 
         // Display the subsequent installments
         for (let i = 1; i < installments; i++) {
             // Calculate the new date for each installment
             const newDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, currentDate.getDate());
 
-            const text = document.createElement('p');
-            text.innerText = i + 1 + ") Installment " + parseFloat(installmentFee).toFixed(2) + " Date: " + newDate.toISOString().slice(0, 10);
+            const tr = document.createElement('tr');
+
+            const installmentTD = document.createElement('td');
+            installmentTD.innerText = i + 1;
+            tr.appendChild(installmentTD);
+
+            const installmentAmountTD = document.createElement('td');
+            installmentAmountTD.innerText = parseFloat(installmentFee).toFixed(2);
+            tr.appendChild(installmentAmountTD);
+
+            const installmentDateTD = document.createElement('td');
+            installmentDateTD.innerText = newDate.toISOString().slice(0, 10);
+            tr.appendChild(installmentDateTD);
 
             currentDate = newDate; // Update currentDate for the next iteration
-            installmentsDetails.appendChild(text);
+
+
+            tbody.appendChild(tr);
         }
 
     }
