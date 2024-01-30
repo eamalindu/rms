@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
           name="viewport">
-    <title>New Registration | STEAM RMS</title>
+    <title>Manage Batches | STEAM RMS</title>
     <!-- Favicon Icon -->
     <link href="/resources/images/favicon.ico" rel="icon" type="image/x-icon">
     <!-- Bootstrap CSS File-->
@@ -93,3 +93,69 @@
 <div class="container-fluid bg-custom-white custom-banner">
     <h5>Manage Batches</h5>
 </div>
+
+<div class="container-fluid pt-2">
+    <div class="card rounded-0">
+        <div class="card-body rounded-0">
+            <div class="row align-items-center d-flex justify-content-around">
+                <div class="col-12 col-lg-4 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1">
+                    <!--
+                    <label class="text-uppercase small m-0 p-0 text-muted" for="userSearchID">Search</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-custom-white rounded-0"><i
+                                class="fa-solid fa-magnifying-glass"></i></span>
+                        <input class="form-control rounded-0" id="userSearchID"
+                               placeholder="Employee ID, Mobile Number or NIC">
+                        <div class="d-flex align-items-center justify-content-evenly">
+                            <button class="btn bg-purple rounded-0 text-white" id="" type="submit"><i
+                                    class="fa-solid fa-magnifying-glass small"></i></button>
+                            <button class="btn btn-close-red rounded-0 text-white ms-3" id="btn-reset" type="reset"><i
+                                    class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    </div>
+                    -->
+                </div>
+                <div class="col-12 col-lg-7 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1 text-end">
+                    <p class="text-uppercase small m-0 p-0 text-muted">Create a New Batch</p>
+                    <button aria-controls="staticBackdrop" class="btn pointer bg-steam-green text-white rounded-0 text-end"
+                            data-bs-target="#" data-bs-toggle="offcanvas"><i
+                            class="fa-solid fa-plus"></i> Batch
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-footer show pt-4 pb-4">
+            <h4 class="text-center fw-bold"
+                style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Search Batch Info /
+                <small class="text-muted">No records</small></h4>
+
+            <table class="custom-table" id="tblPrivilege">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Role</th>
+                    <th>Module</th>
+                    <th>Select</th>
+                    <th>Insert</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <!-- Ajax loader start-->
+            <div class="loading-overlay mt-2">
+                <img src="/resources/images/loader.svg" width="60px" alt="loading animation">
+            </div>
+            <!-- Ajax loader end-->
+        </div>
+
+
+    </div>
+</div>
+
+</body>
+</html>
