@@ -280,6 +280,8 @@ const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFu
     registrationFeeInputID.value = parseFloat(ob.registrationFee).toFixed(2);
     courseFeeInputID.value = parseFloat(ob.remainingFee).toFixed(2);
 
+    installmentsDetails.innerText = '';
+
     if(isFullPayment) {
         txtTotalDiscountFeeFullPayment.value = "0.00";
         txtFinalTotalFeeFullPayment.value = parseFloat(ob.totalFee).toFixed(2);
@@ -287,8 +289,32 @@ const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFu
         txtFinalRegistrationFeeFullPayment.value = parseFloat(ob.registrationFee).toFixed(2);
     }
 
+
 }
 
-const calculateInstallments =()=>{
+const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,installments)=>{
+    if(elementID.checked){
+        const installmentFee = courseFee / installments;
+        let currentDate = new Date();
+
+        installmentsDetails.innerText = '';
+        // Display the first installment
+        const firstText = document.createElement('p');
+        firstText.innerText = "1) Installment " + parseFloat(installmentFee + registrationFee).toFixed(2) + " Date: " + currentDate.toISOString().slice(0, 10);
+        installmentsDetails.appendChild(firstText);
+
+        // Display the subsequent installments
+        for (let i = 1; i < installments; i++) {
+            // Calculate the new date for each installment
+            const newDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, currentDate.getDate());
+
+            const text = document.createElement('p');
+            text.innerText = i + 1 + ") Installment " + parseFloat(installmentFee).toFixed(2) + " Date: " + newDate.toISOString().slice(0, 10);
+
+            currentDate = newDate; // Update currentDate for the next iteration
+            installmentsDetails.appendChild(text);
+        }
+
+    }
 
 }

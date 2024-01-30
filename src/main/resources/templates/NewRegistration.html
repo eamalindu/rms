@@ -377,7 +377,7 @@
                                             </div>
                                             <div class="form-check ms-2">
                                                 <input class="form-check-input" id="flexRadioDefault4"
-                                                       name="flexRadioDefault" type="radio">
+                                                       name="flexRadioDefault" type="radio" onchange="calculateInstallments(this,registration.batchID.totalFee,registration.batchID.registrationFee,registration.batchID.remainingFee,registration.batchID.numberOfInstallments)">
                                                 <label class="form-check-label" for="flexRadioDefault4">Standard
                                                     (0%)</label>
                                             </div>
@@ -396,6 +396,10 @@
                                                 <div class="mb-2 ps-3 d-flex align-items-center justify-content-between">
                                                     <label for="txtCourseFeePartPayment" class="form-label text-muted mb-0">Course Fee (Rs.)</label>
                                                     <input class="form-control rounded-0 border-0 bg-custom-white text-end text-muted" id="txtCourseFeePartPayment" style="width: 300px" disabled>
+                                                </div>
+
+                                                <div class="mb-2 text-bg-primary" id="installmentsDetails">
+
                                                 </div>
                                             </div>
                                         </div>
