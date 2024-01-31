@@ -50,6 +50,9 @@ const rowView = ()=>{
 
 const resetBatchForm = ()=>{
 
+    //reset batch object
+    newBatch = {}
+
     //dynamic select content handling
     courses = ajaxGetRequest("/Course/findall");
     fillSelectOptions(batchCourse,' ',courses,'name');
@@ -68,7 +71,5 @@ const resetBatchForm = ()=>{
         }
     });
 
-    //reset batch object
-    newBatch = {}
 
 }
