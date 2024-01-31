@@ -1,6 +1,8 @@
 window.addEventListener("load",()=>{
     //refresh the batch table
     refreshBatchTable();
+    //reset the batch form
+    resetBatchForm();
 });
 
 
@@ -38,5 +40,12 @@ const getWeekDay = (ob)=>{
 }
 
 const rowView = ()=>{
+
+}
+
+const resetBatchForm = ()=>{
+
+    //initialize the 3rd party libraries (chosen)
+    $('#batchCourse').chosen({width:'100%'});
 
 }
