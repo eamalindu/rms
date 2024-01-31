@@ -70,6 +70,17 @@ const resetBatchForm = ()=>{
             "format": "YYYY-MM-DD"
         }
     });
+    $('#batchEndDate').daterangepicker({
+        "minDate": new Date(),
+        "singleDatePicker": true,
+        "autoApply": true,
+        "linkedCalendars": false,
+        "showCustomRangeLabel": false,
+        "drops": "up",
+        "locale": {
+            "format": "YYYY-MM-DD"
+        }
+    });
 
 
 }
