@@ -303,6 +303,9 @@ input {
     justify-content: center;
 
 }
+.newBatchInputs{
+    font-size: 13px;
+}
 
 /*Medium devices responsive*/
 @media (max-width: 870px) {
