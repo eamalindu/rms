@@ -221,6 +221,13 @@ label.required::after {
     bottom: 2px;
     position: relative;
 }
+.form-control:focus {
+    border-color: #19459D!important;
+}
+
+input,.form-control {
+    box-shadow: none!important;
+}
 
 /*Validated chosen select*/
 .select-validated{
