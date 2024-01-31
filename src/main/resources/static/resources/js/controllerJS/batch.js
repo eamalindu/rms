@@ -3,6 +3,11 @@ window.addEventListener("load",()=>{
     refreshBatchTable();
     //reset the batch form
     resetBatchForm();
+
+    //validation chosen select (for new batch)
+    $("#batchCourse").chosen().change(function () {
+        $("#batchCourse_chosen .chosen-single").addClass('select-validated');
+    });
 });
 
 
