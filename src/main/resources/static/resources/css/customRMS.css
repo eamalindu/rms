@@ -235,6 +235,22 @@ label.required::after {
     color: black!important;
     background: rgba(13,202,240,0.2)!important;
 }
+/*Custom css for daterangepicker*/
+.daterangepicker .ranges li:hover, .daterangepicker .ranges li.active {
+    background-color: #44509d;
+    color: white;
+}
+.applyBtn{
+    background: #19459D;
+    border-color: #19459D;
+}
+.applyBtn:hover{
+    background: #44509d;
+    border-color: #19459D;
+}
+.daterangepicker td.active, .daterangepicker td.active:hover {
+    background-color: #19459D;
+}
 
 /*Chosen Custom css*/
 .chosen-container-single .chosen-single {
