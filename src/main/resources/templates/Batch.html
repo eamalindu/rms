@@ -178,7 +178,7 @@
                         <div class="form-label">
                             <label class="fw-bold small required" for="batchCourse">Course</label>
                         </div>
-                        <select class="form-select rounded-0" id="batchCourse" data-placeholder="Please Select a Course" required>
+                        <select class="form-select rounded-0" id="batchCourse" data-placeholder="Please Select a Course" required onchange="selectDynamicValueValidator(this,'','newBatch','courseID')">
                             <option>Dynamic Value 1</option>
                             <option>Dynamic Value 2</option>
                             <option>Dynamic Value 3</option>
