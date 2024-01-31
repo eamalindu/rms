@@ -38,6 +38,13 @@
             border-color: #ccc;
             border-style: solid;
         }
+        .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+            color: black;
+            background-color: #f3f3f3;
+        }
+        .nav-link{
+            color: black;
+        }
     </style>
 
 </head>
@@ -308,6 +315,32 @@
         <h3 class="align-items-center text-nowrap ms-3 mt-2" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Batch Details</h3>
     </div>
     <div class="offcanvas-body">
+        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+            <li class="nav-item w-50" role="presentation">
+                <button class="nav-link w-100 active rounded-0 " id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-info" type="button" role="tab" aria-controls="pills-home" aria-selected="true"><i class="text-info fa-solid fa-circle-info"></i> Info</button>
+            </li>
+            <li class="nav-item w-50" role="presentation">
+                <button class="nav-link w-100 rounded-0" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-registration" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="text-success fa-solid fa-graduation-cap"></i> Registrations</button>
+            </li>
+
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-info" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                <div class="card rounded-0 mt-0 border-0">
+                    <div class="card-body rounded-0 border-0">
+                        Basic Info
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-registration" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                <div class="card rounded-0 mt-0">
+                    <div class="card-body rounded-0">
+                        Registrations
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 <!-- Off canvas for batch details end-->
