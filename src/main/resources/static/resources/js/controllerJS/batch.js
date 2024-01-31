@@ -84,3 +84,17 @@ const resetBatchForm = ()=>{
 
 
 }
+
+const checkBoxValidator = (elementID,leftDivID,rightDivID,object,property,trueValue,falseValue) => {
+    //checking if the checkbox is checked or not
+    if (elementID.checked) {
+        rightDivID.classList.add('bg-success', 'text-white');
+        leftDivID.classList.remove('bg-success', 'text-white');
+        window[object][property]=trueValue;
+    } else {
+        window[object][property]=falseValue;
+        rightDivID.classList.remove('bg-success', 'text-white');
+        leftDivID.classList.add('bg-success', 'text-white');
+
+    }
+}
