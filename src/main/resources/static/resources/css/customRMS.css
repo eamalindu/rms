@@ -300,6 +300,10 @@ input {
     background-color: #19459D;
     border-color: #19459D;
 }
+.form-check-input:checked {
+    background-color: #19459D;
+    border-color: #19459D;
+}
 
 /*Overriding datatable css*/
 .dataTables_filter input, select{
