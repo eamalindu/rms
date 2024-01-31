@@ -221,6 +221,7 @@ label.required::after {
     bottom: 2px;
     position: relative;
 }
+
 /*Validated chosen select*/
 .select-validated{
     /*background: rgba(0,255,0,0.2)!important;*/
@@ -240,7 +241,7 @@ label.required::after {
     padding: 6px 0 0 10px !important;
     height: 38px !important;
     border-radius: 0 !important;
-    background: #eee !important;
+    background: #eee;
     background-clip: padding-box !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
@@ -258,6 +259,25 @@ input {
 .btn-close-red{
     background: red!important;
     border-color: red!important;
+}
+
+.valid-feedback{
+    width: fit-content;
+    padding: 0.25rem 0.5rem;
+    margin-top: 0.1rem;
+    font-size: 13px;
+    color: #fff;
+    background-color: var(--bs-success);
+    border-radius: var(--bs-border-radius);
+}
+.invalid-feedback{
+    width: fit-content;
+    padding: 0.25rem 0.5rem;
+    margin-top: 0.1rem;
+    font-size: 13px;
+    color: #fff;
+    background-color: var(--bs-danger);
+    border-radius: var(--bs-border-radius);
 }
 
 .active>.page-link{
