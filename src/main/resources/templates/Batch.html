@@ -244,6 +244,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="batchRegistrationFee">Registration Fee (Rs.)</label>
+                        </div>
+                        <input class="form-control rounded-0 newBatchInputs" id="batchRegistrationFee" onkeyup="inputTextValidator(this,'^[0-9]{2}$','newBatch','registrationFee')" required>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Seat Count</div>
+                    </div>
                 </form>
             </div>
         </div>
