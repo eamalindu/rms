@@ -221,6 +221,19 @@ label.required::after {
     bottom: 2px;
     position: relative;
 }
+/*Validated chosen select*/
+.select-validated{
+    /*background: rgba(0,255,0,0.2)!important;*/
+    border: 1px solid green!important;
+    color: green!important;
+    background: white!important;
+}
+.select-editable{
+    /*background: rgba(0,255,0,0.2)!important;*/
+    border: 1px solid #0DCAF0!important;
+    color: black!important;
+    background: rgba(13,202,240,0.2)!important;
+}
 
 /*Chosen Custom css*/
 .chosen-container-single .chosen-single {
