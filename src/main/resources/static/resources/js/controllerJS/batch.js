@@ -104,3 +104,34 @@ const checkBoxValidator = (elementID,leftDivID,rightDivID,object,property,trueVa
 
     }
 }
+
+
+const calculateLastRegDate =()=>{
+    startDateString=batchCommenceDate.value;
+    console.log(startDateString);
+
+    startDate = new Date(startDateString);
+    console.log(startDate);
+
+    startDate.setDate(startDate.getDate() + 14);
+
+    console.log(startDate.toISOString().split('T')[0])
+   // batchLastRedDate.value = startDate.toISOString().split('T')[0];
+    $('#batchLastRedDate').daterangepicker({
+        "minDate": startDate.toISOString().split('T')[0],
+        "singleDatePicker": true,
+        "autoApply": true,
+        "linkedCalendars": false,
+        "showCustomRangeLabel": false,
+        "drops": "up",
+        "locale": {
+            "format": "YYYY-MM-DD"
+        }
+    });
+
+
+}
+
+const newBatchSubmit = ()=>{
+    console.log(newBatch);
+}
