@@ -77,6 +77,9 @@ public class Batch {
 
 //    private String lectureRoomID;
 //    private String lecturerID;
-//    private String batchStatusID;
+
+    @ManyToOne
+    @JoinColumn(name = "batchstatus_id",referencedColumnName = "id")
+    private BatchStatus batchStatusID;
 
 }
