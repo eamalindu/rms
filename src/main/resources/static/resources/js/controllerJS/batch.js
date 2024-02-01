@@ -11,6 +11,13 @@ window.addEventListener("load",()=>{
     $("#batchStatus").chosen().change(function () {
         $("#batchStatus_chosen .chosen-single").addClass('select-validated');
     });
+
+    $('#batchCommenceDate').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','newBatch','commenceDate');
+        calculateLastRegDate();
+        calculateEndDate();
+    });
 });
 
 
@@ -71,14 +78,15 @@ const resetBatchForm = ()=>{
     $('#batchCommenceDate').daterangepicker({
         "minDate": new Date(),
         "singleDatePicker": true,
-        "autoApply": true,
         "linkedCalendars": false,
         "showCustomRangeLabel": false,
+        "autoUpdateInput": false,
         "drops": "up",
         "locale": {
             "format": "YYYY-MM-DD"
         }
     });
+
 
 
 

@@ -185,7 +185,7 @@
                         <div class="form-label">
                             <label class="fw-bold small required" for="batchCourse">Course</label>
                         </div>
-                        <select class="form-select rounded-0" id="batchCourse" data-placeholder="Please Select a Course" required onchange="selectDynamicValueValidator(this,'','newBatch','courseID');calculateEndDate();">
+                        <select class="form-select rounded-0" id="batchCourse" data-placeholder="Please Select a Course" required onchange="selectDynamicValueValidator(this,'','newBatch','courseID')">
                             <option>Dynamic Value 1</option>
                             <option>Dynamic Value 2</option>
                             <option>Dynamic Value 3</option>
@@ -206,7 +206,7 @@
                         <div class="form-label">
                             <label class="fw-bold small required" for="batchCommenceDate">Commence Date</label>
                         </div>
-                        <input class="form-control rounded-0 newBatchInputs" id="batchCommenceDate" onchange="inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','newBatch','commenceDate');calculateLastRegDate();" required>
+                        <input class="form-control rounded-0 newBatchInputs" id="batchCommenceDate" required>
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Date</div>
                     </div>
