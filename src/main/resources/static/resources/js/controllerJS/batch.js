@@ -56,6 +56,8 @@ const resetBatchForm = ()=>{
     //dynamic select content handling
     courses = ajaxGetRequest("/Course/findall");
     fillSelectOptions(batchCourse,' ',courses,'name');
+    statuses = ajaxGetRequest("/BatchStatus/");
+    fillSelectOptions(batchStatus,' ',statuses,'name');
 
     //initialize the 3rd party libraries (chosen)
     $('#batchCourse').chosen({width:'100%'});
