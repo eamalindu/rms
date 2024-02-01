@@ -79,17 +79,7 @@ const resetBatchForm = ()=>{
             "format": "YYYY-MM-DD"
         }
     });
-    $('#batchEndDate').daterangepicker({
-        "minDate": new Date(),
-        "singleDatePicker": true,
-        "autoApply": true,
-        "linkedCalendars": false,
-        "showCustomRangeLabel": false,
-        "drops": "up",
-        "locale": {
-            "format": "YYYY-MM-DD"
-        }
-    });
+
 
 
 }
@@ -110,10 +100,10 @@ const checkBoxValidator = (elementID,leftDivID,rightDivID,object,property,trueVa
 
 
 const calculateLastRegDate =()=>{
-    startDateString=batchCommenceDate.value;
+    let startDateString=batchCommenceDate.value;
     console.log(startDateString);
 
-    startDate = new Date(startDateString);
+    let startDate = new Date(startDateString);
     console.log(startDate);
 
     startDate.setDate(startDate.getDate() + 14);
@@ -133,6 +123,32 @@ const calculateLastRegDate =()=>{
     });
 
 
+}
+
+const calculateEndDate = ()=>{
+    let startDateString=batchCommenceDate.value;
+    console.log(startDateString);
+
+    let startDate = new Date(startDateString);
+    console.log(startDate);
+
+    let durationInMonths = newBatch.courseID.duration;
+
+    startDate.setMonth(startDate.getMonth() + durationInMonths);
+
+    // console.log(startDate.toISOString().split('T')[0]);
+
+    $('#batchEndDate').daterangepicker({
+        "minDate": startDate.toISOString().split('T')[0],
+        "singleDatePicker": true,
+        "autoApply": true,
+        "linkedCalendars": false,
+        "showCustomRangeLabel": false,
+        "drops": "up",
+        "locale": {
+            "format": "YYYY-MM-DD"
+        }
+    });
 }
 
 const newBatchSubmit = ()=>{
