@@ -62,6 +62,9 @@ const resetBatchForm = ()=>{
     statuses = ajaxGetRequest("/BatchStatus/findall");
     fillSelectOptions(batchStatus,' ',statuses,'name');
 
+    //reset checkbox
+    checkBoxValidator(this, leftWeekday, rightWeekday, 'newBatch', 'isWeekday', false, true)
+
     //initialize the 3rd party libraries (chosen)
     $('#batchCourse').chosen({width:'100%'});
     $('#batchStatus').chosen({width:'100%'});
