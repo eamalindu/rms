@@ -8,6 +8,9 @@ window.addEventListener("load",()=>{
     $("#batchCourse").chosen().change(function () {
         $("#batchCourse_chosen .chosen-single").addClass('select-validated');
     });
+    $("#batchStatus").chosen().change(function () {
+        $("#batchStatus_chosen .chosen-single").addClass('select-validated');
+    });
 });
 
 
