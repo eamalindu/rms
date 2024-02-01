@@ -18,5 +18,10 @@ public class LectureRoom {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private String name;
+    private String code;
+    private String floor;
+    private String room;
+
 
 }
