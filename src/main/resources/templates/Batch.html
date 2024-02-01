@@ -220,6 +220,14 @@
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
+                            <label class="fw-bold small required" for="batchLastRedDate">Last Registration Date</label>
+                        </div>
+                        <input class="form-control rounded-0 newBatchInputs" id="batchLastRedDate" onchange="inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','newBatch','endDate')" required>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Date</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
                             <label class="fw-bold small required" for="batchSeat">Seat Count</label>
                         </div>
                         <input class="form-control rounded-0 newBatchInputs" id="batchSeat" onkeyup="inputTextValidator(this,'^[0-9]{2}$','newBatch','seatCount')" required>
