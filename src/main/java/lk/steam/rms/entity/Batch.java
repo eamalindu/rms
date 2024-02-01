@@ -31,6 +31,10 @@ public class Batch {
     @NotNull
     private LocalDate commenceDate;
 
+    @Column(name = "lastregdate")
+    @NotNull
+    private LocalDate lastRegDate;
+
     @Column(name = "enddate")
     @NotNull
     private LocalDate endDate;
