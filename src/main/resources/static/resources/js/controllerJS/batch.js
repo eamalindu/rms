@@ -59,6 +59,7 @@ const resetBatchForm = ()=>{
 
     //initialize the 3rd party libraries (chosen)
     $('#batchCourse').chosen({width:'100%'});
+    $('#batchStatus').chosen({width:'100%'});
     $('#batchCommenceDate').daterangepicker({
         "minDate": new Date(),
         "singleDatePicker": true,
