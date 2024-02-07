@@ -35,4 +35,26 @@ public class BatchController {
         batchView.setViewName("batch.html");
         return batchView;
     }
+
+    @PostMapping()
+    public String saveNewBatch(@RequestBody Batch batch){
+
+        Integer currentCourseID = batch.getCourseID().getId();
+        Integer nextBatchNumber = batchDAO.getNextBatchNumberByCourseId(currentCourseID);
+
+        if(nextBatchNumber!=null){
+
+
+
+        }
+        else{
+            nextBatchNumber =1;
+
+
+        }
+
+
+
+        return "OK";
+    }
 }
