@@ -287,7 +287,7 @@
                         <div class="form-label">
                             <label class="fw-bold small required" for="batchTotalFee">Total Fee (Rs.)</label>
                         </div>
-                        <input class="form-control rounded-0 newBatchInputs" id="batchTotalFee" required disabled>
+                        <input class="form-control rounded-0 newBatchInputs" id="batchTotalFee" onchange="newBatch.totalFee=this.value" required disabled>
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Total Fee</div>
                     </div>
@@ -295,7 +295,7 @@
                         <div class="form-label">
                             <label class="fw-bold small required" for="batchNumberofInstallments">Number of Installments</label>
                         </div>
-                        <input class="form-control rounded-0 newBatchInputs" id="batchNumberofInstallments" required>
+                        <input class="form-control rounded-0 newBatchInputs" id="batchNumberofInstallments" onkeyup="inputTextValidator(this,'^[0-9]{1}$','newBatch','numberOfInstallments')" required>
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Number of Installments</div>
                     </div>
