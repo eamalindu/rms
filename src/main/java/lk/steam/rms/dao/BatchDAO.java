@@ -15,6 +15,9 @@ public interface BatchDAO extends JpaRepository<Batch,Integer> {
     @Query("SELECT b FROM Batch b WHERE b.courseID.id =?1 and b.isWeekday = false")
     List<Batch> getWeekendBatchesByCourseId(Integer courseId);
 
+    @Query("SELECT max(b.batchNumber)+1 from Batch b where b.courseID.id=?1")
+    Integer getNextBatchNumberByCourseId(Integer courseID);
+
 
 
 
