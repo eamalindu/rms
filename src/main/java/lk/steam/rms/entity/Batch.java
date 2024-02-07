@@ -23,6 +23,10 @@ public class Batch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "batchnumber")
+    @NotNull
+    private String batchNumber;
+
     @Column(name = "batchcode")
     @NotNull
     private String batchCode;
