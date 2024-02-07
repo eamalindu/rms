@@ -25,7 +25,7 @@ public class Batch {
 
     @Column(name = "batchnumber")
     @NotNull
-    private String batchNumber;
+    private Integer batchNumber;
 
     @Column(name = "batchcode")
     @NotNull
