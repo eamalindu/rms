@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -40,21 +42,31 @@ public class BatchController {
     public String saveNewBatch(@RequestBody Batch batch){
 
         Integer currentCourseID = batch.getCourseID().getId();
+        String currentCourseCode = batch.getCourseID().getCode();
+        LocalDate currentDate = LocalDate.now();
+        Integer currentYear = currentDate.getYear();
         Integer nextBatchNumber = batchDAO.getNextBatchNumberByCourseId(currentCourseID);
 
-        if(nextBatchNumber!=null){
+        String halfBatchCode = currentYear+"-"+currentCourseCode+"-";
 
+        if(nextBatchNumber!=null){
+            batch.setBatchCode(halfBatchCode+nextBatchNumber);
 
 
         }
         else{
             nextBatchNumber =1;
+            batch.setBatchCode(halfBatchCode+nextBatchNumber);
 
 
         }
 
 
-
+        batch.setTimestamp(LocalDateTime.now());
+        batch.setDescription("Test");
+        batch.setBatchNumber(nextBatchNumber);
+        batch.setCreatedBy("Malindu");
+        batchDAO.save(batch);
         return "OK";
     }
 }
