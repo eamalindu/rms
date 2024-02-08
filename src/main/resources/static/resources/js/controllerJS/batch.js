@@ -1,8 +1,9 @@
 window.addEventListener("load",()=>{
-    //refresh the batch table
-    refreshBatchTable();
+
     //reset the batch form
     resetBatchForm();
+    //refresh the batch table
+    refreshBatchTable();
 
     //validation chosen select (for new batch)
     $("#batchCourse").chosen().change(function () {
@@ -87,7 +88,8 @@ const resetBatchForm = ()=>{
 
     //set default option chosen
     setTimeout(function () {
-        $('select').val('').trigger('chosen:updated');
+        $('#batchCourse').val('').trigger('chosen:updated');
+        $('#batchStatus').val('').trigger('chosen:updated');
     }, 0);
 
     //remove validation from the inputs all at once
