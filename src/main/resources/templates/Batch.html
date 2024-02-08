@@ -302,6 +302,14 @@
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
+                            <label class="fw-bold small required" for="batchClassDay">Class Day</label>
+                        </div>
+                        <select class="form-select rounded-0" id="batchClassDay" data-placeholder="Please Select a Day" required onchange="selectDynamicValueValidator(this,'','newBatch','day')">
+                        </select>
+
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
                             <label class="fw-bold small required" for="batchStartTime">Start Time</label>
                         </div>
                         <input class="form-control rounded-0 newBatchInputs" id="batchStartTime" type="time" onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','newBatch','s')">
