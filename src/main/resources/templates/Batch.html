@@ -302,11 +302,19 @@
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
-                            <label class="fw-bold small required" for="batchStartTime">Start Time/End Time</label>
+                            <label class="fw-bold small required" for="batchStartTime">Start Time</label>
                         </div>
                         <input class="form-control rounded-0 newBatchInputs" id="batchStartTime" type="time" onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','newBatch','s')">
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Start Time</div>
+                        <div class="text-muted small"><small>Lecture hours are 08:30 to 17:00</small></div>
+
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="batchEndTime">End Time</label>
+                        </div>
+                        <input class="form-control rounded-0 newBatchInputs" id="batchEndTime" type="time" onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','newBatch','e')">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid End Time</div>
                         <div class="text-muted small"><small>Lecture hours are 08:30 to 17:00</small></div>
                     </div>
                     <div class="mb-3">
