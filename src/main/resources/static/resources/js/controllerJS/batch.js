@@ -72,10 +72,30 @@ const rowView = ()=>{
 
 const resetBatchForm = ()=>{
 
+    $("#batchCourse_chosen .chosen-single").removeClass('select-validated');
+    $("#batchStatus_chosen .chosen-single").removeClass('select-validated');
+    batchCourse.classList.remove('is-valid');
+    batchStatus.classList.remove('is-valid');
+
+
     //reset batch object
     newBatch = {}
 
     frmNewBatch.reset();
+
+    //set default option chosen
+    setTimeout(function () {
+        $('select').val('').trigger('chosen:updated');
+    }, 0);
+
+    //remove validation from the inputs all at once
+    inputs = document.querySelectorAll('.newBatchInputs');
+    inputs.forEach(function (input) {
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
 
     //dynamic select content handling
     courses = ajaxGetRequest("/Course/findall");
