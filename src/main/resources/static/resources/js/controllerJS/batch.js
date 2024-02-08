@@ -80,8 +80,11 @@ const resetBatchForm = ()=>{
 
     $("#batchCourse_chosen .chosen-single").removeClass('select-validated');
     $("#batchStatus_chosen .chosen-single").removeClass('select-validated');
+    $("#batchClassDay_chosen .chosen-single").removeClass('select-validated');
     batchCourse.classList.remove('is-valid');
     batchStatus.classList.remove('is-valid');
+    batchClassDay.classList.remove('is-valid');
+
 
 
     //reset batch object
@@ -93,6 +96,7 @@ const resetBatchForm = ()=>{
     setTimeout(function () {
         $('#batchCourse').val('').trigger('chosen:updated');
         $('#batchStatus').val('').trigger('chosen:updated');
+        $('#batchClassDay').val('').trigger('chosen:updated');
     }, 0);
 
     //remove validation from the inputs all at once
@@ -116,6 +120,7 @@ const resetBatchForm = ()=>{
     //initialize the 3rd party libraries (chosen)
     $('#batchCourse').chosen({width:'100%'});
     $('#batchStatus').chosen({width:'100%'});
+    $('#batchClassDay').chosen({width:'100%'});
     $('#batchCommenceDate').daterangepicker({
         "minDate": new Date(),
         "singleDatePicker": true,
