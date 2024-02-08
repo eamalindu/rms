@@ -46,6 +46,7 @@ public class BatchController {
         LocalDate currentDate = LocalDate.now();
         Integer currentYear = currentDate.getYear();
         Integer nextBatchNumber = batchDAO.getNextBatchNumberByCourseId(currentCourseID);
+        Integer lastBatchCodeYear = batchDAO.getLastBatchCodeYearByCourseID(currentCourseID);
 
         String halfBatchCode = currentYear+"-"+currentCourseCode+"-";
 
