@@ -50,7 +50,7 @@ public class BatchController {
 
         String halfBatchCode = currentYear+"-"+currentCourseCode+"-";
 
-        if(lastBatchCodeYear.equals(currentYear)) {
+        if(lastBatchCodeYear!=null||lastBatchCodeYear==(currentYear)) {
             if (nextBatchNumber != null) {
                 batch.setBatchCode(halfBatchCode + nextBatchNumber);
 
