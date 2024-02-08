@@ -317,7 +317,7 @@
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Total Fee</div>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <div class="form-label">
                             <label class="fw-bold small required" for="batchNumberofInstallments">Number of
                                 Installments</label>
@@ -328,46 +328,7 @@
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Number of Installments</div>
                     </div>
-
-                    <!-- class schedule start-->
-                    <div class="bg-custom-white mb-3 py-3">
-
-                        <div class="mb-2 mx-auto" style="width: 90%">
-                            <div class="form-label">
-                                <label class="fw-bold small required" for="batchClassDay">Class Day</label>
-                            </div>
-                            <select class="form-select rounded-0" data-placeholder="Please Select a Day"
-                                    id="batchClassDay" onchange="selectDynamicValueValidator(this,'','newBatch','day')"
-                                    required>
-                            </select>
-                            <div class="valid-feedback">Value Accepted</div>
-                            <div class="invalid-feedback">Please provide a valid Day</div>
-                        </div>
-                        <div class="mb-2 mx-auto" style="width: 90%">
-                            <div class="form-label">
-                                <label class="fw-bold small required" for="batchStartTime">Start Time</label>
-                            </div>
-                            <input class="form-control rounded-0 newBatchInputs" id="batchStartTime" onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','newBatch','s')"
-                                   type="time">
-                            <div class="valid-feedback">Value Accepted</div>
-                            <div class="invalid-feedback">Please provide a valid Start Time</div>
-                            <div class="text-muted small"><small>Lecture hours are 08:30 to 17:00</small></div>
-                        </div>
-                        <div class="mb-2 mx-auto" style="width: 90%">
-                            <div class="form-label">
-                                <label class="fw-bold small required" for="batchEndTime">End Time</label>
-                            </div>
-                            <input class="form-control rounded-0 newBatchInputs" id="batchEndTime" onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','newBatch','e')"
-                                   type="time">
-                            <div class="valid-feedback">Value Accepted</div>
-                            <div class="invalid-feedback">Please provide a valid End Time</div>
-                            <div class="text-muted small"><small>Lecture hours are 08:30 to 17:00</small></div>
-                        </div>
-                        <button class="btn btn-sm btn-success rounded-0 mx-auto d-block mb-2"><i class="fa-solid fa-plus"></i></button>
-                    </div>
-                    <!-- class schedule end-->
-
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <div class="form-label">
                             <label class="fw-bold small required" for="batchStatus">Status</label>
                         </div>
@@ -381,6 +342,46 @@
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Status</div>
                     </div>
+
+                    <!-- class schedule start-->
+                    <div class="mb-3 bg-light">
+                        <p class="fw-bold text-center">-- Class Schedule --</p>
+                        <div class="mb-2">
+                            <div class="form-label">
+                                <label class="fw-bold small required" for="batchClassDay">Class Day</label>
+                            </div>
+                            <select class="form-select rounded-0" data-placeholder="Please Select a Day"
+                                    id="batchClassDay" onchange="selectDynamicValueValidator(this,'','newBatch','day')"
+                                    required>
+                            </select>
+                            <div class="valid-feedback">Value Accepted</div>
+                            <div class="invalid-feedback">Please provide a valid Day</div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="form-label">
+                                <label class="fw-bold small required" for="batchStartTime">Start Time</label>
+                            </div>
+                            <input class="form-control rounded-0 newBatchInputs" id="batchStartTime" onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','newBatch','s')"
+                                   type="time">
+                            <div class="valid-feedback">Value Accepted</div>
+                            <div class="invalid-feedback">Please provide a valid Start Time</div>
+                            <div class="text-muted small"><small>Lecture hours are 08:30 to 17:00</small></div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="form-label">
+                                <label class="fw-bold small required" for="batchEndTime">End Time</label>
+                            </div>
+                            <input class="form-control rounded-0 newBatchInputs" id="batchEndTime" onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','newBatch','e')"
+                                   type="time">
+                            <div class="valid-feedback">Value Accepted</div>
+                            <div class="invalid-feedback">Please provide a valid End Time</div>
+                            <div class="text-muted small"><small>Lecture hours are 08:30 to 17:00</small></div>
+                        </div>
+                        <button class="btn btn-sm btn-success rounded-0 mx-auto d-block mb-2"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                    <!-- class schedule end-->
+
+
                     <div class="mb-0">
                         <button class="btn bg-steam-green text-white rounded-0 btn-block w-100" id="batchConfirm"
                                 onclick="newBatchSubmit()" type="submit">Confirm
