@@ -70,7 +70,6 @@ public class BatchController {
 
 
         batch.setTimestamp(LocalDateTime.now());
-        batch.setDescription("Test");
         batch.setBatchNumber(nextBatchNumber);
         batch.setCreatedBy("Malindu");
         batchDAO.save(batch);
