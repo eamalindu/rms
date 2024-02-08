@@ -34,7 +34,7 @@ const refreshBatchTable =()=>{
         {property:getWeekDay,dataType:'function'},
         {property:'seatCount',dataType:'text'},
         {property:'description',dataType:'text'},
-        {property:'createdBy',dataType:'text'},
+        {property:getStatus,dataType:'function'},
     ];
 
     fillDataIntoTable(tblBatch,batches,displayPropertyListForBatches,rowView,'offcanvasBatchSheet')
@@ -52,6 +52,10 @@ const getWeekDay = (ob)=>{
         return "Weekend";
     }
 
+}
+
+const getStatus = (ob)=>{
+    return ob.batchStatusID.name;
 }
 
 const rowView = ()=>{
