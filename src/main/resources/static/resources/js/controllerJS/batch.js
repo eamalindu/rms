@@ -55,7 +55,15 @@ const getWeekDay = (ob)=>{
 }
 
 const getStatus = (ob)=>{
-    return ob.batchStatusID.name;
+    if(ob.batchStatusID.name==="Scheduled") {
+        return '<span class="badge rounded-0" style="background: #3FB618">Scheduled</span>';
+    }
+    else if(ob.batchStatusID.name==="Started"){
+        return '<span class="badge rounded-0" style="background: #ea8a1e">Started</span>';
+    }
+    else{
+        return '<span class="badge rounded-0" style="background: #1eadea">Completed</span>';
+    }
 }
 
 const rowView = ()=>{
