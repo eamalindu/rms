@@ -38,11 +38,13 @@
             border-color: #ccc;
             border-style: solid;
         }
-        .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
             color: black;
             background-color: #f3f3f3;
         }
-        .nav-link{
+
+        .nav-link {
             color: black;
         }
     </style>
@@ -52,7 +54,8 @@
 <!--Navbar start-->
 <nav class="navbar navbar-expand-lg bg-steam-green p-1">
     <div class="container-fluid">
-        <a class="navbar-brand text-white" href="Dashboard"><span class="text-uppercase fw-semibold">RMS</span> : : STEAM</a>
+        <a class="navbar-brand text-white" href="Dashboard"><span class="text-uppercase fw-semibold">RMS</span> : :
+            STEAM</a>
         <button aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
                 data-bs-target="#navbarText" data-bs-toggle="collapse" type="button">
             <span class="navbar-toggler-icon" style="filter: invert(100%)"></span>
@@ -87,7 +90,8 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a aria-current="page" class="nav-link text-white custom-width-max-content" href="#"><i class="fa-solid fa-bell" aria-hidden="true"></i></a>
+                    <a aria-current="page" class="nav-link text-white custom-width-max-content" href="#"><i
+                            aria-hidden="true" class="fa-solid fa-bell"></i></a>
                 </li>
 
             </ul>
@@ -124,7 +128,8 @@
                 </div>
                 <div class="col-12 col-lg-7 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1 text-end">
                     <p class="text-uppercase small m-0 p-0 text-muted">Create a New Batch</p>
-                    <button aria-controls="staticBackdrop" class="btn pointer bg-steam-green text-white rounded-0 text-end"
+                    <button aria-controls="staticBackdrop"
+                            class="btn pointer bg-steam-green text-white rounded-0 text-end"
                             data-bs-target="#offCanvasBatch" data-bs-toggle="offcanvas"><i
                             class="fa-solid fa-plus"></i> Batch
                     </button>
@@ -157,7 +162,7 @@
             </table>
             <!-- Ajax loader start-->
             <div class="loading-overlay mt-2">
-                <img src="/resources/images/loader.svg" width="60px" alt="loading animation">
+                <img alt="loading animation" src="/resources/images/loader.svg" width="60px">
             </div>
             <!-- Ajax loader end-->
         </div>
@@ -171,21 +176,25 @@
     <div class="offcanvas-header bg-light">
         <div>
             <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0" data-bs-dismiss="offcanvas"
-                    type="button" id="offCanvasBatchCloseButton"><i class="fas fa-times"></i></button>
-            <button class="btn btn-sm bg-secondary text-white rounded-0" type="button" onclick="resetBatchForm()"><i class="fas fa-refresh"></i>
+                    id="offCanvasBatchCloseButton" type="button"><i class="fas fa-times"></i></button>
+            <button class="btn btn-sm bg-secondary text-white rounded-0" onclick="resetBatchForm()" type="button"><i
+                    class="fas fa-refresh"></i>
             </button>
         </div>
-        <h3 class="float-end" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">New Batch</h3>
+        <h3 class="float-end"
+            style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">New
+            Batch</h3>
     </div>
     <div class="offcanvas-body">
         <div class="card border-0">
             <div class="card-body border-0">
-                <form onsubmit="return false" id="frmNewBatch">
+                <form id="frmNewBatch" onsubmit="return false">
                     <div class="mb-2">
                         <div class="form-label">
                             <label class="fw-bold small required" for="batchCourse">Course</label>
                         </div>
-                        <select class="form-select rounded-0" id="batchCourse" data-placeholder="Please Select a Course" required onchange="selectDynamicValueValidator(this,'','newBatch','courseID')">
+                        <select class="form-select rounded-0" data-placeholder="Please Select a Course" id="batchCourse"
+                                onchange="selectDynamicValueValidator(this,'','newBatch','courseID')" required>
                             <option>Dynamic Value 1</option>
                             <option>Dynamic Value 2</option>
                             <option>Dynamic Value 3</option>
@@ -194,14 +203,14 @@
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Course</div>
                     </div>
-<!--                    <div class="mb-2">-->
-<!--                        <div class="form-label">-->
-<!--                            <label class="fw-bold small required" for="batchCode">Batch Code</label>-->
-<!--                        </div>-->
-<!--                        <input class="form-control rounded-0 newBatchInputs" id="batchCode" required>-->
-<!--                        <div class="valid-feedback">Value Accepted</div>-->
-<!--                        <div class="invalid-feedback">Please provide a valid Batch Code</div>-->
-<!--                    </div>-->
+                    <!--                    <div class="mb-2">-->
+                    <!--                        <div class="form-label">-->
+                    <!--                            <label class="fw-bold small required" for="batchCode">Batch Code</label>-->
+                    <!--                        </div>-->
+                    <!--                        <input class="form-control rounded-0 newBatchInputs" id="batchCode" required>-->
+                    <!--                        <div class="valid-feedback">Value Accepted</div>-->
+                    <!--                        <div class="invalid-feedback">Please provide a valid Batch Code</div>-->
+                    <!--                    </div>-->
                     <div class="mb-2">
                         <div class="form-label">
                             <label class="fw-bold small required" for="batchCommenceDate">Commence Date</label>
@@ -214,7 +223,9 @@
                         <div class="form-label">
                             <label class="fw-bold small required" for="batchEndDate">End Date</label>
                         </div>
-                        <input class="form-control rounded-0 newBatchInputs" id="batchEndDate" onchange="inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','newBatch','endDate')" required>
+                        <input class="form-control rounded-0 newBatchInputs" id="batchEndDate"
+                               onchange="inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','newBatch','endDate')"
+                               required>
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Date</div>
                     </div>
@@ -222,7 +233,9 @@
                         <div class="form-label">
                             <label class="fw-bold small required" for="batchLastRedDate">Last Registration Date</label>
                         </div>
-                        <input class="form-control rounded-0 newBatchInputs" id="batchLastRedDate" onchange="inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','newBatch','lastRegDate')" required>
+                        <input class="form-control rounded-0 newBatchInputs" id="batchLastRedDate"
+                               onchange="inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','newBatch','lastRegDate')"
+                               required>
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Date</div>
                     </div>
@@ -230,7 +243,8 @@
                         <div class="form-label">
                             <label class="fw-bold small required" for="batchSeat">Seat Count</label>
                         </div>
-                        <input class="form-control rounded-0 newBatchInputs" id="batchSeat" onkeyup="inputTextValidator(this,'^[0-9]{2}$','newBatch','seatCount')" required>
+                        <input class="form-control rounded-0 newBatchInputs" id="batchSeat"
+                               onkeyup="inputTextValidator(this,'^[0-9]{2}$','newBatch','seatCount')" required>
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Seat Count</div>
                     </div>
@@ -240,15 +254,17 @@
                         </div>
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="text-center">
-                                <div class="d-flex align-items-center justify-content-center mx-auto bg-success text-white" id="leftWeekday"
+                                <div class="d-flex align-items-center justify-content-center mx-auto bg-success text-white"
+                                     id="leftWeekday"
                                      style="border-radius: 50%;height: 40px;width: 40px;background:#ddd">
                                     <i class="fa-solid fa-calendar-week"></i>
                                 </div>
                                 <span class="text-muted small">Weekday</span>
                             </div>
                             <div class="form-check form-switch">
-                                <input class="form-check-input" id="batchWeekday" role="switch" style="scale: 1.7;"
-                                       type="checkbox" onchange="checkBoxValidator(this, leftWeekday, rightWeekday, 'newBatch', 'isWeekday', false, true);">
+                                <input class="form-check-input" id="batchWeekday" onchange="checkBoxValidator(this, leftWeekday, rightWeekday, 'newBatch', 'isWeekday', false, true);" role="switch"
+                                       style="scale: 1.7;"
+                                       type="checkbox">
                             </div>
                             <div class="text-center">
                                 <div class="d-flex align-items-center justify-content-center mx-auto" id="rightWeekday"
@@ -263,16 +279,22 @@
                         <div class="form-label">
                             <label class="fw-bold required small" for="batchDescription">Description</label>
                         </div>
-                        <textarea class="rounded-0 form-control newBatchInputs" cols="80" id="batchDescription" required="" onkeyup="inputTextValidator(this,'^[a-zA-Z0-9\\s/]{10,}$','newBatch','description')" rows="4"></textarea>
-                        <div class="text-muted small"><small> a short description about the batch<br>example: <strong>2024 After A/L Students</strong></small></div>
+                        <textarea class="rounded-0 form-control newBatchInputs" cols="80" id="batchDescription"
+                                  onkeyup="inputTextValidator(this,'^[a-zA-Z0-9\\s/]{10,}$','newBatch','description')"
+                                  required=""
+                                  rows="4"></textarea>
+                        <div class="text-muted small"><small> a short description about the batch<br>example: <strong>2024
+                            After A/L Students</strong></small></div>
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Description</div>
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
-                            <label class="fw-bold small required" for="batchRegistrationFee">Registration Fee (Rs.)</label>
+                            <label class="fw-bold small required" for="batchRegistrationFee">Registration Fee
+                                (Rs.)</label>
                         </div>
-                        <input class="form-control rounded-0 newBatchInputs" id="batchRegistrationFee" onkeyup="inputTextValidator(this,'^[0-9]{4}$','newBatch','registrationFee')" required>
+                        <input class="form-control rounded-0 newBatchInputs" id="batchRegistrationFee"
+                               onkeyup="inputTextValidator(this,'^[0-9]{4}$','newBatch','registrationFee')" required>
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Registration Fee</div>
                     </div>
@@ -280,7 +302,9 @@
                         <div class="form-label">
                             <label class="fw-bold small required" for="batchCourseFee">Course Fee (Rs.)</label>
                         </div>
-                        <input class="form-control rounded-0 newBatchInputs" id="batchCourseFee" onkeyup="inputTextValidator(this,'^[0-9]{5}$','newBatch','courseFee');calculateTotalFee()" required>
+                        <input class="form-control rounded-0 newBatchInputs" id="batchCourseFee"
+                               onkeyup="inputTextValidator(this,'^[0-9]{5}$','newBatch','courseFee');calculateTotalFee()"
+                               required>
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Course Fee</div>
                     </div>
@@ -288,46 +312,57 @@
                         <div class="form-label">
                             <label class="fw-bold small required" for="batchTotalFee">Total Fee (Rs.)</label>
                         </div>
-                        <input class="form-control rounded-0 newBatchInputs" id="batchTotalFee" onchange="newBatch.totalFee=this.value" required disabled>
+                        <input class="form-control rounded-0 newBatchInputs" disabled
+                               id="batchTotalFee" onchange="newBatch.totalFee=this.value" required>
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Total Fee</div>
                     </div>
-                    <div class="mb-2">
+                    <div class="mb-3">
                         <div class="form-label">
-                            <label class="fw-bold small required" for="batchNumberofInstallments">Number of Installments</label>
+                            <label class="fw-bold small required" for="batchNumberofInstallments">Number of
+                                Installments</label>
                         </div>
-                        <input class="form-control rounded-0 newBatchInputs" id="batchNumberofInstallments" onkeyup="inputTextValidator(this,'^[0-9]{1}$','newBatch','numberOfInstallments')" required>
+                        <input class="form-control rounded-0 newBatchInputs" id="batchNumberofInstallments"
+                               onkeyup="inputTextValidator(this,'^[0-9]{1}$','newBatch','numberOfInstallments')"
+                               required>
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Number of Installments</div>
                     </div>
 
                     <!-- class schedule start-->
-                    <div class="mb-2">
-                        <div class="form-label">
-                            <label class="fw-bold small required" for="batchClassDay">Class Day</label>
+                    <div class="container bg-light border mb-3">
+                        <button class="btn btn-sm btn-success rounded-0"><i class="fa-solid fa-plus"></i></button>
+                        <div class="mb-2">
+                            <div class="form-label">
+                                <label class="fw-bold small required" for="batchClassDay">Class Day</label>
+                            </div>
+                            <select class="form-select rounded-0" data-placeholder="Please Select a Day"
+                                    id="batchClassDay" onchange="selectDynamicValueValidator(this,'','newBatch','day')"
+                                    required>
+                            </select>
+                            <div class="valid-feedback">Value Accepted</div>
+                            <div class="invalid-feedback">Please provide a valid Day</div>
                         </div>
-                        <select class="form-select rounded-0" id="batchClassDay" data-placeholder="Please Select a Day" required onchange="selectDynamicValueValidator(this,'','newBatch','day')">
-                        </select>
-                        <div class="valid-feedback">Value Accepted</div>
-                        <div class="invalid-feedback">Please provide a valid Day</div>
-                    </div>
-                    <div class="mb-2">
-                        <div class="form-label">
-                            <label class="fw-bold small required" for="batchStartTime">Start Time</label>
+                        <div class="mb-2">
+                            <div class="form-label">
+                                <label class="fw-bold small required" for="batchStartTime">Start Time</label>
+                            </div>
+                            <input class="form-control rounded-0 newBatchInputs" id="batchStartTime" onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','newBatch','s')"
+                                   type="time">
+                            <div class="valid-feedback">Value Accepted</div>
+                            <div class="invalid-feedback">Please provide a valid Start Time</div>
+                            <div class="text-muted small"><small>Lecture hours are 08:30 to 17:00</small></div>
                         </div>
-                        <input class="form-control rounded-0 newBatchInputs" id="batchStartTime" type="time" onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','newBatch','s')">
-                        <div class="valid-feedback">Value Accepted</div>
-                        <div class="invalid-feedback">Please provide a valid Start Time</div>
-                        <div class="text-muted small"><small>Lecture hours are 08:30 to 17:00</small></div>
-                    </div>
-                    <div class="mb-2">
-                        <div class="form-label">
-                            <label class="fw-bold small required" for="batchEndTime">End Time</label>
+                        <div class="mb-2">
+                            <div class="form-label">
+                                <label class="fw-bold small required" for="batchEndTime">End Time</label>
+                            </div>
+                            <input class="form-control rounded-0 newBatchInputs" id="batchEndTime" onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','newBatch','e')"
+                                   type="time">
+                            <div class="valid-feedback">Value Accepted</div>
+                            <div class="invalid-feedback">Please provide a valid End Time</div>
+                            <div class="text-muted small"><small>Lecture hours are 08:30 to 17:00</small></div>
                         </div>
-                        <input class="form-control rounded-0 newBatchInputs" id="batchEndTime" type="time" onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','newBatch','e')">
-                        <div class="valid-feedback">Value Accepted</div>
-                        <div class="invalid-feedback">Please provide a valid End Time</div>
-                        <div class="text-muted small"><small>Lecture hours are 08:30 to 17:00</small></div>
                     </div>
                     <!-- class schedule end-->
 
@@ -335,7 +370,8 @@
                         <div class="form-label">
                             <label class="fw-bold small required" for="batchStatus">Status</label>
                         </div>
-                        <select class="form-select rounded-0" id="batchStatus" data-placeholder="Please Select a Status" required onchange="selectDynamicValueValidator(this,'','newBatch','batchStatusID')">
+                        <select class="form-select rounded-0" data-placeholder="Please Select a Status" id="batchStatus"
+                                onchange="selectDynamicValueValidator(this,'','newBatch','batchStatusID')" required>
                             <option>Dynamic Value 1</option>
                             <option>Dynamic Value 2</option>
                             <option>Dynamic Value 3</option>
@@ -345,7 +381,9 @@
                         <div class="invalid-feedback">Please provide a valid Status</div>
                     </div>
                     <div class="mb-0">
-                        <button class="btn bg-steam-green text-white rounded-0 btn-block w-100" id="batchConfirm" type="submit" onclick="newBatchSubmit()">Confirm</button>
+                        <button class="btn bg-steam-green text-white rounded-0 btn-block w-100" id="batchConfirm"
+                                onclick="newBatchSubmit()" type="submit">Confirm
+                        </button>
                     </div>
                 </form>
             </div>
@@ -358,34 +396,51 @@
 <div aria-labelledby="offcanvasRightLabel" class="offcanvas offcanvas-end w-50" data-bs-backdrop="static"
      id="offcanvasBatchSheet" tabindex="-1">
     <div class="offcanvas-header bg-light">
-        <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0" id="offCanvasBatchSheetCloseButton" data-bs-dismiss="offcanvas"
+        <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0"
+                data-bs-dismiss="offcanvas" id="offCanvasBatchSheetCloseButton"
                 type="button"><i class="fas fa-times"></i></button>
         <div class="container d-flex gap-3 ms-1" style="width: 55%">
-            <button class="btn btn-sm bg-info rounded-0 text-white" onclick=""><i class="fa-regular fa-pen-to-square"></i> Edit Info </button>
-            <button class="btn btn-sm bg-warning rounded-0 text-white" id="btnBatchSheetUpdate" onclick=""><i class="fa-solid fa-arrows-rotate"></i> Update </button>
-            <button class="btn btn-sm bg-danger rounded-0 text-white"  onclick=""><i class="fa-solid fa-trash"></i> Delete </button>
+            <button class="btn btn-sm bg-info rounded-0 text-white" onclick=""><i
+                    class="fa-regular fa-pen-to-square"></i> Edit Info
+            </button>
+            <button class="btn btn-sm bg-warning rounded-0 text-white" id="btnBatchSheetUpdate" onclick=""><i
+                    class="fa-solid fa-arrows-rotate"></i> Update
+            </button>
+            <button class="btn btn-sm bg-danger rounded-0 text-white" onclick=""><i class="fa-solid fa-trash"></i>
+                Delete
+            </button>
         </div>
-        <h3 class="align-items-center text-nowrap ms-3 mt-2" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Batch Details</h3>
+        <h3 class="align-items-center text-nowrap ms-3 mt-2"
+            style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Batch
+            Details</h3>
     </div>
     <div class="offcanvas-body">
         <ul class="nav nav-pills" id="pills-tab" role="tablist">
             <li class="nav-item w-50" role="presentation">
-                <button class="nav-link w-100 active rounded-0 " id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-info" type="button" role="tab" aria-controls="pills-home" aria-selected="true"><i class="text-info fa-solid fa-circle-info"></i> Info</button>
+                <button aria-controls="pills-home" aria-selected="true" class="nav-link w-100 active rounded-0 "
+                        data-bs-target="#pills-info" data-bs-toggle="pill" id="pills-home-tab" role="tab"
+                        type="button"><i class="text-info fa-solid fa-circle-info"></i> Info
+                </button>
             </li>
             <li class="nav-item w-50" role="presentation">
-                <button class="nav-link w-100 rounded-0" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-registration" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="text-success fa-solid fa-graduation-cap"></i> Registrations</button>
+                <button aria-controls="pills-profile" aria-selected="false" class="nav-link w-100 rounded-0"
+                        data-bs-target="#pills-registration" data-bs-toggle="pill" id="pills-profile-tab" role="tab"
+                        type="button"><i class="text-success fa-solid fa-graduation-cap"></i> Registrations
+                </button>
             </li>
 
         </ul>
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-info" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+            <div aria-labelledby="pills-home-tab" class="tab-pane fade show active" id="pills-info" role="tabpanel"
+                 tabindex="0">
                 <div class="card rounded-0 mt-0 border-0">
                     <div class="card-body rounded-0 border-0">
                         Basic Info
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="pills-registration" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+            <div aria-labelledby="pills-profile-tab" class="tab-pane fade" id="pills-registration" role="tabpanel"
+                 tabindex="0">
                 <div class="card rounded-0 mt-0">
                     <div class="card-body rounded-0">
                         Registrations
