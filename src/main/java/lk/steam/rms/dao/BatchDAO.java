@@ -18,7 +18,7 @@ public interface BatchDAO extends JpaRepository<Batch,Integer> {
     @Query("SELECT max(b.batchNumber)+1 from Batch b where b.courseID.id=?1")
     Integer getNextBatchNumberByCourseId(Integer courseID);
 
-    @Query("SELECT left(b.batchCode,4) as batchCodeYear FROM Batch b where b.courseID.id?=1 ORDER BY b.id DESC limit 1")
+    @Query("SELECT left(b.batchCode,4) as batchCodeYear FROM Batch b where b.courseID.id=?1 ORDER BY b.id DESC limit 1")
     Integer getLastBatchCodeYearByCourseID(Integer courseID);
 
 
