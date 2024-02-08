@@ -63,17 +63,9 @@ public class BatchController {
             }
         }
         else{
-
-            if (nextBatchNumber != null) {
-                batch.setBatchCode(halfBatchCode + nextBatchNumber);
-
-
-            } else {
                 nextBatchNumber = 1;
                 batch.setBatchCode(halfBatchCode + nextBatchNumber);
 
-
-            }
         }
 
 
