@@ -50,16 +50,30 @@ public class BatchController {
 
         String halfBatchCode = currentYear+"-"+currentCourseCode+"-";
 
-        if(nextBatchNumber!=null){
-            batch.setBatchCode(halfBatchCode+nextBatchNumber);
+        if(lastBatchCodeYear.equals(currentYear)) {
+            if (nextBatchNumber != null) {
+                batch.setBatchCode(halfBatchCode + nextBatchNumber);
 
 
+            } else {
+                nextBatchNumber = 1;
+                batch.setBatchCode(halfBatchCode + nextBatchNumber);
+
+
+            }
         }
         else{
-            nextBatchNumber =1;
-            batch.setBatchCode(halfBatchCode+nextBatchNumber);
+
+            if (nextBatchNumber != null) {
+                batch.setBatchCode(halfBatchCode + nextBatchNumber);
 
 
+            } else {
+                nextBatchNumber = 1;
+                batch.setBatchCode(halfBatchCode + nextBatchNumber);
+
+
+            }
         }
 
 
