@@ -75,6 +75,8 @@ const resetBatchForm = ()=>{
     //reset batch object
     newBatch = {}
 
+    frmNewBatch.reset();
+
     //dynamic select content handling
     courses = ajaxGetRequest("/Course/findall");
     fillSelectOptions(batchCourse,' ',courses,'name');
@@ -181,6 +183,12 @@ const newBatchSubmit = ()=>{
 
     serviceResponse = ajaxHttpRequest("/Batch",'POST',newBatch);
     if(serviceResponse==="OK"){
+        //this means data successfully passed to the backend
+        //show an alert to user
+        showCustomModal("Batch Successfully Added!", "success");
+        offCanvasBatchCloseButton.click();
+        refreshBatchTable();
+        resetBatchForm();
 
     }
     else{
