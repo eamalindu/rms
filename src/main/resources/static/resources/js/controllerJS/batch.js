@@ -113,7 +113,8 @@ const resetBatchForm = ()=>{
     fillSelectOptions(batchCourse,' ',courses,'name');
     statuses = ajaxGetRequest("/BatchStatus/findall");
     fillSelectOptions(batchStatus,' ',statuses,'name');
-
+    days = ajaxGetRequest("/Day/findall")
+    fillSelectOptions(batchClassDay,' ',days,'name');
     //reset checkbox
     checkBoxValidator(this, leftWeekday, rightWeekday, 'newBatch', 'isWeekday', false, true)
 
