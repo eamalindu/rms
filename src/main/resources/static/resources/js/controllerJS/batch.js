@@ -12,6 +12,9 @@ window.addEventListener("load",()=>{
     $("#batchStatus").chosen().change(function () {
         $("#batchStatus_chosen .chosen-single").addClass('select-validated');
     });
+    $("#batchClassDay").chosen().change(function () {
+        $("#batchClassDay_chosen .chosen-single").addClass('select-validated');
+    });
 
     $('#batchCommenceDate').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD'));
