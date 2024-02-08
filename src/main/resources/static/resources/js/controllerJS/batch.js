@@ -37,7 +37,9 @@ const refreshBatchTable =()=>{
         {property:getStatus,dataType:'function'},
     ];
 
-    fillDataIntoTable(tblBatch,batches,displayPropertyListForBatches,rowView,'offcanvasBatchSheet')
+    fillDataIntoTable(tblBatch,batches,displayPropertyListForBatches,rowView,'offcanvasBatchSheet');
+
+    $('#tblBatch').DataTable();
 }
 
 const getCourseName = (ob)=>{
