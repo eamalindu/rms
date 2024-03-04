@@ -119,6 +119,9 @@ const resetBatchForm = ()=>{
     paymentPlanTotalFee.innerText = '';
     paymentPlanInstallments.innerText = '';
 
+    //hide timetable table
+    tblTimetable.classList.add('invisible');
+
     //reset checkbox
     checkBoxValidator(this, leftWeekday, rightWeekday, 'newBatch', 'isWeekday', false, true)
 
