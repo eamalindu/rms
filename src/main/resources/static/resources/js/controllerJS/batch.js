@@ -12,6 +12,9 @@ window.addEventListener("load",()=>{
     $("#batchClassDay").chosen().change(function () {
         $("#batchClassDay_chosen .chosen-single").addClass('select-validated');
     });
+    $("#batchPaymentPlan").chosen().change(function () {
+        $("#batchPaymentPlan_chosen .chosen-single").addClass('select-validated');
+    });
 
     $('#batchCommenceDate').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD'));
@@ -77,10 +80,10 @@ const resetBatchForm = ()=>{
 
     $("#batchCourse_chosen .chosen-single").removeClass('select-validated');
     $("#batchClassDay_chosen .chosen-single").removeClass('select-validated');
+    $("#batchPaymentPlan_chosen .chosen-single").removeClass('select-validated');
     batchCourse.classList.remove('is-valid');
     batchClassDay.classList.remove('is-valid');
-
-
+    batchPaymentPlan.classList.remove('is-valid');
 
     //reset batch object
     newBatch = {}
