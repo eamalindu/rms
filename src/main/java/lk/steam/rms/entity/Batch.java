@@ -63,28 +63,9 @@ public class Batch {
     @NotNull
     private String description;
 
-    @Column(name = "totalfee")
-    @NotNull
-    private BigDecimal totalFee;
-
-    @Column(name = "registrationfee")
-    @NotNull
-    private BigDecimal registrationFee;
-
-    @Column(name = "remainingfee")
-    @NotNull
-    private BigDecimal courseFee;
-
-    @Column(name = "numberofinstallments")
-    @NotNull
-    private Integer numberOfInstallments;
-
     @ManyToOne
     @JoinColumn(name = "course_id",referencedColumnName = "id")
     private Course courseID;
-
-//    private String lectureRoomID;
-//    private String lecturerID;
 
     @ManyToOne
     @JoinColumn(name = "batchstatus_id",referencedColumnName = "id")
