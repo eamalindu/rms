@@ -111,7 +111,12 @@ const resetBatchForm = ()=>{
     fillSelectOptions(batchCourse,' ',courses,'name');
     days = ajaxGetRequest("/Day/findall")
     fillSelectOptions(batchClassDay,' ',days,'name');
+    //reset payment plan and its table
     batchPaymentPlan.innerHTML = '';
+    paymentPlanRegistrationFee.innerText = '';
+    paymentPlanCourseFee.innerText = '';
+    paymentPlanTotalFee.innerText = '';
+    paymentPlanInstallments.innerText = '';
 
     //reset checkbox
     checkBoxValidator(this, leftWeekday, rightWeekday, 'newBatch', 'isWeekday', false, true)
