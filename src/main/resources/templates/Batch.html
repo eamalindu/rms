@@ -512,19 +512,20 @@
 <!--Modal for New Payment Plan-->
 <div class="modal fade" id="modalPaymentPlan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalPaymentPlan" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content rounded-0">
+        <div class="modal-content w-75 rounded-0">
             <div class="modal-header bg-custom-white">
                 <h5 class="modal-title" id="staticBackdropLabel" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">
                    New Payment Plan </h5>
                 <button type="button" class="btn btn-sm btn-close-red text-white rounded-0" data-bs-dismiss="modal" aria-label="Close"><i aria-hidden="true" class="fas fa-times"></i></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body p-3">
               <form onsubmit="return false;">
                   <div class="mb-2">
                       <div class="form-label">
                           <label class="fw-bold small required" for="batchClassDay">Course</label>
                       </div>
                       <select class="form-select rounded-0" data-placeholder="Please Select a Day" required>
+                          <option></option>
                       </select>
                       <div class="valid-feedback">Value Accepted</div>
                       <div class="invalid-feedback">Please provide a valid Course</div>
@@ -559,6 +560,12 @@
                           <label class="fw-bold small required" for="batchClassDay">Number of Installments</label>
                       </div>
                       <input class="form-control rounded-0" required>
+                  </div>
+                  <div class="mb-2">
+                      <div class="form-label">
+                          <label class="fw-bold small required" for="batchClassDay">Expire Date</label>
+                      </div>
+                      <input class="form-control rounded-0" required >
                   </div>
               </form>
             </div>
