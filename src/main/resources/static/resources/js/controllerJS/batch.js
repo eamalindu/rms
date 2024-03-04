@@ -91,6 +91,7 @@ const resetBatchForm = ()=>{
     setTimeout(function () {
         $('#batchCourse').val('').trigger('chosen:updated');
         $('#batchClassDay').val('').trigger('chosen:updated');
+        $('#batchPaymentPlan').val('').trigger('chosen:updated');
     }, 0);
 
     //remove validation from the inputs all at once
@@ -107,6 +108,8 @@ const resetBatchForm = ()=>{
     fillSelectOptions(batchCourse,' ',courses,'name');
     days = ajaxGetRequest("/Day/findall")
     fillSelectOptions(batchClassDay,' ',days,'name');
+    batchPaymentPlan.innerHTML = '';
+
     //reset checkbox
     checkBoxValidator(this, leftWeekday, rightWeekday, 'newBatch', 'isWeekday', false, true)
 
@@ -208,6 +211,9 @@ const fillPaymentPlan=()=>{
 
     let currentCourseId = newBatch.courseID.id;
     console.log(currentCourseId);
+    let paymentPlans = ajaxGetRequest("/PaymentPlan/getActivePlans/"+currentCourseId);
+    fillSelectOptions(batchPaymentPlan,' ',paymentPlans,'name');
+    $('#batchPaymentPlan').val('').trigger('chosen:updated');
 
 }
 
