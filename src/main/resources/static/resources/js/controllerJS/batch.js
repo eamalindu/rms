@@ -15,6 +15,9 @@ window.addEventListener("load",()=>{
     $("#batchPaymentPlan").chosen().change(function () {
         $("#batchPaymentPlan_chosen .chosen-single").addClass('select-validated');
     });
+    $("#batchLectureRoom").chosen().change(function () {
+        $("#batchLectureRoom_chosen .chosen-single").addClass('select-validated');
+    });
 
     $('#batchCommenceDate').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD'));
@@ -81,9 +84,11 @@ const resetBatchForm = ()=>{
     $("#batchCourse_chosen .chosen-single").removeClass('select-validated');
     $("#batchClassDay_chosen .chosen-single").removeClass('select-validated');
     $("#batchPaymentPlan_chosen .chosen-single").removeClass('select-validated');
+    $("#batchLectureRoom_chosen .chosen-single").removeClass('select-validated');
     batchCourse.classList.remove('is-valid');
     batchClassDay.classList.remove('is-valid');
     batchPaymentPlan.classList.remove('is-valid');
+    batchLectureRoom.classList.remove('is-valid');
 
     //reset batch object
     newBatch = {}
@@ -112,6 +117,9 @@ const resetBatchForm = ()=>{
     fillSelectOptions(batchCourse,' ',courses,'name');
     days = ajaxGetRequest("/Day/findall")
     fillSelectOptions(batchClassDay,' ',days,'name');
+    lectureRooms = ajaxGetRequest("/LectureRoom/findall");
+    fillSelectOptions(batchLectureRoom,' ',lectureRooms,'name')
+
     //reset payment plan and its table
     batchPaymentPlan.innerHTML = '';
     paymentPlanRegistrationFee.innerText = '';
