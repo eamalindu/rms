@@ -123,18 +123,24 @@ const resetBatchForm = ()=>{
     $('#batchStatus').chosen({width:'100%'});
     $('#batchClassDay').chosen({width:'100%'});
     $('#batchPaymentPlan').chosen({width:'80%'});
+
     $('#batchCommenceDate').daterangepicker({
         "minDate": new Date(),
         "singleDatePicker": true,
         "linkedCalendars": false,
         "showCustomRangeLabel": false,
         "autoUpdateInput": false,
-        "drops": "up",
+        "drops": "down",
         "locale": {
             "format": "YYYY-MM-DD"
         }
     });
-
+    $('#batchCommenceDate').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','newBatch','commenceDate');
+        calculateLastRegDate();
+        calculateEndDate();
+    });
 
 
 
