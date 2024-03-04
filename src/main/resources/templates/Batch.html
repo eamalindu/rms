@@ -349,41 +349,15 @@
                     </div>
 
                     <!-- class schedule start-->
-                    <div class="mb-5 bg-light">
-                        <p class="fw-bold text-center"><i class="fa-solid fa-minus"></i> Class Schedule <i class="fa-solid fa-minus"></i></p>
-                        <div class="mb-2">
-                            <div class="form-label">
-                                <label class="fw-bold small required" for="batchClassDay">Class Day(s)</label>
-                            </div>
-                            <select class="form-select rounded-0" data-placeholder="Please Select a Day"
-                                    id="batchClassDay" onchange="selectDynamicValueValidator(this,'','newBatch','day')"
-                                    required>
-                            </select>
-                            <div class="valid-feedback">Value Accepted</div>
-                            <div class="invalid-feedback">Please provide a valid Day</div>
-                        </div>
-                        <div class="mb-2">
-                            <div class="form-label">
-                                <label class="fw-bold small required" for="batchStartTime">Start Time</label>
-                            </div>
-                            <input class="form-control rounded-0 newBatchInputs pe-3" id="batchStartTime" required onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','newBatch','s')"
-                                   type="time">
-                            <div class="valid-feedback">Value Accepted</div>
-                            <div class="invalid-feedback">Please provide a valid Start Time</div>
-                            <div class="text-muted small"><small>Lecture hours are 08:30 to 17:00</small></div>
-                        </div>
-                        <div class="mb-2">
-                            <div class="form-label">
-                                <label class="fw-bold small required" for="batchEndTime">End Time</label>
-                            </div>
-                            <input class="form-control rounded-0 newBatchInputs pe-3" id="batchEndTime" required onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','newBatch','e')"
-                                   type="time">
-                            <div class="valid-feedback">Value Accepted</div>
-                            <div class="invalid-feedback">Please provide a valid End Time</div>
-                            <div class="text-muted small"><small>Lecture hours are 08:30 to 17:00</small></div>
-                        </div>
-                        <button class="btn btn-sm btn-success rounded-0 mx-auto d-block" type="button"><i class="fa-solid fa-plus"></i></button>
-                        <div class="text-muted small text-center"><small>Add Class Schedule</small></div>
+                    <div class="mb-5 border p-1 bg-light text-center">
+                        <p class="fw-bold mb-1 form-label">Add Class Schedule</p>
+                        <button aria-controls="staticBackdrop"
+                                class="btn pointer bg-success btn-sm mb-1 text-white rounded-0 text-end"
+                                data-bs-target="#offCanvasTimeTable" data-bs-toggle="offcanvas"><i
+                                class="fa-solid fa-plus"></i> Add
+                        </button>
+                        <div class="text-muted small">
+                            <small>Click "+ Add" to add the timetable for the batch</small></div>
                     </div>
                     <!-- class schedule end-->
 
