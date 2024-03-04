@@ -122,6 +122,7 @@ const resetBatchForm = ()=>{
     $('#batchCourse').chosen({width:'100%'});
     $('#batchStatus').chosen({width:'100%'});
     $('#batchClassDay').chosen({width:'100%'});
+    $('#batchPaymentPlan').chosen({width:'80%'});
     $('#batchCommenceDate').daterangepicker({
         "minDate": new Date(),
         "singleDatePicker": true,

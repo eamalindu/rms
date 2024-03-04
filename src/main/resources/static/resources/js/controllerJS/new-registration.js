@@ -65,6 +65,7 @@ let next0 = () => {
 
         weekDayBatches = ajaxGetRequest("/Batch/getWeekDayBatch/"+registration.courseID.id);
         weekEndBatches = ajaxGetRequest("/Batch/getWeekEndBatch/"+registration.courseID.id);
+        test = ajaxGetRequest("/Batch/findall")
 
         displayPropertyListForWeekDay = [
             {property: 'batchCode',dataType: 'text'},
@@ -83,8 +84,10 @@ let next0 = () => {
             {property: 'description',dataType: 'text'},
 
         ];
-        fillDataIntoTableWithRadio(tblWeekDayBatches,weekDayBatches,displayPropertyListForWeekDay,radioFunctionForWeekDay,'batch');
-        fillDataIntoTableWithRadio(tblWeekEndBatches,weekEndBatches,displayPropertyListForWeekEnd,radioFunctionForWeekEnd,'batch');
+        // fillDataIntoTableWithRadio(tblWeekDayBatches,weekDayBatches,displayPropertyListForWeekDay,radioFunctionForWeekDay,'batch');
+        // fillDataIntoTableWithRadio(tblWeekEndBatches,weekEndBatches,displayPropertyListForWeekEnd,radioFunctionForWeekEnd,'batch');
+        createRadioCards(weekDayBatches,handleCardClick,containerA);
+        createRadioCards(weekEndBatches,handleCardClick,containerB);
 
 
     }
@@ -350,3 +353,7 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
     }
 
 }
+
+const handleCardClick = (object, index) => {
+    console.log(object);
+};

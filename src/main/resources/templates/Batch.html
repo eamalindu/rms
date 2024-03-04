@@ -89,6 +89,27 @@
                         <li><a class="dropdown-item" href="#">Logout</a></li>
                     </ul>
                 </li>
+                <li class="nav-item dropdown-center custom-width-max-content p-0">
+                    <button aria-expanded="false"
+                            class="nav-link btn bg-steam-green text-white dropdown-toggle custom-width-max-content border-0"
+                            data-bs-toggle="dropdown" th:text="${username}">Profile
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end rounded-0 mb-0">
+
+                        <div class="dropdown-item p-0">
+                            <div class="card w-100 p-0 m-0 border-0">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between gap-4">
+                                        <img class="" src="https://emc.sgp1.digitaloceanspaces.com/uploads/hris/employees/photos/1556/1556.jpeg" width="50px">
+                                        <span class="text-muted small text-small"><small>Student Counsellar</small></span>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-custom-white border-0 text-center mb-0 show">Logout</div>
+                            </div>
+                        </div>
+                    </ul>
+
+                </li>
                 <li class="nav-item">
                     <a aria-current="page" class="nav-link text-white custom-width-max-content" href="#"><i
                             aria-hidden="true" class="fa-solid fa-bell"></i></a>
@@ -173,7 +194,7 @@
 <!-- Off canvas for batch add start-->
 <div aria-labelledby="staticBackdropLabel" class="offcanvas offcanvas-end" data-bs-backdrop="static" id="offCanvasBatch"
      tabindex="-1">
-    <div class="offcanvas-header bg-light">
+    <div class="offcanvas-header bg-custom-white">
         <div>
             <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0" data-bs-dismiss="offcanvas"
                     id="offCanvasBatchCloseButton" type="button"><i class="fas fa-times"></i></button>
@@ -342,6 +363,43 @@
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Status</div>
                     </div>
+                    <div class="mb-4">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="batchPaymentPlan">Payment Plan</label>
+                        </div>
+                        <div class="input-group mb-2">
+                            <select class="form-select rounded-0" data-placeholder="Please Select a Status" id="batchPaymentPlan" required>
+                                <option>Dynamic Value 1</option>
+                                <option>Dynamic Value 2</option>
+                                <option>Dynamic Value 3</option>
+                                <option>Dynamic Value 4</option>
+                            </select>
+                            <button class="btn btn-sm btn-success rounded-0" type="button" data-bs-toggle="modal" data-bs-target="#modalPaymentPlan"><i class="fa-solid fa-plus"></i> Add</button>
+
+                        </div>
+                        <table class="table table-sm table-bordered small mb-0">
+                            <tr>
+                                <th>Registration Fee</th>
+                                <td class="text-center"></td>
+                            </tr>
+                            <tr>
+                                <th>Course Fee</th>
+                                <td class="text-center">555 77 854</td>
+                            </tr>
+                            <tr>
+                                <th>Total Fee</th>
+                                <td class="text-center">555 77 855</td>
+                            </tr>
+                            <tr>
+                                <th>Num Of Installments</th>
+                                <td class="text-center">8</td>
+                            </tr>
+                        </table>
+                        <div class="text-muted small">
+                            <small> Existing Payment plan can be edited. If you want to create a new Payment Plan click "+ Add".
+                                </small>
+                        </div>
+                    </div>
 
                     <!-- class schedule start-->
                     <div class="mb-5 bg-light">
@@ -398,7 +456,7 @@
 <!-- Off canvas for batch details start-->
 <div aria-labelledby="offcanvasRightLabel" class="offcanvas offcanvas-end w-50" data-bs-backdrop="static"
      id="offcanvasBatchSheet" tabindex="-1">
-    <div class="offcanvas-header bg-light">
+    <div class="offcanvas-header bg-custom-white">
         <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0"
                 data-bs-dismiss="offcanvas" id="offCanvasBatchSheetCloseButton"
                 type="button"><i class="fas fa-times"></i></button>
@@ -456,6 +514,22 @@
 </div>
 <!-- Off canvas for batch details end-->
 
+
+<!--Modal for New Payment Plan-->
+<div class="modal fade" id="modalPaymentPlan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalPaymentPlan" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-0">
+            <div class="modal-header bg-custom-white">
+                <h5 class="modal-title" id="staticBackdropLabel" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">
+                   New Payment Plan </h5>
+                <button type="button" class="btn btn-sm btn-close-red text-white rounded-0" data-bs-dismiss="modal" aria-label="Close"><i aria-hidden="true" class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="/resources/js/external-validator.js" type="text/javascript"></script>
 <script src="/resources/js/external-commonFunction.js" type="text/javascript"></script>

@@ -151,3 +151,79 @@ const showFollowupCard =(cardData,container)=>{
         container.appendChild(cardDiv);
     });
 }
+
+const createRadioCards =(dataList, functionEx,container)=> {
+    container.innerHTML = ""; // Clear previous content
+    var row = null;
+    dataList.forEach((element, index) => {
+        if (index % 2 === 0) {
+            row = document.createElement("div");
+            row.className = "row";
+            container.appendChild(row);
+        }
+
+        var col = document.createElement("div");
+        col.className = "col-md-6"; // Bootstrap column class for medium devices (2 columns per row)
+        var cardDiv = document.createElement("div");
+        cardDiv.onclick = () => {
+            functionEx(element, index);
+        };
+        cardDiv.className = "card mb-3 rounded-0";
+        cardDiv.innerHTML = `
+        <div class="card-header text-center">
+            <h6 class="mb-0 batch-title text-teal text-uppercase small">${
+            element.isWeekday ? "Weekday" : "Weekend"
+        } / ${element.courseID.name}</h6>
+            <span class="text-uppercase"><small>${
+            element.batchCode
+        }</small></span>
+        </div>
+        <div class="card-body p-0">
+            <div class="clearfix border-bottom">
+                <div class="w-50 py-3 float-start text-center border-end">
+                    <div class="mx-auto d-flex justify-content-center align-items-center bg-secondary text-white" style="width:50px;height:50px;font-size:1.6rem"><strong>${
+            element.seatCount
+        }</strong></div>
+                    <div class="text-muted small"><small>Seats Available</small></div>
+                </div>
+                <div class="w-50 float-start">
+                    <div class="text-center small border-bottom p-1">
+                        <span class="date-starts small text-info" style="font-size:0.8rem">${
+            element.commenceDate
+        }</span><br/>
+                        <small class="text-muted text-nowrap">Batch Commence Date</small>
+                    </div>
+                    <div class="text-center small p-1">
+                        <span class="date-starts small text-danger" style="font-size:0.8rem">${
+            element.lastRegDate
+        }</span><br/>
+                        <small class="text-muted text-nowrap">Registration Closing Date</small>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100 text-center fw-normal small p-2 text-muted">${
+            element.description
+        }</div>
+        </div>
+        <div class="card-footer show rounded-0 m-0 text-center ${
+            element.batchStatusID.name === "Scheduled"
+                ? "bg-success text-white"
+                : "bg-warning text-white"
+        }">${element.batchStatusID.name}</div>`;
+
+        cardDiv.style.cursor = "pointer"; // Ensure cursor changes to pointer on hover
+        cardDiv.addEventListener("click", function () {
+            // Reset background color of all cards
+            var allCards = document.querySelectorAll(".card");
+            allCards.forEach((card) => {
+                card.classList.remove('border', 'border-dark');
+
+            });
+            // Set background color of the clicked card
+            cardDiv.classList.add('border', 'border-dark');
+        });
+
+        col.appendChild(cardDiv);
+        row.appendChild(col);
+    });
+}
