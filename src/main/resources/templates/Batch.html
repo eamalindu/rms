@@ -6,7 +6,7 @@
           name="viewport">
     <title>Manage Batches | STEAM RMS</title>
     <!-- Favicon Icon -->
-    <link href="/resources/images/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="/resources/images/favicon.ico?v1" rel="icon" type="image/x-icon">
     <!-- Bootstrap CSS File-->
     <link href="/resources/bootstrap-5.2.3/css/bootstrap.min.css" rel="stylesheet">
     <!-- Jquery Js File -->
@@ -519,7 +519,42 @@
                 <button type="button" class="btn btn-sm btn-close-red text-white rounded-0" data-bs-dismiss="modal" aria-label="Close"><i aria-hidden="true" class="fas fa-times"></i></button>
             </div>
             <div class="modal-body">
-                ...
+              <form onsubmit="return false;">
+                  <div class="mb-2">
+                      <div class="form-label">
+                          <label class="fw-bold small required" for="batchClassDay">Course</label>
+                      </div>
+                      <select class="form-select rounded-0" data-placeholder="Please Select a Day" required>
+                      </select>
+                      <div class="valid-feedback">Value Accepted</div>
+                      <div class="invalid-feedback">Please provide a valid Course</div>
+                  </div>
+                  <div class="mb-2">
+                      <div class="form-label">
+                          <label class="fw-bold small required" for="batchClassDay">Name</label>
+                      </div>
+                      <input class="form-control rounded-0" required>
+                      <div class="text-muted small">Example: Standard [Weekday]</div>
+                  </div>
+                  <div class="mb-2">
+                      <div class="form-label">
+                          <label class="fw-bold small required" for="batchClassDay">Registration Fee</label>
+                      </div>
+                      <input class="form-control rounded-0" required>
+                  </div>
+                  <div class="mb-2">
+                      <div class="form-label">
+                          <label class="fw-bold small required" for="batchClassDay">Registration Fee</label>
+                      </div>
+                      <input class="form-control rounded-0" required>
+                  </div>
+                  <div class="mb-2">
+                      <div class="form-label">
+                          <label class="fw-bold small required" for="batchClassDay">Registration Fee</label>
+                      </div>
+                      <input class="form-control rounded-0" required>
+                  </div>
+              </form>
             </div>
         </div>
     </div>
