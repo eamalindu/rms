@@ -309,37 +309,37 @@
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Description</div>
                     </div>
-                    <div class="mb-2">
                     <div class="mb-4">
                         <div class="form-label">
                             <label class="fw-bold small required" for="batchPaymentPlan">Payment Plan</label>
                         </div>
                         <div class="input-group mb-2">
-                            <select class="form-select rounded-0" data-placeholder="Please Select a Status" id="batchPaymentPlan" onchange="selectDynamicValueValidator(this,'','newBatch','paymentPlanID')" required>
+                            <select class="form-select rounded-0" data-placeholder="Please Select a Status" id="batchPaymentPlan" onchange="selectDynamicValueValidator(this,'','newBatch','paymentPlanID');showPaymentPlan()" required>
                                 <option>Dynamic Value 1</option>
                                 <option>Dynamic Value 2</option>
                                 <option>Dynamic Value 3</option>
                                 <option>Dynamic Value 4</option>
                             </select>
                             <button class="btn btn-sm btn-success rounded-0" type="button" data-bs-toggle="modal" data-bs-target="#modalPaymentPlan"><i class="fa-solid fa-plus"></i> Add</button>
-
+                            <div class="valid-feedback rounded-2">Value Accepted</div>
+                            <div class="invalid-feedback rounded-2">Please provide a valid Payment Plan</div>
                         </div>
                         <table class="table table-sm table-bordered small mb-0">
                             <tr>
                                 <th>Registration Fee</th>
-                                <td class="text-center" id="paymentPlanRegistrationFee"></td>
+                                <td class="text-end" id="paymentPlanRegistrationFee"></td>
                             </tr>
                             <tr>
                                 <th>Course Fee</th>
-                                <td class="text-center" id="paymentPlanCourseFee"></td>
+                                <td class="text-end" id="paymentPlanCourseFee"></td>
                             </tr>
                             <tr>
                                 <th>Total Fee</th>
-                                <td class="text-center" id="paymentPlanTotalFee"></td>
+                                <td class="text-end" id="paymentPlanTotalFee"></td>
                             </tr>
                             <tr>
                                 <th>Num Of Installments</th>
-                                <td class="text-center" id="paymentPlanInstallments"></td>
+                                <td class="text-end" id="paymentPlanInstallments"></td>
                             </tr>
                         </table>
                         <div class="text-muted small">

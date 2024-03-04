@@ -220,6 +220,14 @@ const fillPaymentPlan=()=>{
 
 }
 
+const showPaymentPlan=()=>{
+    paymentPlanRegistrationFee.innerText = "Rs. "+(newBatch.paymentPlanID.registrationFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    paymentPlanCourseFee.innerText = "Rs. "+(newBatch.paymentPlanID.courseFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    paymentPlanTotalFee.innerText = "Rs. "+(newBatch.paymentPlanID.totalFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    paymentPlanInstallments.innerText = newBatch.paymentPlanID.numberOfInstallments;
+
+}
+
 const newBatchSubmit = ()=>{
     console.log(newBatch);
 
