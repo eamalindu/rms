@@ -179,7 +179,7 @@ const calculateLastRegDate =()=>{
 }
 
 const calculateEndDate = ()=>{
-    let startDateString=batchCommenceDate.value;
+    let startDateString= batchCommenceDate.value;
     console.log(startDateString);
 
     let startDate = new Date(startDateString);
@@ -204,6 +204,13 @@ const calculateEndDate = ()=>{
     });
 }
 
+const fillPaymentPlan=()=>{
+
+    let currentCourseId = newBatch.courseID.id;
+    console.log(currentCourseId);
+
+}
+
 const newBatchSubmit = ()=>{
     console.log(newBatch);
 
@@ -224,3 +231,4 @@ const newBatchSubmit = ()=>{
         showCustomModal("Operation Failed!" + serviceResponse, "error");
     }
 }
+
