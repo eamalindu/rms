@@ -315,7 +315,7 @@
                             <label class="fw-bold small required" for="batchPaymentPlan">Payment Plan</label>
                         </div>
                         <div class="input-group mb-2">
-                            <select class="form-select rounded-0" data-placeholder="Please Select a Status" id="batchPaymentPlan" required>
+                            <select class="form-select rounded-0" data-placeholder="Please Select a Status" id="batchPaymentPlan" onchange="selectDynamicValueValidator(this,'','newBatch','paymentPlanID')" required>
                                 <option>Dynamic Value 1</option>
                                 <option>Dynamic Value 2</option>
                                 <option>Dynamic Value 3</option>
