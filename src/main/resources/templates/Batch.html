@@ -358,7 +358,7 @@
                         </button>
                         <div class="text-muted small">
                             <small>Click "+ Add" to add the timetable for the batch</small></div>
-                        <table class="table table-sm table-bordered small mb-0 mt-2 invisible">
+                        <table class="table table-sm table-bordered small mb-0 mt-2 invisible" id="tblTimetable">
                             <tr>
                                 <th>Day</th>
                                 <th>Start Time</th>
@@ -491,7 +491,7 @@
                 <label class="fw-bold small required" for="batchLectureRoom">Lecture Room</label>
             </div>
             <select class="form-select rounded-0" data-placeholder="Please Select a Lecure Room"
-                    id="batchLectureRoom" onchange="selectDynamicValueValidator(this,'','newBatch','a')"
+                    id="batchLectureRoom" onchange="selectDynamicValueValidator(this,'','newBatch','l')"
                     required>
             </select>
             <div class="valid-feedback">Value Accepted</div>
