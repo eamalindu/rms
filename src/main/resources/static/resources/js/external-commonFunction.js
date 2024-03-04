@@ -227,3 +227,28 @@ const createRadioCards =(dataList, functionEx,container)=> {
         row.appendChild(col);
     });
 }
+
+const fillSelectOptionsWithTwo = (elementID, message, dataList,displayProperty1,displayProperty2,selectedValue) => {
+    const selectElement = elementID;
+    selectElement.innerHTML = '';
+    if (message !== '') {
+        const optionDefault = document.createElement('option');
+        optionDefault.innerText = message;
+        optionDefault.value = '';
+        optionDefault.selected = true;
+        optionDefault.disabled = true;
+        selectElement.appendChild(optionDefault);
+    }
+
+    dataList.forEach(ob => {
+        const option = document.createElement('option');
+        option.innerText = ob[displayProperty1] + " [" + ob[displayProperty2] + "]";
+        //converting JavaScript values to JSON strings
+        option.value = JSON.stringify(ob);
+        if (selectedValue == ob[displayProperty1]) {
+            option.selected = "selected";
+        }
+        selectElement.appendChild(option);
+    })
+
+}
