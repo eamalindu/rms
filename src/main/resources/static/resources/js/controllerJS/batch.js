@@ -118,7 +118,7 @@ const resetBatchForm = ()=>{
     days = ajaxGetRequest("/Day/findall")
     fillSelectOptions(batchClassDay,' ',days,'name');
     lectureRooms = ajaxGetRequest("/LectureRoom/findall");
-    fillSelectOptions(batchLectureRoom,' ',lectureRooms,'name')
+    fillSelectOptionsWithTwo(batchLectureRoom,' ',lectureRooms,'name','floor')
 
     //reset payment plan and its table
     batchPaymentPlan.innerHTML = '';
