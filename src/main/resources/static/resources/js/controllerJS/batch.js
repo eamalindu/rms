@@ -9,9 +9,6 @@ window.addEventListener("load",()=>{
     $("#batchCourse").chosen().change(function () {
         $("#batchCourse_chosen .chosen-single").addClass('select-validated');
     });
-    $("#batchStatus").chosen().change(function () {
-        $("#batchStatus_chosen .chosen-single").addClass('select-validated');
-    });
     $("#batchClassDay").chosen().change(function () {
         $("#batchClassDay_chosen .chosen-single").addClass('select-validated');
     });
@@ -79,10 +76,8 @@ const rowView = ()=>{
 const resetBatchForm = ()=>{
 
     $("#batchCourse_chosen .chosen-single").removeClass('select-validated');
-    $("#batchStatus_chosen .chosen-single").removeClass('select-validated');
     $("#batchClassDay_chosen .chosen-single").removeClass('select-validated');
     batchCourse.classList.remove('is-valid');
-    batchStatus.classList.remove('is-valid');
     batchClassDay.classList.remove('is-valid');
 
 
@@ -95,7 +90,6 @@ const resetBatchForm = ()=>{
     //set default option chosen
     setTimeout(function () {
         $('#batchCourse').val('').trigger('chosen:updated');
-        $('#batchStatus').val('').trigger('chosen:updated');
         $('#batchClassDay').val('').trigger('chosen:updated');
     }, 0);
 
@@ -111,8 +105,6 @@ const resetBatchForm = ()=>{
     //dynamic select content handling
     courses = ajaxGetRequest("/Course/findall");
     fillSelectOptions(batchCourse,' ',courses,'name');
-    statuses = ajaxGetRequest("/BatchStatus/findall");
-    fillSelectOptions(batchStatus,' ',statuses,'name');
     days = ajaxGetRequest("/Day/findall")
     fillSelectOptions(batchClassDay,' ',days,'name');
     //reset checkbox
@@ -120,7 +112,6 @@ const resetBatchForm = ()=>{
 
     //initialize the 3rd party libraries (chosen)
     $('#batchCourse').chosen({width:'100%'});
-    $('#batchStatus').chosen({width:'100%'});
     $('#batchClassDay').chosen({width:'100%'});
     $('#batchPaymentPlan').chosen({width:'80%'});
 
