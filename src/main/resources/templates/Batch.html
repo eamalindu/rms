@@ -486,11 +486,11 @@
             <div class="invalid-feedback">Please provide a valid End Time</div>
             <div class="text-muted small"><small>Lecture hours are 08:30 to 17:00</small></div>
         </div>
-        <div class="mb-2">
+        <div class="mb-4">
             <div class="form-label">
                 <label class="fw-bold small required" for="batchLectureRoom">Lecture Room</label>
             </div>
-            <select class="form-select rounded-0" data-placeholder="Please Select a Day"
+            <select class="form-select rounded-0" data-placeholder="Please Select a Lecure Room"
                     id="batchLectureRoom" onchange="selectDynamicValueValidator(this,'','newBatch','a')"
                     required>
             </select>
@@ -500,7 +500,7 @@
         <div class="d-flex justify-content-evenly">
         <button class="btn btn-sm bg-steam-green text-white rounded-0 text-uppercase" type="button"><i class="fa-solid fa-plus"></i> Add & Continue</button>
 
-        <button class="btn btn-sm btn-success rounded-0 text-uppercase" type="button">Save</button>
+        <button class="btn btn-sm btn-success rounded-0 text-uppercase" type="button" data-bs-target="#offCanvasBatch" data-bs-toggle="offcanvas" onclick="saveTimetable()">Save</button>
 
         </div>
 
