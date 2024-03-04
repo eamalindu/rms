@@ -486,8 +486,21 @@
             <div class="invalid-feedback">Please provide a valid End Time</div>
             <div class="text-muted small"><small>Lecture hours are 08:30 to 17:00</small></div>
         </div>
+        <div class="mb-2">
+            <div class="form-label">
+                <label class="fw-bold small required" for="batchLectureRoom">Lecture Room</label>
+            </div>
+            <select class="form-select rounded-0" data-placeholder="Please Select a Day"
+                    id="batchLectureRoom" onchange="selectDynamicValueValidator(this,'','newBatch','a')"
+                    required>
+            </select>
+            <div class="valid-feedback">Value Accepted</div>
+            <div class="invalid-feedback">Please provide a valid End Time</div>
+        </div>
         <button class="btn btn-sm btn-success rounded-0 mx-auto d-block" type="button"><i class="fa-solid fa-plus"></i></button>
         <div class="text-muted small text-center"><small>Add Class Schedule</small></div>
+
+
     </div>
 </div>
 
