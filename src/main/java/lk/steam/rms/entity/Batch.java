@@ -71,4 +71,8 @@ public class Batch {
     @JoinColumn(name = "batchstatus_id",referencedColumnName = "id")
     private BatchStatus batchStatusID;
 
+    @ManyToOne
+    @JoinColumn(name = "paymentplan_id",referencedColumnName = "id")
+    private PaymentPlan paymentPlanID;
+
 }
