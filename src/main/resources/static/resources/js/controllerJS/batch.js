@@ -207,11 +207,6 @@ const calculateEndDate = ()=>{
     });
 }
 
-const calculateTotalFee = ()=>{
-    batchTotalFee.value = parseInt(batchRegistrationFee.value) + parseInt(batchCourseFee.value);
-    newBatch.totalFee = parseInt(batchRegistrationFee.value) + parseInt(batchCourseFee.value);
-}
-
 const newBatchSubmit = ()=>{
     console.log(newBatch);
 
