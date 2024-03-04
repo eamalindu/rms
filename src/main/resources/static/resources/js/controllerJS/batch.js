@@ -95,6 +95,7 @@ const resetBatchForm = ()=>{
         $('#batchCourse').val('').trigger('chosen:updated');
         $('#batchClassDay').val('').trigger('chosen:updated');
         $('#batchPaymentPlan').val('').trigger('chosen:updated');
+        $('#batchLectureRoom').val('').trigger('chosen:updated');
     }, 0);
 
     //remove validation from the inputs all at once
@@ -124,6 +125,7 @@ const resetBatchForm = ()=>{
     //initialize the 3rd party libraries (chosen)
     $('#batchCourse').chosen({width:'100%'});
     $('#batchClassDay').chosen({width:'100%'});
+    $('#batchLectureRoom').chosen({width:'100%'});
     $('#batchPaymentPlan').chosen({width:'80%'});
 
     $('#batchCommenceDate').daterangepicker({
@@ -230,6 +232,14 @@ const showPaymentPlan=()=>{
     paymentPlanCourseFee.innerText = "Rs. "+(newBatch.paymentPlanID.courseFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     paymentPlanTotalFee.innerText = "Rs. "+(newBatch.paymentPlanID.totalFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     paymentPlanInstallments.innerText = newBatch.paymentPlanID.numberOfInstallments;
+
+}
+
+const saveTimetable =()=>{
+    //check duplicate
+    //show table
+    tblTimetable.classList.remove('invisible');
+    //append data
 
 }
 
