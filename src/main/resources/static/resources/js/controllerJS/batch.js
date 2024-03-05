@@ -128,7 +128,7 @@ const resetBatchForm = ()=>{
     paymentPlanInstallments.innerText = '';
 
     //hide timetable table
-    tblTimetable.classList.add('invisible');
+    tblTimetable.classList.add('d-none');
 
     //reset checkbox
     checkBoxValidator(this, leftWeekday, rightWeekday, 'newBatch', 'isWeekday', false, true)
@@ -249,7 +249,7 @@ const showPaymentPlan=()=>{
 const saveTimetable =()=>{
     //check duplicate
     //show table
-    tblTimetable.classList.remove('invisible');
+    tblTimetable.classList.remove('d-none');
     //append data
 
 }
