@@ -41,7 +41,7 @@
 
         .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
             color: black;
-            background-color: #f3f3f3;
+            background-color: whitesmoke;
         }
 
         .nav-link {
@@ -418,7 +418,7 @@
                 </button>
             </li>
             <li class="nav-item w-50" role="presentation">
-                <button aria-controls="pills-profile" aria-selected="false" class="nav-link w-100 rounded-0"
+                <button aria-controls="pills-profile" aria-selected="false" class="nav-link w-100 rounded-0 bg-custom-white"
                         data-bs-target="#pills-registration" data-bs-toggle="pill" id="pills-profile-tab" role="tab"
                         type="button"><i class="text-success fa-solid fa-graduation-cap"></i> Registrations
                 </button>
@@ -429,7 +429,7 @@
             <div aria-labelledby="pills-home-tab" class="tab-pane fade show active" id="pills-info" role="tabpanel"
                  tabindex="0">
                 <div class="card rounded-0 mt-0 border-0">
-                    <div class="card-body rounded-0 border-0 p-0">
+                    <div class="card-body rounded-0 border-0 p-0" style="background: whitesmoke">
                         <div class="text-center w-75 mx-auto">
                             <span class="align-items-center display-3" id="batchSheetCode" style="text-transform: uppercase;font-weight: bold;font-family: Arial, serif;">2024-DiT-1</span>
                             <p class="text-muted small lh-sm">Created On <span id="batchSheetJoinedDateText">2023-11-10</span></p>
@@ -439,7 +439,7 @@
                             <tr>
                                 <td class="fw-bold w-25">Course</td>
                                 <td>
-                                    <select class="form-select rounded-0 small form-select-sm batchSheetInputs" id="batchSheetCourse" disabled >
+                                    <select class="form-select rounded-0 small form-select-sm batchSheetInputs" id="batchSheetCourse" disabled style="background: whitesmoke">
 
                                     </select>
                                     <div class="valid-feedback">Value Accepted</div>
@@ -480,8 +480,14 @@
                             </tr>
                             <tr>
                                 <td class="fw-bold w-25">Description</td>
-                                <td class="" colspan="3">
+                                <td class="" colspan="">
                                     <input class="small rounded-0 form-control-sm w-100 batchSheetInputs" id="batchSheetDescription" disabled required>
+                                    <div class="valid-feedback">Value Accepted</div>
+                                    <div class="invalid-feedback">Please provide a valid Address</div>
+                                </td>
+                                <td class="fw-bold w-25">Status</td>
+                                <td class="" colspan="">
+                                    <input class="small rounded-0 form-control-sm w-100 batchSheetInputs" id="batchSheetStatus" disabled required>
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid Address</div>
                                 </td>
@@ -490,7 +496,7 @@
                             <tr>
                                 <td class="fw-bold w-25">Payment Plan</td>
                                 <td colspan="3">
-                                    <select class="form-select rounded-0 small form-select-sm batchSheetInputs" id="batchSheetPaymentPlan" disabled >
+                                    <select class="batchSheetInputs form-select rounded-0 small form-select-sm" id="batchSheetPaymentPlan" disabled style="background: whitesmoke">
 
                                     </select>
                                     <div class="valid-feedback">Value Accepted</div>
