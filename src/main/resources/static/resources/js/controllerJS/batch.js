@@ -255,28 +255,7 @@ const saveTimetable =()=>{
     tblTimetable.classList.remove('d-none');
     //append data
     console.log(newTimetable);
-    newTimetable.forEach((element)=>{
-        tblTimetable.children[1].innerHTML ='';
-        const row = document.createElement('tr');
-        const columnDay = document.createElement('td');
-        const columnStart = document.createElement('td');
-        const columnEnd = document.createElement('td');
-        const columnRoom = document.createElement('td');
-
-        columnDay.innerText = element.day.name;
-        columnStart.innerText = element.s;
-        columnEnd.innerText = element.e;
-        columnRoom.innerText = element.l.code;
-
-        row.appendChild(columnDay);
-        row.appendChild(columnStart);
-        row.appendChild(columnEnd);
-        row.appendChild(columnRoom);
-
-        tblTimetable.appendChild(row);
-
-    }
-    )
+    tblTimetable.children[1].innerHTML ='';
 }
 
 const newBatchSubmit = ()=>{
