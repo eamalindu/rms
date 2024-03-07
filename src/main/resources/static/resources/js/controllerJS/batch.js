@@ -98,7 +98,10 @@ const rowView = (ob,index)=>{
         batchSheetCode.classList.add('text-danger');
     }
 
+    paymentPlans = ajaxGetRequest("/PaymentPlan/getActivePlans/"+ob.courseID.id);
+
     fillSelectOptions(batchSheetCourse, 'Please Select a Course', courses, 'name',ob.courseID.name)
+    fillSelectOptions(batchSheetPaymentPlan, 'Please Select a Payment Plan',paymentPlans , 'name',ob.paymentPlanID.name)
 
 }
 
