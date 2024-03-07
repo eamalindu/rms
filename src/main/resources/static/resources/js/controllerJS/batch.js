@@ -104,9 +104,9 @@ const rowView = (ob,index)=>{
     fillSelectOptions(batchSheetPaymentPlan, 'Please Select a Payment Plan',paymentPlans , 'name',ob.paymentPlanID.name)
 
     //fill payment plan table
-    batchSheetPaymentPlanRegistrationFee.innerText = ob.paymentPlanID.registrationFee;
-    batchSheetPaymentPlanCourseFee.innerText = ob.paymentPlanID.courseFee;
-    batchSheetPaymentPlanTotalFee.innerText = ob.paymentPlanID.totalFee;
+    batchSheetPaymentPlanRegistrationFee.innerText =  "Rs. "+ob.paymentPlanID.registrationFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    batchSheetPaymentPlanCourseFee.innerText =  "Rs. "+ob.paymentPlanID.courseFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    batchSheetPaymentPlanTotalFee.innerText =  "Rs. "+ob.paymentPlanID.totalFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     batchSheetPaymentPlanInstallments.innerText = ob.paymentPlanID.numberOfInstallments;
 
 }
