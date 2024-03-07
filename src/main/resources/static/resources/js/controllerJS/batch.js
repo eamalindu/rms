@@ -93,6 +93,9 @@ const resetBatchForm = ()=>{
     //reset batch object
     newBatch = {}
 
+    //testing code for timetable
+    newTimetble = [];
+
     frmNewBatch.reset();
 
     //set default option chosen
