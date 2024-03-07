@@ -254,7 +254,7 @@ const saveTimetable =()=>{
     //show table
     tblTimetable.classList.remove('d-none');
     //append data
-
+    console.log(newTimetable);
 }
 
 const newBatchSubmit = ()=>{
