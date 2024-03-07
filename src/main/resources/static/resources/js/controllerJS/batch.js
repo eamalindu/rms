@@ -97,6 +97,15 @@ const rowView = (ob,index)=>{
         batchSheetCode.classList.add('text-danger');
     }
 
+    if(ob.isWeekday){
+        batchSheetWeekday.checked = false;
+
+    }
+    else{
+        batchSheetWeekday.checked = true;
+
+    }
+
     paymentPlans = ajaxGetRequest("/PaymentPlan/getActivePlans/"+ob.courseID.id);
     batchStatus = ajaxGetRequest("/BatchStatus/findall");
 
