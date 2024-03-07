@@ -344,6 +344,12 @@ input {
 .newBatchInputs{
     font-size: 13px;
 }
+.batchSheetInputs{
+    border:1px solid transparent;
+    background: white;
+    color: black;
+
+}
 
 /*Medium devices responsive*/
 @media (max-width: 870px) {
