@@ -504,7 +504,28 @@
                                 </td>
                                 <td class="fw-bold w-25">Delivery Mode</td>
                                 <td colspan="1">
-
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="text-center">
+                                            <div class="d-flex align-items-center justify-content-center mx-auto bg-success text-white"
+                                                 id="leftWeekday1"
+                                                 style="border-radius: 50%;height: 30px;width: 30px;background:#ddd">
+                                                <i class="fa-solid fa-calendar-week"></i>
+                                            </div>
+                                            <span class="text-muted small">Weekday</span>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" id="batchWeekday1" onchange="checkBoxValidator(this, leftWeekday1, rightWeekday1, 'newBatch', 'isWeekday', false, true);" role="switch"
+                                                   style="scale: 1.5;"
+                                                   type="checkbox" disabled required>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="d-flex align-items-center justify-content-center mx-auto" id="rightWeekday1"
+                                                 style="border-radius: 50%;height: 30px;width: 30px;background:#ddd">
+                                                <i class="fa-solid fa-calendar-day"></i>
+                                            </div>
+                                            <span class="text-muted small">Weekend</span>
+                                        </div>
+                                    </div>
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid Calling Name</div>
                                 </td>
