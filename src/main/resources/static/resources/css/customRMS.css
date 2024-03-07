@@ -350,6 +350,10 @@ input {
     color: black;
 
 }
+/*overriding default*/
+.form-select:disabled {
+    background-color: white;
+}
 
 /*Medium devices responsive*/
 @media (max-width: 870px) {
