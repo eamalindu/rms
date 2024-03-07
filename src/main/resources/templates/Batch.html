@@ -429,7 +429,7 @@
             <div aria-labelledby="pills-home-tab" class="tab-pane fade show active" id="pills-info" role="tabpanel"
                  tabindex="0">
                 <div class="card rounded-0 mt-0 border-0">
-                    <div class="card-body rounded-0 border-0">
+                    <div class="card-body rounded-0 border-0 p-0">
                         <table class="table table-bordered table-responsive ">
                             <tbody class="small align-middle">
                             <tr>
@@ -441,7 +441,7 @@
                                 </td>
                                 <td class="fw-bold w-25">Course</td>
                                 <td>
-                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="employeeSheetCallingName" disabled >
+                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="batchSheetCourse" disabled >
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid Calling Name</div>
                                 </td>
@@ -449,13 +449,13 @@
                             <tr>
                                 <td class="fw-bold w-25">Commence Date</td>
                                 <td class="w-25">
-                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="employeeSheetNIC" disabled required>
+                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="batchSheetCommenceDate" disabled required>
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid NIC</div>
                                 </td>
                                 <td class="fw-bold w-25">End Date</td>
                                 <td>
-                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="employeeSheetDOB" disabled required >
+                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="batchSheetEndDate" disabled required >
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid DOB</div>
                                 </td>
@@ -463,11 +463,11 @@
                             <tr>
                                 <td class="fw-bold w-25">Seat Count</td>
                                 <td class="w-25">
-                                    <input class="small rounded-0 form-control-sm batchSheetInputs">
+                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="batchSheetSeatCount" disabled required>
                                 </td>
                                 <td class="fw-bold w-25">Last Registration Date</td>
                                 <td>
-                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="employeeSheetEmail" disabled required>
+                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="batchSheetLastDate" disabled required>
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid Email</div>
                                 </td>
@@ -475,7 +475,7 @@
                             <tr>
                                 <td class="fw-bold w-25">Description</td>
                                 <td class="" colspan="3">
-                                    <input class="small rounded-0 form-control-sm w-100 batchSheetInputs" id="employeeSheetAddress" disabled required>
+                                    <input class="small rounded-0 form-control-sm w-100 batchSheetInputs" id="batchSheetDescription" disabled required>
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid Address</div>
                                 </td>
