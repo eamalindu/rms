@@ -81,7 +81,10 @@ const rowView = (ob,index)=>{
     btnBatchSheetUpdate.style.display = 'none';
     batchSheetCode.innerText = ob.batchCode;
     batchSheetCreated.value = ob.createdBy;
-    batchSheetCommenceDate;
+    batchSheetCommenceDate.value = ob.commenceDate;
+    batchSheetEndDate.value = ob.endDate;
+    batchSheetSeatCount.value = ob.seatCount;
+
     fillSelectOptions(batchSheetCourse, 'Please Select a Course', courses, 'name',ob.courseID.name)
 
 }
