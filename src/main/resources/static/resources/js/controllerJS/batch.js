@@ -88,6 +88,15 @@ const rowView = (ob,index)=>{
     batchSheetLastDate.value = ob.lastRegDate;
     batchSheetDescription.value = ob.description;
 
+    if(ob.batchStatusID.name==='Scheduled'){
+        batchSheetCode.classList.add('text-success');
+    }
+    else if(ob.batchStatusID.name==='Scheduled'){
+        batchSheetCode.classList.add('text-warning');
+    }
+    else{
+        batchSheetCode.classList.add('text-danger');
+    }
 
     fillSelectOptions(batchSheetCourse, 'Please Select a Course', courses, 'name',ob.courseID.name)
 
