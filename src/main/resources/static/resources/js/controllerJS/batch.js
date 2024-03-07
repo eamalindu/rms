@@ -91,7 +91,7 @@ const rowView = (ob,index)=>{
     if(ob.batchStatusID.name==='Scheduled'){
         batchSheetCode.classList.add('text-success');
     }
-    else if(ob.batchStatusID.name==='Scheduled'){
+    else if(ob.batchStatusID.name==='Started'){
         batchSheetCode.classList.add('text-warning');
     }
     else{
