@@ -441,7 +441,7 @@
                                 </td>
                                 <td class="fw-bold w-25">Calling Name</td>
                                 <td>
-                                    <input class="small rounded-0 form-control-sm employeeSheetInputs" id="employeeSheetCallingName" disabled value="Kasun">
+                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="employeeSheetCallingName" disabled value="Kasun">
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid Calling Name</div>
                                 </td>
@@ -449,13 +449,13 @@
                             <tr>
                                 <td class="fw-bold w-25">NIC Number</td>
                                 <td class="w-25">
-                                    <input class="small rounded-0 form-control-sm employeeSheetInputs" id="employeeSheetNIC" disabled value="983151108V" required onkeyup="inputTextValidator(this,'^(?:[6-9][0-9]{8}([V]|[X]|[v]|[x]){1})|(?:[19|20][0-9]{10})$','editedEmployee','nic')">
+                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="employeeSheetNIC" disabled value="983151108V" required onkeyup="inputTextValidator(this,'^(?:[6-9][0-9]{8}([V]|[X]|[v]|[x]){1})|(?:[19|20][0-9]{10})$','editedEmployee','nic')">
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid NIC</div>
                                 </td>
                                 <td class="fw-bold w-25">Date of Birth</td>
                                 <td>
-                                    <input class="small rounded-0 form-control-sm employeeSheetInputs" id="employeeSheetDOB" disabled required onkeyup="inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','editedEmployee','dob')">
+                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="employeeSheetDOB" disabled required onkeyup="inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','editedEmployee','dob')">
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid DOB</div>
                                 </td>
@@ -464,17 +464,17 @@
                                 <td class="fw-bold w-25">Gender</td>
                                 <td class="w-25">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input employeeSheetInputs" name="employeeGender" id="employeeSheetGenderMale" type="radio" value="Male"  disabled >
+                                        <input class="form-check-input batchSheetInputs" name="employeeGender" id="employeeSheetGenderMale" type="radio" value="Male"  disabled >
                                         <label class="form-check-label opacity-100" for="employeeGenderMale">Male</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input employeeSheetInputs"  name="employeeGender" id="employeeSheetGenderFemale" type="radio" value="Female" checked disabled>
+                                        <input class="form-check-input batchSheetInputs"  name="employeeGender" id="employeeSheetGenderFemale" type="radio" value="Female" checked disabled>
                                         <label class="form-check-label opacity-100" for="employeeGenderFemale">Female</label>
                                     </div>
                                 </td>
                                 <td class="fw-bold w-25">Email Address</td>
                                 <td>
-                                    <input class="small rounded-0 form-control-sm employeeSheetInputs" id="employeeSheetEmail" disabled value="eamalindu@gmail.com" required onkeyup="inputTextValidator(this,'^[a-z|A-Z]{2,19}[@][a-z|A-Z]{2,8}[.][a-z|A-Z]{2,3}$','editedEmployee','email')">
+                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="employeeSheetEmail" disabled value="eamalindu@gmail.com" required onkeyup="inputTextValidator(this,'^[a-z|A-Z]{2,19}[@][a-z|A-Z]{2,8}[.][a-z|A-Z]{2,3}$','editedEmployee','email')">
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid Email</div>
                                 </td>
@@ -482,13 +482,13 @@
                             <tr>
                                 <td class="fw-bold w-25">Mobile Number</td>
                                 <td class="w-25">
-                                    <input class="small rounded-0 form-control-sm employeeSheetInputs" id="employeeSheetMobile" disabled value="0768008003" required onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','editedEmployee','mobileNumber')">
+                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="employeeSheetMobile" disabled value="0768008003" required onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','editedEmployee','mobileNumber')">
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid Mobile number</div>
                                 </td>
                                 <td class="fw-bold w-25">Land Number</td>
                                 <td>
-                                    <input class="small rounded-0 form-control-sm employeeSheetInputs" id="employeeSheetLand" disabled value="0768008003" onkeyup="inputTextValidator(this,'^[0][12345689][0-9]{8}$','editedEmployee','landNumber')">
+                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="employeeSheetLand" disabled value="0768008003" onkeyup="inputTextValidator(this,'^[0][12345689][0-9]{8}$','editedEmployee','landNumber')">
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid Land number</div>
                                 </td>
@@ -496,7 +496,7 @@
                             <tr>
                                 <td class="fw-bold w-25">Address</td>
                                 <td class="" colspan="3">
-                                    <input class="small rounded-0 form-control-sm w-100 employeeSheetInputs" id="employeeSheetAddress" disabled value="No: 9/3, Kaththota, Nittambuwa" required onkeyup="inputTextValidator(this,'^No:[\\s]*(\\d+\\/\\d*[A-Z]?)[,\\s]+(\\w+)[,\\s]+(\\w+)\\.$','editedEmployee','address')">
+                                    <input class="small rounded-0 form-control-sm w-100 batchSheetInputs" id="employeeSheetAddress" disabled value="No: 9/3, Kaththota, Nittambuwa" required onkeyup="inputTextValidator(this,'^No:[\\s]*(\\d+\\/\\d*[A-Z]?)[,\\s]+(\\w+)[,\\s]+(\\w+)\\.$','editedEmployee','address')">
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid Address</div>
                                 </td>
@@ -505,7 +505,7 @@
                             <tr>
                                 <td class="fw-bold w-25">Civil Status</td>
                                 <td class="">
-                                    <select class="employeeSheetInputs form-select small form-select-sm" id="employeeSheetCivilStatus" disabled required onchange="selectStaticValueValidator(this,'','editedEmployee','civilStatus')">
+                                    <select class="batchSheetInputs form-select small form-select-sm" id="employeeSheetCivilStatus" disabled required onchange="selectStaticValueValidator(this,'','editedEmployee','civilStatus')">
                                         <option value="Single">Single</option>
                                         <option value="Married">Married</option>
                                         <option value="Divorced">Divorced</option>
@@ -515,7 +515,7 @@
                                 </td>
                                 <td class="fw-bold w-25">Designation</td>
                                 <td class="">
-                                    <select id="employeeSheetDesignation" class="employeeSheetInputs form-select rounded-0 small form-select-sm" disabled required onchange="selectDynamicValueValidator(this,'','editedEmployee','designationID')"></select>
+                                    <select id="employeeSheetDesignation" class="batchSheetInputs form-select rounded-0 small form-select-sm" disabled required onchange="selectDynamicValueValidator(this,'','editedEmployee','designationID')"></select>
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid Designation</div>
                                 </td>
@@ -524,7 +524,7 @@
                             <tr>
                                 <td class="fw-bold w-25">Note</td>
                                 <td class="" colspan="3">
-                                    <input class="small rounded-0 form-control-sm w-100 employeeSheetInputs" id="employeeSheetNote" disabled value="" placeholder="Optional" onkeyup="inputTextValidator(this,'^[a-zA-Z0-9\\s/]{20,}$','editedEmployee','note')">
+                                    <input class="small rounded-0 form-control-sm w-100 batchSheetInputs" id="employeeSheetNote" disabled value="" placeholder="Optional" onkeyup="inputTextValidator(this,'^[a-zA-Z0-9\\s/]{20,}$','editedEmployee','note')">
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid Note</div>
                                 </td>
@@ -533,7 +533,7 @@
                             <tr>
                                 <td class="fw-bold w-25" colspan="">Highest Education Qualification</td>
                                 <td class="" colspan="3">
-                                    <select class="employeeSheetInputs form-select rounded-0 small form-select-sm" id="employeeSheetHighestEducation" required onchange="selectStaticValueValidator(this,'','editedEmployee','highestEducationalQualification')">
+                                    <select class="batchSheetInputs form-select rounded-0 small form-select-sm" id="employeeSheetHighestEducation" required onchange="selectStaticValueValidator(this,'','editedEmployee','highestEducationalQualification')">
                                         <option>Doctorate (PhD)</option>
                                         <option>Master's Degree (MA, MSc)</option>
                                         <option>Undergraduate Degree (BA, BSc)</option>
@@ -550,7 +550,7 @@
                             <tr>
                                 <td class="fw-bold w-25" colspan="">Employee Status</td>
                                 <td class="" colspan="3">
-                                    <select id="employeeSheetEmployeeStatus" class="employeeSheetInputs form-select rounded-0 small form-select-sm" disabled required onchange="selectDynamicValueValidator(this,'','editedEmployee','employeeStatusID')"></select>
+                                    <select id="employeeSheetEmployeeStatus" class="batchSheetInputs form-select rounded-0 small form-select-sm" disabled required onchange="selectDynamicValueValidator(this,'','editedEmployee','employeeStatusID')"></select>
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid Qualification</div>
                                 </td>
