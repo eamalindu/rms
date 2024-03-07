@@ -86,6 +86,8 @@ const rowView = (ob,index)=>{
     batchSheetEndDate.value = ob.endDate;
     batchSheetSeatCount.value = ob.seatCount;
     batchSheetLastDate.value = ob.lastRegDate;
+    batchSheetDescription.value = ob.description;
+
 
     fillSelectOptions(batchSheetCourse, 'Please Select a Course', courses, 'name',ob.courseID.name)
 
