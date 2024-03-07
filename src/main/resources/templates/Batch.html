@@ -487,60 +487,6 @@
                                 </td>
 
                             </tr>
-                            <tr>
-                                <td class="fw-bold w-25">Civil Status</td>
-                                <td class="">
-                                    <select class="batchSheetInputs form-select small form-select-sm" id="employeeSheetCivilStatus" disabled required onchange="selectStaticValueValidator(this,'','editedEmployee','civilStatus')">
-                                        <option value="Single">Single</option>
-                                        <option value="Married">Married</option>
-                                        <option value="Divorced">Divorced</option>
-                                    </select>
-                                    <div class="valid-feedback">Value Accepted</div>
-                                    <div class="invalid-feedback">Please provide a valid Civil Status</div>
-                                </td>
-                                <td class="fw-bold w-25">Designation</td>
-                                <td class="">
-                                    <select id="employeeSheetDesignation" class="batchSheetInputs form-select rounded-0 small form-select-sm" disabled required onchange="selectDynamicValueValidator(this,'','editedEmployee','designationID')"></select>
-                                    <div class="valid-feedback">Value Accepted</div>
-                                    <div class="invalid-feedback">Please provide a valid Designation</div>
-                                </td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fw-bold w-25">Note</td>
-                                <td class="" colspan="3">
-                                    <input class="small rounded-0 form-control-sm w-100 batchSheetInputs" id="employeeSheetNote" disabled value="" placeholder="Optional" onkeyup="inputTextValidator(this,'^[a-zA-Z0-9\\s/]{20,}$','editedEmployee','note')">
-                                    <div class="valid-feedback">Value Accepted</div>
-                                    <div class="invalid-feedback">Please provide a valid Note</div>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td class="fw-bold w-25" colspan="">Highest Education Qualification</td>
-                                <td class="" colspan="3">
-                                    <select class="batchSheetInputs form-select rounded-0 small form-select-sm" id="employeeSheetHighestEducation" required onchange="selectStaticValueValidator(this,'','editedEmployee','highestEducationalQualification')">
-                                        <option>Doctorate (PhD)</option>
-                                        <option>Master's Degree (MA, MSc)</option>
-                                        <option>Undergraduate Degree (BA, BSc)</option>
-                                        <option>Higher National Diploma (HND)</option>
-                                        <option>Diploma</option>
-                                        <option>G.C.E A/L</option>
-                                        <option>G.C.E O/L</option>
-                                    </select>
-                                    <div class="valid-feedback">Value Accepted</div>
-                                    <div class="invalid-feedback">Please provide a valid Qualification</div>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fw-bold w-25" colspan="">Employee Status</td>
-                                <td class="" colspan="3">
-                                    <select id="employeeSheetEmployeeStatus" class="batchSheetInputs form-select rounded-0 small form-select-sm" disabled required onchange="selectDynamicValueValidator(this,'','editedEmployee','employeeStatusID')"></select>
-                                    <div class="valid-feedback">Value Accepted</div>
-                                    <div class="invalid-feedback">Please provide a valid Qualification</div>
-                                </td>
-
-                            </tr>
                             </tbody>
                         </table>
                     </div>
