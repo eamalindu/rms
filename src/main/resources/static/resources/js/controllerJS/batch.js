@@ -27,7 +27,6 @@ window.addEventListener("load",()=>{
     });
 });
 
-
 const refreshBatchTable =()=>{
 
     //getting current batches from the database using ajaxGetRequest function and assign the response to the variable batches
@@ -211,7 +210,6 @@ const checkBoxValidator = (elementID,leftDivID,rightDivID,object,property,trueVa
 
     }
 }
-
 
 const calculateLastRegDate =()=>{
     let startDateString=batchCommenceDate.value;
