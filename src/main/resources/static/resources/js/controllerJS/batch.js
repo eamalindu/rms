@@ -250,34 +250,8 @@ const showPaymentPlan=()=>{
 }
 
 const saveTimetable =()=>{
-    //check duplicate
-    //show table
     tblTimetable.classList.remove('d-none');
-    //append data
-    console.log(newTimetable)
-    let tbodyTimetable =  tblTimetable.children[1];
-    tbodyTimetable.innerHTML = '';
-    newTimetable.forEach((element) => {
-        const row = document.createElement('tr');
-        const columnDay = document.createElement('td');
-        const columnStart = document.createElement('td');
-        const columnEnd = document.createElement('td');
-        const columnRoom = document.createElement('td');
 
-        columnDay.textContent = element.day.name;
-        columnStart.textContent = element.s;
-        columnEnd.textContent = element.e;
-        columnRoom.textContent = element.l.code;
-
-        row.appendChild(columnDay);
-        row.appendChild(columnStart);
-        row.appendChild(columnEnd);
-        row.appendChild(columnRoom);
-
-        tbodyTimetable.appendChild(row);
-    });
-
-    console.log('test')
 }
 
 const newBatchSubmit = ()=>{
