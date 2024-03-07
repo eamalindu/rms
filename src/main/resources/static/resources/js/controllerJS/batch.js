@@ -103,6 +103,12 @@ const rowView = (ob,index)=>{
     fillSelectOptions(batchSheetCourse, 'Please Select a Course', courses, 'name',ob.courseID.name)
     fillSelectOptions(batchSheetPaymentPlan, 'Please Select a Payment Plan',paymentPlans , 'name',ob.paymentPlanID.name)
 
+    //fill payment plan table
+    batchSheetPaymentPlanRegistrationFee.innerText = ob.paymentPlanID.registrationFee;
+    batchSheetPaymentPlanCourseFee.innerText = ob.paymentPlanID.courseFee;
+    batchSheetPaymentPlanTotalFee.innerText = ob.paymentPlanID.totalFee;
+    batchSheetPaymentPlanInstallments.innerText = ob.paymentPlanID.numberOfInstallments;
+
 }
 
 const resetBatchForm = ()=>{
