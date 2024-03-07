@@ -99,9 +99,11 @@ const rowView = (ob,index)=>{
     }
 
     paymentPlans = ajaxGetRequest("/PaymentPlan/getActivePlans/"+ob.courseID.id);
+    batchStatus = ajaxGetRequest("/BatchStatus/findall");
 
     fillSelectOptions(batchSheetCourse, 'Please Select a Course', courses, 'name',ob.courseID.name)
     fillSelectOptions(batchSheetPaymentPlan, 'Please Select a Payment Plan',paymentPlans , 'name',ob.paymentPlanID.name)
+    fillSelectOptions(batchSheetStatus, 'Please Select a Status', batchStatus, 'name',ob.batchStatusID.name)
 
     //fill payment plan table
     batchSheetPaymentPlanRegistrationFee.innerText =  "Rs. "+ob.paymentPlanID.registrationFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
