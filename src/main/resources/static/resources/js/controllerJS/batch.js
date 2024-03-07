@@ -75,7 +75,13 @@ const getStatus = (ob)=>{
     }
 }
 
-const rowView = ()=>{
+const rowView = (ob,index)=>{
+
+    //hide the update btn
+    btnBatchSheetUpdate.style.display = 'none';
+    batchSheetCode.innerText = ob.batchCode;
+
+    fillSelectOptions(batchSheetCourse, 'Please Select a Course', courses, 'name',ob.courseID.name)
 
 }
 
