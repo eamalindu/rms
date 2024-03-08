@@ -284,7 +284,6 @@ const fillPaymentPlan=()=>{
         input.value ='';
     })
 
-
     let currentCourseId = newBatch.courseID.id;
     console.log(currentCourseId);
     let paymentPlans = ajaxGetRequest("/PaymentPlan/getActivePlans/"+currentCourseId);
