@@ -300,10 +300,12 @@ const showPaymentPlan=()=>{
 
 }
 
-const saveTimetable =()=>{
+const saveTimetable = () => {
     tblTimetable.classList.remove('d-none');
-
+    let timeTableBody = tblTimetable.querySelector('tbody'); // Select the tbody element
+    timeTableBody.innerHTML = '';
 }
+
 
 const newBatchSubmit = ()=>{
     console.log(newBatch);
