@@ -330,5 +330,8 @@ const newBatchSubmit = ()=>{
 
 const batchEdit = ()=>{
 
+    //display the update button once the edit button is clicked
+    btnBatchSheetUpdate.style.display = 'block';
+
 }
 
