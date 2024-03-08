@@ -104,6 +104,7 @@ const rowView = (ob,index)=>{
     else{
         batchSheetWeekday.checked = true;
 
+
     }
 
     paymentPlans = ajaxGetRequest("/PaymentPlan/getActivePlans/"+ob.courseID.id);
@@ -273,6 +274,16 @@ const calculateEndDate = ()=>{
 }
 
 const fillPaymentPlan=()=>{
+    //clear the commence date / end date and last reg date as well when a course is changed
+    let dateInputs = [batchCommenceDate,batchEndDate,batchLastRedDate];
+    dateInputs.forEach((input)=>{
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+        input.value ='';
+    })
+
 
     let currentCourseId = newBatch.courseID.id;
     console.log(currentCourseId);
