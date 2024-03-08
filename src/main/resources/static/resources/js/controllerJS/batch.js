@@ -88,7 +88,8 @@ const rowView = (ob,index)=>{
         input.classList.remove('is-valid');
         input.classList.remove('is-invalid');
     });
-
+    //disable radio button
+    batchSheetWeekday.disabled = true;
     //refill data
     batchSheetCode.innerText = ob.batchCode;
     batchSheetCreated.value = ob.createdBy;
