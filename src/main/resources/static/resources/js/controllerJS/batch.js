@@ -83,6 +83,7 @@ const getStatus = (ob)=>{
     }
 }
 
+//created a function to show to details in an offcanvas
 const rowView = (ob,index)=>{
 
     //hide the update btn
@@ -143,6 +144,7 @@ const rowView = (ob,index)=>{
 
 }
 
+//creating a function to reset the Batch form when ever needed
 const resetBatchForm = ()=>{
 
     $("#batchCourse_chosen .chosen-single").removeClass('select-validated');
@@ -228,6 +230,16 @@ const resetBatchForm = ()=>{
 
 }
 
+//creating a function for checkbox validate and binding values to the object
+//This function have seven arguments
+// 1) elementID -> use 'this' or the html id of the checkbox
+// 2) leftDivID -> left DIV html id
+// 3) rightDivID -> right DIV html id
+// 4) object -> The object that data should bind
+// 5) property -> object property
+// 6) trueValue-> value to bind if checkbox is checked
+// 7) falseValue-> value to bind if checkbox is not checked
+//This function is called using onclick event handler
 const checkBoxValidator = (elementID,leftDivID,rightDivID,object,property,trueValue,falseValue) => {
     //checking if the checkbox is checked or not
     if (elementID.checked) {
