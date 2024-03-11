@@ -94,6 +94,7 @@ const rowView = (ob,index)=>{
 
     //hide the update btn
     btnBatchSheetUpdate.style.display = 'none';
+
     //add the attribute disabled to make inputs block the user input values
     //remove the edited border colors from the inputs
     inputs = document.querySelectorAll('.batchSheetInputs');
@@ -104,6 +105,7 @@ const rowView = (ob,index)=>{
         input.classList.remove('is-valid');
         input.classList.remove('is-invalid');
     });
+
     //disable radio button
     batchSheetWeekday.disabled = true;
     //refill data
@@ -151,19 +153,6 @@ const rowView = (ob,index)=>{
     //catch old Batch and new Batch
     oldBatch = JSON.parse(JSON.stringify(ob));
     editedBatch = JSON.parse(JSON.stringify(ob));
-
-    $('#batchSheetCommenceDate').daterangepicker({
-        "minDate": new Date(),
-        "singleDatePicker": true,
-        "linkedCalendars": false,
-        "showCustomRangeLabel": false,
-        "autoUpdateInput": false,
-        "drops": "down",
-        "locale": {
-            "format": "YYYY-MM-DD"
-        }
-    });
-
 }
 
 //creating a function to reset the Batch form when ever needed
