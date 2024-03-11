@@ -381,7 +381,7 @@ const batchEdit = ()=>{
 const checkBatchFormErrors = (batchObject)=>{
     let errors = '';
 
-    if(batchObject.courseID.name!==null){
+    if(batchObject.courseID!==null){
         errors = errors +'Course is Required<br>';
     }
     if(batchObject.commenceDate!==null){
@@ -402,7 +402,7 @@ const checkBatchFormErrors = (batchObject)=>{
     if(batchObject.description!==null){
         errors = errors +'Description is Required<br>';
     }
-    if(batchObject.paymentPlanID.name!==null){
+    if(batchObject.paymentPlanID!==null){
         errors = errors +'Payment Plan is Required<br>';
     }
 
