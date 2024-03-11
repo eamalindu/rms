@@ -383,5 +383,8 @@ const checkBatchFormErrors = (batchObject)=>{
     if(batchObject.seatCount!==null){
         errors = errors +'Seat Count is Required<br>';
     }
+    if(batchObject.isWeekday!==null){
+        errors = errors +'Delivery Mode is Required<br>';
+    }
 
 }
