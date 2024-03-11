@@ -18,6 +18,7 @@ public class BatchController {
 
     @Autowired
     private BatchDAO batchDAO;
+    @Autowired
     private BatchStatusDAO batchStatusDAO;
 
     @GetMapping(value = "/findall",produces = "application/json")
