@@ -19,10 +19,14 @@ window.addEventListener("load",()=>{
         $("#batchLectureRoom_chosen .chosen-single").addClass('select-validated');
     });
 
+    //bind data to the batch object, once the "apply" button on batchCommenceDate input is clicked
     $('#batchCommenceDate').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        //binding data to newBatch object
         inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','newBatch','commenceDate');
+        //calling the calculateLastRegDate function to auto generated the last registration date according to the selected commence date
         calculateLastRegDate();
+        //calling the calculateLastRegDate function to auto generated the batch end date according to the selected commence date
         calculateEndDate();
     });
 });
