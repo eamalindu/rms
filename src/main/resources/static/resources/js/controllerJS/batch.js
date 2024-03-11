@@ -380,5 +380,8 @@ const checkBatchFormErrors = (batchObject)=>{
     if(batchObject.lastRegDate!==null){
         errors = errors +'Last Registration Date is Required<br>';
     }
+    if(batchObject.seatCount!==null){
+        errors = errors +'Seat Count is Required<br>';
+    }
 
 }
