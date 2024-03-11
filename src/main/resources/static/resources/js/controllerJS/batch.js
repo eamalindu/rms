@@ -362,3 +362,6 @@ const batchEdit = ()=>{
 
 }
 
+const checkBatchFormErrors = (batchObject)=>{
+
+}
