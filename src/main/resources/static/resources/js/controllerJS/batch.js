@@ -319,7 +319,7 @@ const saveTimetable = () => {
     console.log(newTimetable);
 }
 
-
+//creating a function to submit the batch form when ever needed
 const newBatchSubmit = ()=>{
     console.log(newBatch);
     //calling the checkBatchFormErrors function and catching the return value to errors variable
@@ -344,10 +344,8 @@ const newBatchSubmit = ()=>{
                     refreshBatchTable();
                     //refresh the form
                     resetBatchForm();
-
                 }
                 else{
-
                     //this means there was a problem with the query
                     //shows an error alert to the user
                     showCustomModal("Operation Failed!" + serviceResponse, "error");
@@ -358,8 +356,7 @@ const newBatchSubmit = ()=>{
             else{
                 showCustomModal("Operation Cancelled!", "info");
             }
-        })
-
+        });
     }
     else{
         //there are errors
@@ -367,10 +364,9 @@ const newBatchSubmit = ()=>{
         showCustomModal(errors, 'warning');
 
     }
-
-
 }
 
+//creating a function to edit the batch form when ever needed
 const batchEdit = ()=>{
 
     //display the update button once the edit button is clicked
