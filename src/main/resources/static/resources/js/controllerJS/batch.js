@@ -58,13 +58,14 @@ const getCourseName = (ob)=>{
     return ob.courseID.name;
 }
 
-//since we cant access the isWeekday from the batches directly. creating a function to return the isWeekday from the batches object
+//since the isWeekday data type is in boolean we cant show true or false in the table
+//creating a function to return Weekday and Not Weekday based on their value
 const getWeekDay = (ob)=>{
     if(ob.isWeekday){
         return "Weekday";
     }
     else{
-        return "Weekend";
+        return "Weekday";
     }
 
 }
