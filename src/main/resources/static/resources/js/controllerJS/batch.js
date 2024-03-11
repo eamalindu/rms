@@ -386,5 +386,13 @@ const checkBatchFormErrors = (batchObject)=>{
     if(batchObject.isWeekday!==null){
         errors = errors +'Delivery Mode is Required<br>';
     }
+    if(batchObject.description!==null){
+        errors = errors +'Description is Required<br>';
+    }
+    if(batchObject.paymentPlanID.name!==null){
+        errors = errors +'Payment Plan is Required<br>';
+    }
+
+    return errors;
 
 }
