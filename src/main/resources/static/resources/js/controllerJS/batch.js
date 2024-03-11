@@ -326,7 +326,6 @@ const newBatchSubmit = ()=>{
     let errors = checkBatchFormErrors(newBatch);
     if(errors===''){
 
-
         let serviceResponse = ajaxHttpRequest("/Batch",'POST',newBatch);
         if(serviceResponse==="OK"){
             //this means data successfully passed to the backend
@@ -381,28 +380,28 @@ const batchEdit = ()=>{
 const checkBatchFormErrors = (batchObject)=>{
     let errors = '';
 
-    if(batchObject.courseID!==null){
+    if(batchObject.courseID==null){
         errors = errors +'Course is Required<br>';
     }
-    if(batchObject.commenceDate!==null){
+    if(batchObject.commenceDate==null){
         errors = errors +'Commence Date is Required<br>';
     }
-    if(batchObject.endDate!==null){
+    if(batchObject.endDate==null){
         errors = errors +'End Date is Required<br>';
     }
-    if(batchObject.lastRegDate!==null){
+    if(batchObject.lastRegDate==null){
         errors = errors +'Last Registration Date is Required<br>';
     }
-    if(batchObject.seatCount!==null){
+    if(batchObject.seatCount==null){
         errors = errors +'Seat Count is Required<br>';
     }
-    if(batchObject.isWeekday!==null){
+    if(batchObject.isWeekday==null){
         errors = errors +'Delivery Mode is Required<br>';
     }
-    if(batchObject.description!==null){
+    if(batchObject.description==null){
         errors = errors +'Description is Required<br>';
     }
-    if(batchObject.paymentPlanID!==null){
+    if(batchObject.paymentPlanID==null){
         errors = errors +'Payment Plan is Required<br>';
     }
 
