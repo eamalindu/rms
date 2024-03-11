@@ -338,8 +338,11 @@ const newBatchSubmit = ()=>{
                     //this means data successfully passed to the backend
                     //show an alert to user
                     showCustomModal("Batch Successfully Added!", "success");
+                    //close the offcanvas sheet
                     offCanvasBatchCloseButton.click();
+                    //refresh the table
                     refreshBatchTable();
+                    //refresh the form
                     resetBatchForm();
 
                 }
@@ -349,6 +352,11 @@ const newBatchSubmit = ()=>{
                     //shows an error alert to the user
                     showCustomModal("Operation Failed!" + serviceResponse, "error");
                 }
+            }
+            //will execute this block if the user confirmation is "no"
+            //show user an alert
+            else{
+                showCustomModal("Operation Cancelled!", "info");
             }
         })
 
