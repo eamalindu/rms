@@ -142,6 +142,10 @@ const rowView = (ob,index)=>{
     batchSheetPaymentPlanTotalFee.innerText =  "Rs. "+ob.paymentPlanID.totalFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     batchSheetPaymentPlanInstallments.innerText = ob.paymentPlanID.numberOfInstallments;
 
+    //catch old Batch and new Batch
+    oldBatch = JSON.parse(JSON.stringify(ob));
+    editedBatch = JSON.parse(JSON.stringify(ob));
+
 }
 
 //creating a function to reset the Batch form when ever needed
