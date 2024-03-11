@@ -367,4 +367,12 @@ const batchEdit = ()=>{
 //this function will return if there are any unfilled inputs
 const checkBatchFormErrors = (batchObject)=>{
     let errors = '';
+
+    if(batchObject.courseID.name!==null){
+        errors = errors +'Course is Required<br>';
+    }
+    if(batchObject.courseID.name!==null){
+        errors = errors +'Course is Required<br>';
+    }
+
 }
