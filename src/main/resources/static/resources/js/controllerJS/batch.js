@@ -322,26 +322,36 @@ const saveTimetable = () => {
 
 const newBatchSubmit = ()=>{
     console.log(newBatch);
-
+    //calling the checkBatchFormErrors function and catching the return value to errors variable
     let errors = checkBatchFormErrors(newBatch);
+    //check the errors variable is null
+    //if it's null that means all the required inputs are filled
     if(errors===''){
+        //get a user confirmation using external customConfirm js
+        showCustomConfirm("You are about to add a New Batch<br>Are You Sure?", function (result) {
+            if(result){
+                //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+                //catch the return value from the backend and save it in the serviceResponse variable
+                let serviceResponse = ajaxHttpRequest("/Batch",'POST',newBatch);
+                //check the serviceResponse value is "OK"
+                if(serviceResponse==="OK"){
+                    //this means data successfully passed to the backend
+                    //show an alert to user
+                    showCustomModal("Batch Successfully Added!", "success");
+                    offCanvasBatchCloseButton.click();
+                    refreshBatchTable();
+                    resetBatchForm();
 
-        let serviceResponse = ajaxHttpRequest("/Batch",'POST',newBatch);
-        if(serviceResponse==="OK"){
-            //this means data successfully passed to the backend
-            //show an alert to user
-            showCustomModal("Batch Successfully Added!", "success");
-            offCanvasBatchCloseButton.click();
-            refreshBatchTable();
-            resetBatchForm();
+                }
+                else{
 
-        }
-        else{
+                    //this means there was a problem with the query
+                    //shows an error alert to the user
+                    showCustomModal("Operation Failed!" + serviceResponse, "error");
+                }
+            }
+        })
 
-            //this means there was a problem with the query
-            //shows an error alert to the user
-            showCustomModal("Operation Failed!" + serviceResponse, "error");
-        }
     }
     else{
         //there are errors
