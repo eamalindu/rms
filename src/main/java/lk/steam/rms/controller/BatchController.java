@@ -71,7 +71,6 @@ public class BatchController {
 
         }
 
-
         batch.setTimestamp(LocalDateTime.now());
         batch.setBatchNumber(nextBatchNumber);
         batch.setCreatedBy("Malindu");
