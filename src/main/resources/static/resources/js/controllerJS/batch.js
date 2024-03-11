@@ -53,10 +53,12 @@ const refreshBatchTable =()=>{
     $('#tblBatch').DataTable();
 }
 
+//since we cant access the Course Name from the batches directly. creating a function to return the Course Name from the batches object
 const getCourseName = (ob)=>{
     return ob.courseID.name;
 }
 
+//since we cant access the isWeekday from the batches directly. creating a function to return the isWeekday from the batches object
 const getWeekDay = (ob)=>{
     if(ob.isWeekday){
         return "Weekday";
@@ -67,6 +69,7 @@ const getWeekDay = (ob)=>{
 
 }
 
+//since we cant access the Course Status from the batches directly. creating a function to return the Course Status from the batches object
 const getStatus = (ob)=>{
     if(ob.batchStatusID.name==="Scheduled") {
         return '<span class="badge rounded-0" style="background: #3FB618">Scheduled</span>';
