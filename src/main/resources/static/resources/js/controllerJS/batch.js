@@ -149,7 +149,7 @@ const resetBatchForm = ()=>{
     newBatch = {}
 
     //testing code for timetable
-    newTimetable = [];
+    newTimetable = {};
 
     frmNewBatch.reset();
 
