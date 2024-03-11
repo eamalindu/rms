@@ -146,6 +146,18 @@ const rowView = (ob,index)=>{
     oldBatch = JSON.parse(JSON.stringify(ob));
     editedBatch = JSON.parse(JSON.stringify(ob));
 
+    $('#batchSheetCommenceDate').daterangepicker({
+        "minDate": new Date(),
+        "singleDatePicker": true,
+        "linkedCalendars": false,
+        "showCustomRangeLabel": false,
+        "autoUpdateInput": false,
+        "drops": "down",
+        "locale": {
+            "format": "YYYY-MM-DD"
+        }
+    });
+
 }
 
 //creating a function to reset the Batch form when ever needed
@@ -393,6 +405,16 @@ const newBatchSubmit = ()=>{
 
 //creating a function to edit the batch form when ever needed
 const batchEdit = ()=>{
+
+    //getting the toast from its ID
+    var myToastEl = document.getElementById('myToast');
+    var myToast = new bootstrap.Toast(myToastEl);
+    //Displaying toast
+    myToast.show();
+    //hide the toast after 5s
+    setTimeout(function() {
+        myToast.hide();
+    }, 5000);
 
     //display the update button once the edit button is clicked
     btnBatchSheetUpdate.style.display = 'block';
