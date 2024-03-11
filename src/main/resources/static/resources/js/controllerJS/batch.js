@@ -323,22 +323,32 @@ const saveTimetable = () => {
 const newBatchSubmit = ()=>{
     console.log(newBatch);
 
-    serviceResponse = ajaxHttpRequest("/Batch",'POST',newBatch);
-    if(serviceResponse==="OK"){
-        //this means data successfully passed to the backend
-        //show an alert to user
-        showCustomModal("Batch Successfully Added!", "success");
-        offCanvasBatchCloseButton.click();
-        refreshBatchTable();
-        resetBatchForm();
+    let error = checkBatchFormErrors(newBatch);
+    if(error===''){
 
+
+        let serviceResponse = ajaxHttpRequest("/Batch",'POST',newBatch);
+        if(serviceResponse==="OK"){
+            //this means data successfully passed to the backend
+            //show an alert to user
+            showCustomModal("Batch Successfully Added!", "success");
+            offCanvasBatchCloseButton.click();
+            refreshBatchTable();
+            resetBatchForm();
+
+        }
+        else{
+
+            //this means there was a problem with the query
+            //shows an error alert to the user
+            showCustomModal("Operation Failed!" + serviceResponse, "error");
+        }
     }
     else{
 
-        //this means there was a problem with the query
-        //shows an error alert to the user
-        showCustomModal("Operation Failed!" + serviceResponse, "error");
     }
+
+
 }
 
 const batchEdit = ()=>{
