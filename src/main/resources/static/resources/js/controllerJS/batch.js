@@ -149,7 +149,7 @@ const resetBatchForm = ()=>{
     newBatch = {}
 
     //testing code for timetable
-    newTimetable = {};
+    newTimetable = [];
 
     frmNewBatch.reset();
 
@@ -316,6 +316,7 @@ const saveTimetable = () => {
     tblTimetable.classList.remove('d-none');
     let timeTableBody = tblTimetable.querySelector('tbody'); // Select the tbody element
     timeTableBody.innerHTML = '';
+    console.log(newTimetable);
 }
 
 
