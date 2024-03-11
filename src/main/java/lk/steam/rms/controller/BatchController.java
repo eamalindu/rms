@@ -1,7 +1,9 @@
 package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.BatchDAO;
+import lk.steam.rms.dao.BatchStatusDAO;
 import lk.steam.rms.entity.Batch;
+import lk.steam.rms.entity.BatchStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +18,7 @@ public class BatchController {
 
     @Autowired
     private BatchDAO batchDAO;
+    private BatchStatusDAO batchStatusDAO;
 
     @GetMapping(value = "/findall",produces = "application/json")
     public List<Batch> findAll(){
@@ -72,6 +75,7 @@ public class BatchController {
         batch.setTimestamp(LocalDateTime.now());
         batch.setBatchNumber(nextBatchNumber);
         batch.setCreatedBy("Malindu");
+        batch.setBatchStatusID(batchStatusDAO.getReferenceById(1));
         batchDAO.save(batch);
         return "OK";
     }
