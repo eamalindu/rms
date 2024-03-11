@@ -371,8 +371,14 @@ const checkBatchFormErrors = (batchObject)=>{
     if(batchObject.courseID.name!==null){
         errors = errors +'Course is Required<br>';
     }
-    if(batchObject.courseID.name!==null){
-        errors = errors +'Course is Required<br>';
+    if(batchObject.commenceDate!==null){
+        errors = errors +'Commence Date is Required<br>';
+    }
+    if(batchObject.endDate!==null){
+        errors = errors +'End Date is Required<br>';
+    }
+    if(batchObject.lastRegDate!==null){
+        errors = errors +'Last Registration Date is Required<br>';
     }
 
 }
