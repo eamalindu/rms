@@ -323,8 +323,8 @@ const saveTimetable = () => {
 const newBatchSubmit = ()=>{
     console.log(newBatch);
 
-    let error = checkBatchFormErrors(newBatch);
-    if(error===''){
+    let errors = checkBatchFormErrors(newBatch);
+    if(errors===''){
 
 
         let serviceResponse = ajaxHttpRequest("/Batch",'POST',newBatch);
