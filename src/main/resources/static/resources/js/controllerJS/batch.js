@@ -31,6 +31,7 @@ window.addEventListener("load",()=>{
     });
 });
 
+//creating a function to refresh the batch table when ever needed
 const refreshBatchTable =()=>{
 
     //getting current batches from the database using ajaxGetRequest function and assign the response to the variable batches
