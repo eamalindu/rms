@@ -29,6 +29,12 @@ window.addEventListener("load",()=>{
         //calling the calculateLastRegDate function to auto generated the batch end date according to the selected commence date
         calculateEndDate();
     });
+
+    //bind data to the batch object, once the "apply" button on batchCommenceDate input is clicked
+    $('#batchSheetCommenceDate').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','editedBatch','commenceDate');
+    });
 });
 
 //creating a function to refresh the batch table when ever needed
