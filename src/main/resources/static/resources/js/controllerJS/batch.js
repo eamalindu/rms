@@ -507,3 +507,7 @@ const checkBatchFormErrors = (batchObject)=>{
     return errors;
 
 }
+
+const batchUpdate = ()=>{
+
+}
