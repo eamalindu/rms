@@ -93,7 +93,7 @@ const getStatus = (ob)=>{
         return '<span class="badge rounded-0" style="background: #ea8a1e">Started</span>';
     }
     else if(ob.batchStatusID.name==="Canceled"){
-        return '<span class="badge rounded-0" style="background: #ea2f1e">Started</span>';
+        return '<span class="badge rounded-0" style="background: #ea2f1e">Canceled</span>';
     }
     else{
         return '<span class="badge rounded-0" style="background: #1eadea">Completed</span>';
