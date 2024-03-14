@@ -156,7 +156,7 @@ const rowView = (ob,index)=>{
 
     //initialize 3rd party
     $('#batchSheetCommenceDate').daterangepicker({
-        "minDate": ob.startDate,
+        "minDate": ob.commenceDate,
         "singleDatePicker": true,
         "linkedCalendars": false,
         "showCustomRangeLabel": false,
