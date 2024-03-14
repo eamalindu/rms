@@ -561,6 +561,9 @@ const checkForBatchUpdate = ()=>{
     if(editedBatch.lastRegDate!==oldBatch.lastRegDate){
         updates = updates + "Last Registration Date was changed to <span class='text-steam-green'>" + editedBatch.lastRegDate + "</span><br>";
     }
+    if(editedBatch.seatCount!==oldBatch.seatCount){
+        updates = updates + "Seat Count was changed to <span class='text-steam-green'>" + editedBatch.seatCount + "</span><br>";
+    }
 
     return updates;
 }
