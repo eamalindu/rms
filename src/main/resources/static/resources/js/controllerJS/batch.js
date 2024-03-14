@@ -135,6 +135,9 @@ const rowView = (ob,index)=>{
     else if(ob.batchStatusID.name==='Started'){
         batchSheetCode.classList.add('text-warning');
     }
+    else if(ob.batchStatusID.name==='Completed'){
+        batchSheetCode.classList.add('text-steam-green');
+    }
     else{
         batchSheetCode.classList.add('text-danger');
     }
