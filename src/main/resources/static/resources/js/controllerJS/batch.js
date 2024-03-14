@@ -510,5 +510,9 @@ const checkBatchFormErrors = (batchObject)=>{
 
 //creating a function to update the privilege when ever needed
 const batchUpdate = ()=>{
+    console.log(editedBatch);
+
+    //calling the checkBatchFormErrors function and catching the return value to errors variable
+    let errors = checkBatchFormErrors(editedBatch);
 
 }
