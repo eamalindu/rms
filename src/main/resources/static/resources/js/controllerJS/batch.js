@@ -555,6 +555,12 @@ const checkForBatchUpdate = ()=>{
     if(editedBatch.commenceDate!==oldBatch.commenceDate){
         updates = updates + "Commence Date was changed to <span class='text-steam-green'>" + editedBatch.commenceDate + "</span><br>";
     }
+    if(editedBatch.endDate!==oldBatch.endDate){
+        updates = updates + "End Date was changed to <span class='text-steam-green'>" + editedBatch.endDate + "</span><br>";
+    }
+    if(editedBatch.lastRegDate!==oldBatch.lastRegDate){
+        updates = updates + "Last Registration Date was changed to <span class='text-steam-green'>" + editedBatch.lastRegDate + "</span><br>";
+    }
 
     return updates;
 }
