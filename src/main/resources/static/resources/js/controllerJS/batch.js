@@ -79,7 +79,7 @@ const getWeekDay = (ob)=>{
         return "Weekday";
     }
     else{
-        return "Weekday";
+        return "Weekend";
     }
 
 }
