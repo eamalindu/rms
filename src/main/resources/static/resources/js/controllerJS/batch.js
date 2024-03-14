@@ -182,7 +182,7 @@ const rowView = (ob,index)=>{
         }
     });
     $('#batchSheetLastDate').daterangepicker({
-        "minDate": ob.endDate,
+        "minDate": ob.lastRegDate,
         "singleDatePicker": true,
         "linkedCalendars": false,
         "showCustomRangeLabel": false,
