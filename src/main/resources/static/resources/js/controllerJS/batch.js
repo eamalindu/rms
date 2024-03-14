@@ -564,6 +564,12 @@ const checkForBatchUpdate = ()=>{
     if(editedBatch.seatCount!==oldBatch.seatCount){
         updates = updates + "Seat Count was changed to <span class='text-steam-green'>" + editedBatch.seatCount + "</span><br>";
     }
+    if(editedBatch.isWeekday!==oldBatch.isWeekday){
+        updates = updates + "Delivery Mode was changed to <span class='text-steam-green'>" + editedBatch.isWeekday + "</span><br>";
+    }
+    if(editedBatch.isWeekday!==oldBatch.isWeekday){
+        updates = updates + "Delivery Mode was changed to <span class='text-steam-green'>" + editedBatch.isWeekday + "</span><br>";
+    }
 
     return updates;
 }
