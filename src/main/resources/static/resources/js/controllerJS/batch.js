@@ -156,7 +156,18 @@ const rowView = (ob,index)=>{
 
     //initialize 3rd party
     $('#batchSheetCommenceDate').daterangepicker({
-        "minDate": new Date(),
+        "minDate": ob.startDate,
+        "singleDatePicker": true,
+        "linkedCalendars": false,
+        "showCustomRangeLabel": false,
+        "autoUpdateInput": false,
+        "drops": "down",
+        "locale": {
+            "format": "YYYY-MM-DD"
+        }
+    });
+    $('#batchSheetEndDate').daterangepicker({
+        "minDate": ob.endDate,
         "singleDatePicker": true,
         "linkedCalendars": false,
         "showCustomRangeLabel": false,
