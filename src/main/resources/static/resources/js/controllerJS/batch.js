@@ -131,15 +131,31 @@ const rowView = (ob,index)=>{
 
     if(ob.batchStatusID.name==='Scheduled'){
         batchSheetCode.classList.add('text-success');
+
+        batchSheetCode.classList.remove('text-warning');
+        batchSheetCode.classList.remove('text-steam-green');
+        batchSheetCode.classList.remove('text-danger');
     }
     else if(ob.batchStatusID.name==='Started'){
         batchSheetCode.classList.add('text-warning');
+
+        batchSheetCode.classList.remove('text-success');
+        batchSheetCode.classList.remove('text-steam-green');
+        batchSheetCode.classList.remove('text-danger');
     }
     else if(ob.batchStatusID.name==='Completed'){
         batchSheetCode.classList.add('text-steam-green');
+
+        batchSheetCode.classList.remove('text-success');
+        batchSheetCode.classList.remove('text-warning');
+        batchSheetCode.classList.remove('text-danger');
     }
     else{
         batchSheetCode.classList.add('text-danger');
+
+        batchSheetCode.classList.remove('text-success');
+        batchSheetCode.classList.remove('text-warning');
+        batchSheetCode.classList.remove('text-steam-green');
     }
 
     if(ob.isWeekday){
