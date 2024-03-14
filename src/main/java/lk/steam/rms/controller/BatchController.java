@@ -99,4 +99,20 @@ public class BatchController {
             return "Update Failed "+ex.getMessage();
         }
     }
+
+    @DeleteMapping
+    public String deleteBatch(@RequestBody Batch batch){
+        try {
+            //soft delete
+            //change batch Status to delete
+            BatchStatus deleteStatus = batchStatusDAO.getReferenceById(4);
+            batch.setBatchStatusID(deleteStatus);
+            //update the batch record
+            batchDAO.save(batch);
+
+            return "OK";
+        } catch (Exception ex) {
+            return "Delete Failed " + ex.getMessage();
+        }
+    }
 }
