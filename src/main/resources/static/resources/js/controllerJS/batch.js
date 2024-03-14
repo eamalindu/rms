@@ -567,9 +567,16 @@ const checkForBatchUpdate = ()=>{
     if(editedBatch.isWeekday!==oldBatch.isWeekday){
         updates = updates + "Delivery Mode was changed to <span class='text-steam-green'>" + editedBatch.isWeekday + "</span><br>";
     }
-    if(editedBatch.isWeekday!==oldBatch.isWeekday){
-        updates = updates + "Delivery Mode was changed to <span class='text-steam-green'>" + editedBatch.isWeekday + "</span><br>";
+    if(editedBatch.description!==oldBatch.description){
+        updates = updates + "Description was changed to <span class='text-steam-green'>" + editedBatch.description + "</span><br>";
     }
+    if(editedBatch.batchStatusID.name!==oldBatch.batchStatusID.name){
+        updates = updates + "Batch Staus was changed to <span class='text-steam-green'>" + editedBatch.batchStatusID.name + "</span><br>";
+    }
+    if(editedBatch.paymentPlanID.name!==oldBatch.paymentPlanID.name){
+        updates = updates + "Payment Plan was changed to <span class='text-steam-green'>" + editedBatch.paymentPlanID.name + "</span><br>";
+    }
+
 
     return updates;
 }
