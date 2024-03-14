@@ -84,7 +84,7 @@ let next0 = () => {
             {property: 'description',dataType: 'text'},
 
         ];
-        // fillDataIntoTableWithRadio(tblWeekDayBatches,weekDayBatches,displayPropertyListForWeekDay,radioFunctionForWeekDay,'batch');
+        //fillDataIntoTableWithRadio(tblWeekDayBatches,weekDayBatches,displayPropertyListForWeekDay,radioFunctionForWeekDay,'batch');
         // fillDataIntoTableWithRadio(tblWeekEndBatches,weekEndBatches,displayPropertyListForWeekEnd,radioFunctionForWeekEnd,'batch');
         createRadioCards(weekDayBatches,handleCardClick,containerA);
         createRadioCards(weekEndBatches,handleCardClick,containerB);
@@ -356,4 +356,5 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
 
 const handleCardClick = (object, index) => {
     console.log(object);
+    registration.batchID = object;
 };
