@@ -39,6 +39,10 @@ window.addEventListener("load",()=>{
         $(this).val(picker.startDate.format('YYYY-MM-DD'));
         inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','editedBatch','endDate');
     });
+    $('#batchSheetLastDate').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','editedBatch','lastRegDate');
+    });
 });
 
 //creating a function to refresh the batch table when ever needed
@@ -167,6 +171,17 @@ const rowView = (ob,index)=>{
         }
     });
     $('#batchSheetEndDate').daterangepicker({
+        "minDate": ob.endDate,
+        "singleDatePicker": true,
+        "linkedCalendars": false,
+        "showCustomRangeLabel": false,
+        "autoUpdateInput": false,
+        "drops": "down",
+        "locale": {
+            "format": "YYYY-MM-DD"
+        }
+    });
+    $('#batchSheetLastDate').daterangepicker({
         "minDate": ob.endDate,
         "singleDatePicker": true,
         "linkedCalendars": false,
