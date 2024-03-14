@@ -633,7 +633,7 @@ const checkForBatchUpdate = ()=>{
 //creating a function to delete a privilege when ever needed
 const batchDelete = ()=>{
     //get user confirmation
-    showCustomConfirm("You are About to <b>Cancel</b> this Batch<br><br>Batch Code: <span class='text-purple'>"+oldBatch.batchCode+"</span><br><br>Are You Sure?",function (result) {
+    showCustomConfirm("You are About to <b>Cancel</b> this Batch<br><br>Batch Code: <span class='text-steam-green'>"+oldBatch.batchCode+"</span><br><br>Are You Sure?",function (result) {
         if(result){
             //pass the record to backend
             //receive the server response
