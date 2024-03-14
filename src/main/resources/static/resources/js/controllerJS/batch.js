@@ -527,3 +527,9 @@ const batchUpdate = ()=>{
     }
 
 }
+
+//this function will check for any updates by comparing old and edited Batch object
+//this function will return if there are any updates
+const checkForBatchUpdate = ()=>{
+
+}
