@@ -517,7 +517,27 @@ const batchUpdate = ()=>{
     //check the errors variable is null
     //if it's null that means all the required inputs are filled
     if(errors==='') {
-        //get a user confirmation using external customConfirm js
+        //calling the checkForPrivilegeUpdate function and catching the return value to updates variable
+        let updates = checkForBatchUpdate();
+        //check the updates variable is null
+        //if it's null that means there are no any updates
+        if (updates === '') {
+            showCustomModal("No changes Detected!", "info");
+        }
+        else{
+            showCustomConfirm("You are About to Update this Privilege<br><br>Following Changes Detected!<br/><br/><small>" + updates + "</small><br>Are You Sure?",function (result) {
+                //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+                //catch the return value from the backend and save it in the serviceResponse variable
+                if (result) {
+                    //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+                    //catch the return value from the backend and save it in the serviceResponse variable
+
+                } else {
+                    showCustomModal("Operation Cancelled!", "info");
+                }
+            });
+        }
+
     }
     else{
         //there are errors
