@@ -92,9 +92,13 @@ const getStatus = (ob)=>{
     else if(ob.batchStatusID.name==="Started"){
         return '<span class="badge rounded-0" style="background: #ea8a1e">Started</span>';
     }
+    else if(ob.batchStatusID.name==="Canceled"){
+        return '<span class="badge rounded-0" style="background: #ea2f1e">Started</span>';
+    }
     else{
         return '<span class="badge rounded-0" style="background: #1eadea">Completed</span>';
     }
+
 }
 
 //created a function to show to details in an offcanvas
