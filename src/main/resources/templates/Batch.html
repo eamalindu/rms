@@ -473,7 +473,7 @@
                             <tr>
                                 <td class="fw-bold w-25">Seat Count</td>
                                 <td class="w-25">
-                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="batchSheetSeatCount" disabled required>
+                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="batchSheetSeatCount" onkeyup="inputTextValidator(this,'^[0-9]{2}$','editedBatch','seatCount')" disabled required>
                                 </td>
                                 <td class="fw-bold w-25">Last Registration Date</td>
                                 <td>
@@ -485,13 +485,13 @@
                             <tr>
                                 <td class="fw-bold w-25">Description</td>
                                 <td class="" colspan="">
-                                    <input class="small rounded-0 form-control-sm w-100 batchSheetInputs" id="batchSheetDescription" disabled required>
+                                    <input class="small rounded-0 form-control-sm w-100 batchSheetInputs" id="batchSheetDescription" onkeyup="inputTextValidator(this,'^[a-zA-Z0-9\\s/]{10,}$','editedBatch','description')" disabled required>
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid Address</div>
                                 </td>
                                 <td class="fw-bold w-25">Status</td>
                                 <td class="" colspan="">
-                                    <select class="batchSheetInputs form-select rounded-0 small form-select-sm" id="batchSheetStatus" disabled required style="background: whitesmoke"></select>
+                                    <select class="batchSheetInputs form-select rounded-0 small form-select-sm" id="batchSheetStatus" onchange="selectDynamicValueValidator(this,'','editedBatch','batchStatusID')" disabled required style="background: whitesmoke"></select>
                                     <div class="valid-feedback">Value Accepted</div>
                                     <div class="invalid-feedback">Please provide a valid Address</div>
                                 </td>
