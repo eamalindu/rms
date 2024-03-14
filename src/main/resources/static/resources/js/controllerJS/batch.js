@@ -629,3 +629,33 @@ const checkForBatchUpdate = ()=>{
 
     return updates;
 }
+
+//creating a function to delete a privilege when ever needed
+const batchDelete = ()=>{
+    //get user confirmation
+    showCustomConfirm("You are About to Cancel this Batch<br><br>Batch Name: <span class='text-purple'>"+oldPrivilege.code+"</span><br><br>Are You Sure?",function (result) {
+        if(result){
+            //pass the record to backend
+            //receive the server response
+            let serviceResponse = ajaxHttpRequest("/Batch","DELETE",oldBatch);
+            if(serviceResponse==="OK"){
+                //show user the response
+                showCustomModal("Batch Successfully Canceled!", "success");
+                //close the offCanvas sheet
+                offCanvasBatchSheetCloseButton.click();
+                //refresh table
+                refreshBatchTable();
+            }
+            else{
+                showCustomModal("Operation Failed!" + serviceResponse, "error");
+            }
+
+
+        }
+        else{
+            showCustomModal("Operation Cancelled!", "info");
+        }
+
+    });
+
+}
