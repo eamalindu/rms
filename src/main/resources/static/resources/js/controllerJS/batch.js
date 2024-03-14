@@ -35,6 +35,10 @@ window.addEventListener("load",()=>{
         $(this).val(picker.startDate.format('YYYY-MM-DD'));
         inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','editedBatch','commenceDate');
     });
+    $('#batchSheetEndDate').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','editedBatch','endDate');
+    });
 });
 
 //creating a function to refresh the batch table when ever needed
@@ -149,6 +153,19 @@ const rowView = (ob,index)=>{
     batchSheetPaymentPlanCourseFee.innerText =  "Rs. "+ob.paymentPlanID.courseFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     batchSheetPaymentPlanTotalFee.innerText =  "Rs. "+ob.paymentPlanID.totalFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     batchSheetPaymentPlanInstallments.innerText = ob.paymentPlanID.numberOfInstallments;
+
+    //initialize 3rd party
+    $('#batchSheetCommenceDate').daterangepicker({
+        "minDate": new Date(),
+        "singleDatePicker": true,
+        "linkedCalendars": false,
+        "showCustomRangeLabel": false,
+        "autoUpdateInput": false,
+        "drops": "down",
+        "locale": {
+            "format": "YYYY-MM-DD"
+        }
+    });
 
     //catch old Batch and new Batch
     oldBatch = JSON.parse(JSON.stringify(ob));
