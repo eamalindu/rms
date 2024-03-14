@@ -508,6 +508,7 @@ const checkBatchFormErrors = (batchObject)=>{
 
 }
 
+//creating a function to update the privilege when ever needed
 const batchUpdate = ()=>{
 
 }
