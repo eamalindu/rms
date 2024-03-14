@@ -137,10 +137,14 @@ const rowView = (ob,index)=>{
 
     if(ob.isWeekday){
         batchSheetWeekday.checked = false;
+        rightWeekdaySheet.classList.add('bg-success', 'text-white');
+        leftWeekdaySheet.classList.remove('bg-success', 'text-white');
 
     }
     else{
         batchSheetWeekday.checked = true;
+        rightWeekdaySheet.classList.remove('bg-success', 'text-white');
+        leftWeekdaySheet.classList.add('bg-success', 'text-white');
 
 
     }
