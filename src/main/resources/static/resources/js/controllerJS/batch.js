@@ -531,5 +531,9 @@ const batchUpdate = ()=>{
 //this function will check for any updates by comparing old and edited Batch object
 //this function will return if there are any updates
 const checkForBatchUpdate = ()=>{
+    let updates = '';
+    if(editedBatch.commenceDate!==oldBatch.commenceDate){
+        updates = updates + "Commence Date was changed to <span class='text-steam-green'>" + editedBatch.commenceDate + "</span><br>";
+    }
 
 }
