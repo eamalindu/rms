@@ -536,4 +536,5 @@ const checkForBatchUpdate = ()=>{
         updates = updates + "Commence Date was changed to <span class='text-steam-green'>" + editedBatch.commenceDate + "</span><br>";
     }
 
+    return updates;
 }
