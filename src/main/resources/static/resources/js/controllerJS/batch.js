@@ -525,7 +525,7 @@ const batchUpdate = ()=>{
             showCustomModal("No changes Detected!", "info");
         }
         else{
-            showCustomConfirm("You are About to Update this Privilege<br><br>Following Changes Detected!<br/><br/><small>" + updates + "</small><br>Are You Sure?",function (result) {
+            showCustomConfirm("You are About to Update this Batch<br><br>Following Changes Detected!<br/><br/><small>" + updates + "</small><br>Are You Sure?",function (result) {
                 //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
                 //catch the return value from the backend and save it in the serviceResponse variable
                 if (result) {
