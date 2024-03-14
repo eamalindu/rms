@@ -534,6 +534,23 @@ const batchUpdate = ()=>{
                 if (result) {
                     //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
                     //catch the return value from the backend and save it in the serviceResponse variable
+                    let serverResponse = ajaxHttpRequest("/Batch","PUT",editedBatch);
+                    //check the serviceResponse value is "OK"
+                    if(serverResponse==="OK"){
+                        //this means data successfully passed to the backend
+                        //show an alert to user
+                        showCustomModal("Batch Successfully Updated!", "success");
+                        //close the offCanvas sheet
+                        offCanvasBatchSheetCloseButton.click();
+                        //refresh table
+                        refreshBatchTable();
+
+                    }
+                    else{
+                        showCustomModal("Operation Failed!" + serviceResponse, "error")
+                    }
+
+
 
                 } else {
                     showCustomModal("Operation Cancelled!", "info");
