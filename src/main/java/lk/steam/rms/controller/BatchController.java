@@ -86,6 +86,8 @@ public class BatchController {
         //check existing
         Batch existBatch =  batchDAO.getReferenceById(batch.getId());
 
+        //payment plan cannot be changed to another one if registrations are done
+        //this needed to implement here
         if (existBatch == null) {
             return "No Such Privilege Record";
         }
