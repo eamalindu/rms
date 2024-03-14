@@ -79,4 +79,22 @@ public class BatchController {
         batchDAO.save(batch);
         return "OK";
     }
+
+    @PutMapping
+    public String updateBatch(@RequestBody Batch batch){
+
+        //check existing
+        Batch existBatch =  batchDAO.getReferenceById(batch.getId());
+
+        if (existBatch == null) {
+            return "No Such Privilege Record";
+        }
+        try{
+            batchDAO.save(batch);
+            return "OK";
+        }
+        catch (Exception ex){
+            return "Update Failed "+ex.getMessage();
+        }
+    }
 }
