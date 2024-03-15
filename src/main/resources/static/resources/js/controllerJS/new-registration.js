@@ -284,9 +284,9 @@ const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount
 }
 
 const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFullPayment)=>{
-    totalFeeInputID.value = parseFloat(ob.totalFee).toFixed(2);
-    registrationFeeInputID.value = parseFloat(ob.registrationFee).toFixed(2);
-    courseFeeInputID.value = parseFloat(ob.courseFee).toFixed(2);
+    totalFeeInputID.value = parseFloat(ob.paymentPlanID.totalFee).toFixed(2);
+    registrationFeeInputID.value = parseFloat(ob.paymentPlanID.registrationFee).toFixed(2);
+    courseFeeInputID.value = parseFloat(ob.paymentPlanID.courseFee).toFixed(2);
 
     tblInstallments.children[1].innerHTML = '';
 
@@ -357,4 +357,7 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
 const handleCardClick = (object, index) => {
     console.log(object);
     registration.batchID = object;
+    loadFee(object,txtTotalFeeFullPayment,txtRegistrationFeeFullPayment,txtCourseFeeFullPayment,true);
+    //load fee for installment payment
+    loadFee(object,txtTotalFeePartPayment,txtRegistrationFeePartPayment,txtCourseFeePartPayment,false);
 };
