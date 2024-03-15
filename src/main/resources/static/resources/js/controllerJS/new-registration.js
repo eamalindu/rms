@@ -284,17 +284,17 @@ const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount
 }
 
 const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFullPayment)=>{
-    totalFeeInputID.value = parseFloat(ob.paymentPlanID.totalFee).toFixed(2);
-    registrationFeeInputID.value = parseFloat(ob.paymentPlanID.registrationFee).toFixed(2);
-    courseFeeInputID.value = parseFloat(ob.paymentPlanID.courseFee).toFixed(2);
+    totalFeeInputID.value = (ob.paymentPlanID.totalFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    registrationFeeInputID.value = (ob.paymentPlanID.registrationFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    courseFeeInputID.value = (ob.paymentPlanID.courseFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
     tblInstallments.children[1].innerHTML = '';
 
     if(isFullPayment) {
         txtTotalDiscountFeeFullPayment.value = "0.00";
-        txtFinalTotalFeeFullPayment.value = parseFloat(ob.paymentPlanID.totalFee).toFixed(2);
-        txtFinalCourseFeeFullPayment.value = parseFloat(ob.paymentPlanID.courseFee).toFixed(2);
-        txtFinalRegistrationFeeFullPayment.value = parseFloat(ob.paymentPlanID.registrationFee).toFixed(2);
+        txtFinalTotalFeeFullPayment.value = (ob.paymentPlanID.totalFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        txtFinalCourseFeeFullPayment.value = (ob.paymentPlanID.courseFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        txtFinalRegistrationFeeFullPayment.value = (ob.paymentPlanID.registrationFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     }
 
 
