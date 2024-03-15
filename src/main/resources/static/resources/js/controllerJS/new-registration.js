@@ -292,9 +292,9 @@ const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFu
 
     if(isFullPayment) {
         txtTotalDiscountFeeFullPayment.value = "0.00";
-        txtFinalTotalFeeFullPayment.value = parseFloat(ob.totalFee).toFixed(2);
-        txtFinalCourseFeeFullPayment.value = parseFloat(ob.courseFee).toFixed(2);
-        txtFinalRegistrationFeeFullPayment.value = parseFloat(ob.registrationFee).toFixed(2);
+        txtFinalTotalFeeFullPayment.value = parseFloat(ob.paymentPlanID.totalFee).toFixed(2);
+        txtFinalCourseFeeFullPayment.value = parseFloat(ob.paymentPlanID.courseFee).toFixed(2);
+        txtFinalRegistrationFeeFullPayment.value = parseFloat(ob.paymentPlanID.registrationFee).toFixed(2);
     }
 
 
