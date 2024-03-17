@@ -302,6 +302,7 @@ const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFu
 
 const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,installments)=>{
     if(elementID.checked){
+        tblInstallments.classList.remove('d-none');
         const installmentFee = courseFee / installments;
         let currentDate = new Date();
 
