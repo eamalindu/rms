@@ -89,10 +89,10 @@ let next0 = () => {
         createRadioCards(weekDayBatches,handleCardClick,containerA);
         createRadioCards(weekEndBatches,handleCardClick,containerB);
         if(weekEndBatches.length===0){
-            containerB.innerHTML = '<p class="text-red text-center small">No Weekend Batches Available! <br>Please Contact <strong>'+registration.courseID.name+'</strong> Course Coordinator</p>';
+            containerB.innerHTML = '<p class="text-red text-center small">No Active Weekend Batches Available! <br>Please Contact <strong>'+registration.courseID.name+'</strong> Course Coordinator</p>';
         }
         if(weekDayBatches.length===0){
-            containerA.innerHTML = '<p class="text-red text-center small">No Weekday Batches Available! <br>Please Contact <strong>'+registration.courseID.name+'</strong> Course Coordinator</p>';
+            containerA.innerHTML = '<p class="text-red text-center small">No Active Weekday Batches Available! <br>Please Contact <strong>'+registration.courseID.name+'</strong> Course Coordinator</p>';
         }
 
 
