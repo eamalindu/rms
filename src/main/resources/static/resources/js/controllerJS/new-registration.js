@@ -318,7 +318,7 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
         firstTR.appendChild(firstTD);
 
         const secondTD = document.createElement('td');
-        secondTD.innerText = parseFloat(installmentFee + registrationFee).toFixed(2);
+        secondTD.innerText = (installmentFee + registrationFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
         firstTR.appendChild(secondTD);
 
         const thirdTD = document.createElement('td');
