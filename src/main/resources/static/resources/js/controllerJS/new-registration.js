@@ -63,8 +63,8 @@ let next0 = () => {
 
         //get all the batches(from selected course) and fill them into the tables
 
-        weekDayBatches = ajaxGetRequest("/Batch/getWeekDayBatch/"+registration.courseID.id);
-        weekEndBatches = ajaxGetRequest("/Batch/getWeekEndBatch/"+registration.courseID.id);
+        weekDayBatches = ajaxGetRequest("/Batch/getActiveWeekDayBatch/"+registration.courseID.id);
+        weekEndBatches = ajaxGetRequest("/Batch/getActiveWeekEndBatch/"+registration.courseID.id);
         test = ajaxGetRequest("/Batch/findall")
 
         displayPropertyListForWeekDay = [
