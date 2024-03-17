@@ -188,6 +188,9 @@ select:invalid[multiple] {
 .text-steam-green{
     color: #19459D!important;
 }
+.text-red{
+    color:red;
+}
 
 .custom-table td {
     /*background-color: white;*/
