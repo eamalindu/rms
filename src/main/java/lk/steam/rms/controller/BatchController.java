@@ -26,14 +26,14 @@ public class BatchController {
         return batchDAO.findAll();
     }
 
-    @GetMapping("getWeekDayBatch/{courseId}")
-    public List<Batch> getWeekDayBatchesByCourseId(@PathVariable Integer courseId) {
-        return batchDAO.getWeekDayBatchesByCourseId(courseId);
+    @GetMapping("getActiveWeekDayBatch/{courseId}")
+    public List<Batch> getActiveWeekDayBatchesByCourseId(@PathVariable Integer courseId) {
+        return batchDAO.getActiveWeekDayBatchesByCourseId(courseId);
     }
 
-    @GetMapping("getWeekEndBatch/{courseId}")
-    public List<Batch> getWeekendBatchesByCourseId(@PathVariable Integer courseId) {
-        return batchDAO.getWeekendBatchesByCourseId(courseId);
+    @GetMapping("getActiveWeekEndBatch/{courseId}")
+    public List<Batch> getActiveWeekendBatchesByCourseId(@PathVariable Integer courseId) {
+        return batchDAO.getActiveWeekendBatchesByCourseId(courseId);
     }
     @GetMapping()
     public ModelAndView batchUI(){
