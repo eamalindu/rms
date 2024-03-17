@@ -49,7 +49,7 @@ window.addEventListener("load",()=>{
 const refreshBatchTable =()=>{
 
     //getting current batches from the database using ajaxGetRequest function and assign the response to the variable batches
-    batches = ajaxGetRequest("/api/batch/findall");
+    batches = ajaxGetRequest("/Batch/findall");
     //creating a display property list for the batches
     displayPropertyListForBatches = [
         {property:getCourseName,dataType:'function'},
@@ -433,7 +433,7 @@ const newBatchSubmit = ()=>{
             if(result){
                 //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
                 //catch the return value from the backend and save it in the serviceResponse variable
-                let serviceResponse = ajaxHttpRequest("/api/batch",'POST',newBatch);
+                let serviceResponse = ajaxHttpRequest("/Batch",'POST',newBatch);
                 //check the serviceResponse value is "OK"
                 if(serviceResponse==="OK"){
                     //this means data successfully passed to the backend
@@ -557,7 +557,7 @@ const batchUpdate = ()=>{
                 if (result) {
                     //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
                     //catch the return value from the backend and save it in the serviceResponse variable
-                    let serverResponse = ajaxHttpRequest("/api/batch","PUT",editedBatch);
+                    let serverResponse = ajaxHttpRequest("/Batch","PUT",editedBatch);
                     //check the serviceResponse value is "OK"
                     if(serverResponse==="OK"){
                         //this means data successfully passed to the backend
@@ -637,7 +637,7 @@ const batchDelete = ()=>{
         if(result){
             //pass the record to backend
             //receive the server response
-            let serviceResponse = ajaxHttpRequest("/api/batch","DELETE",oldBatch);
+            let serviceResponse = ajaxHttpRequest("/Batch","DELETE",oldBatch);
             if(serviceResponse==="OK"){
                 //show user the response
                 showCustomModal("Batch Successfully Canceled!", "success");

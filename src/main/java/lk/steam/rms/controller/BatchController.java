@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/batch")
+@RequestMapping(value = "/Batch")
 public class BatchController {
 
     @Autowired
