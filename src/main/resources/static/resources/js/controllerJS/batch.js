@@ -219,6 +219,20 @@ const rowView = (ob,index)=>{
         }
     });
 
+    $('#batchSheetCommenceDate').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','editedBatch','commenceDate');
+    });
+    $('#batchSheetEndDate').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','editedBatch','endDate');
+    });
+    $('#batchSheetLastDate').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','editedBatch','lastRegDate');
+    });
+
+
     //catch old Batch and new Batch
     oldBatch = JSON.parse(JSON.stringify(ob));
     editedBatch = JSON.parse(JSON.stringify(ob));
