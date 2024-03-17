@@ -338,7 +338,7 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
             tr.appendChild(installmentTD);
 
             const installmentAmountTD = document.createElement('td');
-            installmentAmountTD.innerText = parseFloat(installmentFee).toFixed(2);
+            installmentAmountTD.innerText = (installmentFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
             tr.appendChild(installmentAmountTD);
 
             const installmentDateTD = document.createElement('td');
