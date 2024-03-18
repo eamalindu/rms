@@ -188,13 +188,13 @@ const createRadioCards =(dataList, functionEx,container)=> {
                 </div>
                 <div class="w-50 float-start">
                     <div class="text-center small border-bottom p-1">
-                        <span class="date-starts small text-info" style="font-size:0.8rem">${
+                        <span class="date-starts small text-steam-green" style="font-size:0.8rem">${
             element.commenceDate
         }</span><br/>
                         <small class="text-muted text-nowrap">Batch Commence Date</small>
                     </div>
                     <div class="text-center small p-1">
-                        <span class="date-starts small text-danger" style="font-size:0.8rem">${
+                        <span class="date-starts small text-red" style="font-size:0.8rem">${
             element.lastRegDate
         }</span><br/>
                         <small class="text-muted text-nowrap">Registration Closing Date</small>
