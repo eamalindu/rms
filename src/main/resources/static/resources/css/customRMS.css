@@ -219,8 +219,12 @@ select:invalid[multiple] {
     border: 1px solid #ced4da !important;
 }
 .custom-card-inactive{
-    -webkit-filter: grayscale(1);
-    opacity: 0.8;
+    -webkit-filter: grayscale(0);
+    opacity: 0.6;
+}
+.custom-card-active{
+    -webkit-filter: grayscale(0)!important;
+    opacity: 1!important;
 }
 
 /*custom Alert css*/
