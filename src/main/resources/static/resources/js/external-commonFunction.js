@@ -168,10 +168,10 @@ const createRadioCards =(dataList, functionEx,container)=> {
         cardDiv.onclick = () => {
             functionEx(element, index);
         };
-        cardDiv.className = "card mb-3 rounded-0";
+        cardDiv.className = "card mb-3 rounded-0 custom-card-inactive";
         cardDiv.innerHTML = `
         <div class="card-header text-center">
-            <h6 class="mb-0 batch-title text-teal text-uppercase small">${
+            <h6 class="mb-0 batch-title text-teal small">${
             element.isWeekday ? "Weekday" : "Weekend"
         } / ${element.courseID.name}</h6>
             <span class="text-uppercase"><small>${
@@ -201,7 +201,7 @@ const createRadioCards =(dataList, functionEx,container)=> {
                     </div>
                 </div>
             </div>
-            <div class="w-100 text-center fw-normal small p-2 text-muted">${
+            <div class="w-100 text-center bg-custom-white fw-normal small p-2 text-muted">${
             element.description
         }</div>
         </div>
@@ -216,11 +216,12 @@ const createRadioCards =(dataList, functionEx,container)=> {
             // Reset background color of all cards
             var allCards = document.querySelectorAll(".card");
             allCards.forEach((card) => {
-                card.classList.remove('border', 'border-dark');
+                card.classList.remove('border', 'custom-card-active');
 
             });
             // Set background color of the clicked card
-            cardDiv.classList.add('border', 'border-dark');
+            cardDiv.classList.add('custom-card-active');
+
         });
 
         col.appendChild(cardDiv);
