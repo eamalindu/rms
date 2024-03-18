@@ -169,6 +169,14 @@ const createRadioCards =(dataList, functionEx,container)=> {
             functionEx(element, index);
         };
         cardDiv.className = "card mb-3 rounded-0 custom-card-inactive";
+
+        if(element.batchStatusID.name === "Scheduled"){
+            cardDiv.classList.add('border','border-success')
+        }
+        else{
+            cardDiv.classList.add('border','border-warning')
+        }
+
         cardDiv.innerHTML = `
         <div class="card-header text-center">
             <h6 class="mb-0 batch-title text-teal small">${
@@ -205,7 +213,7 @@ const createRadioCards =(dataList, functionEx,container)=> {
             element.description
         }</div>
         </div>
-        <div class="card-footer show rounded-0 m-0 text-center ${
+        <div class="card-footer show rounded-0 text-uppercase border-0 m-0 text-center ${
             element.batchStatusID.name === "Scheduled"
                 ? "bg-success text-white"
                 : "bg-warning text-white"
