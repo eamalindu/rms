@@ -21,8 +21,8 @@ public class BatchController {
     @Autowired
     private BatchStatusDAO batchStatusDAO;
 
-    @GetMapping(value = "/findall",produces = "application/json")
-    public List<Batch> findAll(){
+    @GetMapping(value = "/findall", produces = "application/json")
+    public List<Batch> findAll() {
         return batchDAO.findAll();
     }
 
@@ -35,15 +35,16 @@ public class BatchController {
     public List<Batch> getActiveWeekendBatchesByCourseId(@PathVariable Integer courseId) {
         return batchDAO.getActiveWeekendBatchesByCourseId(courseId);
     }
+
     @GetMapping()
-    public ModelAndView batchUI(){
+    public ModelAndView batchUI() {
         ModelAndView batchView = new ModelAndView();
         batchView.setViewName("batch.html");
         return batchView;
     }
 
     @PostMapping()
-    public String saveNewBatch(@RequestBody Batch batch){
+    public String saveNewBatch(@RequestBody Batch batch) {
 
         Integer currentCourseID = batch.getCourseID().getId();
         String currentCourseCode = batch.getCourseID().getCode();
@@ -52,9 +53,9 @@ public class BatchController {
         Integer nextBatchNumber = batchDAO.getNextBatchNumberByCourseId(currentCourseID);
         Integer lastBatchCodeYear = batchDAO.getLastBatchCodeYearByCourseID(currentCourseID);
 
-        String halfBatchCode = currentYear+"-"+currentCourseCode+"-";
+        String halfBatchCode = currentYear + "-" + currentCourseCode + "-";
 
-        if(lastBatchCodeYear!=null||lastBatchCodeYear==(currentYear)) {
+        if (lastBatchCodeYear != null || lastBatchCodeYear == (currentYear)) {
             if (nextBatchNumber != null) {
                 batch.setBatchCode(halfBatchCode + nextBatchNumber);
 
@@ -65,10 +66,9 @@ public class BatchController {
 
 
             }
-        }
-        else{
-                nextBatchNumber = 1;
-                batch.setBatchCode(halfBatchCode + nextBatchNumber);
+        } else {
+            nextBatchNumber = 1;
+            batch.setBatchCode(halfBatchCode + nextBatchNumber);
 
         }
 
@@ -81,27 +81,26 @@ public class BatchController {
     }
 
     @PutMapping
-    public String updateBatch(@RequestBody Batch batch){
+    public String updateBatch(@RequestBody Batch batch) {
 
         //check existing
-        Batch existBatch =  batchDAO.getReferenceById(batch.getId());
+        Batch existBatch = batchDAO.getReferenceById(batch.getId());
 
         //payment plan cannot be changed to another one if registrations are done
         //this needed to implement here
         if (existBatch == null) {
             return "No Such Privilege Record";
         }
-        try{
+        try {
             batchDAO.save(batch);
             return "OK";
-        }
-        catch (Exception ex){
-            return "Update Failed "+ex.getMessage();
+        } catch (Exception ex) {
+            return "Update Failed " + ex.getMessage();
         }
     }
 
     @DeleteMapping
-    public String deleteBatch(@RequestBody Batch batch){
+    public String deleteBatch(@RequestBody Batch batch) {
         try {
             //soft delete
             //change batch Status to delete
