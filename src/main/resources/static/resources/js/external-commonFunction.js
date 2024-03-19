@@ -11,7 +11,7 @@
 //This function is called using window.load event handler
 //civilStatusDataList = [{id:1,name:'Single'},{id:2,name:'Married'},{id:3,name:'Divorced'}]
 //Example -> fillSelectOptions(civilStatus,'Please Select Your Civil Status',civilStatusDataList);
-const fillSelectOptions = (elementID, message, dataList,displayProperty,selectedValue) => {
+const fillSelectOptions = (elementID, message, dataList, displayProperty, selectedValue) => {
     const selectElement = elementID;
     selectElement.innerHTML = '';
     if (message !== '') {
@@ -28,7 +28,7 @@ const fillSelectOptions = (elementID, message, dataList,displayProperty,selected
         option.innerText = ob[displayProperty];
         //converting JavaScript values to JSON strings
         option.value = JSON.stringify(ob);
-        if(selectedValue==ob[displayProperty]){
+        if (selectedValue == ob[displayProperty]) {
             option.selected = "selected";
         }
         selectElement.appendChild(option);
@@ -41,7 +41,7 @@ const fillSelectOptions = (elementID, message, dataList,displayProperty,selected
 //1) url -> java mapping (service url)
 //This function will return the data as an array
 
-const fillMultiSelectOptions=(elementID, message, dataList,displayProperty,selectedValueArray)=>{
+const fillMultiSelectOptions = (elementID, message, dataList, displayProperty, selectedValueArray) => {
     const selectElement = elementID;
     selectElement.innerHTML = '';
     if (message !== '') {
@@ -68,22 +68,17 @@ const fillMultiSelectOptions=(elementID, message, dataList,displayProperty,selec
 
 }
 //Example -> ajaxGetRequest("/employee/findall")
-const ajaxGetRequest = (url) =>{
+const ajaxGetRequest = (url) => {
     $('.loading-overlay').show();
     let Response;
     $.ajax(url, {
-        async: false,
-        type: "Get",
-        contentType: "json",
-        success: function (data) {
+        async: false, type: "Get", contentType: "json", success: function (data) {
             console.log(data);
             Response = data;
-        },
-        error: function (resOb) {
+        }, error: function (resOb) {
             alert("error" + resOb);
             Response = resOb;
-        },
-        complete: function () {
+        }, complete: function () {
             // Hide loading animation
             $('.loading-overlay').hide();
         }
@@ -93,7 +88,7 @@ const ajaxGetRequest = (url) =>{
 
 }
 
-const ajaxHttpRequest = (url,method,dataObject)=>{
+const ajaxHttpRequest = (url, method, dataObject) => {
     let serviceRequestResponse;
 
     $.ajax(url, {
@@ -116,10 +111,10 @@ const ajaxHttpRequest = (url,method,dataObject)=>{
 //test code to show all the followups when an inquiry object is given
 //need to implement a backend service (to get followup details when an inquiry is given)
 //need to ask
-const showFollowupCard =(cardData,container)=>{
+const showFollowupCard = (cardData, container) => {
 
     //remove any static codes/divs
-    container.innerHTML='';
+    container.innerHTML = '';
 
     // Iterate over the cardData array using forEach
     cardData.forEach(data => {
@@ -152,7 +147,7 @@ const showFollowupCard =(cardData,container)=>{
     });
 }
 
-const createRadioCards =(dataList, functionEx,container)=> {
+const createRadioCards = (dataList, functionEx, container) => {
     container.innerHTML = ""; // Clear previous content
     var row = null;
     dataList.forEach((element, index) => {
@@ -170,54 +165,37 @@ const createRadioCards =(dataList, functionEx,container)=> {
         };
         cardDiv.className = "card mb-3 rounded-0 custom-card-inactive";
 
-        if(element.batchStatusID.name === "Scheduled"){
-            cardDiv.classList.add('border','border-success')
-        }
-        else{
-            cardDiv.classList.add('border','border-warning')
+        if (element.batchStatusID.name === "Scheduled") {
+            cardDiv.classList.add('border', 'border-success')
+        } else {
+            cardDiv.classList.add('border', 'border-warning')
         }
 
         cardDiv.innerHTML = `
         <div class="card-header text-center">
-            <h6 class="mb-0 batch-title text-teal small">${
-            element.isWeekday ? "Weekday" : "Weekend"
-        } / ${element.courseID.name}</h6>
-            <span class="text-uppercase"><small>${
-            element.batchCode
-        }</small></span>
+            <h6 class="mb-0 batch-title text-teal small">${element.isWeekday ? "Weekday" : "Weekend"} / ${element.courseID.name}</h6>
+            <span class="text-uppercase"><small>${element.batchCode}</small></span>
         </div>
         <div class="card-body p-0">
             <div class="clearfix border-bottom">
                 <div class="w-50 py-3 float-start text-center border-end">
-                    <div class="mx-auto d-flex justify-content-center align-items-center bg-secondary text-white" style="width:50px;height:50px;font-size:1.6rem"><strong>${
-            element.seatCount
-        }</strong></div>
+                    <div class="mx-auto d-flex justify-content-center align-items-center bg-secondary text-white" style="width:50px;height:50px;font-size:1.6rem"><strong>${element.seatCount}</strong></div>
                     <div class="text-muted small"><small>Seats Available</small></div>
                 </div>
                 <div class="w-50 float-start">
                     <div class="text-center small border-bottom p-1">
-                        <span class="date-starts small text-steam-green" style="font-size:0.8rem">${
-            element.commenceDate
-        }</span><br/>
+                        <span class="date-starts small text-steam-green" style="font-size:0.8rem">${element.commenceDate}</span><br/>
                         <small class="text-muted text-nowrap">Batch Commence Date</small>
                     </div>
                     <div class="text-center small p-1">
-                        <span class="date-starts small text-red" style="font-size:0.8rem">${
-            element.lastRegDate
-        }</span><br/>
+                        <span class="date-starts small text-red" style="font-size:0.8rem">${element.lastRegDate}</span><br/>
                         <small class="text-muted text-nowrap">Registration Closing Date</small>
                     </div>
                 </div>
             </div>
-            <div class="w-100 text-center bg-custom-white fw-normal small p-2 text-muted">${
-            element.description
-        }</div>
+            <div class="w-100 text-center bg-custom-white fw-normal small p-2 text-muted">${element.description}</div>
         </div>
-        <div class="card-footer show rounded-0 text-uppercase border-0 m-0 text-center ${
-            element.batchStatusID.name === "Scheduled"
-                ? "bg-success text-white"
-                : "bg-warning text-white"
-        }">${element.batchStatusID.name}</div>`;
+        <div class="card-footer show rounded-0 text-uppercase border-0 m-0 text-center ${element.batchStatusID.name === "Scheduled" ? "bg-success text-white" : "bg-warning text-white"}">${element.batchStatusID.name}</div>`;
 
         cardDiv.style.cursor = "pointer"; // Ensure cursor changes to pointer on hover
         cardDiv.addEventListener("click", function () {
@@ -237,7 +215,7 @@ const createRadioCards =(dataList, functionEx,container)=> {
     });
 }
 
-const fillSelectOptionsWithTwo = (elementID, message, dataList,displayProperty1,displayProperty2,selectedValue) => {
+const fillSelectOptionsWithTwo = (elementID, message, dataList, displayProperty1, displayProperty2, selectedValue) => {
     const selectElement = elementID;
     selectElement.innerHTML = '';
     if (message !== '') {
