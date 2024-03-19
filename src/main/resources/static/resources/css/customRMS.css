@@ -179,17 +179,19 @@ select:invalid[multiple] {
     padding: 5px;
     color: white;
     border: 1px solid white;
-    text-align: center!important;
+    text-align: center !important;
     font-family: Arial, serif !important;
     text-transform: uppercase;
     font-size: medium;
 
 }
-.text-steam-green{
-    color: #19459D!important;
+
+.text-steam-green {
+    color: #19459D !important;
 }
-.text-red{
-    color:red;
+
+.text-red {
+    color: red;
 }
 
 .custom-table td {
@@ -203,13 +205,15 @@ select:invalid[multiple] {
 .custom-table {
     width: 100%;
 }
-.custom-table tr:hover td{
-    background: rgb(25, 69, 157,0.41) !important;
+
+.custom-table tr:hover td {
+    background: rgb(25, 69, 157, 0.41) !important;
     border: 1px solid white;
     color: white;
 }
-.custom-table tr.selected{
-    background-color: white!important;
+
+.custom-table tr.selected {
+    background-color: white !important;
 }
 
 /*custom css for select*/
@@ -218,13 +222,15 @@ select:invalid[multiple] {
     box-shadow: none !important;
     border: 1px solid #ced4da !important;
 }
-.custom-card-inactive{
+
+.custom-card-inactive {
     -webkit-filter: grayscale(0);
     opacity: 0.6;
 }
-.custom-card-active{
-    -webkit-filter: grayscale(0)!important;
-    opacity: 1!important;
+
+.custom-card-active {
+    -webkit-filter: grayscale(0) !important;
+    opacity: 1 !important;
 }
 
 /*custom Alert css*/
@@ -243,40 +249,46 @@ label.required::after {
     bottom: 2px;
     position: relative;
 }
+
 .form-control:focus {
-    border-color: #19459D!important;
+    border-color: #19459D !important;
 }
 
-input,.form-control {
-    box-shadow: none!important;
+input, .form-control {
+    box-shadow: none !important;
 }
 
 /*Validated chosen select*/
-.select-validated{
+.select-validated {
     /*background: rgba(0,255,0,0.2)!important;*/
-    border: 1px solid green!important;
-    color: green!important;
-    background: white!important;
+    border: 1px solid green !important;
+    color: green !important;
+    background: white !important;
 }
-.select-editable{
+
+.select-editable {
     /*background: rgba(0,255,0,0.2)!important;*/
-    border: 1px solid #0DCAF0!important;
-    color: black!important;
-    background: rgba(13,202,240,0.2)!important;
+    border: 1px solid #0DCAF0 !important;
+    color: black !important;
+    background: rgba(13, 202, 240, 0.2) !important;
 }
+
 /*Custom css for daterangepicker*/
 .daterangepicker .ranges li:hover, .daterangepicker .ranges li.active {
     background-color: #44509d;
     color: white;
 }
-.applyBtn{
+
+.applyBtn {
     background: #19459D;
     border-color: #19459D;
 }
-.applyBtn:hover{
+
+.applyBtn:hover {
     background: #44509d;
     border-color: #19459D;
 }
+
 .daterangepicker td.active, .daterangepicker td.active:hover {
     background-color: #19459D;
 }
@@ -301,12 +313,12 @@ input {
     box-shadow: none !important;
 }
 
-.btn-close-red{
-    background: red!important;
-    border-color: red!important;
+.btn-close-red {
+    background: red !important;
+    border-color: red !important;
 }
 
-.valid-feedback{
+.valid-feedback {
     width: fit-content;
     padding: 0.25rem 0.5rem;
     margin-top: 0.1rem;
@@ -315,7 +327,8 @@ input {
     background-color: var(--bs-success);
     border-radius: var(--bs-border-radius);
 }
-.invalid-feedback{
+
+.invalid-feedback {
     width: fit-content;
     padding: 0.25rem 0.5rem;
     margin-top: 0.1rem;
@@ -325,24 +338,27 @@ input {
     border-radius: var(--bs-border-radius);
 }
 
-.active>.page-link{
+.active > .page-link {
     background-color: #19459D;
     border-color: #19459D;
 }
+
 .form-check-input:checked {
     background-color: #19459D;
     border-color: #19459D;
 }
 
 /*Overriding datatable css*/
-.dataTables_filter input, select{
-    border-radius: 0!important;
+.dataTables_filter input, select {
+    border-radius: 0 !important;
 }
-:root{
-    --dt-row-selected : unset;
-    --dt-row-selected-text :unset;
+
+:root {
+    --dt-row-selected: unset;
+    --dt-row-selected-text: unset;
 }
-.loading-overlay{
+
+.loading-overlay {
     width: 100%;
     min-height: 100%;
     background: #f3f3f3;
@@ -352,15 +368,18 @@ input {
     justify-content: center;
 
 }
-.newBatchInputs{
+
+.newBatchInputs {
     font-size: 13px;
 }
-.batchSheetInputs{
-    border:1px solid transparent;
+
+.batchSheetInputs {
+    border: 1px solid transparent;
     background: whitesmoke;
     color: black;
 
 }
+
 /*overriding default*/
 .form-select:disabled {
     background-color: white;
