@@ -216,6 +216,10 @@
                     <div class="mb-3">
                         <img src="" id="imgProfile" class="placeholder-image img-thumbnail rounded-0 mx-auto d-block">
                     </div>
+                    <div class="mb-2">
+                        <label for="courseLogo" class="form-label fw-bold small required">Profile Photo</label>
+                        <input class="form-control rounded-0 small newCourseInputs" type="file" id="courseLogo" accept="image/png, image/jpeg" required onchange="newEmployee.photoPath=this.value">
+                    </div>
                 </form>
             </div>
         </div>
@@ -259,6 +263,30 @@
     </div>
 </div>
 
+
+<script>
+    const employeeProfileInput = document.getElementById("courseLogo");
+    const imgProfile = document.getElementById("imgProfile");
+
+    employeeProfileInput.addEventListener("change", function () {
+        const file = this.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                imgProfile.src = e.target.result;
+                imgProfile.classList.add('bg-success')
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            // Handle the case where no file is selected (e.g., clear the image preview)
+            imgProfile.src = "";
+        }
+    });
+
+</script>
 <script src="/resources/js/external-validator.js" type="text/javascript"></script>
 <script src="/resources/js/external-commonFunction.js" type="text/javascript"></script>
 <script src="/resources/js/external-table.js" type="text/javascript"></script>
