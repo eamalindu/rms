@@ -675,6 +675,7 @@ const batchSearch = ()=>{
             tbody.innerHTML = '';
             const tableTR = document.createElement('tr');
             const  tableTD = document.createElement('td');
+            //set colspan to 10
             tableTD.colSpan = '10';
             tableTD.innerText = 'No Records Found!';
             tableTR.appendChild(tableTD)
