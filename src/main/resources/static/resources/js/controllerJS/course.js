@@ -32,8 +32,19 @@ const refreshCourseTable = ()=>{
 }
 
 const resetCourseForm = ()=>{
+
+    $("#courseRequirement_chosen .chosen-single").removeClass('select-validated');
+    courseRequirement.classList.remove('is-valid');
+
     newCourse = {};
-    courseRequirement
+
+    frmNewCourse.reset();
+
+    //set default option chosen
+    setTimeout(function () {
+        $('#courseRequirement').val('').trigger('chosen:updated');
+    }, 0);
+
     //initialize the 3rd party libraries (chosen)
     $('#courseRequirement').chosen({width: '100%'});
 }
