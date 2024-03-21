@@ -45,3 +45,14 @@ const getStatus=(ob)=>{
         return '<span class="badge rounded-0" style="background: #FF0039">Inactive</span>';
     }
 }
+
+const generateCourseCode = ()=>{
+    const courseNameParts = courseName.value.split(" ");
+    let code = '';
+    console.log(courseNameParts)
+    courseNameParts.forEach((word)=>{
+        code += word[0];
+    })
+
+    courseCode.value = code;
+}
