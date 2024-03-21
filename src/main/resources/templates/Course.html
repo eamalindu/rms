@@ -226,8 +226,18 @@
                         </div>
                         <input class="form-control rounded-0 newCourseInputs" id="courseName" onkeyup="inputTextValidator(this,'^[A-Z][a-z]{6,}[ ][i][n][ ][A-Z][a-z]{1,}$','newCourse','name')"
                                required>
+                        <div class="text-muted small"><small>Example : Diploma in English</small></div>
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Name</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="courseCode">Course Code</label>
+                        </div>
+                        <input class="form-control rounded-0 newCourseInputs" id="courseCode" onkeyup="inputTextValidator(this,'^[A-Z][a-z][A-Z]$','newCourse','code')"
+                               required>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Code</div>
                     </div>
                 </form>
             </div>
