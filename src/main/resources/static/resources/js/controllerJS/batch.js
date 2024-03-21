@@ -666,7 +666,20 @@ const batchSearch = ()=>{
     const searchText = batchSearchID.value;
     if(searchText!=='') {
         let searchBatch = ajaxGetRequest("/Batch/getBatchInfo/" + searchText);
-        fillDataIntoTable(tblBatch, searchBatch, displayPropertyListForBatches, rowView, 'offcanvasBatchSheet');
+        if(searchBatch.length!==0) {
+            fillDataIntoTable(tblBatch, searchBatch, displayPropertyListForBatches, rowView, 'offcanvasBatchSheet');
+        }
+        else{
+            const tbody = tblBatch.children[1];
+            //clear the table body
+            tbody.innerHTML = '';
+            const tableTR = document.createElement('tr');
+            const  tableTD = document.createElement('td');
+            tableTD.colSpan = '10';
+            tableTD.innerText = 'No Records Found!';
+            tableTR.appendChild(tableTD)
+            tbody.appendChild(tableTR);
+        }
     }
     else{
         showCustomModal("Batch Code is required for a search","warning");
