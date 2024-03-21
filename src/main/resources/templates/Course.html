@@ -244,11 +244,11 @@
                             <label class="fw-bold small required" for="courseDuration">Duration</label>
                         </div>
                         <div class="input-group">
-                            <input class="form-control rounded-0 newCourseInputs" id="courseDuration" onkeyup="inputTextValidator(this,'^[0-9]{1,}$','newCourse','duration')"
+                            <input class="form-control rounded-0 newCourseInputs" id="courseDuration" onkeyup="inputTextValidator(this,'^[0-9]{1,2}$','newCourse','duration')"
                                    required>
                             <input class="form-control rounded-0 newCourseInputs" disabled readonly value="Months">
-                            <div class="valid-feedback">Value Accepted</div>
-                            <div class="invalid-feedback">Please provide a valid Duration</div>
+                            <div class="valid-feedback w-100 rounded-2">Value Accepted</div>
+                            <div class="invalid-feedback w-100 rounded-2">Please provide a valid Duration</div>
                         </div>
                     </div>
                 </form>
