@@ -27,7 +27,7 @@ const refreshCourseTable = ()=>{
 }
 
 const resetCourseForm = ()=>{
-    course = {};
+    newCourse = {};
 }
 
 const rowView = ()=>{
