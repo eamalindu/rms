@@ -27,7 +27,7 @@ const refreshCourseTable = ()=>{
 
     fillDataIntoTable(tblCourse, courses, displayPropertyListForCourse, rowView, 'offcanvasCourseSheet');
 
-    $('#tblBatch').DataTable();
+    $('#tblCourse').DataTable();
 
 }
 
