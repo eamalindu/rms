@@ -663,5 +663,8 @@ const batchDelete = () => {
 
 //creating a function to search a batch when ever needed
 const batchSearch = ()=>{
+    const searchText = batchSearchID.value;
+    let searchBatch = ajaxGetRequest("/Batch/getBatchInfo/"+searchText);
+
 
 }
