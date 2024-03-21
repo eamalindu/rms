@@ -216,6 +216,34 @@ select:invalid[multiple] {
     background-color: white !important;
 }
 
+.placeholder-image {
+    position: relative;
+    height: 150px;
+}
+.placeholder-image::before, .placeholder-image::after {
+    content: "";
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    text-align: center;
+}
+.placeholder-image::before {
+    background: #ccc none repeat scroll 0 0;
+    /* box-shadow: inset 0 1px 10px #bbb; */
+    border-radius: 3px;
+    height: 200px;
+}
+.placeholder-image::after {
+    font-size: 49px;
+    opacity: 0.25;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: "FontAwesome";
+    content: "\f3e0";
+}
+
 /*custom css for select*/
 .custom-select {
     background-color: #e9ecef !important;
