@@ -36,6 +36,11 @@ public class BatchController {
         return batchDAO.getActiveWeekendBatchesByCourseId(courseId);
     }
 
+    @GetMapping("getBatchInfo/{batchCode}")
+    public List<Batch> getBatchInfoByBatchCode(@PathVariable String batchCode){
+        return batchDAO.getBatchInfoByBatchCode(batchCode);
+    }
+
     @GetMapping()
     public ModelAndView batchUI() {
         ModelAndView batchView = new ModelAndView();
