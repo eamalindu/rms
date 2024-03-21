@@ -45,6 +45,15 @@ const resetCourseForm = ()=>{
         $('#courseRequirement').val('').trigger('chosen:updated');
     }, 0);
 
+    //remove validation from the inputs all at once
+    inputs = document.querySelectorAll('.newCourseInputs');
+    inputs.forEach(function (input) {
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
+
     //initialize the 3rd party libraries (chosen)
     $('#courseRequirement').chosen({width: '100%'});
 }
