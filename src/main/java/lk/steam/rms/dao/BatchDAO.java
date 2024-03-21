@@ -22,7 +22,7 @@ public interface BatchDAO extends JpaRepository<Batch,Integer> {
     Integer getLastBatchCodeYearByCourseID(Integer courseID);
 
     @Query("SELECT b FROM Batch b WHERE b.batchCode=?1")
-    List<Batch> getBatchInfoByCourseCode(String BatchCode);
+    List<Batch> getBatchInfoByBatchCode(String BatchCode);
 
 
 
