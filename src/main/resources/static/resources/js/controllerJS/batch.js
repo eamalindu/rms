@@ -654,9 +654,14 @@ const batchDelete = () => {
 
 //creating a function to search a batch when ever needed
 const batchSearch = () => {
+    //save the batchSearchID input value to the variable searchText
     const searchText = batchSearchID.value;
+    //check if the searchText contain a value or not
     if (searchText !== '') {
+        //searchText contains a value
+        //pass the request to backend and catch the result into searchBatch variable
         let searchBatch = ajaxGetRequest("/Batch/getBatchInfo/" + searchText);
+        //refill the tblBatch with the received response from the backend
         fillDataIntoTable(tblBatch, searchBatch, displayPropertyListForBatches, rowView, 'offcanvasBatchSheet');
 
 
