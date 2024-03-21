@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "course")
 
@@ -37,6 +39,10 @@ public class Course {
     @Column(name = "lecturehours")
     @NotNull
     private Integer lectureHours;
+
+    @Column(name = "commissionamount")
+    @NotNull
+    private BigDecimal commissionAmount;
 
     @Column(name = "status")
     @NotNull
