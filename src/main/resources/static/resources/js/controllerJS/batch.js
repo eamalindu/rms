@@ -664,7 +664,15 @@ const batchDelete = () => {
 //creating a function to search a batch when ever needed
 const batchSearch = ()=>{
     const searchText = batchSearchID.value;
-    let searchBatch = ajaxGetRequest("/Batch/getBatchInfo/"+searchText);
+    if(searchText!=='') {
+        let searchBatch = ajaxGetRequest("/Batch/getBatchInfo/" + searchText);
+        fillDataIntoTable(tblBatch, searchBatch, displayPropertyListForBatches, rowView, 'offcanvasBatchSheet');
+    }
+    else{
+        showCustomModal("Batch Code is required for a search","warning");
+    }
+}
 
+const batchSearchReset=()=>{
 
 }
