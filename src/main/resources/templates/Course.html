@@ -220,6 +220,15 @@
                         <label for="courseLogo" class="form-label fw-bold small required">Course Logo</label>
                         <input class="form-control rounded-0 small newCourseInputs" type="file" id="courseLogo" accept="image/png, image/jpeg" required onchange="newCourse.photoPath=this.value">
                     </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="courseName">Course Name</label>
+                        </div>
+                        <input class="form-control rounded-0 newCourseInputs" id="courseName" onkeyup="inputTextValidator(this,'^[A-Z][a-z]{6,}[ ][i][n][ ][A-Z][a-z]{1,}$','newCourse','name')"
+                               required>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Name</div>
+                    </div>
                 </form>
             </div>
         </div>
