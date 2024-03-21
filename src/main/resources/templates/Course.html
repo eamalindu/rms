@@ -173,8 +173,8 @@
                     <th>#</th>
                     <th>Name</th>
                     <th>Course Code</th>
-                    <th>Min. Requirement</th>
                     <th>Duration</th>
+                    <th>Min. Requirement</th>
                     <th>Lecture Hours</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -238,6 +238,15 @@
                                required>
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Code</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="courseCode">Course Code</label>
+                        </div>
+                        <div class="input-group">
+                            <input class="form-control rounded-0 newCourseInputs" id="courseCode" onkeyup="inputTextValidator(this,'^[A-Z][a-z][A-Z]$','newCourse','code')"
+                                   required>
+                        </div>
                     </div>
                 </form>
             </div>
