@@ -30,19 +30,6 @@ window.addEventListener("load", () => {
         calculateEndDate();
     });
 
-    //bind data to the batch object, once the "apply" button on batchCommenceDate input is clicked
-    $('#batchSheetCommenceDate').on('apply.daterangepicker', function (ev, picker) {
-        $(this).val(picker.startDate.format('YYYY-MM-DD'));
-        inputTextValidator(this, '^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$', 'editedBatch', 'commenceDate');
-    });
-    $('#batchSheetEndDate').on('apply.daterangepicker', function (ev, picker) {
-        $(this).val(picker.startDate.format('YYYY-MM-DD'));
-        inputTextValidator(this, '^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$', 'editedBatch', 'endDate');
-    });
-    $('#batchSheetLastDate').on('apply.daterangepicker', function (ev, picker) {
-        $(this).val(picker.startDate.format('YYYY-MM-DD'));
-        inputTextValidator(this, '^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$', 'editedBatch', 'lastRegDate');
-    });
 });
 
 //creating a function to refresh the batch table when ever needed
@@ -646,7 +633,7 @@ const checkForBatchUpdate = () => {
     return updates;
 }
 
-//creating a function to delete a privilege when ever needed
+//creating a function to delete a batch when ever needed
 const batchDelete = () => {
     //get user confirmation
     showCustomConfirm("You are About to <b>Cancel</b> this Batch<br><br>Batch Code: <span class='text-steam-green'>" + oldBatch.batchCode + "</span><br><br>Are You Sure?", function (result) {
@@ -671,5 +658,10 @@ const batchDelete = () => {
         }
 
     });
+
+}
+
+//creating a function to search a batch when ever needed
+const batchSearch = ()=>{
 
 }
