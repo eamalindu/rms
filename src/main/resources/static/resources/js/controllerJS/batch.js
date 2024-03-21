@@ -39,14 +39,11 @@ const refreshBatchTable = () => {
     batches = ajaxGetRequest("/Batch/findall");
     //creating a display property list for the batches
     displayPropertyListForBatches = [{property: getCourseName, dataType: 'function'}, {
-        property: 'batchCode',
-        dataType: 'text'
+        property: 'batchCode', dataType: 'text'
     }, {property: 'commenceDate', dataType: 'text'}, {property: 'endDate', dataType: 'text'}, {
-        property: getWeekDay,
-        dataType: 'function'
+        property: getWeekDay, dataType: 'function'
     }, {property: 'seatCount', dataType: 'text'}, {property: 'description', dataType: 'text'}, {
-        property: getStatus,
-        dataType: 'function'
+        property: getStatus, dataType: 'function'
     },];
 
     fillDataIntoTable(tblBatch, batches, displayPropertyListForBatches, rowView, 'offcanvasBatchSheet');
@@ -159,16 +156,13 @@ const rowView = (ob, index) => {
 
     //fill payment plan table
     batchSheetPaymentPlanRegistrationFee.innerText = "Rs. " + ob.paymentPlanID.registrationFee.toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+        minimumFractionDigits: 2, maximumFractionDigits: 2
     });
     batchSheetPaymentPlanCourseFee.innerText = "Rs. " + ob.paymentPlanID.courseFee.toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+        minimumFractionDigits: 2, maximumFractionDigits: 2
     });
     batchSheetPaymentPlanTotalFee.innerText = "Rs. " + ob.paymentPlanID.totalFee.toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+        minimumFractionDigits: 2, maximumFractionDigits: 2
     });
     batchSheetPaymentPlanInstallments.innerText = ob.paymentPlanID.numberOfInstallments;
 
@@ -408,16 +402,13 @@ const fillPaymentPlan = () => {
 
 const showPaymentPlan = () => {
     paymentPlanRegistrationFee.innerText = "Rs. " + (newBatch.paymentPlanID.registrationFee).toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+        minimumFractionDigits: 2, maximumFractionDigits: 2
     });
     paymentPlanCourseFee.innerText = "Rs. " + (newBatch.paymentPlanID.courseFee).toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+        minimumFractionDigits: 2, maximumFractionDigits: 2
     });
     paymentPlanTotalFee.innerText = "Rs. " + (newBatch.paymentPlanID.totalFee).toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+        minimumFractionDigits: 2, maximumFractionDigits: 2
     });
     paymentPlanInstallments.innerText = newBatch.paymentPlanID.numberOfInstallments;
 
@@ -662,33 +653,20 @@ const batchDelete = () => {
 }
 
 //creating a function to search a batch when ever needed
-const batchSearch = ()=>{
+const batchSearch = () => {
     const searchText = batchSearchID.value;
-    if(searchText!=='') {
+    if (searchText !== '') {
         let searchBatch = ajaxGetRequest("/Batch/getBatchInfo/" + searchText);
-        if(searchBatch.length!==0) {
-            fillDataIntoTable(tblBatch, searchBatch, displayPropertyListForBatches, rowView, 'offcanvasBatchSheet');
-        }
-        else{
-            const tbody = tblBatch.children[1];
-            //clear the table body
-            tbody.innerHTML = '';
-            const tableTR = document.createElement('tr');
-            const  tableTD = document.createElement('td');
-            //set colspan to 10
-            tableTD.colSpan = '10';
-            tableTD.innerText = 'No Records Found!';
-            tableTR.appendChild(tableTD)
-            tbody.appendChild(tableTR);
-        }
-    }
-    else{
-        showCustomModal("Batch Code is required for a search","warning");
+        fillDataIntoTable(tblBatch, searchBatch, displayPropertyListForBatches, rowView, 'offcanvasBatchSheet');
+
+
+    } else {
+        showCustomModal("Batch Code is required for a search", "warning");
     }
 }
 
 //creating a function to reset the search bar when ever needed
-const batchSearchReset=()=>{
+const batchSearchReset = () => {
     //set the search bar value to empty
     batchSearchID.value = '';
     //refresh the table using refreshBatchTable function
