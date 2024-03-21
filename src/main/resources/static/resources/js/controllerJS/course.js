@@ -28,6 +28,9 @@ const refreshCourseTable = ()=>{
 
 const resetCourseForm = ()=>{
     newCourse = {};
+    courseRequirement
+    //initialize the 3rd party libraries (chosen)
+    $('#courseRequirement').chosen({width: '100%'});
 }
 
 const rowView = ()=>{
