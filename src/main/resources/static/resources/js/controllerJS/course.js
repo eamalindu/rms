@@ -8,9 +8,9 @@ window.addEventListener("load", () => {
 });
 
 const refreshCourseTable = ()=>{
-    //getting current batches from the database using ajaxGetRequest function and assign the response to the variable batches
+    //getting current Course from the database using ajaxGetRequest function and assign the response to the variable batches
     courses = ajaxGetRequest("/Course/findall");
-    //creating a display property list for the batches
+    //creating a display property list for the Course
     displayPropertyListForCourse = [
         {property: 'name',dataType: 'text'},
         {property: 'code',dataType: 'text'},
@@ -28,4 +28,20 @@ const refreshCourseTable = ()=>{
 
 const resetCourseForm = ()=>{
     course = {};
+}
+
+const rowView = ()=>{
+
+}
+const getDuration=(ob)=>{
+    return ob.duration +" Months";
+}
+
+const getStatus=(ob)=>{
+    if(ob.status){
+        return '<span class="badge rounded-0" style="background: #3FB618">Active</span>';
+    }
+    else{
+        return '<span class="badge rounded-0" style="background: #FF0039">Inactive</span>';
+    }
 }
