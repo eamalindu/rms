@@ -20,7 +20,7 @@ const refreshCourseTable = ()=>{
         {property: getStatus,dataType: 'function'},
     ]
 
-    fillDataIntoTable(tblCourse, courses, displayPropertyListForCourse, rowView, '');
+    fillDataIntoTable(tblCourse, courses, displayPropertyListForCourse, rowView, 'offcanvasCourseSheet');
 
     $('#tblBatch').DataTable();
 
