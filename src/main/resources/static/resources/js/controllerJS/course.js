@@ -5,6 +5,11 @@ window.addEventListener("load", () => {
     //refresh the course table
     refreshCourseTable();
 
+    //validation chosen select (for new batch)
+    $("#courseRequirement").chosen().change(function () {
+        $("#courseRequirement_chosen .chosen-single").addClass('select-validated');
+    });
+
 });
 
 const refreshCourseTable = ()=>{
