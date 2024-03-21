@@ -664,8 +664,9 @@ const batchSearch = () => {
         //refill the tblBatch with the received response from the backend
         fillDataIntoTable(tblBatch, searchBatch, displayPropertyListForBatches, rowView, 'offcanvasBatchSheet');
 
-
     } else {
+        //this means searchText doesn't contain a value (empty)
+        //inform the user using showCustomModal function
         showCustomModal("Batch Code is required for a search", "warning");
     }
 }
