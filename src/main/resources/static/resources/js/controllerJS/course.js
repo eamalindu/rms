@@ -49,10 +49,9 @@ const getStatus=(ob)=>{
 const generateCourseCode = ()=>{
     const courseNameParts = courseName.value.split(" ");
     let code = '';
-    console.log(courseNameParts)
     courseNameParts.forEach((word)=>{
         code += word[0];
     })
-
     courseCode.value = code;
+    inputTextValidator(courseCode,'^[A-Z][a-z][A-Z]$','newCourse','code')
 }
