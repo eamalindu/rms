@@ -241,11 +241,14 @@
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
-                            <label class="fw-bold small required" for="courseCode">Course Code</label>
+                            <label class="fw-bold small required" for="courseDuration">Duration</label>
                         </div>
                         <div class="input-group">
-                            <input class="form-control rounded-0 newCourseInputs" id="courseCode" onkeyup="inputTextValidator(this,'^[A-Z][a-z][A-Z]$','newCourse','code')"
+                            <input class="form-control rounded-0 newCourseInputs" id="courseDuration" onkeyup="inputTextValidator(this,'^[0-9]{1,}$','newCourse','duration')"
                                    required>
+                            <input class="form-control rounded-0 newCourseInputs" disabled readonly value="Months">
+                            <div class="valid-feedback">Value Accepted</div>
+                            <div class="invalid-feedback">Please provide a valid Duration</div>
                         </div>
                     </div>
                 </form>
