@@ -215,10 +215,12 @@
                 <form onsubmit="return false" id="frmNewCourse">
                     <div class="mb-3">
                         <img src="" id="imgProfile" class="placeholder-image img-thumbnail rounded-0 mx-auto d-block">
+
                     </div>
                     <div class="mb-2">
                         <label for="courseLogo" class="form-label fw-bold small required">Course Logo</label>
                         <input class="form-control rounded-0 small newCourseInputs" type="file" id="courseLogo" accept="image/png, image/jpeg" required onchange="newCourse.photoPath=this.value">
+                        <div class="text-muted small"><small>Resolution should at least 512 x 512</small></div>
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
