@@ -346,7 +346,7 @@
                         imgProfile.classList.add('bg-success');
                     } else {
                         // Provide feedback to the user or prevent displaying the image
-                        alert("Image resolution should be at least 512 x 512 pixels.");
+                        showCustomModal("Image resolution should be at least <small>512 x 512 pixels</small>","warning");
                         // Optionally, clear the image preview
                         imgProfile.src = "";
                         imgProfile.classList.remove('bg-success');
