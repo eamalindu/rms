@@ -673,6 +673,11 @@ const batchSearch = ()=>{
     }
 }
 
+//creating a function to reset the search bar when ever needed
 const batchSearchReset=()=>{
+    //set the search bar value to empty
+    batchSearchID.value = '';
+    //refresh the table using refreshBatchTable function
+    refreshBatchTable();
 
 }
