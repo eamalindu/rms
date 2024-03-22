@@ -40,10 +40,6 @@ public class Course {
     @NotNull
     private Integer lectureHours;
 
-    @Column(name = "commissionamount")
-    @NotNull
-    private BigDecimal commissionAmount;
-
     @Column(name = "status")
     @NotNull
     private Boolean status;
