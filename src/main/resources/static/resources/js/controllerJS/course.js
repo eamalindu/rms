@@ -80,5 +80,6 @@ const generateCourseCode = ()=>{
     courseNameParts.forEach((word)=>{
         code += word[0];
     })
+    courseCode.value = code;
     inputTextValidator(courseCode,'^[A-Z][a-z][A-Z]{1,}$','newCourse','code')
 }
