@@ -242,7 +242,7 @@ select:invalid[multiple] {
     top: 50%;
     transform: translateY(-50%);
     font-family: "FontAwesome";
-    content: "\f3e0";
+    content: "\f03e";
 }
 
 /*custom css for select*/
