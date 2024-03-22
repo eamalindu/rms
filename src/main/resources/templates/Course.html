@@ -226,7 +226,7 @@
                         <div class="form-label">
                             <label class="fw-bold small required" for="courseName">Course Name</label>
                         </div>
-                        <input class="form-control rounded-0 newCourseInputs" id="courseName" onkeyup="inputTextValidator(this,'^[A-Z][a-z]{6,}[ ][i][n][ ][A-Z][A-Za-z]{1,}$','newCourse','name');generateCourseCode();"
+                        <input class="form-control rounded-0 newCourseInputs" id="courseName" onkeyup="inputTextValidator(this,'^[A-Z][a-zA-Z]* in [A-Z][a-zA-Z ]+$','newCourse','name');generateCourseCode();"
                                required>
                         <div class="text-muted small"><small>Example : Diploma in English</small></div>
                         <div class="valid-feedback">Value Accepted</div>
