@@ -163,7 +163,7 @@ const createRadioCards = (dataList, functionEx, container) => {
         cardDiv.onclick = () => {
             functionEx(element, index);
         };
-        cardDiv.className = "card mb-3 rounded-0 custom-card-inactive";
+        cardDiv.className = "card mb-3 rounded-0 custom-card-active custom-card";
 
         if (element.batchStatusID.name === "Scheduled") {
             cardDiv.classList.add('border', 'border-success')
@@ -200,13 +200,15 @@ const createRadioCards = (dataList, functionEx, container) => {
         cardDiv.style.cursor = "pointer"; // Ensure cursor changes to pointer on hover
         cardDiv.addEventListener("click", function () {
             // Reset background color of all cards
-            var allCards = document.querySelectorAll(".card");
+            var allCards = document.querySelectorAll(".custom-card");
             allCards.forEach((card) => {
                 card.classList.remove('border', 'custom-card-active');
+                card.classList.add('border', 'custom-card-inactive');
 
             });
             // Set background color of the clicked card
             cardDiv.classList.add('custom-card-active');
+            cardDiv.classList.remove('custom-card-inactive');
 
         });
 
