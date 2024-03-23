@@ -86,8 +86,8 @@ let next0 = () => {
         ];
         //fillDataIntoTableWithRadio(tblWeekDayBatches,weekDayBatches,displayPropertyListForWeekDay,radioFunctionForWeekDay,'batch');
         // fillDataIntoTableWithRadio(tblWeekEndBatches,weekEndBatches,displayPropertyListForWeekEnd,radioFunctionForWeekEnd,'batch');
-        createBatchRadioCards(weekDayBatches,handleCardClick,containerA);
-        createBatchRadioCards(weekEndBatches,handleCardClick,containerB);
+        createBatchRadioCards(weekDayBatches,handleBatchCardClick,containerA);
+        createBatchRadioCards(weekEndBatches,handleBatchCardClick,containerB);
         if(weekEndBatches.length===0){
             containerB.innerHTML = '<p class="text-red text-center small">No Active Weekend Batches Available! <br>Please Contact <strong>'+registration.courseID.name+'</strong> Course Coordinator</p>';
         }
@@ -362,7 +362,7 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
 
 }
 
-const handleCardClick = (object, index) => {
+const handleBatchCardClick = (object, index) => {
     console.log(object);
     registration.batchID = object;
     loadFee(object,txtTotalFeeFullPayment,txtRegistrationFeeFullPayment,txtCourseFeeFullPayment,true);
