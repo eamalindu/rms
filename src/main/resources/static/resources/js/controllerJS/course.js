@@ -36,6 +36,9 @@ const resetCourseForm = ()=>{
     $("#courseRequirement_chosen .chosen-single").removeClass('select-validated');
     courseRequirement.classList.remove('is-valid');
 
+    //reset the image
+    imgProfile.src = '';
+
     newCourse = {};
 
     frmNewCourse.reset();
