@@ -38,6 +38,7 @@ const resetCourseForm = ()=>{
 
     //reset the image
     imgProfile.src = '';
+    imgProfile.classList.remove('bg-success');
 
     newCourse = {};
 
