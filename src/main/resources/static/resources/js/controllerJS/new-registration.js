@@ -13,8 +13,10 @@ window.addEventListener("load",()=>{
         {property: getStatus,dataType: 'function'},
     ]
 
-    fillDataIntoTableWithRadio(tblCourses,courses,displayPropertyListForCourse,radioFunction,'course');
-    $('#tblCourses').DataTable();
+    // fillDataIntoTableWithRadio(tblCourses,courses,displayPropertyListForCourse,radioFunction,'course');
+    // $('#tblCourses').DataTable();
+
+    createCourseRadioCards(courses,handleBatchCardClick,testA);
 
 });
 
