@@ -147,7 +147,7 @@ const showFollowupCard = (cardData, container) => {
     });
 }
 
-const createRadioCards = (dataList, functionEx, container) => {
+const createBatchRadioCards = (dataList, functionEx, container) => {
     container.innerHTML = ""; // Clear previous content
     var row = null;
     dataList.forEach((element, index) => {

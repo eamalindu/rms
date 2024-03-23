@@ -86,8 +86,8 @@ let next0 = () => {
         ];
         //fillDataIntoTableWithRadio(tblWeekDayBatches,weekDayBatches,displayPropertyListForWeekDay,radioFunctionForWeekDay,'batch');
         // fillDataIntoTableWithRadio(tblWeekEndBatches,weekEndBatches,displayPropertyListForWeekEnd,radioFunctionForWeekEnd,'batch');
-        createRadioCards(weekDayBatches,handleCardClick,containerA);
-        createRadioCards(weekEndBatches,handleCardClick,containerB);
+        createBatchRadioCards(weekDayBatches,handleCardClick,containerA);
+        createBatchRadioCards(weekEndBatches,handleCardClick,containerB);
         if(weekEndBatches.length===0){
             containerB.innerHTML = '<p class="text-red text-center small">No Active Weekend Batches Available! <br>Please Contact <strong>'+registration.courseID.name+'</strong> Course Coordinator</p>';
         }
