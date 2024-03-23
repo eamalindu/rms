@@ -36,7 +36,7 @@ const resetCourseForm = ()=>{
     $("#courseRequirement_chosen .chosen-single").removeClass('select-validated');
     courseRequirement.classList.remove('is-valid');
 
-    //reset the image
+    //reset the image src and the border color
     imgProfile.src = '';
     imgProfile.classList.remove('bg-success');
 
