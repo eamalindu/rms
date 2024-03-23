@@ -217,6 +217,57 @@ const createBatchRadioCards = (dataList, functionEx, container) => {
     });
 }
 
+const createCourseRadioCards = (dataList, functionEx, container) => {
+
+    container.innerHTML = ""; // Clear previous content
+    var row = null;
+    dataList.forEach((element, index) => {
+        if (index % 4 === 0) {
+            row = document.createElement("div");
+            row.className = "row";
+            container.appendChild(row);
+        }
+
+        var col = document.createElement("div");
+        col.className = "col-md-3"; // Bootstrap column class for medium devices (2 columns per row)
+        var cardDiv = document.createElement("div");
+        cardDiv.onclick = () => {
+            functionEx(element, index);
+        };
+        cardDiv.className =
+            "card mb-3 w-100 rounded-0 custom-card-active custom-card";
+        cardDiv.innerHTML = `
+          <div class="card-body p-1">
+            <div class="d-flex">
+            <div class="bg-success" style="width: 100px;height: 100px;">
+                <img src="DIE.jpg" width="100px">
+            </div>
+            <div class="w-100 d-flex align-items-center justify-content-center">
+                <div class="text-center">
+                <h5 class="small text-center">${element.name} <span class="text-muted">(${element.code})</span></h5>
+                <span class="small m-0">${element.duration} Months | ${element.minimumRequirement}<br>Lecture Hours: ${element.lectureHours}</span>
+            </div>
+            </div>
+          `;
+
+        cardDiv.style.cursor = "pointer"; // Ensure cursor changes to pointer on hover
+        cardDiv.addEventListener("click", function () {
+            // Reset background color of all cards
+            var allCards = document.querySelectorAll(".custom-card");
+            allCards.forEach((card) => {
+                card.classList.remove("border","border-dark", "custom-card-active");
+                card.classList.add("border", "custom-card-inactive");
+            });
+            // Set background color of the clicked card
+            cardDiv.classList.add("custom-card-active","border-dark");
+            cardDiv.classList.remove("custom-card-inactive");
+        });
+
+        col.appendChild(cardDiv);
+        row.appendChild(col);
+    });
+}
+
 const fillSelectOptionsWithTwo = (elementID, message, dataList, displayProperty1, displayProperty2, selectedValue) => {
     const selectElement = elementID;
     selectElement.innerHTML = '';
