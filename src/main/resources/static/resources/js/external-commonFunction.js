@@ -244,7 +244,7 @@ const createCourseRadioCards = (dataList, functionEx, container) => {
             </div>
             <div class="w-100 d-flex align-items-center justify-content-center">
                 <div class="text-center">
-                <h5 class="small text-center">${element.name} <span class="text-muted">(${element.code})</span></h5>
+                <h5 class="small text-center fw-bold">${element.name} <span class="text-muted">(${element.code})</span></h5>
                 <span class="small m-0">${element.duration} Months | ${element.minimumRequirement}<br>Lecture Hours: ${element.lectureHours}</span>
             </div>
             </div>
