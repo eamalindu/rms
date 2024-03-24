@@ -16,7 +16,7 @@ window.addEventListener("load",()=>{
     // fillDataIntoTableWithRadio(tblCourses,courses,displayPropertyListForCourse,radioFunction,'course');
     // $('#tblCourses').DataTable();
 
-    createCourseRadioCards(courses,handleBatchCardClick,testA);
+    createCourseRadioCards(courses,handleCourseCardClick,testA);
 
 });
 
@@ -371,3 +371,8 @@ const handleBatchCardClick = (object, index) => {
     //load fee for installment payment
     loadFee(object,txtTotalFeePartPayment,txtRegistrationFeePartPayment,txtCourseFeePartPayment,false);
 };
+
+const handleCourseCardClick = (object , index)=>{
+    console.log(object);
+    registration.courseID = object;
+}
