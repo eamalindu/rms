@@ -129,6 +129,8 @@ const rowView = (ob, index) => {
         batchSheetCode.classList.remove('text-success');
         batchSheetCode.classList.remove('text-warning');
         batchSheetCode.classList.remove('text-danger');
+
+        btnBatchSheetDelete.style.display = 'none';
     } else {
         batchSheetCode.classList.add('text-danger');
 
