@@ -75,7 +75,11 @@ const getStatus = (ob) => {
         return '<span class="badge rounded-0" style="background: #ea8a1e">Started</span>';
     } else if (ob.batchStatusID.name === "Canceled") {
         return '<span class="badge rounded-0" style="background: #ea2f1e">Canceled</span>';
-    } else {
+    }
+    else if (ob.batchStatusID.name ==='Deleted'){
+        return '<span class="badge rounded-0" style="background: #000">Deleted</span>';
+    }
+    else {
         return '<span class="badge rounded-0" style="background: #1eadea">Completed</span>';
     }
 
@@ -129,15 +133,20 @@ const rowView = (ob, index) => {
         batchSheetCode.classList.remove('text-success');
         batchSheetCode.classList.remove('text-warning');
         batchSheetCode.classList.remove('text-danger');
-
+    }
+    else if(ob.batchStatusID.name ==='Deleted'){
         btnBatchSheetDelete.style.display = 'none';
-    } else {
+        batchSheetCode.classList.remove('text-success');
+        batchSheetCode.classList.remove('text-warning');
+        batchSheetCode.classList.remove('text-danger');
+        batchSheetCode.classList.remove('text-steam-green');
+    }
+    else {
         batchSheetCode.classList.add('text-danger');
 
         batchSheetCode.classList.remove('text-success');
         batchSheetCode.classList.remove('text-warning');
         batchSheetCode.classList.remove('text-steam-green');
-        btnBatchSheetDelete.style.display = 'none';
     }
 
     if (ob.isWeekday) {

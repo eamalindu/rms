@@ -109,7 +109,7 @@ public class BatchController {
         try {
             //soft delete
             //change batch Status to delete
-            BatchStatus deleteStatus = batchStatusDAO.getReferenceById(4);
+            BatchStatus deleteStatus = batchStatusDAO.getReferenceById(5);
             batch.setBatchStatusID(deleteStatus);
             //update the batch record
             batchDAO.save(batch);
