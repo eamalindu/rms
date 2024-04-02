@@ -86,6 +86,8 @@ const rowView = (ob, index) => {
 
     //hide the update btn
     btnBatchSheetUpdate.style.display = 'none';
+    //show the deleted btn
+    btnBatchSheetDelete.style.display = 'block';
 
     //add the attribute disabled to make inputs block the user input values
     //remove the edited border colors from the inputs
@@ -133,6 +135,7 @@ const rowView = (ob, index) => {
         batchSheetCode.classList.remove('text-success');
         batchSheetCode.classList.remove('text-warning');
         batchSheetCode.classList.remove('text-steam-green');
+        btnBatchSheetDelete.style.display = 'none';
     }
 
     if (ob.isWeekday) {
