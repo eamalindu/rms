@@ -67,7 +67,7 @@ const rowView = ()=>{
     //hide the update btn
     btnCourseSheetUpdate.style.display = 'none';
     //show the deleted btn
-    btnBatchSheetDelete.style.display = 'block';
+    btnCourseSheetDelete.style.display = 'block';
 
 }
 const getDuration=(ob)=>{
