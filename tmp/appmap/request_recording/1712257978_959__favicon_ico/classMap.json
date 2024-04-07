@@ -1,0 +1,16 @@
+[
+  {
+    "type": "http",
+    "name": "HTTP server requests",
+    "children": [
+      {
+        "type": "route",
+        "name": "GET /favicon.ico"
+      },
+      {
+        "type": "route",
+        "name": "GET /error"
+      }
+    ]
+  }
+]

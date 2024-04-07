@@ -1,0 +1,149 @@
+{
+  "events": [
+    {
+      "event": "call",
+      "http_server_request": {
+        "headers": {
+          "sec-fetch-mode": "navigate",
+          "sec-fetch-site": "none",
+          "accept-language": "en-US,en",
+          "sec-fetch-user": "?1",
+          "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+          "sec-gpc": "1",
+          "sec-ch-ua": "\"Brave\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"Windows\"",
+          "host": "localhost:8080",
+          "upgrade-insecure-requests": "1",
+          "connection": "keep-alive",
+          "accept-encoding": "gzip, deflate, br, zstd",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+          "sec-fetch-dest": "document"
+        },
+        "normalized_path_info": "/Batch",
+        "path_info": "/Batch",
+        "protocol": "HTTP/1.1",
+        "request_method": "GET"
+      },
+      "id": 1,
+      "thread_id": 43
+    },
+    {
+      "defined_class": "lk.steam.rms.controller.BatchController",
+      "event": "call",
+      "id": 2,
+      "lineno": 46,
+      "method_id": "batchUI",
+      "path": "src/main/java/lk/steam/rms/controller/BatchController.java",
+      "receiver": {
+        "class": "lk.steam.rms.controller.BatchController",
+        "object_id": 106599629,
+        "value": "lk.steam.rms.controller.BatchController@65a94cd"
+      },
+      "static": false,
+      "thread_id": 43
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 3,
+      "parent_id": 2,
+      "return_value": {
+        "class": "org.springframework.web.servlet.ModelAndView",
+        "object_id": 664660942,
+        "value": "ModelAndView [view=\"batch.html\"; model={}]"
+      },
+      "thread_id": 43
+    },
+    {
+      "elapsed": 0.05232006,
+      "event": "return",
+      "http_server_response": {
+        "headers": {
+          "Transfer-Encoding": "chunked",
+          "Keep-Alive": "timeout=60",
+          "Connection": "keep-alive",
+          "Content-Language": "en-US",
+          "Date": "Thu, 04 Apr 2024 19:13:16 GMT",
+          "Content-Type": "text/html;charset=UTF-8"
+        },
+        "status": 200
+      },
+      "id": 4,
+      "parent_id": 1,
+      "thread_id": 43
+    }
+  ],
+  "version": "1.2",
+  "metadata": {
+    "name": "GET /Batch (200) - 00:43:16.201",
+    "app": "rms",
+    "language": {
+      "name": "java",
+      "version": "17.0.9+11-LTS-201",
+      "engine": "Java HotSpot(TM) 64-Bit Server VM"
+    },
+    "client": {
+      "name": "appmap-java",
+      "url": "https://github.com/appland/appmap-java"
+    },
+    "recorder": {
+      "name": "request_recording",
+      "type": "requests"
+    },
+    "recording": {},
+    "git": {
+      "repository": "https://github.com/eamalindu/rms.git",
+      "branch": "master",
+      "commit": "769ef22997a58d4130bdeec28da0fa7f5ff55bdb"
+    }
+  },
+  "classMap": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "name": "batchUI",
+                          "type": "function",
+                          "static": false,
+                          "location": "src/main/java/lk/steam/rms/controller/BatchController.java:46"
+                        }
+                      ],
+                      "name": "BatchController",
+                      "type": "class"
+                    }
+                  ],
+                  "name": "controller",
+                  "type": "package"
+                }
+              ],
+              "name": "rms",
+              "type": "package"
+            }
+          ],
+          "name": "steam",
+          "type": "package"
+        }
+      ],
+      "name": "lk",
+      "type": "package"
+    },
+    {
+      "type": "http",
+      "name": "HTTP server requests",
+      "children": [
+        {
+          "type": "route",
+          "name": "GET /Batch"
+        }
+      ]
+    }
+  ]
+}

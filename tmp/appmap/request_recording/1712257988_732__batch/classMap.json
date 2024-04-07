@@ -1,0 +1,16 @@
+[
+  {
+    "type": "http",
+    "name": "HTTP server requests",
+    "children": [
+      {
+        "type": "route",
+        "name": "GET /batch"
+      },
+      {
+        "type": "route",
+        "name": "GET /error"
+      }
+    ]
+  }
+]

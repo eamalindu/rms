@@ -1,0 +1,7 @@
+[
+  {
+    "route": "GET /Batch",
+    "parameters": "()",
+    "status": 200
+  }
+]

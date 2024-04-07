@@ -1,0 +1,12 @@
+[
+  {
+    "route": "GET /error",
+    "parameters": "()",
+    "status": 404
+  },
+  {
+    "route": "GET /favicon.ico",
+    "parameters": "()",
+    "status": 404
+  }
+]
