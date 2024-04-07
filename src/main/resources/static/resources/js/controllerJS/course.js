@@ -64,6 +64,11 @@ const resetCourseForm = ()=>{
 
 const rowView = ()=>{
 
+    //hide the update btn
+    btnCourseSheetUpdate.style.display = 'none';
+    //show the deleted btn
+    btnBatchSheetDelete.style.display = 'block';
+
 }
 const getDuration=(ob)=>{
     return ob.duration +" Months";
