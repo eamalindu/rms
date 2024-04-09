@@ -2,6 +2,8 @@ window.addEventListener("load",()=>{
 
     registration = {};
     student ={};
+    installmentPlan={};
+
     courses =  ajaxGetRequest("/Course/findall");
     displayPropertyListForCourse = [
         {property: 'name',dataType: 'text'},
@@ -37,6 +39,7 @@ const radioFunction = (ob,index)=>{
     registration.courseID =ob;
 
 }
+
 
 //get all the steppers
 let step1 = document.querySelector('#btn-course');
@@ -274,11 +277,15 @@ const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount
 
     if(elementID.checked){
 
+
+
         //calculate discount amount and update relevant fields
         discountReceived = (courseFee * (discount)/100);
         finalCourseFee = (courseFee - discountReceived);
         finalTotalFee =  finalCourseFee + registrationFee;
 
+        registration.isFullPayment = true;
+        registration.oneTimePaymentAmount = finalTotalFee;
 
         lblDiscountFeeHeading.innerHTML = "Discount "+discount+"% Off";
 
@@ -304,6 +311,7 @@ const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFu
 
     if(isFullPayment) {
         txtTotalDiscountFeeFullPayment.innerHTML = "-Rs. 0.00";
+        registration.oneTimePaymentAmount = ob.paymentPlanID.totalFee;
     }
 
 
@@ -311,6 +319,9 @@ const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFu
 
 const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,installments)=>{
     if(elementID.checked){
+        registration.isFullPayment = false;
+        registration.oneTimePaymentAmount =null;
+
         tblInstallments.classList.remove('d-none');
         const installmentFee = courseFee / installments;
         let currentDate = new Date();
