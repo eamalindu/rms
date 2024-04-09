@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Registration {
+public class Registrations {
 
     @Id
     @Column(name = "id",unique = true)
