@@ -53,5 +53,9 @@ public class Registrations {
     @JoinColumn(name = "batch_id",referencedColumnName = "id")
     private Batch batchID;
 
+    @ManyToOne
+    @JoinColumn(name = "student_id",referencedColumnName = "id")
+    private Student studentID;
+
 
 }
