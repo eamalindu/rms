@@ -143,6 +143,15 @@ let next3= ()=>{
     step4.classList.add('custom-step-complete');
     document.querySelector('#btn-student .step-number span').innerText = '✔';
 
+    const server = ajaxHttpRequest("/Registration","POST",registration)
+    if(server==="OK"){
+
+        alert("ela")
+    }
+    else{
+        alert(server)
+    }
+
 
 }
 let next4= ()=>{
