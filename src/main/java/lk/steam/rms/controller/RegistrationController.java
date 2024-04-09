@@ -1,7 +1,9 @@
 package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.RegistrationDAO;
+import lk.steam.rms.dao.RegistrationStatusDAO;
 import lk.steam.rms.dao.StudentDAO;
+import lk.steam.rms.entity.RegistrationStatus;
 import lk.steam.rms.entity.Registrations;
 import lk.steam.rms.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class RegistrationController {
     @Autowired
     private StudentDAO studentDAO;
 
+    @Autowired
+    private RegistrationStatusDAO registrationStatusDAO;
+
     @GetMapping()
     public ModelAndView registrationUI() {
         ModelAndView registrationView = new ModelAndView();
@@ -36,8 +41,9 @@ public class RegistrationController {
         registrations.setCommissionPaidTo("User1");
 
         Student sample = studentDAO.getReferenceById(1);
+        RegistrationStatus sampleStatus = registrationStatusDAO.getReferenceById(1);
         registrations.setStudentID(sample);
-        registrations.setRegistrationStatusID();
+        registrations.setRegistrationStatusID(sampleStatus);
 
         registrationDAO.save(registrations);
         return "OK";
