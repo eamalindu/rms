@@ -273,30 +273,19 @@ const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount
     console.log(courseFee)
 
     if(elementID.checked){
-        //set default fees (without discount calculation just as is)
-        // txtTotalFeeFullPayment.value = parseFloat(totalFee).toFixed(2);
-        // txtRegistrationFeeFullPayment.value = parseFloat(registrationFee).toFixed(2);
-        // txtCourseFeeFullPayment.value = parseFloat(courseFee).toFixed(2);
-        //
+
         //calculate discount amount and update relevant fields
         discountReceived = (courseFee * (discount)/100);
         finalCourseFee = (courseFee - discountReceived);
         finalTotalFee =  finalCourseFee + registrationFee;
-        //
-        // console.log(discountReceived)
-        // console.log(finalCourseFee)
-        // console.log(finalCourseFee)
-        //
-        // //display final amounts
-        // txtTotalDiscountFeeFullPayment.value = parseFloat(discountReceived).toFixed(2);
-        // txtFinalTotalFeeFullPayment.value = parseFloat(finalTotalFee).toFixed(2);
-        // txtFinalCourseFeeFullPayment.value = parseFloat(finalCourseFee).toFixed(2);
-        // txtFinalRegistrationFeeFullPayment.value = parseFloat(registrationFee).toFixed(2);
 
-        testRegFee.innerHTML = "Rs. "+ registrationFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        testCourseFee.innerHTML = "Rs. "+ courseFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        testDiscountFee.innerHTML = "- Rs. "+discountReceived.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        testTotalFee.innerHTML = "Rs. "+ finalTotalFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+        lblDiscountFeeHeading.innerHTML = "Discount "+discount+"% Off";
+
+        txtRegistrationFeeFullPayment.innerHTML = "Rs. "+ registrationFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        txtCourseFeeFullPayment.innerHTML = "Rs. "+ courseFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        txtTotalDiscountFeeFullPayment.innerHTML = "- Rs. "+discountReceived.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        txtTotalFeeFullPayment.innerHTML = "Rs. "+ finalTotalFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
     }
 
@@ -310,7 +299,7 @@ const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFu
     tblInstallments.children[1].innerHTML = '';
 
     if(isFullPayment) {
-        testDiscountFee.innerHTML = "-Rs. 0.00";
+        txtTotalDiscountFeeFullPayment.innerHTML = "-Rs. 0.00";
     }
 
 
@@ -374,7 +363,7 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
 const handleBatchCardClick = (object, index) => {
     console.log(object);
     registration.batchID = object;
-    loadFee(object,testTotalFee,testRegFee,testCourseFee,true);
+    loadFee(object,txtTotalFeeFullPayment,txtRegistrationFeeFullPayment,txtCourseFeeFullPayment,true);
     //load fee for installment payment
     loadFee(object,txtTotalFeePartPayment,txtRegistrationFeePartPayment,txtCourseFeePartPayment,false);
 };
