@@ -45,5 +45,13 @@ public class Registration {
     @Column(name = "onetimepaymentamount")
     private BigDecimal oneTimePaymentAmount;
 
+    @ManyToOne
+    @JoinColumn(name = "course_id",referencedColumnName = "id")
+    private Course courseID;
+
+    @ManyToOne
+    @JoinColumn(name = "batch_id",referencedColumnName = "id")
+    private Batch batchID;
+
 
 }
