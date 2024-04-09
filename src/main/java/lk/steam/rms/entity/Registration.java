@@ -30,16 +30,13 @@ public class Registration {
     @NotNull
     private String addedBy;
 
-
     @Column(name = "timestamp")
     @NotNull
     private LocalDateTime timestamp;
 
-
     @Column(name = "isfullpayment")
     @NotNull
     private Boolean isFullPayment;
-
 
     @Column(name = "commisonpaidto")
     @NotNull
