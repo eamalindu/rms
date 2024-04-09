@@ -270,6 +270,7 @@ const radioFunctionForWeekEnd = (ob,index)=>{
 // });
 
 const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount)=>{
+    console.log(courseFee)
 
     if(elementID.checked){
         //set default fees (without discount calculation just as is)
@@ -281,6 +282,10 @@ const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount
         discountReceived = (courseFee * (discount)/100);
         finalCourseFee = (courseFee - discountReceived);
         finalTotalFee =  finalCourseFee + registrationFee;
+
+        console.log(discountReceived)
+        console.log(finalCourseFee)
+        console.log(finalCourseFee)
 
         //display final amounts
         txtTotalDiscountFeeFullPayment.value = parseFloat(discountReceived).toFixed(2);

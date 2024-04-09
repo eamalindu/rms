@@ -298,19 +298,19 @@
 
                                             <div class="form-check ms-2">
                                                 <input checked class="form-check-input" id="radioStandardFullPayment"
-                                                       name="flexRadioDefault" type="radio" onchange="calculateDiscount(this,registration.batchID.totalFee,registration.batchID.registrationFee,registration.batchID.courseFee,0)">
+                                                       name="flexRadioDefault" type="radio" onchange="calculateDiscount(this,registration.batchID.paymentPlanID.totalFee,registration.batchID.paymentPlanID.registrationFee,registration.batchID.paymentPlanID.courseFee,0)">
                                                 <label class="form-check-label" for="radioStandardFullPayment">Standard
                                                     (0%)</label>
                                             </div>
                                             <div class="form-check ms-2">
                                                 <input class="form-check-input" id="radioCashDiscountFullPayment"
-                                                       name="flexRadioDefault" type="radio" onchange="calculateDiscount(this,registration.batchID.totalFee,registration.batchID.registrationFee,registration.batchID.courseFee,10)">
+                                                       name="flexRadioDefault" type="radio" onchange="calculateDiscount(this,registration.batchID.paymentPlanID.totalFee,registration.batchID.paymentPlanID.registrationFee,registration.batchID.paymentPlanID.courseFee,10)">
                                                 <label class="form-check-label" for="radioCashDiscountFullPayment">10% for Cash
                                                     Payments</label>
                                             </div>
                                             <div class="form-check ms-2">
                                                 <input class="form-check-input" id="radioCardDiscountFullPayment"
-                                                       name="flexRadioDefault" type="radio" onchange="calculateDiscount(this,registration.batchID.totalFee,registration.batchID.registrationFee,registration.batchID.courseFee,7.5)">
+                                                       name="flexRadioDefault" type="radio" onchange="calculateDiscount(this,registration.batchID.paymentPlanID.totalFee,registration.batchID.paymentPlanID.registrationFee,registration.batchID.paymentPlanID.courseFee,7.5)">
                                                 <label class="form-check-label" for="radioCardDiscountFullPayment">7.5% for Card
                                                     Payments (Visa)</label>
                                             </div>
