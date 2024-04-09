@@ -2,14 +2,13 @@ package lk.steam.rms.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import jdk.jfr.Enabled;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Enabled
+@Entity
 @Table(name = "student")
 
 @Data
