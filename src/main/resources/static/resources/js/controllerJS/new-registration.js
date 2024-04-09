@@ -2,7 +2,7 @@ window.addEventListener("load",()=>{
 
     registration = {};
     student ={};
-    installmentPlan={};
+
 
     courses =  ajaxGetRequest("/Course/findall");
     displayPropertyListForCourse = [
@@ -321,6 +321,7 @@ const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFu
 
 const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,installments)=>{
     if(elementID.checked){
+        installmentPlan=[];
         registration.isFullPayment = false;
         registration.oneTimePaymentAmount =null;
 
@@ -348,6 +349,8 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
         firstTR.appendChild(thirdTD);
         tbody.appendChild(firstTR);
 
+        installmentPlan.push({ number: 1, amount: (installmentFee + registrationFee) });
+
         // Display the subsequent installments
         for (let i = 1; i < installments; i++) {
             // Calculate the new date for each installment
@@ -371,6 +374,7 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
 
 
             tbody.appendChild(tr);
+            installmentPlan.push({ number: i+1, amount: installmentFee });
         }
 
     }
