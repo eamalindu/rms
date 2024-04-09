@@ -163,7 +163,7 @@ const createBatchRadioCards = (dataList, functionEx, container) => {
         cardDiv.onclick = () => {
             functionEx(element, index);
         };
-        cardDiv.className = "card mb-3 rounded-0 custom-card-active custom-card";
+        cardDiv.className = "card mb-3 rounded-0 custom-card-active custom-card batch-card";
 
         if (element.batchStatusID.name === "Scheduled") {
             cardDiv.classList.add('border', 'border-success')
@@ -200,7 +200,7 @@ const createBatchRadioCards = (dataList, functionEx, container) => {
         cardDiv.style.cursor = "pointer"; // Ensure cursor changes to pointer on hover
         cardDiv.addEventListener("click", function () {
             // Reset background color of all cards
-            var allCards = document.querySelectorAll(".custom-card");
+            var allCards = document.querySelectorAll(".batch-card");
             allCards.forEach((card) => {
                 card.classList.remove('border', 'custom-card-active');
                 card.classList.add('border', 'custom-card-inactive');
@@ -235,7 +235,7 @@ const createCourseRadioCards = (dataList, functionEx, container) => {
             functionEx(element, index);
         };
         cardDiv.className =
-            "card mb-3 w-100 rounded-0 custom-card-active custom-card";
+            "card mb-3 w-100 rounded-0 custom-card-active custom-card course-card";
         cardDiv.innerHTML = `
           <div class="card-body p-1">
             <div class="d-flex">
@@ -253,7 +253,7 @@ const createCourseRadioCards = (dataList, functionEx, container) => {
         cardDiv.style.cursor = "pointer"; // Ensure cursor changes to pointer on hover
         cardDiv.addEventListener("click", function () {
             // Reset background color of all cards
-            var allCards = document.querySelectorAll(".custom-card");
+            var allCards = document.querySelectorAll(".course-card");
             allCards.forEach((card) => {
                 card.classList.remove("border","border-dark", "custom-card-active");
                 card.classList.add("border", "custom-card-inactive");
