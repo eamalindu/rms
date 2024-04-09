@@ -119,6 +119,8 @@ let next1 = () => {
 
         //check the standard 0% discount radio
         radioStandardFullPayment.checked = true;
+        //set the isFullPayment to true
+        registration.isFullPayment = true;
 
     }
     else{
