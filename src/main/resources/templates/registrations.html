@@ -94,5 +94,130 @@
     <h5>Manage Registrations</h5>
 </div>
 
+<div class="container-fluid pt-2">
+    <div class="card rounded-0">
+        <div class="card-body mb-3">
+            <form onsubmit="return false;">
+                <div class="row align-items-center d-flex justify-content-around">
+                    <div class="col-12 col-lg-auto m-lg-0 p-0 ms-lg-2 ms-sm-0 mb-1">
+                        <label class="text-uppercase text-muted small m-0 p-0" for="inquirySearchDateRange">Date Range</label>
+                        <div class="input-group">
+                            <span class="input-group-text text-black bg-custom-white rounded-0"><i class="fa-solid fa-calendar-week"></i></span>
+                            <input class="form-control rounded-0" id="inquirySearchDateRange" placeholder="Date Range" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-auto m-0 p-0">
+                        <label class="text-uppercase text-muted small m-0 p-0" for="inquirySearchSource">Filters</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-custom-white rounded-0"><i class="fa-solid fa-filter"></i></span>
+                            <select class="form-select rounded-0 chosen-inquiry-search" data-placeholder="Sort by a Source" id="inquirySearchSource">
+                                <option value=""></option>
+                                <option value="Cold Calling">Cold Calling</option>
+                                <option value="Facebook">Facebook</option>
+                                <option value="Leaflets">Leaflets</option>
+                                <option value="Letter Campaign">Letter Campaign</option>
+                                <option value="Personal Contact">Personal Contact</option>
+                                <option value="Phone">Phone Call</option>
+                                <option value="Seminar">Seminar</option>
+                                <option value="SMS Campaign">SMS Campaign</option>
+                                <option value="Walk-In">Walk-In</option>
+                                <option value="WhatsApp">WhatsApp</option>
+                            </select>
+                            <select class="form-select rounded-0 chosen-inquiry-search" data-placeholder="Sort by a Course" id="inquirySearchCourse">
+                                <option value=""></option>
+                                <option>Diploma in IT</option>
+                                <option>Diploma in English</option>
+                                <option>Certificate in IT</option>
+                                <option>Certificate in English</option>
+                            </select>
+                            <select class="form-select rounded-0 chosen-inquiry-search" data-placeholder="Sort by a Counsellor" id="inquirySearchCounsellor">
+                                <option value=""></option>
+                                <option>User 1</option>
+                                <option>User 2</option>
+                                <option>User 3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1">
+                        <label class="text-uppercase small m-0 p-0 text-muted" for="inquirySearchID">Search</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-custom-white rounded-0"><i class="fa-solid fa-magnifying-glass"></i></span>
+                            <input class="form-control rounded-0" id="inquirySearchID" placeholder="Inquiry ID, Mobile Number or NIC" />
+                            <div class="d-flex align-items-center justify-content-evenly">
+                                <button class="btn bg-purple rounded-0 text-white" id="" type="submit"><i class="fa-solid fa-magnifying-glass small"></i></button>
+                                <button class="btn btn-close-red rounded-0 text-white ms-3" id="btn-reset" type="reset">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer pt-4 pb-4 overflow-auto">
+            <!-- <h4 class="text-center fw-bold" style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Search Inquiry Info / <small class="text-muted">No records</small></h4> -->
+            <table class="custom-table" id="tblInquiry">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Id</th>
+                    <th>Source</th>
+                    <th>Course</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Feeling</th>
+                    <th>Confirmed</th>
+                    <th class="text-nowrap">Added By</th>
+                    <th class="text-nowrap">Next Follow-Up</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>4001</td>
+                    <td>Walk-In</td>
+                    <td class="text-nowrap">Diploma in IT</td>
+                    <td>Malindu</td>
+                    <td>0768008003</td>
+                    <td>Neutral</td>
+                    <td>No</td>
+                    <td>User 1</td>
+                    <td class="text-nowrap">2023-10-19 at 8.00 am</td>
+                    <td>Processing</td>
+                    <td class="fw-bold text-purple">View</td>
+                </tr>
+                <tr>
+                    <td>4001</td>
+                    <td>Walk-In</td>
+                    <td class="text-nowrap">Diploma in IT</td>
+                    <td>Malindu</td>
+                    <td>0768008003</td>
+                    <td>Neutral</td>
+                    <td>No</td>
+                    <td>User 1</td>
+                    <td class="text-nowrap">2023-10-19 at 8.00 am</td>
+                    <td>Processing</td>
+                    <td class="fw-bold text-purple">View</td>
+                </tr>
+                <tr>
+                    <td>4001</td>
+                    <td>Walk-In</td>
+                    <td class="text-nowrap">Diploma in IT</td>
+                    <td>Malindu</td>
+                    <td>0768008003</td>
+                    <td>Neutral</td>
+                    <td>No</td>
+                    <td>User 1</td>
+                    <td class="text-nowrap">2023-10-19 at 8.00 am</td>
+                    <td>Processing</td>
+                    <td class="fw-bold text-purple">View</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
