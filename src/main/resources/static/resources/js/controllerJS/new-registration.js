@@ -293,10 +293,10 @@ const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount
         // txtFinalCourseFeeFullPayment.value = parseFloat(finalCourseFee).toFixed(2);
         // txtFinalRegistrationFeeFullPayment.value = parseFloat(registrationFee).toFixed(2);
 
-        testRegFee.innerHTML = "Rs."+ registrationFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        testCourseFee.innerHTML = "Rs."+ courseFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        testDiscountFee.innerHTML = "- Rs."+discountReceived.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        testTotalFee.innerHTML = "Rs."+ finalTotalFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        testRegFee.innerHTML = "Rs. "+ registrationFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        testCourseFee.innerHTML = "Rs. "+ courseFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        testDiscountFee.innerHTML = "- Rs. "+discountReceived.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        testTotalFee.innerHTML = "Rs. "+ finalTotalFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
     }
 
@@ -310,10 +310,7 @@ const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFu
     tblInstallments.children[1].innerHTML = '';
 
     if(isFullPayment) {
-        testDiscountFee.innerHTML = "0.00";
-        txtFinalTotalFeeFullPayment.value = (ob.paymentPlanID.totalFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        txtFinalCourseFeeFullPayment.value = (ob.paymentPlanID.courseFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        txtFinalRegistrationFeeFullPayment.value = (ob.paymentPlanID.registrationFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        testDiscountFee.innerHTML = "-Rs. 0.00";
     }
 
 
