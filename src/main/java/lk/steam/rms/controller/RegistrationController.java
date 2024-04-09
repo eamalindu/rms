@@ -36,6 +36,8 @@ public class RegistrationController {
         registrations.setCommissionPaidTo("User1");
 
         Student sample = studentDAO.getReferenceById(1);
+        registrations.setStudentID(sample);
+
         registrationDAO.save(registrations);
         return "OK";
 
