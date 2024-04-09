@@ -59,7 +59,7 @@ public class Registrations {
 
     @ManyToOne
     @JoinColumn(name = "registrationstatus_id",referencedColumnName = "id")
-    private Student batchStatusID;
+    private RegistrationStatus registrationStatusID;
 
 
 }

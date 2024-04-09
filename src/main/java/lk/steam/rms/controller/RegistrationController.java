@@ -37,6 +37,7 @@ public class RegistrationController {
 
         Student sample = studentDAO.getReferenceById(1);
         registrations.setStudentID(sample);
+        registrations.setRegistrationStatusID();
 
         registrationDAO.save(registrations);
         return "OK";
