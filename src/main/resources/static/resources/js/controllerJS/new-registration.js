@@ -2,7 +2,6 @@ window.addEventListener("load",()=>{
 
     registration = {};
     student ={};
-
     courses =  ajaxGetRequest("/Course/findall");
     displayPropertyListForCourse = [
         {property: 'name',dataType: 'text'},
@@ -128,6 +127,8 @@ let next2 = () => {
     footer_4.classList.add('show');
     step3.classList.add('custom-step-complete');
     document.querySelector('#btn-payment-str .step-number span').innerText = '✔';
+
+    console.log(registration);
 
 }
 
@@ -270,7 +271,6 @@ const radioFunctionForWeekEnd = (ob,index)=>{
 // });
 
 const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount)=>{
-    console.log(courseFee)
 
     if(elementID.checked){
 
@@ -287,14 +287,18 @@ const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount
         txtTotalDiscountFeeFullPayment.innerHTML = "- Rs. "+discountReceived.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
         txtTotalFeeFullPayment.innerHTML = "Rs. "+ finalTotalFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
+
+
     }
 
 }
 
 const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFullPayment)=>{
+
     totalFeeInputID.innerHTML = "Rs. "+(ob.paymentPlanID.totalFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     registrationFeeInputID.innerHTML = "Rs. "+(ob.paymentPlanID.registrationFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     courseFeeInputID.innerHTML = "Rs. "+(ob.paymentPlanID.courseFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
 
     tblInstallments.children[1].innerHTML = '';
 
