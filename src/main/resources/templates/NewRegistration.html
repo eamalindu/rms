@@ -554,25 +554,24 @@
                                                 <label class="fw-bold small required" for="studentFullName">Full Name</label>
                                             </div>
                                             <input class="form-control rounded-0 newStudentInputs" id="studentFullName" required type="text" onkeyup="inputTextValidator(this,'^[A-Z][a-zA-Z]{5,} [A-Z][a-zA-Z]{5,} [A-Z][a-zA-Z]{5,} [A-Z][a-zA-Z]{5,}$','newStudent','fullName');automateInitials()">
-
-                                            <div class="valid-feedback">Value Accepted</div>
-                                            <div class="invalid-feedback">Please provide a valid Full Name</div>
                                             <div class="text-muted small">
                                                 <small>As seen on the NIC, Passport or the Birth
                                                     Certificate</small>
                                             </div>
+                                            <div class="valid-feedback">Value Accepted</div>
+                                            <div class="invalid-feedback">Please provide a valid Full Name</div>
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-label">
                                                 <label class="fw-bold small required" for="studentNameWithInitials">Name With Initials</label>
                                             </div>
                                             <input class="form-control rounded-0 newStudentInputs" id="studentNameWithInitials" onkeyup=" inputTextValidator(this,'^[A-Z][.][A-Z][.][A-Z][.][A-Z][a-z]{9,}$','newStudent','nameWithInitials')" type="text">
-                                            <div class="valid-feedback">Value Accepted</div>
-                                            <div class="invalid-feedback">Please provide a valid Name with Initials</div>
                                             <div class="text-muted small"><small>This Name Will Be Used As the Student's
                                                 Certificate Name
                                             </small>
                                             </div>
+                                            <div class="valid-feedback">Value Accepted</div>
+                                            <div class="invalid-feedback">Please provide a valid Name with Initials</div>
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-label">
@@ -651,11 +650,11 @@
                                             </div>
                                             <input class="form-control rounded-0 newStudentInputs" id="studentMobileNumber" onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','newStudent','mobileNumber')"
                                                    required type="text">
-                                            <div class="valid-feedback rounded-2">Value Accepted</div>
-                                            <div class="invalid-feedback rounded-2">Please provide a valid Mobile Number</div>
                                             <div class="text-muted small"><small>An OTP will be sent to the above mobile
                                                 number for the verification process.</small>
                                             </div>
+                                            <div class="valid-feedback rounded-2">Value Accepted</div>
+                                            <div class="invalid-feedback rounded-2">Please provide a valid Mobile Number</div>
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-label">
@@ -677,12 +676,12 @@
                                                             <label class="fw-bold required small" for="studentAddressLine1">Address Line 1</label>
                                                         </div>
                                                         <input class="form-control rounded-0 newStudentInputs" id="studentAddressLine1" onkeyup="inputTextValidator(this,'','newStudent','addressLine1')" type="text">
-                                                        <div class="valid-feedback rounded-2">Value Accepted</div>
-                                                        <div class="invalid-feedback rounded-2">Please provide a valid Address Line</div>
                                                         <div class="text-muted small"><small>
                                                             Example: 123 Main Street
                                                         </small>
                                                         </div>
+                                                        <div class="valid-feedback rounded-2">Value Accepted</div>
+                                                        <div class="invalid-feedback rounded-2">Please provide a valid Address Line</div>
                                                     </div>
                                                     <div class="mb-3">
                                                         <div class="form-label">
@@ -699,8 +698,6 @@
                                                         </div>
                                                         <input class="form-control rounded-0 newStudentInputs" onkeyup="inputTextValidator(this,'^[A-Z][a-z]{4,}$','newStudent','city')" id="studentCity"
                                                                placeholder="Optional" type="text">
-                                                        <div class="valid-feedback rounded-2">Value Accepted</div>
-                                                        <div class="invalid-feedback rounded-2">Please provide a valid City</div>
                                                         <div class="text-muted small"><small>Certificate & all other course materials
                                                             will be sent to the above address</small>
                                                         </div>
