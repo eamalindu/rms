@@ -648,11 +648,13 @@
                                             <div class="form-label">
                                                 <label class="fw-bold required small" for="studentMobileNumber">Mobile Number</label>
                                             </div>
-                                            <input class="form-control rounded-0" id="studentMobileNumber" onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','newStudent','mobileNumber')"
+                                            <input class="form-control rounded-0 newStudentInputs" id="studentMobileNumber" onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','newStudent','mobileNumber')"
                                                    required type="text">
                                             <div class="text-muted small"><small>An OTP will be sent to the above mobile
                                                 number for the verification process.</small>
                                             </div>
+                                            <div class="valid-feedback rounded-2">Value Accepted</div>
+                                            <div class="invalid-feedback rounded-2">Please provide a valid Mobile Number</div>
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-label">
