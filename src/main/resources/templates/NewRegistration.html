@@ -725,7 +725,7 @@
                                             <div class="form-label">
                                                 <label class="fw-bold required small" for="studentGuardianRelationship">Relationship</label>
                                             </div>
-                                            <div class="input-group">
+                                            <div>
                                                 <select class="form-select rounded-0" data-placeholder="Please Select a Relationship" onchange="selectStaticValueValidator(this,'','newStudent','guardianRelationship')" id="studentGuardianRelationship">
                                                     <option value=""></option>
                                                     <option value="Mother">Mother</option>
@@ -735,10 +735,11 @@
                                                     <option value="Cousin">Cousin</option>
                                                     <option value="Legal Guardian">Legal Guardian</option>
                                                 </select>
+                                                <div class="text-muted small"><small>Relationship to the Student</small></div>
+                                                <div class="valid-feedback rounded-2">Value Accepted</div>
+                                                <div class="invalid-feedback rounded-2">Please provide a valid Relationship</div>
                                             </div>
-                                            <div class="text-muted small"><small>Relationship to the Student</small></div>
-                                            <div class="valid-feedback rounded-2">Value Accepted</div>
-                                            <div class="invalid-feedback rounded-2">Please provide a valid Relationship</div>
+
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-label">
@@ -750,6 +751,8 @@
                                             <div class="text-muted small"><small>Will be used to contact in case of an
                                                 Emergency.</small>
                                             </div>
+                                            <div class="valid-feedback rounded-2">Value Accepted</div>
+                                            <div class="invalid-feedback rounded-2">Please provide a valid Contact Number</div>
 
                                         </div>
                                         <div class="mb-3 text-center">
