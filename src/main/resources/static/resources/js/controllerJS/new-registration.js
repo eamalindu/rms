@@ -507,6 +507,10 @@ const newStudentSubmit = ()=>{
                 offCanvasStudentCloseButton.click();
                 //refresh the form
                 resetStudentForm();
+
+                //instead of reset the table newly added record should be added here or click the next button
+                //do the best one
+
             } else {
                 //this means there was a problem with the query
                 //shows an error alert to the user
