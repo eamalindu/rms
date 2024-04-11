@@ -716,7 +716,7 @@
                                             <div class="form-label">
                                                 <label class="fw-bold required small" for="studentGuardianName">Name</label>
                                             </div>
-                                            <input class="form-control rounded-0 newStudentInputs" id="studentGuardianName" onkeyup="inputTextValidator(this,'^[A-Z][a-z]{5,}[ ][A-Z][a-z]{5,}$','newStudent','guardianName')" type="text">
+                                            <input class="form-control rounded-0 newStudentInputs" id="studentGuardianName" onkeyup="inputTextValidator(this,'^[A-Z][a-z]{4,}[ ][A-Z][a-z]{5,}$','newStudent','guardianName')" type="text">
                                             <div class="text-muted small"><small>Name of the Guardian</small></div>
                                             <div class="valid-feedback rounded-2">Value Accepted</div>
                                             <div class="invalid-feedback rounded-2">Please provide a valid Guardian Name</div>
@@ -726,27 +726,29 @@
                                                 <label class="fw-bold required small" for="studentGuardianRelationship">Relationship</label>
                                             </div>
                                             <div class="input-group">
-                                                <select class="form-select rounded-0" data-placeholder="Please Select a Relationship" id="studentGuardianRelationship">
-                                                    <option></option>
-                                                    <option value="mother">Mother</option>
-                                                    <option value="father">Father</option>
-                                                    <option value="spouse">Spouse</option>
-                                                    <option value="sibling">Sibling</option>
-                                                    <option value="cousin">Cousin</option>
-                                                    <option value="legal_guardian">Legal Guardian</option>
+                                                <select class="form-select rounded-0" data-placeholder="Please Select a Relationship" onchange="selectStaticValueValidator(this,'','newStudent','guardianRelationship')" id="studentGuardianRelationship">
+                                                    <option value=""></option>
+                                                    <option value="Mother">Mother</option>
+                                                    <option value="Father">Father</option>
+                                                    <option value="Spouse">Spouse</option>
+                                                    <option value="Sibling">Sibling</option>
+                                                    <option value="Cousin">Cousin</option>
+                                                    <option value="Legal Guardian">Legal Guardian</option>
                                                 </select>
                                             </div>
-                                            <div class="text-muted small mt-1">Relationship to the Student</div>
+                                            <div class="text-muted small"><small>Relationship to the Student</small></div>
+                                            <div class="valid-feedback rounded-2">Value Accepted</div>
+                                            <div class="invalid-feedback rounded-2">Please provide a valid Relationship</div>
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-label">
                                                 <label class="fw-bold required small" for="studentGuardianContact">Contact
                                                     Number</label>
                                             </div>
-                                            <input class="form-control rounded-0" id="studentGuardianContact" onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','student','studentGuardianContact')"
+                                            <input class="form-control rounded-0 newStudentInputs" id="studentGuardianContact" onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','student','studentGuardianContact')"
                                                    required type="text">
-                                            <div class="text-muted small mt-1">Will be used to contact in case of an
-                                                Emergency.
+                                            <div class="text-muted small"><small>Will be used to contact in case of an
+                                                Emergency.</small>
                                             </div>
 
                                         </div>
