@@ -447,7 +447,6 @@ const resetStudentForm = ()=>{
         "drops": "up",
         "singleDatePicker": true,
         "showDropdowns": true,
-        "autoApply": true,
         "autoUpdateInput": false,
         maxDate: new Date(),
         locale: {
