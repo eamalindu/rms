@@ -21,6 +21,8 @@ window.addEventListener("load",()=>{
 
     $("#studentIdOption").chosen().change(function () {
         $("#studentIdOption_chosen .chosen-single").addClass('select-validated');
+    });$("#studentLang").chosen().change(function () {
+        $("#studentLang_chosen .chosen-single").addClass('select-validated');
     });
 
 });
@@ -411,7 +413,9 @@ const resetStudentForm = ()=>{
     frmNewStudent.reset();
 
     $("#studentIdOption_chosen .chosen-single").removeClass('select-validated');
+    $("#studentLang_chosen .chosen-single").removeClass('select-validated');
     studentIdOption.classList.remove('is-valid');
+    studentLang.classList.remove('is-valid');
 
     //reset student object
     newStudent ={};
@@ -419,6 +423,7 @@ const resetStudentForm = ()=>{
     //set default option chosen
     setTimeout(function () {
         $('#studentIdOption').val('').trigger('chosen:updated');
+        $('#studentLang').val('').trigger('chosen:updated');
     }, 0);
 
 //remove validation from the inputs all at once
