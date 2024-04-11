@@ -504,11 +504,13 @@ const newStudentSubmit = ()=>{
                 showCustomModal("Student Successfully Added!", "success");
                 //close the student offcanvas
                 offCanvasStudentCloseButton.click();
-                //refresh the form
-                resetStudentForm();
 
                 //attach the student Objetc to the regitration(this wont work need to request it from database again)
-                registration.studentID = newStudent;
+
+                registration.studentID =ajaxGetRequest("/Student/getStudentByIdValue/"+newStudent.idValue);
+
+                //refresh the form
+                resetStudentForm();
 
                 //instead of reset the table newly added record should be added here or click the next button
                 //do the best one
