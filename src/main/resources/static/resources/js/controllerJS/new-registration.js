@@ -419,3 +419,13 @@ const resetStudentForm = ()=>{
     });
 
 }
+
+const automateGender = ()=>{
+    if(studentMr.checked){
+        radioMale.checked = true;
+    }
+    if(studentMs.checked || studentMrs.checked){
+        radioFemale.checked =true;
+
+    }
+}
