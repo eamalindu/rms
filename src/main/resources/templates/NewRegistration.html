@@ -601,21 +601,24 @@
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-label">
-                                                <label class="fw-semibold small required" for="studentIdOption">NIC / Postal ID</label>
+                                                <label class="fw-semibold small required" for="studentIdOption">ID Type</label>
                                             </div>
-                                            <div class="input-group mb-3">
-                                                <select class="form-select rounded-0 custom-width-max-content" data-placeholder="Select" id="studentIdOption">
-                                                    <option value=""></option>
-                                                    <option value="1">NIC</option>
-                                                    <option value="2">Postal</option>
-                                                </select>
+                                            <select class="form-select rounded-0" data-placeholder="Select" id="studentIdOption">
+                                                <option value=""></option>
+                                                <option value="1">NIC</option>
+                                                <option value="2">Postal</option>
+                                            </select>
+                                        </div>
+                                            <div class="mb-3">
+                                                <div class="form-label">
+                                                    <label class="fw-semibold small required" for="studentID">ID Value</label>
+                                                </div>
                                                 <input class="form-control rounded-0 newStudentInputs" id="studentID" onkeyup="inputTextValidator(this,'^[6-9][0-9]{8}[x|X|v|V]|([1][9]|[2][0])[0-9]{10}$','newStudent','idValue')"
                                                        required type="text">
                                                 <div class="valid-feedback rounded-2">Value Accepted</div>
                                                 <div class="invalid-feedback rounded-2">Please provide a valid ID</div>
                                             </div>
 
-                                        </div>
                                         <h6 class="fw-bold  mt-4">Communication Preferences</h6>
                                         <hr>
                                         <div class="mb-3 mt-4">
