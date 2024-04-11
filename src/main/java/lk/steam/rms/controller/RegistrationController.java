@@ -37,14 +37,14 @@ public class RegistrationController {
     @PostMapping
     public String saveNewRegistration(@RequestBody Registrations registrations){
 
-        registrations.setRegistrationNumber("00001");
+        registrations.setRegistrationNumber("00002");
         registrations.setTimestamp(LocalDateTime.now());
         registrations.setAddedBy("User1");
         registrations.setCommissionPaidTo("User1");
 
-        Student sample = studentDAO.getReferenceById(1);
+        //Student sample = studentDAO.getReferenceById(1);
         RegistrationStatus sampleStatus = registrationStatusDAO.getReferenceById(1);
-        registrations.setStudentID(sample);
+        //registrations.setStudentID(sample);
         registrations.setRegistrationStatusID(sampleStatus);
 
         registrationDAO.save(registrations);

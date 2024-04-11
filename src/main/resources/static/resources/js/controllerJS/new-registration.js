@@ -507,8 +507,9 @@ const newStudentSubmit = ()=>{
                 //refresh the form
                 resetStudentForm();
 
-                //attach the student Objetc to the regitration
+                //attach the student Objetc to the regitration(this wont work need to request it from database again)
                 registration.studentID = newStudent;
+
                 //instead of reset the table newly added record should be added here or click the next button
                 //do the best one
                 next3();
