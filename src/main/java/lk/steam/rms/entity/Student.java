@@ -62,7 +62,6 @@ public class Student {
     private String addressLine1;
 
     @Column(name = "addressline2")
-    @NotNull
     private String addressLine2;
 
     @Column(name = "city")
