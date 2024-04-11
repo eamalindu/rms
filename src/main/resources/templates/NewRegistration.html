@@ -488,9 +488,14 @@
                     <!-- offcanvas start (registration)-->
                     <div aria-labelledby="staticBackdropLabel" class="offcanvas offcanvas-end"
                          data-bs-backdrop="static" id="staticBackdrop" style="width: 65%;" tabindex="-1">
-                        <div class="offcanvas-header bg-light">
+                        <div class="offcanvas-header bg-custom-white">
+                            <div>
                             <button aria-label="Close" class="btn btn-sm rounded-0 text-white btn-close-red" data-bs-dismiss="offcanvas"
                                     type="button"><i class="fas fa-times"></i></button>
+                            <button class="btn btn-sm bg-secondary text-white rounded-0" onclick="resetStudentForm()" type="button"><i
+                                    class="fas fa-refresh"></i>
+                            </button>
+                            </div>
                             <h3 class="float-end"
                                 style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">
                                 New Student Registration</h3>
@@ -552,6 +557,8 @@
                                             <div class="text-muted small mt-1">As seen on the NIC, Passport or the Birth
                                                 Certificate
                                             </div>
+                                            <div class="valid-feedback">Value Accepted</div>
+                                            <div class="invalid-feedback">Please provide a valid Full Name</div>
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-label">
@@ -561,6 +568,8 @@
                                             <div class="text-muted small mt-1">This Name Will Be Used As the Student's
                                                 Certificate Name
                                             </div>
+                                            <div class="valid-feedback">Value Accepted</div>
+                                            <div class="invalid-feedback">Please provide a valid Name with Initials</div>
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-label">
@@ -583,7 +592,7 @@
                                                 <label class="fw-bold required" for="studentDOB">Date of Birth</label>
                                             </div>
                                             <div class="input-group mb-3 w-25">
-                                                <input class="form-control rounded-0" id="studentDOB" required
+                                                <input class="form-control rounded-0 newStudentInputs" id="studentDOB" required
                                                        type="text">
                                                 <span class="input-group-text rounded-0"><i class="fas fa-calendar-alt"></i></span>
                                             </div>
@@ -598,8 +607,10 @@
                                                     <option value="1">NIC</option>
                                                     <option value="2">Postal</option>
                                                 </select>
-                                                <input class="form-control rounded-0" id="studentID" onkeyup="inputTextValidator(this,'^[6-9][0-9]{8}[x|X|v|V]|([1][9]|[2][0])[0-9]{10}$','student','studentID')"
+                                                <input class="form-control rounded-0 newStudentInputs" id="studentID" onkeyup="inputTextValidator(this,'^[6-9][0-9]{8}[x|X|v|V]|([1][9]|[2][0])[0-9]{10}$','student','studentID')"
                                                        required type="text">
+                                                <div class="valid-feedback rounded-2">Value Accepted</div>
+                                                <div class="invalid-feedback rounded-2">Please provide a valid ID</div>
                                             </div>
 
                                         </div>

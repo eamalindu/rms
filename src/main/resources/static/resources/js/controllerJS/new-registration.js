@@ -402,3 +402,8 @@ const handleCourseCardClick = (object , index)=>{
     console.log(object);
     registration.courseID = object;
 }
+
+const resetStudentForm = ()=>{
+
+
+}
