@@ -415,10 +415,16 @@ const resetStudentForm = ()=>{
         "singleDatePicker": true,
         "showDropdowns": true,
         "autoApply": true,
+        "autoUpdateInput": false,
         maxDate: new Date(),
         locale: {
             format: 'YYYY-MM-DD'
         }
+    });
+    $('#studentDOB').on('apply.daterangepicker', function (ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        inputTextValidator(this, '^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$', 'newStudent', 'dob');
+
     });
 
 }
