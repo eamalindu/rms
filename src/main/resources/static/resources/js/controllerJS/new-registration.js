@@ -405,6 +405,8 @@ const handleCourseCardClick = (object , index)=>{
 }
 
 const resetStudentForm = ()=>{
+    frmNewStudent.reset();
+
     $("#studentLang").chosen({width: '100%', disable_search: true});
     $("#studentIdOption").chosen({width: '100%', disable_search: true});
     $("#studentGuardianRelationship").chosen({width: '100%', disable_search: true});
