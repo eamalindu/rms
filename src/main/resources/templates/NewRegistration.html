@@ -716,8 +716,10 @@
                                             <div class="form-label">
                                                 <label class="fw-bold required small" for="studentGuardianName">Name</label>
                                             </div>
-                                            <input class="form-control rounded-0" id="studentGuardianName" type="text">
-                                            <div class="text-muted small mt-1">Name of the Guardian</div>
+                                            <input class="form-control rounded-0 newStudentInputs" id="studentGuardianName" onkeyup="inputTextValidator(this,'^[A-Z][a-z]{5,}[ ][A-Z][a-z]{5,}$','newStudent','guardianName')" type="text">
+                                            <div class="text-muted small"><small>Name of the Guardian</small></div>
+                                            <div class="valid-feedback rounded-2">Value Accepted</div>
+                                            <div class="invalid-feedback rounded-2">Please provide a valid Guardian Name</div>
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-label">
