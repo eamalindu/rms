@@ -503,6 +503,8 @@ const newStudentSubmit = ()=>{
                 //this means data successfully passed to the backend
                 //show an alert to user
                 showCustomModal("Student Successfully Added!", "success");
+                //close the student offcanvas
+                offCanvasStudentCloseButton.click();
                 //refresh the form
                 resetStudentForm();
             } else {
