@@ -629,15 +629,17 @@
                                             <div class="form-label">
                                                 <label class="fw-semibold small required" for="studentLang">Preferred Language</label>
                                             </div>
-                                            <div class="input-group">
-                                                <select class="form-select rounded-0" data-placeholder="Please Select a Language" id="studentLang">
+                                            <div>
+                                                <select class="form-select rounded-0" data-placeholder="Please Select a Language" onchange="selectStaticValueValidator(this,'','newStudent','language')" id="studentLang">
                                                     <option value=""></option>
                                                     <option value="Sinhala">සිංහල</option>
                                                     <option value="Tamil">தமிழ்</option>
                                                     <option value="English">English</option>
                                                 </select>
+                                                <div class="valid-feedback rounded-2">Value Accepted</div>
+                                                <div class="invalid-feedback rounded-2">Please provide a valid Language</div>
                                             </div>
-                                            <div class="text-muted small mt-1">Preferred language for communication.</div>
+                                            <div class="text-muted small mt-1"><small>Preferred language for communication.</small></div>
 
                                         </div>
                                         <h6 class="fw-bold mt-4">Contact Details</h6>
