@@ -490,3 +490,7 @@ const automateInitials = ()=>{
     inputTextValidator(studentNameWithInitials,'^[A-Z][.][A-Z][.][A-Z][.][A-Z][a-z]{5,}$','newStudent','nameWithInitials')
 
 }
+
+const newStudentSubmit = ()=>{
+
+}
