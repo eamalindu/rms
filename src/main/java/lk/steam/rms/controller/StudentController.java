@@ -1,7 +1,6 @@
 package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.StudentDAO;
-import lk.steam.rms.entity.Registrations;
 import lk.steam.rms.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
