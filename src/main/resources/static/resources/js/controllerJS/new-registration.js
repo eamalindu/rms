@@ -18,6 +18,7 @@ window.addEventListener("load",()=>{
     // $('#tblCourses').DataTable();
 
     createCourseRadioCards(courses,handleCourseCardClick,testA);
+    resetStudentForm();
 
 });
 
