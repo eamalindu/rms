@@ -527,11 +527,11 @@
                                 -->
                                 <div class="card-body">
                                     <form onsubmit="return false;">
-                                        <h5 class="fw-bold mt-4">Student Details</h5>
+                                        <h6 class="fw-bold mt-4">Student Details</h6>
                                         <hr>
                                         <div class="mb-3">
                                             <div class="form-label">
-                                                <label class="fw-bold required">Title</label>
+                                                <label class="fw-bold small required">Title</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" id="studentMr" name="studentTitle"
@@ -551,20 +551,21 @@
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-label">
-                                                <label class="fw-bold required" for="studentFullName">Full Name</label>
+                                                <label class="fw-bold small required" for="studentFullName">Full Name</label>
                                             </div>
-                                            <input class="form-control rounded-0" id="studentFullName" required type="text">
-                                            <div class="text-muted small mt-1">As seen on the NIC, Passport or the Birth
-                                                Certificate
+                                            <input class="form-control rounded-0 newStudentInputs" id="studentFullName" required type="text">
+                                            <div class="text-muted small mt-1">
+                                                <small>As seen on the NIC, Passport or the Birth
+                                                    Certificate</small>
                                             </div>
                                             <div class="valid-feedback">Value Accepted</div>
                                             <div class="invalid-feedback">Please provide a valid Full Name</div>
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-label">
-                                                <label class="fw-bold required" for="studentNameWithInitials">Name With Initials</label>
+                                                <label class="fw-bold small required" for="studentNameWithInitials">Name With Initials</label>
                                             </div>
-                                            <input class="form-control rounded-0" id="studentNameWithInitials" type="text">
+                                            <input class="form-control rounded-0 newStudentInputs" id="studentNameWithInitials" type="text">
                                             <div class="text-muted small mt-1">This Name Will Be Used As the Student's
                                                 Certificate Name
                                             </div>
@@ -573,7 +574,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-label">
-                                                <label class="fw-bold required">Gender</label>
+                                                <label class="fw-bold small required">Gender</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" id="radioMale" name="studentGender"
@@ -589,7 +590,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-label">
-                                                <label class="fw-bold required" for="studentDOB">Date of Birth</label>
+                                                <label class="fw-bold required small" for="studentDOB">Date of Birth</label>
                                             </div>
                                             <div class="input-group mb-3">
                                                 <input class="form-control rounded-0 newStudentInputs" id="studentDOB" required
@@ -600,7 +601,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-label">
-                                                <label class="fw-semibold required" for="studentIdOption">NIC / Postal ID</label>
+                                                <label class="fw-semibold small required" for="studentIdOption">NIC / Postal ID</label>
                                             </div>
                                             <div class="input-group mb-3">
                                                 <select class="form-select rounded-0 custom-width-max-content" data-placeholder="Select" id="studentIdOption">
@@ -615,11 +616,11 @@
                                             </div>
 
                                         </div>
-                                        <h5 class="fw-bold mt-4">Communication Preferences</h5>
+                                        <h6 class="fw-bold  mt-4">Communication Preferences</h6>
                                         <hr>
                                         <div class="mb-3 mt-4">
                                             <div class="form-label">
-                                                <label class="fw-semibold required" for="studentLang">Preferred Language</label>
+                                                <label class="fw-semibold small required" for="studentLang">Preferred Language</label>
                                             </div>
                                             <div class="input-group">
                                                 <select class="form-select rounded-0" data-placeholder="Please Select" id="studentLang">
@@ -632,11 +633,11 @@
                                             <div class="text-muted small mt-1">Preferred language for communication.</div>
 
                                         </div>
-                                        <h5 class="fw-bold mt-4">Contact Details</h5>
+                                        <h6 class="fw-bold mt-4">Contact Details</h6>
                                         <hr>
                                         <div class="mb-3 mt-4">
                                             <div class="form-label">
-                                                <label class="fw-bold required" for="studentMobileNumber">Mobile Number</label>
+                                                <label class="fw-bold required small" for="studentMobileNumber">Mobile Number</label>
                                             </div>
                                             <input class="form-control rounded-0" id="studentMobileNumber" onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','student','studentMobileNumber')"
                                                    required type="text">
@@ -646,7 +647,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-label">
-                                                <label class="fw-bold" for="studentEmail">Email Address</label>
+                                                <label class="fw-bold small" for="studentEmail">Email Address</label>
                                             </div>
                                             <input class="form-control rounded-0 newStudentInputs" id="studentEmail" onkeyup="inputTextValidator(this,'^[a-z|A-Z]{2,19}[@][a-z|A-Z]{2,8}[.][a-z|A-Z]{2,3}$','student','studentEmail')" placeholder="Optional"
                                                    type="text">
@@ -659,20 +660,20 @@
                                                 <div class="card-body">
                                                     <div class="mb-3">
                                                         <div class="form-label">
-                                                            <label class="fw-bold required" for="studentAddressLine1">Address Line 1</label>
+                                                            <label class="fw-bold required small" for="studentAddressLine1">Address Line 1</label>
                                                         </div>
                                                         <input class="form-control rounded-0 newStudentInputs" id="studentAddressLine1" type="text">
                                                     </div>
                                                     <div class="mb-3">
                                                         <div class="form-label">
-                                                            <label class="fw-bold" for="studentAddressLine2">Address Line 2</label>
+                                                            <label class="fw-bold small" for="studentAddressLine2">Address Line 2</label>
                                                         </div>
                                                         <input class="form-control rounded-0 newStudentInputs" id="studentAddressLine2"
                                                                placeholder="Optional" type="text">
                                                     </div>
                                                     <div class="mb-3">
                                                         <div class="form-label">
-                                                            <label class="fw-bold required" for="studentCity">City</label>
+                                                            <label class="fw-bold required small" for="studentCity">City</label>
                                                         </div>
                                                         <input class="form-control rounded-0 newStudentInputs" id="studentCity"
                                                                placeholder="Optional" type="text">
@@ -685,18 +686,18 @@
                                             </div>
 
                                         </div>
-                                        <h5 class="fw-bold mt-4">Guardian Details</h5>
+                                        <h6 class="fw-bold mt-4">Guardian Details</h6>
                                         <hr>
                                         <div class="mb-3">
                                             <div class="form-label">
-                                                <label class="fw-bold required" for="studentGuardianName">Name</label>
+                                                <label class="fw-bold required small" for="studentGuardianName">Name</label>
                                             </div>
                                             <input class="form-control rounded-0" id="studentGuardianName" type="text">
                                             <div class="text-muted small mt-1">Name of the Guardian</div>
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-label">
-                                                <label class="fw-bold required" for="studentGuardianRelationship">Relationship</label>
+                                                <label class="fw-bold required small" for="studentGuardianRelationship">Relationship</label>
                                             </div>
                                             <div class="input-group">
                                                 <select class="form-select rounded-0" data-placeholder="Please Select" id="studentGuardianRelationship">
@@ -713,7 +714,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-label">
-                                                <label class="fw-bold required" for="studentGuardianContact">Contact
+                                                <label class="fw-bold required small" for="studentGuardianContact">Contact
                                                     Number</label>
                                             </div>
                                             <input class="form-control rounded-0" id="studentGuardianContact" onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','student','studentGuardianContact')"
@@ -785,7 +786,6 @@
 <script src="/resources/js/controllerJS/new-registration.js"></script>
 <script>
     $(document).ready(function () {
-
 
         //reset chosen select using jquery
         $('button[type=reset]').on('click', function () {
