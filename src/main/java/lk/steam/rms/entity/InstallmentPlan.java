@@ -1,11 +1,12 @@
 package lk.steam.rms.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "installmentplan")
@@ -17,7 +18,25 @@ import lombok.NoArgsConstructor;
 public class InstallmentPlan {
 
     @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "installmentnumber")
+    @NotNull
+    private Integer installmentNumber;
+
+    @Column(name = "payment")
+    @NotNull
+    private BigDecimal payment;
+
+    @Column(name = "status")
+    @NotNull
+    private String status;
+
+    @ManyToOne
+    @JoinColumn(name = "registration_id",referencedColumnName = "id")
+    private Registrations registrationID;
 
 
 }
