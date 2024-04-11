@@ -1,7 +1,7 @@
 window.addEventListener("load",()=>{
 
     registration = {};
-    student ={};
+    newStudent ={};
 
 
     courses =  ajaxGetRequest("/Course/findall");
@@ -423,11 +423,11 @@ const resetStudentForm = ()=>{
 const automateGender = ()=>{
     if(studentMr.checked){
         radioMale.checked = true;
-        student.gender = radioMale.value
+        newStudent.gender = radioMale.value
     }
     if(studentMs.checked || studentMrs.checked){
         radioFemale.checked =true;
-        student.gender = radioFemale.value
+        newStudent.gender = radioFemale.value
 
     }
 }

@@ -535,17 +535,17 @@
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" id="studentMr" name="studentTitle"
-                                                       type="radio" value="Mr" onclick="automateGender()" onchange="student.title=this.value">
+                                                       type="radio" value="Mr" onclick="automateGender()" onchange="newStudent.title=this.value">
                                                 <label class="form-check-label" for="studentMr">Mr.</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" id="studentMs" name="studentTitle"
-                                                       type="radio" value="MS" onclick="automateGender()" onchange="student.title=this.value">
+                                                       type="radio" value="MS" onclick="automateGender()" onchange="newStudent.title=this.value">
                                                 <label class="form-check-label" for="studentMs">Ms.</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" id="studentMrs" name="studentTitle"
-                                                       type="radio" value="Mrs" onclick="automateGender()" onchange="student.title=this.value">
+                                                       type="radio" value="Mrs" onclick="automateGender()" onchange="newStudent.title=this.value">
                                                 <label class="form-check-label" for="studentMrs">Mrs.</label>
                                             </div>
                                         </div>
@@ -553,7 +553,7 @@
                                             <div class="form-label">
                                                 <label class="fw-bold small required" for="studentFullName">Full Name</label>
                                             </div>
-                                            <input class="form-control rounded-0 newStudentInputs" id="studentFullName" required type="text">
+                                            <input class="form-control rounded-0 newStudentInputs" id="studentFullName" required type="text" onkeyup="inputTextValidator(this,'^[A-Z][a-zA-Z]{19,} [A-Z][a-zA-Z]{19,} [A-Z][a-zA-Z]{29,} [A-Z][a-zA-Z]{29,}$','newStudent','fullName')">
                                             <div class="text-muted small mt-1">
                                                 <small>As seen on the NIC, Passport or the Birth
                                                     Certificate</small>
@@ -578,12 +578,12 @@
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" id="radioMale" name="studentGender"
-                                                       type="radio" value="Male" onchange="student.gender = this.value">
+                                                       type="radio" value="Male" onchange="newStudent.gender = this.value">
                                                 <label class="form-check-label" for="radioMale">Male</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" id="radioFemale" name="studentGender"
-                                                       type="radio" value="Female" onchange="student.gender = this.value">
+                                                       type="radio" value="Female" onchange="newStudent.gender = this.value">
                                                 <label class="form-check-label" for="radioFemale">Female</label>
                                             </div>
 
