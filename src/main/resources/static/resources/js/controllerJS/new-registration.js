@@ -482,6 +482,6 @@ const automateInitials = ()=>{
         }
     });
     studentNameWithInitials.value=initialsName;
-    inputTextValidator(studentNameWithInitials,'^[A-Z][.][A-Z][.][A-Z][.][A-Z][a-z]{9,}$','newStudent','nameWithInitials')
+    inputTextValidator(studentNameWithInitials,'^[A-Z][.][A-Z][.][A-Z][.][A-Z][a-z]{5,}$','newStudent','nameWithInitials')
 
 }
