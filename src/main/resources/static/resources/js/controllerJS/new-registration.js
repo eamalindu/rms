@@ -492,5 +492,6 @@ const automateInitials = ()=>{
 }
 
 const newStudentSubmit = ()=>{
+    console.log(newStudent)
 
 }
