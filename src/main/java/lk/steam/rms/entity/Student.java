@@ -69,4 +69,25 @@ public class Student {
     @NotNull
     private String city;
 
+    @Column(name = "idtype")
+    @NotNull
+    private String idType;
+
+    @Column(name = "idvalue")
+    @NotNull
+    private String idValue;
+
+    @Column(name = "guardianname")
+    @NotNull
+    private String guardianName;
+
+    @Column(name = "guardianrelationship")
+    @NotNull
+    private String guardianRelationship;
+
+    @Column(name = "guardiancontactnumber")
+    @NotNull
+    private String guardianContactNumber;
+
+
 }
