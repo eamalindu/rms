@@ -16,7 +16,16 @@ public class StudentController {
 
     @PostMapping
     public String saveNewStudent(@RequestBody Student student){
-        return "OK";
+
+        student.setStudentNumber("ST-0002");
+        try {
+            studentDAO.save(student);
+            return "OK";
+        }
+        catch (Exception ex){
+            return "Update Failed " + ex.getMessage();
+        }
+
     }
 
     @GetMapping(value = "/findall", produces = "application/json")
