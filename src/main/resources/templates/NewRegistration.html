@@ -604,11 +604,13 @@
                                             <div class="form-label">
                                                 <label class="fw-semibold small required" for="studentIdOption">ID Type</label>
                                             </div>
-                                            <select class="form-select rounded-0" data-placeholder="Please Select a ID Type" id="studentIdOption">
+                                            <select class="form-select rounded-0" data-placeholder="Please Select a ID Type" onchange="selectStaticValueValidator(this,'','newStudent','idType')" id="studentIdOption">
                                                 <option value=""></option>
-                                                <option value="1">NIC</option>
-                                                <option value="2">Postal</option>
+                                                <option value="NIC">NIC</option>
+                                                <option value="POSTAL">Postal</option>
                                             </select>
+                                            <div class="valid-feedback rounded-2">Value Accepted</div>
+                                            <div class="invalid-feedback rounded-2">Please provide a valid ID Type</div>
                                         </div>
                                             <div class="mb-3">
                                                 <div class="form-label">
