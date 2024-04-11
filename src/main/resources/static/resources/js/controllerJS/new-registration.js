@@ -1,7 +1,6 @@
 window.addEventListener("load",()=>{
 
     registration = {};
-    newStudent ={};
 
 
     courses =  ajaxGetRequest("/Course/findall");
@@ -19,6 +18,10 @@ window.addEventListener("load",()=>{
 
     createCourseRadioCards(courses,handleCourseCardClick,testA);
     resetStudentForm();
+
+    $("#studentIdOption").chosen().change(function () {
+        $("#studentIdOption_chosen .chosen-single").addClass('select-validated');
+    });
 
 });
 
@@ -406,6 +409,26 @@ const handleCourseCardClick = (object , index)=>{
 
 const resetStudentForm = ()=>{
     frmNewStudent.reset();
+
+    $("#studentIdOption_chosen .chosen-single").removeClass('select-validated');
+    studentIdOption.classList.remove('is-valid');
+
+    //reset student object
+    newStudent ={};
+
+    //set default option chosen
+    setTimeout(function () {
+        $('#studentIdOption').val('').trigger('chosen:updated');
+    }, 0);
+
+//remove validation from the inputs all at once
+    inputs = document.querySelectorAll('.newStudentInputs');
+    inputs.forEach(function (input) {
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
 
     $("#studentLang").chosen({width: '100%', disable_search: true});
     $("#studentIdOption").chosen({width: '100%', disable_search: true});
