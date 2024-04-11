@@ -54,7 +54,6 @@ public class Student {
     private String mobileNumber;
 
     @Column(name = "email")
-    @NotNull
     private String email;
 
     @Column(name = "addressline1")
