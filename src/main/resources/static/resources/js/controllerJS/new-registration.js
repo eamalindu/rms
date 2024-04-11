@@ -507,8 +507,11 @@ const newStudentSubmit = ()=>{
                 //refresh the form
                 resetStudentForm();
 
+                //attach the student Objetc to the regitration
+                registration.studentID = newStudent;
                 //instead of reset the table newly added record should be added here or click the next button
                 //do the best one
+                next3();
 
             } else {
                 //this means there was a problem with the query
