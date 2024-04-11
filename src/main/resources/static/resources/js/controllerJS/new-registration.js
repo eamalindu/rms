@@ -423,9 +423,11 @@ const resetStudentForm = ()=>{
 const automateGender = ()=>{
     if(studentMr.checked){
         radioMale.checked = true;
+        student.gender = radioMale.value
     }
     if(studentMs.checked || studentMrs.checked){
         radioFemale.checked =true;
+        student.gender = radioFemale.value
 
     }
 }
