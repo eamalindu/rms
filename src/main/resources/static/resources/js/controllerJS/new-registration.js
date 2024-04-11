@@ -434,3 +434,19 @@ const automateGender = ()=>{
 
     }
 }
+
+const automateInitials = ()=>{
+    let fullname = studentFullName.value.split(" ");
+    let initialsName = '';
+    fullname.forEach((word, index) => {
+        if (index < fullname.length - 1) {
+            initialsName += word[0] + ".";
+
+        }
+        else{
+            initialsName += word;
+        }
+    });
+    studentNameWithInitials.value=initialsName;
+
+}
