@@ -660,8 +660,10 @@
                                             <div class="form-label">
                                                 <label class="fw-bold small" for="studentEmail">Email Address</label>
                                             </div>
-                                            <input class="form-control rounded-0 newStudentInputs" id="studentEmail" onkeyup="inputTextValidator(this,'^[a-z|A-Z]{2,19}[@][a-z|A-Z]{2,8}[.][a-z|A-Z]{2,3}$','student','studentEmail')" placeholder="Optional"
+                                            <input class="form-control rounded-0 newStudentInputs" id="studentEmail" onkeyup="inputTextValidator(this,'^[a-z|A-Z]{2,19}[@][a-z|A-Z]{2,8}[.][a-z|A-Z]{2,3}$','newStudent','email')" placeholder="Optional"
                                                    type="text">
+                                            <div class="valid-feedback rounded-2">Value Accepted</div>
+                                        <div class="invalid-feedback rounded-2">Please provide a valid Email</div>
                                         </div>
                                         <div class="card-group mt-2">
                                             <div class="card rounded-0">
