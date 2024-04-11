@@ -404,6 +404,18 @@ const handleCourseCardClick = (object , index)=>{
 }
 
 const resetStudentForm = ()=>{
-
+    $("#studentLang").chosen({width: '100%', disable_search: true});
+    $("#studentIdOption").chosen({width: '100px', disable_search: true});
+    $("#studentGuardianRelationship").chosen({width: '100%', disable_search: true});
+    $('#studentDOB').daterangepicker({
+        "drops": "up",
+        "singleDatePicker": true,
+        "showDropdowns": true,
+        "autoApply": true,
+        maxDate: new Date(),
+        locale: {
+            format: 'YYYY-MM-DD'
+        }
+    });
 
 }
