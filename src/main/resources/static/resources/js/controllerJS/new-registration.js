@@ -531,3 +531,7 @@ const newStudentSubmit = ()=>{
     });
 
 }
+
+const searchStudent=()=>{
+
+}
