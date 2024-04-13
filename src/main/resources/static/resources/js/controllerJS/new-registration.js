@@ -507,7 +507,8 @@ const newStudentSubmit = ()=>{
 
                 //attach the student Objetc to the regitration(this wont work need to request it from database again)
 
-                registration.studentID =ajaxGetRequest("/Student/getStudentByIdValue/"+newStudent.idValue);
+                registration.studentID =newStudent;
+                    //ajaxGetRequest("/Student/getStudentByIdValue/"+newStudent.idValue);
 
                 //refresh the form
                 resetStudentForm();
