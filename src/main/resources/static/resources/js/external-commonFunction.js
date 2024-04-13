@@ -268,6 +268,11 @@ const createCourseRadioCards = (dataList, functionEx, container) => {
     });
 }
 
+const createStudentRadioCards = (dataList, functionEx,container)=>{
+
+
+}
+
 const fillSelectOptionsWithTwo = (elementID, message, dataList, displayProperty1, displayProperty2, selectedValue) => {
     const selectElement = elementID;
     selectElement.innerHTML = '';
