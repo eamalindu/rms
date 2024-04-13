@@ -69,8 +69,10 @@ public class RegistrationController {
 
         }
 
-        registrationDAO.save(registrations);
+       Registrations completedRegistration = registrationDAO.save(registrations);
+        System.out.println(completedRegistration.getId());
         return "OK";
+
 
     }
 
