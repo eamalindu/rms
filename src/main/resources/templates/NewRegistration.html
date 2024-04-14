@@ -472,7 +472,7 @@
                 Registry</h5>
             <div class="container-fluid d-flex justify-content-around p-1">
                 <div class="input-group mx-2 mt-1">
-                    <input autocomplete="off" class="form-control rounded-0" id="input-search-student" maxlength="20"
+                    <input autocomplete="off" class="form-control rounded-0" id="studentSearchID" maxlength="20"
                            placeholder="Search by Student ID, NIC or Mobile No" required="required"
                            style="box-shadow: none!important;">
                     <button class="btn btn-secondary rounded-0 text-uppercase" onclick="searchStudent()" id="btn-search-student" type="submit"><i
@@ -766,6 +766,11 @@
                         </div>
                     </div>
                     <!-- offcanvas end -->
+
+                    <div class="d-flex w-100">
+                    <div id="existStudentResults" class="mt-2 d-block w-50 border-end"></div>
+                    <div id="inquiryResults" class="mt-2 d-block w-50 "></div>
+                    </div>
                 </div>
             </div>
             <div class="row mt-2">
