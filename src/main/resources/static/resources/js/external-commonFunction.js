@@ -269,8 +269,57 @@ const createCourseRadioCards = (dataList, functionEx, container) => {
 }
 
 const createStudentRadioCards = (dataList, functionEx,container)=>{
+    if(dataList!=="") {
+        container.innerHTML = ""; // Clear previous content
 
+        row = document.createElement("div");
+        row.className = "row p-2";
+        container.appendChild(row);
 
+        var col = document.createElement("div");
+        col.className = "col-md-6"; // Bootstrap column class for medium devices (2 columns per row)
+        var cardDiv = document.createElement("div");
+        cardDiv.onclick = () => {
+            functionEx(dataList);
+        };
+        cardDiv.className =
+            "card w-100 rounded-0 custom-card-active custom-card student-card";
+        cardDiv.innerHTML = `
+          <div class="card-body p-1">
+            <div class="d-flex">
+            <div class="w-25">
+                <img src="/resources/images/placeholderlogo.png" width="100px">
+            </div>
+            <div class="w-100 d-flex align-items-center justify-content-center">
+                <div class="">
+                <h6 class="fw-bold text-steam-green m-0">${dataList.title} ${dataList.nameWithInitials}</h6>
+                <p class="small m-0 text-start fw-bold"><small>${dataList.studentNumber}</small></p>
+                <p class="small m-0 text-muted text-start"><small><i class="fa fa-phone-alt fa-sm"></i> ${dataList.mobileNumber}</small></p>
+                <p class="small m-0 text-muted text-start"><small><i class="fa fa-envelope fa-sm"></i>  ${dataList.email == null ? 'n/a' : dataList.email}</small></p>
+            </div>
+            </div>
+          `;
+
+        cardDiv.style.cursor = "pointer"; // Ensure cursor changes to pointer on hover
+        cardDiv.addEventListener("click", function () {
+            // Reset background color of all cards
+            var allCards = document.querySelectorAll(".student-card");
+            allCards.forEach((card) => {
+                card.classList.remove("border", "border-success", "custom-card-active", "custom-card-active-checkmark");
+                card.classList.add("border", "custom-card-inactive");
+            });
+            // Set background color of the clicked card
+            cardDiv.classList.add("custom-card-active", "border-success", "custom-card-active-checkmark");
+            cardDiv.classList.remove("custom-card-inactive");
+        });
+
+        col.appendChild(cardDiv);
+        row.appendChild(col);
+
+    }
+    else{
+        container.innerHTML = '<p class="text-red text-center small">No Records Found For <b>'+studentSearchID.value+'</b> in the Exsisting Student Database! </p>';
+    }
 }
 
 const fillSelectOptionsWithTwo = (elementID, message, dataList, displayProperty1, displayProperty2, selectedValue) => {
