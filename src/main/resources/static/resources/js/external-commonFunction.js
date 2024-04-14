@@ -255,11 +255,11 @@ const createCourseRadioCards = (dataList, functionEx, container) => {
             // Reset background color of all cards
             var allCards = document.querySelectorAll(".course-card");
             allCards.forEach((card) => {
-                card.classList.remove("border","border-dark", "custom-card-active");
+                card.classList.remove("border","border-dark", "custom-card-active","custom-card-active-checkmark");
                 card.classList.add("border", "custom-card-inactive");
             });
             // Set background color of the clicked card
-            cardDiv.classList.add("custom-card-active","border-dark");
+            cardDiv.classList.add("custom-card-active","border-dark","custom-card-active-checkmark");
             cardDiv.classList.remove("custom-card-inactive");
         });
 
