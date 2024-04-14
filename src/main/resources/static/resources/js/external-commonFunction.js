@@ -288,7 +288,7 @@ const createStudentRadioCards = (dataList, functionEx,container)=>{
           <div class="card-body p-1">
             <div class="d-flex">
             <div class="w-25">
-                <img src="/resources/images/placeholderlogo.png" width="100px">
+                <img src="/resources/images/placeholderstudent.png" width="100px">
             </div>
             <div class="w-100 d-flex align-items-center justify-content-center">
                 <div class="">
