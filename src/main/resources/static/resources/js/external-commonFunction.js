@@ -270,7 +270,7 @@ const createCourseRadioCards = (dataList, functionEx, container) => {
 
 const createStudentRadioCards = (dataList, functionEx,container)=>{
     if(dataList!=="") {
-        container.innerHTML = ""; // Clear previous content
+        container.innerHTML = "<p class='text-muted'>Results From Student Database</p>"; // Clear previous content
 
         row = document.createElement("div");
         row.className = "row p-2";
