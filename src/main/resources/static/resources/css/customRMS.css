@@ -260,7 +260,17 @@ select:invalid[multiple] {
     -webkit-filter: grayscale(0) !important;
     opacity: 1 !important;
 }
-
+.custom-card-active-checkmark::after{
+    content:"✔";
+    top:-5px;
+    right:-5px;
+    position: absolute;
+    background-color: #07a500;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    text-align: center;
+}
 /*custom Alert css*/
 .custom-alert {
     z-index: 1090 !important;
