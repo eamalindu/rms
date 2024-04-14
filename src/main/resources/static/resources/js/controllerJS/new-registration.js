@@ -533,5 +533,13 @@ const newStudentSubmit = ()=>{
 }
 
 const searchStudent=()=>{
+    const searchText = studentSearchID.value;
+    responseStudent = ajaxGetRequest("/Student/getStudentByIdValue/"+searchText);
+    console.log(responseStudent);
+    createStudentRadioCards(responseStudent,handleStudentCardClick,existStudentResults);
+}
+
+const handleStudentCardClick=(object)=>{
+    registration.studentID = object;
 
 }
