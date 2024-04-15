@@ -146,18 +146,22 @@ let next2 = () => {
 }
 
 let next3= ()=>{
-    footer_4.classList.remove('show');
-    footer_5.classList.add('show');
-    step4.classList.add('custom-step-complete');
-    document.querySelector('#btn-student .step-number span').innerText = '✔';
+    if(registration.studentID!=null) {
+        footer_4.classList.remove('show');
+        footer_5.classList.add('show');
+        step4.classList.add('custom-step-complete');
+        document.querySelector('#btn-student .step-number span').innerText = '✔';
 
-    const server = ajaxHttpRequest("/Registration","POST",registration)
-    if(server==="OK"){
+        const server = ajaxHttpRequest("/Registration", "POST", registration)
+        if (server === "OK") {
 
-        alert("ela")
+            alert("ela")
+        } else {
+            alert(server)
+        }
     }
     else{
-        alert(server)
+        showCustomModal("Please Select a Student !","warning");
     }
 
 
