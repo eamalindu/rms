@@ -555,6 +555,26 @@ const checkStudentFormErrors = () => {
     if(newStudent.title!=null){
         errors = errors + 'Title is Required<br>';
     }
+    if(newStudent.fullName!=null){
+        errors = errors + 'Full Name is Required<br>';
+    }
+    if(newStudent.nameWithInitials!=null){
+        errors = errors + 'Name With Initials is Required<br>';
+    }
+    if(newStudent.gender!=null){
+        errors = errors + 'Gender is Required<br>';
+    }if(newStudent.dob!=null){
+        errors = errors + 'DOB is Required<br>';
+    }if(newStudent.language!=null){
+        errors = errors + 'Language is Required<br>';
+    }
+    if(newStudent.mobileNumber!=null){
+        errors = errors + 'Mobile Number is Required<br>';
+    } if(newStudent.addressLine1!=null){
+        errors = errors + 'Address Line 1 is Required<br>';
+    }if(newStudent.city!=null){
+        errors = errors + 'City is Required<br>';
+    }
 
     return errors;
 }
