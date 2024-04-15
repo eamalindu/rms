@@ -560,46 +560,46 @@ const handleStudentCardClick=(object)=>{
 
 const checkStudentFormErrors = () => {
     let errors = '';
-    if(newStudent.title!=null){
+    if(newStudent.title==null){
         errors = errors + 'Title is Required<br>';
     }
-    if(newStudent.fullName!=null){
+    if(newStudent.fullName==null){
         errors = errors + 'Full Name is Required<br>';
     }
-    if(newStudent.nameWithInitials!=null){
+    if(newStudent.nameWithInitials==null){
         errors = errors + 'Name With Initials is Required<br>';
     }
-    if(newStudent.gender!=null){
+    if(newStudent.gender==null){
         errors = errors + 'Gender is Required<br>';
     }
-    if(newStudent.dob!=null){
+    if(newStudent.dob==null){
         errors = errors + 'DOB is Required<br>';
     }
-    if(newStudent.language!=null){
+    if(newStudent.language==null){
         errors = errors + 'Language is Required<br>';
     }
-    if(newStudent.mobileNumber!=null){
+    if(newStudent.mobileNumber==null){
         errors = errors + 'Mobile Number is Required<br>';
     }
-    if(newStudent.addressLine1!=null){
+    if(newStudent.addressLine1==null){
         errors = errors + 'Address Line 1 is Required<br>';
     }
-    if(newStudent.city!=null){
+    if(newStudent.city==null){
         errors = errors + 'City is Required<br>';
     }
-    if(newStudent.idType!=null){
+    if(newStudent.idType==null){
         errors = errors + 'ID Type is Required<br>';
     }
-    if(newStudent.idValue!=null){
+    if(newStudent.idValue==null){
         errors = errors + 'ID Value is Required<br>';
     }
-    if(newStudent.guardianName!=null){
+    if(newStudent.guardianName==null){
         errors = errors + 'Guardian Name is Required<br>';
     }
-    if(newStudent.guardianRelationship!=null){
+    if(newStudent.guardianRelationship==null){
         errors = errors + 'Guardian Relationship is Required<br>';
     }
-    if(newStudent.guardiancontactnumber!=null){
+    if(newStudent.guardiancontactnumber==null){
         errors = errors + 'Guardian Contact Number is Required<br>';
     }
 
