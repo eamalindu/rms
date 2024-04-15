@@ -39,40 +39,51 @@ public class RegistrationController {
     @Transactional
     public String saveNewRegistration(@RequestBody Registrations registrations){
 
-        registrations.setRegistrationNumber("00002");
-        registrations.setTimestamp(LocalDateTime.now());
-        registrations.setAddedBy("User1");
-        registrations.setCommissionPaidTo("User1");
-        //Student sample = studentDAO.getReferenceById(1);
-        RegistrationStatus sampleStatus = registrationStatusDAO.getReferenceById(1);
-        //registrations.setStudentID(sample);
-        registrations.setRegistrationStatusID(sampleStatus);
+        try {
 
-        //store the current student nic
-        String currentIdValue = registrations.getStudentID().getIdValue();
+            //set InquiryNumber
+            String regNextNumber = registrationDAO.getNextRegistrationNumber();
+            if (regNextNumber == null || regNextNumber.length() == 0 || regNextNumber.isEmpty()) {
+                registrations.setRegistrationNumber("00001");
+            } else {
+                registrations.setRegistrationNumber(regNextNumber);
+            }
 
-        //check this student exsist
-        Student exsistStudent = studentDAO.getStudentsByIdValue(currentIdValue);
+            registrations.setTimestamp(LocalDateTime.now());
+            registrations.setAddedBy("User1");
+            registrations.setCommissionPaidTo("User1");
+            //Student sample = studentDAO.getReferenceById(1);
+            RegistrationStatus sampleStatus = registrationStatusDAO.getReferenceById(1);
+            //registrations.setStudentID(sample);
+            registrations.setRegistrationStatusID(sampleStatus);
 
-        if(exsistStudent==null)
-        {
-            Student registeredStudent = registrations.getStudentID();
-            //set auto increment values and backend generated values
-            registeredStudent.setStudentNumber("ST-0002");
-            //save the student
-            studentDAO.save(registeredStudent);
-            //set that student as the registration
+            //store the current student nic
+            String currentIdValue = registrations.getStudentID().getIdValue();
+
+            //check this student exsist
+            Student exsistStudent = studentDAO.getStudentsByIdValue(currentIdValue);
+
+            if (exsistStudent == null) {
+                Student registeredStudent = registrations.getStudentID();
+                //set auto increment values and backend generated values
+                registeredStudent.setStudentNumber("ST-0002");
+                //save the student
+                studentDAO.save(registeredStudent);
+                //set that student as the registration
+            } else {
+
+                registrations.setStudentID(exsistStudent);
+
+            }
+
+            Registrations completedRegistration = registrationDAO.save(registrations);
+            System.out.println(completedRegistration.getId());
+            return "OK";
+
         }
-        else{
-
-            registrations.setStudentID(exsistStudent);
-
+        catch (Exception ex){
+            return "Save Failed "+ex.getMessage();
         }
-
-       Registrations completedRegistration = registrationDAO.save(registrations);
-        System.out.println(completedRegistration.getId());
-        return "OK";
-
 
     }
 
