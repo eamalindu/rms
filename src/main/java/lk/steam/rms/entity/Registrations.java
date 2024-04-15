@@ -45,6 +45,12 @@ public class Registrations {
     @Column(name = "onetimepaymentamount")
     private BigDecimal oneTimePaymentAmount;
 
+    @Column(name = "discountrate")
+    private BigDecimal discountRate;
+
+    @Column(name = "discountamount")
+    private BigDecimal discountAmount;
+
     @ManyToOne
     @JoinColumn(name = "course_id",referencedColumnName = "id")
     private Course courseID;
