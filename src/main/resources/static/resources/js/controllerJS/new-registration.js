@@ -216,7 +216,7 @@ let previous1 = () => {
         document.querySelector('#btn-add-payment .step-number span').innerText = '5';
     }
     else{
-        showCustomModal("Please Select a Course !","warning");
+        showCustomModal("Please Complete The Previous Step !","warning");
 
     }
 
