@@ -224,7 +224,7 @@ let previous1 = () => {
 
 }
 let previous2 = () => {
-    if(registration.courseID!==undefined) {
+    if(registration.courseID!==undefined || registration.batchID!==undefined) {
         step3.classList.remove('custom-step-complete');
         step4.classList.remove('custom-step-complete');
         step5.classList.remove('custom-step-complete');
@@ -241,25 +241,30 @@ let previous2 = () => {
         document.querySelector('#btn-add-payment .step-number span').innerText = '5';
     }
     else{
-        showCustomModal("Please Select a Batch !","warning");
+        showCustomModal("Please Complete The Previous Step !","warning");
 
     }
 
 
 }
 let previous3 = () =>{
-    step4.classList.remove('custom-step-complete');
-    step5.classList.remove('custom-step-complete');
+    if(registration.courseID!==undefined || registration.batchID!==undefined) {
+        step4.classList.remove('custom-step-complete');
+        step5.classList.remove('custom-step-complete');
 
 
-    footer_1.classList.remove('show');
-    footer_2.classList.remove('show');
-    footer_3.classList.remove('show');
-    footer_4.classList.add('show');
-    footer_5.classList.remove('show');
+        footer_1.classList.remove('show');
+        footer_2.classList.remove('show');
+        footer_3.classList.remove('show');
+        footer_4.classList.add('show');
+        footer_5.classList.remove('show');
 
-    document.querySelector('#btn-student .step-number span').innerText = '4';
-    document.querySelector('#btn-add-payment .step-number span').innerText = '5';
+        document.querySelector('#btn-student .step-number span').innerText = '4';
+        document.querySelector('#btn-add-payment .step-number span').innerText = '5';
+    }
+    else{
+        showCustomModal("Please Complete The Previous Step !","warning");
+    }
 
 }
 
