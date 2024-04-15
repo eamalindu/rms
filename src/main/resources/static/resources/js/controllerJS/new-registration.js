@@ -498,7 +498,7 @@ const automateInitials = ()=>{
 
 const newStudentSubmit = ()=>{
     console.log(newStudent);
-    let errors = checkStudentFormErrors()
+    let errors = checkStudentFormErrors();
     if(errors === '')
     {
         showCustomConfirm("You are about to add a New Student<br>Are You Sure?", function (result) {
