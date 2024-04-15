@@ -305,6 +305,8 @@ const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount
 
         registration.isFullPayment = true;
         registration.oneTimePaymentAmount = finalTotalFee;
+        registration.discountRate = discount;
+        registration.discountAmount = discountReceived;
 
         lblDiscountFeeHeading.innerHTML = "Discount "+discount+"% Off";
 
