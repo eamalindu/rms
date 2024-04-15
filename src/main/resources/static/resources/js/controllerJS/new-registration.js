@@ -497,44 +497,52 @@ const automateInitials = ()=>{
 }
 
 const newStudentSubmit = ()=>{
-    console.log(newStudent)
-    showCustomConfirm("You are about to add a New Student<br>Are You Sure?", function (result) {
-        if (result) {
-            //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
-            //catch the return value from the backend and save it in the serviceResponse variable
-            let serviceResponse = ajaxHttpRequest("/Student", 'POST', newStudent);
-            //check the serviceResponse value is "OK"
-            if (serviceResponse === "OK") {
-                //this means data successfully passed to the backend
-                //show an alert to user
-                showCustomModal("Student Successfully Added!", "success");
-                //close the student offcanvas
-                offCanvasStudentCloseButton.click();
+    console.log(newStudent);
+    let errors = checkStudentFormErrors()
+    if(errors === '')
+    {
+        showCustomConfirm("You are about to add a New Student<br>Are You Sure?", function (result) {
+            if (result) {
+                //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+                //catch the return value from the backend and save it in the serviceResponse variable
+                let serviceResponse = ajaxHttpRequest("/Student", 'POST', newStudent);
+                //check the serviceResponse value is "OK"
+                if (serviceResponse === "OK") {
+                    //this means data successfully passed to the backend
+                    //show an alert to user
+                    showCustomModal("Student Successfully Added!", "success");
+                    //close the student offcanvas
+                    offCanvasStudentCloseButton.click();
 
-                //attach the student Objetc to the regitration(this wont work need to request it from database again)
+                    //attach the student Objetc to the regitration(this wont work need to request it from database again)
 
-                registration.studentID =newStudent;
+                    registration.studentID = newStudent;
                     //ajaxGetRequest("/Student/getStudentByIdValue/"+newStudent.idValue);
 
-                //refresh the form
-                resetStudentForm();
+                    //refresh the form
+                    resetStudentForm();
 
-                //instead of reset the table newly added record should be added here or click the next button
-                //do the best one
-                next3();
+                    //instead of reset the table newly added record should be added here or click the next button
+                    //do the best one
+                    next3();
 
-            } else {
-                //this means there was a problem with the query
-                //shows an error alert to the user
-                showCustomModal("Operation Failed!" + serviceResponse, "error");
+                } else {
+                    //this means there was a problem with the query
+                    //shows an error alert to the user
+                    showCustomModal("Operation Failed!" + serviceResponse, "error");
+                }
             }
-        }
-            //will execute this block if the user confirmation is "no"
-        //show user an alert
-        else {
-            showCustomModal("Operation Cancelled!", "info");
-        }
-    });
+                //will execute this block if the user confirmation is "no"
+            //show user an alert
+            else {
+                showCustomModal("Operation Cancelled!", "info");
+            }
+
+        });
+    }
+    else{
+        showCustomModal(errors, 'warning');
+    }
 
 }
 
