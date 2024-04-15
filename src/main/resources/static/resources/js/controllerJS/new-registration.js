@@ -549,3 +549,12 @@ const handleStudentCardClick=(object)=>{
     registration.studentID = object;
 
 }
+
+const checkStudentFormErrors = () => {
+    let errors = '';
+    if(newStudent.title!=null){
+        errors = errors + 'Title is Required<br>';
+    }
+
+    return errors;
+}
