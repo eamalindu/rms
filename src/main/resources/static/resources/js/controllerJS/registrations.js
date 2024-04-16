@@ -26,12 +26,26 @@ window.addEventListener("load", () => {
 //creating a function to refresh the registrations table when ever needed
 const refreshRegistrationTable = ()=>{
 
+    const registrations = ajaxGetRequest("/Registration/findall");
+    //creating a display property list for the batches
+    displayPropertyListForBatches = [
+        {property: 'registrationNumber', dataType: 'text'},
+    ];
+
+    fillDataIntoTable(tblInquiry, registrations, displayPropertyListForBatches, rowView, 'offcanvasBatchSheet');
+
+    $('#tblInquiry').DataTable();
+
 }
 
 //creating a function to reset the registrations form when ever needed
 const resetRegistrationForm=()=>{
 
 
+
+}
+
+const rowView=()=>{
 
 }
 
