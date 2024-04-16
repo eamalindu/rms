@@ -31,6 +31,7 @@ const refreshRegistrationTable = ()=>{
     displayPropertyListForBatches = [
         {property: 'registrationNumber', dataType: 'text'},
         {property: getStudentName, dataType: 'function'},
+        {property: getCourseName, dataType: 'function'},
     ];
 
     fillDataIntoTable(tblInquiry, registrations, displayPropertyListForBatches, rowView, 'offcanvasBatchSheet');
@@ -42,6 +43,11 @@ const refreshRegistrationTable = ()=>{
 const getStudentName =(ob)=>{
 
     return ob.studentID.title+' '+ob.studentID.nameWithInitials+' <br/><span class="badge w-50 rounded-0" style="background: darkgrey">'+ob.studentID.studentNumber+'</span>';
+}
+
+const getCourseName =(ob)=>{
+
+    return ob.courseID.name+' ('+ob.courseID.code+')<br/><small class="text-muted">'+ob.batchID.batchCode+'</small>';
 }
 
 //creating a function to reset the registrations form when ever needed
