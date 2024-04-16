@@ -35,6 +35,7 @@ const refreshRegistrationTable = ()=>{
         {property: getContactNumber, dataType: 'function'},
         {property: getDate, dataType: 'function'},
         {property: 'addedBy', dataType: 'text'},
+        {property: getStatus, dataType: 'function'},
     ];
 
     fillDataIntoTable(tblInquiry, registrations, displayPropertyListForBatches, rowView, 'offcanvasBatchSheet');
@@ -62,6 +63,23 @@ const getContactNumber = (ob)=>{
 const getDate = (ob)=>{
     const [addedDate, addedTime] = ob.timestamp.split("T");
     return addedDate+'<br/><small class="text-muted">'+addedTime+'</small>';
+}
+
+const getStatus = (ob) => {
+    if (ob.registrationStatusID.name === "Scheduled") {
+        return '<span class="badge rounded-0" style="background: #3FB618">Scheduled</span>';
+    } else if (ob.registrationStatusID.name === "Started") {
+        return '<span class="badge rounded-0" style="background: #ea8a1e">Started</span>';
+    } else if (ob.registrationStatusID.name === "Canceled") {
+        return '<span class="badge rounded-0" style="background: #ea2f1e">Canceled</span>';
+    }
+    else if (ob.registrationStatusID.name ==='Deleted'){
+        return '<span class="badge rounded-0" style="background: #000">Deleted</span>';
+    }
+    else {
+        return '<span class="badge rounded-0" style="background: #1eadea">Completed</span>';
+    }
+
 }
 //creating a function to reset the registrations form when ever needed
 const resetRegistrationForm=()=>{
