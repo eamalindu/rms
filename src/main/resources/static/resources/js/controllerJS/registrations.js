@@ -30,12 +30,18 @@ const refreshRegistrationTable = ()=>{
     //creating a display property list for the batches
     displayPropertyListForBatches = [
         {property: 'registrationNumber', dataType: 'text'},
+        {property: getStudentName, dataType: 'function'},
     ];
 
     fillDataIntoTable(tblInquiry, registrations, displayPropertyListForBatches, rowView, 'offcanvasBatchSheet');
 
     $('#tblInquiry').DataTable();
 
+}
+
+const getStudentName =(ob)=>{
+
+    return ob.studentID.title+' '+ob.studentID.nameWithInitials+' <br/><span class="badge w-50 rounded-0" style="background: darkgrey">'+ob.studentID.studentNumber+'</span>';
 }
 
 //creating a function to reset the registrations form when ever needed
