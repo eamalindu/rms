@@ -155,6 +155,7 @@ let next3= ()=>{
                 step4.classList.add('custom-step-complete');
                 document.querySelector('#btn-student .step-number span').innerText = '✔';
 
+                //unfinished code start
                 if (registration.isFullPayment) {
                     const server = ajaxHttpRequest("/Registration", "POST", registration)
                     if (server === "OK") {
@@ -167,6 +168,7 @@ let next3= ()=>{
                     alert("This is a part payment")
                     const serverResult = ajaxHttpRequest("/InstallmentPlan", "POST", installmentPlan)
                 }
+                //unfinished code end
 
             } else {
                 showCustomModal("Please Select a Student !", "warning");
