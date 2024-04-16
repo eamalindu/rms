@@ -146,31 +146,36 @@ let next2 = () => {
 }
 
 let next3= ()=>{
-    if(registration.studentID!=null) {
-        footer_4.classList.remove('show');
-        footer_5.classList.add('show');
-        step4.classList.add('custom-step-complete');
-        document.querySelector('#btn-student .step-number span').innerText = '✔';
 
-        if(registration.isFullPayment){
-            const server = ajaxHttpRequest("/Registration", "POST", registration)
-            if (server === "OK") {
+    showCustomConfirm("You are about to add a New Registration<br>Are You Sure?", function (result) {
+        if (result) {
+            if (registration.studentID != null) {
+                footer_4.classList.remove('show');
+                footer_5.classList.add('show');
+                step4.classList.add('custom-step-complete');
+                document.querySelector('#btn-student .step-number span').innerText = '✔';
 
-                alert("ela")
+                if (registration.isFullPayment) {
+                    const server = ajaxHttpRequest("/Registration", "POST", registration)
+                    if (server === "OK") {
+
+                        alert("ela")
+                    } else {
+                        alert(server)
+                    }
+                } else {
+                    alert("This is a part payment")
+                    const serverResult = ajaxHttpRequest("/InstallmentPlan", "POST", installmentPlan)
+                }
+
             } else {
-                alert(server)
+                showCustomModal("Please Select a Student !", "warning");
             }
         }
         else{
-            alert("This is a part payment")
-            const serverResult = ajaxHttpRequest("/InstallmentPlan","POST",installmentPlan)
+            showCustomModal("Operation Cancelled!", "info");
         }
-
-    }
-    else{
-        showCustomModal("Please Select a Student !","warning");
-    }
-
+    });
 
 }
 let next4= ()=>{
