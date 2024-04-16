@@ -67,11 +67,11 @@ const getDate = (ob)=>{
 
 const getStatus = (ob) => {
     if (ob.registrationStatusID.name === "Active") {
-        return '<span class="badge rounded-0" style="background: #3FB618">Scheduled</span>';
+        return '<span class="badge rounded-0" style="background: #3FB618">Active</span>';
     } else if (ob.registrationStatusID.name === "Suspended") {
-        return '<span class="badge rounded-0" style="background: #ea8a1e">Started</span>';
+        return '<span class="badge rounded-0" style="background: #ea8a1e">Suspended</span>';
     } else if (ob.registrationStatusID.name === "Cancelled") {
-        return '<span class="badge rounded-0" style="background: #ea2f1e">Canceled</span>';
+        return '<span class="badge rounded-0" style="background: #ea2f1e">Cancelled</span>';
     }
     else{
         return '<span class="badge rounded-0" style="background: #000">Deleted</span>';
