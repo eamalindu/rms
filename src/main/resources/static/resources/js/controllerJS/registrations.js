@@ -66,19 +66,17 @@ const getDate = (ob)=>{
 }
 
 const getStatus = (ob) => {
-    if (ob.registrationStatusID.name === "Scheduled") {
+    if (ob.registrationStatusID.name === "Active") {
         return '<span class="badge rounded-0" style="background: #3FB618">Scheduled</span>';
-    } else if (ob.registrationStatusID.name === "Started") {
+    } else if (ob.registrationStatusID.name === "Suspended") {
         return '<span class="badge rounded-0" style="background: #ea8a1e">Started</span>';
-    } else if (ob.registrationStatusID.name === "Canceled") {
+    } else if (ob.registrationStatusID.name === "Cancelled") {
         return '<span class="badge rounded-0" style="background: #ea2f1e">Canceled</span>';
     }
-    else if (ob.registrationStatusID.name ==='Deleted'){
+    else{
         return '<span class="badge rounded-0" style="background: #000">Deleted</span>';
     }
-    else {
-        return '<span class="badge rounded-0" style="background: #1eadea">Completed</span>';
-    }
+
 
 }
 //creating a function to reset the registrations form when ever needed
