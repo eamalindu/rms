@@ -152,13 +152,20 @@ let next3= ()=>{
         step4.classList.add('custom-step-complete');
         document.querySelector('#btn-student .step-number span').innerText = '✔';
 
-        const server = ajaxHttpRequest("/Registration", "POST", registration)
-        if (server === "OK") {
+        if(registration.isFullPayment){
+            const server = ajaxHttpRequest("/Registration", "POST", registration)
+            if (server === "OK") {
 
-            alert("ela")
-        } else {
-            alert(server)
+                alert("ela")
+            } else {
+                alert(server)
+            }
         }
+        else{
+            alert("This is a part payment")
+            const serverResult = ajaxHttpRequest("/InstallmentPlan","POST",installmentPlan)
+        }
+
     }
     else{
         showCustomModal("Please Select a Student !","warning");
@@ -377,7 +384,7 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
         firstTR.appendChild(thirdTD);
         tbody.appendChild(firstTR);
 
-        installmentPlan.push({ number: 1, amount: (installmentFee + registrationFee) });
+        installmentPlan.push({ installmentNumber: 1, payment: (installmentFee + registrationFee),dueDate: currentDate.toISOString().slice(0, 10),status:"Not Paid",registrationID:registration});
 
         // Display the subsequent installments
         for (let i = 1; i < installments; i++) {
@@ -402,7 +409,7 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
 
 
             tbody.appendChild(tr);
-            installmentPlan.push({ number: i+1, amount: installmentFee });
+            installmentPlan.push({ installmentNumber: i+1, payment: installmentFee,dueDate: newDate.toISOString().slice(0, 10),status:"Not Paid",registrationID:registration});
         }
 
     }
@@ -604,7 +611,7 @@ const checkStudentFormErrors = () => {
     if(newStudent.guardianRelationship==null){
         errors = errors + 'Guardian Relationship is Required<br>';
     }
-    if(newStudent.guardiancontactnumber==null){
+    if(newStudent.guardianContactNumber==null){
         errors = errors + 'Guardian Contact Number is Required<br>';
     }
 
