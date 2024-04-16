@@ -9,6 +9,9 @@ window.addEventListener("load", () => {
     courses =  ajaxGetRequest("/Course/findall");
     fillSelectOptions(registrationSearchCourse, ' ', courses, 'name');
 
+    registrationStatus = ajaxGetRequest("/RegistrationStatus/findall");
+    fillSelectOptions(registrationSearchStatus,' ',registrationStatus,'name');
+
     //initialize the 3rd party libraries (chosen)
     $('.chosen-registration-search').chosen({width: '190px'});
     $('#registrationSearchDateRange').daterangepicker({
