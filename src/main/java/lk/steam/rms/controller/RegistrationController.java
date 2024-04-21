@@ -9,6 +9,7 @@ import lk.steam.rms.entity.RegistrationStatus;
 import lk.steam.rms.entity.Registrations;
 import lk.steam.rms.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -89,6 +90,8 @@ public class RegistrationController {
 
     @GetMapping(value = "/findall", produces = "application/json")
     public List<Registrations> findAll() {
-        return registrationDAO.findAll();
+        //sorting the data DESC format
+        Sort sort = Sort.by(Sort.Direction.DESC,"registrationNumber");
+        return registrationDAO.findAll(sort);
     }
 }
