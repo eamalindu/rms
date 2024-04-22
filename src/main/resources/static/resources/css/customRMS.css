@@ -358,7 +358,9 @@ input {
     background: red !important;
     border-color: red !important;
 }
-
+.border-grey{
+    border-color: #f2f2f2!important;
+}
 .valid-feedback {
     width: fit-content;
     padding: 0.25rem 0.5rem;
