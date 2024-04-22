@@ -86,11 +86,16 @@ const resetRegistrationForm=()=>{
 
 }
 
-const rowView=()=>{
+const rowView=(ob,index)=>{
     //hide the update btn
     btnRegistrationSheetUpdate.style.display = 'none';
     //show the deleted btn
     btnRegistrationSheetDelete.style.display = 'block';
+
+    //refill data
+    registrationSheetCode.innerText = ob.registrationNumber;
+    const [addedDate, addedTime] = ob.timestamp.split("T");
+    registrationSheetJoinedDateText.innerHTML = addedDate+" at "+addedTime;
 
 }
 
