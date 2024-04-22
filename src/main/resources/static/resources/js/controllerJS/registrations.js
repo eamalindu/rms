@@ -96,10 +96,18 @@ const rowView=(ob,index)=>{
     registrationSheetCode.innerText = ob.registrationNumber;
     const [addedDate, addedTime] = ob.timestamp.split("T");
     registrationSheetJoinedDateText.innerHTML = addedDate+" at "+addedTime;
-    registrationSheetStudentID.value = ob.studentID.studentNumber;
+    registrationSheetStudentID.innerText = ob.studentID.studentNumber;
     registrationSheetStudentName.value=ob.studentID.title+" "+ob.studentID.nameWithInitials;
     registrationSheetCourse.value = ob.courseID.name+" ("+ob.courseID.code+")";
     registrationSheetBatch.value = ob.batchID.batchCode;
+
+
+    //This code snippet will save the current object student sub object to the global variable studentRecordToBeEdited;
+    registrationSheetStudentID.addEventListener("click",()=>{
+        studentRecordToBeEdited = ob.studentID;
+    })
+
+
 
 }
 
