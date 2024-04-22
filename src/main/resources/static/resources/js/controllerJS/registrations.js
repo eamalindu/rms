@@ -99,7 +99,7 @@ const rowView=(ob,index)=>{
     registrationSheetStudentID.value = ob.studentID.studentNumber;
     registrationSheetStudentName.value=ob.studentID.title+" "+ob.studentID.nameWithInitials;
     registrationSheetCourse.value = ob.courseID.name+" ("+ob.courseID.code+")";
-    registrationSheetBatch.value = ob.batchID.code;
+    registrationSheetBatch.value = ob.batchID.batchCode;
 
 }
 
