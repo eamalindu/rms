@@ -164,6 +164,33 @@
         </div>
     </div>
 </div>
+
+<!-- Off canvas for registrations details start-->
+<div aria-labelledby="offcanvasRightLabel" class="offcanvas offcanvas-end w-50" data-bs-backdrop="static"
+     id="offcanvasRegistrationSheet" tabindex="-1">
+    <div class="offcanvas-header bg-custom-white">
+        <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0"
+                data-bs-dismiss="offcanvas" id="offcanvasRegistrationSheetCloseButton"
+                type="button"><i class="fas fa-times"></i></button>
+        <div class="container d-flex gap-3 ms-1" style="width: 55%">
+            <button class="btn btn-sm bg-info rounded-0 text-white" onclick="batchEdit()"><i
+                    class="fa-regular fa-pen-to-square"></i> Edit Info
+            </button>
+            <button class="btn btn-sm bg-warning rounded-0 text-white" id="btnRegistrationSheetUpdate" onclick="batchUpdate()"><i
+                    class="fa-solid fa-arrows-rotate"></i> Update
+            </button>
+            <button class="btn btn-sm bg-danger rounded-0 text-white" id="btnRegistrationSheetDelete" onclick="batchDelete()"><i class="fa-solid fa-trash"></i>
+                Delete
+            </button>
+        </div>
+        <h3 class="align-items-center text-nowrap ms-3 mt-2"
+            style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Course
+            Details</h3>
+    </div>
+    <div class="offcanvas-body"></div>
+</div>
+<!-- Off canvas for registrations details start-->
+
 <!--Toast-->
 <div class="position-fixed top-0 end-0 p-2" style="z-index: 1055">
     <div id="myToast" class="toast hide bg-white" role="alert" aria-live="assertive" aria-atomic="true">
