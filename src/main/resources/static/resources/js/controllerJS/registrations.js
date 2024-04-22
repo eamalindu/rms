@@ -87,6 +87,10 @@ const resetRegistrationForm=()=>{
 }
 
 const rowView=()=>{
+    //hide the update btn
+    btnRegistrationSheetUpdate.style.display = 'none';
+    //show the deleted btn
+    btnRegistrationSheetDelete.style.display = 'block';
 
 }
 
