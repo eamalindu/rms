@@ -359,7 +359,7 @@ input {
     border-color: red !important;
 }
 .border-grey{
-    border-color: #f2f2f2!important;
+    border-color: #ddd !important;
 }
 .valid-feedback {
     width: fit-content;
