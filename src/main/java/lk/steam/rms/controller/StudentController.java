@@ -18,7 +18,7 @@ public class StudentController {
     @PostMapping
     public String saveNewStudent(@RequestBody Student student){
 
-        student.setStudentNumber("ST-0004");
+        student.setStudentNumber("ST-0005");
         try {
             studentDAO.save(student);
             return "OK";
