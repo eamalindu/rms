@@ -39,13 +39,24 @@
             border-style: solid;
         }
         .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-            color: black;
             background-color: white;
         }
-        .nav-pills .nav-link.active, .nav-pills .show > .nav-link #pills-home-tab{
-            color: #19459D!important;
-        }.nav-pills .nav-link.active, #pills-border-home{
-            display: block;
+        /* Info button */
+        #pills-home-tab.nav-link.active {
+            color: #19459D!important; /* Change the color to blue when active */
+            border-bottom: 3px solid#19459D!important;
+        }
+
+        /* Course button */
+        #pills-course-tab.nav-link.active {
+            color: red!important; /* Change the color to red when active */
+            border-bottom: 3px solid red!important;
+        }
+
+        /* Payment button */
+        #pills-payment-tab.nav-link.active {
+            color: rgb(25, 135, 84)!important; /* Change the color to green when active */
+            border-bottom: 3px solid rgb(25, 135, 84)!important;
         }
 
         .nav-link {
@@ -211,7 +222,6 @@
                         data-bs-target="#pills-info" data-bs-toggle="pill" id="pills-home-tab" role="tab"
                         type="button"><i class="fa-solid fa-circle-info"></i> Info
                 </button>
-                <span class="border-bottom border-2" id="pills-border-home" style="border-color: #19459D!important;"></span>
             </li>
             <li class="nav-item" role="presentation" style="width: 33%">
                 <button aria-controls="pills-profile" aria-selected="false" class="nav-link w-100 rounded-0 bg-custom-white border-1 border border-light text-muted"
