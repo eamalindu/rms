@@ -57,12 +57,11 @@
             border-bottom: 3px solid rgb(25, 135, 84)!important;
         }
 
-
         .nav-link {
             color: black;
         }
         .form-select:disabled {
-            background-color: whitesmoke!important;
+            background-color: white!important;
         }
     </style>
 
@@ -241,7 +240,45 @@
             <div aria-labelledby="pills-home-tab" class="tab-pane fade show active" id="pills-info" role="tabpanel"
                  tabindex="0">
                 <div class="card rounded-0 mt-0 border-0">
-                    <div class="card-body rounded-0 border-0 p-0" style="background: whitesmoke">
+                    <div class="card-body rounded-0 border-0 p-0">
+                        <div class="text-center w-75 mx-auto mt-1">
+                            <span class="align-items-center display-3" id="batchSheetCode" style="text-transform: uppercase;font-weight: bold;font-family: Arial, serif;">2024-DiT-1</span>
+                            <p class="text-muted small lh-sm">Created On <span id="batchSheetJoinedDateText">2023-11-10</span></p>
+                        </div>
+                        <table class="table table-bordered table-responsive ">
+                            <tbody class="small align-middle">
+                            <tr>
+                                <td class="fw-bold w-25">Course</td>
+                                <td>
+                                    <select class="form-select rounded-0 small form-select-sm border-0" id="batchSheetCourse" disabled style="background: whitesmoke">
+
+                                    </select>
+                                    <div class="valid-feedback">Value Accepted</div>
+                                    <div class="invalid-feedback">Please provide a valid Calling Name</div>
+                                </td>
+                                <td class="fw-bold w-25">Created By</td>
+                                <td>
+                                    <input class="small rounded-0 form-control-sm border-0 text-black" style="background: whitesmoke" id="batchSheetCreated" disabled >
+                                    <div class="valid-feedback">Value Accepted</div>
+                                    <div class="invalid-feedback">Please provide a valid Calling Name</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold w-25">Commence Date</td>
+                                <td class="w-25">
+                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="batchSheetCommenceDate" disabled required>
+                                    <div class="valid-feedback">Value Accepted</div>
+                                    <div class="invalid-feedback">Please provide a valid NIC</div>
+                                </td>
+                                <td class="fw-bold w-25">End Date</td>
+                                <td>
+                                    <input class="small rounded-0 form-control-sm batchSheetInputs" id="batchSheetEndDate" disabled required >
+                                    <div class="valid-feedback">Value Accepted</div>
+                                    <div class="invalid-feedback">Please provide a valid DOB</div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
