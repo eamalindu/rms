@@ -96,6 +96,8 @@ const rowView=(ob,index)=>{
     registrationSheetCode.innerText = ob.registrationNumber;
     const [addedDate, addedTime] = ob.timestamp.split("T");
     registrationSheetJoinedDateText.innerHTML = addedDate+" at "+addedTime;
+    registrationSheetStudentID.value = ob.studentID.studentNumber;
+    registrationSheetStudentName.value=ob.studentID.title+" "+ob.studentID.nameWithInitials;
 
 }
 
