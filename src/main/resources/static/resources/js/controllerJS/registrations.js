@@ -98,7 +98,7 @@ const rowView=(ob,index)=>{
     registrationSheetJoinedDateText.innerHTML = addedDate+" at "+addedTime;
     registrationSheetStudentID.innerText = ob.studentID.studentNumber;
     registrationSheetStudentName.value=ob.studentID.title+" "+ob.studentID.nameWithInitials;
-    registrationSheetCourse.value = ob.courseID.name+" ("+ob.courseID.code+")";
+    registrationSheetCourse.value = ob.courseID.name;
     registrationSheetBatch.value = ob.batchID.batchCode;
     registrationSheetRegisteredBy.value = ob.addedBy;
     registrationSheetCommission.value = ob.commissionPaidTo;
