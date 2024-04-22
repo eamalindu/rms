@@ -100,11 +100,14 @@ const rowView=(ob,index)=>{
     registrationSheetStudentName.value=ob.studentID.title+" "+ob.studentID.nameWithInitials;
     registrationSheetCourse.value = ob.courseID.name+" ("+ob.courseID.code+")";
     registrationSheetBatch.value = ob.batchID.batchCode;
+    registrationSheetRegisteredBy.value = ob.addedBy;
+    registrationSheetCommission.value = ob.commissionPaidTo;
 
 
     //This code snippet will save the current object student sub object to the global variable studentRecordToBeEdited;
     registrationSheetStudentID.addEventListener("click",()=>{
         studentRecordToBeEdited = ob.studentID;
+        console.log(studentRecordToBeEdited)
     })
 
 
