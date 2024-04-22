@@ -38,7 +38,7 @@ const refreshRegistrationTable = ()=>{
         {property: getStatus, dataType: 'function'},
     ];
 
-    fillDataIntoTable(tblInquiry, registrations, displayPropertyListForBatches, rowView, 'offcanvasBatchSheet');
+    fillDataIntoTable(tblInquiry, registrations, displayPropertyListForBatches, rowView, 'offcanvasRegistrationSheet');
 
     $('#tblInquiry').DataTable();
 
