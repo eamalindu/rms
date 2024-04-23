@@ -92,6 +92,7 @@ const rowView=(ob,index)=>{
     //show the deleted btn
     btnRegistrationSheetDelete.style.display = 'block';
 
+
     //refill data
     registrationSheetCode.innerText = ob.registrationNumber;
     const [addedDate, addedTime] = ob.timestamp.split("T");

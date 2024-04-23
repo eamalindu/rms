@@ -5,6 +5,7 @@ import lk.steam.rms.entity.Batch;
 import lk.steam.rms.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -37,6 +38,13 @@ public class StudentController {
     @GetMapping("getStudentByIdValue/{idValue}")
     public Student getStudentByIdValue(@PathVariable String idValue) {
         return studentDAO.getStudentsByIdValue(idValue);
+    }
+
+    @GetMapping(value = "/edit")
+    public ModelAndView studentEdit() {
+        ModelAndView studentEditView = new ModelAndView();
+        studentEditView.setViewName("studentedit.html");
+        return studentEditView;
     }
 
 }
