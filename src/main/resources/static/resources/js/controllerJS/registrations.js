@@ -111,6 +111,35 @@ const rowView=(ob,index)=>{
         registrationSheetPayment.value = "Installments"
     }
 
+    if (ob.registrationStatusID.name === 'Active') {
+        registrationSheetCode.classList.add('text-success');
+
+        registrationSheetCode.classList.remove('text-warning');
+        registrationSheetCode.classList.remove('text-steam-green');
+        registrationSheetCode.classList.remove('text-danger');
+    } else if (ob.registrationStatusID.name === 'Suspended') {
+        registrationSheetCode.classList.add('text-warning');
+
+        registrationSheetCode.classList.remove('text-success');
+        registrationSheetCode.classList.remove('text-steam-green');
+        registrationSheetCode.classList.remove('text-danger');
+    }
+
+    else if(ob.registrationStatusID.name ==='Deleted'){
+        btnRegistrationSheetDelete.style.display = 'none';
+        registrationSheetCode.classList.remove('text-success');
+        registrationSheetCode.classList.remove('text-warning');
+        registrationSheetCode.classList.remove('text-danger');
+        registrationSheetCode.classList.remove('text-steam-green');
+    }
+    else {
+        registrationSheetCode.classList.add('text-danger');
+
+        registrationSheetCode.classList.remove('text-success');
+        registrationSheetCode.classList.remove('text-warning');
+        registrationSheetCode.classList.remove('text-steam-green');
+    }
+
 
 
     //This code snippet will save the current object student sub object to the global variable studentRecordToBeEdited;
