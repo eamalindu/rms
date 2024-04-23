@@ -416,9 +416,9 @@ input {
     font-size: 13px;
 }
 
-.batchSheetInputs {
+.batchSheetInputs,.registrationSheetInputs {
     border: 1px solid transparent;
-    background: whitesmoke;
+    /*background: whitesmoke;*/
     color: black;
 
 }
