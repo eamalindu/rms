@@ -120,6 +120,9 @@ const rowView=(ob,index)=>{
     })
 
 
+    const registrationStatus = ajaxGetRequest("/RegistrationStatus/findall");
+    fillSelectOptions(registrationSheetStatus, 'Please Select a Status', registrationStatus, 'name', ob.registrationStatusID.name)
+
 
 }
 
