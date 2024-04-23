@@ -103,6 +103,15 @@ const rowView=(ob,index)=>{
     registrationSheetRegisteredBy.value = ob.addedBy;
     registrationSheetCommission.value = ob.commissionPaidTo;
 
+    //check payment mode [full payment or part payment]
+    if(ob.isFullPayment){
+        registrationSheetPayment.value = "Full Payment";
+    }
+    else{
+        registrationSheetPayment.value = "Installments"
+    }
+
+
 
     //This code snippet will save the current object student sub object to the global variable studentRecordToBeEdited;
     registrationSheetStudentID.addEventListener("click",()=>{
