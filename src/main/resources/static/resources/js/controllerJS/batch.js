@@ -236,10 +236,24 @@ const rowView = (ob, index) => {
     //list out the registrations for the viewing batch
     const registrationsFromBatch = ajaxGetRequest("/Registration/getRegistrations/"+ob.id);
     const displayPropertyListForRegistrationsFromBatch = [
-        {property: getCourseName, dataType: 'function'},
-        {property: 'batchCode', dataType: 'text'}
+        {property: 'registrationNumber', dataType: 'text'},
+        {property: getStudentName, dataType: 'function'},
+        {property: getStudentContact, dataType: 'function'},
+        {property: getStudentStatus, dataType: 'function'},
     ]
     fillDataIntoTableWithOutAction(tblRegistrations,registrationsFromBatch,displayPropertyListForRegistrationsFromBatch)
+}
+
+const getStudentName=(ob)=>{
+    return ob.studentID.title+" "+ob.studentID.nameWithInitials;
+}
+
+const getStudentContact=(ob)=>{
+    return ob.studentID.mobileNumber;
+}
+
+const getStudentStatus=(ob)=>{
+    return ob.registrationStatusID.name;
 }
 
 //creating a function to reset the Batch form when ever needed
