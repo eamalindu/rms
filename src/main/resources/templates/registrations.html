@@ -329,17 +329,29 @@
 <div aria-hidden="true" aria-labelledby="staticBackdropLabel" class="modal fade"
      data-bs-backdrop="static" data-bs-keyboard="false" id="staticModalBackdrop"
      tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered rounded-0">
+    <div class="modal-dialog modal-dialog-centered rounded-0 modal-lg">
         <div class="modal-content rounded-0">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel"
-                    style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">
-                    Manual Discount</h5>
-                <button aria-label="Close" class="btn btn-sm btn-close-red text-white rounded-0"
-                        data-bs-dismiss="modal"
-                        type="button"><i class="fas fa-times"></i></button>
+                <h5 class="modal-title" id="staticBackdropLabel" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Manual Discount</h5>
+                <button aria-label="Close" class="btn btn-sm btn-close-red text-white rounded-0" data-bs-dismiss="modal" type="button"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body">
+                <table class="table table-bordered table-responsive ">
+                    <tbody class="small align-middle">
+                    <tr>
+                        <td class="fw-bold w-25">Student ID</td>
+                        <td>
+                            <input class="small rounded-0 form-control-sm border-0 text-black"  disabled >
+                        </td>
+                        <td class="fw-bold w-25">Student Name</td>
+                        <td>
+                            <input class="small rounded-0 form-control-sm border-0 text-black"  disabled >
+                            <div class="valid-feedback">Value Accepted</div>
+                            <div class="invalid-feedback">Please provide a valid Calling Name</div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="modal-footer d-flex justify-content-between">
                 <button class="btn btn-secondary rounded-0" data-bs-dismiss="modal" type="button">
