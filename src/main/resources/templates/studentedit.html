@@ -5,6 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-
+<script>
+    var currentStudent = JSON.parse(localStorage.getItem('currentStudent'));
+    console.log(currentStudent);
+    document.write(currentStudent.fullName)
+</script>
 </body>
 </html>
