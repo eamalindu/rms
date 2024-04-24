@@ -94,4 +94,8 @@ public class RegistrationController {
         Sort sort = Sort.by(Sort.Direction.DESC,"registrationNumber");
         return registrationDAO.findAll(sort);
     }
+    @GetMapping("getRegistrations/{batchID}")
+    public List<Registrations> getBatchInfoByBatchCode(@PathVariable Integer batchID){
+        return registrationDAO.getRegistrationsByBatchID(batchID);
+    }
 }
