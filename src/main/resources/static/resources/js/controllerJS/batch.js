@@ -253,7 +253,16 @@ const getStudentContact=(ob)=>{
 }
 
 const getStudentStatus=(ob)=>{
-    return ob.registrationStatusID.name;
+    if (ob.registrationStatusID.name === "Active") {
+        return '<span class="badge rounded-0" style="background: #3FB618">Active</span>';
+    } else if (ob.registrationStatusID.name === "Suspended") {
+        return '<span class="badge rounded-0" style="background: #ea8a1e">Suspended</span>';
+    } else if (ob.registrationStatusID.name === "Cancelled") {
+        return '<span class="badge rounded-0" style="background: #ea2f1e">Cancelled</span>';
+    }
+    else{
+        return '<span class="badge rounded-0" style="background: #000">Deleted</span>';
+    }
 }
 
 //creating a function to reset the Batch form when ever needed
