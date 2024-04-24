@@ -232,6 +232,9 @@ const rowView = (ob, index) => {
     //catch old Batch and new Batch
     oldBatch = JSON.parse(JSON.stringify(ob));
     editedBatch = JSON.parse(JSON.stringify(ob));
+
+    //list out the registrations for the viewing batch
+    const registrationsFromBatch = ajaxGetRequest("/Registration/getRegistrations/"+ob.id);
 }
 
 //creating a function to reset the Batch form when ever needed
