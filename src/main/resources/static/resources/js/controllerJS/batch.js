@@ -235,6 +235,7 @@ const rowView = (ob, index) => {
 
     //list out the registrations for the viewing batch
     const registrationsFromBatch = ajaxGetRequest("/Registration/getRegistrations/"+ob.id);
+    registrationCount.innerText = registrationsFromBatch.length;
     const displayPropertyListForRegistrationsFromBatch = [
         {property: 'registrationNumber', dataType: 'text'},
         {property: getStudentName, dataType: 'function'},
