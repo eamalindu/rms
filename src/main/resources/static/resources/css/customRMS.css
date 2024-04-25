@@ -418,14 +418,14 @@ input {
 
 .batchSheetInputs,.registrationSheetInputs {
     border: 1px solid transparent;
-    /*background: whitesmoke;*/
+    background: white;
     color: black;
 
 }
 
 /*overriding default*/
 .form-select:disabled {
-    background-color: white;
+    background: white;
 }
 
 /*Medium devices responsive*/
