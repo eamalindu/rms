@@ -111,7 +111,7 @@ const rowView=(ob,index)=>{
         registrationSheetDiscountRate.value = "0.0%";
     }
     if(ob.discountAmount!=null) {
-        registrationSheetDiscountAmount.value = ob.discountAmount;
+        registrationSheetDiscountAmount.value = "Rs. "+ob.discountAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     }
     else{
         registrationSheetDiscountAmount.value = "Rs. 0.00";
