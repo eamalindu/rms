@@ -323,58 +323,126 @@
 <!-- Off canvas for registrations details end-->
 
 <!--Modal for student edit start-->
-    <div aria-hidden="true" aria-labelledby="staticBackdropLabel" class="modal fade"
-         data-bs-backdrop="static" data-bs-keyboard="false" id="staticModalBackdrop"
-         tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered rounded-0">
-            <div class="modal-content rounded-0">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Student Details</h5>
-                    <button aria-label="Close" class="btn btn-sm btn-close-red text-white rounded-0" data-bs-dismiss="modal" type="button"><i class="fas fa-times"></i></button>
-                </div>
-                <div class="modal-body">
-                    <table class="table table-bordered table-responsive ">
-                        <tbody class="small align-middle">
-                        <tr>
-                            <td class="fw-bold">Title</td>
-                            <td>
-                                <input class="small rounded-0 form-control-sm border-0 text-black w-25"  disabled >
-                            </td>
-                            <td class="fw-bold">Full Name</td>
-                            <td>
-                                <input class="small rounded-0 form-control-sm border-0 text-black"  disabled >
-                                <div class="valid-feedback">Value Accepted</div>
-                                <div class="invalid-feedback">Please provide a valid Calling Name</div>
-                            </td>
-                            <td class="fw-bold">Name With Initials</td>
-                            <td>
-                                <input class="small rounded-0 form-control-sm border-0 text-black"  disabled >
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="fw-bold">Gender</td>
-                            <td>
-
-                            </td>
-                            <td class="fw-bold">DOB</td>
-                            <td>
-                                <input class="small rounded-0 form-control-sm border-0 text-black"  disabled >
-                            </td>
-                            <td class="fw-bold">Language</td>
-                            <td></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer d-flex justify-content-between">
-                    <button class="btn btn-secondary rounded-0" data-bs-dismiss="modal" type="button">
-                        Cancel
+<div aria-hidden="true" aria-labelledby="staticBackdropLabel" class="modal fade"
+     data-bs-backdrop="static" data-bs-keyboard="false" id="staticModalBackdrop"
+     tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered rounded-0 modal-lg">
+        <div class="modal-content rounded-0">
+            <div class="modal-header bg-custom-white">
+                <!-- <h5 class="modal-title" id="staticBackdropLabel" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Student Details</h5>
+                <button aria-label="Close" class="btn btn-sm btn-close-red text-white rounded-0" data-bs-dismiss="modal" type="button"><i class="fas fa-times"></i></button> -->
+                <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0" data-bs-dismiss="modal" type="button"><i class="fas fa-times"></i></button>
+                <div class="container d-flex gap-3 ms-1" style="width: 55%">
+                    <button class="btn btn-sm bg-info rounded-0 text-white" onclick=""><i
+                            class="fa-regular fa-pen-to-square"></i> Edit Info
                     </button>
-                    <button class="btn btn-success rounded-0" type="button">Request</button>
+                    <button class="btn btn-sm bg-warning rounded-0 text-white" id="btnStudentModalUpdate" onclick=""><i
+                            class="fa-solid fa-arrows-rotate"></i> Update
+                    </button>
+                    <button class="btn btn-sm bg-danger rounded-0 text-white" id="btnStudentModalDelete" onclick=""><i class="fa-solid fa-trash"></i>
+                        Delete
+                    </button>
                 </div>
+                <h3 class="align-items-center text-nowrap ms-3 mt-2"style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Student Details</h3>
+            </div>
+            <div class="modal-body pb-0">
+                <div class="text-center w-75 mx-auto">
+                    <span class="align-items-center display-3" id="StudentModalCode" style="text-transform: uppercase;font-weight: bold;font-family: Arial, serif;">ST-0001</span>
+                    <p class="text-muted small lh-sm">Created On <span id="StudentModalJoinedDateText">2023-11-10</span></p>
+                </div>
+                <table class="table table-bordered table-responsive ">
+                    <tbody class="small align-middle">
+                    <tr>
+                        <td class="fw-bold w-25">Title</td>
+                        <td>
+                            <input class="small rounded-0 form-control-sm border-0 text-black bg-warning"  disabled value="Mr" >
+                        </td>
+                        <td class="fw-bold w-25">Name With Initials</td>
+                        <td>
+                            <input class="small rounded-0 form-control-sm border-0 text-black bg-warning"  disabled value="E.A.M.Prabodhitha" >
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="fw-bold w-25">Full Name</td>
+                        <td colspan="3">
+                            <input class="small rounded-0 form-control-sm border-0 text-black bg-warning w-100"  disabled value="Eduppili Arachchige Malindu Prabodhitha" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold w-25">Gender</td>
+                        <td>
+                            <input class="small rounded-0 form-control-sm border-0 text-black bg-warning"  disabled value="Male" >
+                        </td>
+                        <td class="fw-bold w-25">Dob</td>
+                        <td>
+                            <input class="small rounded-0 form-control-sm border-0 text-black bg-warning"  disabled value="1998-11-10" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold w-25">Language</td>
+                        <td>
+                            <input class="small rounded-0 form-control-sm border-0 text-black bg-warning"  disabled value="Sinhala" >
+                        </td>
+                        <td class="fw-bold w-25">Mobile Number</td>
+                        <td>
+                            <input class="small rounded-0 form-control-sm border-0 text-black bg-warning"  disabled value="0768008003" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold w-25">Address Line 1</td>
+                        <td>
+                            <input class="small rounded-0 form-control-sm border-0 text-black bg-warning"  disabled value="No: 9/3, Kaththota" >
+                        </td>
+                        <td class="fw-bold w-25">Address Line 2</td>
+                        <td>
+                            <input class="small rounded-0 form-control-sm border-0 text-black bg-warning"  disabled value="" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold w-25">City</td>
+                        <td>
+                            <input class="small rounded-0 form-control-sm border-0 text-black bg-warning"  disabled value="Nittambuwa" >
+                        </td>
+                        <td class="fw-bold w-25">Email</td>
+                        <td>
+                            <input class="small rounded-0 form-control-sm border-0 text-black bg-warning"  disabled value="eamalindu@gmail.com" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold w-25">ID Type</td>
+                        <td>
+                            <input class="small rounded-0 form-control-sm border-0 text-black bg-warning"  disabled value="NIC" >
+                        </td>
+                        <td class="fw-bold w-25">ID Value</td>
+                        <td>
+                            <input class="small rounded-0 form-control-sm border-0 text-black bg-warning"  disabled value="983151108V" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold w-25">Guardian Name</td>
+                        <td colspan="3">
+                            <input class="small rounded-0 form-control-sm border-0 text-black bg-warning w-100"  disabled value="Eduppili Arachchige Nihal" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold w-25">Relationship</td>
+                        <td>
+                            <input class="small rounded-0 form-control-sm border-0 text-black bg-warning"  disabled value="NIC" >
+                        </td>
+                        <td class="fw-bold w-25">Contact Number</td>
+                        <td>
+                            <input class="small rounded-0 form-control-sm border-0 text-black bg-warning"  disabled value="983151108V" >
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
             </div>
         </div>
     </div>
+</div>
 <!--Modal for student edit end-->
 
 
