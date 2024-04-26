@@ -105,16 +105,16 @@ const rowView=(ob,index)=>{
     registrationSheetCommission.value = ob.commissionPaidTo;
 
     if(ob.discountRate!=null) {
-        registrationSheetDiscountRate.value = ob.discountRate;
+        registrationSheetDiscountRate.value = ob.discountRate+"%";
     }
     else{
-        registrationSheetDiscountRate.value = "0.0";
+        registrationSheetDiscountRate.value = "0.0%";
     }
     if(ob.discountAmount!=null) {
         registrationSheetDiscountAmount.value = ob.discountAmount;
     }
     else{
-        registrationSheetDiscountAmount.value = "0.0";
+        registrationSheetDiscountAmount.value = "Rs. 0.00";
     }
 
     //check payment mode [full payment or part payment]
