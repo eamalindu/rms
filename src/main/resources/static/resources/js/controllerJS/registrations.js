@@ -154,17 +154,20 @@ const rowView=(ob,index)=>{
         registrationSheetCode.classList.remove('text-steam-green');
     }
 
-
+    const registrationStatus = ajaxGetRequest("/RegistrationStatus/findall");
+    fillSelectOptions(registrationSheetStatus, 'Please Select a Status', registrationStatus, 'name', ob.registrationStatusID.name)
 
     //This code snippet will save the current object student sub object to the global variable studentRecordToBeEdited;
     registrationSheetStudentID.addEventListener("click",()=>{
-        studentRecordToBeEdited = ob.studentID;
+       const studentRecordToBeEdited = ob.studentID;
+
+       //set student info
+        StudentModalCode.innerText = studentRecordToBeEdited.studentNumber;
+        StudentModalJoinedDateText.innerText = studentRecordToBeEdited.timeStamp.replace("T"," at ");
+        StudentModalNameWithInitials.value =  studentRecordToBeEdited.nameWithInitials;
+
 
     })
-
-
-    const registrationStatus = ajaxGetRequest("/RegistrationStatus/findall");
-    fillSelectOptions(registrationSheetStatus, 'Please Select a Status', registrationStatus, 'name', ob.registrationStatusID.name)
 
 
 }
