@@ -168,6 +168,8 @@ const rowView=(ob,index)=>{
         StudentModalFullName.value =  studentRecordToBeEdited.fullName;
         StudentModalDob.value =  studentRecordToBeEdited.dob;
         StudentModalMobile.value =  studentRecordToBeEdited.mobileNumber;
+        StudentModalAddress1.value =  studentRecordToBeEdited.addressLine1;
+        StudentModalAddress2.value =  studentRecordToBeEdited.addressLine2;
 
 
     })
