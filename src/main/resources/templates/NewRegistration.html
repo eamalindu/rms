@@ -576,15 +576,38 @@
                                             <div class="form-label">
                                                 <label class="fw-bold small required">Gender</label>
                                             </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" id="radioMale" name="studentGender"
-                                                       type="radio" value="Male" onchange="newStudent.gender = this.value">
-                                                <label class="form-check-label" for="radioMale">Male</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" id="radioFemale" name="studentGender"
-                                                       type="radio" value="Female" onchange="newStudent.gender = this.value">
-                                                <label class="form-check-label" for="radioFemale">Female</label>
+<!--                                            <div class="form-check form-check-inline">-->
+<!--                                                <input class="form-check-input" id="radioMale" name="studentGender"-->
+<!--                                                       type="radio" value="Male" onchange="newStudent.gender = this.value">-->
+<!--                                                <label class="form-check-label" for="radioMale">Male</label>-->
+<!--                                            </div>-->
+<!--                                            <div class="form-check form-check-inline">-->
+<!--                                                <input class="form-check-input" id="radioFemale" name="studentGender"-->
+<!--                                                       type="radio" value="Female" onchange="newStudent.gender = this.value">-->
+<!--                                                <label class="form-check-label" for="radioFemale">Female</label>-->
+<!--                                            </div>-->
+
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div class="text-center">
+                                                    <div class="d-flex align-items-center justify-content-center mx-auto bg-success text-white"
+                                                         id="leftMale"
+                                                         style="border-radius: 50%;height: 40px;width: 40px;background:#ddd">
+                                                        <i class="fa-solid fa-mars"></i>
+                                                    </div>
+                                                    <span class="text-muted small">Male</span>
+                                                </div>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" id="radioGender" onchange="checkBoxValidator(this, leftMale, rightFemale, 'newStudent', 'gender', 'Female', 'Male');" role="switch"
+                                                           style="scale: 1.7;"
+                                                           type="checkbox">
+                                                </div>
+                                                <div class="text-center">
+                                                    <div class="d-flex align-items-center justify-content-center mx-auto" id="rightFemale"
+                                                         style="border-radius: 50%;height: 40px;width: 40px;background:#ddd">
+                                                        <i class="fa-solid fa-venus"></i>
+                                                    </div>
+                                                    <span class="text-muted small">Female</span>
+                                                </div>
                                             </div>
 
                                         </div>
