@@ -456,7 +456,10 @@ const resetStudentForm = ()=>{
         $('#studentGuardianRelationship').val('').trigger('chosen:updated');
     }, 0);
 
-//remove validation from the inputs all at once
+    //reset checkbox
+    checkBoxValidator(radioGender, leftMale, rightFemale, 'newStudent', 'gender', 'Female', 'Male');
+
+    //remove validation from the inputs all at once
     inputs = document.querySelectorAll('.newStudentInputs');
     inputs.forEach(function (input) {
         input.style = '';
@@ -488,12 +491,14 @@ const resetStudentForm = ()=>{
 
 const automateGender = ()=>{
     if(studentMr.checked){
-        radioMale.checked = true;
-        newStudent.gender = radioMale.value
+        radioGender.checked = false;
+        checkBoxValidator(radioGender, leftMale, rightFemale, 'newStudent', 'gender', 'Female', 'Male');
+
     }
     if(studentMs.checked || studentMrs.checked){
-        radioFemale.checked =true;
-        newStudent.gender = radioFemale.value
+        radioGender.checked =true;
+        checkBoxValidator(radioGender, leftMale, rightFemale, 'newStudent', 'gender', 'Female', 'Male');
+
 
     }
 }
