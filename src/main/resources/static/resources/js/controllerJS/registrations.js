@@ -167,6 +167,7 @@ const rowView=(ob,index)=>{
         StudentModalNameWithInitials.value =  studentRecordToBeEdited.nameWithInitials;
         StudentModalFullName.value =  studentRecordToBeEdited.fullName;
         StudentModalDob.value =  studentRecordToBeEdited.dob;
+        StudentModalMobile.value =  studentRecordToBeEdited.mobileNumber;
 
 
     })
