@@ -35,6 +35,7 @@ public class Batch {
     @NotNull
     private LocalDate commenceDate;
 
+
     @Column(name = "lastregdate")
     @NotNull
     private LocalDate lastRegDate;
@@ -46,6 +47,10 @@ public class Batch {
     @Column(name = "seatcount")
     @NotNull
     private Integer seatCount;
+
+    @Column(name = "availableseatcount")
+    @NotNull
+    private Integer seatCountAvailable;
 
     @Column(name = "createdby")
     @NotNull
