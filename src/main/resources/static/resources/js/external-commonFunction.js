@@ -179,7 +179,7 @@ const createBatchRadioCards = (dataList, functionEx, container) => {
         <div class="card-body p-0">
             <div class="clearfix border-bottom">
                 <div class="w-50 py-3 float-start text-center border-end">
-                    <div class="mx-auto d-flex justify-content-center align-items-center bg-secondary text-white" style="width:50px;height:50px;font-size:1.6rem"><strong>${element.seatCount}</strong></div>
+                    <div class="mx-auto d-flex justify-content-center align-items-center bg-secondary text-white" style="width:50px;height:50px;font-size:1.6rem"><strong>${element.seatCountAvailable}</strong></div>
                     <div class="text-muted small"><small>Seats Available</small></div>
                 </div>
                 <div class="w-50 float-start">
