@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "student")
@@ -78,6 +79,10 @@ public class Student {
     @Column(name = "guardianname")
     @NotNull
     private String guardianName;
+
+    @Column(name = "timestamp")
+    @NotNull
+    private LocalDateTime timeStamp;
 
     @Column(name = "guardianrelationship")
     @NotNull
