@@ -236,3 +236,27 @@ const inputRadioValidator = (elementID,pattern,labelOne,labelTwo)=>{
         labelTwo.style.color = 'black';
     }
 }
+
+//creating a function for checkbox validate and binding values to the object
+//This function have seven arguments
+// 1) elementID -> use 'this' or the html id of the checkbox
+// 2) leftDivID -> left DIV html id
+// 3) rightDivID -> right DIV html id
+// 4) object -> The object that data should bind
+// 5) property -> object property
+// 6) trueValue-> value to bind if checkbox is checked
+// 7) falseValue-> value to bind if checkbox is not checked
+//This function is called using onclick event handler
+const checkBoxValidator = (elementID, leftDivID, rightDivID, object, property, trueValue, falseValue) => {
+    //checking if the checkbox is checked or not
+    if (elementID.checked) {
+        rightDivID.classList.add('bg-success', 'text-white');
+        leftDivID.classList.remove('bg-success', 'text-white');
+        window[object][property] = trueValue;
+    } else {
+        window[object][property] = falseValue;
+        rightDivID.classList.remove('bg-success', 'text-white');
+        leftDivID.classList.add('bg-success', 'text-white');
+
+    }
+}
