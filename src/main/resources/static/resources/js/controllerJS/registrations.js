@@ -166,6 +166,7 @@ const rowView=(ob,index)=>{
         StudentModalJoinedDateText.innerText = studentRecordToBeEdited.timeStamp.replace("T"," at ");
         StudentModalNameWithInitials.value =  studentRecordToBeEdited.nameWithInitials;
         StudentModalFullName.value =  studentRecordToBeEdited.fullName;
+        StudentModalDob.value =  studentRecordToBeEdited.dob;
 
 
     })
