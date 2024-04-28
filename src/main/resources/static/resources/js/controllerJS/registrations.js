@@ -159,8 +159,7 @@ const rowView=(ob,index)=>{
     //This code snippet will save the current object student sub object to the global variable studentRecordToBeEdited;
     registrationSheetStudentID.addEventListener("click",()=>{
         studentRecordToBeEdited = ob.studentID;
-        localStorage.setItem('currentStudent', JSON.stringify(studentRecordToBeEdited));
-        console.log(studentRecordToBeEdited)
+
     })
 
 
