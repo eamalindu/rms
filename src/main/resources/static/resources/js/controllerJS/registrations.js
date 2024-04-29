@@ -159,6 +159,10 @@ const rowView=(ob,index)=>{
 
     //This code snippet will save the current object student sub object to the global variable studentRecordToBeEdited;
     registrationSheetStudentID.addEventListener("click",()=>{
+
+        //hide the update button
+        btnStudentModalUpdate.style.display = 'none';
+
        const studentRecordToBeEdited = ob.studentID;
 
        //set student info
