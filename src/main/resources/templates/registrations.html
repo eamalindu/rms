@@ -395,7 +395,27 @@
                     <tr>
                         <td class="fw-bold w-25">Gender</td>
                         <td>
-                            <input class="small rounded-0 form-control-sm border-0 text-black"  disabled value="Male" >
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="text-center">
+                                    <div class="d-flex align-items-center justify-content-center mx-auto bg-success text-white"
+                                         id="leftMale"
+                                         style="border-radius: 50%;height: 30px;width: 30px;background:#ddd">
+                                        <i class="fa-solid fa-mars"></i>
+                                    </div>
+                                    <span class="text-muted small">Male</span>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" id="radioGender" onchange="checkBoxValidator(this, leftMale, rightFemale, 'newStudent', 'gender', 'Female', 'Male');" role="switch"
+                                           type="checkbox" style="scale: 1.5;">
+                                </div>
+                                <div class="text-center">
+                                    <div class="d-flex align-items-center justify-content-center mx-auto" id="rightFemale"
+                                         style="border-radius: 50%;height: 40px;width: 40px;background:#ddd">
+                                        <i class="fa-solid fa-venus"></i>
+                                    </div>
+                                    <span class="text-muted small">Female</span>
+                                </div>
+                            </div>
                         </td>
                         <td class="fw-bold w-25">Dob</td>
                         <td>
