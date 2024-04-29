@@ -427,6 +427,9 @@ input {
 .form-select:disabled {
     background: white;
 }
+input:disabled {
+    background: white;
+}
 
 /*Medium devices responsive*/
 @media (max-width: 870px) {
