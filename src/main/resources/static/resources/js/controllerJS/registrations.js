@@ -193,11 +193,13 @@ const rowView=(ob,index)=>{
         //setting custom radio button
         if (studentRecordToBeEdited.gender ==="Male") {
             StudentModalGender.checked = false;
-            checkBoxValidator(StudentModalGender, leftMale, rightFemale, 'editedStudent', 'gender', 'Female', 'Male')
+            rightFemale.classList.remove('bg-success', 'text-white');
+            leftMale.classList.add('bg-success', 'text-white');
 
         } else {
             StudentModalGender.checked = true;
-            checkBoxValidator(StudentModalGender, leftMale, rightFemale, 'editedStudent', 'gender', 'Female', 'Male')
+            rightFemale.classList.add('bg-success', 'text-white');
+            leftMale.classList.remove('bg-success', 'text-white');
 
         }
         //setting dateRangePicker for dob
