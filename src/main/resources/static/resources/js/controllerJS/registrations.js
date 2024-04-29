@@ -204,7 +204,7 @@ const rowView=(ob,index)=>{
         }
         //setting dateRangePicker for dob
         $('#StudentModalDob').daterangepicker({
-            "minDate": studentRecordToBeEdited.dob,
+            "Date": studentRecordToBeEdited.dob,
             "singleDatePicker": true,
             "linkedCalendars": false,
             "showCustomRangeLabel": false,
