@@ -173,6 +173,7 @@ const rowView=(ob,index)=>{
         StudentModalCity.value =  studentRecordToBeEdited.city;
         StudentModalEmail.value = studentRecordToBeEdited.email;
         StudentModalIDValue.value = studentRecordToBeEdited.idValue;
+        StudentModalGuardian.value = studentRecordToBeEdited.guardianName;
 
 
     })
