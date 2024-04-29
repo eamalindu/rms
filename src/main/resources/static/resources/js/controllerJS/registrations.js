@@ -205,6 +205,9 @@ const rowView=(ob,index)=>{
         //setting language
         studentModalLang.value = studentRecordToBeEdited.language;
 
+        //setting idType
+        StudentModalIDType.value = studentRecordToBeEdited.idType;
+
         //setting dateRangePicker for dob
         $('#StudentModalDob').daterangepicker({
             "Date": studentRecordToBeEdited.dob,
