@@ -180,6 +180,16 @@ const rowView=(ob,index)=>{
         StudentModalGuardian.value = studentRecordToBeEdited.guardianName;
         StudentModalGuardianContactNumber.value = studentRecordToBeEdited.guardianContactNumber;
 
+        //setting radio button
+        if(studentRecordToBeEdited.title==="Mr"){
+            studentModalMr.checked = true;
+        }
+        if(studentRecordToBeEdited.title==="Ms"){
+            studentModalMs.checked = true;
+        }
+        if(studentRecordToBeEdited.title==="Mrs"){
+            studentModalMrs.checked = true;
+        }
 
     })
 
