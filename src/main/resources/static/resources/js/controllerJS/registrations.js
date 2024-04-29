@@ -202,6 +202,9 @@ const rowView=(ob,index)=>{
             leftMale.classList.remove('bg-success', 'text-white');
 
         }
+        //setting language
+        studentModalLang.value = studentRecordToBeEdited.language;
+
         //setting dateRangePicker for dob
         $('#StudentModalDob').daterangepicker({
             "Date": studentRecordToBeEdited.dob,
