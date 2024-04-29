@@ -425,7 +425,12 @@
                     <tr>
                         <td class="fw-bold w-25">Language</td>
                         <td>
-                            <input class="small rounded-0 form-control-sm border-0 text-black"  disabled value="Sinhala" >
+                            <select class="form-select rounded-0 small form-select-sm" disabled required data-placeholder="Please Select a Language" onchange="selectStaticValueValidator(this,'','editedStudent','language')" id="studentModalLang">
+                                <option value=""></option>
+                                <option value="Sinhala">සිංහල</option>
+                                <option value="Tamil">தமிழ்</option>
+                                <option value="English">English</option>
+                            </select>
                         </td>
                         <td class="fw-bold w-25">Mobile Number</td>
                         <td>
