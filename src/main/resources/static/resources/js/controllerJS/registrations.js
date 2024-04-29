@@ -190,6 +190,32 @@ const rowView=(ob,index)=>{
         if(studentRecordToBeEdited.title==="Mrs"){
             studentModalMrs.checked = true;
         }
+        //setting custom radio button
+        if (studentRecordToBeEdited.gender ==="Male") {
+            StudentModalGender.checked = false;
+            checkBoxValidator(StudentModalGender, leftMale, rightFemale, 'editedStudent', 'gender', 'Female', 'Male')
+
+        } else {
+            StudentModalGender.checked = true;
+            checkBoxValidator(StudentModalGender, leftMale, rightFemale, 'editedStudent', 'gender', 'Female', 'Male')
+
+        }
+        //setting dateRangePicker for dob
+        $('#StudentModalDob').daterangepicker({
+            "minDate": studentRecordToBeEdited.dob,
+            "singleDatePicker": true,
+            "linkedCalendars": false,
+            "showCustomRangeLabel": false,
+            "autoUpdateInput": false,
+            "drops": "down",
+            "locale": {
+                "format": "YYYY-MM-DD"
+            }
+        });
+
+        //catch old Batch and new Batch
+        oldStudent = JSON.parse(JSON.stringify(studentRecordToBeEdited));
+        editedStudent = JSON.parse(JSON.stringify(studentRecordToBeEdited));
 
     })
 
