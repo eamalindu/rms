@@ -416,7 +416,7 @@ input {
     font-size: 13px;
 }
 
-.batchSheetInputs,.registrationSheetInputs {
+.batchSheetInputs,.registrationSheetInputs,.studentModalInputs {
     border: 1px solid transparent;
     background: white;
     color: black;
