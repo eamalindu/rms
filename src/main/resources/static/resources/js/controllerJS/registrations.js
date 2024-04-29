@@ -208,6 +208,9 @@ const rowView=(ob,index)=>{
         //setting idType
         StudentModalIDType.value = studentRecordToBeEdited.idType;
 
+        //setting guardian relationship
+        StudentModalRelationship.value = studentRecordToBeEdited.guardianRelationship;
+
         //setting dateRangePicker for dob
         $('#StudentModalDob').daterangepicker({
             "Date": studentRecordToBeEdited.dob,
