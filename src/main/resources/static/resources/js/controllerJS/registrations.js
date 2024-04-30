@@ -163,9 +163,9 @@ const rowView=(ob,index)=>{
         //hide the update button
         btnStudentModalUpdate.style.display = 'none';
 
-        const studentRecordToBeEdited = ob.studentID;
+       const studentRecordToBeEdited = ob.studentID;
 
-        //set student info
+       //set student info
         StudentModalCode.innerText = studentRecordToBeEdited.studentNumber;
         StudentModalJoinedDateText.innerText = studentRecordToBeEdited.timeStamp.replace("T"," at ");
         StudentModalNameWithInitials.value =  studentRecordToBeEdited.nameWithInitials;
