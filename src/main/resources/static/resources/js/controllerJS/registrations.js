@@ -163,9 +163,9 @@ const rowView=(ob,index)=>{
         //hide the update button
         btnStudentModalUpdate.style.display = 'none';
 
-       const studentRecordToBeEdited = ob.studentID;
+        const studentRecordToBeEdited = ob.studentID;
 
-       //set student info
+        //set student info
         StudentModalCode.innerText = studentRecordToBeEdited.studentNumber;
         StudentModalJoinedDateText.innerText = studentRecordToBeEdited.timeStamp.replace("T"," at ");
         StudentModalNameWithInitials.value =  studentRecordToBeEdited.nameWithInitials;
@@ -195,12 +195,22 @@ const rowView=(ob,index)=>{
             StudentModalGender.checked = false;
             rightFemale.classList.remove('bg-success', 'text-white');
             leftMale.classList.add('bg-success', 'text-white');
+
         } else {
             StudentModalGender.checked = true;
             rightFemale.classList.add('bg-success', 'text-white');
             leftMale.classList.remove('bg-success', 'text-white');
 
         }
+        //setting language
+        studentModalLang.value = studentRecordToBeEdited.language;
+
+        //setting idType
+        StudentModalIDType.value = studentRecordToBeEdited.idType;
+
+        //setting guardian relationship
+        StudentModalRelationship.value = studentRecordToBeEdited.guardianRelationship;
+
         //setting dateRangePicker for dob
         $('#StudentModalDob').daterangepicker({
             "Date": studentRecordToBeEdited.dob,
@@ -213,6 +223,10 @@ const rowView=(ob,index)=>{
                 "format": "YYYY-MM-DD"
             }
         });
+
+        //catch old Batch and new Batch
+        oldStudent = JSON.parse(JSON.stringify(studentRecordToBeEdited));
+        editedStudent = JSON.parse(JSON.stringify(studentRecordToBeEdited));
 
     })
 
