@@ -159,6 +159,7 @@ const rowView=(ob,index)=>{
 
     //Setting data for course Tab
     studentCourseTabNameWithInitials.innerText = ob.studentID.nameWithInitials;
+    studentCourseTabBatchCode.innerText = ob.batchID.batchCode;
 
 
     //This code snippet will save the current object student sub object to the global variable studentRecordToBeEdited;
