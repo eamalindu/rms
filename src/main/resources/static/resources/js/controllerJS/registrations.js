@@ -157,6 +157,10 @@ const rowView=(ob,index)=>{
     const registrationStatus = ajaxGetRequest("/RegistrationStatus/findall");
     fillSelectOptions(registrationSheetStatus, 'Please Select a Status', registrationStatus, 'name', ob.registrationStatusID.name)
 
+    //Setting data for course Tab
+    studentCourseTabNameWithInitials.innerText = ob.studentID.nameWithInitials;
+
+
     //This code snippet will save the current object student sub object to the global variable studentRecordToBeEdited;
     registrationSheetStudentID.addEventListener("click",()=>{
 
