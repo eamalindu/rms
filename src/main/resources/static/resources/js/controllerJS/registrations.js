@@ -193,27 +193,16 @@ const rowView=(ob,index)=>{
         //setting custom radio button
         if (studentRecordToBeEdited.gender ==="Male") {
             StudentModalGender.checked = false;
-            rightFemale.classList.remove('bg-success', 'text-white');
-            leftMale.classList.add('bg-success', 'text-white');
+            checkBoxValidator(StudentModalGender, leftMale, rightFemale, 'newStudent', 'gender', 'Female', 'Male')
 
         } else {
             StudentModalGender.checked = true;
-            rightFemale.classList.add('bg-success', 'text-white');
-            leftMale.classList.remove('bg-success', 'text-white');
+            checkBoxValidator(StudentModalGender, leftMale, rightFemale, 'newStudent', 'gender', 'Female', 'Male')
 
         }
-        //setting language
-        studentModalLang.value = studentRecordToBeEdited.language;
-
-        //setting idType
-        StudentModalIDType.value = studentRecordToBeEdited.idType;
-
-        //setting guardian relationship
-        StudentModalRelationship.value = studentRecordToBeEdited.guardianRelationship;
-
         //setting dateRangePicker for dob
         $('#StudentModalDob').daterangepicker({
-            "Date": studentRecordToBeEdited.dob,
+            "minDate": studentRecordToBeEdited.dob,
             "singleDatePicker": true,
             "linkedCalendars": false,
             "showCustomRangeLabel": false,
@@ -223,10 +212,6 @@ const rowView=(ob,index)=>{
                 "format": "YYYY-MM-DD"
             }
         });
-
-        //catch old Batch and new Batch
-        oldStudent = JSON.parse(JSON.stringify(studentRecordToBeEdited));
-        editedStudent = JSON.parse(JSON.stringify(studentRecordToBeEdited));
 
     })
 
