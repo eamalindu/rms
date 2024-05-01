@@ -23,6 +23,7 @@ window.addEventListener("load", () => {
 
     //toggle the visibility of the table when the h5 tag is clicked
     toggleRegistrationSheetTable(curriculumHeadingText,tblCurriculum,curriculumHeadingIcon);
+    toggleRegistrationSheetTable(marksHeadingText,tblMarks,marksHeadingIcon);
 
 });
 
