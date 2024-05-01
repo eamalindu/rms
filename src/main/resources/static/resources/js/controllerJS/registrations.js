@@ -244,3 +244,20 @@ $('#btn-reset').on('click', function () {
         $('.chosen-registration-search').trigger('chosen:updated');
     }, 0);
 });
+
+//function to toggle the visibility of the table when the h5 tag is clicked
+const toggleExamTable =(HeadingTextID,TableID,iconSpanID)=>{
+    HeadingTextID.addEventListener("click",()=>{
+        if(TableID.style.display!=="none"){
+            TableID.style.display = 'none';
+            iconSpanID.innerHTML = '<i class="fa-solid fa-circle-chevron-down"></i>'
+            HeadingTextID.classList.remove('border-bottom-0');
+        }
+        else{
+            TableID.style.display = 'table';
+            iconSpanID.innerHTML = '<i class="fa-solid fa-circle-chevron-up"></i>'
+            HeadingTextID.classList.add('border-bottom-0');
+        }
+
+    })
+}
