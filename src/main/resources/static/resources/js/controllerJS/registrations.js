@@ -21,6 +21,9 @@ window.addEventListener("load", () => {
         }
     });
 
+    //toggle the visibility of the table when the h5 tag is clicked
+    toggleRegistrationSheetTable(curriculumHeadingText,tblCurriculum,curriculumHeadingIcon);
+
 });
 
 //creating a function to refresh the registrations table when ever needed
@@ -246,7 +249,7 @@ $('#btn-reset').on('click', function () {
 });
 
 //function to toggle the visibility of the table when the h5 tag is clicked
-const toggleExamTable =(HeadingTextID,TableID,iconSpanID)=>{
+const toggleRegistrationSheetTable =(HeadingTextID,TableID,iconSpanID)=>{
     HeadingTextID.addEventListener("click",()=>{
         if(TableID.style.display!=="none"){
             TableID.style.display = 'none';
