@@ -331,6 +331,11 @@ const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount
         registration.discountRate = discount;
         registration.discountAmount = discountReceived;
 
+        //new code for biding total amount,paid and balance amount to registration object
+        registration.fullAmount = finalTotalFee;
+        registration.paidAmount = 0;
+        registration.balanceAmount = finalTotalFee;
+
         lblDiscountFeeHeading.innerHTML = "Discount "+discount+"% Off";
 
         txtRegistrationFeeFullPayment.innerHTML = "Rs. "+ registrationFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
@@ -356,6 +361,9 @@ const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFu
     if(isFullPayment) {
         txtTotalDiscountFeeFullPayment.innerHTML = "-Rs. 0.00";
         registration.oneTimePaymentAmount = ob.paymentPlanID.totalFee;
+        registration.fullAmount = ob.paymentPlanID.totalFee;
+        registration.paidAmount = 0;
+        registration.balanceAmount = ob.paymentPlanID.totalFee;
     }
 
 
