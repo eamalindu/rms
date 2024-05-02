@@ -169,6 +169,23 @@ const rowView=(ob,index)=>{
     studentCourseTabNameWithInitials.innerText = ob.studentID.nameWithInitials;
     studentCourseTabBatchCode.innerText = ob.batchID.batchCode;
 
+    //setting data for payment Tab
+    if(ob.fullAmount===ob.balanceAmount){
+
+        //no payment has been made
+        studentPaymentTabStatus.innerHTML= '<span class="badge rounded-0 w-25" style="background: #ea2f1e">Not Paid</span>';
+    }
+    else if(ob.balanceAmount===0) {
+
+        //payment completed
+        studentPaymentTabStatus.innerHTML= '<span class="badge rounded-0" style="background: #3FB618">Completed</span>';
+    } else {
+
+        //payment is not completed but payments have been made
+        studentPaymentTabStatus.innerHTML= '<span class="badge rounded-0" style="background: #ea8a1e">Paid</span>';
+    }
+
+    studentPaymentTabPlan.innerHTML = '';
 
     //This code snippet will save the current object student sub object to the global variable studentRecordToBeEdited;
     registrationSheetStudentID.addEventListener("click",()=>{
