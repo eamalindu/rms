@@ -374,6 +374,9 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
         installmentPlan=[];
         registration.isFullPayment = false;
         registration.oneTimePaymentAmount =null;
+        registration.fullAmount = totalFee;
+        registration.paidAmount = 0;
+        registration.balanceAmount = totalFee;
 
         tblInstallments.classList.remove('d-none');
         const installmentFee = courseFee / installments;
