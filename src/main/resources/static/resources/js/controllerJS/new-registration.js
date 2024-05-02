@@ -402,7 +402,7 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
         firstTR.appendChild(thirdTD);
         tbody.appendChild(firstTR);
 
-        installmentPlan.push({ installmentNumber: 1, payment: (installmentFee + registrationFee),dueDate: currentDate.toISOString().slice(0, 10),status:"Not Paid",registrationID:registration});
+        installmentPlan.push({ installmentNumber: 1, payment: (installmentFee + registrationFee),paidAmount:0,balanceAmount:(installmentFee + registrationFee),dueDate: currentDate.toISOString().slice(0, 10),status:"Not Paid",registrationID:registration});
 
         // Display the subsequent installments
         for (let i = 1; i < installments; i++) {
@@ -427,7 +427,7 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
 
 
             tbody.appendChild(tr);
-            installmentPlan.push({ installmentNumber: i+1, payment: installmentFee,dueDate: newDate.toISOString().slice(0, 10),status:"Not Paid",registrationID:registration});
+            installmentPlan.push({ installmentNumber: i+1, payment: installmentFee,paidAmount:0,balanceAmount:installmentFee,dueDate: newDate.toISOString().slice(0, 10),status:"Not Paid",registrationID:registration});
         }
 
     }
