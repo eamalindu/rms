@@ -51,6 +51,15 @@ public class Registrations {
     @Column(name = "discountamount")
     private BigDecimal discountAmount;
 
+    @Column(name = "fullamount")
+    private BigDecimal fullAmount;
+
+    @Column(name = "paidamount")
+    private BigDecimal paidAmount;
+
+    @Column(name = "balanceamount")
+    private BigDecimal balanceAmount;
+
     @ManyToOne
     @JoinColumn(name = "course_id",referencedColumnName = "id")
     private Course courseID;
