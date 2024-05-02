@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface InstallmentPlanDAO extends JpaRepository<InstallmentPlan,Integer> {
 
-    @Query(value = "select i from InstallmentPlan i where i.registrationID.registrationNumber=?1")
-    List<InstallmentPlan> getInstallmentPlanByRegistrationNumber(String registrationNumber);
+    @Query(value = "select i from InstallmentPlan i where i.registrationID.id=?1")
+    List<InstallmentPlan> getInstallmentPlanByRegistrationID(Integer registrationID);
 
 }
