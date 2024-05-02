@@ -185,6 +185,7 @@ const rowView=(ob,index)=>{
         studentPaymentTabStatus.innerHTML= '<span class="badge rounded-0" style="background: #ea8a1e">Paid</span>';
     }
 
+    studentPaymentTabPlan.innerHTML = '<p class="small mb-0">'+(ob.isFullPayment ? 'Full Payment':'Installments')+'</p>'
     studentPaymentTabDiscount.innerHTML = '<p class="mb-0 small">'+ (ob.discountRate != null ? ob.discountRate + '% OFF<br><span class="text-muted">Total Savings Rs. ' + ob.discountAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + '</span>' : '0% OFF<br><span class="text-muted">Total Savings Rs. 0.00</span>') + '</p>';
 
     //This code snippet will save the current object student sub object to the global variable studentRecordToBeEdited;
