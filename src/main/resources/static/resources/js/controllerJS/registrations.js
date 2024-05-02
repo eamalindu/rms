@@ -173,16 +173,16 @@ const rowView=(ob,index)=>{
     if(ob.fullAmount===ob.balanceAmount){
 
         //no payment has been made
-        studentPaymentTabStatus.innerHTML= '<span class="badge rounded-0 w-25" style="background: #ea2f1e">Not Paid</span>';
+        studentPaymentTabStatus.innerHTML= '<span class="badge rounded-0" style="background: #ea2f1e;width: 100px!important;">Not Paid</span>';
     }
     else if(ob.balanceAmount===0) {
 
         //payment completed
-        studentPaymentTabStatus.innerHTML= '<span class="badge rounded-0" style="background: #3FB618">Completed</span>';
+        studentPaymentTabStatus.innerHTML= '<span class="badge rounded-0" style="background: #3FB618;width: 100px!important;">Completed</span>';
     } else {
 
         //payment is not completed but payments have been made
-        studentPaymentTabStatus.innerHTML= '<span class="badge rounded-0" style="background: #ea8a1e">Paid</span>';
+        studentPaymentTabStatus.innerHTML= '<span class="badge rounded-0" style="background: #ea8a1e;width: 100px!important;">Paid</span>';
     }
 
     studentPaymentTabPlan.innerHTML = '<p class="small mb-0">'+(ob.isFullPayment ? 'Full Payment':'Installments')+'</p>'
