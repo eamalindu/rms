@@ -31,6 +31,12 @@ public class InstallmentPlan {
     @NotNull
     private BigDecimal payment;
 
+    @Column(name = "paidamount")
+    private BigDecimal paidAmount;
+
+    @Column(name = "balanceamount")
+    private BigDecimal balanceAmount;
+
     @Column(name = "duedate")
     @NotNull
     private LocalDate dueDate;
