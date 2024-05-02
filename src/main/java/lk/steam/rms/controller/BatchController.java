@@ -80,6 +80,7 @@ public class BatchController {
         batch.setTimestamp(LocalDateTime.now());
         batch.setBatchNumber(nextBatchNumber);
         batch.setCreatedBy("Malindu");
+        batch.setSeatCountAvailable(batch.getSeatCount());
         batch.setBatchStatusID(batchStatusDAO.getReferenceById(1));
         batchDAO.save(batch);
         return "OK";
