@@ -161,6 +161,10 @@ const rowView=(ob,index)=>{
     const registrationStatus = ajaxGetRequest("/RegistrationStatus/findall");
     fillSelectOptions(registrationSheetStatus, 'Please Select a Status', registrationStatus, 'name', ob.registrationStatusID.name)
 
+    paymentSummaryFullAmount.innerText = "Rs. "+ob.fullAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    paymentSummaryPaidAmount.innerText = "Rs. "+ob.paidAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    paymentSummaryBalanceAmount.innerText = "Rs. "+ob.balanceAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
     //Setting data for course Tab
     studentCourseTabNameWithInitials.innerText = ob.studentID.nameWithInitials;
     studentCourseTabBatchCode.innerText = ob.batchID.batchCode;
