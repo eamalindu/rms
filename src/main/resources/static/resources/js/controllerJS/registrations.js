@@ -139,12 +139,14 @@ const rowView=(ob,index)=>{
         registrationSheetCode.classList.remove('text-warning');
         registrationSheetCode.classList.remove('text-steam-green');
         registrationSheetCode.classList.remove('text-danger');
+        registrationSheetCode.classList.remove('text-secondary');
     } else if (ob.registrationStatusID.name === 'Suspended') {
         registrationSheetCode.classList.add('text-warning');
 
         registrationSheetCode.classList.remove('text-success');
         registrationSheetCode.classList.remove('text-steam-green');
         registrationSheetCode.classList.remove('text-danger');
+        registrationSheetCode.classList.remove('text-secondary');
     }
 
     else if(ob.registrationStatusID.name ==='Deleted'){
@@ -153,9 +155,10 @@ const rowView=(ob,index)=>{
         registrationSheetCode.classList.remove('text-warning');
         registrationSheetCode.classList.remove('text-danger');
         registrationSheetCode.classList.remove('text-steam-green');
+        registrationSheetCode.classList.remove('text-secondary');
     }
     else if (ob.registrationStatusID.name==='Pending'){
-        registrationSheetCode.classList.add('text-Secondary');
+        registrationSheetCode.classList.add('text-secondary');
         registrationSheetCode.classList.remove('text-success');
         registrationSheetCode.classList.remove('text-warning');
         registrationSheetCode.classList.remove('text-danger');
@@ -168,6 +171,7 @@ const rowView=(ob,index)=>{
         registrationSheetCode.classList.remove('text-success');
         registrationSheetCode.classList.remove('text-warning');
         registrationSheetCode.classList.remove('text-steam-green');
+        registrationSheetCode.classList.remove('text-secondary');
     }
 
     const registrationStatus = ajaxGetRequest("/RegistrationStatus/findall");
