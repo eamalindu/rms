@@ -97,6 +97,9 @@ const rowView=(ob,index)=>{
     btnRegistrationSheetDelete.style.display = 'block';
 
 
+    //show the info tab first
+    document.getElementById("pills-home-tab").click();
+
     //refill data
     registrationSheetCode.innerText = ob.registrationNumber;
     const [addedDate, addedTime] = ob.timestamp.split("T");
