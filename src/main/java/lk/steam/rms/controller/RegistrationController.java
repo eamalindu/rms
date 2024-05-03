@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -53,6 +54,16 @@ public class RegistrationController {
             registrations.setTimestamp(LocalDateTime.now());
             registrations.setAddedBy("User1");
             registrations.setCommissionPaidTo("User1");
+
+            //check the discountRate and discountAmount is null or not
+            if(registrations.getDiscountRate()==null){
+                registrations.setDiscountRate(BigDecimal.valueOf(0));
+            }
+            if(registrations.getDiscountAmount()==null){
+                registrations.setDiscountAmount(BigDecimal.valueOf(0));
+            }
+
+
             //Student sample = studentDAO.getReferenceById(1);
             RegistrationStatus sampleStatus = registrationStatusDAO.getReferenceById(1);
             //registrations.setStudentID(sample);
