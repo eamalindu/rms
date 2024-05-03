@@ -183,6 +183,10 @@ const rowView=(ob,index)=>{
     studentPaymentTabRegFee.innerText = "Rs. "+ob.batchID.paymentPlanID.registrationFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     studentPaymentTabDiscounts.innerText ="- Rs. "+ ob.discountAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
+    studentPaymentTabTotalFee.innerText = "Rs. "+ob.fullAmount.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    studentPaymentTabAlreadyPaidFee.innerText = "Rs. "+ob.paidAmount.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    studentPaymentTabBalanceFee.innerText = "Rs. "+ob.balanceAmount.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+
     //This code snippet will save the current object student sub object to the global variable studentRecordToBeEdited;
     registrationSheetStudentID.addEventListener("click",()=>{
 
