@@ -121,6 +121,10 @@ const rowView=(ob,index)=>{
     }
     else{
         registrationSheetPayment.value = "Installments"
+
+        //This means current Registration have installments
+        //get all the installments from the database and save it to installmentPlanForCurrentRegistration variable
+       const installmentPlanForCurrentRegistration = ajaxGetRequest("/InstallmentPlan/getInstallmentPlan/"+ob.id);
     }
 
     if (ob.registrationStatusID.name === 'Active') {
@@ -194,6 +198,7 @@ const rowView=(ob,index)=>{
 
     //calculate dues and displaying it
     studentPaymentTabDues.innerText = "TBA";
+
 
     //This code snippet will save the current object student sub object to the global variable studentRecordToBeEdited;
     registrationSheetStudentID.addEventListener("click",()=>{
