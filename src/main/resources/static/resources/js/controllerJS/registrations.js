@@ -107,19 +107,8 @@ const rowView=(ob,index)=>{
     registrationSheetBatch.value = ob.batchID.batchCode;
     registrationSheetRegisteredBy.value = ob.addedBy;
     registrationSheetCommission.value = ob.commissionPaidTo;
-
-    if(ob.discountRate!=null) {
-        registrationSheetDiscountRate.value = ob.discountRate+"%";
-    }
-    else{
-        registrationSheetDiscountRate.value = "0.0%";
-    }
-    if(ob.discountAmount!=null) {
-        registrationSheetDiscountAmount.value = "Rs. "+ob.discountAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    }
-    else{
-        registrationSheetDiscountAmount.value = "Rs. 0.00";
-    }
+    registrationSheetDiscountRate.value = ob.discountRate+"%";
+    registrationSheetDiscountAmount.value = "Rs. "+ob.discountAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
     //check payment mode [full payment or part payment]
     if(ob.isFullPayment){
@@ -185,12 +174,14 @@ const rowView=(ob,index)=>{
         studentPaymentTabStatus.innerHTML= '<span class="badge rounded-0" style="background: #ea8a1e;width: 100px!important;">Paid</span>';
     }
 
-    studentPaymentTabPlan.innerHTML = '<p class="mb-0">'+(ob.isFullPayment ? 'Full Payment':'Installments')+'</p>'
-    studentPaymentTabDiscount.innerHTML = '<p class="mb-0">'+ (ob.discountRate != null ? ob.discountRate + '% OFF<br><span class="text-muted small">Total Savings Rs. ' + ob.discountAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + '</span>' : '0% OFF<br><span class="text-muted small">Total Savings Rs. 0.00</span>') + '</p>';
+    studentPaymentTabPlan.innerHTML = '<p class="mb-0">'+(ob.isFullPayment ? 'One Time Payment':+ob.batchID.paymentPlanID.numberOfInstallments+' Easy Installment Plan')+'</p>'
+    studentPaymentTabDiscount.innerHTML = '<p class="mb-0">'+ ob.discountRate + '% OFF<br><span class="text-muted small">Total Savings Rs. ' + ob.discountAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + '</span>' + '</p>';
 
 
     //setting data to tblPaymentBreakdown
-
+    studentPaymentTabCourseFee.innerText = "Rs. "+ob.batchID.paymentPlanID.courseFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    studentPaymentTabRegFee.innerText = "Rs. "+ob.batchID.paymentPlanID.registrationFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    studentPaymentTabDiscounts.innerText ="- Rs. "+ ob.discountAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
     //This code snippet will save the current object student sub object to the global variable studentRecordToBeEdited;
     registrationSheetStudentID.addEventListener("click",()=>{
