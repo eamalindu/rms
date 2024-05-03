@@ -79,6 +79,9 @@ const getStatus = (ob) => {
     } else if (ob.registrationStatusID.name === "Cancelled") {
         return '<span class="badge rounded-0" style="background: #ea2f1e">Cancelled</span>';
     }
+    else if (ob.registrationStatusID.name === "Pending"){
+        return '<span class="badge rounded-0" style="background: #616161">Pending</span>';
+    }
     else{
         return '<span class="badge rounded-0" style="background: #000">Deleted</span>';
     }
@@ -150,6 +153,14 @@ const rowView=(ob,index)=>{
         registrationSheetCode.classList.remove('text-warning');
         registrationSheetCode.classList.remove('text-danger');
         registrationSheetCode.classList.remove('text-steam-green');
+    }
+    else if (ob.registrationStatusID.name==='Pending'){
+        registrationSheetCode.classList.add('text-Secondary');
+        registrationSheetCode.classList.remove('text-success');
+        registrationSheetCode.classList.remove('text-warning');
+        registrationSheetCode.classList.remove('text-danger');
+        registrationSheetCode.classList.remove('text-steam-green');
+
     }
     else {
         registrationSheetCode.classList.add('text-danger');
