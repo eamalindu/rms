@@ -364,6 +364,7 @@ const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFu
         registration.fullAmount = ob.paymentPlanID.totalFee;
         registration.paidAmount = 0;
         registration.balanceAmount = ob.paymentPlanID.totalFee;
+
     }
 
 
@@ -377,6 +378,8 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
         registration.fullAmount = totalFee;
         registration.paidAmount = 0;
         registration.balanceAmount = totalFee;
+        registration.discountRate = 0;
+        registration.discountAmount = 0;
 
         tblInstallments.classList.remove('d-none');
         const installmentFee = courseFee / installments;
