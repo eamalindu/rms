@@ -203,10 +203,10 @@ const rowView=(ob,index)=>{
     studentPaymentTabDues.innerText = "TBA";
 
     const displayPropertyListForInstallmentPlan = [
-        {property: 'payment', dataType: 'text'},
+        {property: getAmount, dataType: 'function'},
         {property: 'dueDate', dataType: 'text'},
-        {property: 'paidAmount', dataType: 'text'},
-        {property: 'balanceAmount', dataType: 'text'},
+        {property: getPaidAmount, dataType: 'function'},
+        {property: getBalanceAmount, dataType: 'function'},
         {property: 'status', dataType: 'text'},
     ];
 
@@ -286,6 +286,19 @@ const rowView=(ob,index)=>{
     })
 
 
+}
+
+const getAmount = (ob)=>{
+
+    return 'Rs. '+ob.payment.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2})
+}
+
+const getPaidAmount = (ob)=>{
+    return 'Rs. '+ob.paidAmount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2})
+}
+
+const getBalanceAmount = (ob)=>{
+    return 'Rs. '+ob.balanceAmount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2})
 }
 
 //reset chosen select using jquery
