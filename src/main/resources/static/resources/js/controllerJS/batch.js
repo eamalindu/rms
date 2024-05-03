@@ -261,6 +261,9 @@ const getStudentStatus=(ob)=>{
     } else if (ob.registrationStatusID.name === "Cancelled") {
         return '<span class="badge rounded-0" style="background: #ea2f1e">Cancelled</span>';
     }
+    else if (ob.registrationStatusID.name === "Pending"){
+        return '<span class="badge rounded-0" style="background: #616161">Pending</span>';
+    }
     else{
         return '<span class="badge rounded-0" style="background: #000">Deleted</span>';
     }
