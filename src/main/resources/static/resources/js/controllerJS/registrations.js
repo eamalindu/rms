@@ -115,6 +115,8 @@ const rowView=(ob,index)=>{
     registrationSheetDiscountRate.value = ob.discountRate+"%";
     registrationSheetDiscountAmount.value = "Rs. "+ob.discountAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
+
+    let installmentPlanForCurrentRegistration = [];
     //check payment mode [full payment or part payment]
     if(ob.isFullPayment){
         registrationSheetPayment.value = "Full Payment";
@@ -124,7 +126,8 @@ const rowView=(ob,index)=>{
 
         //This means current Registration have installments
         //get all the installments from the database and save it to installmentPlanForCurrentRegistration variable
-       const installmentPlanForCurrentRegistration = ajaxGetRequest("/InstallmentPlan/getInstallmentPlan/"+ob.id);
+         installmentPlanForCurrentRegistration = ajaxGetRequest("/InstallmentPlan/getInstallmentPlan/"+ob.id);
+
     }
 
     if (ob.registrationStatusID.name === 'Active') {
@@ -199,6 +202,15 @@ const rowView=(ob,index)=>{
     //calculate dues and displaying it
     studentPaymentTabDues.innerText = "TBA";
 
+    const displayPropertyListForInstallmentPlan = [
+        {property: 'payment', dataType: 'text'},
+        {property: 'dueDate', dataType: 'text'},
+        {property: 'paidAmount', dataType: 'text'},
+        {property: 'balanceAmount', dataType: 'text'},
+        {property: 'status', dataType: 'text'},
+    ];
+
+    fillDataIntoTableWithOutAction(tblInstallments,installmentPlanForCurrentRegistration,displayPropertyListForInstallmentPlan)
 
     //This code snippet will save the current object student sub object to the global variable studentRecordToBeEdited;
     registrationSheetStudentID.addEventListener("click",()=>{
