@@ -188,6 +188,10 @@ const rowView=(ob,index)=>{
     studentPaymentTabPlan.innerHTML = '<p class="mb-0">'+(ob.isFullPayment ? 'Full Payment':'Installments')+'</p>'
     studentPaymentTabDiscount.innerHTML = '<p class="mb-0">'+ (ob.discountRate != null ? ob.discountRate + '% OFF<br><span class="text-muted small">Total Savings Rs. ' + ob.discountAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + '</span>' : '0% OFF<br><span class="text-muted small">Total Savings Rs. 0.00</span>') + '</p>';
 
+
+    //setting data to tblPaymentBreakdown
+
+
     //This code snippet will save the current object student sub object to the global variable studentRecordToBeEdited;
     registrationSheetStudentID.addEventListener("click",()=>{
 
