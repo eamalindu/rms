@@ -109,4 +109,9 @@ public class RegistrationController {
     public List<Registrations> getBatchInfoByBatchCode(@PathVariable Integer batchID){
         return registrationDAO.getRegistrationsByBatchID(batchID);
     }
+    @GetMapping("getRegistration/{id}")
+    public Registrations getRegistrationByID(@PathVariable Integer id){
+        return registrationDAO.getRegistrationsByID(id);
+    }
 }
+
