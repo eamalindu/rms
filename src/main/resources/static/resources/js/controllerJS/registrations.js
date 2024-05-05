@@ -382,7 +382,17 @@ const newPaymentSubmit=()=>{
     console.log(newPayment);
     showCustomConfirm("You are about to add a New Payment of <br><span class='text-steam-green'>Rs. "+parseFloat(newPayment.amount).toLocaleString('en-US', {maximumFractionDigits: 2, minimumFractionDigits: 2})+"</span> to the registration : <span class='text-steam-green'>"+oldRegistration.registrationNumber+"</span><br><br>Are You Sure?", function (result) {
         if (result) {
-
+            let serviceResponse = ajaxHttpRequest("/Payment", 'POST', newPayment);
+            if (serviceResponse === "OK") {
+                //this means data successfully passed to the backend
+                //show an alert to user
+                showCustomModal("Batch Successfully Added!", "success");
+            }
+            else{
+                //this means there was a problem with the query
+                //shows an error alert to the user
+                showCustomModal("Operation Failed! <br>" + serviceResponse.responseJSON.error, "error");
+            }
         }
     });
 }
