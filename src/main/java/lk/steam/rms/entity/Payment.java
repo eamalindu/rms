@@ -1,12 +1,13 @@
 package lk.steam.rms.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "payment")
@@ -21,6 +22,10 @@ public class Payment {
     private Integer id;
 
     @Column(name = "amount")
-    @NonNull
+    @NotNull
     private BigDecimal amount;
+
+    @Column(name="paiddatetime")
+    @NotNull
+    private LocalDateTime timeStamp;
 }
