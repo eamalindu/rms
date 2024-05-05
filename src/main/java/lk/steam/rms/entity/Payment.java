@@ -32,4 +32,11 @@ public class Payment {
     @Column(name = "addedBy")
     @NotNull
     private String addedBy;
+
+    @Column(name = "installmentId")
+    private Integer installmentID;
+
+    @ManyToOne
+    @JoinColumn(name = "registration_id",referencedColumnName = "id")
+    private  Registrations registrationID;
 }
