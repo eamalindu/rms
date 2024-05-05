@@ -33,7 +33,7 @@ public class Payment {
     @NotNull
     private String addedBy;
 
-    @Column(name = "installmentId")
+    @Column(name = "installmentid")
     private Integer installmentID;
 
     @ManyToOne
