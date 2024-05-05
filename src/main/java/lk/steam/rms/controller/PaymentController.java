@@ -27,6 +27,6 @@ public class PaymentController {
     public String saveNewPayment(@RequestBody Payment payment){
 
 
-
+        return "OK";
     }
 }
