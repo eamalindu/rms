@@ -1,7 +1,7 @@
 window.addEventListener("load", () => {
 
     //reset the registration form
-    resetRegistrationForm();
+    resetPaymentForm();
     //refresh the registration table
     refreshRegistrationTable();
 
@@ -88,9 +88,12 @@ const getStatus = (ob) => {
 
 
 }
-//creating a function to reset the registrations form when ever needed
-const resetRegistrationForm=()=>{
-
+//creating a function to reset the payment form when ever needed
+const resetPaymentForm=()=>{
+//setting payment inputs
+    const paymentMethods = ajaxGetRequest('/PaymentType/findall');
+    fillSelectOptions(paymentMethod,' ',paymentMethods,'name')
+    $('#paymentMethod').chosen({width: '100%'});
 
 
 }
@@ -301,8 +304,6 @@ const rowView=(ob,index)=>{
 
 
     })
-//setting payment inputs
-    $('#paymentMethod').chosen({width: '100%'});
 
 }
 
