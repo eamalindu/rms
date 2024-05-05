@@ -39,4 +39,9 @@ public class Payment {
     @ManyToOne
     @JoinColumn(name = "registration_id",referencedColumnName = "id")
     private  Registrations registrationID;
+
+    @ManyToOne
+    @JoinColumn(name = "paymenttype_id",referencedColumnName = "id")
+    private  PaymentType paymentTypeID;
+
 }
