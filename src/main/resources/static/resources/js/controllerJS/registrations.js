@@ -107,6 +107,15 @@ const resetPaymentForm=()=>{
         $('#paymentMethod').val('').trigger('chosen:updated');
     }, 0);
 
+    //remove validation from the inputs all at once
+    inputs = document.querySelectorAll('.newRegistrationPaymentInputs');
+    inputs.forEach(function (input) {
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
+
 //setting payment inputs
     const paymentMethods = ajaxGetRequest('/PaymentType/findall');
     fillSelectOptions(paymentMethod,' ',paymentMethods,'name')
