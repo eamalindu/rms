@@ -371,4 +371,9 @@ const newPaymentSubmit=()=>{
     //get the current registration object from rowView function
     newPayment.registrationID =oldRegistration;
     console.log(newPayment);
+    showCustomConfirm("You are about to add a New Payment of <br><span class='text-steam-green'>Rs. "+parseFloat(newPayment.amount).toLocaleString('en-US', {maximumFractionDigits: 2, minimumFractionDigits: 2})+"</span> to the registration : <span class='text-steam-green'>"+oldRegistration.registrationNumber+"</span><br><br>Are You Sure?", function (result) {
+        if (result) {
+
+        }
+    });
 }
