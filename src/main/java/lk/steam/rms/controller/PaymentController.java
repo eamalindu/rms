@@ -50,6 +50,7 @@ public class PaymentController {
 
         registrationDAO.save(currentRegistration);
 
+
         return "OK";
     }
 }
