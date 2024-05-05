@@ -90,6 +90,16 @@ const getStatus = (ob) => {
 }
 //creating a function to reset the payment form when ever needed
 const resetPaymentForm=()=>{
+
+    newPayment = {};
+
+    frmNewPayment.reset();
+
+    //set default option chosen
+    setTimeout(function () {
+        $('#paymentMethods').val('').trigger('chosen:updated');
+    }, 0);
+
 //setting payment inputs
     const paymentMethods = ajaxGetRequest('/PaymentType/findall');
     fillSelectOptions(paymentMethod,' ',paymentMethods,'name')
