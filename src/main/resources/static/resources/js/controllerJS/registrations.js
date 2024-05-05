@@ -298,8 +298,11 @@ const rowView=(ob,index)=>{
         oldStudent = JSON.parse(JSON.stringify(studentRecordToBeEdited));
         editedStudent = JSON.parse(JSON.stringify(studentRecordToBeEdited));
 
-    })
 
+
+    })
+//setting payment inputs
+    $('#paymentType').chosen({width: '100%'});
 
 }
 

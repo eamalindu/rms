@@ -750,7 +750,21 @@
                             </table>
                         </div>
                     </div>
-                    <div class="col-6">2</div>
+                    <div class="col-6">
+                        <form onsubmit="return false;">
+                            <div class="mb-2">
+                                <div class="form-label">
+                                    <label class="fw-bold small required">Payment Type</label>
+                                </div>
+                                <select class="form-select rounded-0" id="paymentType" data-placeholder="Please Select a Payment Type" required>
+                                    <option></option>
+                                    <option value="test">test</option>
+                                </select>
+                                <div class="valid-feedback">Value Accepted</div>
+                                <div class="invalid-feedback">Please provide a valid Course</div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
