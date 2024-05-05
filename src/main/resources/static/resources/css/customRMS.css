@@ -412,7 +412,7 @@ input {
 
 }
 
-.newBatchInputs,.newCourseInputs,.newStudentInputs {
+.newBatchInputs,.newCourseInputs,.newStudentInputs,.newRegistrationPaymentInputs {
     font-size: 13px;
 }
 
