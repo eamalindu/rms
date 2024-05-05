@@ -97,7 +97,7 @@ const resetPaymentForm=()=>{
 
     //set default option chosen
     setTimeout(function () {
-        $('#paymentMethods').val('').trigger('chosen:updated');
+        $('#paymentMethod').val('').trigger('chosen:updated');
     }, 0);
 
 //setting payment inputs
