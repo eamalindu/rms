@@ -254,7 +254,18 @@ const rowView=(ob,index)=>{
         {property: 'status', dataType: 'text'},
     ];
 
-    fillDataIntoTableWithOutAction(tblInstallments,installmentPlanForCurrentRegistration,displayPropertyListForInstallmentPlan)
+    fillDataIntoTableWithOutAction(tblInstallments,installmentPlanForCurrentRegistration,displayPropertyListForInstallmentPlan);
+
+    const paymentHistory = ajaxGetRequest("/Payment/getPaymentsByRegistrationID/"+ob.id);
+    const displayPropertyListForPaymentHistory = [
+        {property:'timeStamp',dataType:'text'},
+        {property:getPaymentMethod,dataType:'function'},
+        {property:getPaymentAmount,dataType:'function'},
+        {property:'addedBy',dataType:'text'},
+        {property:getInvoice,dataType:'function'},
+    ];
+
+    fillDataIntoTableWithOutAction(tblPaymentHistory,paymentHistory,displayPropertyListForPaymentHistory)
 
     //This code snippet will save the current object student sub object to the global variable studentRecordToBeEdited;
     registrationSheetStudentID.addEventListener("click",()=>{
@@ -347,6 +358,22 @@ const getPaidAmount = (ob)=>{
 
 const getBalanceAmount = (ob)=>{
     return 'Rs. '+ob.balanceAmount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2})
+}
+
+const getPaymentMethod = (ob)=>{
+    return ob.paymentTypeID.name;
+}
+
+const getPaymentAmount = (ob)=>{
+    return "Rs. "+ob.amount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
+}
+
+const getInvoice =(ob)=>{
+
+    return ' <button class="btn btn-sm btn-secondary rounded-0 small" style="width: 30px;height: 30px;"\n' +
+        '                                                onclick="window.location.href=\'invoice.html\'">\n' +
+        '                                            <i class="fa-solid fa-print small"></i>\n' +
+        '                                        </button>'
 }
 
 //reset chosen select using jquery
