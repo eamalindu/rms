@@ -419,7 +419,7 @@ const newPaymentSubmit=()=>{
             if (serviceResponse === "OK") {
                 //this means data successfully passed to the backend
                 //show an alert to user
-                showCustomModal("Batch Successfully Added!", "success");
+                showCustomModal("Payment Successfully Added!", "success");
             }
             else{
                 //this means there was a problem with the query
