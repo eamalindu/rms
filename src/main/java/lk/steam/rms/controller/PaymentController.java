@@ -62,7 +62,7 @@ public class PaymentController {
             BigDecimal currentRegistrationRegistrationFee = currentRegistration.getBatchID().getPaymentPlanID().getRegistrationFee();
             BigDecimal currentPaymentAmount = payment.getAmount();
 
-            if (currentPaymentAmount.compareTo(currentRegistrationRegistrationFee) >= 0) {
+            if (updatedPaidAmount.compareTo(currentRegistrationRegistrationFee) >= 0) {
                 // currentPaymentAmount is greater than or equal to currentRegistrationRegistrationFee
                 // Handle the case where the payment amount is sufficient or more
                 currentRegistration.setRegistrationStatusID(registrationStatusDAO.getReferenceById(1));
