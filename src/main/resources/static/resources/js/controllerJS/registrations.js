@@ -27,6 +27,10 @@ window.addEventListener("load", () => {
     toggleRegistrationSheetTable(paymentBreakdownHeadingText,tblPaymentBreakdown,paymentBreakdownHeadingIcon);
     toggleRegistrationSheetTable(installmentSummaryHeadingText,tblInstallments,installmentSummaryHeadingIcon);
 
+    $("#paymentMethod").chosen().change(function () {
+        $("#paymentMethod_chosen .chosen-single").addClass('select-validated');
+    });
+
 });
 
 //creating a function to refresh the registrations table when ever needed
