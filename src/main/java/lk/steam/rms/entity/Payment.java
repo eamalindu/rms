@@ -28,4 +28,8 @@ public class Payment {
     @Column(name="paiddatetime")
     @NotNull
     private LocalDateTime timeStamp;
+
+    @Column(name = "addedBy")
+    @NotNull
+    private String addedBy;
 }
