@@ -420,6 +420,14 @@ const newPaymentSubmit=()=>{
                 //this means data successfully passed to the backend
                 //show an alert to user
                 showCustomModal("Payment Successfully Added!", "success");
+
+                //testing code
+                btnModalAddPaymentClose.click();
+                refreshRegistrationTable();
+                const currentReg = ajaxGetRequest("/Registration/getRegistration/"+oldRegistration.id);
+                rowView(currentReg)
+                document.getElementById("pills-payment-tab").click();
+
             }
             else{
                 //this means there was a problem with the query
