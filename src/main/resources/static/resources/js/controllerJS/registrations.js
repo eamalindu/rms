@@ -258,7 +258,7 @@ const rowView=(ob,index)=>{
 
     const paymentHistory = ajaxGetRequest("/Payment/getPaymentsByRegistrationID/"+ob.id);
     const displayPropertyListForPaymentHistory = [
-        {property:'timeStamp',dataType:'text'},
+        {property:getPaymentDate,dataType:'function'},
         {property:getPaymentMethod,dataType:'function'},
         {property:getPaymentAmount,dataType:'function'},
         {property:'addedBy',dataType:'text'},
@@ -358,6 +358,12 @@ const getPaidAmount = (ob)=>{
 
 const getBalanceAmount = (ob)=>{
     return 'Rs. '+ob.balanceAmount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2})
+}
+
+
+const getPaymentDate = (ob)=>{
+
+    return ob.timeStamp.split("T")[0];
 }
 
 const getPaymentMethod = (ob)=>{
