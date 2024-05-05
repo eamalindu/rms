@@ -322,6 +322,9 @@ const rowView=(ob,index)=>{
 
     })
 
+    //catch old Registration and edited Registration
+    oldRegistration = JSON.parse(JSON.stringify(ob));
+    editedRegistration= JSON.parse(JSON.stringify(ob));
 }
 
 const getAmount = (ob)=>{
@@ -359,4 +362,13 @@ const toggleRegistrationSheetTable =(HeadingTextID,TableID,iconSpanID)=>{
         }
 
     })
+}
+
+
+const newPaymentSubmit=()=>{
+
+    //attach the current registration object to the payment object
+    //get the current registration object from rowView function
+    newPayment.registrationID =oldRegistration;
+    console.log(newPayment);
 }
