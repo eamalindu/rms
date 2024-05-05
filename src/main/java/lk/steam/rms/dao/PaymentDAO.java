@@ -2,6 +2,12 @@ package lk.steam.rms.dao;
 
 import lk.steam.rms.entity.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 public interface PaymentDAO extends JpaRepository<Payment,Integer> {
+
+    @Query(value = "select p from Payment p where p.registrationID.id=?1")
+    List<Payment> getPaymentsByRegistrationID(Integer registrationID);
 }
