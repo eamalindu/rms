@@ -129,6 +129,8 @@ const rowView=(ob,index)=>{
     btnRegistrationSheetUpdate.style.display = 'none';
     //show the deleted btn
     btnRegistrationSheetDelete.style.display = 'block';
+    //show the add payment btn
+    document.getElementById('btn-add-payment').classList.remove('d-none')
 
 
     //show the info tab first
@@ -224,6 +226,7 @@ const rowView=(ob,index)=>{
 
         //payment completed
         studentPaymentTabStatus.innerHTML= '<span class="badge rounded-0" style="background: #3FB618;width: 100px!important;">Completed</span>';
+        document.getElementById('btn-add-payment').classList.add('d-none')
     } else {
 
         //payment is not completed but payments have been made
