@@ -743,7 +743,7 @@
                                 </tr>
 
                                 <tr class="bg-custom-white">
-                                    <td class="fw-bold text-start border">Total Outsanding Fee</td>
+                                    <td class="fw-bold text-start border">Total Outstanding Fee</td>
                                     <td class="text-end border">Rs. 47,000.00</td>
                                 </tr>
 
@@ -755,9 +755,9 @@
                         <form onsubmit="return false;" id="frmNewPayment">
                             <div class="mb-2">
                                 <div class="form-label">
-                                    <label class="fw-bold small required">Payment Method</label>
+                                    <label class="fw-bold small required" for="paymentMethod">Payment Method</label>
                                 </div>
-                                <select class="form-select rounded-0" id="paymentMethod" data-placeholder="Please Select a Payment Method" required>
+                                <select class="form-select rounded-0" id="paymentMethod" data-placeholder="Please Select a Payment Method" onchange="selectDynamicValueValidator(this,'','newPayment','paymentTypeID')" required>
                                     <option></option>
                                     <option value="test">test</option>
                                 </select>
