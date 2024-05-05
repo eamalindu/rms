@@ -302,7 +302,7 @@ const rowView=(ob,index)=>{
 
     })
 //setting payment inputs
-    $('#paymentType').chosen({width: '100%'});
+    $('#paymentMethod').chosen({width: '100%'});
 
 }
 
