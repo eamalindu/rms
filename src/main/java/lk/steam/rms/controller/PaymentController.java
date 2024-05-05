@@ -7,13 +7,11 @@ import lk.steam.rms.dao.RegistrationStatusDAO;
 import lk.steam.rms.entity.Payment;
 import lk.steam.rms.entity.Registrations;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/Payment")
@@ -75,5 +73,10 @@ public class PaymentController {
 
 
         return "OK";
+    }
+
+    @GetMapping(value = "/getPaymentsByRegistrationID/{registrationID}")
+    public List<Payment> getPaymentsByRegistrationID(@PathVariable Integer registrationID){
+        return paymentDAO.getPaymentsByRegistrationID(registrationID);
     }
 }
