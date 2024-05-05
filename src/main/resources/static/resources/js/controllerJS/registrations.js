@@ -95,6 +95,9 @@ const getStatus = (ob) => {
 //creating a function to reset the payment form when ever needed
 const resetPaymentForm=()=>{
 
+    $("#paymentMethod_chosen .chosen-single").removeClass('select-validated');
+    paymentMethod.classList.remove('is-valid');
+
     newPayment = {};
 
     frmNewPayment.reset();
