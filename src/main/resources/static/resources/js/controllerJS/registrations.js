@@ -376,14 +376,6 @@ const getPaymentAmount = (ob)=>{
     return "Rs. "+ob.amount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
 }
 
-// const getInvoice =(ob)=>{
-//
-//     return ' <button class="btn btn-sm btn-secondary rounded-0 small" style="width: 30px;height: 30px;"\n' +
-//         '                                                onclick="window.location.href=\'invoice.html\'">\n' +
-//         '                                            <i class="fa-solid fa-print small"></i>\n' +
-//         '                                        </button>'
-// }
-
 
 const printInvoice = (object,index)=>{
     alert("hehe");
