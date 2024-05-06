@@ -79,4 +79,9 @@ public class PaymentController {
     public List<Payment> getPaymentsByRegistrationID(@PathVariable Integer registrationID){
         return paymentDAO.getPaymentsByRegistrationID(registrationID);
     }
+
+    @GetMapping(value = "/getDailyIncome")
+    public Double getDailyIncome(){
+        return paymentDAO.getDailyTotalPayment();
+    }
 }
