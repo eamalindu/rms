@@ -10,4 +10,7 @@ public interface PaymentDAO extends JpaRepository<Payment,Integer> {
 
     @Query(value = "select p from Payment p where p.registrationID.id=?1")
     List<Payment> getPaymentsByRegistrationID(Integer registrationID);
+
+    @Query(value = "SELECT sum(amount) FROM steam.payment WHERE DATE(paiddatetime) = date(now())",nativeQuery = true)
+    Double getDailyTotalPayment();
 }
