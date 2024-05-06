@@ -430,7 +430,7 @@ const printInvoice = (object,index)=>{
         "                    </tr>" +
         "                    <tr>" +
         "                        <td class='fw-bold'>Sum of Rupees:</td>" +
-        "                        <td colspan='3' class='text-capitalize'>"+numberstowords.toInternationalWords(object.amount)+"only</td>" +
+        "                        <td colspan='3' class='text-capitalize'>"+numberstowords.toInternationalWords(object.amount)+" Only</td>" +
         "                    </tr>" +
         "                    <tr>" +
         "                        <td class='fw-bold'>Course/Batch:</td>" +
