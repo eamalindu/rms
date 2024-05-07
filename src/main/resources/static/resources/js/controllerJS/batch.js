@@ -493,7 +493,7 @@ const getEndTime =(ob)=>{
     return ob.endTime;
 }
 const getLectureRoom =(ob)=>{
-    return ob.lectureRoomID.name;
+    return ob.lectureRoomID.code;
 }
 
 const removeRecord = (ob)=>{
