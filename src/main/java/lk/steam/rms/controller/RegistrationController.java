@@ -65,7 +65,7 @@ public class RegistrationController {
 
 
             //Student sample = studentDAO.getReferenceById(1);
-            RegistrationStatus sampleStatus = registrationStatusDAO.getReferenceById(1);
+            RegistrationStatus sampleStatus = registrationStatusDAO.getReferenceById(4);
             //registrations.setStudentID(sample);
             registrations.setRegistrationStatusID(sampleStatus);
 

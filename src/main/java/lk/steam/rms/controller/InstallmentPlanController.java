@@ -48,7 +48,7 @@ public class InstallmentPlanController {
             currentRegistration.setAddedBy("User1");
             currentRegistration.setCommissionPaidTo("User1");
             //Student sample = studentDAO.getReferenceById(1);
-            RegistrationStatus sampleStatus = registrationStatusDAO.getReferenceById(1);
+            RegistrationStatus sampleStatus = registrationStatusDAO.getReferenceById(4);
             //registrations.setStudentID(sample);
             currentRegistration.setRegistrationStatusID(sampleStatus);
 
