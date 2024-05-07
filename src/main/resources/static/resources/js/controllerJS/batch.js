@@ -474,6 +474,26 @@ const saveTimetable = () => {
     tblTimetable.classList.remove('d-none');
     let timeTableBody = tblTimetable.querySelector('tbody'); // Select the tbody element
     timeTableBody.innerHTML = '';
+    let displayPropertyListForTimeTable =[
+        {property: getDay, dataType: 'function'},
+        {property: getStartTime, dataType: 'function'},
+        {property: getEndTime, dataType: 'function'},
+        {property: getLectureRoom, dataType: 'function'},
+    ];
+    fillDataIntoTableWithOutAction(tblTimetable,newBatch.batchHasDays,displayPropertyListForTimeTable)
+
+}
+const getDay =(ob)=>{
+    return ob.dayID.name;
+}
+const getStartTime =(ob)=>{
+    return ob.startTime;
+}
+const getEndTime =(ob)=>{
+    return ob.endTime;
+}
+const getLectureRoom =(ob)=>{
+    return ob.lectureRoomID.name;
 }
 
 const addToTimeTable = ()=>{
