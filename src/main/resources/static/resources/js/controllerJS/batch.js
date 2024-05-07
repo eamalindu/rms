@@ -273,9 +273,8 @@ const getStudentStatus=(ob)=>{
 const resetBatchForm = () => {
 
     $("#batchCourse_chosen .chosen-single").removeClass('select-validated');
-    $("#batchClassDay_chosen .chosen-single").removeClass('select-validated');
     $("#batchPaymentPlan_chosen .chosen-single").removeClass('select-validated');
-    $("#batchLectureRoom_chosen .chosen-single").removeClass('select-validated');
+
     batchCourse.classList.remove('is-valid');
     batchClassDay.classList.remove('is-valid');
     batchPaymentPlan.classList.remove('is-valid');
@@ -309,10 +308,7 @@ const resetBatchForm = () => {
     //dynamic select content handling
     courses = ajaxGetRequest("/Course/findall");
     fillSelectOptions(batchCourse, ' ', courses, 'name');
-    days = ajaxGetRequest("/Day/findall")
-    fillSelectOptions(batchClassDay, ' ', days, 'name');
-    lectureRooms = ajaxGetRequest("/LectureRoom/findall");
-    fillSelectOptionsWithTwo(batchLectureRoom, ' ', lectureRooms, 'name', 'floor')
+
 
     //reset payment plan and its table
     batchPaymentPlan.innerHTML = '';
@@ -329,8 +325,6 @@ const resetBatchForm = () => {
 
     //initialize the 3rd party libraries (chosen)
     $('#batchCourse').chosen({width: '100%'});
-    $('#batchClassDay').chosen({width: '100%'});
-    $('#batchLectureRoom').chosen({width: '100%'});
     $('#batchPaymentPlan').chosen({width: '80%'});
 
     $('#batchCommenceDate').daterangepicker({
@@ -351,7 +345,43 @@ const resetBatchForm = () => {
         calculateEndDate();
     });
 
+    resetTimeTableForm();
 
+}
+
+const resetTimeTableForm = ()=>{
+
+    $("#batchClassDay_chosen .chosen-single").removeClass('select-validated');
+    $("#batchLectureRoom_chosen .chosen-single").removeClass('select-validated');
+    batchClassDay.classList.remove('is-valid');
+    batchLectureRoom.classList.remove('is-valid');
+
+    batchHasDay = {};
+    frmNewTimeTable.reset();
+
+    setTimeout(function () {
+        $('#batchClassDay').val('').trigger('chosen:updated');
+        $('#batchLectureRoom').val('').trigger('chosen:updated');
+    }, 0);
+
+    batchStartTime.style = '';
+    //remove bootstrap validation classes
+    batchStartTime.classList.remove('is-valid');
+    batchStartTime.classList.remove('is-invalid');
+
+    batchEndTime.style = '';
+    //remove bootstrap validation classes
+    batchEndTime.classList.remove('is-valid');
+    batchEndTime.classList.remove('is-invalid');
+
+    days = ajaxGetRequest("/Day/findall")
+    fillSelectOptions(batchClassDay, ' ', days, 'name');
+
+    lectureRooms = ajaxGetRequest("/LectureRoom/findall");
+    fillSelectOptionsWithTwo(batchLectureRoom, ' ', lectureRooms, 'name', 'floor')
+
+    $('#batchClassDay').chosen({width: '100%'});
+    $('#batchLectureRoom').chosen({width: '100%'});
 }
 
 
@@ -444,7 +474,7 @@ const saveTimetable = () => {
     tblTimetable.classList.remove('d-none');
     let timeTableBody = tblTimetable.querySelector('tbody'); // Select the tbody element
     timeTableBody.innerHTML = '';
-    console.log(newTimetable);
+    console.log(batchHasDay);
 }
 
 //creating a function to submit the batch form when ever needed

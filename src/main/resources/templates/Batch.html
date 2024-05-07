@@ -629,19 +629,20 @@
      tabindex="-1">
     <div class="offcanvas-header bg-custom-white">
         <div>
-            <button class="btn btn-sm bg-secondary text-white rounded-0" type="button"><i
+            <button class="btn btn-sm bg-secondary text-white rounded-0" type="button" onclick="resetTimeTableForm()"><i
                     class="fas fa-refresh"></i>
             </button>
         </div>
         <h3 class="float-end" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">New Class Schedule</h3>
     </div>
     <div class="offcanvas-body">
+        <form id="frmNewTimeTable" onsubmit="return false">
         <div class="mb-2">
             <div class="form-label">
                 <label class="fw-bold small required" for="batchClassDay">Class Day(s)</label>
             </div>
             <select class="form-select rounded-0" data-placeholder="Please Select a Day"
-                    id="batchClassDay" onchange="selectDynamicValueValidator(this,'','newTimetable','day')"
+                    id="batchClassDay" onchange="selectDynamicValueValidator(this,'','batchHasDay','day')"
                     required>
             </select>
             <div class="valid-feedback">Value Accepted</div>
@@ -651,7 +652,7 @@
             <div class="form-label">
                 <label class="fw-bold small required" for="batchStartTime">Start Time</label>
             </div>
-            <input class="form-control rounded-0 newBatchInputs pe-3" id="batchStartTime" required onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','newTimetable','s')"
+            <input class="form-control rounded-0 newBatchInputs pe-3" id="batchStartTime" required onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','batchHasDay','s')"
                    type="time">
             <div class="valid-feedback">Value Accepted</div>
             <div class="invalid-feedback">Please provide a valid Start Time</div>
@@ -661,7 +662,7 @@
             <div class="form-label">
                 <label class="fw-bold small required" for="batchEndTime">End Time</label>
             </div>
-            <input class="form-control rounded-0 newBatchInputs pe-3" id="batchEndTime" required onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','newTimetable','e')"
+            <input class="form-control rounded-0 newBatchInputs pe-3" id="batchEndTime" required onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','batchHasDay','e')"
                    type="time">
             <div class="valid-feedback">Value Accepted</div>
             <div class="invalid-feedback">Please provide a valid End Time</div>
@@ -672,7 +673,7 @@
                 <label class="fw-bold small required" for="batchLectureRoom">Lecture Room</label>
             </div>
             <select class="form-select rounded-0" data-placeholder="Please Select a Lecure Room"
-                    id="batchLectureRoom" onchange="selectDynamicValueValidator(this,'','newTimetable','l')"
+                    id="batchLectureRoom" onchange="selectDynamicValueValidator(this,'','batchHasDay','l')"
                     required>
             </select>
             <div class="valid-feedback">Value Accepted</div>
@@ -684,7 +685,7 @@
         <button class="btn btn-sm btn-success rounded-0 text-uppercase" type="button" data-bs-target="#offCanvasBatch" data-bs-toggle="offcanvas" onclick="saveTimetable()">Save</button>
 
         </div>
-
+        </form>
     </div>
 </div>
 <!-- Off canvas for Time table end-->
