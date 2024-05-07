@@ -406,7 +406,7 @@ const fillDataIntoTableWithDelete = (tabledID,dataList,displayPropertyList,delet
             btnDelete.style.height = '30px';
 
             //add text,icons using innerHTML for each button
-            btnDelete.innerHTML = '<i class="fa-solid fa-trash"></i>';
+            btnDelete.innerHTML = '<i class="fa-solid fa-circle-minus"></i>';
 
             //btnDelete.innerHTML = '<i class="fa-solid fa-trash"></i>';
             //btnView.innerHTML = '<i class="fa-solid fa-eye"></i>';
