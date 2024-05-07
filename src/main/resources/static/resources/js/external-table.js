@@ -344,3 +344,96 @@ const fillDataIntoTableWithPrint = (tabledID,dataList,displayPropertyList,printF
         tbody.appendChild(tableTR);
     }
 }
+
+const fillDataIntoTableWithDelete = (tabledID,dataList,displayPropertyList,deleteFunction)=>{
+//access the table via querySelector
+    //const table = document.querySelector('#tblEmp');
+
+    //children 0 -> thead
+    //children 1 -> tbody
+    const tbody = tabledID.children[1];
+    //clear the table body
+    tbody.innerHTML = '';
+
+    if(dataList.length!==0) {
+        dataList.forEach((element, index) => {
+
+            //creating a tr element
+            const tr = document.createElement('tr');
+
+            //there are seven columns in the table, so we have to create seven tds
+            const tdIndex = document.createElement('td');
+            //use foreach loop to add text to the created tds
+            tdIndex.innerText = index + 1;
+            //append the remaining tds to the tr
+            tr.appendChild(tdIndex);
+
+            displayPropertyList.forEach((ob, ind) => {
+                const td = document.createElement('td');
+
+                //if datatype is text, get the property from the displayPropertyList and use that property to get the value from the employee array
+                if (ob.dataType === 'text') {
+                    //template -> element[ob.displayPropertyListColumnName] = element['fullName']
+                    td.innerText = element[ob.property];
+                }
+                if (ob.dataType === 'function') {
+                    //calling the getEmployeeStatus function and passing records of employee array one by one
+                    td.innerHTML = ob.property(element);
+                }
+
+                tr.appendChild(td);
+            })
+
+            /*
+            const tdFullName = document.createElement('td');
+            const tdNic = document.createElement('td');
+            const tdEmail = document.createElement('td');
+            const tdMobile = document.createElement('td');
+            const tdStatus = document.createElement('td');
+             */
+
+            const tdModify = document.createElement('td');
+
+            //there are 3 buttons, so create them as well
+            const btnDelete = document.createElement('button');
+
+            //const btnDelete = document.createElement('button');
+            //const btnView = document.createElement('button');
+
+            //add relevant classes for the created buttons
+            btnDelete.classList.add('btn', 'btn-sm','text-red', 'rounded-0', 'small');
+            btnDelete.style.width = '30px';
+            btnDelete.style.height = '30px';
+
+            //add text,icons using innerHTML for each button
+            btnDelete.innerHTML = '<i class="fa-solid fa-trash"></i>';
+
+            //btnDelete.innerHTML = '<i class="fa-solid fa-trash"></i>';
+            //btnView.innerHTML = '<i class="fa-solid fa-eye"></i>';
+
+            //onclick function for buttons
+            btnDelete.onclick = () => {
+                deleteFunction(element, index);
+            }
+
+
+            //append buttons to the td that's dedicated for the buttons
+            tdModify.appendChild(btnDelete);
+
+            tr.appendChild(tdModify);
+
+            //append the tr to tbody
+            tbody.appendChild(tr);
+
+
+        });
+    }
+    else{
+        const tableTR = document.createElement('tr');
+        const  tableTD = document.createElement('td');
+        tableTD.colSpan = (displayPropertyList.length+2);
+        tableTD.innerText = 'No Records Found!';
+        tableTR.appendChild(tableTD)
+        tbody.appendChild(tableTR);
+    }
+}
