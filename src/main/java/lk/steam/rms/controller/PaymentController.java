@@ -1,9 +1,7 @@
 package lk.steam.rms.controller;
 
-import lk.steam.rms.dao.InstallmentPlanDAO;
-import lk.steam.rms.dao.PaymentDAO;
-import lk.steam.rms.dao.RegistrationDAO;
-import lk.steam.rms.dao.RegistrationStatusDAO;
+import lk.steam.rms.dao.*;
+import lk.steam.rms.entity.Batch;
 import lk.steam.rms.entity.Payment;
 import lk.steam.rms.entity.Registrations;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +26,9 @@ public class PaymentController {
 
     @Autowired
     private RegistrationStatusDAO registrationStatusDAO;
+
+    @Autowired
+    private BatchDAO batchDAO;
 
     @PostMapping
     public String saveNewPayment(@RequestBody Payment payment){
@@ -69,6 +70,18 @@ public class PaymentController {
         }
 
         registrationDAO.save(currentRegistration);
+
+        //After the payment need to check if the registration fee is covered
+        //if covered particular batch's available seat count should be deducted by 1
+
+        if (updatedPaidAmount.compareTo(currentRegistrationRegistrationFee) >= 0) {
+            Batch currentRegistrationBatch = currentRegistration.getBatchID();
+            Integer currentBatchAvailableSeatCount = currentRegistrationBatch.getSeatCountAvailable();
+            currentRegistrationBatch.setSeatCountAvailable(currentBatchAvailableSeatCount-1);
+            batchDAO.save(currentRegistrationBatch);
+
+
+        }
 
 
         return "OK";
