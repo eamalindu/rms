@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "batch")
@@ -79,5 +80,8 @@ public class Batch {
     @ManyToOne
     @JoinColumn(name = "paymentplan_id",referencedColumnName = "id")
     private PaymentPlan paymentPlanID;
+
+    @OneToMany
+    private List<BatchHasDay> batchHasDays;
 
 }
