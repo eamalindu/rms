@@ -285,7 +285,7 @@ const resetBatchForm = () => {
     newBatch = {}
 
     //testing code for timetable
-    newTimetable = [];
+    newBatch.batchHasDays = [];
 
     frmNewBatch.reset();
 
