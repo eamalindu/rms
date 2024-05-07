@@ -55,11 +55,10 @@ public class PaymentController {
         currentRegistration.setPaidAmount(updatedPaidAmount);
         currentRegistration.setBalanceAmount(updatedBalance);
 
+        BigDecimal currentRegistrationRegistrationFee = currentRegistration.getBatchID().getPaymentPlanID().getRegistrationFee();
+
         //change the registration status
         if(currentRegistration.getRegistrationStatusID().getName().equals("Pending")){
-            BigDecimal currentRegistrationRegistrationFee = currentRegistration.getBatchID().getPaymentPlanID().getRegistrationFee();
-            BigDecimal currentPaymentAmount = payment.getAmount();
-
             if (updatedPaidAmount.compareTo(currentRegistrationRegistrationFee) >= 0) {
                 // currentPaymentAmount is greater than or equal to currentRegistrationRegistrationFee
                 // Handle the case where the payment amount is sufficient or more
