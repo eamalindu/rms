@@ -397,7 +397,10 @@ const printInvoice = (object,index)=>{
         "            outline: 1px solid #ddd;" +
         "            margin-top: 15px;" +
         "            margin-left: 15px;" +
-        "        }" +
+        "            background: url('/resources/images/invoiceBackground.png');"+
+        "            background-size: cover;"+
+
+    "        }" +
         "    </style>" +
         "</head>" +
         "" +
