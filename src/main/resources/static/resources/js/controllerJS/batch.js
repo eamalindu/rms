@@ -480,7 +480,7 @@ const saveTimetable = () => {
         {property: getEndTime, dataType: 'function'},
         {property: getLectureRoom, dataType: 'function'},
     ];
-    fillDataIntoTableWithOutAction(tblTimetable,newBatch.batchHasDays,displayPropertyListForTimeTable)
+    fillDataIntoTableWithPrint(tblTimetable,newBatch.batchHasDays,displayPropertyListForTimeTable,removeRecord)
 
 }
 const getDay =(ob)=>{
@@ -496,6 +496,13 @@ const getLectureRoom =(ob)=>{
     return ob.lectureRoomID.name;
 }
 
+const removeRecord = (ob)=>{
+    let extIndex = newBatch.batchHasDays.map(item=>item.dayID.id).indexOf(ob.dayID.id);
+    if(extIndex!=-1){
+        newBatch.batchHasDays.splice(extIndex,1)
+        saveTimetable();
+    }
+}
 const addToTimeTable = ()=>{
     newBatch.batchHasDays.push(batchHasDay);
     resetTimeTableForm();
