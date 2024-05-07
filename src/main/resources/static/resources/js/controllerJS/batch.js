@@ -480,7 +480,7 @@ const saveTimetable = () => {
         {property: getEndTime, dataType: 'function'},
         {property: getLectureRoom, dataType: 'function'},
     ];
-    fillDataIntoTableWithPrint(tblTimetable,newBatch.batchHasDays,displayPropertyListForTimeTable,removeRecord)
+    fillDataIntoTableWithDelete(tblTimetable,newBatch.batchHasDays,displayPropertyListForTimeTable,removeRecord)
 
 }
 const getDay =(ob)=>{
