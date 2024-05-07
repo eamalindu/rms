@@ -240,7 +240,7 @@
                         <div class="form-label">
                             <label class="fw-bold small required" for="batchCommenceDate">Commence Date</label>
                         </div>
-                        <input class="form-control rounded-0 newBatchInputs" id="batchCommenceDate" required>
+                        <input class="form-control rounded-0 newBatchInputs" id="batchCommenceDate" required onkeydown="return false;">
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Date</div>
                     </div>
@@ -250,7 +250,7 @@
                         </div>
                         <input class="form-control rounded-0 newBatchInputs" id="batchEndDate"
                                onchange="inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','newBatch','endDate')"
-                               required>
+                               required onkeydown="return false;">
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Date</div>
                     </div>
@@ -260,7 +260,7 @@
                         </div>
                         <input class="form-control rounded-0 newBatchInputs" id="batchLastRedDate"
                                onchange="inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','newBatch','lastRegDate')"
-                               required>
+                               required onkeydown="return false;">
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Date</div>
                     </div>
