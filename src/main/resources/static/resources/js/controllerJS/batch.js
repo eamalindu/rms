@@ -504,8 +504,34 @@ const removeRecord = (ob)=>{
     }
 }
 const addToTimeTable = ()=>{
-    newBatch.batchHasDays.push(batchHasDay);
-    resetTimeTableForm();
+    let isDuplicate = false;
+
+    // Iterate over each element in the array
+    for (let i = 0; i < newBatch.batchHasDays.length; i++) {
+        const existingDay = newBatch.batchHasDays[i];
+
+        // Compare each property
+        if (
+            existingDay.dayID.id === batchHasDay.dayID.id &&
+            existingDay.startTime === batchHasDay.startTime &&
+            existingDay.endTime === batchHasDay.endTime &&
+            existingDay.lectureRoomID.id === batchHasDay.lectureRoomID.id
+            // Add more properties if needed
+        ) {
+            // If a match is found, set isDuplicate to true and break out of the loop
+            isDuplicate = true;
+            break;
+        }
+    }
+
+    // If it's not a duplicate, add it to the array
+    if (!isDuplicate) {
+        newBatch.batchHasDays.push(batchHasDay);
+        resetTimeTableForm();
+    } else {
+        // Handle duplicate entry
+        console.log("Duplicate entry found. Not added to the array.");
+    }
 }
 //creating a function to submit the batch form when ever needed
 const newBatchSubmit = () => {
