@@ -474,9 +474,11 @@ const saveTimetable = () => {
     tblTimetable.classList.remove('d-none');
     let timeTableBody = tblTimetable.querySelector('tbody'); // Select the tbody element
     timeTableBody.innerHTML = '';
-    console.log(batchHasDay);
 }
 
+const addToTimeTable = ()=>{
+    newBatch.batchHasDays.push(batchHasDay);
+}
 //creating a function to submit the batch form when ever needed
 const newBatchSubmit = () => {
     console.log(newBatch);
