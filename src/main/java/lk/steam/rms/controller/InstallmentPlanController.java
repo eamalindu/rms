@@ -61,7 +61,8 @@ public class InstallmentPlanController {
             if (exsistStudent == null) {
                 Student registeredStudent = currentRegistration.getStudentID();
                 //set auto increment values and backend generated values
-                registeredStudent.setStudentNumber("ST-0005");
+                registeredStudent.setStudentNumber("ST-0007");
+                registeredStudent.setTimeStamp(LocalDateTime.now());
                 //save the student
                 studentDAO.save(registeredStudent);
                 //set that student as the registration

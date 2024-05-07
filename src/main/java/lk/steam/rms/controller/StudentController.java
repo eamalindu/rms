@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,8 @@ public class StudentController {
     @PostMapping
     public String saveNewStudent(@RequestBody Student student){
 
-        student.setStudentNumber("ST-0005");
+        student.setStudentNumber("ST-0007");
+        student.setTimeStamp(LocalDateTime.now());
         try {
             studentDAO.save(student);
             return "OK";
