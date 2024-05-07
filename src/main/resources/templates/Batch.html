@@ -642,7 +642,7 @@
                 <label class="fw-bold small required" for="batchClassDay">Class Day(s)</label>
             </div>
             <select class="form-select rounded-0" data-placeholder="Please Select a Day"
-                    id="batchClassDay" onchange="selectDynamicValueValidator(this,'','batchHasDay','day')"
+                    id="batchClassDay" onchange="selectDynamicValueValidator(this,'','batchHasDay','dayID')"
                     required>
             </select>
             <div class="valid-feedback">Value Accepted</div>
@@ -652,7 +652,7 @@
             <div class="form-label">
                 <label class="fw-bold small required" for="batchStartTime">Start Time</label>
             </div>
-            <input class="form-control rounded-0 newBatchInputs pe-3" id="batchStartTime" required onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','batchHasDay','s')"
+            <input class="form-control rounded-0 newBatchInputs pe-3" id="batchStartTime" required onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','batchHasDay','startTime')"
                    type="time">
             <div class="valid-feedback">Value Accepted</div>
             <div class="invalid-feedback">Please provide a valid Start Time</div>
@@ -662,7 +662,7 @@
             <div class="form-label">
                 <label class="fw-bold small required" for="batchEndTime">End Time</label>
             </div>
-            <input class="form-control rounded-0 newBatchInputs pe-3" id="batchEndTime" required onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','batchHasDay','e')"
+            <input class="form-control rounded-0 newBatchInputs pe-3" id="batchEndTime" required onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','batchHasDay','endTime')"
                    type="time">
             <div class="valid-feedback">Value Accepted</div>
             <div class="invalid-feedback">Please provide a valid End Time</div>
@@ -673,14 +673,14 @@
                 <label class="fw-bold small required" for="batchLectureRoom">Lecture Room</label>
             </div>
             <select class="form-select rounded-0" data-placeholder="Please Select a Lecure Room"
-                    id="batchLectureRoom" onchange="selectDynamicValueValidator(this,'','batchHasDay','l')"
+                    id="batchLectureRoom" onchange="selectDynamicValueValidator(this,'','batchHasDay','lectureRoomID')"
                     required>
             </select>
             <div class="valid-feedback">Value Accepted</div>
             <div class="invalid-feedback">Please provide a valid End Time</div>
         </div>
         <div class="d-flex justify-content-evenly">
-        <button class="btn btn-sm bg-steam-green text-white rounded-0 text-uppercase" type="button"><i class="fa-solid fa-plus"></i> Add & Continue</button>
+        <button class="btn btn-sm bg-steam-green text-white rounded-0 text-uppercase" type="button" onclick="addToTimeTable()"><i class="fa-solid fa-plus"></i> Add & Continue</button>
 
         <button class="btn btn-sm btn-success rounded-0 text-uppercase" type="button" data-bs-target="#offCanvasBatch" data-bs-toggle="offcanvas" onclick="saveTimetable()">Save</button>
 
