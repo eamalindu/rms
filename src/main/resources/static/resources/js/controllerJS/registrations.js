@@ -547,7 +547,7 @@ const checkPaymentFormErrors = ()=>{
         errors = errors + 'Amount is Required<br>';
     }
     if(newPayment.amount<=0){
-        errors = errors + 'Amount Can Not Be 0<br>';
+        errors = errors + 'Amount Can Not Be Rs. 0.00<br>';
     }
     if(newPayment.amount>oldRegistration.balanceAmount){
         errors = errors +'The Current amount <span class="text-steam-green">Rs. '+newPayment.amount+ '.00</span> exceeds the total outstanding balance <span class="text-steam-green">Rs. '+oldRegistration.balanceAmount+'.00</span><br>';
