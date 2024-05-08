@@ -499,27 +499,58 @@ const newPaymentSubmit=()=>{
     //get the current registration object from rowView function
     newPayment.registrationID =oldRegistration;
     console.log(newPayment);
-    showCustomConfirm("You are about to add a New Payment of <br><span class='text-steam-green'>Rs. "+parseFloat(newPayment.amount).toLocaleString('en-US', {maximumFractionDigits: 2, minimumFractionDigits: 2})+"</span> to the registration : <span class='text-steam-green'>"+oldRegistration.registrationNumber+"</span><br><br>Are You Sure?", function (result) {
-        if (result) {
-            let serviceResponse = ajaxHttpRequest("/Payment", 'POST', newPayment);
-            if (serviceResponse === "OK") {
-                //this means data successfully passed to the backend
-                //show an alert to user
-                showCustomModal("Payment Successfully Added!", "success");
+    let errors = checkPaymentFormErrors();
+    if(errors==='') {
+        showCustomConfirm("You are about to add a New Payment of <br><span class='text-steam-green'>Rs. " + parseFloat(newPayment.amount).toLocaleString('en-US', {
+            maximumFractionDigits: 2,
+            minimumFractionDigits: 2
+        }) + "</span> to the registration : <span class='text-steam-green'>" + oldRegistration.registrationNumber + "</span><br><br>Are You Sure?", function (result) {
+            if (result) {
+                let serviceResponse = ajaxHttpRequest("/Payment", 'POST', newPayment);
+                if (serviceResponse === "OK") {
+                    //this means data successfully passed to the backend
+                    //show an alert to user
+                    showCustomModal("Payment Successfully Added!", "success");
 
-                //testing code
-                btnModalAddPaymentClose.click();
-                refreshRegistrationTable();
-                const currentReg = ajaxGetRequest("/Registration/getRegistration/"+oldRegistration.id);
-                rowView(currentReg)
-                document.getElementById("pills-payment-tab").click();
+                    //testing code
+                    btnModalAddPaymentClose.click();
+                    refreshRegistrationTable();
+                    const currentReg = ajaxGetRequest("/Registration/getRegistration/" + oldRegistration.id);
+                    rowView(currentReg)
+                    document.getElementById("pills-payment-tab").click();
 
+                } else {
+                    //this means there was a problem with the query
+                    //shows an error alert to the user
+                    showCustomModal("Operation Failed! <br>" + serviceResponse.responseJSON.error + " <span class='small'>(" + serviceResponse.responseJSON.status + ")</span>", "error");
+                }
             }
-            else{
-                //this means there was a problem with the query
-                //shows an error alert to the user
-                showCustomModal("Operation Failed! <br>" + serviceResponse.responseJSON.error +" <span class='small'>("+serviceResponse.responseJSON.status+")</span>", "error");
-            }
-        }
-    });
+        });
+    }
+    else{
+
+        //there are errors
+        //display them to the user using external-ModalFunction()
+        showCustomModal(errors, 'warning');
+    }
+}
+
+const checkPaymentFormErrors = ()=>{
+    //check for binding
+    //0 isn't allowed as a payment
+    // cant be larger than Total Outstanding
+    let errors = ''
+    if(newPayment.paymentTypeID==null){
+        errors = errors + 'Payment Type is Required<br>';
+    }
+    if(newPayment.amount==null){
+        errors = errors + 'Amount is Required<br>';
+    }
+    if(newPayment.amount<=0){
+        errors = errors + 'Amount Can Not Be 0<br>';
+    }
+    if(newPayment.amount>oldRegistration.balanceAmount){
+        errors = errors +'The Current amount <span class="text-steam-green">Rs. '+newPayment.amount+ '.00</span> exceeds the total outstanding balance <span class="text-steam-green">Rs. '+oldRegistration.balanceAmount+'.00</span><br>';
+    }
+    return errors;
 }
