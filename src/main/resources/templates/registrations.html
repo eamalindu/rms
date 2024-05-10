@@ -583,8 +583,13 @@
             </div>
         </div>
 
+    <button class="btn btn-sm btn-success rounded-0 mx-auto d-block mb-2" id="btnChangeRegStatus" data-bs-target="#modalChangeRegStatus" data-bs-toggle="modal">
+        <i class="fas fa-plus"></i> Test Modal
+    </button>
+
     </div>
-</div>
+
+
 <!-- Off canvas for registrations details end-->
 
 <!--Modal for student edit start-->
@@ -832,6 +837,27 @@
     </div>
 </div>
 <!-- Modal for new payment end-->
+
+<!-- Modal for reg override start -->
+<div class="modal fade" id="modalChangeRegStatus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="modalAddPayment" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-0">
+            <div class="modal-header bg-custom-white">
+                <button type="button" class="btn btn-sm btn-close-red text-white rounded-0" id="btnModalChangeRegStatus" data-bs-dismiss="modal"
+                        aria-label="Close"><i aria-hidden="true" class="fas fa-times"></i></button>
+                <h5 class="modal-title" id="ModalChangeRegStatusLabel"
+                    style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">
+                   Registration Status Override </h5>
+
+            </div>
+            <div class="modal-body p-3">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for reg override end -->
 
 <!--Toast-->
 <div class="position-fixed top-0 end-0 p-2" style="z-index: 1055">
