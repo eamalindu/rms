@@ -60,6 +60,9 @@ public class Registrations {
     @Column(name = "balanceamount")
     private BigDecimal balanceAmount;
 
+    @Column(name = "overridereason")
+    private String overrideReason;
+
     @ManyToOne
     @JoinColumn(name = "course_id",referencedColumnName = "id")
     private Course courseID;
