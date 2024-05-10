@@ -556,7 +556,11 @@ const checkPaymentFormErrors = ()=>{
 }
 
 const registrationEdit=()=>{
-//getting the toast from its ID
+
+    //switch to info tab first
+    document.getElementById('pills-home-tab').click();
+
+    //getting the toast from its ID
     var myToastEl = document.getElementById('myToast');
     var myToast = new bootstrap.Toast(myToastEl);
     //Displaying toast
