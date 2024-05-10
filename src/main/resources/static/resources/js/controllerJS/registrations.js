@@ -608,6 +608,8 @@ const registrationUpdate = ()=>{
             //catch the return value from the backend and save it in the serviceResponse variable
             if (result) {
                 //set values to modal
+                currentRegStatus.innerText = oldRegistration.registrationID.name;
+                editedRegStatus.innerText = editedRegistration.registrationID.name;
 
                 $('#modalChangeRegStatus').modal('show');
             }
