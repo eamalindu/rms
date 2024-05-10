@@ -565,4 +565,7 @@ const registrationEdit=()=>{
     setTimeout(function () {
         myToast.hide();
     }, 5000);
+
+    //display the update button once the edit button is clicked
+    btnRegistrationSheetUpdate.style.display = 'block';
 }
