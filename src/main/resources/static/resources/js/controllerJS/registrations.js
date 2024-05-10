@@ -594,6 +594,7 @@ const checkForRegistrationUpdate = ()=>{
     let updates = '';
     if (editedRegistration.registrationStatusID.name !== oldRegistration.registrationStatusID.name) {
         updates = updates + "Registration Staus was changed to <span class='text-steam-green'>" + editedBatch.registrationStatusID.name + "</span><br>";
+        $('#modalChangeRegStatus').modal('show');
 
     }
 }
