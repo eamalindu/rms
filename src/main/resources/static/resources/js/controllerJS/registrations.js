@@ -589,6 +589,20 @@ const registrationEdit=()=>{
 const registrationUpdate = ()=>{
     //calling the checkBatchFormErrors function and catching the return value to errors variable
     let updates = checkForRegistrationUpdate();
+    if (updates === '') {
+        showCustomModal("No changes Detected!", "info");
+    } else {
+        showCustomConfirm("You are About to Update this Registration<br><br>Following Changes Detected!<br/><br/><small>" + updates + "</small><br>Are You Sure?", function (result) {
+            //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+            //catch the return value from the backend and save it in the serviceResponse variable
+            if (result) {
+                $('#modalChangeRegStatus').modal('show');
+            }
+            else{
+                showCustomModal("Operation Cancelled!", "info");
+            }
+        });
+    }
 
 }
 
@@ -596,7 +610,6 @@ const checkForRegistrationUpdate = ()=>{
     let updates = '';
     if (editedRegistration.registrationStatusID.name !== oldRegistration.registrationStatusID.name) {
         updates = updates + "Registration Staus was changed to <span class='text-steam-green'>" + editedRegistration.registrationStatusID.name + "</span><br>";
-        $('#modalChangeRegStatus').modal('show');
 
     }
     return updates;
