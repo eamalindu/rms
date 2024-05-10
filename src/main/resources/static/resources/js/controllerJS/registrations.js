@@ -132,6 +132,17 @@ const rowView=(ob,index)=>{
     //show the add payment btn
     document.getElementById('btn-add-payment').classList.remove('d-none')
 
+    //add the attribute disabled to make inputs block the user input values
+    //remove the edited border colors from the inputs
+    inputs = document.querySelectorAll('.registrationSheetInputs');
+    inputs.forEach(function (input) {
+        input.setAttribute('disabled', 'true');
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
+
 
     //show the info tab first
     document.getElementById("pills-home-tab").click();
