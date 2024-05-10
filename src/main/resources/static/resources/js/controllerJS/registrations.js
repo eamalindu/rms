@@ -587,6 +587,8 @@ const registrationEdit=()=>{
 }
 
 const registrationUpdate = ()=>{
+    //calling the checkBatchFormErrors function and catching the return value to errors variable
+    let updates = checkForRegistrationUpdate();
 
 }
 
@@ -597,4 +599,5 @@ const checkForRegistrationUpdate = ()=>{
         $('#modalChangeRegStatus').modal('show');
 
     }
+    return updates;
 }
