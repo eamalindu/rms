@@ -554,3 +554,7 @@ const checkPaymentFormErrors = ()=>{
     }
     return errors;
 }
+
+const registrationEdit=()=>{
+
+}
