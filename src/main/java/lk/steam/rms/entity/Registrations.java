@@ -63,6 +63,9 @@ public class Registrations {
     @Column(name = "overridereason")
     private String overrideReason;
 
+    @Column(name = "tempregistrationstatus")
+    private Integer tempRegistrationStatus;
+
     @ManyToOne
     @JoinColumn(name = "course_id",referencedColumnName = "id")
     private Course courseID;
