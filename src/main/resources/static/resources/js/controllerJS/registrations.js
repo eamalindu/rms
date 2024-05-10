@@ -556,5 +556,13 @@ const checkPaymentFormErrors = ()=>{
 }
 
 const registrationEdit=()=>{
-
+//getting the toast from its ID
+    var myToastEl = document.getElementById('myToast');
+    var myToast = new bootstrap.Toast(myToastEl);
+    //Displaying toast
+    myToast.show();
+    //hide the toast after 5s
+    setTimeout(function () {
+        myToast.hide();
+    }, 5000);
 }
