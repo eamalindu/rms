@@ -614,7 +614,7 @@ const registrationUpdate = ()=>{
                 $('#modalChangeRegStatus').modal('show');
 
                 btnSubmitOverride.addEventListener('click',()=>{
-                    if(oldRegistration.overrideReason!=null) {
+                    if(editedRegistration.overrideReason!=null) {
                         let serviceResponse = ajaxHttpRequest("/Registration", "PUT", editedRegistration);
                         if (serviceResponse === "OK") {
                             //this means data successfully passed to the backend
