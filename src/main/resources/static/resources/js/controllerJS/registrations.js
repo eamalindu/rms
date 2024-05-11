@@ -372,6 +372,12 @@ const rowView=(ob,index)=>{
 
     })
 
+    //check the registration have a pending registration status override
+    if(ob.overrideReason!=null){
+        extraInformationForRegistration.classList.remove('d-none');
+
+    }
+
     //catch old Registration and edited Registration
     oldRegistration = JSON.parse(JSON.stringify(ob));
     editedRegistration= JSON.parse(JSON.stringify(ob));
