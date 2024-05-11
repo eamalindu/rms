@@ -116,7 +116,7 @@ public class RegistrationController {
     }
 
     @PutMapping
-    public String test(){
+    public String updateRegistration(@RequestBody Registrations registrations){
         return "OK";
     }
 }
