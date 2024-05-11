@@ -615,7 +615,7 @@ const registrationUpdate = ()=>{
 
                 btnSubmitOverride.addEventListener('click',()=>{
                     if(oldRegistration.overrideReason!=null) {
-                        let serviceResponse = ajaxHttpRequest("/Registration", "PUT", oldRegistration);
+                        let serviceResponse = ajaxHttpRequest("/Registration", "PUT", editedRegistration);
                         if (serviceResponse === "OK") {
                             //this means data successfully passed to the backend
                             //show an alert to user
