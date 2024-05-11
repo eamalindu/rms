@@ -626,7 +626,7 @@ const registrationUpdate = ()=>{
             if (result) {
                 //set values to modal
                 currentRegStatus.innerText = oldRegistration.registrationStatusID.name;
-                editedRegStatus.innerText = editedRegistration.registrationStatusID.name;
+                editedRegStatus.innerText = editedRegistration.tempRegistrationStatus.name;
 
                 $('#modalChangeRegStatus').modal('show');
 
