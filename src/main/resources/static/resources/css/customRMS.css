@@ -298,7 +298,9 @@ input, .form-control {
 .badge{
     width: 100%;
 }
-
+.text-in-review{
+    color: #d8b73a!important;
+}
 /*Validated chosen select*/
 .select-validated {
     /*background: rgba(0,255,0,0.2)!important;*/
