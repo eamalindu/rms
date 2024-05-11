@@ -615,6 +615,7 @@ const registrationUpdate = ()=>{
 
                 btnSubmitOverride.addEventListener('click',()=>{
                     if(editedRegistration.overrideReason!=null) {
+                        editedRegistration.tempRegistrationStatus = editedRegistration.tempRegistrationStatus.id;
                         let serviceResponse = ajaxHttpRequest("/Registration", "PUT", editedRegistration);
                         if (serviceResponse === "OK") {
                             //this means data successfully passed to the backend
@@ -649,7 +650,6 @@ const checkForRegistrationUpdate = ()=>{
     let updates = '';
     if (editedRegistration.tempRegistrationStatus.name !== null) {
         updates = updates + "Registration Staus was changed to <span class='text-steam-green'>" + editedRegistration.tempRegistrationStatus.name + "</span><br>";
-
     }
     return updates;
 }
