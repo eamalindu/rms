@@ -125,10 +125,8 @@ public class RegistrationController {
             return "No Such Registration Record";
         }
         try{
-
-
             registrationDAO.save(registration);
-        return "OK";
+            return "OK";
         }
         catch (Exception ex){
             return "Update Failed " + ex.getMessage();
