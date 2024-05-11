@@ -114,5 +114,10 @@ public class RegistrationController {
     public Registrations getRegistrationByID(@PathVariable Integer id){
         return registrationDAO.getRegistrationsByID(id);
     }
+
+    @PutMapping
+    public String test(){
+        return "OK";
+    }
 }
 
