@@ -865,7 +865,7 @@
                     <div class="form-label">
                         <label class="fw-bold small required" for="registrationReason">Reason For Change</label>
                     </div>
-                    <textarea class="form-control rounded-0" id="registrationReason" cols="30" rows="5" required style="font-size: 13px;"></textarea>
+                    <textarea class="form-control rounded-0" id="registrationReason" onkeyup="inputTextValidator(this,'','oldRegistration','overrideReason')" cols="30" rows="5" required style="font-size: 13px;"></textarea>
                     <div class="small text-muted">
                         <small>The registration status override request will be reviewed by the branch manager and if approved, registration status will be changed automatically</small>
                     </div>
