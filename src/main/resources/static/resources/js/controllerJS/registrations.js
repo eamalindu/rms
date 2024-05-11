@@ -612,6 +612,21 @@ const registrationUpdate = ()=>{
                 editedRegStatus.innerText = editedRegistration.registrationStatusID.name;
 
                 $('#modalChangeRegStatus').modal('show');
+
+                btnSubmitOverride.addEventListener('click',()=>{
+                    let serviceResponse = ajaxHttpRequest("/Registration", "PUT", oldRegistration);
+                    if (serviceResponse === "OK") {
+                        //this means data successfully passed to the backend
+                        //show an alert to user
+                        showCustomModal("Registration Override Submitted!", "success");
+
+                    } else {
+                        showCustomModal("Operation Failed!" + serviceResponse, "error")
+                    }
+                });
+
+
+
             }
             else{
                 showCustomModal("Operation Cancelled!", "info");
@@ -628,8 +643,4 @@ const checkForRegistrationUpdate = ()=>{
 
     }
     return updates;
-}
-
-const submitOverride =()=>{
-
 }
