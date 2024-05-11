@@ -185,6 +185,7 @@ const rowView=(ob,index)=>{
         registrationSheetCode.classList.remove('text-steam-green');
         registrationSheetCode.classList.remove('text-danger');
         registrationSheetCode.classList.remove('text-secondary');
+        registrationSheetCode.classList.remove('text-in-review');
     } else if (ob.registrationStatusID.name === 'Suspended') {
         registrationSheetCode.classList.add('text-warning');
 
@@ -192,6 +193,7 @@ const rowView=(ob,index)=>{
         registrationSheetCode.classList.remove('text-steam-green');
         registrationSheetCode.classList.remove('text-danger');
         registrationSheetCode.classList.remove('text-secondary');
+        registrationSheetCode.classList.remove('text-in-review');
     }
 
     else if(ob.registrationStatusID.name ==='Deleted'){
@@ -201,6 +203,7 @@ const rowView=(ob,index)=>{
         registrationSheetCode.classList.remove('text-danger');
         registrationSheetCode.classList.remove('text-steam-green');
         registrationSheetCode.classList.remove('text-secondary');
+        registrationSheetCode.classList.remove('text-in-review');
     }
     else if (ob.registrationStatusID.name==='Pending'){
         registrationSheetCode.classList.add('text-secondary');
@@ -208,6 +211,16 @@ const rowView=(ob,index)=>{
         registrationSheetCode.classList.remove('text-warning');
         registrationSheetCode.classList.remove('text-danger');
         registrationSheetCode.classList.remove('text-steam-green');
+        registrationSheetCode.classList.remove('text-in-review');
+
+    }
+    else if (ob.registrationStatusID.name==='In Review'){
+        registrationSheetCode.classList.add('text-in-review');
+        registrationSheetCode.classList.remove('text-success');
+        registrationSheetCode.classList.remove('text-warning');
+        registrationSheetCode.classList.remove('text-danger');
+        registrationSheetCode.classList.remove('text-steam-green');
+        registrationSheetCode.classList.remove('text-secondary');
 
     }
     else {
@@ -217,6 +230,7 @@ const rowView=(ob,index)=>{
         registrationSheetCode.classList.remove('text-warning');
         registrationSheetCode.classList.remove('text-steam-green');
         registrationSheetCode.classList.remove('text-secondary');
+        registrationSheetCode.classList.remove('text-in-review');
     }
 
     const registrationStatus = ajaxGetRequest("/RegistrationStatus/findall");
