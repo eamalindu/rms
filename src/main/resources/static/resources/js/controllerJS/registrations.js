@@ -134,6 +134,8 @@ const rowView=(ob,index)=>{
     btnRegistrationSheetDelete.style.display = 'block';
     //show the add payment btn
     document.getElementById('btn-add-payment').classList.remove('d-none')
+    //hide the extra div
+    extraInformationForRegistration.classList.add('d-none');
 
     //add the attribute disabled to make inputs block the user input values
     //remove the edited border colors from the inputs
