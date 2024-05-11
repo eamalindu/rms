@@ -116,16 +116,18 @@ public class RegistrationController {
     }
 
     @PutMapping
-    public String updateRegistration(@RequestBody Registrations registrations){
+    public String updateRegistration(@RequestBody Registrations registration){
 
         //check if the registration exist or not
-        Registrations existReg = registrationDAO.getReferenceById(registrations.getId());
+        Registrations existReg = registrationDAO.getReferenceById(registration.getId());
 
         if (existReg == null) {
             return "No Such Registration Record";
         }
-
         try{
+
+
+            registrationDAO.save(registration);
         return "OK";
         }
         catch (Exception ex){
