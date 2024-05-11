@@ -614,14 +614,23 @@ const registrationUpdate = ()=>{
                 $('#modalChangeRegStatus').modal('show');
 
                 btnSubmitOverride.addEventListener('click',()=>{
-                    let serviceResponse = ajaxHttpRequest("/Registration", "PUT", oldRegistration);
-                    if (serviceResponse === "OK") {
-                        //this means data successfully passed to the backend
-                        //show an alert to user
-                        showCustomModal("Registration Override Submitted!", "success");
+                    if(oldRegistration.overrideReason!=null) {
+                        let serviceResponse = ajaxHttpRequest("/Registration", "PUT", oldRegistration);
+                        if (serviceResponse === "OK") {
+                            //this means data successfully passed to the backend
+                            //show an alert to user
+                            showCustomModal("Registration Override Submitted!", "success");
+                            //close the modal
+                            //clear modal inputs
+                            //close the offcanvas
+                            //refresh table
 
-                    } else {
-                        showCustomModal("Operation Failed!" + serviceResponse, "error")
+                        } else {
+                            showCustomModal("Operation Failed!" + serviceResponse, "error")
+                        }
+                    }
+                    else{
+                        showCustomModal("Override Reason is required", "warning");
                     }
                 });
 
