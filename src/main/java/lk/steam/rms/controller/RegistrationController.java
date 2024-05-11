@@ -125,6 +125,10 @@ public class RegistrationController {
             return "No Such Registration Record";
         }
         try{
+            if(registration.getTempRegistrationStatus()!=null){
+                registration.setOldRegistrationStatus(registration.getRegistrationStatusID().getId());
+                registration.setRegistrationStatusID(registrationStatusDAO.getReferenceById(6));
+            }
             registrationDAO.save(registration);
             return "OK";
         }
