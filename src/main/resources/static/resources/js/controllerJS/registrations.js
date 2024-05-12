@@ -377,6 +377,7 @@ const rowView=(ob,index)=>{
     //check the registration have a pending registration status override
     if(ob.overrideReason!=null){
         extraInformationForRegistration.classList.remove('d-none');
+        reasonForOverride.innerText = ob.overrideReason;
 
     }
 
