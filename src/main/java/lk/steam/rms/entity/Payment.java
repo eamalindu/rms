@@ -25,6 +25,10 @@ public class Payment {
     @NotNull
     private BigDecimal amount;
 
+    @Column(name = "invoicecode")
+    @NotNull
+    private String invoiceCode;
+
     @Column(name="paiddatetime")
     @NotNull
     private LocalDateTime timeStamp;
