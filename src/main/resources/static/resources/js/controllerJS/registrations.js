@@ -460,7 +460,7 @@ const printInvoice = (object,index)=>{
         "                    </tr>" +
         "                    <tr>" +
         "                        <td class='fw-bold'>Receipt No:</td>" +
-        "                        <td>20240501</td>" +
+        "                        <td>"+object.invoiceCode+"</td>" +
         "                        <td class='fw-bold'>Date:</td>" +
         "                        <td>"+object.timeStamp.split('T')[0]+"</td>" +
         "                    </tr>" +
