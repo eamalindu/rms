@@ -452,18 +452,25 @@ const resetTimeTableForm = ()=>{
     $('#batchLectureRoom').chosen({width: '100%'});
 }
 
-
+//creating a function to auto generate the last registration date according to the selected commence date
 const calculateLastRegDate = () => {
+
+    //get the batchCommenceDate input value and save it to startDateString variable
     let startDateString = batchCommenceDate.value;
     console.log(startDateString);
 
+    //parse the startDateString from string in to a Date type
     let startDate = new Date(startDateString);
     console.log(startDate);
 
+    //set the startDate to 14 days after the batch commence date
     startDate.setDate(startDate.getDate() + 14);
 
     console.log(startDate.toISOString().split('T')[0])
     // batchLastRedDate.value = startDate.toISOString().split('T')[0];
+
+    //initialize and set the minDate of the batchLastRedDate to startDate
+    //user can also select a date for the last registration date but the minimum date is startDate
     $('#batchLastRedDate').daterangepicker({
         "minDate": startDate.toISOString().split('T')[0],
         "singleDatePicker": true,
