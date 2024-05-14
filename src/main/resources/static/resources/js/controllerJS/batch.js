@@ -192,9 +192,11 @@ const rowView = (ob, index) => {
     batchSheetPaymentPlanCourseFee.innerText = "Rs. " + ob.paymentPlanID.courseFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     batchSheetPaymentPlanTotalFee.innerText = "Rs. " + ob.paymentPlanID.totalFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
+    //setting value for batchSheetPaymentPlanInstallments
     batchSheetPaymentPlanInstallments.innerText = ob.paymentPlanID.numberOfInstallments;
 
-    //initialize 3rd party
+    //initialize 3rd party daterangepicker library
+    //Set the minDate for the batchSheetCommenceDate as the current object's commenceDate value
     $('#batchSheetCommenceDate').daterangepicker({
         "minDate": ob.commenceDate,
         "singleDatePicker": true,
@@ -206,6 +208,8 @@ const rowView = (ob, index) => {
             "format": "YYYY-MM-DD"
         }
     });
+
+    //Set the minDate for the batchSheetEndDate as the current object's endDate value
     $('#batchSheetEndDate').daterangepicker({
         "minDate": ob.endDate,
         "singleDatePicker": true,
@@ -217,6 +221,8 @@ const rowView = (ob, index) => {
             "format": "YYYY-MM-DD"
         }
     });
+
+    //Set the minDate for the batchSheetLastDate as the current object's lastRegDate value
     $('#batchSheetLastDate').daterangepicker({
         "minDate": ob.lastRegDate,
         "singleDatePicker": true,
