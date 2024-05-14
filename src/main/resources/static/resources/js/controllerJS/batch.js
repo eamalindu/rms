@@ -46,7 +46,7 @@ const refreshBatchTable = () => {
         property: getStatus, dataType: 'function'
     },];
 
-    //using the external function fillDataIntoTable to fill the data from the database to the table
+    //using external function fillDataIntoTable to fill the data to the table tblBatch according to the displayPropertyListForBatches list
     fillDataIntoTable(tblBatch, batches, displayPropertyListForBatches, rowView, 'offcanvasBatchSheet');
 
     //initializing DataTable for the tblBatch table
@@ -261,6 +261,7 @@ const rowView = (ob, index) => {
     const registrationsFromBatch = ajaxGetRequest("/Registration/getRegistrations/"+ob.id);
     //using the array length to set the total registrations done for the current batch
     registrationCount.innerText = registrationsFromBatch.length;
+
     //creating a display property list for the batch registrations
     const displayPropertyListForRegistrationsFromBatch = [
         {property: 'registrationNumber', dataType: 'text'},
@@ -268,9 +269,12 @@ const rowView = (ob, index) => {
         {property: getStudentContact, dataType: 'function'},
         {property: getStudentStatus, dataType: 'function'},
     ]
+    //using external function fillDataIntoTableWithOutAction to fill the data to the table tblRegistrations according to the displayPropertyListForRegistrationsFromBatch without buttons
     fillDataIntoTableWithOutAction(tblRegistrations,registrationsFromBatch,displayPropertyListForRegistrationsFromBatch)
 }
 
+//since the student name is a composite data (title+nameWithInitials)
+//creating a function to student name by combining title with nameWithInitials
 const getStudentName=(ob)=>{
     return ob.studentID.title+" "+ob.studentID.nameWithInitials;
 }
