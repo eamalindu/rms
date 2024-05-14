@@ -486,19 +486,25 @@ const calculateLastRegDate = () => {
 
 }
 
+//creating a function to auto generated the batch end date according to the selected commence date
 const calculateEndDate = () => {
+    //get the batchCommenceDate input value and save it to startDateString variable
     let startDateString = batchCommenceDate.value;
     console.log(startDateString);
 
+    //parse the startDateString from string in to a Date type
     let startDate = new Date(startDateString);
     console.log(startDate);
 
+    //store the duration of the selected course into durationInMonths
     let durationInMonths = newBatch.courseID.duration;
 
+    //set the startDate by adding the durationInMonths
     startDate.setMonth(startDate.getMonth() + durationInMonths);
 
     // console.log(startDate.toISOString().split('T')[0]);
-
+    //initialize and set the minDate of the batchEndDate to startDate
+    //user can also select a date for the end date but the minimum date is startDate
     $('#batchEndDate').daterangepicker({
         "minDate": startDate.toISOString().split('T')[0],
         "singleDatePicker": true,
