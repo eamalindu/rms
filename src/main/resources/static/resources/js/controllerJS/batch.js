@@ -235,14 +235,17 @@ const rowView = (ob, index) => {
         }
     });
 
+    //bind data to the editedBatch object, once the "apply" button on batchSheetCommenceDate input is clicked
     $('#batchSheetCommenceDate').on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD'));
         inputTextValidator(this, '^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$', 'editedBatch', 'commenceDate');
     });
+    //bind data to the editedBatch object, once the "apply" button on batchSheetEndDate input is clicked
     $('#batchSheetEndDate').on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD'));
         inputTextValidator(this, '^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$', 'editedBatch', 'endDate');
     });
+    //bind data to the editedBatch object, once the "apply" button on batchSheetLastDate input is clicked
     $('#batchSheetLastDate').on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD'));
         inputTextValidator(this, '^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$', 'editedBatch', 'lastRegDate');
