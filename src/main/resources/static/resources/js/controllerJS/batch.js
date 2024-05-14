@@ -560,6 +560,23 @@ const addToTimeTable = ()=>{
         console.log("Duplicate entry found. Not added to the array.");
     }
 }
+
+const checkTimeTableFormErrors =()=>{
+    let errors = '';
+    if(batchHasDay.dayID==null){
+        errors = errors + 'Day is Required<br>';
+    }
+    if(batchHasDay.startTime==null){
+        errors = errors + 'Start Time is Required<br>';
+    }
+    if(batchHasDay.endTime==null){
+        errors = errors + 'End Time is Required<br>';
+    }
+    if(batchHasDay.lectureRoomID==null){
+        errors = errors + 'Lecture Room is Required<br>';
+    }
+    return errors;
+}
 //creating a function to submit the batch form when ever needed
 const newBatchSubmit = () => {
     console.log(newBatch);
