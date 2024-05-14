@@ -252,13 +252,16 @@ const rowView = (ob, index) => {
     });
 
 
-    //catch old Batch and new Batch
+    //save the current object as oldBatch and editedBatch for comparing purposes
+    //using deep copies of the current object for independent modification
     oldBatch = JSON.parse(JSON.stringify(ob));
     editedBatch = JSON.parse(JSON.stringify(ob));
 
-    //list out the registrations for the viewing batch
+    //using external function to get the registrations done to the current batch from the database and save it to registrationsFromBatch variable;
     const registrationsFromBatch = ajaxGetRequest("/Registration/getRegistrations/"+ob.id);
+    //using the array length to set the total registrations done for the current batch
     registrationCount.innerText = registrationsFromBatch.length;
+    //creating a display property list for the batch registrations
     const displayPropertyListForRegistrationsFromBatch = [
         {property: 'registrationNumber', dataType: 'text'},
         {property: getStudentName, dataType: 'function'},
