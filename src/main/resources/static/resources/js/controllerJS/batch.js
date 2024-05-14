@@ -553,8 +553,24 @@ const addToTimeTable = ()=>{
 
     // If it's not a duplicate, add it to the array
     if (!isDuplicate) {
-        newBatch.batchHasDays.push(batchHasDay);
-        resetTimeTableForm();
+        let errors = checkTimeTableFormErrors();
+        if(errors==='') {
+
+            showCustomConfirm("You are about to add a New Batch<br>Are You Sure?", function (result) {
+                if(result){
+                    newBatch.batchHasDays.push(batchHasDay);
+                    resetTimeTableForm();
+                }
+                else{
+                    showCustomModal("Operation Cancelled!", "info");
+                }
+            })
+
+        }
+        else{
+            showCustomModal(errors, 'warning');
+        }
+
     } else {
         // Handle duplicate entry
         console.log("Duplicate entry found. Not added to the array.");
