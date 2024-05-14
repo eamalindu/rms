@@ -756,6 +756,10 @@ const checkBatchFormErrors = (batchObject) => {
         errors = errors + 'Payment Plan is Required<br>';
     }
 
+    if(batchObject.batchHasDayList.length ===0){
+        errors = errors + 'Class Schedule is Required<br>';
+    }
+
     return errors;
 
 }
