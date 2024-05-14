@@ -123,6 +123,7 @@ const rowView = (ob, index) => {
 
 
     //using an if conditional statement to set the text color of the batchSheetCode element
+    //if the batch status is equal to scheduled set the text color of the batchSheetCode to text-success and remove unwanted classes
     if (ob.batchStatusID.name === 'Scheduled') {
         batchSheetCode.classList.add('text-success');
 
@@ -157,6 +158,8 @@ const rowView = (ob, index) => {
         batchSheetCode.classList.remove('text-steam-green');
     }
 
+    //using an if conditional statement to set the value and background color of the radio batchSheetWeekday
+    //if the batch is weekday add the relevant classes and remove unwanted classes and set the value of the batchSheetWeekday to true
     if (ob.isWeekday) {
         batchSheetWeekday.checked = false;
         rightWeekdaySheet.classList.remove('bg-success', 'text-white');
@@ -169,7 +172,9 @@ const rowView = (ob, index) => {
 
     }
 
+    //using external function ajaxGetRequest to get the active payment plans for the selected course by providing courseID.id and save it in paymentPlans
     paymentPlans = ajaxGetRequest("/PaymentPlan/getActivePlans/" + ob.courseID.id);
+    //using external function ajaxGetRequest to get all the batchStatus from the database and save it in batchStatus variable
     batchStatus = ajaxGetRequest("/BatchStatus/findall");
 
     fillSelectOptions(batchSheetCourse, 'Please Select a Course', courses, 'name', ob.courseID.name)
