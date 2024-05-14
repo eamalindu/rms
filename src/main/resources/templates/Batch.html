@@ -269,7 +269,7 @@
                             <label class="fw-bold small required" for="batchSeat">Seat Count</label>
                         </div>
                         <input class="form-control rounded-0 newBatchInputs" id="batchSeat"
-                               onkeyup="inputTextValidator(this,'^(?!0{1,2}$)[0-9]{2}$','newBatch','seatCount')" required>
+                               onkeyup="inputTextValidator(this,'^[1-9][0-9]{1}$','newBatch','seatCount')" required>
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Seat Count</div>
                     </div>
