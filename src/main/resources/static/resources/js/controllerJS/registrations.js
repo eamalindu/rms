@@ -625,49 +625,51 @@ const registrationEdit=()=>{
 
 const registrationUpdate = ()=>{
     //calling the checkBatchFormErrors function and catching the return value to errors variable
-    let updates = checkForRegistrationUpdate();
-    if (updates === '') {
-        showCustomModal("No changes Detected!", "info");
-    } else {
-        showCustomConfirm("You are About to Update this Registration<br><br>Following Changes Detected!<br/><br/><small>" + updates + "</small><br>Are You Sure?", function (result) {
-            //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
-            //catch the return value from the backend and save it in the serviceResponse variable
-            if (result) {
-                //set values to modal
-                currentRegStatus.innerText = oldRegistration.registrationStatusID.name;
-                editedRegStatus.innerText = editedRegistration.tempRegistrationStatus.name;
+    if(oldRegistration.registrationStatusID.name!=='In Review') {
+        let updates = checkForRegistrationUpdate();
+        if (updates === '') {
+            showCustomModal("No changes Detected!", "info");
+        } else {
+            showCustomConfirm("You are About to Update this Registration<br><br>Following Changes Detected!<br/><br/><small>" + updates + "</small><br>Are You Sure?", function (result) {
+                //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+                //catch the return value from the backend and save it in the serviceResponse variable
+                if (result) {
+                    //set values to modal
+                    currentRegStatus.innerText = oldRegistration.registrationStatusID.name;
+                    editedRegStatus.innerText = editedRegistration.tempRegistrationStatus.name;
 
-                $('#modalChangeRegStatus').modal('show');
+                    $('#modalChangeRegStatus').modal('show');
 
-                btnSubmitOverride.addEventListener('click',()=>{
-                    if(editedRegistration.overrideReason!=null) {
-                        editedRegistration.tempRegistrationStatus = editedRegistration.tempRegistrationStatus.id;
-                        let serviceResponse = ajaxHttpRequest("/Registration", "PUT", editedRegistration);
-                        if (serviceResponse === "OK") {
-                            //this means data successfully passed to the backend
-                            //show an alert to user
-                            showCustomModal("Registration Override Submitted!", "success");
-                            //close the modal
-                            //clear modal inputs
-                            //close the offcanvas
-                            //refresh table
+                    btnSubmitOverride.addEventListener('click', () => {
+                        if (editedRegistration.overrideReason != null) {
+                            editedRegistration.tempRegistrationStatus = editedRegistration.tempRegistrationStatus.id;
+                            let serviceResponse = ajaxHttpRequest("/Registration", "PUT", editedRegistration);
+                            if (serviceResponse === "OK") {
+                                //this means data successfully passed to the backend
+                                //show an alert to user
+                                showCustomModal("Registration Override Submitted!", "success");
+                                //close the modal
+                                //clear modal inputs
+                                //close the offcanvas
+                                //refresh table
 
+                            } else {
+                                showCustomModal("Operation Failed!" + serviceResponse, "error")
+                            }
                         } else {
-                            showCustomModal("Operation Failed!" + serviceResponse, "error")
+                            showCustomModal("Override Reason is required", "warning");
                         }
-                    }
-                    else{
-                        showCustomModal("Override Reason is required", "warning");
-                    }
-                });
+                    });
 
 
-
-            }
-            else{
-                showCustomModal("Operation Cancelled!", "info");
-            }
-        });
+                } else {
+                    showCustomModal("Operation Cancelled!", "info");
+                }
+            });
+        }
+    }
+    else{
+        showCustomModal("This registration is under review.<br>You cannot submit a status override at this time.Please wait until the review is complete","error");
     }
 
 }
