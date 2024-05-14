@@ -46,8 +46,10 @@ const refreshBatchTable = () => {
         property: getStatus, dataType: 'function'
     },];
 
+    //using the external function fillDataIntoTable to fill the data from the database to the select element
     fillDataIntoTable(tblBatch, batches, displayPropertyListForBatches, rowView, 'offcanvasBatchSheet');
 
+    //initializing DataTable for the tblBatch table
     $('#tblBatch').DataTable();
 }
 
@@ -69,6 +71,7 @@ const getWeekDay = (ob) => {
 
 //since we cant access the Course Status from the batches directly. creating a function to return the Course Status from the batches object
 const getStatus = (ob) => {
+    //if the batch status is equal to scheduled function will return a span element with inline css to match their status
     if (ob.batchStatusID.name === "Scheduled") {
         return '<span class="badge rounded-0" style="background: #3FB618">Scheduled</span>';
     } else if (ob.batchStatusID.name === "Started") {
@@ -93,10 +96,12 @@ const rowView = (ob, index) => {
     //show the deleted btn
     btnBatchSheetDelete.style.display = 'block';
 
-    //add the attribute disabled to make inputs block the user input values
-    //remove the edited border colors from the inputs
+    //get all the inputs with the class name batchSheetInputs and save it as an array
     inputs = document.querySelectorAll('.batchSheetInputs');
+    //using forEach Function to remove inline styles,boostrap validation classes and set the disabled property to true
     inputs.forEach(function (input) {
+        //add the attribute disabled to make inputs block the user input values
+        //remove the edited border colors from the inputs
         input.setAttribute('disabled', 'true');
         input.style = '';
         //remove bootstrap validation classes
@@ -106,7 +111,8 @@ const rowView = (ob, index) => {
 
     //disable radio button
     batchSheetWeekday.disabled = true;
-    //refill data
+
+    //setting the data that can be directly accessible from the current object to the relevant input element
     batchSheetCode.innerText = ob.batchCode;
     batchSheetCreated.value = ob.createdBy;
     batchSheetCommenceDate.value = ob.commenceDate;
@@ -115,6 +121,8 @@ const rowView = (ob, index) => {
     batchSheetLastDate.value = ob.lastRegDate;
     batchSheetDescription.value = ob.description;
 
+
+    //using an if conditional statement to set the text color of the batchSheetCode element
     if (ob.batchStatusID.name === 'Scheduled') {
         batchSheetCode.classList.add('text-success');
 
