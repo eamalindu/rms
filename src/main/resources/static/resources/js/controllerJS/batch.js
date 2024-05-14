@@ -403,32 +403,43 @@ const resetBatchForm = () => {
 
 }
 
+//creating a function to reset the Time Table (inner form) form when ever needed
 const resetTimeTableForm = ()=>{
 
+    //remove validation class from the chosen select element
     $("#batchClassDay_chosen .chosen-single").removeClass('select-validated');
     $("#batchLectureRoom_chosen .chosen-single").removeClass('select-validated');
+    //remove boostrap validation classes from the select elements
     batchClassDay.classList.remove('is-valid');
     batchLectureRoom.classList.remove('is-valid');
 
+    //reset batchHasDay object
     batchHasDay = {};
+
+    //reset the frmNewBatch form using reset function
     frmNewTimeTable.reset();
 
+    //set default option for chosen select elements
     setTimeout(function () {
         $('#batchClassDay').val('').trigger('chosen:updated');
         $('#batchLectureRoom').val('').trigger('chosen:updated');
     }, 0);
 
+    //remove the inline css from inputs
     batchStartTime.style = '';
     //remove bootstrap validation classes
     batchStartTime.classList.remove('is-valid');
     batchStartTime.classList.remove('is-invalid');
 
+    //remove the inline css from inputs
     batchEndTime.style = '';
     //remove bootstrap validation classes
     batchEndTime.classList.remove('is-valid');
     batchEndTime.classList.remove('is-invalid');
 
+    //using external function ajaxGetRequest to get all the days data from the database and save it in the variable days
     days = ajaxGetRequest("/Day/findall")
+    //using external function fillSelectOptions fill course name as the options for the batchClassDay select element
     fillSelectOptions(batchClassDay, ' ', days, 'name');
 
     lectureRooms = ajaxGetRequest("/LectureRoom/findall");
