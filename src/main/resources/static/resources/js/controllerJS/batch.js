@@ -347,8 +347,9 @@ const resetBatchForm = () => {
         input.classList.remove('is-invalid');
     });
 
-    //dynamic select content handling
+    //using external function ajaxGetRequest to get all the course data from the database and save it in the variable courses
     courses = ajaxGetRequest("/Course/findall");
+    //using external function fillSelectOptions fill course name as the options for the batchCourse select element
     fillSelectOptions(batchCourse, ' ', courses, 'name');
 
 
@@ -362,8 +363,8 @@ const resetBatchForm = () => {
     //hide timetable table
     tblTimetable.classList.add('d-none');
 
-    //reset checkbox
-    checkBoxValidator(this, leftWeekday, rightWeekday, 'newBatch', 'isWeekday', false, true)
+    //reset checkbox batchWeekday
+    checkBoxValidator(batchWeekday, leftWeekday, rightWeekday, 'newBatch', 'isWeekday', false, true)
 
     //set placeholder for chosen
     batchPaymentPlan.setAttribute('data-placeholder','Please Select a Course First');
