@@ -14,6 +14,6 @@ public interface PaymentDAO extends JpaRepository<Payment,Integer> {
     @Query(value = "SELECT sum(amount) FROM steam.payment WHERE DATE(paiddatetime) = date(now())",nativeQuery = true)
     Double getDailyTotalPayment();
 
-    @Query(value ="SELECT concat(('R-'),right(year(current_date),2),right(month(current_date),2),right(day(current_date),2),lpad(substring(max(invoicecode),7)+1,2,0)) FROM payment where date(paiddatetime)=date(current_date())",nativeQuery = true)
+    @Query(value ="SELECT concat(('R-'),right(year(current_date),2),lpad((substring(max(invoicecode),5)+1) ,4 ,0)) FROM steam.payment where date(paiddatetime)=date(current_date())",nativeQuery = true)
     String getNextInvoiceCode();
 }
