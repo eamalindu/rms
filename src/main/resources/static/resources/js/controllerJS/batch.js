@@ -310,9 +310,11 @@ const getStudentStatus=(ob)=>{
 //creating a function to reset the Batch form when ever needed
 const resetBatchForm = () => {
 
+    //remove validation class from the chosen select element
     $("#batchCourse_chosen .chosen-single").removeClass('select-validated');
     $("#batchPaymentPlan_chosen .chosen-single").removeClass('select-validated');
 
+    //remove boostrap validation classes from the select elements
     batchCourse.classList.remove('is-valid');
     batchClassDay.classList.remove('is-valid');
     batchPaymentPlan.classList.remove('is-valid');
@@ -321,12 +323,13 @@ const resetBatchForm = () => {
     //reset batch object
     newBatch = {}
 
-    //testing code for timetable
+    //reset batchHasDays array
     newBatch.batchHasDays = [];
 
+    //reset the frmNewBatch form using reset function
     frmNewBatch.reset();
 
-    //set default option chosen
+    //set default option for chosen select elements
     setTimeout(function () {
         $('#batchCourse').val('').trigger('chosen:updated');
         $('#batchClassDay').val('').trigger('chosen:updated');
@@ -337,6 +340,7 @@ const resetBatchForm = () => {
     //remove validation from the inputs all at once
     inputs = document.querySelectorAll('.newBatchInputs');
     inputs.forEach(function (input) {
+        //remove the inline css from inputs
         input.style = '';
         //remove bootstrap validation classes
         input.classList.remove('is-valid');
