@@ -274,16 +274,21 @@ const rowView = (ob, index) => {
 }
 
 //since the student name is a composite data (title+nameWithInitials)
-//creating a function to student name by combining title with nameWithInitials
+//creating a function to return student name by combining title with nameWithInitials
 const getStudentName=(ob)=>{
     return ob.studentID.title+" "+ob.studentID.nameWithInitials;
 }
 
+//since the mobile number cannot be access directly
+//creating a function to return student mobile number
 const getStudentContact=(ob)=>{
     return ob.studentID.mobileNumber;
 }
 
+//since the registrationStatusID cannot be access directly
+//creating a function to return student registrationStatus
 const getStudentStatus=(ob)=>{
+    //if the registration status is equal to Active function will return a span element with inline css to match their status
     if (ob.registrationStatusID.name === "Active") {
         return '<span class="badge rounded-0" style="background: #3FB618">Active</span>';
     } else if (ob.registrationStatusID.name === "Suspended") {
