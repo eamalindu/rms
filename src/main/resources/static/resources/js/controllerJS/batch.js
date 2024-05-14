@@ -184,9 +184,14 @@ const rowView = (ob, index) => {
     fillSelectOptions(batchSheetStatus, 'Please Select a Status', batchStatus, 'name', ob.batchStatusID.name)
 
 
+    //setting the values of the payment plan to their relevant elements
+    //using toLocaleString Function to format the current value into a currency type
+    //example 5000 -> 5,000.00
+    //concatenate the formated value with "Rs. " string
     batchSheetPaymentPlanRegistrationFee.innerText = "Rs. " + ob.paymentPlanID.registrationFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     batchSheetPaymentPlanCourseFee.innerText = "Rs. " + ob.paymentPlanID.courseFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     batchSheetPaymentPlanTotalFee.innerText = "Rs. " + ob.paymentPlanID.totalFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
     batchSheetPaymentPlanInstallments.innerText = ob.paymentPlanID.numberOfInstallments;
 
     //initialize 3rd party
