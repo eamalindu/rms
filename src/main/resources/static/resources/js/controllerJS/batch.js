@@ -46,7 +46,7 @@ const refreshBatchTable = () => {
         property: getStatus, dataType: 'function'
     },];
 
-    //using the external function fillDataIntoTable to fill the data from the database to the select element
+    //using the external function fillDataIntoTable to fill the data from the database to the table
     fillDataIntoTable(tblBatch, batches, displayPropertyListForBatches, rowView, 'offcanvasBatchSheet');
 
     //initializing DataTable for the tblBatch table
@@ -177,11 +177,13 @@ const rowView = (ob, index) => {
     //using external function ajaxGetRequest to get all the batchStatus from the database and save it in batchStatus variable
     batchStatus = ajaxGetRequest("/BatchStatus/findall");
 
+    //using the external function fillDataIntoTable to fill the data from the database to the select element (dynamic select)
+    //this function is a variation of the fillSelectOption because it accepts a fifth parameter to display the selected value in the provided property
     fillSelectOptions(batchSheetCourse, 'Please Select a Course', courses, 'name', ob.courseID.name)
     fillSelectOptions(batchSheetPaymentPlan, 'Please Select a Payment Plan', paymentPlans, 'name', ob.paymentPlanID.name)
     fillSelectOptions(batchSheetStatus, 'Please Select a Status', batchStatus, 'name', ob.batchStatusID.name)
 
-    //fill payment plan table
+
     batchSheetPaymentPlanRegistrationFee.innerText = "Rs. " + ob.paymentPlanID.registrationFee.toLocaleString('en-US', {
         minimumFractionDigits: 2, maximumFractionDigits: 2
     });
