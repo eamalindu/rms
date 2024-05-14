@@ -1,5 +1,6 @@
 package lk.steam.rms.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -22,6 +23,7 @@ public class BatchHasDay {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "batch_id",referencedColumnName = "id")
+    @JsonIgnore //ignore property to stop infinity recursion
     private Batch batchID;
 
     @ManyToOne(optional = false)
