@@ -442,9 +442,12 @@ const resetTimeTableForm = ()=>{
     //using external function fillSelectOptions fill course name as the options for the batchClassDay select element
     fillSelectOptions(batchClassDay, ' ', days, 'name');
 
+    //using external function ajaxGetRequest to get all the lecture rooms data from the database and save it in the variable lectureRooms
     lectureRooms = ajaxGetRequest("/LectureRoom/findall");
+    //using external function fillSelectOptions fill course name as the options for the batchLectureRoom select element
     fillSelectOptionsWithTwo(batchLectureRoom, ' ', lectureRooms, 'name', 'floor')
 
+    //initialize the 3rd party libraries (chosen)
     $('#batchClassDay').chosen({width: '100%'});
     $('#batchLectureRoom').chosen({width: '100%'});
 }
