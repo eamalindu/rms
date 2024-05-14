@@ -184,15 +184,9 @@ const rowView = (ob, index) => {
     fillSelectOptions(batchSheetStatus, 'Please Select a Status', batchStatus, 'name', ob.batchStatusID.name)
 
 
-    batchSheetPaymentPlanRegistrationFee.innerText = "Rs. " + ob.paymentPlanID.registrationFee.toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
-    batchSheetPaymentPlanCourseFee.innerText = "Rs. " + ob.paymentPlanID.courseFee.toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
-    batchSheetPaymentPlanTotalFee.innerText = "Rs. " + ob.paymentPlanID.totalFee.toLocaleString('en-US', {
-        minimumFractionDigits: 2, maximumFractionDigits: 2
-    });
+    batchSheetPaymentPlanRegistrationFee.innerText = "Rs. " + ob.paymentPlanID.registrationFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    batchSheetPaymentPlanCourseFee.innerText = "Rs. " + ob.paymentPlanID.courseFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    batchSheetPaymentPlanTotalFee.innerText = "Rs. " + ob.paymentPlanID.totalFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     batchSheetPaymentPlanInstallments.innerText = ob.paymentPlanID.numberOfInstallments;
 
     //initialize 3rd party
