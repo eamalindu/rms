@@ -323,6 +323,9 @@ const resetBatchForm = () => {
     //reset checkbox
     checkBoxValidator(this, leftWeekday, rightWeekday, 'newBatch', 'isWeekday', false, true)
 
+    //set placeholder for chosen
+    batchPaymentPlan.setAttribute('data-placeholder','Please Select a Course First');
+
     //initialize the 3rd party libraries (chosen)
     $('#batchCourse').chosen({width: '100%'});
     $('#batchPaymentPlan').chosen({width: '80%'});
