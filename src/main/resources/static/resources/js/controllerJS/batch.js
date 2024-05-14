@@ -556,7 +556,7 @@ const addToTimeTable = ()=>{
         let errors = checkTimeTableFormErrors();
         if(errors==='') {
 
-            showCustomConfirm("You are about to add a New Batch<br>Are You Sure?", function (result) {
+            showCustomConfirm("You are about to add a New Class Schedule<br>Are You Sure?", function (result) {
                 if(result){
                     newBatch.batchHasDays.push(batchHasDay);
                     resetTimeTableForm();
