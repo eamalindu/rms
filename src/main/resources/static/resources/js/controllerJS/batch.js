@@ -366,13 +366,15 @@ const resetBatchForm = () => {
     //reset checkbox batchWeekday
     checkBoxValidator(batchWeekday, leftWeekday, rightWeekday, 'newBatch', 'isWeekday', false, true)
 
-    //set placeholder for chosen
+    //set placeholder for chosen select batchPaymentPlan
     batchPaymentPlan.setAttribute('data-placeholder','Please Select a Course First');
 
     //initialize the 3rd party libraries (chosen)
     $('#batchCourse').chosen({width: '100%'});
     $('#batchPaymentPlan').chosen({width: '80%'});
 
+    //initialize 3rd party daterangepicker library
+    //Set the minDate for current day
     $('#batchCommenceDate').daterangepicker({
         "minDate": new Date(),
         "singleDatePicker": true,
@@ -384,13 +386,19 @@ const resetBatchForm = () => {
             "format": "YYYY-MM-DD"
         }
     });
+
+    //bind data to the batch object, once the "apply" button on batchCommenceDate input is clicked
     $('#batchCommenceDate').on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        //binding data to newBatch object
         inputTextValidator(this, '^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$', 'newBatch', 'commenceDate');
+        //calling the calculateLastRegDate function to auto generated the last registration date according to the selected commence date
         calculateLastRegDate();
+        //calling the calculateLastRegDate function to auto generated the batch end date according to the selected commence date
         calculateEndDate();
     });
 
+    //calling the resetTimeTableForm function to reset the inner form
     resetTimeTableForm();
 
 }
