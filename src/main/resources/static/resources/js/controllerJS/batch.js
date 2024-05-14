@@ -451,7 +451,8 @@ const fillPaymentPlan = () => {
     let currentCourseId = newBatch.courseID.id;
     console.log(currentCourseId);
     let paymentPlans = ajaxGetRequest("/PaymentPlan/getActivePlans/" + currentCourseId);
-    fillSelectOptions(batchPaymentPlan, ' ', paymentPlans, 'name');
+    fillSelectOptions(batchPaymentPlan, '', paymentPlans, 'name');
+    batchPaymentPlan.setAttribute('data-placeholder','Please Select a Payment Plan');
     $('#batchPaymentPlan').val('').trigger('chosen:updated');
 
 }
