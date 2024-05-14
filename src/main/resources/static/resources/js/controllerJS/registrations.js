@@ -669,7 +669,7 @@ const registrationUpdate = ()=>{
         }
     }
     else{
-        showCustomModal("Registration Update Unavailable<br><br>This registration is under review.<br>Please wait until the review is complete","error");
+        showCustomModal("Registration Update Unavailable<br><br>This registration is under review.<br>Please wait until the review is complete.","error");
     }
 
 }
