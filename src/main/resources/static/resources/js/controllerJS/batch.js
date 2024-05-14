@@ -324,7 +324,7 @@ const resetBatchForm = () => {
     newBatch = {}
 
     //reset batchHasDays array
-    newBatch.batchHasDays = [];
+    newBatch.batchHasDayList = [];
 
     //reset the frmNewBatch form using reset function
     frmNewBatch.reset();
@@ -562,7 +562,7 @@ const saveTimetable = () => {
         {property: getEndTime, dataType: 'function'},
         {property: getLectureRoom, dataType: 'function'},
     ];
-    fillDataIntoTableWithDelete(tblTimetable,newBatch.batchHasDays,displayPropertyListForTimeTable,removeRecord)
+    fillDataIntoTableWithDelete(tblTimetable,newBatch.batchHasDayList,displayPropertyListForTimeTable,removeRecord)
 
 }
 const getDay =(ob)=>{
@@ -579,9 +579,9 @@ const getLectureRoom =(ob)=>{
 }
 
 const removeRecord = (ob)=>{
-    let extIndex = newBatch.batchHasDays.map(item=>item.dayID.id).indexOf(ob.dayID.id);
+    let extIndex = newBatch.batchHasDayList.map(item=>item.dayID.id).indexOf(ob.dayID.id);
     if(extIndex!=-1){
-        newBatch.batchHasDays.splice(extIndex,1)
+        newBatch.batchHasDayList.splice(extIndex,1)
         saveTimetable();
     }
 }
@@ -589,8 +589,8 @@ const addToTimeTable = ()=>{
     let isDuplicate = false;
 
     // Iterate over each element in the array
-    for (let i = 0; i < newBatch.batchHasDays.length; i++) {
-        const existingDay = newBatch.batchHasDays[i];
+    for (let i = 0; i < newBatch.batchHasDayList.length; i++) {
+        const existingDay = newBatch.batchHasDayList[i];
 
         // Compare each property
         if (
@@ -613,7 +613,7 @@ const addToTimeTable = ()=>{
 
             showCustomConfirm("You are about to add a New Class Schedule<br>Are You Sure?", function (result) {
                 if(result){
-                    newBatch.batchHasDays.push(batchHasDay);
+                    newBatch.batchHasDayList.push(batchHasDay);
                     resetTimeTableForm();
                 }
                 else{
