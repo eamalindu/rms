@@ -93,6 +93,7 @@ public class BatchController {
         Batch existBatch = batchDAO.getReferenceById(batch.getId());
 
         //payment plan cannot be changed to another one if registrations are done
+        //if the seat count changes available seats also should change
         //this needed to implement here
         if (existBatch == null) {
             return "No Such Privilege Record";
