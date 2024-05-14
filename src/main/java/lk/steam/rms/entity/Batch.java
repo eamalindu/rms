@@ -81,7 +81,7 @@ public class Batch {
     @JoinColumn(name = "paymentplan_id",referencedColumnName = "id")
     private PaymentPlan paymentPlanID;
 
-    @OneToMany(mappedBy = "batchID")
-    private List<BatchHasDay> batchHasDays;
+    @OneToMany(mappedBy = "batchID",cascade = CascadeType.ALL)
+    private List<BatchHasDay> batchHasDayList;
 
 }
