@@ -3,6 +3,7 @@ package lk.steam.rms.controller;
 import lk.steam.rms.dao.BatchDAO;
 import lk.steam.rms.dao.BatchStatusDAO;
 import lk.steam.rms.entity.Batch;
+import lk.steam.rms.entity.BatchHasDay;
 import lk.steam.rms.entity.BatchStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -82,6 +83,10 @@ public class BatchController {
         batch.setCreatedBy("Malindu");
         batch.setSeatCountAvailable(batch.getSeatCount());
         batch.setBatchStatusID(batchStatusDAO.getReferenceById(1));
+
+        for(BatchHasDay batchHasDay: batch.getBatchHasDayList()){
+            batchHasDay.setBatchID(batch);
+        }
         batchDAO.save(batch);
         return "OK";
     }
