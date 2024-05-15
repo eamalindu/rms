@@ -199,6 +199,7 @@ const rowView = (ob, index) => {
         {property: getScheduleDay, dataType: 'function'},
         {property: getScheduleStartTime, dataType: 'function'},
         {property: getScheduleEndTime, dataType: 'function'},
+        {property: getClassRoom, dataType: 'function'},
     ];
     //setting class schedule
     fillDataIntoTableWithOutAction(tblBatchSchedule,ob.batchHasDayList,displayPropertyListForClassSchedule)
@@ -326,6 +327,10 @@ const getScheduleStartTime = (ob)=>{
 
 const getScheduleEndTime = (ob)=>{
     return ob.endTime.slice(0,-3);
+}
+
+const getClassRoom = (ob)=>{
+    return ob.lectureRoomID.code;
 }
 
 //creating a function to reset the Batch form when ever needed
