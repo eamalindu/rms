@@ -32,6 +32,212 @@
 
 </head>
 
+<body>
+<!--Navbar start-->
+<nav class="navbar navbar-expand-lg bg-steam-green p-1">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white" href="Dashboard"><span class="text-uppercase fw-semibold">RMS</span> : :
+            STEAM</a>
+        <button aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-bs-target="#navbarText" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon" style="filter: invert(100%)"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <!-- Navbar left side (Default)-->
+            <ul class="navbar-nav me-auto mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-white custom-width-max-content" href="New-Registration">New Registration</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white custom-width-max-content custom-active" href="New-Registration">Attendance</a>
+                </li>
+            </ul>
+            <!-- Navbar Right side -->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-white custom-width-max-content" href="Registration">Registrations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white custom-width-max-content" href="Course">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white custom-width-max-content" href="Batch">Batches</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white custom-width-max-content" href="Administrations">Administration</a>
+                </li>
+                <li class="nav-item dropdown-center custom-width-max-content p-0">
+                    <button aria-expanded="false"
+                            class="nav-link btn text-white dropdown-toggle custom-width-max-content border-0"
+                            data-bs-toggle="dropdown">
+                        Profile
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end rounded-0">
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown-center custom-width-max-content p-0">
+                    <button aria-expanded="false"
+                            class="nav-link btn bg-steam-green text-white dropdown-toggle custom-width-max-content border-0"
+                            data-bs-toggle="dropdown" th:text="${username}">
+                        Profile
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end rounded-0 mb-0">
+                        <div class="dropdown-item p-0">
+                            <div class="card w-100 p-0 m-0 border-0">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between gap-4">
+                                        <img class=""
+                                             src="https://emc.sgp1.digitaloceanspaces.com/uploads/hris/employees/photos/1556/1556.jpeg"
+                                             width="50px" />
+                                        <span class="text-muted small text-small"><small>Student Counsellar</small></span>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-custom-white border-0 text-center mb-0 show">
+                                    Logout
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link text-white custom-width-max-content" href="#"><i aria-hidden="true"
+                                                                                                            class="fa-solid fa-bell"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--Navbar end-->
+
+<!-- Display Current Page -->
+<div class="container-fluid bg-custom-white custom-banner">
+    <h5>Mark Attendance</h5>
+</div>
+
+<div class="container-fluid pt-2">
+    <div class="card rounded-0">
+        <div class="card-body rounded-0">
+            <div class="row align-items-center d-flex justify-content-around">
+                <div class="col-12 col-lg-4 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1">
+                    <label class="text-uppercase small m-0 p-0 text-muted" for="batchSearchID">Search</label>
+                    <div class="input-group">
+              <span class="input-group-text bg-custom-white rounded-0"><i
+                      class="fa-solid fa-magnifying-glass"></i></span>
+                        <input class="form-control rounded-0" id="batchSearchID" placeholder="Scan Student ID or Enter Reg Number"
+                               autocomplete="off" />
+                        <div class="d-flex align-items-center justify-content-evenly">
+                            <button class="btn bg-steam-green rounded-0 text-white" id="batchSearchButton" onclick="batchSearch()"
+                                    type="button">
+                                <i class="fa-solid fa-magnifying-glass small"></i>
+                            </button>
+                            <button class="btn btn-close-red rounded-0 text-white ms-3" id="batchSearchReset"
+                                    onclick="batchSearchReset()" type="reset">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-7 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1 text-end">
+                    <!-- <p class="text-uppercase small m-0 p-0 text-muted">Create a New Batch</p>
+                            <button aria-controls="staticBackdrop"
+                                    class="btn pointer bg-steam-green text-white rounded-0 text-end"
+                                    data-bs-target="#offCanvasBatch" data-bs-toggle="offcanvas"><i
+                                    class="fa-solid fa-plus"></i> Batch
+                            </button> -->
+                </div>
+            </div>
+        </div>
+        <div class="card-footer show rounded-0">
+            <div class="row">
+                <div class="col-lg-6 col-12 px-1">
+                    <div class="card rounded-0">
+                        <div class="card-body">
+                            <p class="pb-0 card-title" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Student Info</p>
+                            <div class="container border d-flex p-3">
+                                <div class="w-75 ">
+                                    <p class="mb-0">Mr E.A.S Malhiru</p>
+                                </div>
+                                <div class="w-25 text-end">
+                                    <p class="mb-0">ST-0001</p>
+                                </div>
+                            </div>
+                            <div class="container px-0 gap-2 d-flex mt-2">
+                                <div class="w-50 border p-3 text-center d-flex align-items-center justify-content-center">
+                                    <div>
+                                        <p class="mb-1 fw-semibold">Diploma in IT</p>
+                                        <p class="mb-0">2024-DIT-1</p>
+                                        <p class="mb-0">Lecture Room 1, First Floor</p>
+                                        <p class="mb-0">08:00 to 15:00</p>
+                                    </div>
+                                </div>
+                                <div class="w-50 border p-3 text-center">
+                                    <p class="text-center mb-1 fw-semibold">Payment Summary</p>
+                                    <p class="mb-0">Outsatnding Balance : Rs. 5,000.00</p>
+                                    <p class="mb-0">Due Balance : Rs. 5,000.00</p>
+                                    <p class="mb-0">Payment Type : Installments</p>
+                                </div>
+                            </div>
+                            <div class="container border d-flex p-3 mt-2">
+                                <div class="w-75 ">
+                                    <p class="mb-0">Exam is Schduled for today</p>
+                                </div>
+                                <div class="w-25 text-end">
+                                    <p class="mb-0">ST-0001</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-sm btn-success rounded-0 d-block mx-auto mt-2">+ Mark</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12 mt-lg-0 mt-2 px-1">
+                    <div class="card rounded-0" style="min-height: 376.5px;">
+                        <div class="card-body">
+                            <p class="pb-0 card-title" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Batches Conducting Today</p>
+
+                            <div class="container border d-flex p-3 mb-2">
+                                <div class="w-75 ">
+                                    <span class="text-muted small ">Course | Batch | Location</span>
+                                    <p class="mb-0">DiE / <span>2024-DiE-1</span> /<span> LR1 - First Floor</span></p>
+                                </div>
+                                <div class="w-25 text-end">
+                                    <span class="text-muted small">Attendance</span>
+                                    <h5 class="mb-0">10</h5>
+                                </div>
+                            </div>
+
+                            <div class="container border d-flex p-3 mb-2">
+                                <div class="w-75 ">
+                                    <span class="text-muted small ">Course | Batch | Location</span>
+                                    <p class="mb-0">DiE / <span>2024-DiE-1</span> /<span> LR1 - First Floor</span></p>
+                                </div>
+                                <div class="w-25 text-end">
+                                    <span class="text-muted small">Attendance</span>
+                                    <h5 class="mb-0">10</h5>
+                                </div>
+                            </div>
+                            <div class="container border d-flex p-3">
+                                <div class="w-75 ">
+                                    <span class="text-muted small ">Course | Batch | Location</span>
+                                    <p class="mb-0">DiE / <span>2024-DiE-1</span> /<span> LR1 - First Floor</span></p>
+                                </div>
+                                <div class="w-25 text-end">
+                                    <span class="text-muted small">Attendance</span>
+                                    <h5 class="mb-0">10</h5>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</body>
 
 
 </html>
