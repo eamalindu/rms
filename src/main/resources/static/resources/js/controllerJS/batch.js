@@ -332,7 +332,7 @@ const getScheduleEndTime = (ob)=>{
 }
 
 const getClassRoom = (ob)=>{
-    return ob.lectureRoomID.code+", "+ob.lectureRoomID.floor;
+    return ob.lectureRoomID.name+", "+ob.lectureRoomID.floor;
 }
 
 //creating a function to reset the Batch form when ever needed
