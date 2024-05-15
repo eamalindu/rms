@@ -91,6 +91,8 @@ const getStatus = (ob) => {
 //created a function to show to details in an offcanvas
 const rowView = (ob, index) => {
 
+    //click the info tab button so that it will show first always
+    document.getElementById('pills-home-tab').click();
     //hide the update btn
     btnBatchSheetUpdate.style.display = 'none';
     //show the deleted btn
