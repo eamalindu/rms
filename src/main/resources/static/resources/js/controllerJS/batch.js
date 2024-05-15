@@ -195,7 +195,9 @@ const rowView = (ob, index) => {
     //setting value for batchSheetPaymentPlanInstallments
     batchSheetPaymentPlanInstallments.innerText = ob.paymentPlanID.numberOfInstallments;
 
+    displayPropertyListForClassSchedule = [];
     //setting class schedule
+    fillDataIntoTableWithOutAction(tblBatchSchedule,ob.batchHasDayList,displayPropertyListForClassSchedule)
 
     //initialize 3rd party daterangepicker library
     //Set the minDate for the batchSheetCommenceDate as the current object's commenceDate value
