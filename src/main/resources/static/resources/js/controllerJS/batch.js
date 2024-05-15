@@ -195,7 +195,11 @@ const rowView = (ob, index) => {
     //setting value for batchSheetPaymentPlanInstallments
     batchSheetPaymentPlanInstallments.innerText = ob.paymentPlanID.numberOfInstallments;
 
-    const displayPropertyListForClassSchedule = [];
+    const displayPropertyListForClassSchedule = [
+        {property: getScheduleDay, dataType: 'function'},
+        {property: getScheduleStartTime, dataType: 'function'},
+        {property: getScheduleEndTime, dataType: 'function'},
+    ];
     //setting class schedule
     fillDataIntoTableWithOutAction(tblBatchSchedule,ob.batchHasDayList,displayPropertyListForClassSchedule)
 
@@ -309,6 +313,19 @@ const getStudentStatus=(ob)=>{
     else{
         return '<span class="badge rounded-0" style="background: #000">Deleted</span>';
     }
+}
+
+const getScheduleDay = (ob)=>{
+
+    return ob.dayID.name;
+}
+
+const getScheduleStartTime = (ob)=>{
+    return ob.startTime.slice(0,-3);
+}
+
+const getScheduleEndTime = (ob)=>{
+    return ob.endTime.slice(0,-3);
 }
 
 //creating a function to reset the Batch form when ever needed
