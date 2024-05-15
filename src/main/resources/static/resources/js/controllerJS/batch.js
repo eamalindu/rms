@@ -195,7 +195,7 @@ const rowView = (ob, index) => {
     //setting value for batchSheetPaymentPlanInstallments
     batchSheetPaymentPlanInstallments.innerText = ob.paymentPlanID.numberOfInstallments;
 
-    displayPropertyListForClassSchedule = [];
+    const displayPropertyListForClassSchedule = [];
     //setting class schedule
     fillDataIntoTableWithOutAction(tblBatchSchedule,ob.batchHasDayList,displayPropertyListForClassSchedule)
 
