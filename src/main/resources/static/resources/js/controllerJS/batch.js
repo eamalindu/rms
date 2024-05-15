@@ -195,6 +195,8 @@ const rowView = (ob, index) => {
     //setting value for batchSheetPaymentPlanInstallments
     batchSheetPaymentPlanInstallments.innerText = ob.paymentPlanID.numberOfInstallments;
 
+    //setting class schedule
+
     //initialize 3rd party daterangepicker library
     //Set the minDate for the batchSheetCommenceDate as the current object's commenceDate value
     $('#batchSheetCommenceDate').daterangepicker({
