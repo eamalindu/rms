@@ -282,6 +282,7 @@ const rowView = (ob, index) => {
     ]
     //using external function fillDataIntoTableWithOutAction to fill the data to the table tblRegistrations according to the displayPropertyListForRegistrationsFromBatch without buttons
     fillDataIntoTableWithOutAction(tblRegistrations,registrationsFromBatch,displayPropertyListForRegistrationsFromBatch)
+
 }
 
 //since the student name is a composite data (title+nameWithInitials)
@@ -750,6 +751,10 @@ const batchEdit = () => {
     });
 
     batchSheetWeekday.disabled = false;
+    if(registrationCount.innerText!=='0'){
+        batchSheetPaymentPlan.disabled = true;
+        batchSheetPaymentPlan.style = '';
+    }
 
 }
 
