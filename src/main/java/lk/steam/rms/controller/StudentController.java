@@ -20,7 +20,11 @@ public class StudentController {
     @PostMapping
     public String saveNewStudent(@RequestBody Student student){
 
-        student.setStudentNumber("ST-0007");
+        String nextStudentNumber = studentDAO.getNextStudentNumber();
+        if(nextStudentNumber==null){
+            nextStudentNumber = "ST-0001";
+        }
+        student.setStudentNumber(nextStudentNumber);
         student.setTimeStamp(LocalDateTime.now());
         try {
             studentDAO.save(student);
