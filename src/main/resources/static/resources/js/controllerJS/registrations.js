@@ -50,7 +50,9 @@ const refreshRegistrationTable = ()=>{
 
     fillDataIntoTable(tblInquiry, registrations, displayPropertyListForBatches, rowView, 'offcanvasRegistrationSheet');
 
-    $('#tblInquiry').DataTable();
+    if(registrations.length!==0) {
+        $('#tblInquiry').DataTable();
+    }
 
 }
 
