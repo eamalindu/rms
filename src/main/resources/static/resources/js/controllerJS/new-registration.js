@@ -180,7 +180,7 @@ let next3= ()=>{
         }
     });
     } else {
-        showCustomModal("Please Select a Student or Add a New Student !", "warning");
+        showCustomModal("Please Select a Student or Add a New Student!", "warning");
     }
 
 }
