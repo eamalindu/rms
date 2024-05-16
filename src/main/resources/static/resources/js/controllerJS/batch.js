@@ -898,7 +898,7 @@ const batchDelete = () => {
             let serviceResponse = ajaxHttpRequest("/Batch", "DELETE", oldBatch);
             if (serviceResponse === "OK") {
                 //show user the response
-                showCustomModal("Batch Successfully Canceled!", "success");
+                showCustomModal("Batch Successfully Deleted!", "success");
                 //close the offCanvas sheet
                 offCanvasBatchSheetCloseButton.click();
                 //refresh table
