@@ -141,6 +141,9 @@ let next2 = () => {
     step3.classList.add('custom-step-complete');
     document.querySelector('#btn-payment-str .step-number span').innerText = '✔';
 
+    document.getElementById('btn-new-student').classList.remove('disabled');
+    document.getElementById('btn-search-student').classList.remove('disabled');
+
     console.log(registration);
 
 }
