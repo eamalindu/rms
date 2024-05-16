@@ -121,6 +121,11 @@ public class BatchController {
             //change batch Status to delete
             BatchStatus deleteStatus = batchStatusDAO.getReferenceById(5);
             batch.setBatchStatusID(deleteStatus);
+
+            for(BatchHasDay batchHasDay: batch.getBatchHasDayList()){
+                batchHasDay.setBatchID(batch);
+            }
+
             //update the batch record
             batchDAO.save(batch);
 
