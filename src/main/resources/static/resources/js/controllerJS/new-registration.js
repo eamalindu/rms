@@ -146,10 +146,10 @@ let next2 = () => {
 }
 
 let next3= ()=>{
-
+    if (registration.studentID != null) {
     showCustomConfirm("You are about to add a New Registration<br>Are You Sure?", function (result) {
         if (result) {
-            if (registration.studentID != null) {
+
                 footer_4.classList.remove('show');
                 footer_5.classList.add('show');
                 step4.classList.add('custom-step-complete');
@@ -170,14 +170,15 @@ let next3= ()=>{
                 }
                 //unfinished code end
 
-            } else {
-                showCustomModal("Please Select a Student !", "warning");
-            }
+
         }
         else{
             showCustomModal("Operation Cancelled!", "info");
         }
     });
+    } else {
+        showCustomModal("Please Select a Student !", "warning");
+    }
 
 }
 let next4= ()=>{
