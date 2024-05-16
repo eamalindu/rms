@@ -104,6 +104,9 @@ public class BatchController {
             return "No Such Privilege Record";
         }
         try {
+            for(BatchHasDay batchHasDay: batch.getBatchHasDayList()){
+                batchHasDay.setBatchID(batch);
+            }
             batchDAO.save(batch);
             return "OK";
         } catch (Exception ex) {
