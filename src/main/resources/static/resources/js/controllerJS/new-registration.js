@@ -549,7 +549,7 @@ const newStudentSubmit = ()=>{
                 if (serviceResponse === "OK") {
                     //this means data successfully passed to the backend
                     //show an alert to user
-                    showCustomModal("Student Successfully Added!", "success");
+                    showCustomModal("Student Successfully Added!<br><br>Please save the registration now", "success");
                     //close the student offcanvas
                     offCanvasStudentCloseButton.click();
 
@@ -561,9 +561,9 @@ const newStudentSubmit = ()=>{
                     //refresh the form
                     resetStudentForm();
 
-                    //instead of reset the table newly added record should be added here or click the next button
-                    //do the best one
-                    // next3();
+                    //disable the add new student btn
+                    document.getElementById('btn-new-student').classList.add('disabled');
+                    document.getElementById('btn-search-student').classList.add('disabled');
 
                 } else {
                     //this means there was a problem with the query
