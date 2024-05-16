@@ -50,7 +50,10 @@ const refreshBatchTable = () => {
     fillDataIntoTable(tblBatch, batches, displayPropertyListForBatches, rowView, 'offcanvasBatchSheet');
 
     //initializing DataTable for the tblBatch table
+
+    if(batches.length!==0){
     $('#tblBatch').DataTable();
+    }
 }
 
 //since we cant access the Course Name from the batches directly. creating a function to return the Course Name from the batches object
