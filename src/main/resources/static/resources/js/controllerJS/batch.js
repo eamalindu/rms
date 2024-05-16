@@ -831,7 +831,7 @@ const batchUpdate = () => {
                         refreshBatchTable();
 
                     } else {
-                        showCustomModal("Operation Failed!" + serviceResponse, "error")
+                        showCustomModal("Operation Failed!" + serverResponse, "error")
                     }
 
 
