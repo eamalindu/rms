@@ -305,19 +305,6 @@ const radioFunctionForWeekEnd = (ob,index)=>{
 
 }
 
-// radioCashDiscountFullPayment.addEventListener('change',()=>{
-//     if(radioCashDiscountFullPayment.checked) {
-//         let remainFee = parseFloat(txtRemainingFeeFullPayment.value).toFixed(2);
-//         let discountFee = parseFloat((remainFee*10)/100).toFixed(2);
-//         let finalFee = parseFloat((remainFee * 90) / 100).toFixed(2);
-//         let registrationFee = parseFloat(txtRegistrationFeeFullPayment.value).toFixed(2);
-//         txtRemainingFeeFullPayment.value = finalFee;
-//         txtDiscountedFeeFullPayment.value = discountFee;
-//         txtFinalFeeFullPayment.value = (parseFloat(parseFloat(registrationFee) + parseFloat(finalFee)).toFixed(2));
-//     }
-//
-//
-// });
 
 const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount)=>{
 
