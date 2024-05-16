@@ -497,7 +497,7 @@ const resetStudentForm = ()=>{
     });
     $('#studentDOB').on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD'));
-        inputTextValidator(this, '^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$', 'newStudent', 'dob');
+        inputTextValidator(this, '^(19[89][0-9]|20[0-9]{2})[-][0-9]{2}[-][0-9]{2}$', 'newStudent', 'dob');
 
     });
 
@@ -562,7 +562,7 @@ const newStudentSubmit = ()=>{
 
                     //instead of reset the table newly added record should be added here or click the next button
                     //do the best one
-                    next3();
+                    // next3();
 
                 } else {
                     //this means there was a problem with the query
