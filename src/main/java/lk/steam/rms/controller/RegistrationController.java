@@ -82,13 +82,7 @@ public class RegistrationController {
             Student exsistStudent = studentDAO.getStudentsByIdValue(currentIdValue);
 
             if (exsistStudent == null) {
-                Student registeredStudent = registrations.getStudentID();
-                //set auto increment values and backend generated values
-                registeredStudent.setStudentNumber("ST-0007");
-                registeredStudent.setTimeStamp(LocalDateTime.now());
-                //save the student
-                studentDAO.save(registeredStudent);
-                //set that student as the registration
+                return "No Such Student Record";
             } else {
 
                 registrations.setStudentID(exsistStudent);
