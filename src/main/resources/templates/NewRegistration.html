@@ -819,17 +819,19 @@
 
         <!-- Add Payment start-->
         <div class="card-footer" id="step-add-payment">
-            <h5 class="card-title"
-                style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Add
-                Payment</h5>
+            <h5 class="card-title" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Add Payment</h5>
+
             <div class="container-fluid d-flex justify-content-around p-1">
-                <div class="custom-course"></div>
-                <div class="custom-course"></div>
-                <div class="custom-course"></div>
-                <div class="custom-course"></div>
+                <div class="w-50">
+                    <!--Payment breakdown here-->
+                </div>
+                <div class="w-50">
+                    <!--Installment breakdown here-->
+                </div>
             </div>
+
             <center>
-                <div class="btn btn-success mt-2 text-center text-uppercase rounded-0"><i class="fas fa-plus mr-1"></i> Add
+                <div class="btn btn-success mt-2 text-center text-uppercase rounded-0" data-bs-target="#modalAddPayment" data-bs-toggle="modal"><i class="fas fa-plus mr-1"></i> Add
                     Payment
                 </div>
             </center>
@@ -847,6 +849,86 @@
 
     </div>
 </div>
+
+<!--Modal for payment start-->
+<div class="modal fade" id="modalAddPayment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalAddPayment" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-0">
+            <div class="modal-header bg-custom-white">
+                <button type="button" class="btn btn-sm btn-close-red text-white rounded-0" id="btnModalAddPaymentClose" data-bs-dismiss="modal" aria-label="Close"><i aria-hidden="true" class="fas fa-times"></i></button>
+                <h5 class="modal-title" id="staticBackdropLabelh" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">
+                    Add New Payment </h5>
+
+            </div>
+            <div class="modal-body p-3">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="border border-bottom-0 m-2 ">
+                            <h5 class="small text-steam-green fw-bold border-bottom-0 p-2 mb-0 bg-custom-white"><i class="fa-solid fa-list"></i> Balance Payment
+                                <span class="float-end text-steam-green inline-block"><i class="fa-solid fa-circle-chevron-up"></i></span>
+                            </h5>
+                            <table class="table table mb-0 text-center small" id="tblBalancePayment">
+                                <thead>
+                                </thead><tbody class="small align-middle">
+                            <tr class="border-0">
+                                <td class="fw-bold text-start border-0">Accumulated Dues</td>
+                                <td class="text-end border-0  border-start">Rs. 7,000.00</td>
+                            </tr>
+
+                            <tr class="bg-custom-white">
+                                <td class="fw-bold text-start border">Total Outstanding Fee</td>
+                                <td class="text-end border">Rs. 47,000.00</td>
+                            </tr>
+
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <form onsubmit="return false;" id="frmNewPayment">
+                            <div class="mb-2">
+                                <div class="form-label">
+                                    <label class="fw-bold small required" for="paymentMethod">Payment Method</label>
+                                </div>
+                                <select class="form-select rounded-0" id="paymentMethod" data-placeholder="Please Select a Payment Method" onchange="selectDynamicValueValidator(this,'','newPayment','paymentTypeID')" required="" style="display: none;"><option value="" disabled=""> </option><option value="{&quot;id&quot;:1,&quot;name&quot;:&quot;Cash&quot;}">Cash</option><option value="{&quot;id&quot;:2,&quot;name&quot;:&quot;Credit Card&quot;}">Credit Card</option><option value="{&quot;id&quot;:3,&quot;name&quot;:&quot;Debit Card&quot;}">Debit Card</option><option value="{&quot;id&quot;:4,&quot;name&quot;:&quot;Bank Transfer&quot;}">Bank Transfer</option><option value="{&quot;id&quot;:5,&quot;name&quot;:&quot;Cheque&quot;}">Cheque</option></select><div class="chosen-container chosen-container-single" title="" id="paymentMethod_chosen" style="width: 100%;"><a class="chosen-single chosen-default">
+                                <span>Please Select a Payment Method</span>
+                                <div><b></b></div>
+                            </a>
+                                <div class="chosen-drop">
+                                    <div class="chosen-search">
+                                        <input class="chosen-search-input" type="text" autocomplete="off">
+                                    </div>
+                                    <ul class="chosen-results"></ul>
+                                </div></div>
+                                <div class="valid-feedback">Value Accepted</div>
+                                <div class="invalid-feedback">Please provide a valid Payment Method</div>
+                            </div>
+                            <div class="mb-2">
+                                <div class="form-label">
+                                    <label class="fw-bold small required">Amount</label>
+                                </div>
+                                <div class="input-group">
+                                    <input class="form-control rounded-0 newRegistrationPaymentInputs" id="paymentRupees" disabled="" readonly="" value="Rs." style="">
+                                    <input class="form-control rounded-0 newRegistrationPaymentInputs" id="paymentAmount" required="" onkeyup="inputTextValidator(this,'^[0-9]{1,6}$','newPayment','amount')" style="">
+                                    <div class="valid-feedback rounded-2">Value Accepted</div>
+                                    <div class="invalid-feedback rounded-2">Please provide a valid Amount</div>
+                                </div>
+                            </div>
+                            <div class="mb-0">
+                                <div class="d-flex justify-content-evenly">
+                                    <button class="btn btn-sm bg-secondary text-white rounded-0 btn-block w-25" id="paymentReset" type="button" onclick="resetPaymentForm()">Reset</button>
+                                    <button class="btn btn-sm bg-steam-green text-white rounded-0 btn-block w-25" id="paymentConfirm" type="submit" onclick="newPaymentSubmit()">Confirm</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Modal for payment end-->
+
 <script src="/resources/js/external-validator.js" type="text/javascript"></script>
 <script src="/resources/js/external-commonFunction.js" type="text/javascript"></script>
 <script src="/resources/js/external-table.js" type="text/javascript"></script>
