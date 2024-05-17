@@ -750,7 +750,7 @@ const checkPaymentFormErrors = ()=>{
     return errors;
 }
 
-const printInvoice = (object,index)=>{
+const generateInvoice = (object)=>{
     let newWindow =   window.open()
     newWindow.document.write("<head>" +
         "    <meta charset='UTF-8'>" +
