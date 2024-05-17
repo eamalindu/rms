@@ -162,14 +162,20 @@ let next3= ()=>{
                 if (registration.isFullPayment) {
                     const server = ajaxHttpRequest("/Registration", "POST", registration)
                     if (server === "OK") {
-
+                        showCustomModal("Registration Successfully Added!","success");
 
                     } else {
 
+                        showCustomModal("Operation Failed! <br>" + server , "error");
                     }
                 } else {
-                    alert("This is a part payment")
-                    const serverResult = ajaxHttpRequest("/InstallmentPlan", "POST", installmentPlan)
+                    const serverResult = ajaxHttpRequest("/InstallmentPlan", "POST", installmentPlan);
+                    if (serverResult === "OK") {
+                        showCustomModal("Registration Successfully Added!","success");
+
+                    } else {
+                        showCustomModal("Operation Failed! <br>" + serverResult , "error");
+                    }
                 }
                 //unfinished code end
 
