@@ -711,7 +711,7 @@ const newPaymentSubmit=()=>{
                     showCustomModal("Payment Successfully Added!", "success");
 
                     resetPaymentForm();
-
+                    next4();
 
                 } else {
                     //this means there was a problem with the query
