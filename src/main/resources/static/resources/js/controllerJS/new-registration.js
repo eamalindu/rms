@@ -163,9 +163,9 @@ let next3= ()=>{
                     const server = ajaxHttpRequest("/Registration", "POST", registration)
                     if (server === "OK") {
 
-                        alert("ela")
+
                     } else {
-                        alert(server)
+
                     }
                 } else {
                     alert("This is a part payment")
