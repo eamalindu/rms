@@ -712,7 +712,19 @@ const newPaymentSubmit=()=>{
 
                     resetPaymentForm();
                     next4();
-                    //add a code to generate a new payment receipt here
+                    btnPrintInvoice.classList.remove('d-none');
+                    btnPrintInvoice.addEventListener('click',()=>{
+
+                        //add a code to generate a new payment receipt here
+                        let addedPayment = ajaxGetRequest("Payment/getPaymentsByRegistrationID/"+currentRegistration.id);
+                        addedPayment = addedPayment[0];
+                        generateInvoice(addedPayment);
+                        setTimeout(function (){
+                            location.reload();
+                        },250)
+
+                    })
+
 
                 } else {
                     //this means there was a problem with the query
