@@ -20,6 +20,11 @@ public class StudentController {
     @PostMapping
     public String saveNewStudent(@RequestBody Student student){
 
+        Student existStudent = studentDAO.getStudentsByIdValue(student.getIdValue());
+        if(existStudent!=null){
+            return "Duplicate NIC Value <br>Student Record Already Exists";
+        }
+
         String nextStudentNumber = studentDAO.getNextStudentNumber();
         if(nextStudentNumber==null){
             nextStudentNumber = "ST-0001";
