@@ -115,6 +115,12 @@ public class RegistrationController {
         return registrationDAO.getRegistrationsByID(id);
     }
 
+    @GetMapping("getRegistrationFromBatchAndStudentNIC/{batchID}/{studentNIC}")
+    public Registrations getRegistrationFromBatchAndStudentNIC(@PathVariable Integer batchID,@PathVariable String studentNIC){
+        return registrationDAO.getRegistrationsByBatchIDAndStudentNIC(batchID,studentNIC);
+    }
+
+
     @PutMapping
     public String updateRegistration(@RequestBody Registrations registration){
 
