@@ -849,7 +849,38 @@
                     </div>
                 </div>
                     <div class="col-lg-4">
-                        payment form
+                        <div class="m-2 border">
+                            <form id="frmAddNewPayment" onsubmit="return false;">
+                                <div class="mb-2">
+                                    <div class="form-label">
+                                        <label class="fw-bold small required" for="paymentMethod">Payment Method</label>
+                                    </div>
+                                    <select class="form-select rounded-0" id="paymentMethod" data-placeholder="Please Select a Payment Method" onchange="selectDynamicValueValidator(this,'','newPayment','paymentTypeID')" required>
+                                        <option></option>
+                                        <option value="test">test</option>
+                                    </select>
+                                    <div class="valid-feedback">Value Accepted</div>
+                                    <div class="invalid-feedback">Please provide a valid Payment Method</div>
+                                </div>
+                                <div class="mb-2">
+                                    <div class="form-label">
+                                        <label class="fw-bold small required">Amount</label>
+                                    </div>
+                                    <div class="input-group">
+                                        <input class="form-control rounded-0 newRegistrationPaymentInputs" id="paymentRupees" disabled readonly value="Rs.">
+                                        <input class="form-control rounded-0 newRegistrationPaymentInputs" id="paymentAmount" required onkeyup="inputTextValidator(this,'^[0-9]{1,6}$','newPayment','amount')">
+                                        <div class="valid-feedback rounded-2">Value Accepted</div>
+                                        <div class="invalid-feedback rounded-2">Please provide a valid Amount</div>
+                                    </div>
+                                </div>
+                                <div class="mb-0">
+                                    <div class="d-flex justify-content-evenly">
+                                        <button class="btn btn-sm bg-secondary text-white rounded-0 btn-block w-25" id="paymentReset" type="button" onclick="resetPaymentForm()">Reset</button>
+                                        <button class="btn btn-sm bg-steam-green text-white rounded-0 btn-block w-25" id="paymentConfirm" type="submit" onclick="newPaymentSubmit()">Confirm</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <div class="col-lg-4">
                         recipt

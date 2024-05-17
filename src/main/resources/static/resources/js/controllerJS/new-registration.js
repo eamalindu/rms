@@ -18,6 +18,7 @@ window.addEventListener("load",()=>{
 
     createCourseRadioCards(courses,handleCourseCardClick,testA);
     resetStudentForm();
+    resetPaymentForm();
 
     $("#studentIdOption").chosen().change(function () {
         $("#studentIdOption_chosen .chosen-single").addClass('select-validated');
@@ -655,4 +656,11 @@ const checkStudentFormErrors = () => {
     }
 
     return errors;
+}
+
+const resetPaymentForm = ()=>{
+    frmAddNewPayment.reset();
+
+
+
 }
