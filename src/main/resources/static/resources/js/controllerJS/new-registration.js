@@ -27,6 +27,9 @@ window.addEventListener("load",()=>{
     });$("#studentGuardianRelationship").chosen().change(function () {
         $("#studentGuardianRelationship_chosen .chosen-single").addClass('select-validated');
     });
+    $("#paymentMethod").chosen().change(function () {
+        $("#paymentMethod_chosen .chosen-single").addClass('select-validated');
+    });
 
 });
 
