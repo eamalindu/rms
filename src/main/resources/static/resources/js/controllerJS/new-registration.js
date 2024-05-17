@@ -712,6 +712,7 @@ const newPaymentSubmit=()=>{
 
                     resetPaymentForm();
                     next4();
+                    //add a code to generate a new payment receipt here
 
                 } else {
                     //this means there was a problem with the query
