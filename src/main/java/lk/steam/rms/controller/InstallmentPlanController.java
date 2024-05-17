@@ -32,6 +32,12 @@ public class InstallmentPlanController {
     @PostMapping
     public String saveNewRegistrationWithInstallments(@RequestBody List<InstallmentPlan> installmentPlanList){
 
+        Registrations existRegistration = registrationDAO.getRegistrationsByBatchIDAndStudentID(installmentPlanList.get(0).getRegistrationID().getBatchID().getId(),installmentPlanList.get(0).getRegistrationID().getStudentID().getId());
+
+        if(existRegistration!=null){
+            return  "Registration Already Exist";
+        }
+
         try{
 
             Registrations currentRegistration = installmentPlanList.get(0).getRegistrationID();
