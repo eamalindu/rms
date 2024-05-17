@@ -713,6 +713,7 @@ const newPaymentSubmit=()=>{
                     resetPaymentForm();
                     next4();
 
+
                 } else {
                     //this means there was a problem with the query
                     //shows an error alert to the user
@@ -748,3 +749,4 @@ const checkPaymentFormErrors = ()=>{
     }
     return errors;
 }
+
