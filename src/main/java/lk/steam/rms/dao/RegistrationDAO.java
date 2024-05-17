@@ -19,4 +19,7 @@ public interface RegistrationDAO extends JpaRepository<Registrations, Integer> {
 
     @Query(value = "SELECT r from Registrations r where r.id=?1")
     Registrations getRegistrationsByID(Integer id);
+
+    @Query(value = "SELECT r from Registrations r where r.batchID=?1 and r.studentID=?2")
+    Registrations getRegistrationsByBatchIDAndStudentID();
 }
