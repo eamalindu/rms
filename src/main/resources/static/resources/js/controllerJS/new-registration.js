@@ -197,6 +197,15 @@ let next3= ()=>{
         showCustomModal("Please Select a Student or Add a New Student!", "warning");
     }
 
+    //setting payment breakdown table info
+    newPaymentCourseFee.innerText = "Rs. "+registration.batchID.paymentPlanID.courseFee.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
+    newPaymentTabRegFee.innerText = "Rs. "+registration.batchID.paymentPlanID.registrationFee.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
+    if(registration.discountAmount===undefined){
+        registration.discountAmount = 0;
+    }
+    newPaymentTabDiscounts.innerText = "- Rs. "+registration.discountAmount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
+    newPaymentTotalFee.innerText = "Rs. "+registration.fullAmount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
+
 }
 let next4= ()=>{
     step5.classList.add('custom-step-complete');
