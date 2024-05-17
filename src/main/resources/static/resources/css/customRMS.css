@@ -166,7 +166,7 @@ select:invalid {
     height: 0px !important;
     opacity: 0 !important;
     position: absolute !important;
-    display: flex !important;
+    display: flex ;
 }
 
 select:invalid[multiple] {
