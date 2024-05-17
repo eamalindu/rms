@@ -41,6 +41,12 @@ public class RegistrationController {
     @Transactional
     public String saveNewRegistration(@RequestBody Registrations registrations){
 
+        Registrations existRegistration = registrationDAO.getRegistrationsByBatchIDAndStudentID(registrations.getBatchID().getId(),registrations.getStudentID().getId());
+
+        if(existRegistration!=null){
+            return  "Registration Already Exist";
+        }
+
         try {
 
             //set InquiryNumber
