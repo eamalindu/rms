@@ -153,31 +153,39 @@ let next3= ()=>{
     showCustomConfirm("You are about to add a New Registration<br>Are You Sure?", function (result) {
         if (result) {
 
-                footer_4.classList.remove('show');
-                footer_5.classList.add('show');
-                step4.classList.add('custom-step-complete');
-                document.querySelector('#btn-student .step-number span').innerText = '✔';
-
+            let isRegistrationSuccess ;
                 //unfinished code start
                 if (registration.isFullPayment) {
                     const server = ajaxHttpRequest("/Registration", "POST", registration)
                     if (server === "OK") {
                         showCustomModal("Registration Successfully Added!","success");
 
+                        isRegistrationSuccess = true;
+
                     } else {
 
                         showCustomModal("Operation Failed! <br>" + server , "error");
+                        isRegistrationSuccess = false;
                     }
                 } else {
                     const serverResult = ajaxHttpRequest("/InstallmentPlan", "POST", installmentPlan);
                     if (serverResult === "OK") {
                         showCustomModal("Registration Successfully Added!","success");
+                        isRegistrationSuccess = true;
 
                     } else {
                         showCustomModal("Operation Failed! <br>" + serverResult , "error");
+                        isRegistrationSuccess = false;
                     }
                 }
                 //unfinished code end
+
+            if(isRegistrationSuccess){
+                footer_4.classList.remove('show');
+                footer_5.classList.add('show');
+                step4.classList.add('custom-step-complete');
+                document.querySelector('#btn-student .step-number span').innerText = '✔';
+            }
 
 
         }
