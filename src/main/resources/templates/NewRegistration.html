@@ -850,6 +850,27 @@
                 </div>
                 <div class="w-50">
                     <!--Installment breakdown here-->
+                    <div class="border border-bottom-0 m-2">
+                        <h5 class="small text-steam-green fw-bold border-bottom-0 p-2 mb-0 bg-custom-white" id="installmentSummaryHeadingText"><i class="fa-solid fa-list"></i> Installment Plan</h5>
+                        <table class="table table-bordered mb-0 text-center" id="tblInstallmentPlan">
+                            <thead>
+                            <tr>
+                                <th class="small">Installment</th>
+                                <th class="small">Amount</th>
+                                <th class="small">Due Date</th>
+                                <th class="small">Paid Amount</th>
+                                <th class="small">Balance</th>
+                                <th class="small">Status</th>
+
+                            </tr>
+                            </thead>
+                            <tbody class="small align-middle">
+                            <tr>
+                                <td colspan="6">This Registration Does Not Contain Installments</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -875,7 +896,7 @@
 
 <!--Modal for payment start-->
 <div class="modal fade" id="modalAddPayment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalAddPayment" aria-modal="true" role="dialog">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-0">
             <div class="modal-header bg-custom-white">
                 <button type="button" class="btn btn-sm btn-close-red text-white rounded-0" id="btnModalAddPaymentClose" data-bs-dismiss="modal" aria-label="Close"><i aria-hidden="true" class="fas fa-times"></i></button>
@@ -885,29 +906,7 @@
             </div>
             <div class="modal-body p-3">
                 <div class="row">
-                    <div class="col-6">
-                        <div class="border border-bottom-0 m-2 ">
-                            <h5 class="small text-steam-green fw-bold border-bottom-0 p-2 mb-0 bg-custom-white"><i class="fa-solid fa-list"></i> Balance Payment
-                                <span class="float-end text-steam-green inline-block"><i class="fa-solid fa-circle-chevron-up"></i></span>
-                            </h5>
-                            <table class="table table mb-0 text-center small" id="tblBalancePayment">
-                                <thead>
-                                </thead><tbody class="small align-middle">
-                            <tr class="border-0">
-                                <td class="fw-bold text-start border-0">Accumulated Dues</td>
-                                <td class="text-end border-0  border-start">Rs. 7,000.00</td>
-                            </tr>
-
-                            <tr class="bg-custom-white">
-                                <td class="fw-bold text-start border">Total Outstanding Fee</td>
-                                <td class="text-end border">Rs. 47,000.00</td>
-                            </tr>
-
-                            </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="col-6">
+                    <div class="col-12">
                         <form onsubmit="return false;" id="frmNewPayment">
                             <div class="mb-2">
                                 <div class="form-label">
