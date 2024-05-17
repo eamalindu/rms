@@ -820,21 +820,46 @@
         <!-- Add Payment start-->
         <div class="card-footer" id="step-add-payment">
             <h5 class="card-title" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Add Payment</h5>
-            <div class="container-fluid d-flex justify-content-around p-1">
-                <div class="w-75">
-                    <!--Payment summary + new payment-->
+            <div class="container-fluid p-1">
+
+                <div class="row">
+                <div class="col-lg-4">
+                    <div class="m-2 border border-bottom-0">
+                        <h5 class="small text-steam-green fw-bold p-2 mb-0 bg-custom-white border-bottom-0" id="paymentBreakdownHeadingText"><i class="fa-solid fa-list"></i> Payment Breakdown
+                            <span class="float-end text-steam-green inline-block" id="paymentBreakdownHeadingIcon"><i class="fa-solid fa-circle-chevron-up"></i></span>
+                        </h5>
+                        <table class="table table mb-0 text-center border-top" id="tblPaymentBreakdown" style="display: table;">
+                            <tbody class="small align-middle">
+                            <tr class="border-0">
+                                <td class="fw-bold text-start border-0">Course Fee</td>
+                                <td class="text-end border-0  border-start" id="studentPaymentTabCourseFee">Rs. 47,000.00</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-start border-0">Registration Fee</td>
+                                <td class="text-end border-0  border-start" id="studentPaymentTabRegFee">Rs. 3,000.00</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-start border-0">Discounts</td>
+                                <td class="text-end border-0 border-start" id="studentPaymentTabDiscounts">- Rs. 0.00</td>
+                            </tr>
+                            <tr class="bg-custom-white">
+                                <td class="fw-bold text-start border">Total Payable</td>
+                                <td class="text-end border" id="studentPaymentTabTotalFee">Rs. 50,000.00</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="w-25">
-                    <!--Receipt-->
+                    <div class="col-lg-4">
+                        payment form
+                    </div>
+                    <div class="col-lg-4">
+                        recipt
+                    </div>
                 </div>
+
+
             </div>
-
-
-            <center>
-                <div class="btn btn-success mt-2 text-center text-uppercase rounded-0"><i class="fas fa-plus mr-1"></i> Add
-                    Payment
-                </div>
-            </center>
             <div class="row mt-2">
                 <div class="col-6 align-items-center d-flex">
                     <h5 class="card-title text-secondary" style="font-size: small;">Step 5 of 5</h5>
