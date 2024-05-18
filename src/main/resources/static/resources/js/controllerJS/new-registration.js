@@ -59,6 +59,7 @@ let step2 = document.querySelector('#btn-batch');
 let step3 = document.querySelector('#btn-payment-str');
 let step4 = document.querySelector('#btn-student');
 let step5 = document.querySelector('#btn-add-payment');
+let step6 = document.querySelector('#btn-complete');
 
 //get all the footers
 let footer_1 = document.querySelector('#step-course');
@@ -66,6 +67,7 @@ let footer_2 = document.querySelector('#step-batch');
 let footer_3 = document.querySelector('#step-payment-str');
 let footer_4 = document.querySelector('#step-student');
 let footer_5 = document.querySelector('#step-add-payment');
+let footer_6 = document.querySelector('#step-complete');
 
 let next0 = () => {
 
