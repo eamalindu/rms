@@ -218,6 +218,15 @@ let next4= ()=>{
 
     //add print receipt logic here
 }
+let next5 = ()=>{
+    step6.classList.add('custom-step-complete');
+    document.querySelector('#btn-complete .step-number span').innerText = '✔';
+
+
+    footer_5.classList.remove('show');
+    footer_6.classList.add('show');
+}
+
 let previous0 = () => {
     step1.classList.remove('custom-step-complete');
     step2.classList.remove('custom-step-complete');
@@ -722,7 +731,7 @@ const newPaymentSubmit=()=>{
                         addedPayment = addedPayment[0];
                         generateInvoice(addedPayment);
                         setTimeout(function (){
-                            location.reload();
+                            next5();
                         },250)
 
                     })
