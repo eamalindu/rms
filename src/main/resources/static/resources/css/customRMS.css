@@ -88,11 +88,6 @@ input[name="btnLogin"]:hover {
     padding-top: 2px;
 }
 
-.custom-stepper:hover {
-    background: #f3f3f3;
-    cursor: pointer;
-}
-
 .step-number {
     border-radius: 50%;
     width: 5em;
