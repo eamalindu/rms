@@ -678,7 +678,7 @@ const registrationUpdate = ()=>{
 
 const checkForRegistrationUpdate = ()=>{
     let updates = '';
-    if (editedRegistration.tempRegistrationStatus.name !== null) {
+    if (editedRegistration.tempRegistrationStatus !== null) {
         updates = updates + "Registration Staus was changed to <span class='text-steam-green'>" + editedRegistration.tempRegistrationStatus.name + "</span><br>";
     }
     return updates;
