@@ -51,6 +51,11 @@ public class StudentController {
         return studentDAO.getStudentsByIdValue(idValue);
     }
 
+    @GetMapping("getStudentsByNicOrStudentNumberOrMobileNumber/{value}")
+    public Student getStudentsByNicOrStudentNumberOrMobileNumber(@PathVariable String value) {
+        return studentDAO.getStudentsByNicOrStudentNumberOrMobileNumber(value);
+    }
+
     @GetMapping(value = "/edit")
     public ModelAndView studentEdit() {
         ModelAndView studentEditView = new ModelAndView();
