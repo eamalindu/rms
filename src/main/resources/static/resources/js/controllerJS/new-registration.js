@@ -541,7 +541,7 @@ const newStudentSubmit = ()=>{
 
 const searchStudent=()=>{
     const searchText = studentSearchID.value;
-    responseStudent = ajaxGetRequest("/Student/getStudentByIdValue/"+searchText);
+    responseStudent = ajaxGetRequest("/Student/getStudentsByNicOrStudentNumberOrMobileNumber/"+searchText);
     console.log(responseStudent);
     createStudentRadioCards(responseStudent,handleStudentCardClick,existStudentResults);
 }
