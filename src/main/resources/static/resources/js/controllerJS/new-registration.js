@@ -269,25 +269,6 @@ let previous2 = () => {
 
 }
 
-const radioFunctionForWeekDay = (ob,index)=>{
-
-    registration.batchID = ob;
-    //load fee for full payment
-    loadFee(ob,txtTotalFeeFullPayment,txtRegistrationFeeFullPayment,txtCourseFeeFullPayment,true);
-    //load fee for installment payment
-    loadFee(ob,txtTotalFeePartPayment,txtRegistrationFeePartPayment,txtCourseFeePartPayment,false);
-}
-
-const radioFunctionForWeekEnd = (ob,index)=>{
-
-    registration.batchID = ob;
-    //load fee for full payment
-    loadFee(ob,txtTotalFeeFullPayment,txtRegistrationFeeFullPayment,txtCourseFeeFullPayment,true);
-    //load fee for installment payment
-    loadFee(ob,txtTotalFeePartPayment,txtRegistrationFeePartPayment,txtCourseFeePartPayment,false);
-
-}
-
 
 const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount)=>{
 
