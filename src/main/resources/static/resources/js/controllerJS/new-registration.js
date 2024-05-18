@@ -157,7 +157,7 @@ let next2 = () => {
 let next3= ()=>{
     let isRegistrationSuccess ;
     if (registration.studentID != null) {
-    showCustomConfirm("You are about to add a New Registration to the batch <span class='text-steam-green'>"+registration.batchID.batchCode+"</span><br>Are You Sure?", function (result) {
+    showCustomConfirm("You are about to add a New Registration to the batch <span class='text-steam-green'>"+registration.batchID.batchCode+"</span><br><br>Are You Sure?", function (result) {
         if (result) {
                 //unfinished code start
                 if (registration.isFullPayment) {
