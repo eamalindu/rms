@@ -228,26 +228,10 @@ let next5 = ()=>{
 }
 
 let previous0 = () => {
-    step1.classList.remove('custom-step-complete');
-    step2.classList.remove('custom-step-complete');
-    step3.classList.remove('custom-step-complete');
-    step4.classList.remove('custom-step-complete');
-    step5.classList.remove('custom-step-complete');
-    step6.classList.remove('custom-step-complete');
-
     footer_1.classList.add('show');
     footer_2.classList.remove('show');
-    footer_3.classList.remove('show');
-    footer_4.classList.remove('show');
-    footer_5.classList.remove('show');
-    footer_6.classList.remove('show');
-
+    step1.classList.remove('custom-step-complete');
     document.querySelector('#btn-course .step-number span').innerText = '1';
-    document.querySelector('#btn-batch .step-number span').innerText = '2';
-    document.querySelector('#btn-payment-str .step-number span').innerText = '3';
-    document.querySelector('#btn-student .step-number span').innerText = '4';
-    document.querySelector('#btn-add-payment .step-number span').innerText = '5';
-    document.querySelector('#btn-complete .step-number span').innerText = '6';
 
     //all the values should be null expect the course
     registration.batchID = null;
