@@ -35,7 +35,7 @@ public class InstallmentPlanController {
         Registrations existRegistration = registrationDAO.getRegistrationsByBatchIDAndStudentID(installmentPlanList.get(0).getRegistrationID().getBatchID().getId(),installmentPlanList.get(0).getRegistrationID().getStudentID().getId());
 
         if(existRegistration!=null){
-            return  "Registration Already Exist";
+            return  "This student is already registered to <br>Batch <span class='text-steam-green'>"+existRegistration.getBatchID().getBatchCode()+"</span><small> [Reg Number : <span class='text-steam-green'>"+existRegistration.getRegistrationNumber()+"</span>]</small>";
         }
 
         try{

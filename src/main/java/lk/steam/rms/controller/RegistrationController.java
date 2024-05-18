@@ -44,7 +44,7 @@ public class RegistrationController {
         Registrations existRegistration = registrationDAO.getRegistrationsByBatchIDAndStudentID(registrations.getBatchID().getId(),registrations.getStudentID().getId());
 
         if(existRegistration!=null){
-            return  "Registration Already Exist";
+            return  "This student is already registered to <br>Batch <span class='text-steam-green'>"+existRegistration.getBatchID().getBatchCode()+"</span><small> [Reg Number : <span class='text-steam-green'>"+existRegistration.getRegistrationNumber()+"</span>]</small>";
         }
 
         try {
