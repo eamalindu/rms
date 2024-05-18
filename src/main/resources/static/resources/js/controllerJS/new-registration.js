@@ -640,7 +640,7 @@ const newPaymentSubmit=()=>{
         showCustomConfirm("You are about to add a New Payment of <br><span class='text-steam-green'>Rs. " + parseFloat(newPayment.amount).toLocaleString('en-US', {
             maximumFractionDigits: 2,
             minimumFractionDigits: 2
-        }) + "</span> <br><br>Are You Sure?", function (result) {
+        }) + "</span> To this registration <br><br>Are You Sure?", function (result) {
             if (result) {
                 let serviceResponse = ajaxHttpRequest("/Payment", 'POST', newPayment);
                 if (serviceResponse === "OK") {
