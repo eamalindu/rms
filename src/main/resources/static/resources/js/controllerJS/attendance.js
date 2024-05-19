@@ -2,6 +2,6 @@ window.addEventListener("load", function() {
 
 });
 
-const createBatchesConductingToday = ()=>{
+const createBatchesConductingToday = (dataList,containerID)=>{
 
 }
