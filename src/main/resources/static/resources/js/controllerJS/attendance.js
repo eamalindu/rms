@@ -1,7 +1,7 @@
 window.addEventListener("load", function () {
 
     const batchesConductingToday = ajaxGetRequest("Batch/getBatchesConductToday")
-    createBatchesConductingToday(batchesConductingToday,batchesTodayContainer)
+    createBatchesConductingToday(batchesConductingToday, batchesTodayContainer)
 
 });
 
@@ -23,6 +23,15 @@ const createBatchesConductingToday = (dataList, containerID) => {
             var div = document.createElement('div');
             //add relevant class names to div
             div.className = 'container border d-flex p-3 mb-2';
+
+            div.innerHTML = `<div class="w-75 ">
+                                    <span class="text-muted small ">Course | Batch | Location</span>
+                                    <p class="mb-0">DiE / <span>2024-DiE-1</span> /<span> LR1 - First Floor</span></p>
+                                </div>
+                                <div class="w-25 text-end">
+                                    <span class="text-muted small">Attendance</span>
+                                    <h5 class="mb-0">10</h5>
+                                </div>`;
 
         })
     } else {
