@@ -1,5 +1,8 @@
 window.addEventListener("load", function () {
 
+    const batchesConductingToday = ajaxGetRequest("Batch/getBatchesConductToday")
+    createBatchesConductingToday(batchesConductingToday,batchesTodayContainer)
+
 });
 
 //This function will generate batch information that will conduct today
