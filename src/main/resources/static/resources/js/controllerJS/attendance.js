@@ -23,16 +23,20 @@ const createBatchesConductingToday = (dataList, containerID) => {
             var div = document.createElement('div');
             //add relevant class names to div
             div.className = 'container border d-flex p-3 mb-2';
-
+            //get the current day and save it
+            //adding 1 because sunday is 0, monday is 1, ...
             var currentDay = new Date().getDay() + 1;
+            //loop over batchHasDayList because it can contain one or more timetable
             for (const day of element.batchHasDayList) {
+                //if the current day is equal to a one in the batchHasDayList save it
                 if (day.dayID.id === currentDay) {
                     correctSchedule = day;
+                    //break the loop
                     break;
                 }
             }
 
-
+            //set innerHTML accordingly
             div.innerHTML = `<div class="w-75 ">
                                     <span class="text-muted small ">Course | Batch | Location | Schdule</span>
                                     <p class="mb-0">${element.courseID.code} / <span>${element.batchCode}</span> / <span>${correctSchedule.lectureRoomID.code}  - ${correctSchedule.lectureRoomID.floor}</span> / ${correctSchedule.startTime.slice(0, -3)} - ${correctSchedule.endTime.slice(0, -3)}</p>
@@ -42,6 +46,7 @@ const createBatchesConductingToday = (dataList, containerID) => {
                                     <h5 class="mb-0">10</h5>
                                 </div>`;
 
+            //attach the div for the parent container
             containerID.appendChild(div);
 
         })
