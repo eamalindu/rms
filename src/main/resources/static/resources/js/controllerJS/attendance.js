@@ -15,7 +15,7 @@ const createBatchesConductingToday = (dataList, containerID) => {
     //clear the content in containerID
     containerID.innerHTML = '';
     //check the dataList is empty or not
-    if (dataList.length < 0) {
+    if (dataList.length > 0) {
         //This means dataList is not empty
         //using forEach function to loop over the contents of the dataList array
         dataList.forEach((element, index) => {
@@ -24,14 +24,26 @@ const createBatchesConductingToday = (dataList, containerID) => {
             //add relevant class names to div
             div.className = 'container border d-flex p-3 mb-2';
 
+            var currentDay =  new Date().getDay()+1;
+            for (const day of element.batchHasDayList) {
+                if (day.dayID.id === currentDay) {
+                    correctSchedule = day;
+                    break;
+                }
+            }
+
+
+
             div.innerHTML = `<div class="w-75 ">
                                     <span class="text-muted small ">Course | Batch | Location</span>
-                                    <p class="mb-0">${element.courseID.code} / <span>${element.batchCode}</span> /<span> LR1 - First Floor</span></p>
+                                    <p class="mb-0">${element.courseID.code} / <span>${element.batchCode}</span> / <span>${correctSchedule.lectureRoomID.code}  - ${correctSchedule.lectureRoomID.floor}</span></p>
                                 </div>
                                 <div class="w-25 text-end">
                                     <span class="text-muted small">Attendance</span>
                                     <h5 class="mb-0">10</h5>
                                 </div>`;
+
+            containerID.appendChild(div);
 
         })
     } else {
