@@ -1,16 +1,15 @@
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
 
 });
 
-const createBatchesConductingToday = (dataList,containerID)=>{
+const createBatchesConductingToday = (dataList, containerID) => {
+    containerID.innerHTML = '';
+    if (dataList.length < 0) {
 
-    if(dataList.length<0){
-
-        dataList.forEach((element,index)=>{
+        dataList.forEach((element, index) => {
 
         })
-    }
-    else{
+    } else {
 
     }
 
