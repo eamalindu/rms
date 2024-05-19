@@ -17,8 +17,11 @@ const createBatchesConductingToday = (dataList, containerID) => {
     //check the dataList is empty or not
     if (dataList.length < 0) {
         //This means dataList is not empty
+        //using forEach function to loop over the contents of the dataList array
         dataList.forEach((element, index) => {
+            //create a div and save it in the div variable
             var div = document.createElement('div');
+            //add relevant class names to div
             div.className = 'container border d-flex p-3 mb-2';
 
         })
