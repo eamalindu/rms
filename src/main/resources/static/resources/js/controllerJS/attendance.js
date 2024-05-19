@@ -8,6 +8,7 @@ const createBatchesConductingToday = (dataList, containerID) => {
 
         dataList.forEach((element, index) => {
             var div = document.createElement('div');
+            div.className = 'container border d-flex p-3 mb-2';
 
         })
     } else {
