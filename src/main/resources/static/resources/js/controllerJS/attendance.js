@@ -36,7 +36,7 @@ const createBatchesConductingToday = (dataList, containerID) => {
 
             div.innerHTML = `<div class="w-75 ">
                                     <span class="text-muted small ">Course | Batch | Location</span>
-                                    <p class="mb-0">${element.courseID.code} / <span>${element.batchCode}</span> / <span>${correctSchedule.lectureRoomID.code}  - ${correctSchedule.lectureRoomID.floor}</span></p>
+                                    <p class="mb-0">${element.courseID.code} / <span>${element.batchCode}</span> / <span>${correctSchedule.lectureRoomID.code}  - ${correctSchedule.lectureRoomID.floor}</span><small> [${correctSchedule.startTime.slice(0, -3)} - ${correctSchedule.endTime.slice(0, -3)}]</small></p>
                                 </div>
                                 <div class="w-25 text-end">
                                     <span class="text-muted small">Attendance</span>
