@@ -26,7 +26,7 @@ const createBatchesConductingToday = (dataList, containerID) => {
 
             div.innerHTML = `<div class="w-75 ">
                                     <span class="text-muted small ">Course | Batch | Location</span>
-                                    <p class="mb-0">DiE / <span>2024-DiE-1</span> /<span> LR1 - First Floor</span></p>
+                                    <p class="mb-0">${element.courseID.code} / <span>${element.batchCode}</span> /<span> LR1 - First Floor</span></p>
                                 </div>
                                 <div class="w-25 text-end">
                                     <span class="text-muted small">Attendance</span>
