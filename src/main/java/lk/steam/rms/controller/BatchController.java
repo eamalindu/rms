@@ -42,6 +42,12 @@ public class BatchController {
         return batchDAO.getBatchInfoByBatchCode(batchCode);
     }
 
+    @GetMapping("getBatchesConductToday")
+    public List<Batch> getBatchesConductToday(){
+        return batchDAO.getBatchesConductToday();
+    }
+
+
     @GetMapping()
     public ModelAndView batchUI() {
         ModelAndView batchView = new ModelAndView();
