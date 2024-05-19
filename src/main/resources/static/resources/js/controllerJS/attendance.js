@@ -24,14 +24,13 @@ const createBatchesConductingToday = (dataList, containerID) => {
             //add relevant class names to div
             div.className = 'container border d-flex p-3 mb-2';
 
-            var currentDay =  new Date().getDay()+1;
+            var currentDay = new Date().getDay() + 1;
             for (const day of element.batchHasDayList) {
                 if (day.dayID.id === currentDay) {
                     correctSchedule = day;
                     break;
                 }
             }
-
 
 
             div.innerHTML = `<div class="w-75 ">
