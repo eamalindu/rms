@@ -11,16 +11,19 @@ window.addEventListener("load", function () {
 //2) containerID -> element id of where the divs should display
 //This function is called using window.load event handler
 const createBatchesConductingToday = (dataList, containerID) => {
-    containerID.innerHTML = '';
-    if (dataList.length < 0) {
 
+    //clear the content in containerID
+    containerID.innerHTML = '';
+    //check the dataList is empty or not
+    if (dataList.length < 0) {
+        //This means dataList is not empty
         dataList.forEach((element, index) => {
             var div = document.createElement('div');
             div.className = 'container border d-flex p-3 mb-2';
 
         })
     } else {
-
+        //This means dataList is empty
     }
 
 }
