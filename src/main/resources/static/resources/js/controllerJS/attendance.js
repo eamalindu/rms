@@ -86,10 +86,11 @@ const searchRegistration = () => {
             searchResultCourse.innerText = searchResult.courseID.name;
             searchResultBatch.innerText = searchResult.batchID.batchCode;
 
+            //get the current day with adding 1 and save it to currentDay variable
             var currentDay = new Date().getDay() + 1;
             //loop over batchHasDayList because it can contain one or more timetable
             for (const day of searchResult.batchID.batchHasDayList) {
-                //if the current day is equal to a one in the batchHasDayList save it
+                //if the current day is equal to a one in the batchHasDayList save it to correctSchedule variable
                 if (day.dayID.id === currentDay) {
                     correctSchedule = day;
                     //break the loop
@@ -97,6 +98,7 @@ const searchRegistration = () => {
                 }
             }
 
+            //set the registration status
             if (searchResult.registrationStatusID.name === "Active") {
                 searchResultStatus.innerHTML = '<span class="badge rounded-0 w-25" style="background: #3FB618">Active</span>';
             } else if (searchResult.registrationStatusID.name === "Suspended") {
@@ -111,9 +113,11 @@ const searchRegistration = () => {
                 searchResultStatus.innerHTML = '<span class="badge rounded-0 w-25" style="background: #000">Deleted</span>';
             }
 
+            //set the correct schedule
             searchResultLocation.innerText = correctSchedule.lectureRoomID.name + ", " + correctSchedule.lectureRoomID.floor;
             searchResultSchedule.innerText = correctSchedule.startTime.slice(0, -3) + " to " + correctSchedule.endTime.slice(0, -3);
 
+            //set the payment info
             searchResultOutstanding.innerText = "Rs. " + searchResult.balanceAmount.toLocaleString('en-US', {
                 maximumFractionDigits: 2,
                 minimumFractionDigits: 2
@@ -131,12 +135,18 @@ const searchRegistration = () => {
 
 
         } else {
+            //this means searchText is empty
+            //remove the searchResultRegistration div
             searchResultRegistration.classList.add('d-none');
+            //add placeholder back
             placeholderRegistration.classList.remove('d-none')
+            //shows a user msg that no record found
             showCustomModal("No classes available today <br> for the registration : <span class='text-lowercase text-steam-green'>" + searchText + "</span>", "error");
 
         }
     } else {
+        //this means searchText is empty
+        //show an user msg
         showCustomModal("Registration Number is required for a search", "warning");
     }
 
