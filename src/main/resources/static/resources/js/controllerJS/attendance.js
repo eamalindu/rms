@@ -171,6 +171,14 @@ const addAttendance = ()=>{
             newAttedance.registrationID = searchResult;
             newAttedance.batchID = searchResult.batchID.id;
             console.log(newAttedance);
+
+            let serverResponse = ajaxHttpRequest("/Attendance","POST",newAttedance);
+            if(serverResponse==="OK"){
+                showCustomModal("Attendance Successfully Saved!", "success");
+                registrationSearchReset();
+
+            }
+
         }
         else{
             showCustomModal("Operation Cancelled!", "info");
