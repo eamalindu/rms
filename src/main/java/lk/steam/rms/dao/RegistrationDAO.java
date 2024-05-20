@@ -28,4 +28,8 @@ public interface RegistrationDAO extends JpaRepository<Registrations, Integer> {
 
     @Query(value = "SELECT r from Registrations r where r.registrationNumber=?1")
     Registrations getRegistrationsByRegistrationNumber(String registrationNumber);
+
+
+    @Query("SELECT r from Registrations r JOIN BatchHasDay bhd on r.batchID.id = bhd.batchID.id JOIN Day d ON bhd.dayID.id = d.id where d.name = DAYNAME(CURDATE())")
+    Registrations getRegistrationsByToday();
 }
