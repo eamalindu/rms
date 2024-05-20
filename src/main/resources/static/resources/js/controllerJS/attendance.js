@@ -1,9 +1,5 @@
 window.addEventListener("load", function () {
-    //get the batches that conducted today using ajaxGetRequest Function and save it to batchesConductingToday variable
-    const batchesConductingToday = ajaxGetRequest("Batch/getBatchesConductToday")
-    //use createBatchesConductingToday to generate batch information
-    createBatchesConductingToday(batchesConductingToday, batchesTodayContainer)
-
+    refreshBatchSchedulesForToday();
 });
 
 //This function will generate batch information that will conduct today
@@ -63,6 +59,14 @@ const createBatchesConductingToday = (dataList, containerID) => {
     }
 
 
+}
+
+//creating function to generate batches that will conduct today
+const refreshBatchSchedulesForToday = ()=>{
+    //get the batches that conducted today using ajaxGetRequest Function and save it to batchesConductingToday variable
+    const batchesConductingToday = ajaxGetRequest("Batch/getBatchesConductToday")
+    //use createBatchesConductingToday to generate batch information
+    createBatchesConductingToday(batchesConductingToday, batchesTodayContainer)
 }
 
 //creating function to search registration when a registration number is typed in to the text field
@@ -179,6 +183,7 @@ const addAttendance = ()=>{
             if(serverResponse==="OK"){
                 showCustomModal("Attendance Successfully Saved!", "success");
                 registrationSearchReset();
+                refreshBatchSchedule();
 
             }
             else{
