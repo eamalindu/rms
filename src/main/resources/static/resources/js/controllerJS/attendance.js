@@ -64,9 +64,11 @@ const searchRegistration = ()=>{
 
         if(searchResult!==''){
             searchResultRegistration.classList.remove('d-none');
+            placeholderRegistration.classList.add('d-none')
         }
         else{
             searchResultRegistration.classList.add('d-none');
+            placeholderRegistration.classList.remove('d-none')
             showCustomModal("No Registration Found For <span class='fw-bold text-lowercase'>"+searchText+"</span>","error");
 
         }
@@ -81,4 +83,5 @@ const searchRegistration = ()=>{
 const registrationSearchReset = ()=>{
     registrationSearchID.value = '';
     searchResultRegistration.classList.add('d-none');
+    placeholderRegistration.classList.remove('d-none')
 }
