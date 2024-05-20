@@ -65,7 +65,7 @@ const searchRegistration = ()=>{
 
     const searchText = registrationSearchID.value;
     if (searchText !== '') {
-       let searchResult = ajaxGetRequest("Registration/getRegistrationByRegistrationNumber/" +searchText)
+       let searchResult = ajaxGetRequest("Registration/getRegistrationHaveClassToday/" +searchText)
 
         if(searchResult!==''){
             searchResultRegistration.classList.remove('d-none');
@@ -74,7 +74,7 @@ const searchRegistration = ()=>{
         else{
             searchResultRegistration.classList.add('d-none');
             placeholderRegistration.classList.remove('d-none')
-            showCustomModal("No Registration Found For <span class='fw-bold text-lowercase'>"+searchText+"</span>","error");
+            showCustomModal("No classes available today <br> for the registration : <span class='text-lowercase text-steam-green'>"+searchText+"</span>","error");
 
         }
     }
