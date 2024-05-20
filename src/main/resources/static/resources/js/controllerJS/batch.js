@@ -30,6 +30,10 @@ window.addEventListener("load", () => {
         calculateEndDate();
     });
 
+    //toggle the visibility of the table when the h5 tag is clicked
+    toggleRegistrationSheetTable(currentPaymentPlanHeadingText,tblCurrentPaymentPlan,currentPaymentPlanIcon);
+    toggleRegistrationSheetTable(currentScheduleHeadingText,tblBatchSchedule,currentScheduleIcon);
+
 });
 
 //creating a function to refresh the batch table when ever needed
