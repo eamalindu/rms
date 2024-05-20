@@ -16,7 +16,7 @@ public class BatchStatusController {
     @Autowired
     private BatchStatusDAO batchStatusDAO;
 
-    @GetMapping(value = "/findall")
+    @GetMapping(value = "/findall",produces = "application/json")
     public List<BatchStatus> findAll(){
         return batchStatusDAO.findAll();
     }

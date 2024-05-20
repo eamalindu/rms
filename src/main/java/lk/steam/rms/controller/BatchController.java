@@ -27,22 +27,22 @@ public class BatchController {
         return batchDAO.findAll();
     }
 
-    @GetMapping("getActiveWeekDayBatch/{courseId}")
+    @GetMapping(value = "getActiveWeekDayBatch/{courseId}",produces = "application/json")
     public List<Batch> getActiveWeekDayBatchesByCourseId(@PathVariable Integer courseId) {
         return batchDAO.getActiveWeekDayBatchesByCourseId(courseId);
     }
 
-    @GetMapping("getActiveWeekEndBatch/{courseId}")
+    @GetMapping(value = "getActiveWeekEndBatch/{courseId}",produces = "application/json")
     public List<Batch> getActiveWeekendBatchesByCourseId(@PathVariable Integer courseId) {
         return batchDAO.getActiveWeekendBatchesByCourseId(courseId);
     }
 
-    @GetMapping("getBatchInfo/{batchCode}")
+    @GetMapping(value = "getBatchInfo/{batchCode}",produces = "application/json")
     public List<Batch> getBatchInfoByBatchCode(@PathVariable String batchCode){
         return batchDAO.getBatchInfoByBatchCode(batchCode);
     }
 
-    @GetMapping("getBatchesConductToday")
+    @GetMapping(value = "getBatchesConductToday",produces = "application/json")
     public List<Batch> getBatchesConductToday(){
         return batchDAO.getBatchesConductToday();
     }

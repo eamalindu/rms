@@ -100,12 +100,12 @@ public class PaymentController {
         return "OK";
     }
 
-    @GetMapping(value = "/getPaymentsByRegistrationID/{registrationID}")
+    @GetMapping(value = "/getPaymentsByRegistrationID/{registrationID}",produces = "application/json")
     public List<Payment> getPaymentsByRegistrationID(@PathVariable Integer registrationID){
         return paymentDAO.getPaymentsByRegistrationID(registrationID);
     }
 
-    @GetMapping(value = "/getDailyIncome")
+    @GetMapping(value = "/getDailyIncome",produces = "application/json")
     public Double getDailyIncome(){
         return paymentDAO.getDailyTotalPayment();
     }

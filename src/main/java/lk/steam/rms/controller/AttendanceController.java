@@ -28,4 +28,6 @@ public class AttendanceController {
     List<Attendance> findAll(){
         return attendanceDAO.findAll();
     }
+
+    @GetMapping(value = "/getAttendanceByBatchID/{batchID}",produces = "application/json")
 }

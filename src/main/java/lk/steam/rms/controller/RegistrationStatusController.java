@@ -18,7 +18,7 @@ public class RegistrationStatusController {
     @Autowired
     private RegistrationStatusDAO registrationStatusDAO;
 
-    @GetMapping(value = "/findall")
+    @GetMapping(value = "/findall",produces = "application/json")
     public List<RegistrationStatus> findAll(){
         return registrationStatusDAO.findAll();
     }

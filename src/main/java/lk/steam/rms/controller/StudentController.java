@@ -46,12 +46,12 @@ public class StudentController {
         return studentDAO.findAll();
     }
 
-    @GetMapping("getStudentByIdValue/{idValue}")
+    @GetMapping(value = "getStudentByIdValue/{idValue}",produces = "application/json")
     public Student getStudentByIdValue(@PathVariable String idValue) {
         return studentDAO.getStudentsByIdValue(idValue);
     }
 
-    @GetMapping("getStudentsByNicOrStudentNumberOrMobileNumber/{value}")
+    @GetMapping(value = "getStudentsByNicOrStudentNumberOrMobileNumber/{value}",produces = "application/json")
     public Student getStudentsByNicOrStudentNumberOrMobileNumber(@PathVariable String value) {
         return studentDAO.getStudentsByNicOrStudentNumberOrMobileNumber(value);
     }

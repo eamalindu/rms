@@ -87,7 +87,7 @@ public class InstallmentPlanController {
 
     }
 
-    @GetMapping(value = "/getInstallmentPlan/{registrationID}")
+    @GetMapping(value = "/getInstallmentPlan/{registrationID}",produces = "application/json")
     public List<InstallmentPlan> getInstallmentPlanByRegistrationID(@PathVariable Integer registrationID){
         return installmentPlanDAO.getInstallmentPlanByRegistrationID(registrationID);
 

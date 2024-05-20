@@ -106,21 +106,21 @@ public class RegistrationController {
         Sort sort = Sort.by(Sort.Direction.DESC,"registrationNumber");
         return registrationDAO.findAll(sort);
     }
-    @GetMapping("getRegistrations/{batchID}")
+    @GetMapping(value = "getRegistrations/{batchID}",produces = "application/json")
     public List<Registrations> getBatchInfoByBatchCode(@PathVariable Integer batchID){
         return registrationDAO.getRegistrationsByBatchID(batchID);
     }
-    @GetMapping("getRegistration/{id}")
+    @GetMapping(value = "getRegistration/{id}",produces = "application/json")
     public Registrations getRegistrationByID(@PathVariable Integer id){
         return registrationDAO.getRegistrationsByID(id);
     }
 
-    @GetMapping("getRegistrationFromBatchAndStudentNIC/{batchID}/{studentNIC}")
+    @GetMapping(value = "getRegistrationFromBatchAndStudentNIC/{batchID}/{studentNIC}",produces = "application/json")
     public Registrations getRegistrationFromBatchAndStudentNIC(@PathVariable Integer batchID,@PathVariable String studentNIC){
         return registrationDAO.getRegistrationsByBatchIDAndStudentNIC(batchID,studentNIC);
     }
 
-    @GetMapping("getRegistrationByRegistrationNumber/{registrationNumber}")
+    @GetMapping(value = "getRegistrationByRegistrationNumber/{registrationNumber}",produces = "application/json")
     public Registrations getRegistrationsByRegistrationNumber(@PathVariable String registrationNumber){
         return registrationDAO.getRegistrationsByRegistrationNumber(registrationNumber);
     }
