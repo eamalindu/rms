@@ -66,7 +66,7 @@ const searchRegistration = ()=>{
 
         }
         else{
-            showCustomModal("No Registration Found For "+searchText,"error");
+            showCustomModal("No Registration Found For <strong>"+searchText+"</strong>","error");
         }
     }
     else{
