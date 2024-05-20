@@ -178,6 +178,9 @@ const addAttendance = ()=>{
                 registrationSearchReset();
 
             }
+            else{
+                showCustomModal("Operation Failed!" + serverResponse, "error");
+            }
 
         }
         else{
