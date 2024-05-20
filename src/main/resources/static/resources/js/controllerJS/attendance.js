@@ -153,8 +153,12 @@ const searchRegistration = () => {
 
 }
 
+//creating function to reset textField and show to placeholder and hide the searchResultRegistration div
 const registrationSearchReset = () => {
+    //reset value
     registrationSearchID.value = '';
+    //hide searchResultRegistration div
     searchResultRegistration.classList.add('d-none');
+    //show placeholder
     placeholderRegistration.classList.remove('d-none')
 }
