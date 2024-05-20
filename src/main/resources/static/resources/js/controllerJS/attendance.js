@@ -66,7 +66,9 @@ const searchRegistration = ()=>{
             searchResultRegistration.classList.remove('d-none');
         }
         else{
+            searchResultRegistration.classList.add('d-none');
             showCustomModal("No Registration Found For <span class='fw-bold text-lowercase'>"+searchText+"</span>","error");
+
         }
     }
     else{
