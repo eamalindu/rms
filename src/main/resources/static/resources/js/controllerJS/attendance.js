@@ -77,3 +77,8 @@ const searchRegistration = ()=>{
 
 
 }
+
+const registrationSearchReset = ()=>{
+    registrationSearchID.value = '';
+    searchResultRegistration.classList.add('d-none');
+}
