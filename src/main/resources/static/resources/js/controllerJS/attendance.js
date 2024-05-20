@@ -56,6 +56,6 @@ const createBatchesConductingToday = (dataList, containerID) => {
 
 }
 
-const searchStudent = ()=>{
+const searchRegistration = ()=>{
 
 }
