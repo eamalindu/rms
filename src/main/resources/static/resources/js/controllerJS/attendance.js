@@ -37,7 +37,7 @@ const createBatchesConductingToday = (dataList, containerID) => {
             }
 
             //get attendance from the batch today
-            const attendanceNow = ajaxGetRequest("Attendance/getAttendanceByBatchIDForToday/"+element.id);
+            const attendanceNow = ajaxGetRequest("Attendance/getAttendanceByBatchIDForToday/" + element.id);
 
             //set innerHTML accordingly
             div.innerHTML = `<div class="w-75 ">
@@ -63,7 +63,7 @@ const createBatchesConductingToday = (dataList, containerID) => {
 }
 
 //creating function to generate batches that will conduct today
-const refreshBatchSchedulesForToday = ()=>{
+const refreshBatchSchedulesForToday = () => {
     //get the batches that conducted today using ajaxGetRequest Function and save it to batchesConductingToday variable
     const batchesConductingToday = ajaxGetRequest("Batch/getBatchesConductToday")
     //use createBatchesConductingToday to generate batch information
@@ -128,12 +128,10 @@ const searchRegistration = () => {
 
             //set the payment info
             searchResultOutstanding.innerText = "Rs. " + searchResult.balanceAmount.toLocaleString('en-US', {
-                maximumFractionDigits: 2,
-                minimumFractionDigits: 2
+                maximumFractionDigits: 2, minimumFractionDigits: 2
             });
             searchResultDue.innerText = "Rs. " + searchResult.balanceAmount.toLocaleString('en-US', {
-                maximumFractionDigits: 2,
-                minimumFractionDigits: 2
+                maximumFractionDigits: 2, minimumFractionDigits: 2
             });
 
             if (searchResult.isFullPayment) {
@@ -173,11 +171,11 @@ const registrationSearchReset = () => {
 }
 
 //creating a function to submit new attendance
-const addAttendance = ()=>{
+const addAttendance = () => {
     //get user confirmation
-    showCustomConfirm("You are about to mark attendance for registration number : <span class='text-steam-green'>"+searchResult.registrationNumber+ "</span><br>in the <span class='text-steam-green'>"+searchResult.batchID.batchCode+ "</span> batch<br><br>Are You Sure?",function (result){
+    showCustomConfirm("You are about to mark attendance for registration number : <span class='text-steam-green'>" + searchResult.registrationNumber + "</span><br>in the <span class='text-steam-green'>" + searchResult.batchID.batchCode + "</span> batch<br><br>Are You Sure?", function (result) {
         //if user click yes
-        if(result){
+        if (result) {
             //create a new object
             newAttedance = {};
             //set values for the newAttendance object
@@ -185,9 +183,9 @@ const addAttendance = ()=>{
             newAttedance.batchID = searchResult.batchID.id;
 
             //using ajaxHttpRequest to send the data to backend and save the response from the server to serverResponse variable
-            let serverResponse = ajaxHttpRequest("/Attendance","POST",newAttedance);
+            let serverResponse = ajaxHttpRequest("/Attendance", "POST", newAttedance);
             //if the response is "OK"
-            if(serverResponse==="OK"){
+            if (serverResponse === "OK") {
                 //this means data is saved successfully to the database
                 //show user success msg
                 showCustomModal("Attendance Successfully Saved!", "success");
@@ -196,15 +194,13 @@ const addAttendance = ()=>{
                 //use refreshBatchSchedulesForToday refresh batches
                 refreshBatchSchedulesForToday();
 
-            }
-            else{
+            } else {
                 //this means data isn't saved successfully to the database
                 //show user msg with the reason
                 showCustomModal("Operation Failed!<br/>" + serverResponse, "error");
             }
 
-        }
-        else{
+        } else {
             //user click no
             //show the msg the operation is cancelled
             showCustomModal("Operation Cancelled!", "info");
