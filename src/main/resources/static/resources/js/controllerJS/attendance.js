@@ -70,6 +70,22 @@ const searchRegistration = ()=>{
         if(searchResult!==''){
             searchResultRegistration.classList.remove('d-none');
             placeholderRegistration.classList.add('d-none')
+
+            //set the details
+            searchResultStudentName.innerText = searchResult.studentID.title +" "+searchResult.studentID.nameWithInitials;
+            searchResultRegistrationNumber.innerText = searchResult.registrationNumber;
+
+            searchResultCourse.innerText = searchResult.courseID.code;
+            searchResultBatch.innerText = searchResult.batchID.batchCode;
+
+
+            searchResultOutstanding.innerText = searchResult.balanceAmount;
+            searchResultDue.innerText = searchResult.balanceAmount;
+
+            if(searchResult.isFullPayment){ searchResultPaymentType.innerText = "One Time Payment";}
+            else{searchResultPaymentType.innerText = "Installments";}
+
+
         }
         else{
             searchResultRegistration.classList.add('d-none');
