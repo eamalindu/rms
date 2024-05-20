@@ -16,6 +16,8 @@ const createBatchesConductingToday = (dataList, containerID) => {
     containerID.innerHTML = '';
     //check the dataList is empty or not
     if (dataList.length > 0) {
+        //remove the placeholder because the dataList is not empty
+        placeholderBatches.classList.remove('d-none');
         //This means dataList is not empty
         //using forEach function to loop over the contents of the dataList array
         dataList.forEach((element, index) => {
@@ -52,7 +54,10 @@ const createBatchesConductingToday = (dataList, containerID) => {
         })
     } else {
         //This means dataList is empty
+        //display the placeholder
+        placeholderBatches.classList.add('d-none');
     }
+
 
 }
 
