@@ -89,8 +89,8 @@ const searchRegistration = ()=>{
                 }
             }
 
-            searchResultLocation.innerText = currentDay.lectureRoomID.name +", "+currentDay.lectureRoomID.floor;
-            searchResultSchedule.innerText = currentDay.startTime +" to "+ currentDay.endTime;
+            searchResultLocation.innerText = correctSchedule.lectureRoomID.name +", "+correctSchedule.lectureRoomID.floor;
+            searchResultSchedule.innerText = correctSchedule.startTime.slice(0,-3) +" to "+ correctSchedule.endTime.slice(0,-3);
 
             searchResultOutstanding.innerText = "Rs. "+searchResult.balanceAmount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
             searchResultDue.innerText = "Rs. "+searchResult.balanceAmount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
