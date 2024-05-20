@@ -34,6 +34,11 @@ public class AttendanceController {
         return attendanceDAO.getAttendanceByBatchID(batchID);
     }
 
+    @GetMapping(value = "/getAttendanceByBatchIDForToday/{batchID}",produces = "application/json")
+    List<Attendance> getAttendanceByBatchIDForToday(@PathVariable Integer batchID){
+        return attendanceDAO.getAttendanceByBatchIDForToday(batchID);
+    }
+
     @GetMapping(value = "/getAttendanceByBatchIDAndRegistrationID/{batchID}/{registrationID}",produces = "application/json")
     Attendance getAttendanceByBatchIDAndRegistrationIDAndDate(@PathVariable Integer batchID, @PathVariable Integer registrationID){
         return attendanceDAO.getAttendanceByBatchIDAndRegistrationID(batchID,registrationID);
