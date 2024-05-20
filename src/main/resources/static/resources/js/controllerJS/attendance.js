@@ -70,7 +70,7 @@ const searchRegistration = () => {
     if (searchText !== '') {
         //this means searchText is not empty
         //using ajaxGetRequest to send a GET request and get the particluar registration and save it to the searchResult variable
-        let searchResult = ajaxGetRequest("Registration/getRegistrationHaveClassToday/" + searchText)
+        searchResult = ajaxGetRequest("Registration/getRegistrationHaveClassToday/" + searchText)
 
         //check searchResult is empty or not
         if (searchResult !== '') {
@@ -162,4 +162,8 @@ const registrationSearchReset = () => {
     searchResultRegistration.classList.add('d-none');
     //show placeholder
     placeholderRegistration.classList.remove('d-none')
+}
+
+const addAttendance = ()=>{
+
 }
