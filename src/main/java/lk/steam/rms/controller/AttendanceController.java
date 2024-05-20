@@ -41,6 +41,11 @@ public class AttendanceController {
 
     @PostMapping()
     public String saveNewAttendance(@RequestBody Attendance attendance){
+
+        Attendance exsitAttendance = attendanceDAO.getAttendanceByBatchIDAndRegistrationID(attendance.getBatchID(),attendance.getRegistrationID().getId());
+        if(exsitAttendance!=null){
+            return "Attendance Already Marked!";
+        }
         try {
             attendance.setTimeStamp(LocalDateTime.now());
             attendanceDAO.save(attendance);
