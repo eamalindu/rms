@@ -28,6 +28,8 @@ public class Attendance {
     @NotNull
     private LocalDateTime timeStamp;
 
-
+    @ManyToOne
+    @JoinColumn(name = "registration_id",referencedColumnName = "id")
+    private Registrations registrationID;
 
 }
