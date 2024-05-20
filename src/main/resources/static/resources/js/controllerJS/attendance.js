@@ -78,6 +78,16 @@ const searchRegistration = ()=>{
             searchResultCourse.innerText = searchResult.courseID.name;
             searchResultBatch.innerText = searchResult.batchID.batchCode;
 
+            var currentDay = new Date().getDay() + 1;
+            //loop over batchHasDayList because it can contain one or more timetable
+            for (const day of searchResult.batchID.batchHasDayList) {
+                //if the current day is equal to a one in the batchHasDayList save it
+                if (day.dayID.id === currentDay) {
+                    correctSchedule = day;
+                    //break the loop
+                    break;
+                }
+            }
 
             searchResultOutstanding.innerText = "Rs. "+searchResult.balanceAmount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
             searchResultDue.innerText = "Rs. "+searchResult.balanceAmount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
