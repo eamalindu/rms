@@ -61,6 +61,13 @@ const searchRegistration = ()=>{
     const searchText = registrationSearchID.value;
     if (searchText !== '') {
        let searchResult = ajaxGetRequest("Registration/getRegistrationByRegistrationNumber/" +searchText)
+
+        if(searchResult!==''){
+
+        }
+        else{
+            showCustomModal("No Registration Found For "+searchResult,"error");
+        }
     }
     else{
         showCustomModal("Registration Number is required for a search", "warning");
