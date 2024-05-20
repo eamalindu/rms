@@ -58,4 +58,13 @@ const createBatchesConductingToday = (dataList, containerID) => {
 
 const searchRegistration = ()=>{
 
+    const searchText = registrationSearchID.value;
+    if (searchText !== '') {
+       let searchResult = ajaxGetRequest("Registration/getRegistrationByRegistrationNumber/" + registrationNumber)
+    }
+    else{
+        showCustomModal("Registration Number is required for a search", "warning");
+    }
+
+
 }
