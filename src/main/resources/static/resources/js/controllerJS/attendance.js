@@ -63,7 +63,7 @@ const searchRegistration = ()=>{
        let searchResult = ajaxGetRequest("Registration/getRegistrationByRegistrationNumber/" +searchText)
 
         if(searchResult!==''){
-
+            searchResultRegistration.classList.remove('d-none');
         }
         else{
             showCustomModal("No Registration Found For <span class='fw-bold text-lowercase'>"+searchText+"</span>","error");
