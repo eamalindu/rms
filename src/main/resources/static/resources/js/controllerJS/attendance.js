@@ -89,6 +89,23 @@ const searchRegistration = ()=>{
                 }
             }
 
+            if (searchResult.registrationStatusID.name === "Active") {
+                searchResultStatus.innerHTML = '<span class="badge rounded-0 w-25" style="background: #3FB618">Active</span>';
+            } else if (searchResult.registrationStatusID.name === "Suspended") {
+                searchResultStatus.innerHTML = '<span class="badge rounded-0 w-25" style="background: #ea8a1e">Suspended</span>';
+            } else if (searchResult.registrationStatusID.name === "Cancelled") {
+                searchResultStatus.innerHTML = '<span class="badge rounded-0 w-25" style="background: #ea2f1e">Cancelled</span>';
+            }
+            else if (searchResult.registrationStatusID.name === "Pending"){
+                searchResultStatus.innerHTML = '<span class="badge rounded-0 w-25" style="background: #616161">Pending</span>';
+            }
+            else if (searchResult.registrationStatusID.name === "In Review"){
+                searchResultStatus.innerHTML = '<span class="badge rounded-0 w-25" style="background: #d8b73a">In Review</span>';
+            }
+            else{
+                searchResultStatus.innerHTML = '<span class="badge rounded-0 w-25" style="background: #000">Deleted</span>';
+            }
+
             searchResultLocation.innerText = correctSchedule.lectureRoomID.name +", "+correctSchedule.lectureRoomID.floor;
             searchResultSchedule.innerText = correctSchedule.startTime.slice(0,-3) +" to "+ correctSchedule.endTime.slice(0,-3);
 
