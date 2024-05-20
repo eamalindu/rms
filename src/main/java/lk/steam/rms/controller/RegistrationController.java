@@ -125,6 +125,11 @@ public class RegistrationController {
         return registrationDAO.getRegistrationsByRegistrationNumber(registrationNumber);
     }
 
+    @GetMapping(value = "getRegistrationHaveClassToday/{registrationNumber}",produces = "application/json")
+    public Registrations getRegistrationHaveClassToday(@PathVariable String registrationNumber){
+        return registrationDAO.getRegistrationHaveClassToday(registrationNumber);
+    }
+
 
 
     @PutMapping
