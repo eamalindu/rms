@@ -179,7 +179,7 @@ const addAttendance = ()=>{
 
             }
             else{
-                showCustomModal("Operation Failed!" + serverResponse, "error");
+                showCustomModal("Operation Failed!<br/>" + serverResponse, "error");
             }
 
         }
