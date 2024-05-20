@@ -12,6 +12,9 @@ public interface AttendanceDAO extends JpaRepository<Attendance,Integer> {
     @Query(value = "SELECT a from Attendance a where a.batchID=?1")
     List<Attendance> getAttendanceByBatchID(Integer batchID);
 
+    @Query(value = "SELECT a from Attendance a where a.batchID=?1 and date(a.timeStamp)=curdate()")
+    List<Attendance> getAttendanceByBatchIDForToday(Integer batchID);
+
     @Query(value = "SELECT * from attendance where batchid=?1 and registration_id=?2 and date(timestamp)=curdate()",nativeQuery = true)
     Attendance getAttendanceByBatchIDAndRegistrationID(Integer batchID, Integer registrationID);
 }
