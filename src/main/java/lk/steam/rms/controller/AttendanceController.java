@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -31,6 +32,11 @@ public class AttendanceController {
     @GetMapping(value = "/getAttendanceByBatchID/{batchID}",produces = "application/json")
     List<Attendance> getAttendanceByBatchID(@PathVariable Integer batchID){
         return attendanceDAO.getAttendanceByBatchID(batchID);
+    }
+
+    @GetMapping(value = "/getAttendanceByBatchIDAndRegistrationIDAndDate/{batchID}/{registrationID}/{currentDate}",produces = "application/json")
+    Attendance getAttendanceByBatchIDAndRegistrationIDAndDate(@PathVariable Integer batchID, Integer registrationID, LocalDate currentDate){
+        return attendanceDAO.getAttendanceByBatchIDAndRegistrationIDAndDate(batchID,registrationID,currentDate);
     }
 
     @PostMapping()
