@@ -205,6 +205,8 @@ const addAttendance = ()=>{
 
         }
         else{
+            //user click no
+            //show the msg the operation is cancelled
             showCustomModal("Operation Cancelled!", "info");
         }
     });
