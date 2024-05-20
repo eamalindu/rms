@@ -24,7 +24,7 @@ public class AttendanceController {
         return attendanceView;
     }
 
-    @GetMapping("/findall")
+    @GetMapping(value = "/findall",produces = "application/json")
     List<Attendance> findAll(){
         return attendanceDAO.findAll();
     }
