@@ -61,18 +61,18 @@ const createBatchesConductingToday = (dataList, containerID) => {
 
 }
 
-const searchRegistration = ()=>{
+const searchRegistration = () => {
 
     const searchText = registrationSearchID.value;
     if (searchText !== '') {
-       let searchResult = ajaxGetRequest("Registration/getRegistrationHaveClassToday/" +searchText)
+        let searchResult = ajaxGetRequest("Registration/getRegistrationHaveClassToday/" + searchText)
 
-        if(searchResult!==''){
+        if (searchResult !== '') {
             searchResultRegistration.classList.remove('d-none');
             placeholderRegistration.classList.add('d-none')
 
             //set the details
-            searchResultStudentName.innerText = searchResult.studentID.title +" "+searchResult.studentID.nameWithInitials;
+            searchResultStudentName.innerText = searchResult.studentID.title + " " + searchResult.studentID.nameWithInitials;
             searchResultRegistrationNumber.innerText = searchResult.registrationNumber;
 
             searchResultCourse.innerText = searchResult.courseID.name;
@@ -95,43 +95,47 @@ const searchRegistration = ()=>{
                 searchResultStatus.innerHTML = '<span class="badge rounded-0 w-25" style="background: #ea8a1e">Suspended</span>';
             } else if (searchResult.registrationStatusID.name === "Cancelled") {
                 searchResultStatus.innerHTML = '<span class="badge rounded-0 w-25" style="background: #ea2f1e">Cancelled</span>';
-            }
-            else if (searchResult.registrationStatusID.name === "Pending"){
+            } else if (searchResult.registrationStatusID.name === "Pending") {
                 searchResultStatus.innerHTML = '<span class="badge rounded-0 w-25" style="background: #616161">Pending</span>';
-            }
-            else if (searchResult.registrationStatusID.name === "In Review"){
+            } else if (searchResult.registrationStatusID.name === "In Review") {
                 searchResultStatus.innerHTML = '<span class="badge rounded-0 w-25" style="background: #d8b73a">In Review</span>';
-            }
-            else{
+            } else {
                 searchResultStatus.innerHTML = '<span class="badge rounded-0 w-25" style="background: #000">Deleted</span>';
             }
 
-            searchResultLocation.innerText = correctSchedule.lectureRoomID.name +", "+correctSchedule.lectureRoomID.floor;
-            searchResultSchedule.innerText = correctSchedule.startTime.slice(0,-3) +" to "+ correctSchedule.endTime.slice(0,-3);
+            searchResultLocation.innerText = correctSchedule.lectureRoomID.name + ", " + correctSchedule.lectureRoomID.floor;
+            searchResultSchedule.innerText = correctSchedule.startTime.slice(0, -3) + " to " + correctSchedule.endTime.slice(0, -3);
 
-            searchResultOutstanding.innerText = "Rs. "+searchResult.balanceAmount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
-            searchResultDue.innerText = "Rs. "+searchResult.balanceAmount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
+            searchResultOutstanding.innerText = "Rs. " + searchResult.balanceAmount.toLocaleString('en-US', {
+                maximumFractionDigits: 2,
+                minimumFractionDigits: 2
+            });
+            searchResultDue.innerText = "Rs. " + searchResult.balanceAmount.toLocaleString('en-US', {
+                maximumFractionDigits: 2,
+                minimumFractionDigits: 2
+            });
 
-            if(searchResult.isFullPayment){ searchResultPaymentType.innerText = "One Time Payment";}
-            else{searchResultPaymentType.innerText = "Installments";}
+            if (searchResult.isFullPayment) {
+                searchResultPaymentType.innerText = "One Time Payment";
+            } else {
+                searchResultPaymentType.innerText = "Installments";
+            }
 
 
-        }
-        else{
+        } else {
             searchResultRegistration.classList.add('d-none');
             placeholderRegistration.classList.remove('d-none')
-            showCustomModal("No classes available today <br> for the registration : <span class='text-lowercase text-steam-green'>"+searchText+"</span>","error");
+            showCustomModal("No classes available today <br> for the registration : <span class='text-lowercase text-steam-green'>" + searchText + "</span>", "error");
 
         }
-    }
-    else{
+    } else {
         showCustomModal("Registration Number is required for a search", "warning");
     }
 
 
 }
 
-const registrationSearchReset = ()=>{
+const registrationSearchReset = () => {
     registrationSearchID.value = '';
     searchResultRegistration.classList.add('d-none');
     placeholderRegistration.classList.remove('d-none')
