@@ -79,8 +79,8 @@ const searchRegistration = ()=>{
             searchResultBatch.innerText = searchResult.batchID.batchCode;
 
 
-            searchResultOutstanding.innerText = searchResult.balanceAmount;
-            searchResultDue.innerText = searchResult.balanceAmount;
+            searchResultOutstanding.innerText = "Rs. "+searchResult.balanceAmount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
+            searchResultDue.innerText = "Rs. "+searchResult.balanceAmount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
 
             if(searchResult.isFullPayment){ searchResultPaymentType.innerText = "One Time Payment";}
             else{searchResultPaymentType.innerText = "Installments";}
