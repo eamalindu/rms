@@ -166,7 +166,12 @@ const registrationSearchReset = () => {
 
 const addAttendance = ()=>{
     showCustomConfirm("You are about to mark attendance for registration number : <span class='text-steam-green'>"+searchResult.registrationNumber+ "</span><br>in the <span class='text-steam-green'>"+searchResult.batchID.batchCode+ "</span> batch<br><br>Are You Sure?",function (result){
+        if(result){
 
-    })
+        }
+        else{
+            showCustomModal("Operation Cancelled!", "info");
+        }
+    });
 
 }
