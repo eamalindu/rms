@@ -172,19 +172,29 @@ const registrationSearchReset = () => {
     placeholderRegistration.classList.remove('d-none')
 }
 
+//creating a function to submit new attendance
 const addAttendance = ()=>{
+    //get user confirmation
     showCustomConfirm("You are about to mark attendance for registration number : <span class='text-steam-green'>"+searchResult.registrationNumber+ "</span><br>in the <span class='text-steam-green'>"+searchResult.batchID.batchCode+ "</span> batch<br><br>Are You Sure?",function (result){
+        //if user click yes
         if(result){
+            //create a new object
             newAttedance = {};
+            //set values for the newAttendance object
             newAttedance.registrationID = searchResult;
             newAttedance.batchID = searchResult.batchID.id;
-            console.log(newAttedance);
 
+            //using ajaxHttpRequest to send the data to backend and save the response from the server to serverResponse variable
             let serverResponse = ajaxHttpRequest("/Attendance","POST",newAttedance);
+            //if the response is "OK"
             if(serverResponse==="OK"){
+                //this means data is saved successfully to the database
+                //show user success msg
                 showCustomModal("Attendance Successfully Saved!", "success");
+                //use registrationSearchReset to reset searchText field
                 registrationSearchReset();
-                refreshBatchSchedule();
+                //use refreshBatchSchedulesForToday refresh batches
+                refreshBatchSchedulesForToday();
 
             }
             else{
