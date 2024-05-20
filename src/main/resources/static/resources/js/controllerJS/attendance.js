@@ -75,7 +75,7 @@ const searchRegistration = ()=>{
             searchResultStudentName.innerText = searchResult.studentID.title +" "+searchResult.studentID.nameWithInitials;
             searchResultRegistrationNumber.innerText = searchResult.registrationNumber;
 
-            searchResultCourse.innerText = searchResult.courseID.code;
+            searchResultCourse.innerText = searchResult.courseID.name;
             searchResultBatch.innerText = searchResult.batchID.batchCode;
 
 
