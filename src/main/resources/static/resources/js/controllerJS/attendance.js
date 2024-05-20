@@ -1,5 +1,4 @@
 window.addEventListener("load", function () {
-
     //get the batches that conducted today using ajaxGetRequest Function and save it to batchesConductingToday variable
     const batchesConductingToday = ajaxGetRequest("Batch/getBatchesConductToday")
     //use createBatchesConductingToday to generate batch information
