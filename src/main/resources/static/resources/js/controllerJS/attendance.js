@@ -1,4 +1,5 @@
 window.addEventListener("load", function () {
+    //using refreshBatchSchedulesForToday function
     refreshBatchSchedulesForToday();
 });
 
