@@ -61,17 +61,25 @@ const createBatchesConductingToday = (dataList, containerID) => {
 
 }
 
+//creating function to search registration when a registration number is typed in to the text field
 const searchRegistration = () => {
-
+    //save the text field current value to searchText variable
     const searchText = registrationSearchID.value;
+    //check the searchText is empty or not
     if (searchText !== '') {
+        //this means searchText is not empty
+        //using ajaxGetRequest to send a GET request and get the particluar registration and save it to the searchResult variable
         let searchResult = ajaxGetRequest("Registration/getRegistrationHaveClassToday/" + searchText)
 
+        //check searchResult is empty or not
         if (searchResult !== '') {
+            //this means searchResult is not empty
+            //show to the searchResultRegistration div
             searchResultRegistration.classList.remove('d-none');
+            //remove the placeholder div
             placeholderRegistration.classList.add('d-none')
 
-            //set the details
+            //set the details for the searchResultRegistration div
             searchResultStudentName.innerText = searchResult.studentID.title + " " + searchResult.studentID.nameWithInitials;
             searchResultRegistrationNumber.innerText = searchResult.registrationNumber;
 
