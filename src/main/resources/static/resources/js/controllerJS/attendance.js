@@ -198,6 +198,8 @@ const addAttendance = ()=>{
 
             }
             else{
+                //this means data isn't saved successfully to the database
+                //show user msg with the reason
                 showCustomModal("Operation Failed!<br/>" + serverResponse, "error");
             }
 
