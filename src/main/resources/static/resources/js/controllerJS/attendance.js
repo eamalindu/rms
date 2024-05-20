@@ -39,6 +39,9 @@ const createBatchesConductingToday = (dataList, containerID) => {
                 }
             }
 
+            //get attendance from the batch today
+            const attendanceNow = ajaxGetRequest("Attendance/getAttendanceByBatchIDForToday/"+element.id);
+
             //set innerHTML accordingly
             div.innerHTML = `<div class="w-75 ">
                                     <span class="text-muted small ">Course | Batch | Location | Schdule</span>
@@ -46,7 +49,7 @@ const createBatchesConductingToday = (dataList, containerID) => {
                                 </div>
                                 <div class="w-25 text-end">
                                     <span class="text-muted small">Attendance</span>
-                                    <h5 class="mb-0">10</h5>
+                                    <h5 class="mb-0">${attendanceNow.length}</h5>
                                 </div>`;
 
             //attach the div for the parent container
