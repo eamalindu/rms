@@ -99,7 +99,20 @@ const generateCourseCode = ()=>{
 }
 
 const resetModuleForm = ()=>{
+    //remove validation class from the chosen select element
+    $("#courseExistModules_chosen .chosen-single").removeClass('select-validated');
+    //remove boostrap validation classes from the select elements
+    courseExistModules.classList.remove('is-valid');
+
     module = {}
+
+    //reset the frmNewBatch form using reset function
+    frmNewModule.reset();
+
+    //set default option for chosen select elements
+    setTimeout(function () {
+        $('#courseExistModules').val('').trigger('chosen:updated');
+    }, 0);
 
     const lessons = ajaxGetRequest("/Lesson/findall")
     fillSelectOptions(courseExistModules, ' ', lessons, 'name');
