@@ -142,6 +142,6 @@ const addToArray = ()=>{
     }
     else{
         // Handle duplicate entry
-        showCustomModal("Duplicate Found!<br><span class='text-steam-green'>"+currentLesson.name+" </span>Already Added","error");
+        showCustomModal("Duplicate Found!<br><span class='text-steam-green'>"+currentLesson.name+" </span>Module is Already Added","error");
     }
 }
