@@ -156,3 +156,11 @@ const displayLessons = ()=>{
     fillDataIntoTableWithDelete(tblModule,newCourse.lessonList,displayPropertyListForModule,removeRecord)
 
 }
+
+const removeRecord = (ob)=>{
+    let extIndex = newCourse.lessonList.map(item=>item.id).indexOf(ob.id);
+    if(extIndex!=-1){
+        newCourse.lessonList.splice(extIndex,1)
+        displayLessons();
+    }
+}
