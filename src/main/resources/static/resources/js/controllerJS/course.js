@@ -46,6 +46,9 @@ const resetCourseForm = ()=>{
     newCourse = {};
     newCourse.lessonList = [];
 
+    //hide timetable table
+    tblModule.classList.add('d-none');
+
     frmNewCourse.reset();
 
     //set default option chosen
