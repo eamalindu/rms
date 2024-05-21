@@ -353,7 +353,7 @@
      tabindex="-1">
     <div class="offcanvas-header bg-custom-white">
         <div>
-            <button class="btn btn-sm bg-secondary text-white rounded-0" type="button" onclick=""><i
+            <button class="btn btn-sm bg-secondary text-white rounded-0" type="button" onclick="resetModuleForm()"><i
                     class="fas fa-refresh"></i>
             </button>
         </div>
@@ -363,10 +363,10 @@
         <form id="frmNewTimeTable" onsubmit="return false">
             <div class="mb-2">
                 <div class="form-label">
-                    <label class="fw-bold small required" for="batchClassDay">Class Day(s)</label>
+                    <label class="fw-bold small required" for="courseExistModules">Existing Module(s)</label>
                 </div>
-                <select class="form-select rounded-0" data-placeholder="Please Select a Day"
-                        id="batchClassDay" onchange="selectDynamicValueValidator(this,'','batchHasDay','dayID')"
+                <select class="form-select rounded-0" data-placeholder="Please Select a Module"
+                        id="courseExistModules" onchange="selectDynamicValueValidator(this,'','module','dayID')"
                         required>
                 </select>
                 <div class="valid-feedback">Value Accepted</div>
