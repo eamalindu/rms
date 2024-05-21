@@ -101,6 +101,8 @@ const generateCourseCode = ()=>{
 const resetModuleForm = ()=>{
     module = {}
 
+    const lessons = ajaxGetRequest("/Lesson/findall")
+    fillSelectOptions(courseExistModules, ' ', lessons, 'name');
 
     $('#courseExistModules').chosen({width: '100%'});
 }
