@@ -123,7 +123,25 @@ const resetModuleForm = ()=>{
 
 const addToArray = ()=>{
     currentLesson = JSON.parse(courseExistModules.value)
-    newCourse.lessonList.push(currentLesson)
-    console.log(newCourse.lessonList)
-    resetModuleForm();
+    let isDuplicate = false;
+
+    // Iterate over each element in the array
+    for (let i = 0; i <  newCourse.lessonList.length; i++) {
+        const existingLesson =  newCourse.lessonList[i];
+        // Compare each property
+        if (existingLesson.id === currentLesson.id) {
+            // If a match is found, set isDuplicate to true and break out of the loop
+            isDuplicate = true;
+            break;
+        }
+    }
+    if (!isDuplicate) {
+        newCourse.lessonList.push(currentLesson)
+        console.log(newCourse.lessonList)
+        resetModuleForm();
+    }
+    else{
+        // Handle duplicate entry
+        console.log("Duplicate entry found. Not added to the array.");
+    }
 }
