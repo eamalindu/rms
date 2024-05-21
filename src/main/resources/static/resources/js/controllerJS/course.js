@@ -44,6 +44,7 @@ const resetCourseForm = ()=>{
     imgProfile.classList.remove('bg-success');
 
     newCourse = {};
+    newCourse.lessonList = [];
 
     frmNewCourse.reset();
 
@@ -118,4 +119,10 @@ const resetModuleForm = ()=>{
     fillSelectOptions(courseExistModules, ' ', lessons, 'name');
 
     $('#courseExistModules').chosen({width: '83%'});
+}
+
+const addToArray = ()=>{
+    currentLesson = JSON.parse(courseExistModules.value)
+    newCourse.lessonList.push(currentLesson)
+    console.log(newCourse.lessonList)
 }
