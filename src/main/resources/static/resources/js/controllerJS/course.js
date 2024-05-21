@@ -9,6 +9,9 @@ window.addEventListener("load", () => {
     $("#courseRequirement").chosen().change(function () {
         $("#courseRequirement_chosen .chosen-single").addClass('select-validated');
     });
+    $("#courseExistModules").chosen().change(function () {
+        $("#courseExistModules_chosen .chosen-single").addClass('select-validated');
+    });
 
 });
 
