@@ -117,5 +117,5 @@ const resetModuleForm = ()=>{
     const lessons = ajaxGetRequest("/Lesson/findall")
     fillSelectOptions(courseExistModules, ' ', lessons, 'name');
 
-    $('#courseExistModules').chosen({width: '100%'});
+    $('#courseExistModules').chosen({width: '83%'});
 }
