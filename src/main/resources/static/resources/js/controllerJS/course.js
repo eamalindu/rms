@@ -145,3 +145,7 @@ const addToArray = ()=>{
         showCustomModal("Duplicate Found!<br><span class='text-steam-green'>"+currentLesson.name+" </span>Module is Already Added","error");
     }
 }
+
+const displayLessons = ()=>{
+
+}
