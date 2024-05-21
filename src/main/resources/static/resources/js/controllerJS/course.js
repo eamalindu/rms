@@ -142,6 +142,6 @@ const addToArray = ()=>{
     }
     else{
         // Handle duplicate entry
-        console.log("Duplicate entry found. Not added to the array.");
+        showCustomModal("Duplicate Found!<br><span class='text-steam-green'>"+currentLesson.name+" </span>Already Added","error");
     }
 }
