@@ -60,6 +60,8 @@ const resetCourseForm = ()=>{
 
     //initialize the 3rd party libraries (chosen)
     $('#courseRequirement').chosen({width: '100%'});
+
+    resetModuleForm();
 }
 
 const rowView = ()=>{
@@ -91,4 +93,11 @@ const generateCourseCode = ()=>{
     })
     courseCode.value = code;
     inputTextValidator(courseCode,'^[A-Z][a-z][A-Z]{1,}$','newCourse','code')
+}
+
+const resetModuleForm = ()=>{
+    module = {}
+
+
+    $('#courseExistModules').chosen({width: '100%'});
 }
