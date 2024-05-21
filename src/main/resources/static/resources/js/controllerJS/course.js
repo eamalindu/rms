@@ -125,4 +125,5 @@ const addToArray = ()=>{
     currentLesson = JSON.parse(courseExistModules.value)
     newCourse.lessonList.push(currentLesson)
     console.log(newCourse.lessonList)
+    resetModuleForm();
 }
