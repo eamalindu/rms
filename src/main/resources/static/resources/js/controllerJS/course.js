@@ -147,5 +147,12 @@ const addToArray = ()=>{
 }
 
 const displayLessons = ()=>{
+    tblModule.classList.remove('d-none');
+    let moduleTableBody = tblModule.querySelector('tbody'); // Select the tbody element
+    moduleTableBody.innerHTML = '';
+    let displayPropertyListForModule =[
+        {property: 'name', dataType: 'text'}
+    ];
+    fillDataIntoTableWithDelete(tblModule,newCourse.lessonList,displayPropertyListForModule,removeRecord)
 
 }
