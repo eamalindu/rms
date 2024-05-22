@@ -3,9 +3,7 @@ package lk.steam.rms.controller;
 import lk.steam.rms.dao.CourseDAO;
 import lk.steam.rms.entity.Course;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -27,6 +25,14 @@ public class CourseController {
         ModelAndView courseView = new ModelAndView();
         courseView.setViewName("course.html");
         return courseView;
+    }
+
+    @PostMapping()
+    public String saveNewCourse(@RequestBody Course course){
+        course.setStatus(true);
+        courseDAO.save(course);
+        return  "OK";
+
     }
 
 }

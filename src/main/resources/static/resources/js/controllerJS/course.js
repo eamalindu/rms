@@ -179,3 +179,9 @@ const removeRecord = (ob)=>{
         displayLessons();
     }
 }
+
+
+const newCourseSubmit = ()=>{
+    let serverResponse =  ajaxHttpRequest("/Course","POST",newCourse);
+    console.log(serverResponse)
+}
