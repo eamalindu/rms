@@ -393,7 +393,7 @@
 <div aria-hidden="true" aria-labelledby="staticBackdropLabel" class="modal fade"
      data-bs-backdrop="static" data-bs-keyboard="false" id="modalModule"
      tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered rounded-0">
+    <div class="modal-dialog modal-dialog-centered rounded-0" style="width: 400px!important;">
         <div class="modal-content rounded-0">
             <div class="modal-header bg-custom-white">
                 <h5 class="modal-title" id="staticBackdropLabel" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Add New Module</h5>
@@ -422,7 +422,29 @@
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Code</div>
                     </div>
-                    <button class="btn btn-success bg-steam-green mx-auto rounded-0" type="button">Confirm</button>
+                    <div class="mb-4">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="batchWeekday">Exam Avialable</label>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="text-center">
+                                <div class="d-flex align-items-center justify-content-center mx-auto bg-success text-white" id="leftWeekday" style="border-radius: 50%;height: 40px;width: 40px;background:#ddd">
+                                    <i class="fa-solid fa-thumbs-up"></i>
+                                </div>
+                                <span class="text-muted small">Yes</span>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" id="batchWeekday" onchange="checkBoxValidator(this, leftWeekday, rightWeekday, 'newBatch', 'isWeekday', false, true);" role="switch" style="scale: 1.5;" type="checkbox">
+                            </div>
+                            <div class="text-center">
+                                <div class="d-flex align-items-center justify-content-center mx-auto" id="rightWeekday" style="border-radius: 50%;height: 40px;width: 40px;background:#ddd">
+                                    <i class="fa-solid fa-thumbs-down"></i>
+                                </div>
+                                <span class="text-muted small">No</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-success bg-steam-green mx-auto d-block rounded-0" type="button">Confirm</button>
                 </form>
             </div>
         </div>
