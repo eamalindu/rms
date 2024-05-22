@@ -405,7 +405,7 @@
                 <form id="frmAddNewModule">
                     <div class="mb-2">
                         <div class="form-label">
-                            <label class="fw-bold small required" for="courseExistModules">Name</label>
+                            <label class="fw-bold small required" for="moduleName">Name</label>
                         </div>
                         <input class="form-control rounded-0 newModuleInputs" id="moduleName" onkeyup=""
                                required>
@@ -415,7 +415,7 @@
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
-                            <label class="fw-bold small required" for="courseExistModules">Code</label>
+                            <label class="fw-bold small required" for="moduleCode">Code</label>
                         </div>
                         <input class="form-control rounded-0 newModuleInputs" id="moduleCode" onkeyup=""
                                required>
@@ -424,7 +424,7 @@
                     </div>
                     <div class="mb-4">
                         <div class="form-label">
-                            <label class="fw-bold small required" for="batchWeekday">Exam Avialable</label>
+                            <label class="fw-bold small required" for="moduleExam">Exam Available</label>
                         </div>
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="text-center">
@@ -434,7 +434,7 @@
                                 <span class="text-muted small">Yes</span>
                             </div>
                             <div class="form-check form-switch">
-                                <input class="form-check-input" id="batchWeekday" onchange="checkBoxValidator(this, leftWeekday, rightWeekday, 'newBatch', 'isWeekday', false, true);" role="switch" style="scale: 1.7;" type="checkbox">
+                                <input class="form-check-input" id="moduleExam" onchange="checkBoxValidator(this, leftWeekday, rightWeekday, 'newLesson', 'examAvailable', false, true);" role="switch" style="scale: 1.7;" type="checkbox">
                             </div>
                             <div class="text-center">
                                 <div class="d-flex align-items-center justify-content-center mx-auto" id="rightWeekday" style="border-radius: 50%;height: 40px;width: 40px;background:#ddd">
