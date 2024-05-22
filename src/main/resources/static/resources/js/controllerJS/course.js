@@ -139,30 +139,31 @@ const addToArray = ()=>{
         }
     }
     if (!isDuplicate) {
-        newCourse.lessonList.push(currentLesson)
-        console.log(newCourse.lessonList)
-        resetModuleForm();
+        showCustomConfirm("You are about to add the Module<br/><span class='text-steam-green'>"+currentLesson.name+"</span><br>Are You Sure?", function (result) {
+            if (result) {
+                newCourse.lessonList.push(currentLesson)
+                console.log(newCourse.lessonList)
+                resetModuleForm();
+            }
+            else{
+                showCustomModal("Operation Cancelled!", "info");
+            }
+        });
     }
     else{
         // Handle duplicate entry
-        showCustomModal("Duplicate Found!<br><span class='text-steam-green'>"+currentLesson.name+" </span>Module is Already Added","error");
+        showCustomModal("Duplicate Found!<br><span class='text-steam-green'>"+currentLesson.name+" </span><br/>Module is Already Added","error");
     }
 }
 
 const displayLessons = ()=>{
-
-    showCustomConfirm(newCourse.lessonList.length+" Modules have been added<br><br>Are You Sure?",function (result) {
-        if(result){
-            tblModule.classList.remove('d-none');
-            let moduleTableBody = tblModule.querySelector('tbody'); // Select the tbody element
-            moduleTableBody.innerHTML = '';
-            let displayPropertyListForModule =[
-                {property: 'name', dataType: 'text'}
-            ];
-            fillDataIntoTableWithDelete(tblModule,newCourse.lessonList,displayPropertyListForModule,removeRecord)
-        }
-    })
-
+    tblModule.classList.remove('d-none');
+    let moduleTableBody = tblModule.querySelector('tbody'); // Select the tbody element
+    moduleTableBody.innerHTML = '';
+    let displayPropertyListForModule =[
+        {property: 'name', dataType: 'text'}
+    ];
+    fillDataIntoTableWithDelete(tblModule,newCourse.lessonList,displayPropertyListForModule,removeRecord)
 
 }
 
