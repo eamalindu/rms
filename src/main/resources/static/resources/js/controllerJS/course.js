@@ -157,6 +157,7 @@ const addToArray = ()=>{
 }
 
 const displayLessons = ()=>{
+    resetModuleForm();
     tblModule.classList.remove('d-none');
     let moduleTableBody = tblModule.querySelector('tbody'); // Select the tbody element
     moduleTableBody.innerHTML = '';
