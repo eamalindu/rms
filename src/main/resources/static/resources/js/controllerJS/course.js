@@ -150,13 +150,19 @@ const addToArray = ()=>{
 }
 
 const displayLessons = ()=>{
-    tblModule.classList.remove('d-none');
-    let moduleTableBody = tblModule.querySelector('tbody'); // Select the tbody element
-    moduleTableBody.innerHTML = '';
-    let displayPropertyListForModule =[
-        {property: 'name', dataType: 'text'}
-    ];
-    fillDataIntoTableWithDelete(tblModule,newCourse.lessonList,displayPropertyListForModule,removeRecord)
+
+    showCustomConfirm(newCourse.lessonList.length+" Modules have been added<br><br>Are You Sure?",function (result) {
+        if(result){
+            tblModule.classList.remove('d-none');
+            let moduleTableBody = tblModule.querySelector('tbody'); // Select the tbody element
+            moduleTableBody.innerHTML = '';
+            let displayPropertyListForModule =[
+                {property: 'name', dataType: 'text'}
+            ];
+            fillDataIntoTableWithDelete(tblModule,newCourse.lessonList,displayPropertyListForModule,removeRecord)
+        }
+    })
+
 
 }
 
