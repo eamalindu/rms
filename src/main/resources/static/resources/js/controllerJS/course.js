@@ -108,7 +108,7 @@ const resetModuleForm = ()=>{
     //remove boostrap validation classes from the select elements
     courseExistModules.classList.remove('is-valid');
 
-    lesson = {}
+    newLesson = {}
 
     //reset the frmNewBatch form using reset function
     frmNewModule.reset();
