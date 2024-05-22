@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Entity
 @Table(name = "course")
@@ -43,4 +44,8 @@ public class Course {
     @Column(name = "status")
     @NotNull
     private Boolean status;
+
+    @ManyToMany
+    @JoinTable(name = "course_has_lesson",joinColumns = @JoinColumn(name = "course_id"),inverseJoinColumns = @JoinColumn(name = "lesson_id"))
+    private Set<Lesson> lessonList;
 }
