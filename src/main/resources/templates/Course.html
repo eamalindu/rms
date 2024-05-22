@@ -402,6 +402,24 @@
                         type="button"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body">
+                <form id="frmAddNewModule">
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="courseExistModules">Name</label>
+                        </div>
+                        <input class="form-control rounded-0 newModuleInputs" id="moduleName" onkeyup="inputTextValidator(this,'^[A-Z][a-zA-Z]* in [A-Z][a-zA-Z ]+$','newCourse','name');generateCourseCode();"
+                               required>
+                        <div class="text-muted small"><small>Example : Diploma in English</small></div>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Name</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="courseExistModules">Code</label>
+                        </div>
+                    </div>
+
+                </form>
             </div>
             <div class="modal-footer d-flex justify-content-center">
                 <button class="btn btn-success bg-steam-green mx-auto rounded-0" type="button">Confirm</button>
