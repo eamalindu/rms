@@ -109,7 +109,7 @@ const resetModuleForm = ()=>{
     courseExistModules.classList.remove('is-valid');
 
     newLesson = {}
-    checkBoxValidator(moduleExam, leftWeekday, rightWeekday, 'newLesson', 'examAvailable', false, true)
+    checkBoxValidator(moduleExam, leftWeekday, rightWeekday, 'newLesson', 'examAvailable', true, false)
 
     //reset the frmNewBatch form using reset function
     frmNewModule.reset();

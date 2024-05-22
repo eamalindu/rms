@@ -429,18 +429,18 @@
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="text-center">
                                 <div class="d-flex align-items-center justify-content-center mx-auto bg-success text-white" id="leftWeekday" style="border-radius: 50%;height: 40px;width: 40px;background:#ddd">
-                                    <i class="fa-solid fa-thumbs-up"></i>
-                                </div>
-                                <span class="text-muted small">Yes</span>
-                            </div>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" id="moduleExam" onchange="checkBoxValidator(this, leftWeekday, rightWeekday, 'newLesson', 'examAvailable', false, true);" role="switch" style="scale: 1.7;" type="checkbox">
-                            </div>
-                            <div class="text-center">
-                                <div class="d-flex align-items-center justify-content-center mx-auto" id="rightWeekday" style="border-radius: 50%;height: 40px;width: 40px;background:#ddd">
                                     <i class="fa-solid fa-thumbs-down"></i>
                                 </div>
                                 <span class="text-muted small">No</span>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" id="moduleExam" onchange="checkBoxValidator(this, leftWeekday, rightWeekday, 'newLesson', 'examAvailable', true, false);" role="switch" style="scale: 1.7;" type="checkbox">
+                            </div>
+                            <div class="text-center">
+                                <div class="d-flex align-items-center justify-content-center mx-auto" id="rightWeekday" style="border-radius: 50%;height: 40px;width: 40px;background:#ddd">
+                                    <i class="fa-solid fa-thumbs-up"></i>
+                                </div>
+                                <span class="text-muted small">Yes</span>
                             </div>
                         </div>
                     </div>
