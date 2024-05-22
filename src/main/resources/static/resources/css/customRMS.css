@@ -409,7 +409,7 @@ input {
 
 }
 
-.newBatchInputs,.newCourseInputs,.newStudentInputs,.newRegistrationPaymentInputs {
+.newBatchInputs,.newCourseInputs,.newStudentInputs,.newRegistrationPaymentInputs,.newModuleInputs {
     font-size: 13px;
 }
 
