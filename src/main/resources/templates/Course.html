@@ -289,7 +289,7 @@
                         </button>
                         <div class="text-muted small">
                             <small>Click "+ Add" to add the modules for the course</small></div>
-                        <table class="table table-sm table-bordered small mb-0 mt-2 d-none" id="tblModule">
+                        <table class="table table-sm table-bordered text-center small mb-0 mt-2 d-none" id="tblModule">
                             <thead class="align-middle">
                             <tr>
                                 <th class="small">#</th>
@@ -378,10 +378,27 @@
                 </div>
 
             </div>
-            <div class="d-flex justify-content-evenly mt-5">
+            <div id="currentLessons" class="border p-2 mt-2">
+                <div class="text-muted small"><small>Current Modules</small></div>
+                <table class="table table-sm table-bordered text-center small mb-0 mt-2" id="tblCurrentModule">
+                    <thead class="align-middle">
+                    <tr>
+                        <th class="small">#</th>
+                        <th class="small">Module</th>
+                        <th class="small">Remove</th>
+                    </tr>
+                    </thead>
+                    <tbody class="align-middle small">
+                    <tr>
+                        <td colspan="4">No Modules Added!</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex justify-content-evenly mt-2">
                 <button class="btn btn-sm bg-steam-green text-white rounded-0 text-uppercase" type="button" onclick="addToArray()"><i class="fa-solid fa-plus"></i> Add Module</button>
 
-                <button class="btn btn-sm btn-success rounded-0 text-uppercase" type="button" data-bs-target="#offCanvasCourse" data-bs-toggle="offcanvas" onclick="displayLessons()">Complete</button>
+                <button class="btn btn-sm btn-success rounded-0 text-uppercase" type="button" data-bs-target="#offCanvasCourse" data-bs-toggle="offcanvas" onclick="displayLessons()">Confirm Selection</button>
 
             </div>
         </form>

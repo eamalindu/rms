@@ -160,6 +160,7 @@ const displayLessons = ()=>{
 
 }
 
+
 const removeRecord = (ob)=>{
     let extIndex = newCourse.lessonList.map(item=>item.id).indexOf(ob.id);
     if(extIndex!=-1){
