@@ -29,9 +29,14 @@ public class CourseController {
 
     @PostMapping()
     public String saveNewCourse(@RequestBody Course course){
-        course.setStatus(true);
-        courseDAO.save(course);
-        return  "OK";
+        try {
+            course.setStatus(true);
+            courseDAO.save(course);
+            return "OK";
+        }
+        catch (Exception ex){
+            return "Insert Failed "+ex.getMessage();
+        }
 
     }
 
