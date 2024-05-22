@@ -125,34 +125,37 @@ const resetModuleForm = ()=>{
 }
 
 const addToArray = ()=>{
+    if(courseExistModules.value!=='') {
     currentLesson = JSON.parse(courseExistModules.value)
     let isDuplicate = false;
 
-    // Iterate over each element in the array
-    for (let i = 0; i <  newCourse.lessonList.length; i++) {
-        const existingLesson =  newCourse.lessonList[i];
-        // Compare each property
-        if (existingLesson.id === currentLesson.id) {
-            // If a match is found, set isDuplicate to true and break out of the loop
-            isDuplicate = true;
-            break;
+        // Iterate over each element in the array
+        for (let i = 0; i < newCourse.lessonList.length; i++) {
+            const existingLesson = newCourse.lessonList[i];
+            // Compare each property
+            if (existingLesson.id === currentLesson.id) {
+                // If a match is found, set isDuplicate to true and break out of the loop
+                isDuplicate = true;
+                break;
+            }
+        }
+        if (!isDuplicate) {
+            showCustomConfirm("You are about to add the Module<br/><span class='text-steam-green'>" + currentLesson.name + "</span><br>Are You Sure?", function (result) {
+                if (result) {
+                    newCourse.lessonList.push(currentLesson)
+                    console.log(newCourse.lessonList)
+                    resetModuleForm();
+                } else {
+                    showCustomModal("Operation Cancelled!", "info");
+                }
+            });
+        } else {
+            // Handle duplicate entry
+            showCustomModal("Duplicate Found!<br><span class='text-steam-green'>" + currentLesson.name + " </span><br/>Module is Already Added", "error");
         }
     }
-    if (!isDuplicate) {
-        showCustomConfirm("You are about to add the Module<br/><span class='text-steam-green'>"+currentLesson.name+"</span><br>Are You Sure?", function (result) {
-            if (result) {
-                newCourse.lessonList.push(currentLesson)
-                console.log(newCourse.lessonList)
-                resetModuleForm();
-            }
-            else{
-                showCustomModal("Operation Cancelled!", "info");
-            }
-        });
-    }
     else{
-        // Handle duplicate entry
-        showCustomModal("Duplicate Found!<br><span class='text-steam-green'>"+currentLesson.name+" </span><br/>Module is Already Added","error");
+        showCustomModal("Module is required!","warning")
     }
 }
 
