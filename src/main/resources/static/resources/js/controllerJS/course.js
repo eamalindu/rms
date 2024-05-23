@@ -205,6 +205,9 @@ const newCourseSubmit = ()=>{
 const newModuleSubmit = ()=>{
     let serverResponse = ajaxHttpRequest("/Lesson","POST",newLesson);
     if(serverResponse==="OK"){
+        //get the saved full lesson from the database
+        const savedLesson = ajaxGetRequest("Lesson/getLessonByCode/"+newLesson.code);
+        newCourse.lessonList.push(savedLesson);
         resetModuleInnerForm();
     }
     else{
