@@ -209,6 +209,7 @@ const newModuleSubmit = ()=>{
         const savedLesson = ajaxGetRequest("Lesson/getLessonByCode/"+newLesson.code);
         newCourse.lessonList.push(savedLesson);
         resetModuleInnerForm();
+        showCustomModal("Lesson Successfully Added!","success")
     }
     else{
         showCustomModal("Operation Failed!" + serverResponse, "error");
