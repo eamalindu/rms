@@ -206,17 +206,24 @@ const newModuleSubmit = ()=>{
     let errors = checkInnerFormModule();
     if(errors==='') {
 
-        let serverResponse = ajaxHttpRequest("/Lesson", "POST", newLesson);
-        if (serverResponse === "OK") {
-            //get the saved full lesson from the database
-            const savedLesson = ajaxGetRequest("Lesson/getLessonByCode/" + newLesson.code);
-            newCourse.lessonList.push(savedLesson);
-            resetModuleInnerForm();
-            showCustomModal("Lesson Successfully Added!", "success")
-        } else {
-            showCustomModal("Operation Failed!" + serverResponse, "error");
+        showCustomConfirm("You are about to add a New Module<br>Are You Sure?", function (result) {
+            if (result) {
+                let serverResponse = ajaxHttpRequest("/Lesson", "POST", newLesson);
+                if (serverResponse === "OK") {
+                    //get the saved full lesson from the database
+                    const savedLesson = ajaxGetRequest("Lesson/getLessonByCode/" + newLesson.code);
+                    newCourse.lessonList.push(savedLesson);
+                    resetModuleInnerForm();
+                    showCustomModal("Lesson Successfully Added!", "success")
+                } else {
+                    showCustomModal("Operation Failed!" + serverResponse, "error");
 
-        }
+                }
+            } else {
+                showCustomModal("Operation Cancelled!", "info");
+            }
+        });
+
     }
     else{
         showCustomModal(errors, 'warning');
