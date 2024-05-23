@@ -190,6 +190,6 @@ const newCourseSubmit = ()=>{
     console.log(serverResponse)
 }
 
-const newLessonSubmit = ()=>{
+const newModuleSubmit = ()=>{
     let serverResponse = ajaxHttpRequest("/Lesson","POST",newLesson);
 }
