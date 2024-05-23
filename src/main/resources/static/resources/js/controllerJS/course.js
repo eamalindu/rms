@@ -181,6 +181,12 @@ const removeRecord = (ob)=>{
 }
 
 const resetModuleInnerForm = ()=>{
+
+    moduleName.classList.remove('is-valid');
+    moduleName.classList.remove('is-invalid');
+    moduleCode.classList.remove('is-valid');
+    moduleCode.classList.remove('is-invalid');
+
     newLesson = {}
     checkBoxValidator(moduleExam, leftWeekday, rightWeekday, 'newLesson', 'examAvailable', true, false)
     frmAddNewModule.reset();
