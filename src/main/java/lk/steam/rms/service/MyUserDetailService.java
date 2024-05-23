@@ -1,9 +1,9 @@
 package lk.steam.rms.service;
 
 import jakarta.transaction.Transactional;
-import lk.steam.ims.dao.UserDAO;
-import lk.steam.ims.entity.Role;
-import lk.steam.ims.entity.User;
+import lk.steam.rms.dao.UserDAO;
+import lk.steam.rms.entity.Role;
+import lk.steam.rms.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,7 +27,7 @@ public class MyUserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println(username);
 
-        User extUser = userDAO.getUserByUsername(username);
+        User extUser =userDAO.getUserByUsername(username);
 
         // Check if user exists
         if (extUser == null) {
