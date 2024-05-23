@@ -109,6 +109,15 @@
 
 </div>
 
+<script>
+    window.addEventListener("load",()=>{
+        const currentURL = window.location.href;
 
+        if(currentURL.includes("?error=failed")){
+            showCustomModal("You have entered an invalid<br>username or password!","error");
+        }
+    })
+</script>
+<script src="/resources/js/external-modalFunction.js" type="text/javascript"></script>
 </body>
 </html>

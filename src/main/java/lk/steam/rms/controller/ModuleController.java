@@ -1,6 +1,7 @@
 package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.ModuleDAO;
+import lk.steam.rms.entity.Module;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
