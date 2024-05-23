@@ -203,17 +203,23 @@ const newCourseSubmit = ()=>{
 }
 
 const newModuleSubmit = ()=>{
-    let serverResponse = ajaxHttpRequest("/Lesson","POST",newLesson);
-    if(serverResponse==="OK"){
-        //get the saved full lesson from the database
-        const savedLesson = ajaxGetRequest("Lesson/getLessonByCode/"+newLesson.code);
-        newCourse.lessonList.push(savedLesson);
-        resetModuleInnerForm();
-        showCustomModal("Lesson Successfully Added!","success")
+    let errors = checkInnerFormModule();
+    if(errors==='') {
+
+        let serverResponse = ajaxHttpRequest("/Lesson", "POST", newLesson);
+        if (serverResponse === "OK") {
+            //get the saved full lesson from the database
+            const savedLesson = ajaxGetRequest("Lesson/getLessonByCode/" + newLesson.code);
+            newCourse.lessonList.push(savedLesson);
+            resetModuleInnerForm();
+            showCustomModal("Lesson Successfully Added!", "success")
+        } else {
+            showCustomModal("Operation Failed!" + serverResponse, "error");
+
+        }
     }
     else{
-        showCustomModal("Operation Failed!" + serverResponse, "error");
-
+        showCustomModal(errors, 'warning');
     }
 }
 
