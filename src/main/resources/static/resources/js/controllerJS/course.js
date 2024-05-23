@@ -219,4 +219,13 @@ const newModuleSubmit = ()=>{
 
 const checkInnerFormModule = ()=>{
     let errors = '';
+
+    if(newLesson.code==null){
+        errors = errors + 'Code is Required<br>';
+    }
+    if(newLesson.name==null){
+        errors = errors + 'Name is Required<br>';
+    }
+
+    return errors;
 }
