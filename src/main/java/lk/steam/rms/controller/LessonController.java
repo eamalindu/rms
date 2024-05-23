@@ -19,6 +19,11 @@ public class LessonController {
         return lessonDAO.findAll();
     }
 
+    @GetMapping(value = "/getLessonByCode/{lessonCode}",produces = "application/json")
+    public Lesson getLessonByCode(@PathVariable String lessonCode){
+        return lessonDAO.getLessonByCode(lessonCode);
+    }
+
     @PostMapping
     public String saveNewLesson(@RequestBody Lesson lesson){
         Lesson existLesson = lessonDAO.getLessonByCode(lesson.getCode());
