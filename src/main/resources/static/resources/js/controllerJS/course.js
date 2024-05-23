@@ -182,10 +182,14 @@ const removeRecord = (ob)=>{
 
 const resetModuleInnerForm = ()=>{
 
-    moduleName.classList.remove('is-valid');
-    moduleName.classList.remove('is-invalid');
-    moduleCode.classList.remove('is-valid');
-    moduleCode.classList.remove('is-invalid');
+    inputs = document.querySelectorAll('.newModuleInputs');
+    inputs.forEach(function (input) {
+        //remove the inline css from inputs
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
 
     newLesson = {}
     checkBoxValidator(moduleExam, leftWeekday, rightWeekday, 'newLesson', 'examAvailable', true, false)
