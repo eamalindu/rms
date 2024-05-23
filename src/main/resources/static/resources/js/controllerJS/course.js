@@ -192,8 +192,9 @@ const resetModuleInnerForm = ()=>{
     });
 
     newLesson = {}
-    checkBoxValidator(moduleExam, leftWeekday, rightWeekday, 'newLesson', 'examAvailable', true, false)
     frmAddNewModule.reset();
+    checkBoxValidator(moduleExam, leftWeekday, rightWeekday, 'newLesson', 'examAvailable', true, false)
+
 }
 
 const newCourseSubmit = ()=>{
