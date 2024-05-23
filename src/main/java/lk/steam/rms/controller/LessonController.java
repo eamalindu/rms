@@ -25,7 +25,13 @@ public class LessonController {
         if(existLesson!=null){
             return "<br>Module with code <span class='text-steam-green'> "+existLesson.getCode()+"</span> Already Exist";
         }
-        lessonDAO.save(lesson);
-        return "OK";
+        try {
+            lessonDAO.save(lesson);
+            return "OK";
+        }
+        catch (Exception ex){
+            return "Save Failed! <br>"+ex.getMessage();
+        }
+
     }
 }
