@@ -208,6 +208,7 @@ const newModuleSubmit = ()=>{
         resetModuleInnerForm();
     }
     else{
+        showCustomModal("Operation Failed!" + serverResponse, "error");
 
     }
 }
