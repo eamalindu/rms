@@ -216,3 +216,7 @@ const newModuleSubmit = ()=>{
 
     }
 }
+
+const checkInnerFormModule = ()=>{
+    let errors = '';
+}
