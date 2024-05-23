@@ -183,6 +183,7 @@ const removeRecord = (ob)=>{
 const resetModuleInnerForm = ()=>{
     newLesson = {}
     checkBoxValidator(moduleExam, leftWeekday, rightWeekday, 'newLesson', 'examAvailable', true, false)
+    frmAddNewModule.reset();
 }
 
 const newCourseSubmit = ()=>{
@@ -192,4 +193,10 @@ const newCourseSubmit = ()=>{
 
 const newModuleSubmit = ()=>{
     let serverResponse = ajaxHttpRequest("/Lesson","POST",newLesson);
+    if(serverResponse==="OK"){
+        resetModuleInnerForm();
+    }
+    else{
+
+    }
 }
