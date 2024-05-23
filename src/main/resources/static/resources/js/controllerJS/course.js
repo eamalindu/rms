@@ -215,6 +215,8 @@ const newModuleSubmit = ()=>{
                     newCourse.lessonList.push(savedLesson);
                     resetModuleInnerForm();
                     showCustomModal("Lesson Successfully Added!", "success")
+                    //close the modal
+                    modalModuleCloseButton.click();
                 } else {
                     showCustomModal("Operation Failed!" + serverResponse, "error");
 
