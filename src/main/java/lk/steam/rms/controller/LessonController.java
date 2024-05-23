@@ -21,6 +21,10 @@ public class LessonController {
 
     @PostMapping
     public String saveNewLesson(@RequestBody Lesson lesson){
+        Lesson existLesson = lessonDAO.getLessonByCode(lesson.getCode());
+        if(existLesson!=null){
+            return "<br>Module with code <span class='text-steam-green'> "+existLesson.getCode()+"</span> Already Exist";
+        }
         lessonDAO.save(lesson);
         return "OK";
     }
