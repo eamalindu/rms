@@ -4,6 +4,8 @@ window.addEventListener("load", () => {
     resetCourseForm();
     //refresh the course table
     refreshCourseTable();
+    //reset inner form for module
+    resetModuleInnerForm();
 
     //validation chosen select (for new batch)
     $("#courseRequirement").chosen().change(function () {
@@ -108,9 +110,6 @@ const resetModuleForm = ()=>{
     //remove boostrap validation classes from the select elements
     courseExistModules.classList.remove('is-valid');
 
-    newLesson = {}
-    checkBoxValidator(moduleExam, leftWeekday, rightWeekday, 'newLesson', 'examAvailable', true, false)
-
     //reset the frmNewBatch form using reset function
     frmNewModule.reset();
 
@@ -181,6 +180,10 @@ const removeRecord = (ob)=>{
     }
 }
 
+const resetModuleInnerForm = ()=>{
+    newLesson = {}
+    checkBoxValidator(moduleExam, leftWeekday, rightWeekday, 'newLesson', 'examAvailable', true, false)
+}
 
 const newCourseSubmit = ()=>{
     let serverResponse =  ajaxHttpRequest("/Course","POST",newCourse);
