@@ -22,7 +22,7 @@ public class Lesson {
     @NotNull
     private String name;
 
-    @Column(name = "code")
+    @Column(name = "code",unique = true)
     @NotNull
     private String code;
 
