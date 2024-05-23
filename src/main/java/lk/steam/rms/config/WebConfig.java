@@ -26,9 +26,9 @@ public class WebConfig {
                     .requestMatchers("/Administrations/**").hasAnyAuthority("Admin","Manager")
                     .requestMatchers("/error").permitAll()
                     .requestMatchers("/resources/**").permitAll()
-                    .requestMatchers("/Schedules/**").hasAnyAuthority("Admin","Manager","Counsellor")
-                    .requestMatchers("/Inquiries/**").hasAnyAuthority("Admin","Manager","Counsellor")
-                    .requestMatchers("/Dashboard").hasAnyAuthority("Admin","Manager","Counsellor")
+                    .requestMatchers("/Course/**").hasAnyAuthority("Admin","Manager","Counsellor")
+                    .requestMatchers("/Batch/**").hasAnyAuthority("Admin","Manager","Counsellor")
+                    .requestMatchers("/Attendance").hasAnyAuthority("Admin","Manager","Counsellor")
                     .anyRequest().authenticated();
 
         })
