@@ -2,6 +2,7 @@ package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.*;
 import lk.steam.rms.entity.Batch;
+import lk.steam.rms.entity.InstallmentPlan;
 import lk.steam.rms.entity.Payment;
 import lk.steam.rms.entity.Registrations;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,14 @@ public class PaymentController {
         if(payment.getRegistrationID().getIsFullPayment()){
             payment.setInstallmentID(null);
         }else {
+
+            //handle part payment installments
+            List<InstallmentPlan> currentRegistrationInstallments = installmentPlanDAO.getInstallmentPlanByRegistrationID(payment.getRegistrationID().getId());
+            //loop over currentRegistrationInstallments
+            for(int i =0;i<currentRegistrationInstallments.size();i++){
+                InstallmentPlan installment = currentRegistrationInstallments.get(i);
+
+            }
 
         }
 
