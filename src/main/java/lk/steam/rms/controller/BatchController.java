@@ -1,11 +1,11 @@
 package lk.steam.rms.controller;
 
+import jakarta.transaction.Transactional;
 import lk.steam.rms.dao.BatchDAO;
 import lk.steam.rms.dao.BatchStatusDAO;
-import lk.steam.rms.entity.Batch;
-import lk.steam.rms.entity.BatchHasDay;
-import lk.steam.rms.entity.BatchStatus;
-import lk.steam.rms.entity.Privilege;
+import lk.steam.rms.dao.RegistrationDAO;
+import lk.steam.rms.dao.RegistrationStatusDAO;
+import lk.steam.rms.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -26,6 +26,10 @@ public class BatchController {
     private BatchDAO batchDAO;
     @Autowired
     private BatchStatusDAO batchStatusDAO;
+    @Autowired
+    private RegistrationDAO registrationDAO;
+    @Autowired
+    private RegistrationStatusDAO registrationStatusDAO;
 
     @GetMapping(value = "/findall", produces = "application/json")
     public List<Batch> findAll() {
@@ -126,6 +130,7 @@ public class BatchController {
     }
 
     @DeleteMapping
+    @Transactional
     public String deleteBatch(@RequestBody Batch batch) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Privilege loggedUserPrivilege ;
@@ -141,6 +146,18 @@ public class BatchController {
 
             //update the batch record
             batchDAO.save(batch);
+
+            //check weather registrations are present in the batch
+            List<Registrations> currentBatchRegistrations = registrationDAO.getRegistrationsByBatchID(batch.getId());
+
+            if(currentBatchRegistrations!=null){
+                for(Registrations registration : currentBatchRegistrations){
+                    registration.setRegistrationStatusID(registrationStatusDAO.getReferenceById(3));
+                    registrationDAO.save(registration);
+                }
+
+            }
+
 
             return "OK";
         } catch (Exception ex) {
