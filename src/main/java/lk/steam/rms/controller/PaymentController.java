@@ -57,8 +57,6 @@ public class PaymentController {
             //handle part payment installments
             List<InstallmentPlan> currentRegistrationInstallments = installmentPlanDAO.getInstallmentPlanByRegistrationID(payment.getRegistrationID().getId());
 
-            BigDecimal extraAmount = BigDecimal.valueOf(0.00);
-
             BigDecimal remainingAmount = payment.getAmount();
             for (InstallmentPlan installment : currentRegistrationInstallments) {
                 if (remainingAmount.compareTo(BigDecimal.ZERO) <= 0) {
@@ -82,21 +80,6 @@ public class PaymentController {
                 }
             }
 
-            //loop over currentRegistrationInstallments
-//            for (int i = 0; i < currentRegistrationInstallments.size(); i++) {
-//                InstallmentPlan installment = currentRegistrationInstallments.get(i);
-//                if (installment.getBalanceAmount().compareTo(BigDecimal.ZERO) > 0) {
-//
-//                    installment.setBalanceAmount(installment.getBalanceAmount().subtract(payment.getAmount()));
-//                    installment.setPaidAmount(installment.getPaidAmount().add(payment.getAmount()));
-//                    installment.setStatus("Paid");
-//                    installmentPlanDAO.save(installment);
-//                    break;
-//
-//                    //instllment handling need to be add here
-//                }
-//
-//            }
         }
 
         paymentDAO.save(payment);
