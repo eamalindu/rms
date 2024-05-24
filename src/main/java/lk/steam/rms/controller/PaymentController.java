@@ -58,26 +58,16 @@ public class PaymentController {
             List<InstallmentPlan> currentRegistrationInstallments = installmentPlanDAO.getInstallmentPlanByRegistrationID(payment.getRegistrationID().getId());
 
             BigDecimal extraAmount = BigDecimal.valueOf(0.00);
-
             //loop over currentRegistrationInstallments
             for (int i = 0; i < currentRegistrationInstallments.size(); i++) {
                 InstallmentPlan installment = currentRegistrationInstallments.get(i);
                 if (installment.getBalanceAmount().compareTo(BigDecimal.ZERO) > 0) {
 
-                    if(extraAmount.compareTo(BigDecimal.ZERO)>0){
-
-                    }
-                    else {
-                        if(installment.getPayment().compareTo(payment.getAmount())>0){
-                            //amount is smaller than the payment
-                            //need to distribute the amount with 2 or more installments
-                        }
-                        else{
-                            //amount is larger than the payment
-                            //current installment is sufficient
-                        }
-
-                    }
+                    installment.setBalanceAmount(installment.getBalanceAmount().subtract(payment.getAmount()));
+                    installment.setPaidAmount(installment.getPaidAmount().add(payment.getAmount()));
+                    installment.setStatus("Paid");
+                    installmentPlanDAO.save(installment);
+                    break;
 
                     //instllment handling need to be add here
                 }
