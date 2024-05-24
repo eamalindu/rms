@@ -58,21 +58,45 @@ public class PaymentController {
             List<InstallmentPlan> currentRegistrationInstallments = installmentPlanDAO.getInstallmentPlanByRegistrationID(payment.getRegistrationID().getId());
 
             BigDecimal extraAmount = BigDecimal.valueOf(0.00);
-            //loop over currentRegistrationInstallments
-            for (int i = 0; i < currentRegistrationInstallments.size(); i++) {
-                InstallmentPlan installment = currentRegistrationInstallments.get(i);
-                if (installment.getBalanceAmount().compareTo(BigDecimal.ZERO) > 0) {
 
-                    installment.setBalanceAmount(installment.getBalanceAmount().subtract(payment.getAmount()));
-                    installment.setPaidAmount(installment.getPaidAmount().add(payment.getAmount()));
-                    installment.setStatus("Paid");
-                    installmentPlanDAO.save(installment);
+            BigDecimal remainingAmount = payment.getAmount();
+            for (InstallmentPlan installment : currentRegistrationInstallments) {
+                if (remainingAmount.compareTo(BigDecimal.ZERO) <= 0) {
                     break;
-
-                    //instllment handling need to be add here
                 }
 
+                BigDecimal balance = installment.getBalanceAmount();
+                if (balance.compareTo(BigDecimal.ZERO) > 0) {
+                    if (balance.compareTo(remainingAmount) <= 0) {
+                        installment.setPaidAmount(installment.getPaidAmount().add(balance));
+                        installment.setBalanceAmount(BigDecimal.ZERO);
+                        installment.setStatus("Paid");
+                        remainingAmount = remainingAmount.subtract(balance);
+                    } else {
+                        installment.setPaidAmount(installment.getPaidAmount().add(remainingAmount));
+                        installment.setBalanceAmount(balance.subtract(remainingAmount));
+                        installment.setStatus("Partially Paid");
+                        remainingAmount = BigDecimal.ZERO;
+                    }
+                    installmentPlanDAO.save(installment);
+                }
             }
+
+            //loop over currentRegistrationInstallments
+//            for (int i = 0; i < currentRegistrationInstallments.size(); i++) {
+//                InstallmentPlan installment = currentRegistrationInstallments.get(i);
+//                if (installment.getBalanceAmount().compareTo(BigDecimal.ZERO) > 0) {
+//
+//                    installment.setBalanceAmount(installment.getBalanceAmount().subtract(payment.getAmount()));
+//                    installment.setPaidAmount(installment.getPaidAmount().add(payment.getAmount()));
+//                    installment.setStatus("Paid");
+//                    installmentPlanDAO.save(installment);
+//                    break;
+//
+//                    //instllment handling need to be add here
+//                }
+//
+//            }
         }
 
         paymentDAO.save(payment);
