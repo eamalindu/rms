@@ -60,11 +60,14 @@ public class PaymentController {
             for (int i = 0; i < currentRegistrationInstallments.size(); i++) {
                 InstallmentPlan installment = currentRegistrationInstallments.get(i);
                 if (installment.getBalanceAmount().compareTo(BigDecimal.ZERO) > 0) {
+
                     installment.setBalanceAmount(installment.getBalanceAmount().subtract(payment.getAmount()));
                     installment.setPaidAmount(installment.getPaidAmount().add(payment.getAmount()));
                     installment.setStatus("Paid");
                     installmentPlanDAO.save(installment);
                     break;
+
+                    //instllment handling need to be add here
                 }
 
             }
