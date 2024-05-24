@@ -57,11 +57,17 @@ public class PaymentController {
             //handle part payment installments
             List<InstallmentPlan> currentRegistrationInstallments = installmentPlanDAO.getInstallmentPlanByRegistrationID(payment.getRegistrationID().getId());
             //loop over currentRegistrationInstallments
-            for(int i =0;i<currentRegistrationInstallments.size();i++){
+            for (int i = 0; i < currentRegistrationInstallments.size(); i++) {
                 InstallmentPlan installment = currentRegistrationInstallments.get(i);
+                if (installment.getBalanceAmount().compareTo(payment.getAmount()) >= 0) {
+                    installment.setBalanceAmount(installment.getBalanceAmount().subtract(payment.getAmount()));
+                    installment.setPaidAmount(payment.getAmount());
+                    installment.setStatus("Paid");
+                    installmentPlanDAO.save(installment);
+                    break;
+                }
 
             }
-
         }
 
         paymentDAO.save(payment);
@@ -108,6 +114,7 @@ public class PaymentController {
 
         return "OK";
     }
+
 
     @GetMapping(value = "/getPaymentsByRegistrationID/{registrationID}",produces = "application/json")
     public List<Payment> getPaymentsByRegistrationID(@PathVariable Integer registrationID){
