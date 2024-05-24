@@ -5,10 +5,15 @@ import lk.steam.rms.dao.BatchStatusDAO;
 import lk.steam.rms.entity.Batch;
 import lk.steam.rms.entity.BatchHasDay;
 import lk.steam.rms.entity.BatchStatus;
+import lk.steam.rms.entity.Privilege;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.net.Authenticator;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -122,6 +127,8 @@ public class BatchController {
 
     @DeleteMapping
     public String deleteBatch(@RequestBody Batch batch) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege ;
         try {
             //soft delete
             //change batch Status to delete
