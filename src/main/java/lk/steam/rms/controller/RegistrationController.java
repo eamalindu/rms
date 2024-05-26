@@ -95,7 +95,7 @@ public class RegistrationController {
             if(currentInquiry!=null){
                 registrations.setInquiryID(currentInquiry.getId());
                 currentInquiry.setInquiryStatusId(inquiryStatusDAO.getReferenceById(3));
-
+                currentInquiry.setRegistrationID(registrations.getId());
                 inquiryDAO.save(currentInquiry);
             }
 

@@ -76,6 +76,7 @@ public class InstallmentPlanController {
             if(currentInquiry!=null){
                 currentRegistration.setInquiryID(currentInquiry.getId());
                 currentInquiry.setInquiryStatusId(inquiryStatusDAO.getReferenceById(3));
+                currentInquiry.setRegistrationID(currentRegistration.getId());
                 inquiryDAO.save(currentInquiry);
             }
             Registrations completedRegistration = registrationDAO.save(currentRegistration);
