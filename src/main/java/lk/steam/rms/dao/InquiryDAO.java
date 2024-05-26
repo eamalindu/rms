@@ -55,7 +55,7 @@ public interface InquiryDAO extends JpaRepository<Inquiry,Integer> {
     //get exist inquiry from id and course id
     //this will use in check for duplicate inquiry and when registering a student
     @Query(value = "SELECT i from Inquiry i where i.idValue=?1 and i.courseId.id=?2 and (i.inquiryStatusId.id=1 or i.inquiryStatusId.id=2)")
-    Inquiry getActiveInquiryByIDAndCourseId(Integer id,Integer courseId);
+    Inquiry getActiveInquiryByIDAndCourseId(String idValue,Integer courseId);
 
 }
 
