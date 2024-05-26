@@ -92,6 +92,9 @@ public class RegistrationController {
 
             //check an inquiry is available for the current registration
             Inquiry currentInquiry = inquiryDAO.getActiveInquiryByIDAndCourseId(registrations.getStudentID().getIdValue(),registrations.getCourseID().getId());
+            if(currentInquiry!=null){
+                registrations.setInquiryID(currentInquiry.getId());
+            }
 
             Registrations completedRegistration = registrationDAO.save(registrations);
             System.out.println(completedRegistration.getId());
