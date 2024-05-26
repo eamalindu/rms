@@ -67,6 +67,12 @@ public class Inquiry {
     @NotNull
     private LocalDateTime timeStamp;
 
+    @Column(name = "latestfollowupid")
+    private Integer latestFollowUpID;
+
+    @Column(name = "registrationid")
+    private Integer registrationID;
+
     @ManyToOne
     @JoinColumn(name = "source_id",referencedColumnName = "id")
     private Source sourceId;
