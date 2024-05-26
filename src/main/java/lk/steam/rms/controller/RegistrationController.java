@@ -89,17 +89,18 @@ public class RegistrationController {
                 registrations.setStudentID(exsistStudent);
 
             }
+            Registrations completedRegistration = registrationDAO.save(registrations);
 
             //check an inquiry is available for the current registration
             Inquiry currentInquiry = inquiryDAO.getActiveInquiryByIDAndCourseId(registrations.getStudentID().getIdValue(),registrations.getCourseID().getId());
             if(currentInquiry!=null){
                 registrations.setInquiryID(currentInquiry.getId());
                 currentInquiry.setInquiryStatusId(inquiryStatusDAO.getReferenceById(3));
-                currentInquiry.setRegistrationID(registrations.getId());
+                currentInquiry.setRegistrationID(completedRegistration.getId());
                 inquiryDAO.save(currentInquiry);
             }
 
-            Registrations completedRegistration = registrationDAO.save(registrations);
+
             System.out.println(completedRegistration.getId());
             return "OK";
 
