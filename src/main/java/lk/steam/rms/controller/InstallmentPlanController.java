@@ -1,13 +1,7 @@
 package lk.steam.rms.controller;
 
-import lk.steam.rms.dao.InstallmentPlanDAO;
-import lk.steam.rms.dao.RegistrationDAO;
-import lk.steam.rms.dao.RegistrationStatusDAO;
-import lk.steam.rms.dao.StudentDAO;
-import lk.steam.rms.entity.InstallmentPlan;
-import lk.steam.rms.entity.RegistrationStatus;
-import lk.steam.rms.entity.Registrations;
-import lk.steam.rms.entity.Student;
+import lk.steam.rms.dao.*;
+import lk.steam.rms.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +23,9 @@ public class InstallmentPlanController {
 
     @Autowired
     private InstallmentPlanDAO installmentPlanDAO;
+
+    @Autowired
+    private InquiryDAO inquiryDAO;
 
     @PostMapping
     public String saveNewRegistrationWithInstallments(@RequestBody List<InstallmentPlan> installmentPlanList){
@@ -71,6 +68,11 @@ public class InstallmentPlanController {
 
                 currentRegistration.setStudentID(exsistStudent);
 
+            }
+            //check an inquiry is available for the current registration
+            Inquiry currentInquiry = inquiryDAO.getActiveInquiryByIDAndCourseId(registrations.getStudentID().getIdValue(),registrations.getCourseID().getId());
+            if(currentInquiry!=null){
+                registrations.setInquiryID(currentInquiry.getId());
             }
             Registrations completedRegistration = registrationDAO.save(currentRegistration);
             for (InstallmentPlan installmentPlan : installmentPlanList) {
