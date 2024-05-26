@@ -95,7 +95,7 @@
                     <input class="form-control mb-3 rounded-0" id="password" name="password" placeholder="********"
                            required type="password">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input rounded-0" id="rememberMeCheckBox" type="checkbox" value="Yes">
+                        <input class="form-check-input rounded-0" id="rememberMeCheckBox" type="checkbox" value="Yes" onchange="showPassword()">
                         <label class="form-check-label" for="rememberMeCheckBox">Remember Me</label>
                     </div>
                     <button class="btn btn-primary bg-green border-green float-end" id="btnLogin">Login</button>
@@ -117,7 +117,16 @@
         if(currentURL.includes("?error=failed")){
             showCustomModal("You have entered an invalid<br>username or password!","error");
         }
+
     })
+    const showPassword = ()=>{
+        if(password.type==='text'){
+            password.type = 'password';
+        }
+        else {
+            password.type = 'text';
+        }
+    }
 </script>
 <script src="/resources/js/external-modalFunction.js" type="text/javascript"></script>
 </body>
