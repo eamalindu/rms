@@ -11,6 +11,7 @@ import lk.steam.rms.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -91,5 +92,10 @@ public class InstallmentPlanController {
     public List<InstallmentPlan> getInstallmentPlanByRegistrationID(@PathVariable Integer registrationID){
         return installmentPlanDAO.getInstallmentPlanByRegistrationID(registrationID);
 
+    }
+
+    @GetMapping(value = "/getDueInstallmentAmountFromRegistrationID/{registrationID}",produces = "application/json")
+    public BigDecimal getDueInstallmentAmountFromRegistrationID(@PathVariable Integer registrationID){
+        return installmentPlanDAO.getDueInstallmentAmountFromRegistrationID(registrationID);
     }
 }
