@@ -70,9 +70,9 @@ public class InstallmentPlanController {
 
             }
             //check an inquiry is available for the current registration
-            Inquiry currentInquiry = inquiryDAO.getActiveInquiryByIDAndCourseId(registrations.getStudentID().getIdValue(),registrations.getCourseID().getId());
+            Inquiry currentInquiry = inquiryDAO.getActiveInquiryByIDAndCourseId(currentRegistration.getStudentID().getIdValue(),currentRegistration.getCourseID().getId());
             if(currentInquiry!=null){
-                registrations.setInquiryID(currentInquiry.getId());
+                currentRegistration.setInquiryID(currentInquiry.getId());
             }
             Registrations completedRegistration = registrationDAO.save(currentRegistration);
             for (InstallmentPlan installmentPlan : installmentPlanList) {
