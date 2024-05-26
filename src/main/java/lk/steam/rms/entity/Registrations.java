@@ -69,6 +69,9 @@ public class Registrations {
     @Column(name = "oldregistrationstatus")
     private Integer oldRegistrationStatus;
 
+    @Column(name = "inquiryid")
+    private Integer inquiryID;
+
     @ManyToOne
     @JoinColumn(name = "course_id",referencedColumnName = "id")
     private Course courseID;
