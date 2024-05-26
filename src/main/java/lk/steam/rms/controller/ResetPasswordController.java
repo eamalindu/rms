@@ -10,6 +10,7 @@ public class ResetPasswordController {
     @GetMapping(value = "/Reset-Password")
     public ModelAndView resetPassword() {
         ModelAndView resetView = new ModelAndView();
+        resetView.setViewName("resetpassword");
         return resetView;
     }
 }
