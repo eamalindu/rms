@@ -26,6 +26,8 @@ public class InstallmentPlanController {
 
     @Autowired
     private InquiryDAO inquiryDAO;
+    @Autowired
+    private InquiryStatusDAO inquiryStatusDAO;
 
     @PostMapping
     public String saveNewRegistrationWithInstallments(@RequestBody List<InstallmentPlan> installmentPlanList){
@@ -73,6 +75,8 @@ public class InstallmentPlanController {
             Inquiry currentInquiry = inquiryDAO.getActiveInquiryByIDAndCourseId(currentRegistration.getStudentID().getIdValue(),currentRegistration.getCourseID().getId());
             if(currentInquiry!=null){
                 currentRegistration.setInquiryID(currentInquiry.getId());
+                currentInquiry.setInquiryStatusId(inquiryStatusDAO.getReferenceById(3));
+                inquiryDAO.save(currentInquiry);
             }
             Registrations completedRegistration = registrationDAO.save(currentRegistration);
             for (InstallmentPlan installmentPlan : installmentPlanList) {
