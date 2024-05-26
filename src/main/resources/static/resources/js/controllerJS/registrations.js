@@ -278,8 +278,19 @@ const rowView=(ob,index)=>{
     studentPaymentTabAlreadyPaidFee.innerText = "Rs. "+ob.paidAmount.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
     studentPaymentTabBalanceFee.innerText = "Rs. "+ob.balanceAmount.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
 
-    //calculate dues and displaying it
-    studentPaymentTabDues.innerText = "TBA";
+    //get due amount from the database for the current registration
+    //use ajaxGetMapping to get the value
+    const dueAmount = ajaxGetRequest("/InstallmentPlan/getDueInstallmentAmountFromRegistrationID/"+ob.id)
+
+    if(dueAmount>0){
+        studentPaymentTabDues.innerText = "Rs. "+dueAmount.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    }
+    else{
+        //calculate dues and displaying it
+        studentPaymentTabDues.innerText = "TBA";
+    }
+
+
 
     const displayPropertyListForInstallmentPlan = [
         {property: getAmount, dataType: 'function'},
