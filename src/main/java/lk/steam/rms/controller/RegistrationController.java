@@ -1,10 +1,7 @@
 package lk.steam.rms.controller;
 
 import jakarta.transaction.Transactional;
-import lk.steam.rms.dao.InquiryDAO;
-import lk.steam.rms.dao.RegistrationDAO;
-import lk.steam.rms.dao.RegistrationStatusDAO;
-import lk.steam.rms.dao.StudentDAO;
+import lk.steam.rms.dao.*;
 import lk.steam.rms.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -30,6 +27,9 @@ public class RegistrationController {
 
     @Autowired
     private InquiryDAO inquiryDAO;
+
+    @Autowired
+    private InquiryStatusDAO inquiryStatusDAO;
 
     @GetMapping()
     public ModelAndView registrationUI() {
@@ -94,6 +94,8 @@ public class RegistrationController {
             Inquiry currentInquiry = inquiryDAO.getActiveInquiryByIDAndCourseId(registrations.getStudentID().getIdValue(),registrations.getCourseID().getId());
             if(currentInquiry!=null){
                 registrations.setInquiryID(currentInquiry.getId());
+                currentInquiry.setInquiryStatusId(inquiryStatusDAO.getReferenceById(3));
+                inquiryDAO.save(currentInquiry);
             }
 
             Registrations completedRegistration = registrationDAO.save(registrations);
