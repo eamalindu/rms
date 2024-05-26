@@ -49,7 +49,7 @@ public class RegistrationController {
 
         try {
 
-            //set InquiryNumber
+            //set registration number
             String regNextNumber = registrationDAO.getNextRegistrationNumber();
             if (regNextNumber == null || regNextNumber.length() == 0 || regNextNumber.isEmpty()) {
                 registrations.setRegistrationNumber("00001");
