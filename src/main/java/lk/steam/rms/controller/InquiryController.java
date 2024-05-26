@@ -1,8 +1,8 @@
 package lk.steam.rms.controller;
 
-import lk.steam.ims.dao.InquiryDAO;
-import lk.steam.ims.entity.Inquiry;
-import lk.steam.ims.entity.InquiryStatus;
+import lk.steam.rms.dao.InquiryDAO;
+import lk.steam.rms.entity.Inquiry;
+import lk.steam.rms.entity.InquiryStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
