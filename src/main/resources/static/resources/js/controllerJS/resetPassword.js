@@ -13,6 +13,9 @@ window.addEventListener("load", () => {
             }
 
         }
+        else{
+            btnSendOtp.disabled = true;
+        }
 
     })
 
