@@ -27,9 +27,9 @@ public class UserController {
         return  userView;
     }
 
-    @GetMapping("/getUserByEmailAndStatus/{email}")
-    public User getUserByEmailAndStatus(@PathVariable String email){
-        return userDAO.getUserByEmailAndStatus(email);
+    @GetMapping("/getUserByEmail/{email}")
+    public User getUserByEmail(@PathVariable String email){
+        return userDAO.getUserByEmail(email);
     }
 
     @GetMapping(value = "/findall")
