@@ -38,7 +38,7 @@ const sendOTP = () => {
         showCustomModal("Email Contain OTP sent successfully", "success");
     }
     else{
-        showCustomModal("No User Account Found", "error");
+        showCustomModal("No User Account Found For Provided Email", "error");
     }
 
 
