@@ -24,7 +24,7 @@ window.addEventListener("load", () => {
 
 const sendOTP = () => {
 
-    const User = ajaxGetRequest("/User/getUserByEmail/"+username.value)
+    const User = ajaxGetRequest("Reset-Password/getUserByEmail/"+username.value)
     if(User!==''){
         if(User.status) {
             lblPassword.classList.remove('d-none');
