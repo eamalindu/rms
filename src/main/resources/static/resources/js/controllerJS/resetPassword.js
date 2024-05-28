@@ -26,26 +26,28 @@ const sendOTP = () => {
     //display a user msg
     password.disabled = false;
     password.focus();
+    setTimeout(function() {
+        btnSendOtp.disabled = false;
+        username.disabled = false;}, 120000);
     showCustomModal("Email Contain OTP sent successfully", "success");
 }
 
-const countdown = (minutes, elementID, msg) => {
+function countdown(minutes) {
     var seconds = 60;
     var mins = minutes
-
     function tick() {
-        var counter = elementID;
-        var current_minutes = mins - 1
+        //This script expects an element with an ID = "counter". You can change that to what ever you want.
+        var counter = document.getElementById("countdownText");
+        var current_minutes = mins-1
         seconds--;
-        counter.innerHTML = "<small>" + msg + " 0" + current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds) + " mintues</small>";
-        if (seconds > 0) {
+        counter.innerHTML ="<small>You can request another OTP after 0"+ current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds)+" mintues</small>";
+        if( seconds > 0 ) {
             setTimeout(tick, 1000);
         } else {
-            if (mins > 1) {
-                countdown(mins - 1);
+            if(mins > 1){
+                countdown(mins-1);
             }
         }
     }
-
     tick();
 }
