@@ -14,6 +14,7 @@ window.addEventListener("load", () => {
 
 
 const sendOTP = () => {
+    lblPassword.classList.remove('d-none');
     countdown(2, countdownText, 'You can request another OTP after');
 
     btnSendOtp.disabled = true;
