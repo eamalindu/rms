@@ -3,9 +3,15 @@ window.addEventListener("load", () => {
     btnSendOtp.disabled = true;
 
     username.addEventListener('keyup', () => {
-        btnSendOtp.disabled = false;
-        if (username.value == '') {
-            btnSendOtp.disabled = true;
+        if(username.value!==''){
+            if (/^[a-zA-Z]{2,19}@[a-zA-Z]{2,8}\.[a-zA-Z]{2,3}$/.test(username.value)) {
+                btnSendOtp.disabled = false;
+            }
+
+            else{
+                btnSendOtp.disabled = true;
+            }
+
         }
 
     })
