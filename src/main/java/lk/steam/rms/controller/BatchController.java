@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.net.Authenticator;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -30,6 +31,8 @@ public class BatchController {
     private RegistrationDAO registrationDAO;
     @Autowired
     private RegistrationStatusDAO registrationStatusDAO;
+    @Autowired
+    private PrivilegeController privilegeController;
 
     @GetMapping(value = "/findall", produces = "application/json")
     public List<Batch> findAll() {
@@ -133,7 +136,11 @@ public class BatchController {
     @Transactional
     public String deleteBatch(@RequestBody Batch batch) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Privilege loggedUserPrivilege ;
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+          return "User Don;t Have Permission";
+        }
         try {
             //soft delete
             //change batch Status to delete

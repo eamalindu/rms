@@ -44,4 +44,10 @@ public class Privilege {
     @JoinColumn(name = "module_id",referencedColumnName = "id")
     private Module moduleID;
 
+    public Privilege(Boolean select, Boolean insert, Boolean update, Boolean delete) {
+        this.selectPrivilege = select;
+        this.insertPrivilege = insert;
+        this.updatePrivilege = update;
+        this.deletePrivilege = delete;
+    }
 }
