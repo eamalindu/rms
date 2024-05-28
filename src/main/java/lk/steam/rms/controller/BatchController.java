@@ -139,7 +139,7 @@ public class BatchController {
         Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
 
         if(!loggedUserPrivilege.getDeletePrivilege()){
-          return "User Don;t Have Permission";
+          return "<br>User does not have sufficient privilege.";
         }
         try {
             //soft delete
