@@ -13,4 +13,11 @@ public class LoginController {
         loginView.setViewName("login.html");
         return loginView;
     }
+
+    @GetMapping(value = "/error")
+    public ModelAndView errorUI(){
+        ModelAndView errorView = new ModelAndView();
+        errorView.setViewName("error.html");
+        return errorView;
+    }
 }
