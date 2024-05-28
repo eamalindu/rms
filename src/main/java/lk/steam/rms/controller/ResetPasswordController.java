@@ -26,6 +26,6 @@ public class ResetPasswordController {
 
     @GetMapping(value = "/Reset-Password/getUserByEmail/{email}")
     User getUSerByEmail(@PathVariable String email) {
-        return new User(userDAO.getUserByEmail(email).getStatus());
+        return userDAO.getUserByEmail(email);
     }
 }
