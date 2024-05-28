@@ -14,25 +14,34 @@ window.addEventListener("load", () => {
 
 
 const sendOTP = () => {
-    lblPassword.classList.remove('d-none');
-    countdown(2, countdownText, 'You can request another OTP after');
 
-    btnSendOtp.disabled = true;
-    username.disabled = true;
-    btnLogin.disabled = false;
+    const User = ajaxGetRequest("/User/getUserByEmail/"+username.value)
+    if(User!==null){
+        lblPassword.classList.remove('d-none');
+        countdown(2, countdownText, 'You can request another OTP after');
 
-    otpContainer.classList.remove('d-none');
-    //check an account is present
-    //send a email
-    //display a user msg
-    password.disabled = false;
-    password.focus();
-    setTimeout(function() {
-        btnSendOtp.disabled = false;
-        username.disabled = false;
-        countdownText.innerHTML = '<small>You Can Request a New OTP Now</small>'
-    }, 120000);
-    showCustomModal("Email Contain OTP sent successfully", "success");
+        btnSendOtp.disabled = true;
+        username.disabled = true;
+        btnLogin.disabled = false;
+
+        otpContainer.classList.remove('d-none');
+        //check an account is present
+        //send a email
+        //display a user msg
+        password.disabled = false;
+        password.focus();
+        setTimeout(function() {
+            btnSendOtp.disabled = false;
+            username.disabled = false;
+            countdownText.innerHTML = '<small>You Can Request a New OTP Now</small>'
+        }, 120000);
+        showCustomModal("Email Contain OTP sent successfully", "success");
+    }
+    else{
+        showCustomModal("No User Account Found", "error");
+    }
+
+
 }
 
 function countdown(minutes) {
