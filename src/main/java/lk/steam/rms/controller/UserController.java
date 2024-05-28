@@ -27,7 +27,7 @@ public class UserController {
         return  userView;
     }
 
-    @GetMapping("/getUserByEmail/{email}")
+    @GetMapping(value = "/getUserByEmail/{email}",produces = "application/json")
     public User getUserByEmail(@PathVariable String email){
         return userDAO.getUserByEmail(email);
     }

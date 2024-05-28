@@ -16,7 +16,7 @@ window.addEventListener("load", () => {
 const sendOTP = () => {
 
     const User = ajaxGetRequest("/User/getUserByEmail/"+username.value)
-    if(User!==null){
+    if(User!==''){
         lblPassword.classList.remove('d-none');
         countdown(2, countdownText, 'You can request another OTP after');
 
