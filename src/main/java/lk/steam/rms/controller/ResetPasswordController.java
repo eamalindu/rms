@@ -14,9 +14,6 @@ public class ResetPasswordController {
     @Autowired
     private UserDAO userDAO;
 
-    public ResetPasswordController(UserDAO userDAO) {
-    }
-
     @GetMapping(value = "/Reset-Password")
     public ModelAndView resetPassword() {
         ModelAndView resetView = new ModelAndView();
