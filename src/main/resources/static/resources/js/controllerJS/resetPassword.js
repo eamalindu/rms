@@ -28,7 +28,9 @@ const sendOTP = () => {
     password.focus();
     setTimeout(function() {
         btnSendOtp.disabled = false;
-        username.disabled = false;}, 120000);
+        username.disabled = false;
+        countdownText.innerHTML = '<small>You Can Request a New OTP Now</small>'
+    }, 120000);
     showCustomModal("Email Contain OTP sent successfully", "success");
 }
 
