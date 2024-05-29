@@ -10,24 +10,24 @@
             <!-- Navbar left side (Default)-->
             <ul class="navbar-nav me-auto mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link text-white custom-width-max-content" href="New-Registration">New Registration</a>
+                    <a th:attr="class=${activeNavItem=='newRegistration' ? 'nav-link text-white custom-width-max-content custom-active' : 'nav-link text-white custom-width-max-content'}" href="New-Registration">New Registration</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white custom-width-max-content" href="Attendance">Attendance</a>
+                    <a th:attr="class=${activeNavItem=='attendance' ? 'nav-link text-white custom-width-max-content custom-active' : 'nav-link text-white custom-width-max-content'}" href="Attendance">Attendance</a>
                 </li>
             </ul>
             <!-- Navbar Right side -->
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link text-white custom-width-max-content" href="Registration">Registrations</a>
+                    <a th:attr="class=${activeNavItem=='registrations' ? 'nav-link text-white custom-width-max-content custom-active' : 'nav-link text-white custom-width-max-content'}" href="Registration">Registrations</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white custom-width-max-content custom-active" href="Course">Courses</a>
+                    <a th:attr="class=${activeNavItem=='courses' ? 'nav-link text-white custom-width-max-content custom-active' : 'nav-link text-white custom-width-max-content'}" href="Course">Courses</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white custom-width-max-content" href="Batch">Batches</a>
+                    <a th:attr="class=${activeNavItem=='batches' ? 'nav-link text-white custom-width-max-content custom-active' : 'nav-link text-white custom-width-max-content'}" href="Batch">Batches</a>
                 </li>
-                <li class="nav-item"><a class="nav-link text-white custom-width-max-content" href="Administrations">Administration</a>
+                <li class="nav-item"><a th:attr="class=${activeNavItem=='administrations' ? 'nav-link text-white custom-width-max-content custom-active' : 'nav-link text-white custom-width-max-content'}" href="Administrations">Administration</a>
                 </li>
                 <li class="nav-item">
                     <a aria-current="page" class="nav-link text-white custom-width-max-content" href="#"><i
