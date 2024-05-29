@@ -3,6 +3,8 @@ package lk.steam.rms.controller;
 import lk.steam.rms.dao.AttendanceDAO;
 import lk.steam.rms.entity.Attendance;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,8 +21,11 @@ public class AttendanceController {
 
     @GetMapping()
     public ModelAndView attendanceUI() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView attendanceView = new ModelAndView();
         attendanceView.setViewName("attendance.html");
+        attendanceView.addObject("username",auth.getName());
+        attendanceView.addObject("title","Attendance | STEAM IMS");
         return attendanceView;
     }
 
