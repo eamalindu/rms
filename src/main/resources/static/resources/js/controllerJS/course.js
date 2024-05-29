@@ -200,7 +200,11 @@ const resetModuleInnerForm = ()=>{
 const newCourseSubmit = ()=>{
     //calling the checkCourseFormErrors function and catching the return value to errors variable
     let errors = checkCourseFormErrors(newCourse);
+    //check the errors variable is null
+    //if it's null that means all the required inputs are filled
     if(errors===''){
+
+
         let serverResponse =  ajaxHttpRequest("/Course","POST",newCourse);
         console.log(serverResponse)
     }
