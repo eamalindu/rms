@@ -2,7 +2,10 @@ package lk.steam.rms.controller;
 
 import jakarta.transaction.Transactional;
 import lk.steam.rms.dao.*;
-import lk.steam.rms.entity.*;
+import lk.steam.rms.entity.Inquiry;
+import lk.steam.rms.entity.RegistrationStatus;
+import lk.steam.rms.entity.Registrations;
+import lk.steam.rms.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
@@ -38,20 +41,20 @@ public class RegistrationController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         System.out.println(auth);
         ModelAndView registrationView = new ModelAndView();
-       registrationView.setViewName("registrations.html");
-        registrationView.addObject("username",auth.getName());
-        registrationView.addObject("title","Manage Registrations | STEAM RMS");
+        registrationView.setViewName("registrations.html");
+        registrationView.addObject("username", auth.getName());
+        registrationView.addObject("title", "Manage Registrations | STEAM RMS");
         return registrationView;
     }
 
     @PostMapping
     @Transactional
-    public String saveNewRegistration(@RequestBody Registrations registrations){
+    public String saveNewRegistration(@RequestBody Registrations registrations) {
 
-        Registrations existRegistration = registrationDAO.getRegistrationsByBatchIDAndStudentID(registrations.getBatchID().getId(),registrations.getStudentID().getId());
+        Registrations existRegistration = registrationDAO.getRegistrationsByBatchIDAndStudentID(registrations.getBatchID().getId(), registrations.getStudentID().getId());
 
-        if(existRegistration!=null){
-            return  "This student is already registered to <br>Batch <span class='text-steam-green'>"+existRegistration.getBatchID().getBatchCode()+"</span><small> [Reg Number : <span class='text-steam-green'>"+existRegistration.getRegistrationNumber()+"</span>]</small>";
+        if (existRegistration != null) {
+            return "This student is already registered to <br>Batch <span class='text-steam-green'>" + existRegistration.getBatchID().getBatchCode() + "</span><small> [Reg Number : <span class='text-steam-green'>" + existRegistration.getRegistrationNumber() + "</span>]</small>";
         }
 
         try {
@@ -69,10 +72,10 @@ public class RegistrationController {
             registrations.setCommissionPaidTo("User1");
 
             //check the discountRate and discountAmount is null or not
-            if(registrations.getDiscountRate()==null){
+            if (registrations.getDiscountRate() == null) {
                 registrations.setDiscountRate(BigDecimal.valueOf(0));
             }
-            if(registrations.getDiscountAmount()==null){
+            if (registrations.getDiscountAmount() == null) {
                 registrations.setDiscountAmount(BigDecimal.valueOf(0));
             }
 
@@ -98,8 +101,8 @@ public class RegistrationController {
             Registrations completedRegistration = registrationDAO.save(registrations);
 
             //check an inquiry is available for the current registration
-            Inquiry currentInquiry = inquiryDAO.getActiveInquiryByIDAndCourseId(registrations.getStudentID().getIdValue(),registrations.getCourseID().getId());
-            if(currentInquiry!=null){
+            Inquiry currentInquiry = inquiryDAO.getActiveInquiryByIDAndCourseId(registrations.getStudentID().getIdValue(), registrations.getCourseID().getId());
+            if (currentInquiry != null) {
                 registrations.setInquiryID(currentInquiry.getId());
                 currentInquiry.setInquiryStatusId(inquiryStatusDAO.getReferenceById(3));
                 currentInquiry.setRegistrationID(completedRegistration.getId());
@@ -110,9 +113,8 @@ public class RegistrationController {
             System.out.println(completedRegistration.getId());
             return "OK";
 
-        }
-        catch (Exception ex){
-            return "Save Failed "+ex.getMessage();
+        } catch (Exception ex) {
+            return "Save Failed " + ex.getMessage();
         }
 
     }
@@ -120,37 +122,38 @@ public class RegistrationController {
     @GetMapping(value = "/findall", produces = "application/json")
     public List<Registrations> findAll() {
         //sorting the data DESC format
-        Sort sort = Sort.by(Sort.Direction.DESC,"registrationNumber");
+        Sort sort = Sort.by(Sort.Direction.DESC, "registrationNumber");
         return registrationDAO.findAll(sort);
     }
-    @GetMapping(value = "getRegistrations/{batchID}",produces = "application/json")
-    public List<Registrations> getBatchInfoByBatchCode(@PathVariable Integer batchID){
+
+    @GetMapping(value = "getRegistrations/{batchID}", produces = "application/json")
+    public List<Registrations> getBatchInfoByBatchCode(@PathVariable Integer batchID) {
         return registrationDAO.getRegistrationsByBatchID(batchID);
     }
-    @GetMapping(value = "getRegistration/{id}",produces = "application/json")
-    public Registrations getRegistrationByID(@PathVariable Integer id){
+
+    @GetMapping(value = "getRegistration/{id}", produces = "application/json")
+    public Registrations getRegistrationByID(@PathVariable Integer id) {
         return registrationDAO.getRegistrationsByID(id);
     }
 
-    @GetMapping(value = "getRegistrationFromBatchAndStudentNIC/{batchID}/{studentNIC}",produces = "application/json")
-    public Registrations getRegistrationFromBatchAndStudentNIC(@PathVariable Integer batchID,@PathVariable String studentNIC){
-        return registrationDAO.getRegistrationsByBatchIDAndStudentNIC(batchID,studentNIC);
+    @GetMapping(value = "getRegistrationFromBatchAndStudentNIC/{batchID}/{studentNIC}", produces = "application/json")
+    public Registrations getRegistrationFromBatchAndStudentNIC(@PathVariable Integer batchID, @PathVariable String studentNIC) {
+        return registrationDAO.getRegistrationsByBatchIDAndStudentNIC(batchID, studentNIC);
     }
 
-    @GetMapping(value = "getRegistrationByRegistrationNumber/{registrationNumber}",produces = "application/json")
-    public Registrations getRegistrationsByRegistrationNumber(@PathVariable String registrationNumber){
+    @GetMapping(value = "getRegistrationByRegistrationNumber/{registrationNumber}", produces = "application/json")
+    public Registrations getRegistrationsByRegistrationNumber(@PathVariable String registrationNumber) {
         return registrationDAO.getRegistrationsByRegistrationNumber(registrationNumber);
     }
 
-    @GetMapping(value = "getRegistrationHaveClassToday/{registrationNumber}",produces = "application/json")
-    public Registrations getRegistrationHaveClassToday(@PathVariable String registrationNumber){
+    @GetMapping(value = "getRegistrationHaveClassToday/{registrationNumber}", produces = "application/json")
+    public Registrations getRegistrationHaveClassToday(@PathVariable String registrationNumber) {
         return registrationDAO.getRegistrationHaveClassToday(registrationNumber);
     }
 
 
-
     @PutMapping
-    public String updateRegistration(@RequestBody Registrations registration){
+    public String updateRegistration(@RequestBody Registrations registration) {
 
         //check if the registration exist or not
         Registrations existReg = registrationDAO.getReferenceById(registration.getId());
@@ -158,15 +161,14 @@ public class RegistrationController {
         if (existReg == null) {
             return "No Such Registration Record";
         }
-        try{
-            if(registration.getTempRegistrationStatus()!=null){
+        try {
+            if (registration.getTempRegistrationStatus() != null) {
                 registration.setOldRegistrationStatus(registration.getRegistrationStatusID().getId());
                 registration.setRegistrationStatusID(registrationStatusDAO.getReferenceById(6));
             }
             registrationDAO.save(registration);
             return "OK";
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             return "Update Failed " + ex.getMessage();
         }
     }
