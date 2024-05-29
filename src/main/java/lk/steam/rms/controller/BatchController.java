@@ -62,8 +62,13 @@ public class BatchController {
 
     @GetMapping()
     public ModelAndView batchUI() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
         ModelAndView batchView = new ModelAndView();
         batchView.setViewName("batch.html");
+
+        batchView.addObject("username",auth.getName());
+        batchView.addObject("title","Test | STEAM IMS");
         return batchView;
     }
 
