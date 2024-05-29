@@ -30,6 +30,7 @@ public class CourseController {
         courseView.setViewName("course.html");
         courseView.addObject("username",auth.getName());
         courseView.addObject("title","Manage Courses | STEAM RMS");
+        courseView.addObject("activeNavItem","courses");
         return courseView;
     }
 
