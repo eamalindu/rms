@@ -248,5 +248,24 @@ const checkInnerFormModule = ()=>{
 const checkCourseFormErrors =(courseObject)=>{
     let errors = '';
 
+    if(courseObject.name==null){
+        errors = errors + 'Name is Required<br>';
+    }
+    if(courseObject.code==null){
+        errors = errors + 'Code is Required<br>';
+    }
+    if(courseObject.duration==null){
+        errors = errors + 'Duration is Required<br>';
+    }
+    if(courseObject.minimumRequirement==null){
+        errors = errors + 'Minimum Requirement is Required<br>';
+    }
+    if(courseObject.lectureHours==null){
+        errors = errors + 'Lecture Hours is Required<br>';
+    }
+    if(courseObject.lessonList.length===0){
+        errors = errors + 'Course Modules Are Required<br>';
+    }
+
     return errors;
 }
