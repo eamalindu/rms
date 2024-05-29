@@ -53,53 +53,7 @@
 </head>
 <body>
 <!--Navbar start-->
-<nav class="navbar navbar-expand-lg bg-steam-green p-1">
-    <div class="container-fluid">
-        <a class="navbar-brand text-white" href="Dashboard"><span class="text-uppercase fw-semibold">RMS</span> : : STEAM</a>
-        <button aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
-                data-bs-target="#navbarText" data-bs-toggle="collapse" type="button">
-            <span class="navbar-toggler-icon" style="filter: invert(100%)"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <!-- Navbar left side (Default)-->
-            <ul class="navbar-nav me-auto mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link text-white custom-width-max-content" href="New-Registration">New Registration</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white custom-width-max-content" href="Attendance">Attendance</a>
-                </li>
-            </ul>
-            <!-- Navbar Right side -->
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link text-white custom-width-max-content custom-active" href="Registration">Registrations</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white custom-width-max-content" href="Course">Courses</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white custom-width-max-content" href="Batch">Batches</a>
-                </li>
-                <li class="nav-item"><a class="nav-link text-white custom-width-max-content" href="Administrations">Administration</a>
-                </li>
-                <li class="nav-item dropdown-center custom-width-max-content p-0">
-                    <button aria-expanded="false"
-                            class="nav-link btn text-white dropdown-toggle custom-width-max-content border-0"
-                            data-bs-toggle="dropdown">Profile
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end rounded-0">
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a aria-current="page" class="nav-link text-white custom-width-max-content" href="#"><i class="fa-solid fa-bell" aria-hidden="true"></i></a>
-                </li>
-
-            </ul>
-        </div>
-    </div>
-</nav>
+<nav th:replace="~{ fragments/navbar :: navbarFragment}"></nav>
 <!--Navbar end-->
 
 <!-- Display Current Page -->
