@@ -2,6 +2,8 @@ package lk.steam.rms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,9 +19,13 @@ public class RmsApplication {
 
 	@RequestMapping(value = "/New-Registration")
 	public ModelAndView imsInquiries(){
-		ModelAndView imsInquiriesView = new ModelAndView();
-		imsInquiriesView.setViewName("newregistration.html");
-		return imsInquiriesView;
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		ModelAndView newRegistrationView = new ModelAndView();
+		newRegistrationView.setViewName("newregistration.html");
+		newRegistrationView.addObject("username",auth.getName());
+		newRegistrationView.addObject("title","New Registration | STEAM RMS");
+		newRegistrationView.addObject("activeNavItem","newRegistration");
+		return newRegistrationView;
 	}
 
 }
