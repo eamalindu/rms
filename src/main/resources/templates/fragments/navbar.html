@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg bg-steam-green p-1" th:fragment="navbarFragment">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white" href="Dashboard"><span class="text-uppercase fw-semibold">RMS</span> : :
+            STEAM</a>
+        <button aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-bs-target="#navbarText" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon" style="filter: invert(100%)"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <!-- Navbar left side (Default)-->
+            <ul class="navbar-nav me-auto mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-white custom-width-max-content" href="New-Registration">New Registration</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white custom-width-max-content" href="Attendance">Attendance</a>
+                </li>
+            </ul>
+            <!-- Navbar Right side -->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-white custom-width-max-content" href="Registration">Registrations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white custom-width-max-content custom-active" href="Course">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white custom-width-max-content" href="Batch">Batches</a>
+                </li>
+                <li class="nav-item"><a class="nav-link text-white custom-width-max-content" href="Administrations">Administration</a>
+                </li>
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link text-white custom-width-max-content" href="#"><i
+                            aria-hidden="true" class="fa-solid fa-bell"></i></a>
+                </li>
+                <li class="nav-item dropdown-center custom-width-max-content p-0">
+                    <button aria-expanded="false"
+                            class="nav-link btn bg-steam-green text-white dropdown-toggle custom-width-max-content border-0"
+                            data-bs-toggle="dropdown" th:text="${username}">Profile
+                    </button>
+                    <ul class="dropdown-menu mt-1 dropdown-menu-end rounded-0 mb-0 pb-0">
+
+                        <div class="dropdown-item p-0">
+                            <div class="card w-100 p-0 m-0 border-0">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between gap-3">
+                                        <img class="" src="https://emc.sgp1.digitaloceanspaces.com/uploads/hris/employees/photos/1556/1556.jpeg" width="50px">
+                                        <div>
+                                            <p class="text-muted small text-small mb-0">Employee Name</p>
+                                            <p class="text-muted small text-small mb-0"><small>Employee Destination</small></p>
+                                        </div>
+
+                                    </div>
+                                    <div class="btn btn-sm btn-danger w-100 text-white border-0 text-center mt-3">Logout</div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </ul>
+
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
