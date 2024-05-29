@@ -209,6 +209,15 @@ const newCourseSubmit = ()=>{
                 //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
                 //catch the return value from the backend and save it in the serviceResponse variable
                 let serverResponse = ajaxHttpRequest("/Course", "POST", newCourse);
+                //check the serviceResponse value is "OK"
+                if (serviceResponse === "OK") {
+
+                }
+                else{
+                    //this means there was a problem with the query
+                    //shows an error alert to the user
+                    showCustomModal("Operation Failed!" + serviceResponse, "error");
+                }
             }
             //will execute this block if the user confirmation is "no"
             //show user an alert
