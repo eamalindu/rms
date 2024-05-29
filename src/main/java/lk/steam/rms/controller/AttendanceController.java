@@ -26,6 +26,7 @@ public class AttendanceController {
         attendanceView.setViewName("attendance.html");
         attendanceView.addObject("username",auth.getName());
         attendanceView.addObject("title","Attendance | STEAM RMS");
+        attendanceView.addObject("activeNavItem","attendance");
         return attendanceView;
     }
 
