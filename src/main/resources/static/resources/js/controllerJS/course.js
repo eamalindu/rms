@@ -244,3 +244,9 @@ const checkInnerFormModule = ()=>{
 
     return errors;
 }
+
+const checkCourseFormErrors =(courseObject)=>{
+    let errors = '';
+
+    return errors;
+}
