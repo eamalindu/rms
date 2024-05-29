@@ -211,7 +211,15 @@ const newCourseSubmit = ()=>{
                 let serverResponse = ajaxHttpRequest("/Course", "POST", newCourse);
                 //check the serviceResponse value is "OK"
                 if (serviceResponse === "OK") {
-
+                    //this means data successfully passed to the backend
+                    //show an alert to user
+                    showCustomModal("Course Successfully Added!", "success");
+                    //close the offcanvas sheet
+                    offCanvasCourseCloseButton.click();
+                    //refresh the table
+                    refreshCourseTable();
+                    //refresh the form
+                    resetCourseForm();
                 }
                 else{
                     //this means there was a problem with the query
