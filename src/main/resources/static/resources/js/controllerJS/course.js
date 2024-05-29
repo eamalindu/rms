@@ -200,10 +200,18 @@ const resetModuleInnerForm = ()=>{
 const newCourseSubmit = ()=>{
     //calling the checkCourseFormErrors function and catching the return value to errors variable
     let errors = checkCourseFormErrors(newCourse);
+    if(errors===''){
+        let serverResponse =  ajaxHttpRequest("/Course","POST",newCourse);
+        console.log(serverResponse)
+    }
+    else{
+        //there are errors
+        //display them to the user using external-ModalFunction()
+        showCustomModal(errors, 'warning');
+    }
 
 
-    let serverResponse =  ajaxHttpRequest("/Course","POST",newCourse);
-    console.log(serverResponse)
+
 }
 
 const newModuleSubmit = ()=>{
