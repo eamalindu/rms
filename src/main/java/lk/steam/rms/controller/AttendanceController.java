@@ -25,7 +25,7 @@ public class AttendanceController {
         ModelAndView attendanceView = new ModelAndView();
         attendanceView.setViewName("attendance.html");
         attendanceView.addObject("username",auth.getName());
-        attendanceView.addObject("title","Attendance | STEAM IMS");
+        attendanceView.addObject("title","Attendance | STEAM RMS");
         return attendanceView;
     }
 

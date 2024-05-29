@@ -29,7 +29,7 @@ public class CourseController {
         ModelAndView courseView = new ModelAndView();
         courseView.setViewName("course.html");
         courseView.addObject("username",auth.getName());
-        courseView.addObject("title","Manage Courses | STEAM IMS");
+        courseView.addObject("title","Manage Courses | STEAM RMS");
         return courseView;
     }
 
