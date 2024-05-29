@@ -69,6 +69,7 @@ public class BatchController {
 
         batchView.addObject("username",auth.getName());
         batchView.addObject("title","Manage Batches | STEAM RMS");
+        batchView.addObject("activeNavItem","batches");
         return batchView;
     }
 
