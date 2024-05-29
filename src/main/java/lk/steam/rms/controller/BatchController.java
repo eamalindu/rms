@@ -68,7 +68,7 @@ public class BatchController {
         batchView.setViewName("batch.html");
 
         batchView.addObject("username",auth.getName());
-        batchView.addObject("title","Test | STEAM IMS");
+        batchView.addObject("title","Manage Batches | STEAM IMS");
         return batchView;
     }
 
