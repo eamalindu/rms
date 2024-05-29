@@ -44,6 +44,7 @@ public class RegistrationController {
         registrationView.setViewName("registrations.html");
         registrationView.addObject("username", auth.getName());
         registrationView.addObject("title", "Manage Registrations | STEAM RMS");
+        registrationView.addObject("activeNavItem","registrations");
         return registrationView;
     }
 
