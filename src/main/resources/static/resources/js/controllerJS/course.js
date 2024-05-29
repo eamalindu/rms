@@ -198,6 +198,10 @@ const resetModuleInnerForm = ()=>{
 }
 
 const newCourseSubmit = ()=>{
+    //calling the checkCourseFormErrors function and catching the return value to errors variable
+    let errors = checkCourseFormErrors(newCourse);
+
+
     let serverResponse =  ajaxHttpRequest("/Course","POST",newCourse);
     console.log(serverResponse)
 }
