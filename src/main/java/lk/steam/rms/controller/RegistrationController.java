@@ -5,6 +5,8 @@ import lk.steam.rms.dao.*;
 import lk.steam.rms.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,8 +35,12 @@ public class RegistrationController {
 
     @GetMapping()
     public ModelAndView registrationUI() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(auth);
         ModelAndView registrationView = new ModelAndView();
        registrationView.setViewName("registrations.html");
+        registrationView.addObject("username",auth.getName());
+        registrationView.addObject("title","Manage Registrations | STEAM RMS");
         return registrationView;
     }
 
