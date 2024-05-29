@@ -203,10 +203,19 @@ const newCourseSubmit = ()=>{
     //check the errors variable is null
     //if it's null that means all the required inputs are filled
     if(errors===''){
-
-
-        let serverResponse =  ajaxHttpRequest("/Course","POST",newCourse);
-        console.log(serverResponse)
+        //get a user confirmation using external customConfirm js
+        showCustomConfirm("You are about to add a New Batch<br>Are You Sure?", function (result) {
+            if (result) {
+                //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+                //catch the return value from the backend and save it in the serviceResponse variable
+                let serverResponse = ajaxHttpRequest("/Course", "POST", newCourse);
+            }
+            //will execute this block if the user confirmation is "no"
+            //show user an alert
+            else {
+                showCustomModal("Operation Cancelled!", "info");
+            }
+        });
     }
     else{
         //there are errors
