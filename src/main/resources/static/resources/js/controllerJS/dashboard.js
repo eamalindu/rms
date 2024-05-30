@@ -2,6 +2,7 @@ window.addEventListener('load',()=>{
 
     //using refreshDashboardWidgets to refresh the dashboard widget values
     refreshDashboardWidgets();
+    generateChartRegistrationBreakdown();
 });
 
 const refreshDashboardWidgets = ()=>{
@@ -28,5 +29,5 @@ const refreshDashboardWidgets = ()=>{
 }
 
 const generateChartRegistrationBreakdown = ()=>{
-    generateChart()
+    generateChart(chartRegistrationBreakdown,'',['DiT', 'DiE', 'CiT', 'CiE'],'Registrations',[{name: 'Courses', data: [30, 80, 67, 20], color: "#553772"}])
 }
