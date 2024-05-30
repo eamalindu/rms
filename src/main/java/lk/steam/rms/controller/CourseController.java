@@ -1,6 +1,7 @@
 package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.CourseDAO;
+import lk.steam.rms.dao.UserDAO;
 import lk.steam.rms.entity.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -16,6 +17,8 @@ public class CourseController {
 
     @Autowired
     private CourseDAO courseDAO;
+    @Autowired
+    private UserDAO userDAO;
 
     @GetMapping(value = "/findall",produces = "application/json")
     public List<Course> findAll(){
@@ -31,6 +34,10 @@ public class CourseController {
         courseView.addObject("username",auth.getName());
         courseView.addObject("title","Manage Courses | STEAM RMS");
         courseView.addObject("activeNavItem","courses");
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        courseView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        courseView.addObject("loggedInDesignationName",loggedInDesignationName);
         return courseView;
     }
 
