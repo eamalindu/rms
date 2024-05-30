@@ -1,6 +1,7 @@
 package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.AttendanceDAO;
+import lk.steam.rms.dao.UserDAO;
 import lk.steam.rms.entity.Attendance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -18,6 +19,8 @@ public class AttendanceController {
 
     @Autowired
     private AttendanceDAO attendanceDAO;
+    @Autowired
+    private UserDAO userDAO;
 
     @GetMapping()
     public ModelAndView attendanceUI() {
@@ -27,6 +30,10 @@ public class AttendanceController {
         attendanceView.addObject("username",auth.getName());
         attendanceView.addObject("title","Attendance | STEAM RMS");
         attendanceView.addObject("activeNavItem","attendance");
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        attendanceView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        attendanceView.addObject("loggedInDesignationName",loggedInDesignationName);
         return attendanceView;
     }
 
