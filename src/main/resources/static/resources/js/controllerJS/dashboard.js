@@ -39,5 +39,5 @@ const generateChartRegistrationBreakdown = ()=>{
     console.log(courseCode);
     console.log(registrationCount);
 
-    generateChart(chartRegistrationBreakdown,'',courseCode,'Registrations',[{name: 'Courses', data: registrationCount, color: "#553772"}])
+    generateChart(chartRegistrationBreakdown,`${new Date().getFullYear()}-${new Date().toLocaleString('default', { month: 'short' })}`,courseCode,'Registration Count',[{name: 'Courses', data: registrationCount, color: "#553772"}])
 }
