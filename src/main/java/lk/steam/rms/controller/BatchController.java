@@ -1,10 +1,7 @@
 package lk.steam.rms.controller;
 
 import jakarta.transaction.Transactional;
-import lk.steam.rms.dao.BatchDAO;
-import lk.steam.rms.dao.BatchStatusDAO;
-import lk.steam.rms.dao.RegistrationDAO;
-import lk.steam.rms.dao.RegistrationStatusDAO;
+import lk.steam.rms.dao.*;
 import lk.steam.rms.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -33,6 +30,8 @@ public class BatchController {
     private RegistrationStatusDAO registrationStatusDAO;
     @Autowired
     private PrivilegeController privilegeController;
+    @Autowired
+    private UserDAO userDAO;
 
     @GetMapping(value = "/findall", produces = "application/json")
     public List<Batch> findAll() {
@@ -70,6 +69,11 @@ public class BatchController {
         batchView.addObject("username",auth.getName());
         batchView.addObject("title","Manage Batches | STEAM RMS");
         batchView.addObject("activeNavItem","batches");
+
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        batchView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        batchView.addObject("loggedInDesignationName",loggedInDesignationName);
         return batchView;
     }
 
