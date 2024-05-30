@@ -50,7 +50,7 @@ public class Student {
     @NotNull
     private String language;
 
-    @Column(name = "mobilenumber")
+    @Column(name = "mobilenumber",unique = true)
     @NotNull
     private String mobileNumber;
 
