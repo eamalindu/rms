@@ -15,4 +15,14 @@ const refreshDashboardWidgets = ()=>{
     dailyIncomeText.innerText = "Rs. "+dailyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})
     //daily Income calculation end
 
+
+    //monthly Income calculation start
+    const monthlyPayments = ajaxGetRequest("Payment/getMonthlyTotalPayment");
+    let monthlyPayment = 0;
+    monthlyPayments.forEach((payment)=>{
+        monthlyPayment += payment.amount;
+    });
+    monthlyIncomeText.innerText = "Rs. "+dailyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})
+    //monthly Income calculation end
+
 }
