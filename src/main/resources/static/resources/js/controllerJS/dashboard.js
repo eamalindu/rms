@@ -12,7 +12,7 @@ const refreshDashboardWidgets = ()=>{
     dailyPayments.forEach((payment)=>{
         dailyPayment += payment.amount;
     });
-
+    dailyIncomeText.innerText = "Rs. "+dailyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})
     //daily Income calculation end
 
 }
