@@ -29,5 +29,11 @@ const refreshDashboardWidgets = ()=>{
 }
 
 const generateChartRegistrationBreakdown = ()=>{
-    generateChart(chartRegistrationBreakdown,'',['DiT', 'DiE', 'CiT', 'CiE'],'Registrations',[{name: 'Courses', data: [30, 80, 67, 20], color: "#553772"}])
+    const courses = ajaxGetRequest("/Course/findall");
+    let courseCode = [];
+    courses.forEach((course)=>{
+        courseCode.push(course.code);
+    });
+    console.log(courseCode);
+    generateChart(chartRegistrationBreakdown,'',courseCode,'Registrations',[{name: 'Courses', data: [30, 80, 67, 20], color: "#553772"}])
 }
