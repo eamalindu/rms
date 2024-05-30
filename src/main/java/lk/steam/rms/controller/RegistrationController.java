@@ -159,6 +159,11 @@ public class RegistrationController {
         return registrationDAO.getRegistrationHaveClassToday(registrationNumber);
     }
 
+    @GetMapping(value = "getMonthlyRegistrationByCourseID/{courseID}", produces = "application/json")
+    public List<Registrations> getMonthlyRegistrationByCourseID(@PathVariable Integer courseID) {
+        return registrationDAO.getMonthlyRegistrationByCourseID(courseID);
+    }
+
 
     @PutMapping
     public String updateRegistration(@RequestBody Registrations registration) {
