@@ -34,8 +34,8 @@ public class LoginController {
         ModelAndView dashboardView = new ModelAndView();
         dashboardView.setViewName("dashboard.html");
         dashboardView.addObject("username",auth.getName());
-        dashboardView.addObject("title","Attendance | STEAM RMS");
-        dashboardView.addObject("activeNavItem","attendance");
+        dashboardView.addObject("title","Dashboard | STEAM RMS");
+        dashboardView.addObject("activeNavItem","dashboard");
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
         String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
         dashboardView.addObject("loggedInEmployeeName",loggedInEmployeeName);
