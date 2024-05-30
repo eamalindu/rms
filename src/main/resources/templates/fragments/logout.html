@@ -1,6 +1,6 @@
 <script th:fragment="logoutScript">
     const logout = ()=>{
-        showCustomConfirm("<span class='text-capitalize text-steam-green'>"+btnProfileName.innerText+"</span>, You are About to <br>edLogout from the System<br><br> are you sure?",function (result){
+        showCustomConfirm("<span class='text-capitalize text-steam-green'>"+btnProfileName.innerText+"</span>, You are About to <br>Logout from the System<br><br> are you sure?",function (result){
 
             if(result){
                 window.location.assign("/logout");
