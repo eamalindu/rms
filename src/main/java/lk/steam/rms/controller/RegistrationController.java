@@ -36,6 +36,9 @@ public class RegistrationController {
     @Autowired
     private InquiryStatusDAO inquiryStatusDAO;
 
+    @Autowired
+    private UserDAO userDAO;
+
     @GetMapping()
     public ModelAndView registrationUI() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -45,6 +48,10 @@ public class RegistrationController {
         registrationView.addObject("username", auth.getName());
         registrationView.addObject("title", "Manage Registrations | STEAM RMS");
         registrationView.addObject("activeNavItem","registrations");
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        registrationView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        registrationView.addObject("loggedInDesignationName",loggedInDesignationName);
         return registrationView;
     }
 
