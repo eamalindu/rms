@@ -134,7 +134,7 @@ public class PaymentController {
     }
 
     @GetMapping(value = "/getDailyIncome",produces = "application/json")
-    public Double getDailyIncome(){
+    public List<Payment> getDailyIncome(){
         return paymentDAO.getDailyTotalPayment();
     }
 }
