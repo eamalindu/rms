@@ -26,3 +26,7 @@ const refreshDashboardWidgets = ()=>{
     //monthly Income calculation end
 
 }
+
+const generateChartRegistrationBreakdown = ()=>{
+    generateChart()
+}
