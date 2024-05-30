@@ -22,7 +22,7 @@ const refreshDashboardWidgets = ()=>{
     monthlyPayments.forEach((payment)=>{
         monthlyPayment += payment.amount;
     });
-    monthlyIncomeText.innerText = "Rs. "+dailyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})
+    monthlyIncomeText.innerText = "Rs. "+monthlyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})
     //monthly Income calculation end
 
 }
