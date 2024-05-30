@@ -23,6 +23,72 @@
     z-index: 2000;
 }
 
+.dashboard-widget-blue{
+    background: linear-gradient(white, white 50%, #0DCAF0FF 50%, #0DCAF0FF);
+    background-size: 100% 200%;
+    transition: background 1s;
+    outline:1px solid rgba(0, 0, 0, 0.175);
+    border: none;
+}
+.dashboard-widget-blue:hover{
+    color: white!important;
+    outline-color: rgb(13,202,240)!important;
+    transition: all ease-in-out .5s;
+    background-position: 100% 100%;
+}
+.dashboard-widget-green{
+    background: linear-gradient(white, white 50%, #198754FF 50%, #198754FF);
+    background-size: 100% 200%;
+    transition: background 1s;
+    outline:1px solid rgba(0, 0, 0, 0.175);
+    border: none;
+}
+.dashboard-widget-green:hover{
+    color: white!important;
+    outline-color: rgb(25,135,84)!important;
+    background-position: 100% 100%;
+    transition: all ease-in-out 0.5s;
+}
+.dashboard-widget-red{
+    background: linear-gradient(white, white 50%, #DC3545FF 50%, #DC3545FF);
+    background-size: 100% 200%;
+    transition: background 1s;
+    outline:1px solid rgba(0, 0, 0, 0.175);
+    border: none;
+}
+.dashboard-widget-red:hover{
+    color: white!important;
+    outline-color: rgb(220,53,69)!important;
+    transition: all ease-in-out .5s;
+    background-position: 100% 100%;
+}
+.dashboard-widget-yellow{
+    background: linear-gradient(white, white 50%, #FFC107FF 50%, #FFC107FF);
+    background-size: 100% 200%;
+    transition: background 1s;
+    outline:1px solid rgba(0, 0, 0, 0.175);
+    border: none;
+}
+.dashboard-widget-yellow:hover{
+    background-position: 100% 100%;
+    color: white!important;
+    border-color: rgb(255,193,7)!important;
+    transition: all ease-in-out .5s;
+}
+.dashboard-widget-purple{
+    background: linear-gradient(white, white 50%, rebeccapurple 50%, rebeccapurple);
+    background-size: 100% 200%;
+    transition: background 1s;
+    outline:1px solid rgba(0, 0, 0, 0.175);
+    border: none;
+}
+.dashboard-widget-purple:hover{
+    color: white!important;
+    outline-color: rebeccapurple!important;
+    transition: all ease-in-out .5s;
+    background-position: 100% 100%;
+}
+
 .custom-login-form-container {
     width: 30%;
 }
