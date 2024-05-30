@@ -32,4 +32,7 @@ public interface RegistrationDAO extends JpaRepository<Registrations, Integer> {
 
     @Query("SELECT r from Registrations r JOIN BatchHasDay bhd on r.batchID.id = bhd.batchID.id JOIN Day d ON bhd.dayID.id = d.id where d.name = DAYNAME(CURDATE()) and r.registrationNumber=?1")
     Registrations getRegistrationHaveClassToday(String registrationNumber);
+
+    @Query(value = "SELECT * FROM steam.registration where timestamp >= DATE_FORMAT(CURRENT_DATE, '%Y-%m-01') AND timestamp < DATE_FORMAT(CURRENT_DATE + INTERVAL 1 MONTH, '%Y-%m-01') and course_id =?1",nativeQuery = true)
+    List<Registrations> getMonthlyRegistrationByCourseID(Integer courseID);
 }
