@@ -115,5 +115,7 @@ const resetQuickPaymentForm = ()=>{
         input.classList.remove('is-invalid');
     });
 
+    const paymentMethods = ajaxGetRequest('/PaymentType/findall');
+    fillSelectOptions(quickPaymentMethod,' ',paymentMethods,'name')
     $('#quickPaymentMethod').chosen({width: '100%'});
 }
