@@ -20,7 +20,7 @@ public class ReportController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         ModelAndView reportView = new ModelAndView();
-        reportView.setViewName("batch.html");
+        reportView.setViewName("report.html");
 
         reportView.addObject("username",auth.getName());
         reportView.addObject("title","Reports | STEAM RMS");
