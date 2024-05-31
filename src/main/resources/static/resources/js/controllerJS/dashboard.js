@@ -49,6 +49,14 @@ const findRegistration=()=>{
         const registration = ajaxGetRequest("/Registration/getRegistrationByRegistrationNumber/" + registrationNumber);
         if(registration!==''){
             quickPaymentStudentName.innerText = registration.studentID.title +". "+registration.studentID.nameWithInitials;
+            quickPaymentBatchCode.innerText = registration.batchID.batchcode;
+            if(registration.isFullPayment) {
+                quickPaymentPaymentPlan.innerText = 'One Time Payment';
+            }
+            else{
+                quickPaymentPaymentPlan.innerText ='Installment Plan';
+            }
+            quickPaymentBalanceFee.innerText = registration.studentID.title +". "+registration.studentID.nameWithInitials;
             collapseRegistration.classList.add('show');
         }
         else{
