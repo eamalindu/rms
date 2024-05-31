@@ -5,6 +5,11 @@ window.addEventListener('load',()=>{
     generateChartRegistrationBreakdown();
 
     $('#quickPaymentMethod').chosen({width: '100%'});
+
+    //validation chosen select (for new batch)
+    $("#quickPaymentMethod").chosen().change(function () {
+        $("#quickPaymentMethod_chosen .chosen-single").addClass('select-validated');
+    });
 });
 
 const refreshDashboardWidgets = ()=>{
