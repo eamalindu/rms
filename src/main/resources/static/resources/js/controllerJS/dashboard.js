@@ -53,7 +53,7 @@ const findRegistration=()=>{
     registrationNumber =quickPaymentRegistrationNumber.value;
     if(registrationNumber!=='') {
 
-        const registration = ajaxGetRequest("/Registration/getRegistrationByRegistrationNumber/" + registrationNumber);
+        registration = ajaxGetRequest("/Registration/getRegistrationByRegistrationNumber/" + registrationNumber);
         if(registration!==''){
             quickPaymentStudentName.innerText = registration.studentID.title +". "+registration.studentID.nameWithInitials;
             quickPaymentBatchCode.innerText = registration.batchID.batchCode;
@@ -128,6 +128,7 @@ const resetQuickPaymentForm = ()=>{
 
 const newQuickPaymentSubmit = ()=>{
     const severResponse = ajaxHttpRequest("/Payment","POST",newPayment);
+
     if (severResponse === "OK") {
         //this means data successfully passed to the backend
         //show an alert to user
@@ -232,4 +233,24 @@ const generateInvoice = (object)=>{
         newWindow.print();
     },200)
 
+}
+
+const checkQuickPaymentFormErrors = ()=>{
+    //check for binding
+    //0 isn't allowed as a payment
+    // cant be larger than Total Outstanding
+    let errors = ''
+    if(newPayment.paymentTypeID==null){
+        errors = errors + 'Payment Type is Required<br>';
+    }
+    if(newPayment.amount==null){
+        errors = errors + 'Amount is Required<br>';
+    }
+    if(newPayment.amount<=0){
+        errors = errors + 'Amount Can Not Be Rs. 0.00<br>';
+    }
+    if(newPayment.amount>registration.balanceAmount){
+        errors = errors +'The Current amount <span class="text-steam-green">Rs. '+newPayment.amount+ '.00</span> exceeds the total outstanding balance <span class="text-steam-green">Rs. '+oldRegistration.balanceAmount+'.00</span><br>';
+    }
+    return errors;
 }
