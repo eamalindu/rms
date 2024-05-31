@@ -22,7 +22,9 @@
     background-color: #f3f3f3;
     z-index: 2000;
 }
-
+.pointer:hover{
+    cursor: pointer;
+}
 .dashboard-widget-blue{
     background: linear-gradient(white, white 50%, #0DCAF0FF 50%, #0DCAF0FF);
     background-size: 100% 200%;
