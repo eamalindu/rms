@@ -49,7 +49,7 @@ const findRegistration=()=>{
         const registration = ajaxGetRequest("/Registration/getRegistrationByRegistrationNumber/" + registrationNumber);
         if(registration!==''){
             quickPaymentStudentName.innerText = registration.studentID.title +". "+registration.studentID.nameWithInitials;
-            quickPaymentBatchCode.innerText = registration.batchID.batchcode;
+            quickPaymentBatchCode.innerText = registration.batchID.batchCode;
             if(registration.isFullPayment) {
                 quickPaymentPaymentPlan.innerText = 'One Time Payment';
             }
