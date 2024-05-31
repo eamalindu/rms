@@ -129,7 +129,7 @@ const newQuickPaymentSubmit = ()=>{
     if (severResponse === "OK") {
         //this means data successfully passed to the backend
         //show an alert to user
-        showCustomModal("Payment Successfully Added!<br>Click on Print Invoice Button to Generate the Invoice", "success");
+        showCustomModal("Payment Successfully Added!<br>Click on <strong>Print Invoice</strong> Button <br> to Generate the Invoice", "success");
 
         let currentRegistration = newPayment.registrationID;
         //add a code to generate a new payment receipt here
@@ -139,8 +139,9 @@ const newQuickPaymentSubmit = ()=>{
         btnPrintInvoice.addEventListener('click',()=> {
             generateInvoice(addedPayment);
             console.log(addedPayment);
+            resetQuickPaymentForm();
         });
-        resetQuickPaymentForm();
+
     }
 }
 
