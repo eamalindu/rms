@@ -136,13 +136,35 @@
                         </div>
                         <div class="text-muted small"><small>Example : 00001</small></div>
                     </div>
-                    <div class="collapse" id="collapseRegistration">
+                    <div class="collapse mb-2" id="collapseRegistration">
                         <div class="card card-body rounded-0 small">
                             <p class="mb-0">Student Name : <span class="text-muted" id="quickPaymentStudentName"></span></p>
                             <p class="mb-0">Batch Code : <span class="text-muted" id="quickPaymentBatchCode"></span></p>
                             <p class="mb-0">Payment Plan : <span class="text-muted" id="quickPaymentPaymentPlan"></span></p>
                             <p class="mb-0">Total Balance Fee : <span class="text-muted" id="quickPaymentBalanceFee"></span></p>
                             <p class="mb-0">Registration Status : <span id="quickPaymentRegistrationStatus"></span></p>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="quickPaymentMethod">Payment Method</label>
+                        </div>
+                        <select class="form-select rounded-0" id="quickPaymentMethod" data-placeholder="Please Select a Payment Method" onchange="selectDynamicValueValidator(this,'','newPayment','paymentTypeID')" required>
+                            <option></option>
+                            <option value="test">test</option>
+                        </select>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Payment Method</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold small required">Amount</label>
+                        </div>
+                        <div class="input-group">
+                            <input class="form-control rounded-0 newRegistrationPaymentInputs w-25" id="quickPaymentRupees" disabled readonly value="Rs.">
+                            <input class="form-control rounded-0 newRegistrationPaymentInputs" id="quickPaymentAmount" required onkeyup="inputTextValidator(this,'^[0-9]{1,6}$','newPayment','amount')">
+                            <div class="valid-feedback rounded-2">Value Accepted</div>
+                            <div class="invalid-feedback rounded-2">Please provide a valid Amount</div>
                         </div>
                     </div>
 
