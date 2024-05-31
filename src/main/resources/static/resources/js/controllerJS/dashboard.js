@@ -45,8 +45,14 @@ const generateChartRegistrationBreakdown = ()=>{
 const findRegistration=()=>{
     registrationNumber =quickPaymentRegistrationNumber.value;
     if(registrationNumber!=='') {
+
         const registration = ajaxGetRequest("/Registration/getRegistrationByRegistrationNumber/" + registrationNumber);
-        console.log(registration);
+        if(registration!==''){
+
+        }
+        else{
+            showCustomModal("No Registration Found for Registration Number <span class='text-steam-green'> "+registrationNumber+"</span>",'error')
+        }
     }
     else{
         showCustomModal("Registration Number is Required!",'warning')
