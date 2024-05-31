@@ -3,6 +3,8 @@ window.addEventListener('load',()=>{
     //using refreshDashboardWidgets to refresh the dashboard widget values
     refreshDashboardWidgets();
     generateChartRegistrationBreakdown();
+
+    $('#quickPaymentMethod').chosen({width: '100%'});
 });
 
 const refreshDashboardWidgets = ()=>{
