@@ -129,18 +129,18 @@ const newQuickPaymentSubmit = ()=>{
     if (severResponse === "OK") {
         //this means data successfully passed to the backend
         //show an alert to user
-        showCustomModal("Payment Successfully Added!", "success");
+        showCustomModal("Payment Successfully Added!<br>Click on Print Invoice Button to Generate the Invoice", "success");
 
         let currentRegistration = newPayment.registrationID;
         //add a code to generate a new payment receipt here
         let addedPayment = ajaxGetRequest("Payment/getPaymentsByRegistrationID/"+currentRegistration.id);
         addedPayment = addedPayment.pop();
-
         btnPrintInvoice.classList.remove('d-none');
         btnPrintInvoice.addEventListener('click',()=> {
             generateInvoice(addedPayment);
             console.log(addedPayment);
         });
+        resetQuickPaymentForm();
     }
 }
 
