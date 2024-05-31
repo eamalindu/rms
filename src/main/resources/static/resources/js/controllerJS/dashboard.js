@@ -131,7 +131,7 @@ const newQuickPaymentSubmit = ()=>{
     if (severResponse === "OK") {
         //this means data successfully passed to the backend
         //show an alert to user
-        showCustomModal("Payment Successfully Added!<br><br>Please Wait Redirecting to Invoice", "success");
+        showCustomModal("Payment Successfully Added!<br><br>Please Wait Generating Invoice", "success");
         refreshDashboardWidgets();
         setTimeout(()=>{
             generateInvoice(ajaxHttpRequest('/Payment/getPaymentsByRegistrationID/'+newPayment.registrationID.id).pop());
