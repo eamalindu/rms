@@ -48,7 +48,7 @@ const findRegistration=()=>{
 
         const registration = ajaxGetRequest("/Registration/getRegistrationByRegistrationNumber/" + registrationNumber);
         if(registration!==''){
-            quickPaymentStudentName.innerText = registration.studenID.title +". "+registration.studenID.nameWithInitials;
+            quickPaymentStudentName.innerText = registration.studentID.title +". "+registration.studentID.nameWithInitials;
             collapseRegistration.classList.add('show');
         }
         else{
