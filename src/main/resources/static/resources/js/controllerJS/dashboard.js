@@ -278,7 +278,7 @@ const checkQuickPaymentFormErrors = ()=>{
         errors = errors + 'Amount Can Not Be Rs. 0.00<br>';
     }
     if(newPayment.amount>registration.balanceAmount){
-        errors = errors +'The Current amount <span class="text-steam-green">Rs. '+newPayment.amount+ '.00</span> exceeds the total outstanding balance <span class="text-steam-green">Rs. '+oldRegistration.balanceAmount+'.00</span><br>';
+        errors = errors +'The Current amount <span class="text-steam-green">Rs. '+newPayment.amount+ '.00</span> exceeds the total outstanding balance <span class="text-steam-green">Rs. '+registration.balanceAmount+'.00</span><br>';
     }
     return errors;
 }
