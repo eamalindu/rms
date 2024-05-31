@@ -271,6 +271,9 @@ const checkQuickPaymentFormErrors = ()=>{
     if(newPayment.paymentTypeID==null){
         errors = errors + 'Payment Type is Required<br>';
     }
+    if(newPayment.registrationID==null){
+        errors = errors + 'Registration is Required<br>';
+    }
     if(newPayment.amount==null){
         errors = errors + 'Amount is Required<br>';
     }
