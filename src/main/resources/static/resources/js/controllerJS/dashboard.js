@@ -123,3 +123,17 @@ const resetQuickPaymentForm = ()=>{
     fillSelectOptions(quickPaymentMethod,' ',paymentMethods,'name')
     $('#quickPaymentMethod').chosen({width: '100%'});
 }
+
+const newQuickPaymentSubmit = ()=>{
+    const severResponse = ajaxHttpRequest("/Payment","POST",newPayment);
+    if (severResponse === "OK") {
+        //this means data successfully passed to the backend
+        //show an alert to user
+        showCustomModal("Payment Successfully Added!", "success");
+
+        //add a code to generate a new payment receipt here
+        let addedPayment = ajaxGetRequest("Payment/getPaymentsByRegistrationID/"+currentRegistration.id);
+        addedPayment = addedPayment.pop();
+        console.log(addedPayment);
+    }
+}
