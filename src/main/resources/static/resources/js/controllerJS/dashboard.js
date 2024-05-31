@@ -142,6 +142,8 @@ const newQuickPaymentSubmit = ()=>{
             resetQuickPaymentForm();
         });
 
+        refreshDashboardWidgets();
+
     }
 }
 
