@@ -127,19 +127,47 @@ const resetQuickPaymentForm = ()=>{
 }
 
 const newQuickPaymentSubmit = ()=>{
-    const severResponse = ajaxHttpRequest("/Payment","POST",newPayment);
 
-    if (severResponse === "OK") {
-        //this means data successfully passed to the backend
-        //show an alert to user
-        showCustomModal("Payment Successfully Added!<br><br>Please Wait Generating Invoice", "success");
-        refreshDashboardWidgets();
-        setTimeout(()=>{
-            generateInvoice(ajaxHttpRequest('/Payment/getPaymentsByRegistrationID/'+newPayment.registrationID.id).pop());
-            resetQuickPaymentForm();
-        },2000)
+    let errors = checkPaymentFormErrors();
+    if(errors==='') {
+
+        showCustomConfirm("You are about to add a New Payment of <br><span class='text-steam-green'>Rs. " + parseFloat(newPayment.amount).toLocaleString('en-US', {
+            maximumFractionDigits: 2,
+            minimumFractionDigits: 2
+        }) + "</span> to the registration : <span class='text-steam-green'>" + registration.registrationNumber + "</span><br><br>Are You Sure?", function (result) {
+            if (result) {
+
+                const severResponse = ajaxHttpRequest("/Payment", "POST", newPayment);
+
+                if (severResponse === "OK") {
+                    //this means data successfully passed to the backend
+                    //show an alert to user
+                    showCustomModal("Payment Successfully Added!<br><br>Please Wait Generating Invoice", "success");
+                    refreshDashboardWidgets();
+                    setTimeout(() => {
+                        generateInvoice(ajaxHttpRequest('/Payment/getPaymentsByRegistrationID/' + newPayment.registrationID.id).pop());
+                        resetQuickPaymentForm();
+                    }, 2000)
 
 
+                }
+                else{
+                    //this means there was a problem with the query
+                    //shows an error alert to the user
+                    showCustomModal("Operation Failed! <br>" + serviceResponse.responseJSON.error + " <span class='small'>(" + serviceResponse.responseJSON.status + ")</span>", "error");
+                }
+            }
+
+            else
+            {
+
+            }
+        });
+    }
+    else{
+        //there are errors
+        //display them to the user using external-ModalFunction()
+        showCustomModal(errors, 'warning');
     }
 }
 
