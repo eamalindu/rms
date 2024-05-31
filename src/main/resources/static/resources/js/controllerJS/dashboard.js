@@ -87,7 +87,7 @@ const findRegistration=()=>{
             collapseRegistration.classList.add('show');
         }
         else{
-            showCustomModal("No Registration Found for Registration Number <span class='text-steam-green'> "+registrationNumber+"</span>",'error')
+            showCustomModal("No Registration Found for <br>Registration Number <span class='text-steam-green'> "+registrationNumber+"</span>",'error')
         }
     }
     else{
