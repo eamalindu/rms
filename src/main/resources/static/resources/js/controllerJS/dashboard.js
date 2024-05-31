@@ -99,6 +99,8 @@ const resetQuickPaymentForm = ()=>{
     //remove collapse show class
     collapseRegistration.classList.remove('show');
 
+    // btnPrintInvoice.classList.add('d-none');
+
     $("#quickPaymentMethod_chosen .chosen-single").removeClass('select-validated');
     quickPaymentMethod.classList.remove('is-valid');
 
@@ -129,19 +131,7 @@ const newQuickPaymentSubmit = ()=>{
     if (severResponse === "OK") {
         //this means data successfully passed to the backend
         //show an alert to user
-        showCustomModal("Payment Successfully Added!<br>Click on <strong>Print Invoice</strong> Button <br> to Generate the Invoice", "success");
-
-        let currentRegistration = newPayment.registrationID;
-        //add a code to generate a new payment receipt here
-        let addedPayment = ajaxGetRequest("Payment/getPaymentsByRegistrationID/"+currentRegistration.id);
-        addedPayment = addedPayment.pop();
-        btnPrintInvoice.classList.remove('d-none');
-        btnPrintInvoice.addEventListener('click',()=> {
-            generateInvoice(addedPayment);
-            console.log(addedPayment);
-            resetQuickPaymentForm();
-        });
-
+        showCustomModal("Payment Successfully Added!<br><br>Click on <strong>Print Invoice</strong> Button <br> to Generate the Invoice", "success");
         refreshDashboardWidgets();
 
     }
