@@ -41,3 +41,9 @@ const generateChartRegistrationBreakdown = ()=>{
 
     generateChart(chartRegistrationBreakdown,`${new Date().getFullYear()}-${new Date().toLocaleString('default', { month: 'short' })}`,courseCode,'Registration Count',[{name: 'Courses', data: registrationCount, color: "#553772"}])
 }
+
+const findRegistration=()=>{
+    registrationNumber =quickPaymentRegistrationNumber.value;
+    const registration = ajaxGetRequest("/Registration/getRegistrationByRegistrationNumber/"+registrationNumber);
+    console.log(registration);
+}
