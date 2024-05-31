@@ -4,7 +4,7 @@ window.addEventListener('load',()=>{
     refreshDashboardWidgets();
     generateChartRegistrationBreakdown();
 
-    $('#quickPaymentMethod').chosen({width: '100%'});
+    resetQuickPaymentForm();
 
     //validation chosen select (for new batch)
     $("#quickPaymentMethod").chosen().change(function () {
@@ -92,4 +92,28 @@ const findRegistration=()=>{
     else{
         showCustomModal("Registration Number is Required!",'warning')
     }
+}
+
+const resetQuickPaymentForm = ()=>{
+    //remove collapse show class
+    collapseRegistration.classList.remove('show');
+
+    newPayment = {}
+    frmQuickPayment.reset();
+
+    //set default option chosen
+    setTimeout(function () {
+        $('#quickPaymentMethod').val('').trigger('chosen:updated');
+    }, 0);
+
+    //remove validation from the inputs all at once
+    inputs = document.querySelectorAll('.newQuickPaymentInputs');
+    inputs.forEach(function (input) {
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
+
+    $('#quickPaymentMethod').chosen({width: '100%'});
 }
