@@ -128,7 +128,7 @@ const resetQuickPaymentForm = ()=>{
 
 const newQuickPaymentSubmit = ()=>{
 
-    let errors = checkPaymentFormErrors();
+    let errors = checkQuickPaymentFormErrors();
     if(errors==='') {
 
         showCustomConfirm("You are about to add a New Payment of <br><span class='text-steam-green'>Rs. " + parseFloat(newPayment.amount).toLocaleString('en-US', {
