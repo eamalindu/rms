@@ -161,7 +161,7 @@
                             <label class="fw-bold small required">Amount</label>
                         </div>
                         <div class="input-group">
-                            <input class="form-control rounded-0 newRegistrationPaymentInputs w-25" id="quickPaymentRupees" disabled readonly value="Rs.">
+                            <input class="form-control rounded-0 newRegistrationPaymentInputs" style="max-width: 15% !important;" id="quickPaymentRupees" disabled readonly value="Rs.">
                             <input class="form-control rounded-0 newRegistrationPaymentInputs" id="quickPaymentAmount" required onkeyup="inputTextValidator(this,'^[0-9]{1,6}$','newPayment','amount')">
                             <div class="valid-feedback rounded-2">Value Accepted</div>
                             <div class="invalid-feedback rounded-2">Please provide a valid Amount</div>
