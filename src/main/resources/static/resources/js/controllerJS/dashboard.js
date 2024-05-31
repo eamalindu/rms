@@ -59,20 +59,20 @@ const findRegistration=()=>{
             quickPaymentBalanceFee.innerText = "Rs. "+registration.balanceAmount.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
 
             if (registration.registrationStatusID.name === "Active") {
-                quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0" style="background: #3FB618">Active</span>';
+                quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0 w-auto" style="background: #3FB618">Active</span>';
             } else if (registration.registrationStatusID.name === "Suspended") {
-                quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0" style="background: #ea8a1e">Suspended</span>';
+                quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0 w-auto" style="background: #ea8a1e">Suspended</span>';
             } else if (registration.registrationStatusID.name === "Cancelled") {
-                quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0" style="background: #ea2f1e">Cancelled</span>';
+                quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0 w-auto" style="background: #ea2f1e">Cancelled</span>';
             }
             else if (registration.registrationStatusID.name === "Pending"){
-                quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0" style="background: #616161">Pending</span>';
+                quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0 w-auto" style="background: #616161">Pending</span>';
             }
             else if (registration.registrationStatusID.name === "In Review"){
-                quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0" style="background: #d8b73a">In Review</span>';
+                quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0 w-auto" style="background: #d8b73a">In Review</span>';
             }
             else{
-                quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0" style="background: #000">Deleted</span>';
+                quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0 w-auto" style="background: #000">Deleted</span>';
             }
 
 
