@@ -82,6 +82,7 @@ const findRegistration=()=>{
                 quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0 w-auto" style="background: #000">Deleted</span>';
             }
 
+            newPayment.registrationID = registration;
 
             collapseRegistration.classList.add('show');
         }
