@@ -131,9 +131,103 @@ const newQuickPaymentSubmit = ()=>{
         //show an alert to user
         showCustomModal("Payment Successfully Added!", "success");
 
+        let currentRegistration = newPayment.registrationID;
         //add a code to generate a new payment receipt here
         let addedPayment = ajaxGetRequest("Payment/getPaymentsByRegistrationID/"+currentRegistration.id);
         addedPayment = addedPayment.pop();
+        generateInvoice(addedPayment);
         console.log(addedPayment);
     }
+}
+
+const generateInvoice = (object)=>{
+    let newWindow =   window.open()
+    newWindow.document.write("<head>" +
+        "    <meta charset='UTF-8'>" +
+        "    <meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
+        "    <link href='/resources/bootstrap-5.2.3/css/bootstrap.min.css' rel='stylesheet' />" +
+        "    <script src='/resources/bootstrap-5.2.3/js/bootstrap.bundle.js'></script>" +
+        "    <title>Document</title>" +
+        "    <style>" +
+        "        * {" +
+        "            margin: 0;" +
+        "            padding: 0;" +
+        "        }" +
+        "" +
+        "        .outer {" +
+        "            width: 4in;" +
+        "            height: 6in;" +
+        "            outline: 1px solid #ddd;" +
+        "            margin-top: 15px;" +
+        "            margin-left: 15px;" +
+        "            background: url('/resources/images/invoiceBackground.png');"+
+        "            background-size: cover;"+
+
+        "        }" +
+        "    </style>" +
+        "</head>" +
+        "" +
+        "<body>" +
+        "    <div class='outer'>" +
+        "        <div style='height:1in'></div>" +
+        "        <div style='height: 1in' class='d-flex justify-content-center align-items-center'>" +
+        "            <div>" +
+        "                <h5 class='text-center mb-0'>STEAM Higher Education Institute</h4>" +
+        "                    <p class='mb-0 text-center small'>No.10, Banduragoda Road, Veyangoda.</p>" +
+        "                    <p class='mb-0 text-center small'>Tel: 071 9883073 | Email: info@steam.lk</p>" +
+        "            </div>" +
+        "        </div>" +
+        "        <div class='d-flex justify-content-center align-items-center mt-3'>" +
+        "" +
+        "            <div class='m-0 p-0'>" +
+        "                <table class='table table-bordered small mb-0'>" +
+        "                    <tr>" +
+        "                        <td class='fw-bold text-center' colspan='4'>Payment Receipt</td>" +
+        "                    </tr>" +
+        "                    <tr>" +
+        "                        <td class='fw-bold'>Receipt No:</td>" +
+        "                        <td>"+object.invoiceCode+"</td>" +
+        "                        <td class='fw-bold'>Date:</td>" +
+        "                        <td>"+object.timeStamp.split('T')[0]+"</td>" +
+        "                    </tr>" +
+        "                    <tr>" +
+        "                        <td class='fw-bold'>Student Name:</td>" +
+        "                        <td colspan='3'>"+object.registrationID.studentID.title+" "+object.registrationID.studentID.nameWithInitials+"</td>" +
+        "                    </tr>" +
+        "                    <tr>" +
+        "                        <td class='fw-bold'>Sum of Rupees:</td>" +
+        "                        <td colspan='3' class='text-capitalize'>"+numberstowords.toInternationalWords(object.amount)+" Only</td>" +
+        "                    </tr>" +
+        "                    <tr>" +
+        "                        <td class='fw-bold'>Course/Batch:</td>" +
+        "                        <td colspan='3'>"+object.registrationID.courseID.name+" ("+object.registrationID.batchID.batchCode+")</td>" +
+        "                    </tr>" +
+        "                    <tr>" +
+        "                        <td class='fw-bold'>Payment Method:</td>" +
+        "                        <td colspan='3'>"+object.paymentTypeID.name+"</td>" +
+        "                    </tr>" +
+        "                    <tr>" +
+        "                        <td class='fw-bold'>Cashier:</td>" +
+        "                        <td colspan='3'>"+object.addedBy+"</td>" +
+        "                    </tr>" +
+        "                    <tr>" +
+        "                        <td class='fw-bold text-center' colspan='4'>Rs. "+object.amount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2})+"</td>" +
+        "                    </tr>" +
+        "                </table>" +
+        "                " +
+        "                " +
+        "            </div>" +
+        "        </div>" +
+        "        <div class='d-flex align-items-end justify-content-center mt-3'>" +
+        "            " +
+        "            <p class='text-muted small text-center mb-0'><small>This receipt was automatically generated by the" +
+        "                system</small></span>" +
+        "        </div>" +
+        "    </div>" +
+        "</body>");
+
+    setTimeout(function (){
+        newWindow.print();
+    },200)
+
 }
