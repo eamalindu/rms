@@ -100,6 +100,7 @@ const resetQuickPaymentForm = ()=>{
     collapseRegistration.classList.remove('show');
 
     $("#quickPaymentMethod_chosen .chosen-single").removeClass('select-validated');
+    quickPaymentMethod.classList.remove('is-valid');
 
     newPayment = {}
     frmQuickPayment.reset();
