@@ -135,8 +135,12 @@ const newQuickPaymentSubmit = ()=>{
         //add a code to generate a new payment receipt here
         let addedPayment = ajaxGetRequest("Payment/getPaymentsByRegistrationID/"+currentRegistration.id);
         addedPayment = addedPayment.pop();
-        generateInvoice(addedPayment);
-        console.log(addedPayment);
+
+        btnPrintInvoice.classList.remove('d-none');
+        btnPrintInvoice.addEventListener('click',()=> {
+            generateInvoice(addedPayment);
+            console.log(addedPayment);
+        });
     }
 }
 
