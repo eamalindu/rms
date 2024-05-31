@@ -44,6 +44,11 @@ const generateChartRegistrationBreakdown = ()=>{
 
 const findRegistration=()=>{
     registrationNumber =quickPaymentRegistrationNumber.value;
-    const registration = ajaxGetRequest("/Registration/getRegistrationByRegistrationNumber/"+registrationNumber);
-    console.log(registration);
+    if(registrationNumber!=='') {
+        const registration = ajaxGetRequest("/Registration/getRegistrationByRegistrationNumber/" + registrationNumber);
+        console.log(registration);
+    }
+    else{
+        showCustomModal("Registration Number is Required!",'warning')
+    }
 }
