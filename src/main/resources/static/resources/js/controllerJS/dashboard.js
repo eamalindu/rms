@@ -83,7 +83,7 @@ const findRegistration=()=>{
             }
 
             newPayment.registrationID = registration;
-
+            btnAddPayment.disabled = false;
             collapseRegistration.classList.add('show');
         }
         else{
@@ -99,7 +99,7 @@ const resetQuickPaymentForm = ()=>{
     //remove collapse show class
     collapseRegistration.classList.remove('show');
 
-    // btnPrintInvoice.classList.add('d-none');
+    btnAddPayment.disabled = true;
 
     $("#quickPaymentMethod_chosen .chosen-single").removeClass('select-validated');
     quickPaymentMethod.classList.remove('is-valid');
