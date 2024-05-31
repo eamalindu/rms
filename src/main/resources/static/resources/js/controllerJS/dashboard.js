@@ -56,7 +56,7 @@ const findRegistration=()=>{
             else{
                 quickPaymentPaymentPlan.innerText ='Installment Plan';
             }
-            quickPaymentBalanceFee.innerText = registration.balanceAmount;
+            quickPaymentBalanceFee.innerText = "Rs. "+registration.balanceAmount.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
             collapseRegistration.classList.add('show');
         }
         else{
