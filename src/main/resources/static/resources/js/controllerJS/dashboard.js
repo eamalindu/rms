@@ -48,7 +48,7 @@ const findRegistration=()=>{
 
         const registration = ajaxGetRequest("/Registration/getRegistrationByRegistrationNumber/" + registrationNumber);
         if(registration!==''){
-
+            collapseRegistration.classList.add('show');
         }
         else{
             showCustomModal("No Registration Found for Registration Number <span class='text-steam-green'> "+registrationNumber+"</span>",'error')
