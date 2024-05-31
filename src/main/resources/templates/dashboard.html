@@ -169,7 +169,7 @@
                         </div>
                         <div class="input-group">
                             <input class="form-control rounded-0 newQuickPaymentInputs" id="quickPaymentRupees" disabled readonly value="Rs.">
-                            <input class="form-control rounded-0 newQuickPaymentInputs" id="quickPaymentAmount" required onkeyup="inputTextValidator(this,'^[0-9]{1,6}$','newPayment','amount')">
+                            <input class="form-control rounded-0 newQuickPaymentInputs" id="quickPaymentAmount" required onkeyup="inputTextValidator(this,'^[1-9][0-9]{1,6}$','newPayment','amount')">
                             <div class="valid-feedback rounded-2">Value Accepted</div>
                             <div class="invalid-feedback rounded-2">Please provide a valid Amount</div>
                         </div>
