@@ -60,3 +60,42 @@ const exportToCSV = (jsonData, fileName, columns) => {
     link.download = "Inquiries from" + fileName + ".csv";
     link.click();
 };
+
+const exportTableToExcel = (tableId, fileName) => {
+    // Select the HTML table element by ID
+    const table = document.getElementById(tableId);
+    if (!table) {
+        console.error(`Table with ID '${tableId}' not found.`);
+        return;
+    }
+
+    // Convert the HTML table to a worksheet
+    const ws = XLSX.utils.table_to_sheet(table);
+
+    // Create a new workbook and append the worksheet
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet 1");
+
+    // Define a border style
+    const borderStyle = {
+        top: { style: "thin" },
+        bottom: { style: "thin" },
+        left: { style: "thin" },
+        right: { style: "thin" }
+    };
+
+    // Add border to each cell
+    const range = XLSX.utils.decode_range(ws['!ref']);
+    for (let R = range.s.r; R <= range.e.r; ++R) {
+        for (let C = range.s.c; C <= range.e.c; ++C) {
+            const cell_address = { c: C, r: R };
+            const cell_ref = XLSX.utils.encode_cell(cell_address);
+            if (!ws[cell_ref]) continue;
+            if (!ws[cell_ref].s) ws[cell_ref].s = {};
+            ws[cell_ref].s.border = borderStyle;
+        }
+    }
+
+    // Save the workbook as an XLSX file
+    XLSX.writeFile(wb, `${fileName}.xlsx`);
+};
