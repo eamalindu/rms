@@ -7,7 +7,6 @@ window.addEventListener('load',()=>{
     dailyPayments.forEach((payment)=>{
         dailyPayment += payment.amount;
     });
-    //dailyIncomeText.innerText = "Rs. "+dailyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})
     //daily Income calculation end
 
     const displayPropertyListForDailyIncome = [
@@ -23,9 +22,10 @@ window.addEventListener('load',()=>{
 
     fillDataIntoTableWithOutAction(tblDailyIncome,dailyPayments,displayPropertyListForDailyIncome);
 
-    if(dailyPayments.length!==0) {
-        $('#tblDailyIncome').DataTable();
-    }
+    const trFinalAmount = document.createElement('tr');
+    trFinalAmount.innerHTML =`<td class="text-end" colspan="8">Total</td><td class="fw-bold">Rs. ${dailyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>`;
+    var tbody = document.getElementById("tblDailyIncome").getElementsByTagName('tbody')[0];
+    tbody.appendChild(trFinalAmount);
 })
 
 const getPaymentMethod = (ob)=>{
