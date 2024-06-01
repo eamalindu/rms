@@ -24,7 +24,7 @@ window.addEventListener('load',()=>{
 
     const trFinalAmount = document.createElement('tr');
     trFinalAmount.innerHTML =`<td class="text-end" colspan="8">Total</td><td class="fw-bold">Rs. ${dailyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>`;
-    var tbody = document.getElementById("tblDailyIncome").getElementsByTagName('tbody')[0];
+    var tbody = tblDailyIncome.children[1];
     tbody.appendChild(trFinalAmount);
 })
 
