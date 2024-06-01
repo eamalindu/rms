@@ -2,7 +2,7 @@ window.addEventListener('load',()=>{
 
 
     //daily Income calculation start
-    const dailyPayments = ajaxGetRequest("/Payment/getDailyIncome");
+     dailyPayments = ajaxGetRequest("/Payment/getDailyIncome");
     let dailyPayment=0;
     dailyPayments.forEach((payment)=>{
         dailyPayment += payment.amount;
@@ -50,4 +50,18 @@ const getBatch = (ob)=>{
 
 const getAmount = (ob)=>{
     return "Rs. "+ob.amount.toLocaleString('en-US',{maximumFractionDigits: 2,minimumFractionDigits: 2})
+}
+
+const toXlsx = ()=>{
+    test = [
+        {name: 'Added By', data: 'addedBy'},
+        {name: 'Payment Method', data: 'paymentTypeID.name'},
+        {name: 'Time Stamp', data: 'timeStamp'},
+        {name: 'Registration', data: 'registrationID.registrationNumber'},
+        {name: 'Student', data: 'registrationID.studentID.nameWithInitials'},
+        {name: 'Course', data: 'registrationID.courseID.name'},
+        {name: 'Receipt', data: 'invoiceCode'},
+        {name: 'Amount', data: 'amount'},
+    ]
+    exportToExcel(dailyPayments,'dailyIncome',test);
 }
