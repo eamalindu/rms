@@ -22,7 +22,7 @@ const exportToExcel = (jsonData, fileName, columns) => {
     var ws = XLSX.utils.json_to_sheet(filteredData);
     var wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Sheet 1");
-    XLSX.writeFile(wb, "Inquiries from"+fileName + ".xlsx");
+    XLSX.writeFile(wb, fileName + ".xlsx");
 }
 
 //untested
