@@ -75,6 +75,24 @@ const exportTableToExcel = (tableId, fileName) => {
     // Create a new workbook and append the worksheet
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Sheet 1");
+
+    // Define a style for text format
+    const textStyle = {
+        numFmt: "@"
+    };
+
+    // Apply text formatting to each cell
+    const range = XLSX.utils.decode_range(ws['!ref']);
+    for (let R = range.s.r; R <= range.e.r; ++R) {
+        for (let C = range.s.c; C <= range.e.c; ++C) {
+            const cell_address = { c: C, r: R };
+            const cell_ref = XLSX.utils.encode_cell(cell_address);
+            if (!ws[cell_ref]) continue;
+            if (!ws[cell_ref].s) ws[cell_ref].s = {};
+            ws[cell_ref].s.numFmt = textStyle.numFmt;
+            ws[cell_ref].t = 's'; // Ensure the cell is treated as a string
+        }
+    }
     // Save the workbook as an XLSX file
     XLSX.writeFile(wb, `${fileName}.xlsx`);
 };

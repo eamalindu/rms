@@ -63,5 +63,7 @@ const toXlsx = ()=>{
         {name: 'Receipt', data: 'invoiceCode'},
         {name: 'Amount', data: 'amount'},
     ]
-    exportToExcel(dailyPayments,'dailyIncome',test);
+    //exportToExcel(dailyPayments,'dailyIncome',test);
+
+    //exportTableToExcel('tblDailyIncome','test');
 }
