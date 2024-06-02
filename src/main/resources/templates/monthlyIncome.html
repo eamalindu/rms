@@ -21,22 +21,20 @@
         <div class="card-body rounded-0 text-center text-capitalize">
             <h6 class="text-muted">Showing all transactions that occurred from  <span id="currentStartDate"></span> to <span id="currentEndDate"></span></h6>
         </div>
-        <div class="card-footer show pt-4 pb-4">
+        <div class="card-footer show pb-4">
 
             <div class="w-100 d-flex mt-5">
                 <div class="w-25">
-                    <span class="fw-bold">Total : <span id="totalAmountText"></span></span>
+                    <span class="fw-bold">Total : <span id="fullAmountText"></span></span>
                 </div>
                 <div class="w-50">
                     <h4 class="text-center fw-bold" style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Monthly Income Breakdown</h4>
                 </div>
                 <div class="w-25 text-end">
-                    <button class="btn btn-sm btn-success float-end rounded-0" onclick="monthlyIncomeToXlsx()">Export to Xlsx</button>
+                    <button class="btn btn-sm btn-success mb-3 float-end rounded-0" onclick="monthlyIncomeToXlsx()">Export to Xlsx</button>
                 </div>
 
             </div>
-
-            <span class="fw-bold float-start">Total : <span id="fullAmountText"></span></span>
             <table class="custom-table text-start" id="tblMonthlyIncome">
                 <thead>
                 <tr>
@@ -71,7 +69,7 @@
                     <h4 class="text-center fw-bold" style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Cash Income</h4>
                 </div>
                 <div class="w-25 text-end">
-                    <button class="btn btn-sm btn-success rounded-0" onclick="monthlyCashToXlsx()">Export to Xlsx</button>
+                    <button class="btn btn-sm btn-success rounded-0 mb-3" onclick="monthlyCashToXlsx()">Export to Xlsx</button>
                 </div>
 
             </div>
