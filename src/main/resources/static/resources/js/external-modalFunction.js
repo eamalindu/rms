@@ -7,6 +7,7 @@ function showCustomModal(msg,type) {
     modal.setAttribute('aria-labelledby', 'my-modal-title');
     modal.setAttribute('aria-hidden', 'true');
     modal.setAttribute('data-bs-backdrop','static');
+    modal.setAttribute('data-bs-keyboard', 'false');
 
     // Create the modal dialog element.
     const modalDialog = document.createElement('div');
@@ -125,6 +126,7 @@ function showCustomConfirm(msg, result) {
     modal.setAttribute('aria-labelledby', 'my-modal-title');
     modal.setAttribute('aria-hidden', 'true');
     modal.setAttribute('data-bs-backdrop', 'static');
+    modal.setAttribute('data-bs-keyboard', 'false');
 
     // Create the modal dialog element.
     const modalDialog = document.createElement('div');
