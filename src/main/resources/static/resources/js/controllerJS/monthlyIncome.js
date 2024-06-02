@@ -70,7 +70,7 @@ const refreshMonthlyBreakDownTable = ()=>{
 
 
     //daily Income calculation start
-  monthlyPayments = ajaxGetRequest("/Payment/getDailyIncome");
+  monthlyPayments = ajaxGetRequest("/Payment/getMonthlyTotalPayment");
     let monthlyPayment=0;
     monthlyPayments.forEach((payment)=>{
         monthlyPayment += payment.amount;
