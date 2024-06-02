@@ -15,6 +15,7 @@ window.addEventListener('load',()=>{
     ]
 
     reportCreatedDate = new Date().toISOString().substring(0, 10);
+    currentDate.innerHTML = reportCreatedDate;
 })
 
 const getPaymentMethod = (ob)=>{
