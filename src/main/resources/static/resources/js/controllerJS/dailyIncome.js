@@ -1,31 +1,6 @@
 window.addEventListener('load',()=>{
 
-
-    //daily Income calculation start
-     dailyPayments = ajaxGetRequest("/Payment/getDailyIncome");
-    let dailyPayment=0;
-    dailyPayments.forEach((payment)=>{
-        dailyPayment += payment.amount;
-    });
-    //daily Income calculation end
-
-    const displayPropertyListForDailyIncome = [
-        {property: 'addedBy', dataType: 'text'},
-        {property: getPaymentMethod, dataType: 'function'},
-        {property: getTimeStamp, dataType: 'function'},
-        {property: getRegistration, dataType: 'function'},
-        {property: getStudentName, dataType: 'function'},
-        {property: getBatch, dataType: 'function'},
-        {property: 'invoiceCode', dataType: 'text'},
-        {property: getAmount, dataType: 'function'},
-    ];
-
-    fillDataIntoTableWithOutAction(tblDailyIncome,dailyPayments,displayPropertyListForDailyIncome);
-
-    const trFinalAmount = document.createElement('tr');
-    trFinalAmount.innerHTML =`<td class="text-end" colspan="8">Total</td><td class="fw-bold">Rs. ${dailyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>`;
-    var tbody = tblDailyIncome.children[1];
-    tbody.appendChild(trFinalAmount);
+    refreshDailyBreakDownTable();
 })
 
 const getPaymentMethod = (ob)=>{
@@ -70,4 +45,30 @@ const toXlsx = ()=>{
 
 const refreshDailyBreakDownTable = ()=>{
 
+
+    //daily Income calculation start
+    dailyPayments = ajaxGetRequest("/Payment/getDailyIncome");
+    let dailyPayment=0;
+    dailyPayments.forEach((payment)=>{
+        dailyPayment += payment.amount;
+    });
+    //daily Income calculation end
+
+    const displayPropertyListForDailyIncome = [
+        {property: 'addedBy', dataType: 'text'},
+        {property: getPaymentMethod, dataType: 'function'},
+        {property: getTimeStamp, dataType: 'function'},
+        {property: getRegistration, dataType: 'function'},
+        {property: getStudentName, dataType: 'function'},
+        {property: getBatch, dataType: 'function'},
+        {property: 'invoiceCode', dataType: 'text'},
+        {property: getAmount, dataType: 'function'},
+    ];
+
+    fillDataIntoTableWithOutAction(tblDailyIncome,dailyPayments,displayPropertyListForDailyIncome);
+
+    const trFinalAmount = document.createElement('tr');
+    trFinalAmount.innerHTML =`<td class="text-end" colspan="8">Total</td><td class="fw-bold">Rs. ${dailyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>`;
+    var tbody = tblDailyIncome.children[1];
+    tbody.appendChild(trFinalAmount);
 }
