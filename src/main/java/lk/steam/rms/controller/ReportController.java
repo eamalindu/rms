@@ -51,5 +51,23 @@ public class ReportController {
         return reportView;
     }
 
+    @GetMapping(value = "/Monthly-Income")
+    public ModelAndView monthlyIncomeUI(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        ModelAndView reportView = new ModelAndView();
+        reportView.setViewName("monthlyIncome.html");
+
+        reportView.addObject("username",auth.getName());
+        reportView.addObject("title","Monthly Income | STEAM RMS");
+        reportView.addObject("activeNavItem","monthlyIncome");
+
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        reportView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        reportView.addObject("loggedInDesignationName",loggedInDesignationName);
+        return reportView;
+    }
+
 
 }
