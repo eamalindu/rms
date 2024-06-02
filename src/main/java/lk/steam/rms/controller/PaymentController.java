@@ -138,6 +138,11 @@ public class PaymentController {
         return paymentDAO.getDailyTotalPayment();
     }
 
+    @GetMapping(value = "/getDailyTotalCashPayment",produces = "application/json")
+    public List<Payment> getDailyTotalCashPayment(){
+        return paymentDAO.getDailyTotalCashPayment();
+    }
+
     @GetMapping(value = "/getMonthlyTotalPayment",produces = "application/json")
     public List<Payment> getMonthlyTotalPayment(){
         return paymentDAO.getMonthlyTotalPayment();
