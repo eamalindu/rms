@@ -18,8 +18,6 @@ window.addEventListener('load',()=>{
     startDate = new Date(date.getFullYear(), date.getMonth(), 2).toISOString().split('T')[0];
     endDate = new Date(date.getFullYear(), date.getMonth() + 1, 1).toISOString().split('T')[0];
 
-
-
     currentStartDate.innerHTML = startDate;
     currentEndDate.innerHTML = endDate;
 })
