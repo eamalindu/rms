@@ -41,7 +41,7 @@ const toXlsx = ()=>{
     ]
     //exportToExcel(dailyPayments,'dailyIncome',test);
 
-    //exportTableToExcel('tblDailyIncome','test');
+    // exportTableToExcel('tblDailyIncome','test');
 }
 
 const refreshDailyBreakDownTable = ()=>{
