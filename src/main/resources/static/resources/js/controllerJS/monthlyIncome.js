@@ -18,18 +18,12 @@ window.addEventListener('load',()=>{
     const currentDate = new Date();
 
     // Get the start date of the current month
-    startDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
+    startDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).toISOString().slice(0, 10);
+
 
     // Get the end date of the current month
-    endDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
+    endDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).toISOString().slice(0, 10);
+
 
     currentStartDate.innerHTML = startDate;
     currentEndDate.innerHTML = endDate;
