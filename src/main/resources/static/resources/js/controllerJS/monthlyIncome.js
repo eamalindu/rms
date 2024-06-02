@@ -60,9 +60,9 @@ const monthlyIncomeToXlsx = ()=>{
 
 const dailyCashToXlsx = ()=>{
 
-    showCustomConfirm('You are about to export <span class="text-steam-green">Daily Cash Income</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
+    showCustomConfirm('You are about to export <span class="text-steam-green">Monthly Cash Income</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
         if(result){
-            exportToExcel(dailyCashPayments,'Daily Cash Income Report '+reportCreatedDate,reportColumnFormat);
+            exportToExcel(dailyCashPayments,'Monthly Cash Income Report '+startDate+' to '+endDate,reportColumnFormat);
             // exportTableToExcel('tblDailyIncome','test');
         }
     });
