@@ -43,7 +43,7 @@ const getAmount = (ob)=>{
 
 const dailyIncomeToXlsx = ()=>{
 
-    showCustomConfirm('You are about to export Daily Income Breakdown data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
+    showCustomConfirm('You are about to export <span class="text-steam-green">Daily Income Breakdown</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
         if(result){
             exportToExcel(dailyPayments,'Daily Income Report '+reportCreatedDate,reportColumnFormat);
             // exportTableToExcel('tblDailyIncome','test');
