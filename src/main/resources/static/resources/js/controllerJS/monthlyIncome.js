@@ -15,14 +15,15 @@ window.addEventListener('load',()=>{
     ]
 
     // Get the current date
-    const currentDate = new Date();
-
+    var currentDate = new Date();
     // Get the start date of the current month
-    startDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).toISOString().slice(0, 10);
+    startDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+    startDate = startDate.toISOString().slice(0, 10);
 
 
     // Get the end date of the current month
-    endDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).toISOString().slice(0, 10);
+    endDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+    endDate = endDate.toISOString().slice(0, 10);
 
 
     currentStartDate.innerHTML = startDate;
