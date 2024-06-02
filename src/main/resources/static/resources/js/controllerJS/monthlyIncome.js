@@ -14,8 +14,22 @@ window.addEventListener('load',()=>{
         {name: 'Amount', data: 'amount'},
     ]
 
-    reportCreatedDate = new Date().toISOString().substring(0, 10);
-    currentDate.innerHTML = reportCreatedDate;
+    // Get the current date
+    const currentDate = new Date();
+
+    // Get the start date of the current month
+    startDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+
+    // Get the end date of the current month
+    endDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
 })
 
 const getPaymentMethod = (ob)=>{
@@ -42,11 +56,11 @@ const getAmount = (ob)=>{
     return "Rs. "+ob.amount.toLocaleString('en-US',{maximumFractionDigits: 2,minimumFractionDigits: 2})
 }
 
-const dailyIncomeToXlsx = ()=>{
+const monthlyIncomeToXlsx = ()=>{
 
-    showCustomConfirm('You are about to export <span class="text-steam-green">Daily Income Breakdown</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
+    showCustomConfirm('You are about to export <span class="text-steam-green">Monthly Income Breakdown</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
         if(result){
-            exportToExcel(monthlyPayments,'Daily Income Report '+reportCreatedDate,reportColumnFormat);
+            exportToExcel(monthlyPayments,'Monthly Income Report '+startDate+' to '+endDate,reportColumnFormat);
             // exportTableToExcel('tblDailyIncome','test');
         }
     });
