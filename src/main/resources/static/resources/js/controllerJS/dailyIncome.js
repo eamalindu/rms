@@ -41,8 +41,8 @@ const getAmount = (ob)=>{
     return "Rs. "+ob.amount.toLocaleString('en-US',{maximumFractionDigits: 2,minimumFractionDigits: 2})
 }
 
-const toXlsx = ()=>{
-    exportToExcel(dailyPayments,'Daily Income Report '+reportCreatedDate,test);
+const dailyIncomeToXlsx = ()=>{
+    exportToExcel(dailyPayments,'Daily Income Report '+reportCreatedDate,reportColumnFormat);
     // exportTableToExcel('tblDailyIncome','test');
 }
 
