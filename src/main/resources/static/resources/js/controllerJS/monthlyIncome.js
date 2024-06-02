@@ -62,7 +62,7 @@ const monthlyCashToXlsx = ()=>{
 
     showCustomConfirm('You are about to export <span class="text-steam-green">Monthly Cash Income</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
         if(result){
-            exportToExcel(dailyCashPayments,'Monthly Cash Income Report '+startDate+' to '+endDate,reportColumnFormat);
+            exportToExcel(monthlyCashPayments,'Monthly Cash Income Report '+startDate+' to '+endDate,reportColumnFormat);
             // exportTableToExcel('tblDailyIncome','test');
         }
     });
@@ -104,10 +104,10 @@ const refreshDailyCashBreakdownTable = ()=>{
 
 
     //daily Income calculation start
-    dailyCashPayments = ajaxGetRequest("/Payment/getDailyTotalCashPayment");
-    let dailyCashPayment=0;
-    dailyCashPayments.forEach((payment)=>{
-        dailyCashPayment += payment.amount;
+    monthlyCashPayments = ajaxGetRequest("/Payment/getMonthlyTotalCashPayment");
+    let monthlyCashPayment=0;
+    monthlyCashPayments.forEach((payment)=>{
+        monthlyCashPayment += payment.amount;
     });
     //daily Income calculation end
 
@@ -122,10 +122,10 @@ const refreshDailyCashBreakdownTable = ()=>{
         {property: getAmount, dataType: 'function'},
     ];
 
-    fillDataIntoTableWithOutAction(tblCashIncome,dailyCashPayments,displayPropertyListForCashIncome);
+    fillDataIntoTableWithOutAction(tblCashIncome,monthlyCashPayments,displayPropertyListForCashIncome);
 
     const trFinalAmount = document.createElement('tr');
-    trFinalAmount.innerHTML =`<td class="text-end" colspan="8">Total</td><td class="fw-bold">Rs. ${dailyCashPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>`;
+    trFinalAmount.innerHTML =`<td class="text-end" colspan="8">Total</td><td class="fw-bold">Rs. ${monthlyCashPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>`;
     var tbody = tblCashIncome.children[1];
     tbody.appendChild(trFinalAmount);
 
