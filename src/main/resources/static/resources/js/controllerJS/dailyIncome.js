@@ -72,3 +72,7 @@ const refreshDailyBreakDownTable = ()=>{
     var tbody = tblDailyIncome.children[1];
     tbody.appendChild(trFinalAmount);
 }
+
+const refreshDailyCashBreakdownTable = ()=>{
+
+}
