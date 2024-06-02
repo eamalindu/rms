@@ -30,6 +30,9 @@ window.addEventListener('load',()=>{
         month: 'long',
         day: 'numeric'
     });
+
+    currentStartDate.innerHTML = startDate;
+    currentEndDate.innerHTML = endDate;
 })
 
 const getPaymentMethod = (ob)=>{
