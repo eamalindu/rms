@@ -79,6 +79,7 @@ const refreshMonthlyBreakDownTable = ()=>{
     monthlyPayments.forEach((payment)=>{
         monthlyPayment += payment.amount;
     });
+    fullAmountText.innerHTML = "Rs. "+monthlyPayment.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
     //daily Income calculation end
 
     const displayPropertyListForDailyIncome = [
