@@ -58,7 +58,7 @@ const monthlyIncomeToXlsx = ()=>{
 
 }
 
-const dailyCashToXlsx = ()=>{
+const monthlyCashToXlsx = ()=>{
 
     showCustomConfirm('You are about to export <span class="text-steam-green">Monthly Cash Income</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
         if(result){
