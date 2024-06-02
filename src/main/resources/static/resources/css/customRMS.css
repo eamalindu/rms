@@ -512,6 +512,9 @@ input {
 input[type="text"]:disabled {
     background: white;
 }
+.page-link{
+    color: black;
+}
 
 /*Medium devices responsive*/
 @media (max-width: 870px) {
