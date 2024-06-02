@@ -95,10 +95,12 @@ const refreshMonthlyBreakDownTable = ()=>{
 
     fillDataIntoTableWithOutAction(tblMonthlyIncome,monthlyPayments,displayPropertyListForDailyIncome);
 
-    const trFinalAmount = document.createElement('tr');
-    trFinalAmount.innerHTML =`<td class="text-end" colspan="8">Total</td><td class="fw-bold">Rs. ${monthlyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>`;
-    var tbody = tblMonthlyIncome.children[1];
-    tbody.appendChild(trFinalAmount);
+    $('#tblMonthlyIncome').dataTable();
+
+    // const trFinalAmount = document.createElement('tr');
+    // trFinalAmount.innerHTML =`<td class="text-end" colspan="8">Total</td><td class="fw-bold">Rs. ${monthlyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>`;
+    // var tbody = tblMonthlyIncome.children[1];
+    // tbody.appendChild(trFinalAmount);
 }
 
 const refreshDailyCashBreakdownTable = ()=>{
@@ -110,6 +112,8 @@ const refreshDailyCashBreakdownTable = ()=>{
     monthlyCashPayments.forEach((payment)=>{
         monthlyCashPayment += payment.amount;
     });
+    cashAmountText.innerHTML = "Rs. "+monthlyCashPayment.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
+
     //daily Income calculation end
 
     const displayPropertyListForCashIncome = [
@@ -125,9 +129,11 @@ const refreshDailyCashBreakdownTable = ()=>{
 
     fillDataIntoTableWithOutAction(tblCashIncome,monthlyCashPayments,displayPropertyListForCashIncome);
 
-    const trFinalAmount = document.createElement('tr');
-    trFinalAmount.innerHTML =`<td class="text-end" colspan="8">Total</td><td class="fw-bold">Rs. ${monthlyCashPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>`;
-    var tbody = tblCashIncome.children[1];
-    tbody.appendChild(trFinalAmount);
+    $('#tblCashIncome').dataTable();
+
+    // const trFinalAmount = document.createElement('tr');
+    // trFinalAmount.innerHTML =`<td class="text-end" colspan="8">Total</td><td class="fw-bold">Rs. ${monthlyCashPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>`;
+    // var tbody = tblCashIncome.children[1];
+    // tbody.appendChild(trFinalAmount);
 
 }
