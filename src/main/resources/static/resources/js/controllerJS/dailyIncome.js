@@ -57,7 +57,7 @@ const dailyCashToXlsx = ()=>{
 
     showCustomConfirm('You are about to export Daily Cash Income data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
         if(result){
-            exportToExcel(dailyPayments,'Daily Income Report '+reportCreatedDate,reportColumnFormat);
+            exportToExcel(dailyCashPayments,'Daily Cash Income Report '+reportCreatedDate,reportColumnFormat);
             // exportTableToExcel('tblDailyIncome','test');
         }
     });
