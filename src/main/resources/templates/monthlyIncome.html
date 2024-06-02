@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/head :: headFragment}"></head>
+
+<body>
+<!--Loader Start-->
+<div th:replace="~{fragments/loader :: loader}"></div>
+<!-- Loader end-->
+
+<!--Navbar start-->
+<nav th:replace="~{ fragments/navbarReport :: navbarReportsFragment}"></nav>
+<!--Navbar end-->
+
+<!-- Display Current Page -->
+<div class="container-fluid bg-custom-white custom-banner">
+    <h5>Daily Income</h5>
+</div>
+
+<div class="container-fluid pt-2">
+    <div class="card rounded-0">
+        <div class="card-body rounded-0 text-center text-capitalize">
+            <h6 class="text-muted">Showing all transactions that occurred on <span id="currentDate"></span></h6>
+        </div>
+        <div class="card-footer show pt-4 pb-4">
+            <h4 class="text-center fw-bold"
+                style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Daily Income Breakdown</h4>
+            <button class="btn btn-sm btn-success float-end mb-2 rounded-0" onclick="dailyIncomeToXlsx()">Export to Xlsx</button>
+            <table class="custom-table text-start mt-4" id="tblDailyIncome">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Cashier</th>
+                    <th>Payment Method</th>
+                    <th>Time</th>
+                    <th>Registration</th>
+                    <th>Student</th>
+                    <th>Course</th>
+                    <th>Receipt</th>
+                    <th>Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <span id="fullAmountText"></span>
+            <!-- Ajax loader start-->
+            <div class="loading-overlay mt-2">
+                <img alt="loading animation" src="/resources/images/loader.svg" width="60px">
+            </div>
+            <!-- Ajax loader end-->
+
+
+            <h4 class="text-center fw-bold mt-5"
+                style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Cash Income</h4>
+            <button class="btn btn-sm btn-success float-end mb-2 rounded-0" onclick="dailyCashToXlsx()">Export to Xlsx</button>
+            <table class="custom-table text-start mt-4" id="tblCashIncome">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Cashier</th>
+                    <th>Payment Method</th>
+                    <th>Time</th>
+                    <th>Registration</th>
+                    <th>Student</th>
+                    <th>Course</th>
+                    <th>Receipt</th>
+                    <th>Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <!-- Ajax loader start-->
+            <div class="loading-overlay mt-2">
+                <img alt="loading animation" src="/resources/images/loader.svg" width="60px">
+            </div>
+            <!-- Ajax loader end-->
+        </div>
+
+    </div>
+</div>
+
+<script src="/resources/sheetJS-0.20.0/xlsx.full.min.js" type="text/javascript"></script>
+<script src="/resources/js/external-commonFunction.js" type="text/javascript"></script>
+<script src="/resources/js/external-table.js" type="text/javascript"></script>
+<script src="/resources/js/external-modalFunction.js" type="text/javascript"></script>
+<script src="/resources/js/external-exportData.js" type="text/javascript"></script>
+<script src="/resources/js/external-loader.js" type="text/javascript"></script>
+<script src="/resources/js/controllerJS/dailyIncome.js" type="text/javascript"></script>
+<script th:replace="~{ fragments/logout :: logoutScript}"></script>
+</body>
+</html>
