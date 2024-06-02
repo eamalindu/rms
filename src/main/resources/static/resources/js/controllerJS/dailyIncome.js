@@ -2,6 +2,19 @@ window.addEventListener('load',()=>{
 
     refreshDailyBreakDownTable();
     refreshDailyCashBreakdownTable();
+
+    reportColumnFormat = [
+        {name: 'Added By', data: 'addedBy'},
+        {name: 'Payment Method', data: 'paymentTypeID.name'},
+        {name: 'Time Stamp', data: 'timeStamp'},
+        {name: 'Registration', data: 'registrationID.registrationNumber'},
+        {name: 'Student', data: 'registrationID.studentID.nameWithInitials'},
+        {name: 'Course', data: 'registrationID.courseID.name'},
+        {name: 'Receipt', data: 'invoiceCode'},
+        {name: 'Amount', data: 'amount'},
+    ]
+
+    reportCreatedDate = new Date().toISOString().substring(0, 10);
 })
 
 const getPaymentMethod = (ob)=>{
@@ -29,18 +42,7 @@ const getAmount = (ob)=>{
 }
 
 const toXlsx = ()=>{
-    test = [
-        {name: 'Added By', data: 'addedBy'},
-        {name: 'Payment Method', data: 'paymentTypeID.name'},
-        {name: 'Time Stamp', data: 'timeStamp'},
-        {name: 'Registration', data: 'registrationID.registrationNumber'},
-        {name: 'Student', data: 'registrationID.studentID.nameWithInitials'},
-        {name: 'Course', data: 'registrationID.courseID.name'},
-        {name: 'Receipt', data: 'invoiceCode'},
-        {name: 'Amount', data: 'amount'},
-    ]
-    //exportToExcel(dailyPayments,'dailyIncome',test);
-
+    exportToExcel(dailyPayments,'Daily Income Report '+reportCreatedDate,test);
     // exportTableToExcel('tblDailyIncome','test');
 }
 
