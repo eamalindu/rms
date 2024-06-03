@@ -35,4 +35,8 @@ public class CommissionRate {
     @Column(name = "timestamp")
     @NotNull
     private LocalDateTime timestamp;
+
+    @OneToOne
+    @JoinColumn(name = "course_id",referencedColumnName = "id")
+    private Course courseID;
 }
