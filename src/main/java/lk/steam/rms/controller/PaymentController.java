@@ -1,10 +1,7 @@
 package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.*;
-import lk.steam.rms.entity.Batch;
-import lk.steam.rms.entity.InstallmentPlan;
-import lk.steam.rms.entity.Payment;
-import lk.steam.rms.entity.Registrations;
+import lk.steam.rms.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +29,8 @@ public class PaymentController {
 
     @Autowired
     private BatchDAO batchDAO;
+    @Autowired
+    private CommissionRateDAO commissionRateDAO;
 
     @PostMapping
     public String saveNewPayment(@RequestBody Payment payment){
@@ -104,6 +103,12 @@ public class PaymentController {
                 // currentPaymentAmount is greater than or equal to currentRegistrationRegistrationFee
                 // Handle the case where the payment amount is sufficient or more
                 currentRegistration.setRegistrationStatusID(registrationStatusDAO.getReferenceById(1));
+
+                //calculate commission
+                //get commission rate for the registration
+                CommissionRate currrentCommissionRate = commissionRateDAO.getCommissionRateByCourseID(currentRegistration.getCourseID().getId());
+                Commission newCommission = new Commission();
+                //check inquiry is available
 
             }
 
