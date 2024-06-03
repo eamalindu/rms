@@ -26,5 +26,7 @@ public interface PaymentDAO extends JpaRepository<Payment,Integer> {
     @Query(value ="SELECT concat(('R-'),right(year(current_date),2),lpad((substring(max(invoicecode),5)+1) ,4 ,0)) FROM steam.payment where date(paiddatetime)=date(current_date())",nativeQuery = true)
     String getNextInvoiceCode();
 
+    @Query(value = "SELECT distinct p.addedBy from Payment p")
+    List<String> getCashiers();
 
 }
