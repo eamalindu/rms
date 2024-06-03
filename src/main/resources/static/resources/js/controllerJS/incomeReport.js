@@ -24,9 +24,9 @@ window.addEventListener('load',()=>{
 
     cb(start, end);
 
-    $('#registrationSearchCourse').chosen({width: '200px'});
-    $('#registrationSearchBatch').chosen({width: '200px'});
-    $('#registrationSearchPaymentMethod').chosen({width: '200px'});
-    $('#registrationSearchUser').chosen({width: '200px'});
+    $('#registrationSearchCourse').chosen({width: '220px'});
+    $('#registrationSearchBatch').chosen({width: '220px'});
+    $('#registrationSearchPaymentMethod').chosen({width: '220px'});
+    $('#registrationSearchUser').chosen({width: '220px'});
 
 })
