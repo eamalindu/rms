@@ -1,4 +1,8 @@
 window.addEventListener('load',()=>{
+    resetSearchForm();
+})
+
+const resetSearchForm = ()=>{
     var start = moment();
     var end = moment();
 
@@ -28,5 +32,4 @@ window.addEventListener('load',()=>{
     $('#registrationSearchBatch').chosen({width: '225px'});
     $('#registrationSearchPaymentMethod').chosen({width: '225px'});
     $('#registrationSearchUser').chosen({width: '225px'});
-
-})
+}
