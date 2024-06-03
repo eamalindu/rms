@@ -60,7 +60,6 @@ const getBatches = () => {
 }
 
 const getIncomeReport = () => {
-    const startDate = registrationSearchDateRange.value;
-    const endDate = registrationSearchDateRange.value;
+    const [startDate,endDate] = (registrationSearchDateRange.value).split(' - ');
 
 }
