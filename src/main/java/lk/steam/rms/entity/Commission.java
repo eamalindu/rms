@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "commission")
@@ -31,4 +32,8 @@ public class Commission {
     @Column(name = "paidto")
     @NotNull
     private String paidTo;
+
+    @Column(name = "timestamp")
+    @NotNull
+    private LocalDateTime timestamp;
 }
