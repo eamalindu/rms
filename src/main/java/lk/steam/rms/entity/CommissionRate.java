@@ -1,6 +1,7 @@
 package lk.steam.rms.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,11 +20,19 @@ public class CommissionRate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "fullpaymentrate")
+    @NotNull
     private BigDecimal fullPaymentRate;
 
+    @Column(name = "partpaymentrate")
+    @NotNull
     private BigDecimal partPaymentRate;
 
+    @Column(name = "addedby")
+    @NotNull
     private String addedBy;
 
+    @Column(name = "timestamp")
+    @NotNull
     private LocalDateTime timestamp;
 }
