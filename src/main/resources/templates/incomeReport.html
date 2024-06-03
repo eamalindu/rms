@@ -18,8 +18,41 @@
 
 <div class="container-fluid pt-2">
     <div class="card rounded-0">
-        <div class="card-body rounded-0 text-center text-capitalize">
-            <h6 class="text-muted">Showing all transactions that occurred on <span id="currentDate"></span></h6>
+        <div class="card-body rounded-0 mb-3">
+            <form onsubmit="return false;">
+                <div class="row align-items-center d-flex justify-content-around">
+                    <div class="col-12 col-lg-auto m-lg-0 p-0 ms-lg-2 ms-sm-0 mb-1">
+                        <label class="text-uppercase text-muted small m-0 p-0" for="registrationSearchDateRange">Date Range</label>
+                        <div class="input-group">
+                            <span class="input-group-text text-black bg-custom-white rounded-0"><i class="fa-solid fa-calendar-week"></i></span>
+                            <input class="form-control rounded-0" style="width: 235px;" id="registrationSearchDateRange" placeholder="Date Range" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-auto m-0 p-0">
+                        <label class="text-uppercase text-muted small m-0 p-0" for="registrationSearchCourse">Filters</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-custom-white rounded-0"><i class="fa-solid fa-filter"></i></span>
+                            <select class="form-select rounded-0 chosen-registration-search" data-placeholder="Sort by a Course" id="registrationSearchCourse">
+
+                            </select>
+                            <select class="form-select rounded-0 chosen-registration-search" data-placeholder="Sort by a Batch" id="registrationSearchBatch">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1">
+                        <label class="text-uppercase small m-0 p-0 text-muted" >Search</label>
+                        <div class="input-group">
+                            <div class="d-flex align-items-center justify-content-evenly">
+                                <button class="btn bg-steam-green rounded-0 text-white" id="" type="submit"><i class="fa-solid fa-magnifying-glass small"></i></button>
+                                <button class="btn btn-close-red rounded-0 text-white ms-3" id="btn-reset" type="reset">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="card-footer show pt-4 pb-4">
         </div>
