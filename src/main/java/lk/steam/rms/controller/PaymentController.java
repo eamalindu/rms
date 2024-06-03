@@ -107,8 +107,17 @@ public class PaymentController {
                 //calculate commission
                 //get commission rate for the registration
                 CommissionRate currrentCommissionRate = commissionRateDAO.getCommissionRateByCourseID(currentRegistration.getCourseID().getId());
+                BigDecimal fullCommission = currrentCommissionRate.getFullPaymentRate();
+                BigDecimal partCommission = currrentCommissionRate.getPartPaymentRate();
+                //create a new object
                 Commission newCommission = new Commission();
                 //check inquiry is available
+                if(currentRegistration.getInquiryID()!=null){
+
+                }
+                else{
+
+                }
 
             }
 
