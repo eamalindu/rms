@@ -1,7 +1,7 @@
 window.addEventListener('load',()=>{
 
     refreshMonthlyBreakDownTable();
-    refreshDailyCashBreakdownTable();
+    refreshMonthlyCashBreakdownTable();
 
     reportColumnFormat = [
         {name: 'Added By', data: 'addedBy'},
@@ -107,7 +107,7 @@ const refreshMonthlyBreakDownTable = ()=>{
     // tbody.appendChild(trFinalAmount);
 }
 
-const refreshDailyCashBreakdownTable = ()=>{
+const refreshMonthlyCashBreakdownTable = ()=>{
 
 
     //daily Income calculation start
