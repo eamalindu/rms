@@ -58,6 +58,11 @@ public class BatchController {
         return batchDAO.getBatchesConductToday();
     }
 
+    @GetMapping(value = "getBatchesByCourseID/{courseID}",produces = "application/json")
+    public List<Batch> getBatchesByCourseID(@PathVariable Integer courseID){
+        return batchDAO.getBatchesByCourseID(courseID);
+    }
+
 
     @GetMapping()
     public ModelAndView batchUI() {
