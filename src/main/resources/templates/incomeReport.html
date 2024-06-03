@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/head :: headFragment}"></head>
+
+<body>
+<!--Loader Start-->
+<div th:replace="~{fragments/loader :: loader}"></div>
+<!-- Loader end-->
+
+<!--Navbar start-->
+<nav th:replace="~{ fragments/navbarReport :: navbarReportsFragment}"></nav>
+<!--Navbar end-->
+
+<!-- Display Current Page -->
+<div class="container-fluid bg-custom-white custom-banner">
+    <h5>Income Report</h5>
+</div>
+
+<div class="container-fluid pt-2">
+    <div class="card rounded-0">
+        <div class="card-body rounded-0 text-center text-capitalize">
+            <h6 class="text-muted">Showing all transactions that occurred on <span id="currentDate"></span></h6>
+        </div>
+        <div class="card-footer show pt-4 pb-4">
+        </div>
+    </div>
+</div>
+
+
+<script src="/resources/sheetJS-0.20.0/xlsx.full.min.js" type="text/javascript"></script>
+<script src="/resources/js/external-commonFunction.js" type="text/javascript"></script>
+<script src="/resources/js/external-table.js" type="text/javascript"></script>
+<script src="/resources/js/external-modalFunction.js" type="text/javascript"></script>
+<script src="/resources/js/external-exportData.js" type="text/javascript"></script>
+<script src="/resources/js/external-loader.js" type="text/javascript"></script>
+<script src="/resources/js/controllerJS/incomeReport.js" type="text/javascript"></script>
+<script th:replace="~{ fragments/logout :: logoutScript}"></script>
+</body>
+</html>
