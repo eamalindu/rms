@@ -1,5 +1,5 @@
 window.addEventListener('load',()=>{
-    var start = moment().subtract(29, 'days');
+    var start = moment();
     var end = moment();
 
     function cb(start, end) {
@@ -23,5 +23,8 @@ window.addEventListener('load',()=>{
     }, cb);
 
     cb(start, end);
+
+    $('#registrationSearchCourse').chosen({width: '200px'});
+    $('#registrationSearchBatch').chosen({width: '200px'});
 
 })
