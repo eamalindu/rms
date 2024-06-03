@@ -4,6 +4,7 @@ import lk.steam.rms.entity.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface PaymentDAO extends JpaRepository<Payment,Integer> {
@@ -29,4 +30,6 @@ public interface PaymentDAO extends JpaRepository<Payment,Integer> {
     @Query(value = "SELECT distinct p.addedBy from Payment p")
     List<String> getCashiers();
 
+    @Query(value = "SELECT p.* FROM payment p JOIN registration r ON p.registration_id = r.id JOIN batch b ON r.batch_id = b.id WHERE (?1 IS NULL OR r.course_id = ?1) AND (?2 IS NULL OR r.batch_id = ?2) AND (?3 IS NULL OR p.paymenttype_id = ?3) AND (?4 IS NULL OR p.addedby = ?4) AND (?5 IS NULL OR DATE(p.paiddatetime) >= ?5) AND (?6 IS NULL OR DATE(p.paiddatetime) <= ?6)", nativeQuery = true)
+    List<Payment> getPaymentsForReport(Integer courseID, Integer batchID, Integer paymentTypeID, String addedBy, LocalDate startDate,LocalDate endDate);
 }
