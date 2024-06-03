@@ -154,7 +154,7 @@ public class PaymentController {
     }
 
     @GetMapping(value = "/getCashiers",produces = "application/json")
-    public List<String> getCashiers(){
+    public List<Payment> getCashiers(){
         return paymentDAO.getCashiers();
     }
 }

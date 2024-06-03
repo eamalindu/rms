@@ -27,8 +27,8 @@ public interface PaymentDAO extends JpaRepository<Payment,Integer> {
     @Query(value ="SELECT concat(('R-'),right(year(current_date),2),lpad((substring(max(invoicecode),5)+1) ,4 ,0)) FROM steam.payment where date(paiddatetime)=date(current_date())",nativeQuery = true)
     String getNextInvoiceCode();
 
-    @Query(value = "SELECT distinct p.addedBy from Payment p")
-    List<String> getCashiers();
+    @Query(value = "SELECT distinct p from Payment p")
+    List<Payment> getCashiers();
 
     @Query(value = "SELECT p.* FROM payment p JOIN registration r ON p.registration_id = r.id JOIN batch b ON r.batch_id = b.id WHERE (?1 IS NULL OR r.course_id = ?1) AND (?2 IS NULL OR r.batch_id = ?2) AND (?3 IS NULL OR p.paymenttype_id = ?3) AND (?4 IS NULL OR p.addedby = ?4) AND (?5 IS NULL OR DATE(p.paiddatetime) >= ?5) AND (?6 IS NULL OR DATE(p.paiddatetime) <= ?6)", nativeQuery = true)
     List<Payment> getPaymentsForReport(Integer courseID, Integer batchID, Integer paymentTypeID, String addedBy, LocalDate startDate,LocalDate endDate);
