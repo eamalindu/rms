@@ -1,5 +1,18 @@
 window.addEventListener('load',()=>{
     resetSearchForm();
+
+    $("#registrationSearchCourse").chosen().change(function () {
+        $("#registrationSearchCourse_chosen .chosen-single").addClass('bg-light');
+    });
+    $("#registrationSearchBatch").chosen().change(function () {
+        $("#registrationSearchBatch_chosen .chosen-single").addClass('bg-light');
+    });
+    $("#registrationSearchPaymentMethod").chosen().change(function () {
+        $("#registrationSearchPaymentMethod_chosen .chosen-single").addClass('bg-light');
+    });
+    $("#registrationSearchUser").chosen().change(function () {
+        $("#registrationSearchCourse_chosen .chosen-single").addClass('bg-light');
+    });
 })
 
 const resetSearchForm = ()=>{
@@ -36,4 +49,12 @@ const resetSearchForm = ()=>{
     $('#registrationSearchBatch').chosen({width: '225px'});
     $('#registrationSearchPaymentMethod').chosen({width: '225px'});
     $('#registrationSearchUser').chosen({width: '225px'});
+}
+
+const getBatch = ()=>{
+
+    const batches = ajaxGetRequest("/Batch/getBatchesByCourseID/"+JSON.parse(registrationSearchCourse.value).id)
+    fillSelectOptions(registrationSearchBatch,' ',batches,'batchCode')
+    registrationSearchBatch.setAttribute('data-placeholder','Sort by a Batch');
+    $('#registrationSearchBatch').val('').trigger('chosen:updated');
 }
