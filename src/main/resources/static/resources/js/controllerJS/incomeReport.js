@@ -27,5 +27,6 @@ window.addEventListener('load',()=>{
     $('#registrationSearchCourse').chosen({width: '200px'});
     $('#registrationSearchBatch').chosen({width: '200px'});
     $('#registrationSearchPaymentMethod').chosen({width: '200px'});
+    $('#registrationSearchUser').chosen({width: '200px'});
 
 })
