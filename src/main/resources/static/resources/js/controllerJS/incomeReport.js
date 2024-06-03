@@ -22,11 +22,15 @@ const resetSearchForm = ()=>{
             'Last 7 Days': [moment().subtract(6, 'days'), moment()],
             'Last 30 Days': [moment().subtract(29, 'days'), moment()],
             'This Month': [moment().startOf('month'), moment().endOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            'Last Year': [ moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')]
         }
     }, cb);
 
     cb(start, end);
+
+    const courses = ajaxGetRequest("/Course/findall");
+    fillSelectOptions(registrationSearchCourse,' ',courses,'name')
 
     $('#registrationSearchCourse').chosen({width: '225px'});
     $('#registrationSearchBatch').chosen({width: '225px'});
