@@ -45,6 +45,9 @@ const resetSearchForm = ()=>{
     const courses = ajaxGetRequest("/Course/findall");
     fillSelectOptions(registrationSearchCourse,' ',courses,'name')
 
+    const paymentMethods = ajaxGetRequest("/PaymentType/findall")
+    fillSelectOptions(registrationSearchPaymentMethod,' ',paymentMethods,'name')
+
     $('#registrationSearchCourse').chosen({width: '225px'});
     $('#registrationSearchBatch').chosen({width: '225px'});
     $('#registrationSearchPaymentMethod').chosen({width: '225px'});
