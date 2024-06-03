@@ -51,7 +51,7 @@ const resetSearchForm = ()=>{
     $('#registrationSearchUser').chosen({width: '225px'});
 }
 
-const getBatch = ()=>{
+const getBatches = ()=>{
 
     const batches = ajaxGetRequest("/Batch/getBatchesByCourseID/"+JSON.parse(registrationSearchCourse.value).id)
     fillSelectOptions(registrationSearchBatch,' ',batches,'batchCode')
