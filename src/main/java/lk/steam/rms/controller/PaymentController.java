@@ -111,12 +111,21 @@ public class PaymentController {
                 BigDecimal partCommission = currrentCommissionRate.getPartPaymentRate();
                 //create a new object
                 Commission newCommission = new Commission();
+
+
                 //check inquiry is available
                 if(currentRegistration.getInquiryID()!=null){
 
                 }
                 else{
 
+                }
+
+                if(currentRegistration.getIsFullPayment()){
+                    newCommission.setAmount(fullCommission);
+                }
+                else{
+                    newCommission.setAmount(partCommission);
                 }
 
             }
