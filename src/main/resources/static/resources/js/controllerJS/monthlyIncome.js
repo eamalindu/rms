@@ -133,7 +133,9 @@ const refreshDailyCashBreakdownTable = ()=>{
 
     fillDataIntoTableWithOutAction(tblCashIncome,monthlyCashPayments,displayPropertyListForCashIncome);
 
-    $('#tblCashIncome').dataTable();
+    if(monthlyCashPayments.length!==0) {
+        $('#tblCashIncome').dataTable();
+    }
 
     // const trFinalAmount = document.createElement('tr');
     // trFinalAmount.innerHTML =`<td class="text-end" colspan="8">Total</td><td class="fw-bold">Rs. ${monthlyCashPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>`;
