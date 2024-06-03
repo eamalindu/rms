@@ -22,7 +22,6 @@ public class Commission {
     private Integer id;
 
     @Column(name = "inquiryid")
-    @NotNull
     private Integer inquiryID;
 
     @Column(name = "amount")
