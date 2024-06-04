@@ -116,7 +116,7 @@ public class PaymentController {
                     BigDecimal partCommission = currrentCommissionRate.getPartPaymentRate();
                     //create a new object
                     Commission newCommission = new Commission();
-
+                    newCommission.setTimestamp(LocalDateTime.now());
 
                     //check inquiry is available
                     if (currentRegistration.getInquiryID() != null) {
