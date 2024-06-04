@@ -111,7 +111,7 @@ public class PaymentController {
                 //check this registration already have a commission
                 Commission existCommission = commissionDAO.getCommissionByRegistrationID(currentRegistration.getId());
 
-                if (existCommission != null) {
+                if (existCommission == null) {
                     //calculate commission
                     //get commission rate for the registration
                     CommissionRate currrentCommissionRate = commissionRateDAO.getCommissionRateByCourseID(currentRegistration.getCourseID().getId());
