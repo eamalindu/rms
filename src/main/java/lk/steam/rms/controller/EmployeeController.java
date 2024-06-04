@@ -47,7 +47,7 @@ public class EmployeeController {
     @PutMapping
     public String updateEmployee(@RequestBody Employee employee){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"EMPLOYEE");
 
         if(!loggedUserPrivilege.getUpdatePrivilege()){
             return "<br>User does not have sufficient privilege.";
@@ -66,7 +66,7 @@ public class EmployeeController {
     @PostMapping
     public String saveNewEmployee(@RequestBody Employee employee){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"EMPLOYEE");
 
         if(!loggedUserPrivilege.getInsertPrivilege()){
             return "<br>User does not have sufficient privilege.";
@@ -87,7 +87,7 @@ public class EmployeeController {
     @DeleteMapping
     public String deleteEmployee(@RequestBody Employee employee) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"EMPLOYEE");
 
         if(!loggedUserPrivilege.getDeletePrivilege()){
             return "<br>User does not have sufficient privilege.";
