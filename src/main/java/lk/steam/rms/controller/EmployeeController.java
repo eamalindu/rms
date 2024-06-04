@@ -4,7 +4,10 @@ import lk.steam.rms.dao.EmployeeDAO;
 import lk.steam.rms.dao.EmployeeStatusDAO;
 import lk.steam.rms.entity.Employee;
 import lk.steam.rms.entity.EmployeeStatus;
+import lk.steam.rms.entity.Privilege;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,6 +22,8 @@ public class EmployeeController {
     private EmployeeDAO employeeDAO;
     @Autowired
     private EmployeeStatusDAO employeeStatusDAO;
+    @Autowired
+    private PrivilegeController privilegeController;
 
     @GetMapping
     public ModelAndView employeeUI() {
@@ -41,6 +46,12 @@ public class EmployeeController {
 
     @PutMapping
     public String updateEmployee(@RequestBody Employee employee){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
         try {
             //no need to check anything, because there are no any unique values
             employeeDAO.save(employee);
@@ -54,6 +65,12 @@ public class EmployeeController {
     }
     @PostMapping
     public String saveNewEmployee(@RequestBody Employee employee){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
         try{
             //set auto generated values
             employee.setAdded_timestamp(LocalDateTime.now());
@@ -69,6 +86,12 @@ public class EmployeeController {
     }
     @DeleteMapping
     public String deleteEmployee(@RequestBody Employee employee) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
 
         try {
             //soft delete

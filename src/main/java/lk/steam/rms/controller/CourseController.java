@@ -3,6 +3,7 @@ package lk.steam.rms.controller;
 import lk.steam.rms.dao.CourseDAO;
 import lk.steam.rms.dao.UserDAO;
 import lk.steam.rms.entity.Course;
+import lk.steam.rms.entity.Privilege;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +20,8 @@ public class CourseController {
     private CourseDAO courseDAO;
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    private PrivilegeController privilegeController;
 
     @GetMapping(value = "/findall",produces = "application/json")
     public List<Course> findAll(){
@@ -43,6 +46,12 @@ public class CourseController {
 
     @PostMapping()
     public String saveNewCourse(@RequestBody Course course){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"COURSE");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
         try {
             course.setStatus(true);
             courseDAO.save(course);

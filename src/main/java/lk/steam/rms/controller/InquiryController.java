@@ -3,7 +3,10 @@ package lk.steam.rms.controller;
 import lk.steam.rms.dao.InquiryDAO;
 import lk.steam.rms.entity.Inquiry;
 import lk.steam.rms.entity.InquiryStatus;
+import lk.steam.rms.entity.Privilege;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -16,6 +19,8 @@ public class InquiryController {
 
     @Autowired
     private InquiryDAO inquiryDAO;
+    @Autowired
+    private PrivilegeController privilegeController;
 
     //data returnType => 'produces ="application/JSON"'
     //it can be either JSON,Text and XML
@@ -65,7 +70,12 @@ public class InquiryController {
 
     @PostMapping
     public String saveNewInquiry(@RequestBody Inquiry inquiry){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
 
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
         //check unique properties (They cant be already exist on the table)
         //no unique properties in this table
         try {
@@ -99,6 +109,12 @@ public class InquiryController {
 
     @PutMapping
     public String updateInquiry(@RequestBody Inquiry inquiry){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
         try {
             //no need to check anything, because there are no any unique values
             inquiryDAO.save(inquiry);

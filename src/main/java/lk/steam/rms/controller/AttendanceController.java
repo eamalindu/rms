@@ -3,6 +3,7 @@ package lk.steam.rms.controller;
 import lk.steam.rms.dao.AttendanceDAO;
 import lk.steam.rms.dao.UserDAO;
 import lk.steam.rms.entity.Attendance;
+import lk.steam.rms.entity.Privilege;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,6 +22,8 @@ public class AttendanceController {
     private AttendanceDAO attendanceDAO;
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    private PrivilegeController privilegeController;
 
     @GetMapping()
     public ModelAndView attendanceUI() {
@@ -59,6 +62,12 @@ public class AttendanceController {
 
     @PostMapping()
     public String saveNewAttendance(@RequestBody Attendance attendance){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"ATTENDANCE");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
 
         Attendance exsitAttendance = attendanceDAO.getAttendanceByBatchIDAndRegistrationID(attendance.getBatchID(),attendance.getRegistrationID().getId());
         if(exsitAttendance!=null){

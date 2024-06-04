@@ -3,6 +3,8 @@ package lk.steam.rms.controller;
 import lk.steam.rms.dao.*;
 import lk.steam.rms.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -28,9 +30,17 @@ public class InstallmentPlanController {
     private InquiryDAO inquiryDAO;
     @Autowired
     private InquiryStatusDAO inquiryStatusDAO;
+    @Autowired
+    private PrivilegeController privilegeController;
 
     @PostMapping
     public String saveNewRegistrationWithInstallments(@RequestBody List<InstallmentPlan> installmentPlanList){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
 
         Registrations existRegistration = registrationDAO.getRegistrationsByBatchIDAndStudentID(installmentPlanList.get(0).getRegistrationID().getBatchID().getId(),installmentPlanList.get(0).getRegistrationID().getStudentID().getId());
 
