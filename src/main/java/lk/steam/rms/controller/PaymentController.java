@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.util.List;
 
 @RestController
@@ -35,15 +34,15 @@ public class PaymentController {
     private CommissionDAO commissionDAO;
 
     @PostMapping
-    public String saveNewPayment(@RequestBody Payment payment){
+    public String saveNewPayment(@RequestBody Payment payment) {
 
         String nextInvoiceCode = paymentDAO.getNextInvoiceCode();
-        if(nextInvoiceCode!=null){
+        if (nextInvoiceCode != null) {
             payment.setInvoiceCode(nextInvoiceCode);
-        }else{
+        } else {
             LocalDate currentDate = LocalDate.now();
-            Integer currentYear = (currentDate.getYear())%100;
-            String finalCode = "R-"+currentYear+"0001";
+            Integer currentYear = (currentDate.getYear()) % 100;
+            String finalCode = "R-" + currentYear + "0001";
             payment.setInvoiceCode(finalCode);
 
         }
@@ -51,9 +50,9 @@ public class PaymentController {
         payment.setAddedBy("User1");
         //userDao.getByUserName(auth.getName()).getId();
         payment.setTimeStamp(LocalDateTime.now());
-        if(payment.getRegistrationID().getIsFullPayment()){
+        if (payment.getRegistrationID().getIsFullPayment()) {
             payment.setInstallmentID(null);
-        }else {
+        } else {
 
             //handle part payment installments
             List<InstallmentPlan> currentRegistrationInstallments = installmentPlanDAO.getInstallmentPlanByRegistrationID(payment.getRegistrationID().getId());
@@ -100,7 +99,7 @@ public class PaymentController {
         BigDecimal currentRegistrationRegistrationFee = currentRegistration.getBatchID().getPaymentPlanID().getRegistrationFee();
 
         //change the registration status
-        if(currentRegistration.getRegistrationStatusID().getName().equals("Pending")){
+        if (currentRegistration.getRegistrationStatusID().getName().equals("Pending")) {
             if (updatedPaidAmount.compareTo(currentRegistrationRegistrationFee) >= 0) {
                 // currentPaymentAmount is greater than or equal to currentRegistrationRegistrationFee
                 // Handle the case where the payment amount is sufficient or more
@@ -109,29 +108,30 @@ public class PaymentController {
                 //check this registration already have a commission
                 Commission existCommission = commissionDAO.getCommissionByRegistrationID(currentRegistration.getId());
 
-                //calculate commission
-                //get commission rate for the registration
-                CommissionRate currrentCommissionRate = commissionRateDAO.getCommissionRateByCourseID(currentRegistration.getCourseID().getId());
-                BigDecimal fullCommission = currrentCommissionRate.getFullPaymentRate();
-                BigDecimal partCommission = currrentCommissionRate.getPartPaymentRate();
-                //create a new object
-                Commission newCommission = new Commission();
+                if (existCommission != null) {
+                    //calculate commission
+                    //get commission rate for the registration
+                    CommissionRate currrentCommissionRate = commissionRateDAO.getCommissionRateByCourseID(currentRegistration.getCourseID().getId());
+                    BigDecimal fullCommission = currrentCommissionRate.getFullPaymentRate();
+                    BigDecimal partCommission = currrentCommissionRate.getPartPaymentRate();
+                    //create a new object
+                    Commission newCommission = new Commission();
 
 
-                //check inquiry is available
-                if(currentRegistration.getInquiryID()!=null){
+                    //check inquiry is available
+                    if (currentRegistration.getInquiryID() != null) {
 
+                    } else {
+
+                    }
+
+                    if (currentRegistration.getIsFullPayment()) {
+                        newCommission.setAmount(fullCommission);
+                    } else {
+                        newCommission.setAmount(partCommission);
+                    }
                 }
-                else{
 
-                }
-
-                if(currentRegistration.getIsFullPayment()){
-                    newCommission.setAmount(fullCommission);
-                }
-                else{
-                    newCommission.setAmount(partCommission);
-                }
 
             }
 
@@ -145,7 +145,7 @@ public class PaymentController {
         if (updatedPaidAmount.compareTo(currentRegistrationRegistrationFee) >= 0) {
             Batch currentRegistrationBatch = currentRegistration.getBatchID();
             Integer currentBatchAvailableSeatCount = currentRegistrationBatch.getSeatCountAvailable();
-            currentRegistrationBatch.setSeatCountAvailable(currentBatchAvailableSeatCount-1);
+            currentRegistrationBatch.setSeatCountAvailable(currentBatchAvailableSeatCount - 1);
             batchDAO.save(currentRegistrationBatch);
 
 
@@ -156,38 +156,38 @@ public class PaymentController {
     }
 
 
-    @GetMapping(value = "/getPaymentsByRegistrationID/{registrationID}",produces = "application/json")
-    public List<Payment> getPaymentsByRegistrationID(@PathVariable Integer registrationID){
+    @GetMapping(value = "/getPaymentsByRegistrationID/{registrationID}", produces = "application/json")
+    public List<Payment> getPaymentsByRegistrationID(@PathVariable Integer registrationID) {
         return paymentDAO.getPaymentsByRegistrationID(registrationID);
     }
 
-    @GetMapping(value = "/getDailyIncome",produces = "application/json")
-    public List<Payment> getDailyIncome(){
+    @GetMapping(value = "/getDailyIncome", produces = "application/json")
+    public List<Payment> getDailyIncome() {
         return paymentDAO.getDailyTotalPayment();
     }
 
-    @GetMapping(value = "/getDailyTotalCashPayment",produces = "application/json")
-    public List<Payment> getDailyTotalCashPayment(){
+    @GetMapping(value = "/getDailyTotalCashPayment", produces = "application/json")
+    public List<Payment> getDailyTotalCashPayment() {
         return paymentDAO.getDailyTotalCashPayment();
     }
 
-    @GetMapping(value = "/getMonthlyTotalPayment",produces = "application/json")
-    public List<Payment> getMonthlyTotalPayment(){
+    @GetMapping(value = "/getMonthlyTotalPayment", produces = "application/json")
+    public List<Payment> getMonthlyTotalPayment() {
         return paymentDAO.getMonthlyTotalPayment();
     }
 
-    @GetMapping(value = "/getMonthlyTotalCashPayment",produces = "application/json")
-    public List<Payment> getMonthlyTotalCashPayment(){
+    @GetMapping(value = "/getMonthlyTotalCashPayment", produces = "application/json")
+    public List<Payment> getMonthlyTotalCashPayment() {
         return paymentDAO.getMonthlyTotalCashPayment();
     }
 
-    @GetMapping(value = "/getCashiers",produces = "application/json")
-    public List<Payment> getCashiers(){
+    @GetMapping(value = "/getCashiers", produces = "application/json")
+    public List<Payment> getCashiers() {
         return paymentDAO.getCashiers();
     }
 
-    @GetMapping(value = "/getPaymentsForReport/{courseID}/{batchID}/{paymentType}/{addedBy}/{startDate}/{endDate}",produces = "application/json")
-    public List<Payment> getPaymentsForReport(@PathVariable Integer courseID,@PathVariable Integer batchID,@PathVariable Integer paymentType,@PathVariable String addedBy,@PathVariable String startDate,@PathVariable String endDate){
-        return paymentDAO.getPaymentsForReport(courseID,batchID,paymentType,addedBy,startDate,endDate);
+    @GetMapping(value = "/getPaymentsForReport/{courseID}/{batchID}/{paymentType}/{addedBy}/{startDate}/{endDate}", produces = "application/json")
+    public List<Payment> getPaymentsForReport(@PathVariable Integer courseID, @PathVariable Integer batchID, @PathVariable Integer paymentType, @PathVariable String addedBy, @PathVariable String startDate, @PathVariable String endDate) {
+        return paymentDAO.getPaymentsForReport(courseID, batchID, paymentType, addedBy, startDate, endDate);
     }
 }
