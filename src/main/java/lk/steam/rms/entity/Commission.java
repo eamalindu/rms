@@ -35,4 +35,8 @@ public class Commission {
     @Column(name = "timestamp")
     @NotNull
     private LocalDateTime timestamp;
+
+    @OneToOne
+    @JoinColumn(name = "registration_id",referencedColumnName = "id")
+    private Registrations registrationID;
 }
