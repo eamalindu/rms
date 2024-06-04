@@ -81,8 +81,8 @@ public class RegistrationController {
             }
 
             registrations.setTimestamp(LocalDateTime.now());
-            registrations.setAddedBy("User1");
-            registrations.setCommissionPaidTo("User1");
+            registrations.setAddedBy(auth.getName());
+            registrations.setCommissionPaidTo(auth.getName());
 
             //check the discountRate and discountAmount is null or not
             if (registrations.getDiscountRate() == null) {
@@ -119,9 +119,11 @@ public class RegistrationController {
                 registrations.setInquiryID(currentInquiry.getId());
                 currentInquiry.setInquiryStatusId(inquiryStatusDAO.getReferenceById(3));
                 currentInquiry.setRegistrationID(completedRegistration.getId());
+                completedRegistration.setCommissionPaidTo(currentInquiry.getAddedBy());
                 inquiryDAO.save(currentInquiry);
             }
 
+            registrationDAO.save(completedRegistration);
 
             System.out.println(completedRegistration.getId());
             return "OK";
