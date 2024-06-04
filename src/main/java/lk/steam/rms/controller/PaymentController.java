@@ -135,7 +135,7 @@ public class PaymentController {
                     if (currentRegistration.getInquiryID() != null) {
 
                     } else {
-                        newCommission.setPaidTo(auth.getName());
+                        newCommission.setPaidTo(currentRegistration.getCommissionPaidTo());
                     }
 
                     if (currentRegistration.getIsFullPayment()) {
