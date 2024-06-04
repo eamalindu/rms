@@ -1,5 +1,6 @@
 package lk.steam.rms.controller;
 
+import jakarta.transaction.Transactional;
 import lk.steam.rms.dao.*;
 import lk.steam.rms.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,7 @@ public class PaymentController {
     private CommissionDAO commissionDAO;
 
     @PostMapping
+    @Transactional
     public String saveNewPayment(@RequestBody Payment payment) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
