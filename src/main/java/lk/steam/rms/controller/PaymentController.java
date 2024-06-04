@@ -35,11 +35,18 @@ public class PaymentController {
     private CommissionRateDAO commissionRateDAO;
     @Autowired
     private CommissionDAO commissionDAO;
+    @Autowired
+    private PrivilegeController privilegeController;
 
     @PostMapping
     @Transactional
     public String saveNewPayment(@RequestBody Payment payment) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"PAYMENT");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
 
         String nextInvoiceCode = paymentDAO.getNextInvoiceCode();
         if (nextInvoiceCode != null) {
