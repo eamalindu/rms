@@ -2,10 +2,7 @@ package lk.steam.rms.controller;
 
 import jakarta.transaction.Transactional;
 import lk.steam.rms.dao.*;
-import lk.steam.rms.entity.Inquiry;
-import lk.steam.rms.entity.RegistrationStatus;
-import lk.steam.rms.entity.Registrations;
-import lk.steam.rms.entity.Student;
+import lk.steam.rms.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
@@ -38,6 +35,8 @@ public class RegistrationController {
 
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    private PrivilegeController privilegeController;
 
     @GetMapping()
     public ModelAndView registrationUI() {
@@ -58,6 +57,12 @@ public class RegistrationController {
     @PostMapping
     @Transactional
     public String saveNewRegistration(@RequestBody Registrations registrations) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"REGISTRATION");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
 
         Registrations existRegistration = registrationDAO.getRegistrationsByBatchIDAndStudentID(registrations.getBatchID().getId(), registrations.getStudentID().getId());
 
@@ -167,6 +172,12 @@ public class RegistrationController {
 
     @PutMapping
     public String updateRegistration(@RequestBody Registrations registration) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"REGISTRATION");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
 
         //check if the registration exist or not
         Registrations existReg = registrationDAO.getReferenceById(registration.getId());
