@@ -37,6 +37,10 @@ public class PaymentController {
     private CommissionDAO commissionDAO;
     @Autowired
     private PrivilegeController privilegeController;
+    @Autowired
+    private InquiryDAO inquiryDAO;
+    @Autowired
+    private InquiryStatusDAO inquiryStatusDAO;
 
     @PostMapping
     @Transactional
@@ -133,6 +137,10 @@ public class PaymentController {
 
                     //check inquiry is available
                     if (currentRegistration.getInquiryID() != null) {
+                        Inquiry currentInquiry = inquiryDAO.getReferenceById(currentRegistration.getInquiryID());
+                        newCommission.setPaidTo(currentInquiry.getAddedBy());
+                        currentInquiry.setInquiryStatusId(inquiryStatusDAO.getReferenceById(5));
+                        inquiryDAO.save(currentInquiry);
 
                     } else {
                         newCommission.setPaidTo(currentRegistration.getCommissionPaidTo());
