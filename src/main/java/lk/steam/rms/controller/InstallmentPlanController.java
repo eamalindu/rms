@@ -36,7 +36,7 @@ public class InstallmentPlanController {
     @PostMapping
     public String saveNewRegistrationWithInstallments(@RequestBody List<InstallmentPlan> installmentPlanList){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"INSTALLMENTPLAN");
 
         if(!loggedUserPrivilege.getInsertPrivilege()){
             return "<br>User does not have sufficient privilege.";

@@ -32,9 +32,9 @@ public class LessonController {
     @PostMapping
     public String saveNewLesson(@RequestBody Lesson lesson){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"LESSON");
 
-        if(!loggedUserPrivilege.getDeletePrivilege()){
+        if(!loggedUserPrivilege.getInsertPrivilege()){
             return "<br>User does not have sufficient privilege.";
         }
         Lesson existLesson = lessonDAO.getLessonByCode(lesson.getCode());

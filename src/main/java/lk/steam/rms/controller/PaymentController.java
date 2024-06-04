@@ -44,7 +44,7 @@ public class PaymentController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"PAYMENT");
 
-        if(!loggedUserPrivilege.getDeletePrivilege()){
+        if(!loggedUserPrivilege.getInsertPrivilege()){
             return "<br>User does not have sufficient privilege.";
         }
 
