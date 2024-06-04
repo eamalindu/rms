@@ -61,8 +61,8 @@ public class InstallmentPlanController {
             }
 
             currentRegistration.setTimestamp(LocalDateTime.now());
-            currentRegistration.setAddedBy("User1");
-            currentRegistration.setCommissionPaidTo("User1");
+            currentRegistration.setAddedBy(auth.getName());
+            currentRegistration.setCommissionPaidTo(auth.getName());
             //Student sample = studentDAO.getReferenceById(1);
             RegistrationStatus sampleStatus = registrationStatusDAO.getReferenceById(4);
             //registrations.setStudentID(sample);
@@ -88,6 +88,7 @@ public class InstallmentPlanController {
                 currentInquiry.setInquiryStatusId(inquiryStatusDAO.getReferenceById(3));
                 currentInquiry.setRegistrationID(currentRegistration.getId());
                 inquiryDAO.save(currentInquiry);
+                currentRegistration.setCommissionPaidTo(currentInquiry.getAddedBy());
             }
             Registrations completedRegistration = registrationDAO.save(currentRegistration);
             for (InstallmentPlan installmentPlan : installmentPlanList) {
