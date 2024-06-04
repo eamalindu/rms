@@ -87,7 +87,7 @@ public class BatchController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
 
-        if(!loggedUserPrivilege.getDeletePrivilege()){
+        if(!loggedUserPrivilege.getInsertPrivilege()){
             return "<br>User does not have sufficient privilege.";
         }
 
@@ -119,7 +119,7 @@ public class BatchController {
 
         batch.setTimestamp(LocalDateTime.now());
         batch.setBatchNumber(nextBatchNumber);
-        batch.setCreatedBy("Malindu");
+        batch.setCreatedBy(auth.getName());
         batch.setSeatCountAvailable(batch.getSeatCount());
         batch.setBatchStatusID(batchStatusDAO.getReferenceById(1));
 
@@ -135,7 +135,7 @@ public class BatchController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
 
-        if(!loggedUserPrivilege.getDeletePrivilege()){
+        if(!loggedUserPrivilege.getUpdatePrivilege()){
             return "<br>User does not have sufficient privilege.";
         }
 
