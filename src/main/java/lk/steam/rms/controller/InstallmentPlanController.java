@@ -38,7 +38,7 @@ public class InstallmentPlanController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
 
-        if(!loggedUserPrivilege.getDeletePrivilege()){
+        if(!loggedUserPrivilege.getInsertPrivilege()){
             return "<br>User does not have sufficient privilege.";
         }
 
