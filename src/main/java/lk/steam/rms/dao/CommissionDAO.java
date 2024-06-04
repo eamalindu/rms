@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.Query;
 public interface CommissionDAO extends JpaRepository<Commission, Integer> {
 
     @Query("select c from Commission c where c.registrationID.id=?1")
-    Commission findCommissionByRegistrationID(Integer registrationID);
+    Commission getCommissionByRegistrationID(Integer registrationID);
 }
