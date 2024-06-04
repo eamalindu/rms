@@ -31,6 +31,8 @@ public class PaymentController {
     private BatchDAO batchDAO;
     @Autowired
     private CommissionRateDAO commissionRateDAO;
+    @Autowired
+    private CommissionDAO commissionDAO;
 
     @PostMapping
     public String saveNewPayment(@RequestBody Payment payment){
@@ -103,6 +105,9 @@ public class PaymentController {
                 // currentPaymentAmount is greater than or equal to currentRegistrationRegistrationFee
                 // Handle the case where the payment amount is sufficient or more
                 currentRegistration.setRegistrationStatusID(registrationStatusDAO.getReferenceById(1));
+
+                //check this registration already have a commission
+                Commission existCommission = commissionDAO.getCommissionByRegistrationID(currentRegistration.getId());
 
                 //calculate commission
                 //get commission rate for the registration
