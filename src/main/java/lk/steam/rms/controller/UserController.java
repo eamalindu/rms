@@ -1,8 +1,11 @@
 package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.UserDAO;
+import lk.steam.rms.entity.Privilege;
 import lk.steam.rms.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +22,8 @@ public class UserController {
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private PrivilegeController privilegeController;
 
     @GetMapping
     public ModelAndView userUI(){
@@ -39,6 +44,11 @@ public class UserController {
 
     @PostMapping
     public String saveNewUser(@RequestBody User user){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"USER");
+        if(!loggedUserPrivilege.getInsertPrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
         try{
             user.setAddedTime(LocalDateTime.now());
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -53,6 +63,11 @@ public class UserController {
 
     @PutMapping
     public String updateUser(@RequestBody User user){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"USER");
+        if(!loggedUserPrivilege.getUpdatePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
         User currentUser = userDAO.getReferenceById(user.getId());
         if(currentUser==null){
             return "No Such User Account";
@@ -69,7 +84,11 @@ public class UserController {
 
     @DeleteMapping
     public String deleteUser(@RequestBody User user){
-
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"USER");
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
         //authentication and authorization should be done first
         //check existing
         User currentUser = userDAO.getReferenceById(user.getId());
