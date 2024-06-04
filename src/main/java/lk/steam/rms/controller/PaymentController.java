@@ -3,6 +3,8 @@ package lk.steam.rms.controller;
 import lk.steam.rms.dao.*;
 import lk.steam.rms.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -35,6 +37,7 @@ public class PaymentController {
 
     @PostMapping
     public String saveNewPayment(@RequestBody Payment payment) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         String nextInvoiceCode = paymentDAO.getNextInvoiceCode();
         if (nextInvoiceCode != null) {
@@ -122,7 +125,7 @@ public class PaymentController {
                     if (currentRegistration.getInquiryID() != null) {
 
                     } else {
-
+                        newCommission.setPaidTo(auth.getName());
                     }
 
                     if (currentRegistration.getIsFullPayment()) {
@@ -130,6 +133,8 @@ public class PaymentController {
                     } else {
                         newCommission.setAmount(partCommission);
                     }
+
+                    commissionDAO.save(newCommission);
                 }
 
 
