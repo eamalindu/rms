@@ -49,7 +49,7 @@ public class CourseController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"COURSE");
 
-        if(!loggedUserPrivilege.getDeletePrivilege()){
+        if(!loggedUserPrivilege.getInsertPrivilege()){
             return "<br>User does not have sufficient privilege.";
         }
         try {
