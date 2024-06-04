@@ -122,6 +122,7 @@ public class PaymentController {
                     //create a new object
                     Commission newCommission = new Commission();
                     newCommission.setTimestamp(LocalDateTime.now());
+                    newCommission.setRegistrationID(currentRegistration);
 
                     //check inquiry is available
                     if (currentRegistration.getInquiryID() != null) {
