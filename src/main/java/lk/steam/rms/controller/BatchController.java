@@ -84,6 +84,12 @@ public class BatchController {
 
     @PostMapping()
     public String saveNewBatch(@RequestBody Batch batch) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
 
         Integer currentCourseID = batch.getCourseID().getId();
         String currentCourseCode = batch.getCourseID().getCode();
@@ -126,6 +132,12 @@ public class BatchController {
 
     @PutMapping
     public String updateBatch(@RequestBody Batch batch) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
 
         //check existing
         Batch existBatch = batchDAO.getReferenceById(batch.getId());
