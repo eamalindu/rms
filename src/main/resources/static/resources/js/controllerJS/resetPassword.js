@@ -21,6 +21,7 @@ window.addEventListener("load", () => {
 
 const sendOTP = () => {
     const serverResponse = ajaxHttpRequest("/Reset-Password/" + username.value, "POST");
+    currentEmail = username.value;
     if (serverResponse === "OK") {
         lblPassword.classList.remove('d-none');
         countdown(2, countdownText, 'You can request another OTP after');
@@ -77,6 +78,16 @@ const sendOTP = () => {
     // }
 
 
+}
+
+const checkOTP = ()=>{
+    const serverResponse = ajaxHttpRequest("/Reset-Password/OTP/"+currentEmail+"/"+password.value)
+    if(serverResponse==="OK"){
+        showCustomModal("OTP is Correct","success");
+    }
+    else{
+        showCustomModal(serverResponse,"error")
+    }
 }
 
 function countdown(minutes) {
