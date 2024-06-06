@@ -1,7 +1,9 @@
 package lk.steam.rms.controller;
 
 import jakarta.mail.MessagingException;
+import lk.steam.rms.dao.OtpDAO;
 import lk.steam.rms.dao.UserDAO;
+import lk.steam.rms.entity.OTP;
 import lk.steam.rms.entity.User;
 import lk.steam.rms.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.SecureRandom;
+import java.time.LocalDateTime;
 
 @RestController
 public class ResetPasswordController {
@@ -17,6 +20,8 @@ public class ResetPasswordController {
     private UserDAO userDAO;
     @Autowired
     private MailService mailService;
+    @Autowired
+    private OtpDAO otpDAO;
 
     @GetMapping(value = "/Reset-Password")
     public ModelAndView resetPassword() {
@@ -43,6 +48,14 @@ public class ResetPasswordController {
                 //create an OTP
                 String generatedOTP = generateSecureOTP();
                 mailService.sendOTPMail(email,generatedOTP);
+
+                OTP otp = new OTP();
+                otp.setEmail(email);
+                otp.setOtp(generatedOTP);
+                otp.setCreatedTimestamp(LocalDateTime.now());
+                otp.setExpiredTimestamp(otp.getCreatedTimestamp().plusMinutes(5));
+                otp.setUserID(user);
+                otpDAO.save(otp);
                 //send OTP email
                 return "OK";
 
