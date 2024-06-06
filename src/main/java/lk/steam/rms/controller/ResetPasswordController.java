@@ -80,7 +80,7 @@ public class ResetPasswordController {
         else{
             OTP currentOTP = otpDAO.getOTPByEmailAndOtp(email,otp);
             if(currentOTP==null){
-                return "No OTP Found For Provided Email";
+                return "OTP Expired or invalid OTP";
             }
             else{
                 return "OK";
