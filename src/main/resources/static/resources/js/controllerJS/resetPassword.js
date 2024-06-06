@@ -81,7 +81,7 @@ const sendOTP = () => {
 }
 
 const checkOTP = ()=>{
-    const serverResponse = ajaxHttpRequest("/Reset-Password/OTP/"+currentEmail+"/"+password.value)
+    const serverResponse = ajaxHttpRequest("/Reset-Password/OTP/"+currentEmail+"/"+password.value,"POST")
     if(serverResponse==="OK"){
         showCustomModal("OTP is Correct","success");
     }
