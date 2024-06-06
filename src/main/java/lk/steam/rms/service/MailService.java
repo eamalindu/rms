@@ -28,7 +28,7 @@ public class MailService {
         javaMailSender.send(message);
     }
 
-    public void sendOTPMail(String mail) throws MessagingException {
+    public void sendOTPMail(String mail,Integer otp) throws MessagingException {
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message,true,"UTF-8");
 
@@ -99,7 +99,7 @@ public class MailService {
                 "        </div>" +
                 "        <div class='content'>" +
                 "            We received a request to reset your password. &nbsp;Your One-Time Password (OTP) for password reset is : " +
-                "            <div class='otp'>123456</div>" +
+                "            <div class='otp'>"+otp+"</div>" +
                 "            Please enter this OTP to reset your password. &nbsp;This code is valid for the next 5 minutes." +
                 "            <br/><br/>" +
                 "            If you did not request a password reset, please ignore this email." +
