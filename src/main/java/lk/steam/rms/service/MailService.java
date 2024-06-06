@@ -28,7 +28,7 @@ public class MailService {
         javaMailSender.send(message);
     }
 
-    public void sendOTPMail(String mail,Integer otp) throws MessagingException {
+    public void sendOTPMail(String mail,String otp) throws MessagingException {
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message,true,"UTF-8");
 
@@ -104,9 +104,6 @@ public class MailService {
                 "            <br/><br/>" +
                 "            If you did not request a password reset, please ignore this email." +
                 "           " +
-                "        </div>" +
-                "        <div class='footer'>" +
-                "            <p>We Hope to see you again</p>" +
                 "        </div>" +
                 "    </div>" +
                 "</body>" +
