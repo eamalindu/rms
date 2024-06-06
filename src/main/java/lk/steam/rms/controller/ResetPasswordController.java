@@ -19,12 +19,8 @@ public class ResetPasswordController {
         return resetView;
     }
 
-    @GetMapping(value = "/Reset-Password/getUserByEmail/{email}")
-    User getUSerByEmail(@PathVariable String email) {
-        return userDAO.getUserByEmail(email);
-    }
 
-    @PostMapping("/{email}")
+    @PostMapping("/Reset-Password/{email}")
     public String resetPassword(@PathVariable String email) {
         //check the user account is available for the provided email
         User user = userDAO.getUserByEmail(email);
