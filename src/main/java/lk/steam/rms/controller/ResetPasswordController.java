@@ -83,6 +83,8 @@ public class ResetPasswordController {
                 return "OTP Expired or invalid OTP";
             }
             else{
+                currentOTP.setStatus(false);
+                otpDAO.save(currentOTP);
                 return "OK";
 
             }
