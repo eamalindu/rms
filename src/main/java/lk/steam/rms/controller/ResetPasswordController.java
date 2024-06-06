@@ -55,6 +55,7 @@ public class ResetPasswordController {
                 otp.setCreatedTimestamp(LocalDateTime.now());
                 otp.setExpiredTimestamp(otp.getCreatedTimestamp().plusMinutes(5));
                 otp.setUserID(user);
+                otp.setStatus(true);
                 otpDAO.save(otp);
                 //send OTP email
                 return "OK";
