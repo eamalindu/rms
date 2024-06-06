@@ -71,6 +71,25 @@ public class ResetPasswordController {
 
     }
 
+    @PostMapping("/Reset-Password/OTP/{email}/{otp}")
+    public String checkOTP(@PathVariable String email, @PathVariable String otp) {
+        User user = userDAO.getUserByEmail(email);
+        if(user==null){
+            return "No User Account Found For Provided Email";
+        }
+        else{
+            OTP currentOTP = otpDAO.getOTPByEmailAndOtp(email,otp);
+            if(currentOTP==null){
+                return "No OTP Found For Provided Email";
+            }
+            else{
+                return "OK";
+
+            }
+        }
+
+    }
+
     public static String generateSecureOTP() {
         SecureRandom secureRandom = new SecureRandom();
         int otp = 100000 + secureRandom.nextInt(900000);
