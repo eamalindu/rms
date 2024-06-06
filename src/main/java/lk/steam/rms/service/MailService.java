@@ -38,7 +38,7 @@ public class MailService {
 
         helper.setFrom(username);
         helper.setTo(mail);
-        helper.setSubject("Password Reset OTP Confirmation");
+        helper.setSubject("Password Reset [OTP Confirmation]");
         String msgContent = "<!DOCTYPE html>" +
                 "<html lang='en'>" +
                 "<head>" +
