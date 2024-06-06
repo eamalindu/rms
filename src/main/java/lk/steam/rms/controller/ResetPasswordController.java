@@ -38,7 +38,8 @@ public class ResetPasswordController {
             //this means user account is present
             //check the user account is active
             if(user.getStatus()){
-
+                //create a OTP
+                //send OTP email
                 return "OK";
 
             }
