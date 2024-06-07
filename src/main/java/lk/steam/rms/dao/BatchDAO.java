@@ -34,6 +34,9 @@ public interface BatchDAO extends JpaRepository<Batch,Integer> {
     @Query(value = "SELECT * FROM batch WHERE commencedate = DATE_ADD(date(now()), INTERVAL 3 DAY)",nativeQuery = true)
     List<Batch> getBatchesByThreeDaysBeforeCommenceDate();
 
+    @Query(value = "SELECT * from batch where commencedate = date(now())",nativeQuery = true)
+    List<Batch> getBatchesStartToday();
+
 
 
 }
