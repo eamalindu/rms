@@ -41,6 +41,7 @@ const sendOTP = () => {
             username.disabled = false;
             countdownText.innerHTML = '<small>You Can Request a New OTP Now</small>'
         }, 120000);
+
         showCustomModal("Email Contain OTP sent successfully", "success")
     } else {
         showCustomModal(serverResponse, "error");
@@ -54,6 +55,7 @@ const checkOTP = ()=>{
     if(serverResponse==="OK"){
         showCustomModal("OTP is Correct","success");
         //show modal for password reset
+        $('#modalChangePassword').modal('show');
     }
     else{
         showCustomModal(serverResponse,"error")
