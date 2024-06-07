@@ -168,6 +168,7 @@ const updatePassword = () => {
 
         //stop timer
         //show default msg
+        counter.innerHTML = 'An OTP will be sent to your email';
 
 
     } else {
