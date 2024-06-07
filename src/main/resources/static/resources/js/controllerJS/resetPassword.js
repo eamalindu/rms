@@ -110,24 +110,47 @@ const passwordValidator = ()=>{
         }
 
     }
-    //if element is required, display error / warning (use border color or boostrap validation)
-    if (newPassword.required) {
-        newPassword.style.border = '1px solid red';
-        newPassword.style.background = 'white';
-        newPassword.style.color='red';
-
-        newPassword.classList.remove('is-valid');
-        newPassword.classList.add('is-invalid');
-    }
-    //if the element is not required, display the default colors (remove boostrap validation)
     else {
-        newPassword.style.border = '1px solid #ced4da';
-        newPassword.style.background = 'white';
-        newPassword.style.color='black';
-        newPassword.classList.remove('is-valid');
-        newPassword.classList.remove('is-invalid');
+        //if element is required, display error / warning (use border color or boostrap validation)
+        if (newPassword.required) {
+            newPassword.style.border = '1px solid red';
+            newPassword.style.background = 'white';
+            newPassword.style.color = 'red';
+
+            newPassword.classList.remove('is-valid');
+            newPassword.classList.add('is-invalid');
+        }
+        //if the element is not required, display the default colors (remove boostrap validation)
+        else {
+            newPassword.style.border = '1px solid #ced4da';
+            newPassword.style.background = 'white';
+            newPassword.style.color = 'black';
+            newPassword.classList.remove('is-valid');
+            newPassword.classList.remove('is-invalid');
 
 
+        }
     }
 
+}
+
+const matchPassword=()=>{
+    if(confirmPassword.value !== ''){
+        if(window.newRawPassword===confirmPassword.value){
+            confirmPassword.style.border = '1px solid green';
+            confirmPassword.style.background = 'white';
+            confirmPassword.style.color='green';
+            confirmPassword.classList.add('is-valid');
+            confirmPassword.classList.remove('is-invalid');
+
+        }
+        else{
+            confirmPassword.style.border = '1px solid red';
+            confirmPassword.style.background = 'white';
+            confirmPassword.style.color='red';
+
+            confirmPassword.classList.remove('is-valid');
+            confirmPassword.classList.add('is-invalid');
+        }
+    }
 }
