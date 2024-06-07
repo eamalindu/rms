@@ -83,3 +83,51 @@ function countdown(minutes) {
 
     tick();
 }
+
+const passwordValidator = ()=>{
+    const regexPattern = new RegExp('^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$');
+    //checking for element value (value cant be null)
+    if (newPassword.value !== '') {
+
+        if(regexPattern.test(newPassword.value)){
+            newPassword.style.border = '1px solid green';
+            newPassword.style.background = 'white';
+            newPassword.style.color='green';
+            newPassword.classList.add('is-valid');
+            newPassword.classList.remove('is-invalid');
+
+            window[newRawPassword] = newPassword.value;
+        }
+        else {
+
+            window[newRawPassword] = null;
+            newPassword.style.border = '1px solid red';
+            newPassword.style.background = 'white';
+            newPassword.style.color='red';
+
+            newPassword.classList.remove('is-valid');
+            newPassword.classList.add('is-invalid');
+        }
+
+    }
+    //if element is required, display error / warning (use border color or boostrap validation)
+    if (newPassword.required) {
+        newPassword.style.border = '1px solid red';
+        newPassword.style.background = 'white';
+        newPassword.style.color='red';
+
+        newPassword.classList.remove('is-valid');
+        newPassword.classList.add('is-invalid');
+    }
+    //if the element is not required, display the default colors (remove boostrap validation)
+    else {
+        newPassword.style.border = '1px solid #ced4da';
+        newPassword.style.background = 'white';
+        newPassword.style.color='black';
+        newPassword.classList.remove('is-valid');
+        newPassword.classList.remove('is-invalid');
+
+
+    }
+
+}
