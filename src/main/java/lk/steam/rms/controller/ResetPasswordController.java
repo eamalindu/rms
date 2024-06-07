@@ -103,6 +103,11 @@ public class ResetPasswordController {
                 return "No User Account Found For Provided Email";
             }
             else {
+
+                if(bCryptPasswordEncoder.matches(rawPassword,user.getPassword())){
+                    return "Cannot Use the Old Password";
+                }
+
                 user.setPassword(bCryptPasswordEncoder.encode(rawPassword));
                 userDAO.save(user);
 
