@@ -171,6 +171,8 @@ const updatePassword = () => {
         btnSendOtp.disabled = false;
         username.disabled = false;
         countdownText.innerHTML = '<small>You Can Request a New OTP Now</small>'
+        otpContainer.classList.add('d-none');
+        lblPassword.classList.add('d-none');
 
 
     } else {
