@@ -166,6 +166,9 @@ const updatePassword = () => {
         newPassword.classList.remove('is-valid');
         newPassword.classList.remove('is-invalid');
 
+        //stop timer
+        //show default msg
+
 
     } else {
         showCustomModal(severResponse, "error")

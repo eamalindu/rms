@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @RestController
 public class ResetPasswordController {
@@ -110,6 +111,8 @@ public class ResetPasswordController {
 
                 user.setPassword(bCryptPasswordEncoder.encode(rawPassword));
                 userDAO.save(user);
+
+                mailService.passwordUpdateMail(user.getEmail(),LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
 
                 return "OK";
             }
