@@ -160,5 +160,12 @@ const matchPassword=()=>{
 }
 
 const updatePassword = ()=>{
+    const severResponse = ajaxHttpRequest("/Reset-Password/Update/"+window.currentEmail+"/"+window.newRawPassword,"POST");
+    if(severResponse==="OK"){
+        showCustomModal("Password Updated Successfully","success")
+    }
+    else{
+        showCustomModal(severResponse,"error")
+    }
 
 }
