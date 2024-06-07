@@ -1,7 +1,7 @@
 window.addEventListener("load", () => {
     password.disabled = true;
     btnSendOtp.disabled = true;
-    btnUpdate.disabled =true;
+    btnUpdate.disabled = true;
 
     username.addEventListener('keyup', () => {
         if (username.value !== '') {
@@ -51,14 +51,13 @@ const sendOTP = () => {
 
 }
 
-const checkOTP = ()=>{
-    const serverResponse = ajaxHttpRequest("/Reset-Password/OTP/"+window.currentEmail+"/"+password.value,"POST")
-    if(serverResponse==="OK"){
+const checkOTP = () => {
+    const serverResponse = ajaxHttpRequest("/Reset-Password/OTP/" + window.currentEmail + "/" + password.value, "POST")
+    if (serverResponse === "OK") {
         //show modal for password reset
         $('#modalChangePassword').modal('show');
-    }
-    else{
-        showCustomModal(serverResponse,"error")
+    } else {
+        showCustomModal(serverResponse, "error")
     }
 }
 
@@ -84,33 +83,31 @@ function countdown(minutes) {
     tick();
 }
 
-const passwordValidator = ()=>{
+const passwordValidator = () => {
     const regexPattern = new RegExp('^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$');
     //checking for element value (value cant be null)
     if (newPassword.value !== '') {
 
-        if(regexPattern.test(newPassword.value)){
+        if (regexPattern.test(newPassword.value)) {
             newPassword.style.border = '1px solid green';
             newPassword.style.background = 'white';
-            newPassword.style.color='green';
+            newPassword.style.color = 'green';
             newPassword.classList.add('is-valid');
             newPassword.classList.remove('is-invalid');
 
             window.newRawPassword = newPassword.value;
-        }
-        else {
+        } else {
 
             window.newRawPassword = null;
             newPassword.style.border = '1px solid red';
             newPassword.style.background = 'white';
-            newPassword.style.color='red';
+            newPassword.style.color = 'red';
 
             newPassword.classList.remove('is-valid');
             newPassword.classList.add('is-invalid');
         }
 
-    }
-    else {
+    } else {
         //if element is required, display error / warning (use border color or boostrap validation)
         if (newPassword.required) {
             newPassword.style.border = '1px solid red';
@@ -134,38 +131,43 @@ const passwordValidator = ()=>{
 
 }
 
-const matchPassword=()=>{
-    if(confirmPassword.value !== ''){
-        if(window.newRawPassword===confirmPassword.value){
+const matchPassword = () => {
+    if (confirmPassword.value !== '') {
+        if (window.newRawPassword === confirmPassword.value) {
             confirmPassword.style.border = '1px solid green';
             confirmPassword.style.background = 'white';
-            confirmPassword.style.color='green';
+            confirmPassword.style.color = 'green';
             confirmPassword.classList.add('is-valid');
             confirmPassword.classList.remove('is-invalid');
-            btnUpdate.disabled =false;
+            btnUpdate.disabled = false;
 
 
-        }
-        else{
+        } else {
             confirmPassword.style.border = '1px solid red';
             confirmPassword.style.background = 'white';
-            confirmPassword.style.color='red';
+            confirmPassword.style.color = 'red';
 
             confirmPassword.classList.remove('is-valid');
             confirmPassword.classList.add('is-invalid');
-            btnUpdate.disabled =true;
+            btnUpdate.disabled = true;
         }
     }
 }
 
-const updatePassword = ()=>{
-    const severResponse = ajaxHttpRequest("/Reset-Password/Update/"+window.currentEmail+"/"+window.newRawPassword,"POST");
-    if(severResponse==="OK"){
-        showCustomModal("Password Updated Successfully","success");
+const updatePassword = () => {
+    const severResponse = ajaxHttpRequest("/Reset-Password/Update/" + window.currentEmail + "/" + window.newRawPassword, "POST");
+    if (severResponse === "OK") {
+        showCustomModal("Password Updated Successfully", "success");
+        frmUpdate.reset();
+        frmOTP.reset();
+        confirmPassword.classList.remove('is-valid');
+        confirmPassword.classList.remove('is-invalid');
+        newPassword.classList.remove('is-valid');
+        newPassword.classList.remove('is-invalid');
 
-    }
-    else{
-        showCustomModal(severResponse,"error")
+
+    } else {
+        showCustomModal(severResponse, "error")
     }
 
 }
