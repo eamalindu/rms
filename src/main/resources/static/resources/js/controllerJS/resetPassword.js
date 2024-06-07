@@ -61,26 +61,35 @@ const checkOTP = () => {
     }
 }
 
+var countdownInterval;
+
 function countdown(minutes) {
     var seconds = 60;
-    var mins = minutes
+    var mins = minutes;
 
     function tick() {
-        //This script expects an element with an ID = "counter". You can change that to what ever you want.
         var counter = document.getElementById("countdownText");
-        var current_minutes = mins - 1
+        var current_minutes = mins - 1;
         seconds--;
-        counter.innerHTML = "<small>You can request another OTP after 0" + current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds) + " mintues</small>";
+
+        counter.innerHTML = "<small>You can request another OTP after 0" + current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds) + " minutes</small>";
+
         if (seconds > 0) {
-            setTimeout(tick, 1000);
+            countdownInterval = setTimeout(tick, 1000);
         } else {
             if (mins > 1) {
-                countdown(mins - 1);
+                seconds = 60;
+                countdownInterval = setTimeout(tick, 1000);
+                mins--;
             }
         }
     }
 
     tick();
+}
+
+function stopCountdown() {
+    clearTimeout(countdownInterval);
 }
 
 const passwordValidator = () => {
@@ -167,8 +176,9 @@ const updatePassword = () => {
         newPassword.classList.remove('is-invalid');
 
         //stop timer
+        stopCountdown()
         //show default msg
-        btnSendOtp.disabled = false;
+        btnSendOtp.disabled = true;
         username.disabled = false;
         countdownText.innerHTML = '<small>You Can Request a New OTP Now</small>'
         otpContainer.classList.add('d-none');
