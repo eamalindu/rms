@@ -7,6 +7,7 @@ import lk.steam.rms.entity.OTP;
 import lk.steam.rms.entity.User;
 import lk.steam.rms.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,6 +23,8 @@ public class ResetPasswordController {
     private MailService mailService;
     @Autowired
     private OtpDAO otpDAO;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping(value = "/Reset-Password")
     public ModelAndView resetPassword() {
@@ -88,6 +91,26 @@ public class ResetPasswordController {
                 return "OK";
 
             }
+        }
+
+    }
+
+    @PostMapping("/Reset-Password/Update/{email}/{rawPassword}")
+    public String updatePassword(@PathVariable String email, @PathVariable String rawPassword){
+        try {
+            User user = userDAO.getUserByEmail(email);
+            if(user==null){
+                return "No User Account Found For Provided Email";
+            }
+            else {
+                user.setPassword(bCryptPasswordEncoder.encode(rawPassword));
+                userDAO.save(user);
+
+                return "OK";
+            }
+        }
+        catch (Exception e) {
+            return e.getMessage();
         }
 
     }
