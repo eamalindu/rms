@@ -54,7 +54,6 @@ const sendOTP = () => {
 const checkOTP = ()=>{
     const serverResponse = ajaxHttpRequest("/Reset-Password/OTP/"+window.currentEmail+"/"+password.value,"POST")
     if(serverResponse==="OK"){
-        showCustomModal("OTP is Correct","success");
         //show modal for password reset
         $('#modalChangePassword').modal('show');
     }
@@ -162,7 +161,8 @@ const matchPassword=()=>{
 const updatePassword = ()=>{
     const severResponse = ajaxHttpRequest("/Reset-Password/Update/"+window.currentEmail+"/"+window.newRawPassword,"POST");
     if(severResponse==="OK"){
-        showCustomModal("Password Updated Successfully","success")
+        showCustomModal("Password Updated Successfully","success");
+
     }
     else{
         showCustomModal(severResponse,"error")
