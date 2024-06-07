@@ -96,11 +96,11 @@ const passwordValidator = ()=>{
             newPassword.classList.add('is-valid');
             newPassword.classList.remove('is-invalid');
 
-            window[newRawPassword] = newPassword.value;
+            window.newRawPassword = newPassword.value;
         }
         else {
 
-            window[newRawPassword] = null;
+            window.newRawPassword = null;
             newPassword.style.border = '1px solid red';
             newPassword.style.background = 'white';
             newPassword.style.color='red';
