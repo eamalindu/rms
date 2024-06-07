@@ -1,6 +1,7 @@
 window.addEventListener("load", () => {
     password.disabled = true;
     btnSendOtp.disabled = true;
+    btnUpdate.disabled =true;
 
     username.addEventListener('keyup', () => {
         if (username.value !== '') {
