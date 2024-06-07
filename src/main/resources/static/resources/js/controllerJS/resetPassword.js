@@ -143,6 +143,8 @@ const matchPassword=()=>{
             confirmPassword.style.color='green';
             confirmPassword.classList.add('is-valid');
             confirmPassword.classList.remove('is-invalid');
+            btnUpdate.disabled =false;
+
 
         }
         else{
@@ -152,6 +154,7 @@ const matchPassword=()=>{
 
             confirmPassword.classList.remove('is-valid');
             confirmPassword.classList.add('is-invalid');
+            btnUpdate.disabled =true;
         }
     }
 }
