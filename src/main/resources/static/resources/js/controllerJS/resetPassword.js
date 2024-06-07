@@ -168,7 +168,9 @@ const updatePassword = () => {
 
         //stop timer
         //show default msg
-        counter.innerHTML = 'An OTP will be sent to your email';
+        btnSendOtp.disabled = false;
+        username.disabled = false;
+        countdownText.innerHTML = '<small>You Can Request a New OTP Now</small>'
 
 
     } else {
