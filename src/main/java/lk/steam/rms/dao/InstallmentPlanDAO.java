@@ -16,4 +16,7 @@ public interface InstallmentPlanDAO extends JpaRepository<InstallmentPlan,Intege
     @Query(value = "SELECT sum(i.balanceAmount) from InstallmentPlan i where i.dueDate<=date(now()) and i.registrationID.id=?1")
     BigDecimal getDueInstallmentAmountFromRegistrationID(Integer registrationID);
 
+    @Query(value = "select * from installmentplan where  duedate>=?1 and duedate<=?2 and balanceamount >0",nativeQuery = true)
+    List<InstallmentPlan> getMonthlyDueInstallments(String startDate, String endDate);
+
 }
