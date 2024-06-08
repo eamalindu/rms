@@ -42,7 +42,11 @@ const refreshDashboardWidgets = ()=>{
     fullPaymentDue.forEach((registration)=>{
         balanceAmount += registration.balanceAmount;
     })
-    console.log(balanceAmount)
+    const partPaymentDue = ajaxGetRequest("/InstallmentPlan/getMonthlyDueRegistration/"+startDateCurrentMonth+"/"+endDateCurrentMonth)
+    partPaymentDue.forEach((installment=>{
+        balanceAmount += installment.balanceAmount;
+    }))
+    monthlyDueText.innerText = "Rs. "+balanceAmount.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})
     //monthly due calculation end
 
 }
