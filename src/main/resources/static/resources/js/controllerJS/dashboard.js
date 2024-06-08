@@ -33,6 +33,18 @@ const refreshDashboardWidgets = ()=>{
     monthlyIncomeText.innerText = "Rs. "+monthlyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})
     //monthly Income calculation end
 
+
+    //monthly due calculation start
+    const startDateCurrentMonth =  moment().startOf('month').format('YYYY-MM-DD');
+    const endDateCurrentMonth =  moment().endOf('month').format('YYYY-MM-DD');
+    const fullPaymentDue = ajaxGetRequest("/Registration/getMonthlyDueRegistration/"+startDateCurrentMonth+"/"+endDateCurrentMonth)
+    let balanceAmount = 0
+    fullPaymentDue.forEach((registration)=>{
+        balanceAmount += registration.balanceAmount;
+    })
+    console.log(balanceAmount)
+    //monthly due calculation end
+
 }
 
 const generateChartRegistrationBreakdown = ()=>{
