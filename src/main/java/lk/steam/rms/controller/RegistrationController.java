@@ -181,6 +181,11 @@ public class RegistrationController {
         return registrationDAO.getCounsellorsByMonth(startDate,endDate);
     }
 
+    @GetMapping(value = "getRegistrationCountByCounsellorsByMonth/{startDate}/{endDate}/{counsellor}",produces = "application/json")
+    public Integer getRegistrationCountByCounsellorsByMonth(@PathVariable String startDate, @PathVariable String endDate,@PathVariable String counsellor) {
+        return registrationDAO.getRegistrationCountByCounsellorsByMonth(startDate,endDate,counsellor);
+    }
+
     @PutMapping
     public String updateRegistration(@RequestBody Registrations registration) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
