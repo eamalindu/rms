@@ -41,4 +41,7 @@ public interface RegistrationDAO extends JpaRepository<Registrations, Integer> {
 
     @Query(value = "select distinct addedby from registration  where date(timestamp)>=?1 and date(timestamp)<=?2",nativeQuery = true)
     List<String> getCounsellorsByMonth(String startDate, String endDate);
+
+    @Query(value = "select count(*) from registration where  date(timestamp)>=?1 and date(timestamp)<=?2 and addedby=?3 ",nativeQuery = true)
+    Integer getRegistrationCountByCounsellorsByMonth(String startDate, String endDate,String counsellor);
 }
