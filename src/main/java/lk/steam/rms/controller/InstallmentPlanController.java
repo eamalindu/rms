@@ -116,4 +116,9 @@ public class InstallmentPlanController {
     public BigDecimal getDueInstallmentAmountFromRegistrationID(@PathVariable Integer registrationID){
         return installmentPlanDAO.getDueInstallmentAmountFromRegistrationID(registrationID);
     }
+
+    @GetMapping(value = "/getMonthlyDueRegistration/{startDate}/{endDate}",produces = "application/json")
+    public List<InstallmentPlan> getMonthlyDueRegistration(@PathVariable String startDate, @PathVariable String endDate){
+        return installmentPlanDAO.getMonthlyDueInstallments(startDate, endDate);
+    }
 }
