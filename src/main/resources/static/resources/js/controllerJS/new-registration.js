@@ -667,7 +667,7 @@ const newPaymentSubmit=()=>{
                 } else {
                     //this means there was a problem with the query
                     //shows an error alert to the user
-                    showCustomModal("Operation Failed! <br>" + serviceResponse.responseJSON.error + " <span class='small'>(" + serviceResponse.responseJSON.status + ")</span>", "error");
+                    showCustomModal("Operation Failed! <br>" + serviceResponse, "error");
                 }
             }
         });
