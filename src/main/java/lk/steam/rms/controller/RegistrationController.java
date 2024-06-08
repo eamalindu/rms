@@ -177,7 +177,7 @@ public class RegistrationController {
     }
 
     @GetMapping(value = "getCounsellors/{startDate}/{endDate}",produces = "application/json")
-    public List<Registrations> getCounsellorsByMonth(@PathVariable String startDate, @PathVariable String endDate) {
+    public List<String> getCounsellorsByMonth(@PathVariable String startDate, @PathVariable String endDate) {
         return registrationDAO.getCounsellorsByMonth(startDate,endDate);
     }
 
