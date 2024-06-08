@@ -36,6 +36,6 @@ public interface RegistrationDAO extends JpaRepository<Registrations, Integer> {
     @Query(value = "SELECT * FROM registration where timestamp >= DATE_FORMAT(CURRENT_DATE, '%Y-%m-01') AND timestamp < DATE_FORMAT(CURRENT_DATE + INTERVAL 1 MONTH, '%Y-%m-01') and course_id =?1",nativeQuery = true)
     List<Registrations> getMonthlyRegistrationByCourseID(Integer courseID);
 
-    @Query(value = "select * from registration where isfullpayment = 1 and date(timestamp)>=?1 and date(timestamp)<=>2 and balanceamount>0",nativeQuery = true)
+    @Query(value = "select * from registration where isfullpayment = 1 and date(timestamp)>=?1 and date(timestamp)<=?2 and balanceamount>0",nativeQuery = true)
     List<Registrations> getMonthlyDueRegistration(String startDateMonth,String endDateMonth);
 }
