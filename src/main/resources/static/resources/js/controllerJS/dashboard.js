@@ -3,6 +3,7 @@ window.addEventListener('load',()=>{
     //using refreshDashboardWidgets to refresh the dashboard widget values
     refreshDashboardWidgets();
     generateChartRegistrationBreakdown();
+    generateChartRegistrationCounsellorBreakdown();
 
     resetQuickPaymentForm();
 
@@ -62,8 +63,24 @@ const generateChartRegistrationBreakdown = ()=>{
     console.log(courseCode);
     console.log(registrationCount);
 
-    generateChart(chartRegistrationBreakdown,`${new Date().getFullYear()}-${new Date().toLocaleString('default', { month: 'short' })}`,courseCode,'Registration Count',[{name: 'Courses', data: registrationCount, color: "#553772"}])
+    generateChart(chartRegistrationBreakdown,`${new Date().getFullYear()}-${new Date().toLocaleString('default', { month: 'short' })}`,courseCode,'Registration Count',[{name: 'Courses', data: registrationCount, color: "#11306d"}])
 }
+
+const generateChartRegistrationCounsellorBreakdown =()=>{
+
+    const startDateCurrentMonth =  moment().startOf('month').format('YYYY-MM-DD');
+    const endDateCurrentMonth =  moment().endOf('month').format('YYYY-MM-DD');
+
+    const counsellors = ajaxGetRequest("/Registration/getCounsellors/"+startDateCurrentMonth+"/"+endDateCurrentMonth)
+    let registrationCount = [];
+    counsellors.forEach((counsellor)=>{
+        count = ajaxGetRequest("/Registration/getRegistrationCountByCounsellorsByMonth/"+startDateCurrentMonth+"/"+endDateCurrentMonth+"/"+counsellor);
+        registrationCount.push(count);
+    })
+    generateChart(chartRegistrationCounsellorBreakdown,`${new Date().getFullYear()}-${new Date().toLocaleString('default', { month: 'short' })}`,counsellors,'Registration Count',[{name: 'Counsellors', data: registrationCount, color: "#11306d"}])
+
+}
+
 
 const findRegistration=()=>{
     registrationNumber =quickPaymentRegistrationNumber.value;
