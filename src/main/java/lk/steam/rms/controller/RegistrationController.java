@@ -171,6 +171,11 @@ public class RegistrationController {
         return registrationDAO.getMonthlyRegistrationByCourseID(courseID);
     }
 
+    @GetMapping(value = "getMonthlyDueRegistration/{startDate}/{endDate}",produces = "application/json")
+    public List<Registrations> getMonthlyDueRegistration(@PathVariable String startDate, @PathVariable String endDate) {
+        return registrationDAO.getMonthlyDueRegistration(startDate,endDate);
+    }
+
 
     @PutMapping
     public String updateRegistration(@RequestBody Registrations registration) {
