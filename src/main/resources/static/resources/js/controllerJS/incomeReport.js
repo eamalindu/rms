@@ -46,7 +46,7 @@ const resetSearchForm = () => {
     fillSelectOptions(registrationSearchPaymentMethod, ' ', paymentMethods, 'name')
 
     const cashiers = ajaxGetRequest("/Payment/getCashiers")
-    fillSelectOptions(registrationSearchUser,' ',cashiers,'addedBy')
+    fillSelectOptionsWithArray(registrationSearchUser,' ',cashiers)
 
     $('#registrationSearchCourse').chosen({width: '225px'});
     $('#registrationSearchBatch').chosen({width: '225px'});
