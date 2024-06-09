@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
         $("#registrationSearchPaymentMethod_chosen .chosen-single").addClass('bg-light');
     });
     $("#registrationSearchUser").chosen().change(function () {
-        $("#registrationSearchCourse_chosen .chosen-single").addClass('bg-light');
+        $("#registrationSearchUser_chosen .chosen-single").addClass('bg-light');
     });
 })
 
