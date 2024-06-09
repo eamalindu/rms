@@ -380,7 +380,6 @@ const fillSelectOptionsWithArray = (elementID, message, dataList)=>{
     dataList.forEach(value => {
         const option = document.createElement('option');
         option.innerText = value;
-        //converting JavaScript values to JSON strings
         selectElement.appendChild(option);
     });
 
