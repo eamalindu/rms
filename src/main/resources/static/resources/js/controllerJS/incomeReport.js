@@ -63,12 +63,5 @@ const getBatches = () => {
 }
 
 const getIncomeReport = () => {
-    const [startDate,endDate] = (registrationSearchDateRange.value).split(' - ');
-    const courseID = JSON.parse(registrationSearchCourse.value).id;
-    const batchID = JSON.parse(registrationSearchBatch.value).id
-    const paymentMethod = JSON.parse(registrationSearchPaymentMethod.value).id;
-    const addedBy = registrationSearchUser.value;
-
-    const test = ajaxGetRequest(`/Payment/getPaymentsForReport?courseID=${courseID}&batchID=${batchID}&paymentMethod=${paymentMethod}&addedBy=${addedBy}&startDate=${startDate}&endDate=${endDate}`);
 
 }
