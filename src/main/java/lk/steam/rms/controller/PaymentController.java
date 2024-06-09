@@ -209,8 +209,15 @@ public class PaymentController {
         return paymentDAO.getCashiers();
     }
 
-    @GetMapping(value = "/getPaymentsForReport/{courseID}/{batchID}/{paymentType}/{addedBy}/{startDate}/{endDate}", produces = "application/json")
-    public List<Payment> getPaymentsForReport(@PathVariable Integer courseID, @PathVariable Integer batchID, @PathVariable Integer paymentType, @PathVariable String addedBy, @PathVariable String startDate, @PathVariable String endDate) {
+    @GetMapping(value = "/getPaymentsForReport", produces = "application/json")
+    public List<Payment> getPaymentsForReport(
+            @RequestParam(required = false) Integer courseID,
+            @RequestParam(required = false) Integer batchID,
+            @RequestParam(required = false) Integer paymentType,
+            @RequestParam(required = false) String addedBy,
+            @RequestParam(required = false) String startDate,
+            @RequestParam(required = false) String endDate) {
         return paymentDAO.getPaymentsForReport(courseID, batchID, paymentType, addedBy, startDate, endDate);
     }
+
 }
