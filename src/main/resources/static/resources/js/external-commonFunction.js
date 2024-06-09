@@ -363,3 +363,26 @@ const toggleRegistrationSheetTable =(HeadingTextID,TableID,iconSpanID)=>{
 
     })
 }
+
+
+const fillSelectOptionsWithArray = (elementID, message, dataList)=>{
+    const selectElement = elementID;
+    selectElement.innerHTML = '';
+    if (message !== '') {
+        const optionDefault = document.createElement('option');
+        optionDefault.innerText = message;
+        optionDefault.value = '';
+        optionDefault.selected = true;
+        optionDefault.disabled = true;
+        selectElement.appendChild(optionDefault);
+    }
+
+    dataList.forEach(value => {
+        const option = document.createElement('option');
+        option.innerText = value;
+        //converting JavaScript values to JSON strings
+        selectElement.appendChild(option);
+    });
+
+
+}
