@@ -67,7 +67,8 @@ const getIncomeReport = () => {
     const courseID = JSON.parse(registrationSearchCourse.value).id;
     const batchID = JSON.parse(registrationSearchBatch.value).id
     const paymentMethod = JSON.parse(registrationSearchPaymentMethod.value).id;
-    const addedBy = JSON.parse(registrationSearchUser.value).addedBy;
+    const addedBy = registrationSearchUser.value;
 
-    const test = ajaxGetRequest("/Payment/getPaymentsForReport/"+courseID+"/"+batchID+"/"+paymentMethod+"/"+addedBy+"/"+startDate+"/"+endDate)
+    const test = ajaxGetRequest(`/Payment/getPaymentsForReport?courseID=${courseID}&batchID=${batchID}&paymentMethod=${paymentMethod}&addedBy=${addedBy}&startDate=${startDate}&endDate=${endDate}`);
+
 }
