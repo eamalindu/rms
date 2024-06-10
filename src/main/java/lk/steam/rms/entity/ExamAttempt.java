@@ -26,6 +26,9 @@ public class ExamAttempt {
 
     private String addedBy;
 
+    @Transient
+    private Boolean isIndividual;
+
     @ManyToOne
     @JoinColumn(name = "course_id",referencedColumnName = "id")
     private Course courseID;
