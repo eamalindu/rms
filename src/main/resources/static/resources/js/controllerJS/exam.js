@@ -61,5 +61,5 @@ const resetExamAttemptForm = () => {
     newExamAttempt ={};
     fillSelectOptions(examCourse,' ',courses,'name');
 
-
+    $('#examCourse').chosen({width: '100%'});
 }
