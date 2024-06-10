@@ -103,3 +103,12 @@ const resetExamAttemptForm = () => {
         inputTextValidator(this, '^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$', 'newExamAttempt', 'examDate');
     });
 }
+
+examMode.addEventListener('change',()=>{
+    if(examMode.checked){
+        containerExamRegistration.classList.add('d-none');
+    }
+    else{
+        containerExamRegistration.classList.remove('d-none');
+    }
+})
