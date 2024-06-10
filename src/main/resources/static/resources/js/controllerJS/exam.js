@@ -18,3 +18,7 @@ window.addEventListener('load',()=>{
         }
     });
 })
+
+const resetSearchBar=()=>{
+
+}
