@@ -138,7 +138,18 @@
                             <label class="fw-bold small required" for="examCourse">Batch</label>
                         </div>
                         <select class="form-select rounded-0" data-placeholder="Please Select a Course First" id="examBatch"
-                                onchange="selectDynamicValueValidator(this,'','newExamAttempt','BatchID')" required>
+                                onchange="selectDynamicValueValidator(this,'','newExamAttempt','batchID')" required>
+                            <option value=""></option>
+                        </select>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Course</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="examLesson">Batch</label>
+                        </div>
+                        <select class="form-select rounded-0" data-placeholder="Please Select a Course First" id="examLesson"
+                                onchange="selectDynamicValueValidator(this,'','newExamAttempt','lessonID')" required>
                             <option value=""></option>
                         </select>
                         <div class="valid-feedback">Value Accepted</div>
