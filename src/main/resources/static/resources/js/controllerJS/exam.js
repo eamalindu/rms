@@ -24,6 +24,9 @@ window.addEventListener('load', () => {
     $("#examLesson").chosen().change(function () {
         $("#examLesson_chosen .chosen-single").addClass('select-validated');
     });
+    $("#examRegistration").chosen().change(function () {
+        $("#examRegistration_chosen .chosen-single").addClass('select-validated');
+    });
 
     $('#examDate').on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD'));
@@ -82,6 +85,7 @@ const resetExamAttemptForm = () => {
     $('#examCourse').chosen({width: '100%'});
     $('#examBatch').chosen({width: '100%'});
     $('#examLesson').chosen({width: '100%'});
+    $('#examRegistration').chosen({width: '100%'});
     $('#examDate').daterangepicker({
         "minDate": new Date(),
         "singleDatePicker": true,
