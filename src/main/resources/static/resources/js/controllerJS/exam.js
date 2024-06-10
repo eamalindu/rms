@@ -1,6 +1,7 @@
 window.addEventListener('load',()=>{
     resetSearchBar();
     resetExamAttemptForm();
+
     $("#examSearchCourse").chosen().change(function () {
         $("#examSearchCourse_chosen .chosen-single").addClass('bg-light');
     });
@@ -13,7 +14,10 @@ window.addEventListener('load',()=>{
     $("#examSearchRegistration").chosen().change(function () {
         $("#examSearchRegistration_chosen .chosen-single").addClass('bg-light');
     });
-
+    //validation chosen select (for new batch)
+    $("#examCourse").chosen().change(function () {
+        $("#examCourse_chosen .chosen-single").addClass('select-validated');
+    });
 
 })
 
