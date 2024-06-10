@@ -1,4 +1,4 @@
-window.addEventListener('load',()=>{
+window.addEventListener('load', () => {
     resetSearchBar();
     resetExamAttemptForm();
 
@@ -18,13 +18,16 @@ window.addEventListener('load',()=>{
     $("#examCourse").chosen().change(function () {
         $("#examCourse_chosen .chosen-single").addClass('select-validated');
     });
-   $("#examBatch").chosen().change(function () {
+    $("#examBatch").chosen().change(function () {
         $("#examBatch_chosen .chosen-single").addClass('select-validated');
+    });
+    $("#examLesson").chosen().change(function () {
+        $("#examLesson_chosen .chosen-single").addClass('select-validated');
     });
 
 })
 
-const resetSearchBar=()=>{
+const resetSearchBar = () => {
 
     $("#examSearchCourse_chosen .chosen-single").removeClass('bg-light');
     $("#examSearchBatch_chosen .chosen-single").removeClass('bg-light');
@@ -57,7 +60,7 @@ const resetSearchBar=()=>{
     $('#examSearchRegistration').chosen({width: '200px'});
 }
 
-const getBatches = ()=>{
+const getBatches = () => {
     const batches = ajaxGetRequest("/Batch/getBatchesByCourseID/" + JSON.parse(examSearchCourse.value).id)
     fillSelectOptions(examSearchBatch, ' ', batches, 'batchCode')
     $('#examSearchBatch').val('').trigger('chosen:updated');
@@ -65,9 +68,10 @@ const getBatches = ()=>{
 
 //creating a function to reset the Batch form when ever needed
 const resetExamAttemptForm = () => {
-    newExamAttempt ={};
-    fillSelectOptions(examCourse,' ',courses,'name');
+    newExamAttempt = {};
+    fillSelectOptions(examCourse, ' ', courses, 'name');
 
     $('#examCourse').chosen({width: '100%'});
     $('#examBatch').chosen({width: '100%'});
+    $('#examLesson').chosen({width: '100%'});
 }
