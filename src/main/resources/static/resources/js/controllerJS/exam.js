@@ -136,5 +136,6 @@ const registration = ()=>{
     currentSelectedBatch = newExamAttempt.batchID;
     const registrations = ajaxGetRequest("/Registration/getRegistrations/"+currentSelectedBatch.id);
     fillSelectOptionsWithTwoNestedObject(examRegistration,' ',registrations,'registrationNumber','studentID','nameWithInitials')
+    examRegistration.setAttribute('data-placeholder', 'Select a Registration Now');
     $('#examRegistration').val('').trigger('chosen:updated');
 }
