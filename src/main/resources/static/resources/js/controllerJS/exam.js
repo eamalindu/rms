@@ -71,6 +71,8 @@ const resetExamAttemptForm = () => {
     newExamAttempt = {};
     fillSelectOptions(examCourse, ' ', courses, 'name');
 
+    checkBoxValidator(examMode, leftWeekday, rightWeekday, 'newExamAttempt', 'isIndividual', false, true)
+
     $('#examCourse').chosen({width: '100%'});
     $('#examBatch').chosen({width: '100%'});
     $('#examLesson').chosen({width: '100%'});
