@@ -139,3 +139,33 @@ const registration = ()=>{
     examRegistration.setAttribute('data-placeholder', 'Select a Registration Now');
     $('#examRegistration').val('').trigger('chosen:updated');
 }
+
+const newExamAttemptSubmit = ()=>{
+    console.log(newExamAttempt);
+    //calling the checkBatchFormErrors function and catching the return value to errors variable
+    let errors = checkExamAttemptFormErrors(newExamAttempt);
+    //check the errors variable is null
+    //if it's null that means all the required inputs are filled
+    if (errors === '') {
+        let msg = "You are about to add a New Exam Attempt<br>Are You Sure?";
+        if(!newExamAttempt.isIndividual){
+            msg = "You are about to add New Exam Attempts for the every Student in the Batch <span class='text-steam-green'>"+newExamAttempt.batchID.batchCode+"</span><br>Are You Sure?"
+        }
+        //get a user confirmation using external customConfirm js
+        showCustomConfirm(msg, function (result) {
+            if (result) {
+
+            }
+        })
+    }
+    else{
+
+    }
+}
+
+const checkExamAttemptFormErrors = (object)=>{
+    let errors = ''
+
+    return errors;
+
+}
