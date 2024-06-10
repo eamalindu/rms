@@ -31,6 +31,10 @@ public class ExamAttempt {
     private Course courseID;
 
     @ManyToOne
+    @JoinColumn(name = "batch_id",referencedColumnName = "id")
+    private Batch batchID;
+
+    @ManyToOne
     @JoinColumn(name = "lesson_id",referencedColumnName = "id")
     private Lesson lessonID;
 
