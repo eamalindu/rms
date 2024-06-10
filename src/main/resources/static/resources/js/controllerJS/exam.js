@@ -18,6 +18,8 @@ window.addEventListener('load',()=>{
 
 const resetSearchBar=()=>{
 
+    $('.chosen-registration-search').val('').trigger('chosen:updated');
+
     //initialize 3rd party daterangepicker library
     //Set the minDate for the batchSheetCommenceDate as the current object's commenceDate value
     $('#examSearchDateRange').daterangepicker({
