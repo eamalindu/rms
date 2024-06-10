@@ -156,10 +156,15 @@ const newExamAttemptSubmit = ()=>{
             if (result) {
 
             }
+            else{
+                showCustomModal("Operation Cancelled!", "info");
+            }
         })
     }
     else{
-
+        //there are errors
+        //display them to the user using external-ModalFunction()
+        showCustomModal(errors, 'warning');
     }
 }
 
