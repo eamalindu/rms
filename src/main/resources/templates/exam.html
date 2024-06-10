@@ -124,7 +124,7 @@
                             <label class="fw-bold small required" for="examCourse">Course</label>
                         </div>
                         <select class="form-select rounded-0" data-placeholder="Please Select a Course" id="examCourse"
-                                onchange="selectDynamicValueValidator(this,'','newExamAttempt','courseID')" required>
+                                onchange="selectDynamicValueValidator(this,'','newExamAttempt','courseID');getBatch();getLesson()" required>
                             <option>Dynamic Value 1</option>
                             <option>Dynamic Value 2</option>
                             <option>Dynamic Value 3</option>

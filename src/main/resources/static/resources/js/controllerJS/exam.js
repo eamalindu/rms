@@ -112,3 +112,11 @@ examMode.addEventListener('change',()=>{
         containerExamRegistration.classList.remove('d-none');
     }
 })
+
+const getBatch = ()=>{
+
+}
+
+const getLesson = ()=>{
+
+}
