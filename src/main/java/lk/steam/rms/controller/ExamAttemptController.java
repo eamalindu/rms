@@ -1,17 +1,17 @@
 package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.UserDAO;
+import lk.steam.rms.entity.ExamAttempt;
+import lk.steam.rms.entity.Privilege;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/Exam")
-public class ExamAttempt {
+public class ExamAttemptController {
     @Autowired
     private PrivilegeController privilegeController;
     @Autowired
@@ -33,5 +33,24 @@ public class ExamAttempt {
         examView.addObject("loggedInEmployeeName",loggedInEmployeeName);
         examView.addObject("loggedInDesignationName",loggedInDesignationName);
         return examView;
+    }
+
+    @PostMapping
+    public String saveNewExamAttempt(@RequestBody ExamAttempt examAttempt) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"EXAM");
+
+        if(!loggedUserPrivilege.getInsertPrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
+
+        if(examAttempt.getIsIndividual()){
+
+        }
+        else{
+
+        }
+
+        return "Ok";
     }
 }
