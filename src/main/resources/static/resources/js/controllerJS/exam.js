@@ -170,7 +170,9 @@ const newExamAttemptSubmit = ()=>{
 
                 }
                 else{
-
+                    //this means there was a problem with the query
+                    //shows an error alert to the user
+                    showCustomModal("Operation Failed!" + serviceResponse, "error");
                 }
 
             }
