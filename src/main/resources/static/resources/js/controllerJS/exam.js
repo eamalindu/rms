@@ -131,3 +131,10 @@ const getLesson = ()=>{
     examLesson.setAttribute('data-placeholder', 'Select a Lesson Now');
     $('#examLesson').val('').trigger('chosen:updated');
 }
+
+const registration = ()=>{
+    currentSelectedBatch = newExamAttempt.batchID;
+    const registrations = ajaxGetRequest("/Registration/getRegistrations/"+currentSelectedBatch.id);
+    fillSelectOptionsWithTwo(examRegistration,' ',registrations,'registrationNumber','studentID.nameWithInitials')
+    $('#examRegistration').val('').trigger('chosen:updated');
+}
