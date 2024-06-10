@@ -84,7 +84,7 @@ public class Batch {
     @OneToMany(mappedBy = "batchID",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<BatchHasDay> batchHasDayList;
 
-    @OneToMany(mappedBy = "",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "batchID",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<BatchHasLesson> batchHasLessonList;
 
 }
