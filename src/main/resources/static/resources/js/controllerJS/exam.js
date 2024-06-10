@@ -11,7 +11,7 @@ window.addEventListener('load',()=>{
         "singleDatePicker": true,
         "linkedCalendars": false,
         "showCustomRangeLabel": false,
-        "autoUpdateInput": false,
+        "autoUpdateInput": true,
         "drops": "down",
         "locale": {
             "format": "YYYY-MM-DD"
