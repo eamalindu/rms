@@ -18,6 +18,11 @@ window.addEventListener('load',()=>{
 
 const resetSearchBar=()=>{
 
+    $("#examSearchCourse_chosen .chosen-single").removeClass('bg-light');
+    $("#examSearchBatch_chosen .chosen-single").removeClass('bg-light');
+    $("#examSearchLesson_chosen .chosen-single").removeClass('bg-light');
+    $("#examSearchRegistration_chosen .chosen-single").removeClass('bg-light');
+
     $('.chosen-registration-search').val('').trigger('chosen:updated');
 
     //initialize 3rd party daterangepicker library
