@@ -347,6 +347,41 @@ const fillSelectOptionsWithTwo = (elementID, message, dataList, displayProperty1
 
 }
 
+const fillSelectOptionsWithTwoNestedObject= (elementID, message, dataList, displayProperty1, nestedProperty, displayProperty2, selectedValue) => {
+    const selectElement = elementID;
+    selectElement.innerHTML = '';
+
+    if (message !== '') {
+        const optionDefault = document.createElement('option');
+        optionDefault.innerText = message;
+        optionDefault.value = '';
+        optionDefault.selected = true;
+        optionDefault.disabled = true;
+        selectElement.appendChild(optionDefault);
+    }
+
+    dataList.forEach(ob => {
+        const option = document.createElement('option');
+
+        // Access the nested property
+        const displayProperty2Value = ob[nestedProperty] ? ob[nestedProperty][displayProperty2] : 'undefined';
+
+        option.innerText = ob[displayProperty1] + " [" + displayProperty2Value + "]";
+
+        // Converting JavaScript values to JSON strings
+        option.value = JSON.stringify(ob);
+
+        if (selectedValue === ob[displayProperty1]) {
+            option.selected = "selected";
+        }
+
+        selectElement.appendChild(option);
+    });
+}
+
+
+
+
 //function to toggle the visibility of the table when the h5 tag is clicked
 const toggleRegistrationSheetTable =(HeadingTextID,TableID,iconSpanID)=>{
     HeadingTextID.addEventListener("click",()=>{
