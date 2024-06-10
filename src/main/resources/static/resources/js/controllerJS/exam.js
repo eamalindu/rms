@@ -14,7 +14,7 @@ window.addEventListener('load',()=>{
     $("#examSearchRegistration").chosen().change(function () {
         $("#examSearchRegistration_chosen .chosen-single").addClass('bg-light');
     });
-    //validation chosen select (for new batch)
+    //validation chosen select (for new exam attempt)
     $("#examCourse").chosen().change(function () {
         $("#examCourse_chosen .chosen-single").addClass('select-validated');
     });
