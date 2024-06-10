@@ -45,12 +45,11 @@ public class ExamAttemptController {
         }
 
         if(examAttempt.getIsIndividual()){
-
+            return "single";
         }
         else{
-
+            return "multi";
         }
 
-        return "Ok";
     }
 }
