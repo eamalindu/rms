@@ -25,6 +25,12 @@ window.addEventListener('load', () => {
         $("#examLesson_chosen .chosen-single").addClass('select-validated');
     });
 
+    $('#examDate').on('apply.daterangepicker', function (ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        //binding data to newExamAttempt object
+        inputTextValidator(this, '^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$', 'newExamAttempt', 'examDate');
+    });
+
 })
 
 const resetSearchBar = () => {
@@ -76,4 +82,20 @@ const resetExamAttemptForm = () => {
     $('#examCourse').chosen({width: '100%'});
     $('#examBatch').chosen({width: '100%'});
     $('#examLesson').chosen({width: '100%'});
+    $('#examDate').daterangepicker({
+        "minDate": new Date(),
+        "singleDatePicker": true,
+        "linkedCalendars": false,
+        "showCustomRangeLabel": false,
+        "autoUpdateInput": false,
+        "drops": "down",
+        "locale": {
+            "format": "YYYY-MM-DD"
+        }
+    });
+    $('#examDate').on('apply.daterangepicker', function (ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        //binding data to newExamAttempt object
+        inputTextValidator(this, '^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$', 'newExamAttempt', 'examDate');
+    });
 }
