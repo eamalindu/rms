@@ -154,6 +154,24 @@ const newExamAttemptSubmit = ()=>{
         //get a user confirmation using external customConfirm js
         showCustomConfirm(msg, function (result) {
             if (result) {
+                //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+                //catch the return value from the backend and save it in the serviceResponse variable
+                let serviceResponse = ajaxHttpRequest("/Exam", 'POST', newExamAttempt);
+                //check the serviceResponse value is "OK"
+                if (serviceResponse === "OK") {
+                    //this means data successfully passed to the backend
+                    //show an alert to user
+                    showCustomModal("Exam Attempt Successfully Added!", "success");
+                    //close the offcanvas sheet
+                    offCanvasExamAttemptCloseButton.click();
+                    //refresh the table
+
+                    //refresh the form
+
+                }
+                else{
+
+                }
 
             }
             else{
