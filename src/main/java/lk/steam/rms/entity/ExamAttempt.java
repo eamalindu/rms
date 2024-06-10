@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "examattempt")
 @Data
@@ -16,6 +19,25 @@ public class ExamAttempt {
     @Column(name = "id",unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    private LocalDateTime timeStamp;
+
+    private LocalDate examDate;
+
+    private String addedBy;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id",referencedColumnName = "id")
+    private Course courseID;
+
+    @ManyToOne
+    @JoinColumn(name = "lesson_id",referencedColumnName = "id")
+    private Lesson lessonID;
+
+    @ManyToOne
+    @JoinColumn(name = "registration_id",referencedColumnName = "id")
+    private Registrations registrationID;
+
 
 
 
