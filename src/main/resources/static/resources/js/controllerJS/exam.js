@@ -115,8 +115,19 @@ examMode.addEventListener('change',()=>{
 
 const getBatch = ()=>{
 
+    currentSelectedCourseID = newExamAttempt.courseID;
+    const batches = ajaxGetRequest("/Batch/getBatchesByCourseID/"+currentSelectedCourseID.id);
+    fillSelectOptions(examBatch,' ',batches,'batchCode');
+    examBatch.setAttribute('data-placeholder', 'Select a Batch Now');
+    $('#examBatch').val('').trigger('chosen:updated');
+
+
 }
 
 const getLesson = ()=>{
 
+    const lessons = currentSelectedCourseID.lessonList;
+    fillSelectOptions(examLesson,' ',lessons,'name')
+    examLesson.setAttribute('data-placeholder', 'Select a Lesson Now');
+    $('#examLesson').val('').trigger('chosen:updated');
 }
