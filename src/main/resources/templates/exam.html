@@ -29,6 +29,7 @@
                 </div>
                 <div class="col-12 col-lg-auto m-0 p-0">
                     <label class="text-uppercase text-muted small m-0 p-0" for="examSearchCourse">Filters</label>
+                    <label class="text-uppercase small m-0 p-0 text-muted" style="margin-left: 400px">Search</label>
                     <div class="input-group">
                         <span class="input-group-text bg-custom-white rounded-0"><i class="fa-solid fa-filter"></i></span>
                         <select class="form-select rounded-0 chosen-registration-search" data-placeholder="Sort by a Course" onchange="getBatches()" id="examSearchCourse">
@@ -43,9 +44,19 @@
                         <select class="form-select rounded-0 chosen-registration-search" data-placeholder="Sort by a Registration" id="examSearchRegistration">
 
                         </select>
+                        <div class="d-flex align-items-center justify-content-evenly">
+                            <button class="btn bg-steam-green rounded-0 text-white" id="" type="submit"><i class="fa-solid fa-magnifying-glass small"></i></button>
+                            <button class="btn btn-close-red rounded-0 text-white ms-3" id="btn-reset" type="reset">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
                     </div>
+
                 </div>
-                <div class="col-12 col-lg-7 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1 text-end">
+                <div class="col-12 col-lg-auto p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1">
+
+                </div>
+                <div class="col-12 col-lg-auto p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1 text-end">
                     <p class="text-uppercase small m-0 p-0 text-muted">Create a New Exam Attempt</p>
                     <button aria-controls="staticBackdrop"
                             class="btn pointer bg-steam-green text-white rounded-0 text-end"
