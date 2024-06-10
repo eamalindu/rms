@@ -18,6 +18,9 @@ window.addEventListener('load',()=>{
     $("#examCourse").chosen().change(function () {
         $("#examCourse_chosen .chosen-single").addClass('select-validated');
     });
+   $("#examBatch").chosen().change(function () {
+        $("#examBatch_chosen .chosen-single").addClass('select-validated');
+    });
 
 })
 
@@ -66,4 +69,5 @@ const resetExamAttemptForm = () => {
     fillSelectOptions(examCourse,' ',courses,'name');
 
     $('#examCourse').chosen({width: '100%'});
+    $('#examBatch').chosen({width: '100%'});
 }
