@@ -26,7 +26,7 @@ public class ExamAttempt {
 
         examView.addObject("username",auth.getName());
         examView.addObject("title","Manage Exam Attempts | STEAM RMS");
-        examView.addObject("activeNavItem","exam");
+        examView.addObject("activeNavItem","exams");
 
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
         String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
