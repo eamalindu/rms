@@ -88,7 +88,7 @@ const resetExamAttemptForm = () => {
         "linkedCalendars": false,
         "showCustomRangeLabel": false,
         "autoUpdateInput": false,
-        "drops": "down",
+        "drops": "up",
         "locale": {
             "format": "YYYY-MM-DD"
         }
