@@ -194,13 +194,18 @@
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Lesson</div>
                     </div>
-                    <div class="mb-2">
+                    <div class="mb-4">
                         <div class="form-label">
                             <label class="fw-bold small required" for="examDate">Exam Date</label>
                         </div>
                         <input class="form-control rounded-0 newExamInputs" id="examDate" required onkeydown="return false;">
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Date</div>
+                    </div>
+                    <div class="mb-0">
+                        <button class="btn bg-steam-green text-white rounded-0 btn-block w-100" id="examConfirm"
+                                onclick="newExamAttemptSubmit()" type="submit">Confirm
+                        </button>
                     </div>
                 </form>
             </div>
