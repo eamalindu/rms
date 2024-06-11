@@ -29,7 +29,7 @@ public class ExamAttempt {
     @NotNull
     private LocalDate examDate;
 
-    @Column(name = "addedBy")
+    @Column(name = "addedby")
     private String addedBy;
 
     @Transient
