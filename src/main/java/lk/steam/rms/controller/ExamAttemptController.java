@@ -10,6 +10,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDateTime;
+
 @RestController
 @RequestMapping("/Exam")
 public class ExamAttemptController {
@@ -49,11 +51,14 @@ public class ExamAttemptController {
 
         ExamAttempt existAttempt = examAttemptDAO.findExamAttemptByExamDateAndRegistrationID(examAttempt.getExamDate(),examAttempt.getRegistrationID().getId(),examAttempt.getLessonID().getId());
         if(existAttempt!=null){
-            return "An exam attempt for this same lesson and registration already exists!";
+            return "<br>An exam attempt for this same lesson and registration already exists!";
         }
 
         if(examAttempt.getIsIndividual()){
-            return "single";
+            examAttempt.setAddedBy(auth.getName());
+            examAttempt.setTimeStamp(LocalDateTime.now());
+            examAttemptDAO.save(examAttempt);
+            return "OK";
         }
         else{
             return "multi";
