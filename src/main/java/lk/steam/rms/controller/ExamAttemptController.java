@@ -69,6 +69,6 @@ public class ExamAttemptController {
 
     @GetMapping(value = "/getActiveExamAttempts")
     public List<ExamAttempt> getActiveExamAttempts(){
-
+        return examAttemptDAO.getActiveExamAttempts();
     }
 }
