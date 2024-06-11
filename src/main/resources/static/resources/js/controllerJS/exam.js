@@ -197,5 +197,7 @@ const checkExamAttemptFormErrors = (object)=>{
 
 const refreshExamTable =()=>{
 
-    const attempts = ajaxGetRequest("/Exam/")
+    const attempts = ajaxGetRequest("/Exam/getActiveExamAttempts");
+    const displayPropertyListForExamAttempts = [];
+    fillDataIntoTable(tblExamAttempts,attempts,displayPropertyListForExamAttempts,rowView,'');
 }
