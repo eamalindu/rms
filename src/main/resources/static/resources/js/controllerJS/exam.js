@@ -202,3 +202,7 @@ const refreshExamTable =()=>{
     const displayPropertyListForExamAttempts = [];
     fillDataIntoTable(tblExamAttempts,attempts,displayPropertyListForExamAttempts,rowView,'');
 }
+
+const rowView = (ob)=>{
+
+}
