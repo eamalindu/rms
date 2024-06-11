@@ -194,3 +194,8 @@ const checkExamAttemptFormErrors = (object)=>{
     return errors;
 
 }
+
+const refreshExamTable =()=>{
+
+    const attempts = ajaxGetRequest("/Exam/")
+}
