@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 @RequestMapping("/Exam")
@@ -63,6 +64,11 @@ public class ExamAttemptController {
         else{
             return "multi";
         }
+
+    }
+
+    @GetMapping(value = "/getActiveExamAttempts")
+    public List<ExamAttempt> getActiveExamAttempts(){
 
     }
 }
