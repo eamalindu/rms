@@ -10,7 +10,7 @@ import java.util.List;
 public interface ExamAttemptDAO extends JpaRepository<ExamAttempt, Integer> {
 
     @Query(value = "SELECT ea from ExamAttempt ea where ea.examDate>=current_date()")
-    List<ExamAttempt> findActiveExamAttempts();
+    List<ExamAttempt> getActiveExamAttempts();
 
     @Query(value = "SELECT ea from ExamAttempt ea where ea.examDate=?1 and ea.registrationID.id=?2 and ea.lessonID.id=?3")
     ExamAttempt findExamAttemptByExamDateAndRegistrationID(LocalDate examDate, Integer registrationID, Integer lessonID);
