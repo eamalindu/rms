@@ -200,15 +200,30 @@ const refreshExamTable =()=>{
 
     const attempts = ajaxGetRequest("/Exam/getActiveExamAttempts");
     const displayPropertyListForExamAttempts = [
-        {property: getCourseName, dataType: 'function'}, {
-            property: 'batchCode', dataType: 'text'
-        }, {property: 'commenceDate', dataType: 'text'}, {property: 'endDate', dataType: 'text'}, {
-            property: getWeekDay, dataType: 'function'
-        }, {property: 'seatCount', dataType: 'text'}, {property: 'description', dataType: 'text'}, {
-            property: getStatus, dataType: 'function'
-        }
+        {property: getCourseName, dataType: 'function'},
+        {property: getBatchCode, dataType: 'function'},
+        {property: getLessonName, dataType: 'function'},
+        {property: 'examDate', dataType: 'text'},
+        {property: getRegistration, dataType: 'function'},
+        {property: getStudentName, dataType: 'function'}
     ];
     fillDataIntoTable(tblExamAttempts,attempts,displayPropertyListForExamAttempts,rowView,'');
+}
+
+const getCourseName=(ob)=>{
+    return ob.courseID.name;
+}
+const getBatchCode=(ob)=>{
+    return ob.batchID.batchCode;
+}
+const getLessonName=(ob)=>{
+    return ob.lessonID.name;
+}
+const getRegistration=(ob)=>{
+    return ob.registrationID.registrationNumber;
+}
+const getStudentName=(ob)=>{
+    return ob.registrationID.studentID.title+" "+ob.registrationID.nameWithInitials;
 }
 
 const rowView = (ob,index)=>{
