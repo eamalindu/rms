@@ -1,5 +1,6 @@
 package lk.steam.rms.controller;
 
+import lk.steam.rms.dao.ExamAttemptDAO;
 import lk.steam.rms.dao.UserDAO;
 import lk.steam.rms.entity.ExamAttempt;
 import lk.steam.rms.entity.Privilege;
@@ -16,6 +17,8 @@ public class ExamAttemptController {
     private PrivilegeController privilegeController;
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    private ExamAttemptDAO examAttemptDAO;
 
     @GetMapping()
     public ModelAndView examUI() {
