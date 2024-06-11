@@ -1,6 +1,7 @@
 package lk.steam.rms.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,10 +21,15 @@ public class ExamAttempt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "timestamp")
+    @NotNull
     private LocalDateTime timeStamp;
 
+    @Column(name = "examdate")
+    @NotNull
     private LocalDate examDate;
 
+    @Column(name = "addedBy")
     private String addedBy;
 
     @Transient
