@@ -47,6 +47,11 @@ public class ExamAttemptController {
             return "<br>User does not have sufficient privilege.";
         }
 
+        ExamAttempt existAttempt = examAttemptDAO.findExamAttemptByExamDateAndRegistrationID(examAttempt.getExamDate(),examAttempt.getRegistrationID().getId(),examAttempt.getLessonID().getId());
+        if(existAttempt!=null){
+            return "An exam attempt for this same lesson and registration already exists!";
+        }
+
         if(examAttempt.getIsIndividual()){
             return "single";
         }
