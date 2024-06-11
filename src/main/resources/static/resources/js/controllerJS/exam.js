@@ -223,7 +223,7 @@ const getRegistration=(ob)=>{
     return ob.registrationID.registrationNumber;
 }
 const getStudentName=(ob)=>{
-    return ob.registrationID.studentID.title+" "+ob.registrationID.nameWithInitials;
+    return ob.registrationID.studentID.title+" "+ob.registrationID.studentID.nameWithInitials;
 }
 
 const rowView = (ob,index)=>{
