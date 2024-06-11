@@ -199,10 +199,18 @@ const checkExamAttemptFormErrors = (object)=>{
 const refreshExamTable =()=>{
 
     const attempts = ajaxGetRequest("/Exam/getActiveExamAttempts");
-    const displayPropertyListForExamAttempts = [];
+    const displayPropertyListForExamAttempts = [
+        {property: getCourseName, dataType: 'function'}, {
+            property: 'batchCode', dataType: 'text'
+        }, {property: 'commenceDate', dataType: 'text'}, {property: 'endDate', dataType: 'text'}, {
+            property: getWeekDay, dataType: 'function'
+        }, {property: 'seatCount', dataType: 'text'}, {property: 'description', dataType: 'text'}, {
+            property: getStatus, dataType: 'function'
+        }
+    ];
     fillDataIntoTable(tblExamAttempts,attempts,displayPropertyListForExamAttempts,rowView,'');
 }
 
-const rowView = (ob)=>{
+const rowView = (ob,index)=>{
 
 }
