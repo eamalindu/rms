@@ -1,6 +1,7 @@
 window.addEventListener('load', () => {
     resetSearchBar();
     resetExamAttemptForm();
+    refreshExamTable();
 
     $("#examSearchCourse").chosen().change(function () {
         $("#examSearchCourse_chosen .chosen-single").addClass('bg-light');
@@ -165,7 +166,7 @@ const newExamAttemptSubmit = ()=>{
                     //close the offcanvas sheet
                     offCanvasExamAttemptCloseButton.click();
                     //refresh the table
-
+                    refreshExamTable();
                     //refresh the form
 
                 }
