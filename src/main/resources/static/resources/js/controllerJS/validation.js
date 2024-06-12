@@ -6,11 +6,11 @@ window.addEventListener('load', () => {
 const getBatches = () => {
     const batches = ajaxGetRequest("/Batch/getBatchesByCourseID/" + JSON.parse(marksSearchCourse.value).id)
     fillSelectOptions(marksSearchBatch, ' ', batches, 'batchCode');
-    marksSearchBatch.setAttribute('data-placeholder','Select A Batch Now');
+    marksSearchBatch.setAttribute('data-placeholder', 'Select A Batch Now');
     $('#marksSearchBatch').val('').trigger('chosen:updated');
 }
 
-const resetSearchBar = ()=>{
+const resetSearchBar = () => {
     courses = ajaxGetRequest("/Course/findall");
     fillSelectOptions(marksSearchCourse, ' ', courses, 'name');
 
@@ -19,7 +19,7 @@ const resetSearchBar = ()=>{
     $('#marksSearchBatch').chosen({width: '200px'});
 }
 
-    const generateMarksTable = ()=>{
+const generateMarksTable = () => {
 
     //reset table container inside
     tblContainer.innerHTML = '';
@@ -39,7 +39,7 @@ const resetSearchBar = ()=>{
     thStudent.innerText = 'Student';
     trThead.appendChild(thStudent);
 
-    lessons.forEach((lesson)=>{
+    lessons.forEach((lesson) => {
         const th = document.createElement('th');
         th.innerText = lesson.name;
         trThead.appendChild(th);
