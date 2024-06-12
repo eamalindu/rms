@@ -49,6 +49,9 @@ const generateMarksTable = () => {
         trThead.appendChild(th);
     })
 
+    const thAction = document.createElement('th');
+    thAction.innerText = 'Save/Validate';
+    trThead.appendChild(thAction);
 
     tableHead.appendChild(trThead);
 
