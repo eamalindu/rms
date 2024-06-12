@@ -5,6 +5,7 @@ import lk.steam.rms.dao.UserDAO;
 import lk.steam.rms.entity.ExamAttempt;
 import lk.steam.rms.entity.Privilege;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -67,8 +68,9 @@ public class ExamAttemptController {
 
     }
 
-    @GetMapping(value = "/getActiveExamAttempts")
-    public List<ExamAttempt> getActiveExamAttempts(){
-        return examAttemptDAO.getActiveExamAttempts();
+    @GetMapping(value = "/findAll")
+    public List<ExamAttempt> findAll(){
+        Sort sort = Sort.by(Sort.Direction.DESC, "id");
+        return examAttemptDAO.findAll(sort);
     }
 }
