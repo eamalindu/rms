@@ -19,7 +19,7 @@ const resetSearchBar = ()=>{
     $('#marksSearchBatch').chosen({width: '200px'});
 }
 
-const generateMarksTable = ()=>{
+    const generateMarksTable = ()=>{
 
     //reset table container inside
     tblContainer.innerHTML = '';
@@ -32,6 +32,12 @@ const generateMarksTable = ()=>{
     table.classList.add('custom-table')
     const tableHead = document.createElement('thead');
     const trThead = document.createElement('tr');
+
+    lessons.forEach((lesson)=>{
+        const th = document.createElement('th');
+        th.innerText = lesson.name;
+        trThead.appendChild(th);
+    })
 
 
     tableHead.appendChild(trThead);
