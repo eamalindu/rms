@@ -420,3 +420,14 @@ const fillSelectOptionsWithArray = (elementID, message, dataList)=>{
 
 
 }
+
+const createScrollingTitle=(scrollSpeed)=> {
+    let titleText = document.title + " \u00A0\u00A0\u00A0\u00A0";
+
+    function scrollTitle() {
+        document.title = titleText;
+        titleText = titleText.substring(1) + titleText.charAt(0);
+    }
+
+    setInterval(scrollTitle, scrollSpeed);
+}
