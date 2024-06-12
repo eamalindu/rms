@@ -31,6 +31,8 @@ const generateMarksTable = () => {
     const table = document.createElement('table');
     table.classList.add('custom-table')
     const tableHead = document.createElement('thead');
+    const tableBody = document.createElement('tbody');
+
     const trThead = document.createElement('tr');
     const thHash = document.createElement('th');
     thHash.innerText = '#';
@@ -57,6 +59,10 @@ const generateMarksTable = () => {
 
     // Append the table head to the table
     table.appendChild(tableHead);
+
+
+
+
 
     // Append the table to the div with id 'tblContainer'
     tblContainer.appendChild(table);
