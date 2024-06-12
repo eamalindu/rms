@@ -18,3 +18,7 @@ const resetSearchBar = ()=>{
     $('#marksSearchCourse').chosen({width: '200px'});
     $('#marksSearchBatch').chosen({width: '200px'});
 }
+
+const generateMarksTable = ()=>{
+
+}
