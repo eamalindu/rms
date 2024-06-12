@@ -32,6 +32,10 @@ const generateMarksTable = () => {
     table.classList.add('custom-table')
     const tableHead = document.createElement('thead');
     const trThead = document.createElement('tr');
+    const thHash = document.createElement('th');
+    thHash.innerText = '#';
+    trThead.appendChild(thHash);
+
     const thReg = document.createElement('th');
     thReg.innerText = 'Registration';
     trThead.appendChild(thReg);
