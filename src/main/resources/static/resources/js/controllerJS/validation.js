@@ -1,5 +1,6 @@
 window.addEventListener('load', () => {
     resetSearchBar();
+    createScrollingTitle(350);
 });
 
 
