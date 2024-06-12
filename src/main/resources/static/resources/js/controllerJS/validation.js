@@ -32,6 +32,12 @@ const resetSearchBar = ()=>{
     table.classList.add('custom-table')
     const tableHead = document.createElement('thead');
     const trThead = document.createElement('tr');
+    const thReg = document.createElement('th');
+    thReg.innerText = 'Registration';
+    trThead.appendChild(thReg);
+    const thStudent = document.createElement('th');
+    thStudent.innerText = 'Student';
+    trThead.appendChild(thStudent);
 
     lessons.forEach((lesson)=>{
         const th = document.createElement('th');
