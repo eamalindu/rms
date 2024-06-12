@@ -19,6 +19,33 @@
 <div class="container-fluid pt-2">
     <div class="card rounded-0">
         <div class="card-body rounded-0">
+            <div class="row align-items-center d-flex gap-3">
+                <div class="col-12 col-lg-7"></div>
+                <div class="col-12 col-lg-auto m-0 p-0">
+                    <label class="text-uppercase text-muted small m-0 p-0" for="examSearchCourse">Filters</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-custom-white rounded-0"><i class="fa-solid fa-filter"></i></span>
+                        <select class="form-select rounded-0 chosen-registration-search" data-placeholder="Select Course First" onchange="getBatches()" id="examSearchCourse">
+
+                        </select>
+                        <select class="form-select rounded-0 chosen-registration-search" data-placeholder="Select Batch" id="examSearchBatch">
+
+                        </select>
+
+                    </div>
+
+                </div>
+                <div class="col-lg-auto">
+                    <label class="text-uppercase small m-0 p-0 text-muted">Search</label>
+                    <div class="d-flex align-items-center justify-content-evenly">
+                        <button class="btn bg-steam-green rounded-0 text-white" id="" type="submit"><i class="fa-solid fa-magnifying-glass small"></i></button>
+                        <button class="btn btn-close-red rounded-0 text-white ms-3" id="btn-reset" type="reset" onclick="resetSearchBar()">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
         </div>
         <div class="card-footer show pt-4 pb-4">
             <h4 class="text-center fw-bold"
