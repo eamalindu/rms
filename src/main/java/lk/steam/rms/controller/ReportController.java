@@ -23,7 +23,7 @@ public class ReportController {
         reportView.setViewName("report.html");
 
         reportView.addObject("username",auth.getName());
-        reportView.addObject("title","Reports | STEAM RMS");
+        reportView.addObject("title","Report Portal | STEAM RMS");
         reportView.addObject("activeNavItem","reports");
 
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
