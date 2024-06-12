@@ -25,8 +25,8 @@ public class MarksValidationController {
         marksView.setViewName("validation.html");
 
         marksView.addObject("username",auth.getName());
-        marksView.addObject("title","Manage Exam Attempts | STEAM RMS");
-        marksView.addObject("activeNavItem","exams");
+        marksView.addObject("title","Manage Exam Marks | STEAM RMS");
+        marksView.addObject("activeNavItem","validation");
 
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
         String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
