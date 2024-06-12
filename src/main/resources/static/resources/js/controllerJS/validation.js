@@ -21,4 +21,24 @@ const resetSearchBar = ()=>{
 
 const generateMarksTable = ()=>{
 
+    //reset table container inside
+    tblContainer.innerHTML = '';
+
+    //get lessons from the course
+    const lessons = JSON.parse(marksSearchCourse.value).lessonList;
+
+    //create a table
+    const table = document.createElement('table');
+    table.classList.add('custom-table')
+    const tableHead = document.createElement('thead');
+    const trThead = document.createElement('tr');
+
+
+    tableHead.appendChild(trThead);
+
+    // Append the table head to the table
+    table.appendChild(tableHead);
+
+    // Append the table to the div with id 'tblContainer'
+    tblContainer.appendChild(table);
 }
