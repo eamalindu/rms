@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/head :: headFragment}"></head>
+<body>
+
+<!--Loader Start-->
+<div th:replace="~{fragments/loader :: loader}"></div>
+<!-- Loader end-->
+
+<!--Navbar start-->
+<nav th:replace="~{ fragments/navbar :: navbarFragment}"></nav>
+<!--Navbar end-->
+
+<!-- Display Current Page -->
+<div class="container-fluid bg-custom-white custom-banner">
+    <h5>Report Portal</h5>
+</div>
+<div class="container-fluid pt-2">
+    <div class="card rounded-0">
+        <div class="card-body rounded-0">
+            <img src="/resources/images/administration.png" class="d-block mx-auto" width="31%">
+        </div>
+        <div class="card-footer show rounded-0 pt-3 pb-3">
+            <div class="row">
+                <div class="col-lg-3 col-12">
+                    <a href="Report/Daily-Income" class="text-decoration-none">
+                        <div class="card card-body rounded-0 h-100 pointer text-muted dashboard-widget-blue">
+                            <div class="row h-100">
+                                <div class="col-3 d-flex align-items-center justify-content-center">
+                                    <div class="d-flex align-items-center justify-content-center" style="border-radius: 50%;height: 60px;width: 60px;background: #c1eaff">
+                                        <i class="fa-solid fa-coins" style="color:#1e7bc7;font-size: 25px" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="col-9 lh-1 d-flex align-items-center justify-content-center">
+                                    <div class="lh-1">
+                                        <span class="text-uppercase">Daily Collection</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-12">
+                    <a href="Report/Monthly-Income" class="text-decoration-none">
+                        <div class="card card-body rounded-0 h-100 pointer text-muted dashboard-widget-blue">
+                            <div class="row h-100">
+                                <div class="col-3 d-flex align-items-center justify-content-center">
+                                    <div class="d-flex align-items-center justify-content-center" style="border-radius: 50%;height: 60px;width: 60px;background: #c1eaff">
+                                        <i class="fa-solid fa-money-bills" style="color:#1e7bc7;font-size: 25px" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="col-9 lh-1 d-flex align-items-center justify-content-center">
+                                    <div class="lh-1">
+                                        <span class="text-uppercase">Monthly Collection</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-12">
+                    <a href="/Report/Income-Report" class="text-decoration-none">
+                        <div class="card card-body rounded-0 h-100 pointer text-muted dashboard-widget-blue">
+                            <div class="row h-100">
+                                <div class="col-3 d-flex align-items-center justify-content-center">
+                                    <div class="d-flex align-items-center justify-content-center" style="border-radius: 50%;height: 60px;width: 60px;background: #c1eaff">
+                                        <i class="fa-solid fa-file-invoice-dollar" style="color:#1e7bc7;font-size: 25px" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="col-9 lh-1 d-flex align-items-center justify-content-center">
+                                    <div class="lh-1">
+                                        <span class="text-uppercase">Income Report</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-12">
+                    <a href="/Report/Due-Report" class="text-decoration-none">
+                        <div class="card card-body rounded-0 h-100 pointer text-muted dashboard-widget-blue">
+                            <div class="row h-100">
+                                <div class="col-3 d-flex align-items-center justify-content-center">
+                                    <div class="d-flex align-items-center justify-content-center" style="border-radius: 50%;height: 60px;width: 60px;background: #c1eaff">
+                                        <i class="fa-solid fa-dollar-sign" style="color:#1e7bc7;font-size: 25px" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="col-9 lh-1 d-flex align-items-center justify-content-center">
+                                    <div class="lh-1">
+                                        <span class="text-uppercase">Due Report</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-lg-3 col-12">
+                    <a href="/Report/Student-Report" class="text-decoration-none">
+                        <div class="card card-body rounded-0 h-100 pointer text-muted dashboard-widget-blue">
+                            <div class="row h-100">
+                                <div class="col-3 d-flex align-items-center justify-content-center">
+                                    <div class="d-flex align-items-center justify-content-center" style="border-radius: 50%;height: 60px;width: 60px;background: #c1eaff">
+                                        <i class="fa-solid fa-user-graduate" style="color:#1e7bc7;font-size: 25px" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="col-9 lh-1 d-flex align-items-center justify-content-center">
+                                    <div class="lh-1">
+                                        <span class="text-uppercase">Student Report</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-12">
+                    <a href="/Report/Batch-Report" class="text-decoration-none">
+                        <div class="card card-body rounded-0 h-100 pointer text-muted dashboard-widget-blue">
+                            <div class="row h-100">
+                                <div class="col-3 d-flex align-items-center justify-content-center">
+                                    <div class="d-flex align-items-center justify-content-center" style="border-radius: 50%;height: 60px;width: 60px;background: #c1eaff">
+                                        <i class="fa-solid fa-users-between-lines" style="color:#1e7bc7;font-size: 25px" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="col-9 lh-1 d-flex align-items-center justify-content-center">
+                                    <div class="lh-1">
+                                        <span class="text-uppercase">Batch Report</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-12">
+                    <a href="/Report/Attendance-Report" class="text-decoration-none">
+                        <div class="card card-body rounded-0 h-100 pointer text-muted dashboard-widget-blue">
+                            <div class="row h-100">
+                                <div class="col-3 d-flex align-items-center justify-content-center">
+                                    <div class="d-flex align-items-center justify-content-center" style="border-radius: 50%;height: 60px;width: 60px;background: #c1eaff">
+                                        <i class="fa-solid fa-file-circle-check" style="color:#1e7bc7;font-size: 25px" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="col-9 lh-1 d-flex align-items-center justify-content-center">
+                                    <div class="lh-1">
+                                        <span class="text-uppercase">Attendance Report</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-12">
+                    <a href="/Report/Marks" class="text-decoration-none">
+                        <div class="card card-body rounded-0 h-100 pointer text-muted dashboard-widget-blue">
+                            <div class="row h-100">
+                                <div class="col-3 d-flex align-items-center justify-content-center">
+                                    <div class="d-flex align-items-center justify-content-center" style="border-radius: 50%;height: 60px;width: 60px;background: #c1eaff">
+                                        <i class="fa-solid fa-book-open" style="color:#1e7bc7;font-size: 25px" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="col-9 lh-1 d-flex align-items-center justify-content-center">
+                                    <div class="lh-1">
+                                        <span class="text-uppercase">Marks Report</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/resources/js/external-loader.js" type="text/javascript"></script>
+<script src="/resources/js/external-modalFunction.js" type="text/javascript"></script>
+<script th:replace="~{ fragments/logout :: logoutScript}"></script>
+</body>
+</html>
