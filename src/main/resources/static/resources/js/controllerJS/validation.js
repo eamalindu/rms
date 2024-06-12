@@ -59,6 +59,7 @@ const generateMarksTable = () => {
 
     // Append the table head to the table
     table.appendChild(tableHead);
+    table.appendChild(tableBody);
 
 
 
