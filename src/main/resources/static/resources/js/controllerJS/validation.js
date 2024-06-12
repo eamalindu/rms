@@ -5,7 +5,8 @@ window.addEventListener('load', () => {
 
 const getBatches = () => {
     const batches = ajaxGetRequest("/Batch/getBatchesByCourseID/" + JSON.parse(marksSearchCourse.value).id)
-    fillSelectOptions(marksSearchBatch, ' ', batches, 'batchCode')
+    fillSelectOptions(marksSearchBatch, ' ', batches, 'batchCode');
+    marksSearchBatch.setAttribute('data-placeholder','Select A Batch Now');
     $('#marksSearchBatch').val('').trigger('chosen:updated');
 }
 
