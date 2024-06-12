@@ -151,6 +151,19 @@ input[name="btnLogin"]:hover {
     font-family: Arial, serif;
 }
 
+.custom-banner a{
+    color: black!important;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: medium;
+    font-weight: bold;
+    font-family: Arial, serif;
+}
+
+.custom-banner a:hover{
+    text-decoration: underline;
+}
+
 .custom-width-max-content {
     width: max-content;
     padding: 0.5em;
