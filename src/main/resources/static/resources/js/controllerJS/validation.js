@@ -27,6 +27,7 @@ const generateMarksTable = () => {
 
     //get lessons from the course
     const lessons = JSON.parse(marksSearchCourse.value).lessonList;
+    const students =  ajaxGetRequest("/Registration/getRegistrations/"+JSON.parse(marksSearchBatch.value).id);
 
     //create a table
     const table = document.createElement('table');
