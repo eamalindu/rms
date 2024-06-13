@@ -101,4 +101,6 @@ const generateMarksTable = () => {
 
     // Append the table to the div with id 'tblContainer'
     tblContainer.appendChild(table);
+
+    $('table').dataTable();
 }
