@@ -27,6 +27,9 @@ const generateMarksTable = () => {
 
     //get lessons from the course
     const lessons = JSON.parse(marksSearchCourse.value).lessonList;
+    //sorting
+    lessons.sort((a, b) => a.id - b.id);
+
     const students =  ajaxGetRequest("/Registration/getRegistrations/"+JSON.parse(marksSearchBatch.value).id);
 
     //create a table
@@ -49,7 +52,7 @@ const generateMarksTable = () => {
 
     lessons.forEach((lesson) => {
         const th = document.createElement('th');
-        th.innerText = lesson.name;
+        th.innerText = lesson.code;
         trThead.appendChild(th);
     })
 
@@ -70,6 +73,21 @@ const generateMarksTable = () => {
         tdIndex.innerText = index + 1;
         //append the remaining tds to the tr
         tr.appendChild(tdIndex);
+
+        const tdRegistration = document.createElement('td');
+        tdRegistration.innerText = student.registrationNumber;
+        tr.appendChild(tdRegistration);
+
+        const tdStudent = document.createElement('td');
+        tdStudent.innerText = student.studentID.nameWithInitials;
+        tr.appendChild(tdStudent);
+
+        //creating td for lessons
+        for (i=1;i<=lessons.length;i++){
+            const tdInput = document.createElement('td');
+            tdInput.innerHTML = '<input type="text" class="form-control rounded-0 mx-auto" style="width: 50px;">';
+            tr.appendChild(tdInput)
+        }
 
         tableBody.appendChild(tr);
     })
