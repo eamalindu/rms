@@ -128,7 +128,9 @@ const getBatch = ()=>{
 const getLesson = ()=>{
 
     const lessons = currentSelectedCourseID.lessonList;
-    fillSelectOptions(examLesson,' ',lessons,'name')
+    lessons.sort((a, b) => a.id - b.id);
+    const filteredLessons = lessons.filter(lesson => lesson.examAvailable);
+    fillSelectOptionsWithTwo(examLesson,' ',filteredLessons,'code','name')
     examLesson.setAttribute('data-placeholder', 'Select a Lesson Now');
     $('#examLesson').val('').trigger('chosen:updated');
 }
