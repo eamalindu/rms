@@ -89,6 +89,10 @@ const generateMarksTable = () => {
             tr.appendChild(tdInput)
         }
 
+        const tdButton = document.createElement('td');
+        tdButton.innerHTML='<button class="btn btn-success btn-sm text-white rounded-0">Save</button>'
+        tr.appendChild(tdButton);
+
         tableBody.appendChild(tr);
     })
 
