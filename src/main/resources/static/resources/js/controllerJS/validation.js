@@ -63,6 +63,16 @@ const generateMarksTable = () => {
     table.appendChild(tableHead);
     table.appendChild(tableBody);
 
+    students.forEach((student, index) => {
+        const tr = document.createElement('tr');
+        const tdIndex = document.createElement('td');
+        //use foreach loop to add text to the created tds
+        tdIndex.innerText = index + 1;
+        //append the remaining tds to the tr
+        tr.appendChild(tdIndex);
+
+        tableBody.appendChild(tr);
+    })
 
 
 
