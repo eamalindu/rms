@@ -79,7 +79,7 @@ const generateChartRegistrationCounsellorBreakdown =()=> {
     })
 
     //generateChart(chartRegistrationCounsellorBreakdown,`${new Date().getFullYear()}-${new Date().toLocaleString('default', { month: 'short' })}`,counsellors,'Registration Count',[{name: 'Counsellors', data: registrationCount, color: "#11306d"}])
-    generateMonochromePieChart('chartRegistrationCounsellorBreakdown', '', 'Counsellors', registrationCount)
+    generateMonochromePieChart('chartRegistrationCounsellorBreakdown', '', 'Registration Count', registrationCount)
 }
 
 
