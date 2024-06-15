@@ -223,18 +223,20 @@ let next3= ()=>{
     newPaymentTotalFee.innerText = "Rs. "+registration.fullAmount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
 
 }
-//
+//creating a function to go to step 5 in the registration process
 let next4= ()=>{
+    //hide the footer_5 and show the footer_6
     step5.classList.add('custom-step-complete');
+    //change the step number to a tick
     document.querySelector('#btn-add-payment .step-number span').innerText = '✔';
-
-    //add print receipt logic here
 }
+//creating a function to go to step 6 in the registration process
 let next5 = ()=>{
+    //show step6 as completed
     step6.classList.add('custom-step-complete');
+    //change the step number to a tick
     document.querySelector('#btn-complete .step-number span').innerText = '✔';
-
-
+    //hide the footer_5 and show the footer_6
     footer_5.classList.remove('show');
     footer_6.classList.add('show');
 }
