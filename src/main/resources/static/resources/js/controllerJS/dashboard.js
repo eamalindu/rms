@@ -144,7 +144,7 @@ const findRegistration=()=>{
                 //display the payment plan as Installment Plan in the quickPaymentPaymentPlan element
                 quickPaymentPaymentPlan.innerText ='Installment Plan';
             }
-            //display the total outstanding balance and format it using toLocalString function in the quickPaymentBalanceFee element
+            //display the total outstanding balance and format it into currency type using toLocalString function in the quickPaymentBalanceFee element
             quickPaymentBalanceFee.innerText = "Rs. "+registration.balanceAmount.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
 
             //check the registration status and display the status in the quickPaymentRegistrationStatus element
@@ -176,16 +176,22 @@ const findRegistration=()=>{
                 //display the status as Deleted in the quickPaymentRegistrationStatus element
                 quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0 w-auto" style="background: #000">Deleted</span>';
             }
-
+            //set the registration as registrationID for the newPayment object
             newPayment.registrationID = registration;
+            //enable the add payment button
             btnAddPayment.disabled = false;
+            //show the collapse by adding the show class
             collapseRegistration.classList.add('show');
         }
         else{
+            //this means the registration is empty
+            //display an error message to the user using showCustomModal function
             showCustomModal("No Registration Found for <br>Registration Number <span class='text-steam-green'> "+registrationNumber+"</span>",'error')
         }
     }
     else{
+        //this means the registration number is empty
+        //display an error message to the user using showCustomModal function
         showCustomModal("Registration Number is Required!",'warning')
     }
 }
