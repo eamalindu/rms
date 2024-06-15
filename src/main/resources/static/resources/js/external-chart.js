@@ -43,6 +43,7 @@ const generateChart=(elementID,title,categories,yAxis,series)=>{
 }
 
 const generateMonochromePieChart = (elementID, title,axisName, series) => {
+    const totalAmount = series.reduce((total, point) => total + point.y, 0);
     Highcharts.chart(elementID, {
         chart: {
             type: 'pie',
@@ -50,6 +51,9 @@ const generateMonochromePieChart = (elementID, title,axisName, series) => {
         },
         title: {
             text: title
+        },
+        subtitle: {
+            text: 'Total: ' + totalAmount
         },
         tooltip: {
             headerFormat: '<span style="font-size:10px">'+axisName+'</span><table>',
