@@ -914,8 +914,12 @@ const checkPaymentFormErrors = ()=>{
     return errors;
 }
 
+//creating a function to generate the invoice for the new payment
+//this function expect a payment object as a parameter
 const generateInvoice = (object)=>{
+    //open a new window using window.open function and save it in newWindow variable
     let newWindow =   window.open()
+    //write the invoice content to the new window
     newWindow.document.write("<head>" +
         "    <meta charset='UTF-8'>" +
         "    <meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
@@ -1000,6 +1004,7 @@ const generateInvoice = (object)=>{
         "    </div>" +
         "</body>");
 
+    //print the invoice after 200ms
     setTimeout(function (){
         newWindow.print();
     },200)
