@@ -388,47 +388,83 @@ const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFu
 
 //creating a function to calculate the installment plan
 //this function has five arguments
-//1) elementID -> ID of the checkbox
+//1) elementID -> ID of the radio button
 //2) totalFee -> total course fee
 //3) registrationFee -> registration fee
 //4) courseFee -> course fee
 //5) installments -> number of installments
 //example -> calculateInstallments(testElement,50000,3000,47000,8)
 const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,installments)=>{
+    //check if the radio button is checked
     if(elementID.checked){
+        //this means radio button is checked
+        //reset the installmentPlan array
         installmentPlan=[];
+        //set the isFullPayment to false
         registration.isFullPayment = false;
+        //set the oneTimePaymentAmount to null
         registration.oneTimePaymentAmount =null;
+        //set the fullAmount to totalFee
         registration.fullAmount = totalFee;
+        //since this is a new registration no payments are done yet. so set the paidAmount to 0
         registration.paidAmount = 0;
+        //set the balanceAmount to totalFee
         registration.balanceAmount = totalFee;
+        //this is an installment payment so set the discountRate to 0
         registration.discountRate = 0;
+        //this is an installment payment so set the discountAmount to 0
         registration.discountAmount = 0;
 
+        //show the installment plan table
         tblInstallments.classList.remove('d-none');
+        //calculate the installment fee by dividing the course fee by the number of installments and save it in installmentFee variable
         const installmentFee = courseFee / installments;
+        //get the current date form Date function and save it in currentDate variable
         let currentDate = new Date();
 
+        //get the tbody from the installment plan table and save it in tbody variable
         const tbody = tblInstallments.children[1];
         //clear the table body
         tbody.innerHTML = '';
 
-        // Display the first installment
+        //Display the first installment start
+        //create a new table row and save it in firstTR variable
         const firstTR = document.createElement('tr');
-
+        //create a new table data and save it in firstTD variable
         const firstTD = document.createElement('td');
+        //set the inner text of the firstTD to 1
         firstTD.innerText = "1";
+        //append the firstTD to the firstTR
         firstTR.appendChild(firstTD);
-
+        //create a new table data and save it in secondTD variable
         const secondTD = document.createElement('td');
+        //set the inner text of the secondTD to the installment fee plus the registration fee
+        //format the total amount to currency type using toLocaleString function
+        //first installment should cover the registration fee
+        //only the course fee is divided equally among the installments
         secondTD.innerText = (installmentFee + registrationFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        //append the secondTD to the firstTR
         firstTR.appendChild(secondTD);
-
+        //create a new table data and save it in thirdTD variable
         const thirdTD = document.createElement('td');
+        //set the inner text of the thirdTD to the current date in ISO format
+        //slice the date to get only the date part
+        //since this a new registration first installment due date is set to current date
         thirdTD.innerText = currentDate.toISOString().slice(0, 10);
+        //append the thirdTD to the firstTR
         firstTR.appendChild(thirdTD);
+        //append the firstTR to the tbody
         tbody.appendChild(firstTR);
+        //Display the first installment end
 
+        //push the first installment to the installmentPlan array
+        //set the installment number to 1
+        //set the payment to the installment fee plus the registration fee
+        //set the paid amount to 0 since this is a new registration
+        //set the balance amount to the installment fee plus the registration fee
+        //set the due date to the current date
+        //set the status to "Not Paid" since this is a new registration
+        //set the registration ID to the current registration
         installmentPlan.push({ installmentNumber: 1, payment: (installmentFee + registrationFee),paidAmount:0,balanceAmount:(installmentFee + registrationFee),dueDate: currentDate.toISOString().slice(0, 10),status:"Not Paid",registrationID:registration});
 
         // Display the subsequent installments
