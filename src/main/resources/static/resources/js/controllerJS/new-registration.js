@@ -704,10 +704,14 @@ const newStudentSubmit = ()=>{
 
 }
 
+//creating a function to search for a student
 const searchStudent=()=>{
+    //get the search text from the studentSearchID input and save it in searchText variable
     const searchText = studentSearchID.value;
+    //get the student from the database using ajaxGetRequest function and store it in responseStudent global variable
     responseStudent = ajaxGetRequest("/Student/getStudentsByNicOrStudentNumberOrMobileNumber/"+searchText);
     console.log(responseStudent);
+    //create radio cards for student using createStudentRadioCards function
     createStudentRadioCards(responseStudent,handleStudentCardClick,existStudentResults);
 }
 
