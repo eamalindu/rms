@@ -72,7 +72,7 @@ const generateChartRegistrationCounsellorBreakdown =()=> {
     const endDateCurrentMonth = moment().endOf('month').format('YYYY-MM-DD');
 
     //setting dashboard title
-    dashboardCharTitle.innerHTML = '<small>The following charts are based on Registration data collected from ' + startDateCurrentMonth + ' to ' + endDateCurrentMonth+'</small>';
+    dashboardCharTitle.innerHTML = '<small>The above charts are based on Registration data collected from ' + startDateCurrentMonth + ' to ' + endDateCurrentMonth+'</small>';
 
     const counsellors = ajaxGetRequest("/Registration/getCounsellors/" + startDateCurrentMonth + "/" + endDateCurrentMonth)
     let registrationCount = [];
