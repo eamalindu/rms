@@ -43,54 +43,43 @@ let footer_4 = document.querySelector('#step-student');
 let footer_5 = document.querySelector('#step-add-payment');
 let footer_6 = document.querySelector('#step-complete');
 
+//creating a function to go to step 1 in the registration process
 let next0 = () => {
-
+    //check if the course is selected
     if(registration.courseID !=null) {
+        //this means course is selected
         console.log(registration);
-        //footer_1 should have a selected at least one before executing the bellow code
+        //show footer_2 and hide footer_1
         footer_1.classList.remove('show');
         footer_2.classList.add('show');
+        //show step1 as completed
         step1.classList.add('custom-step-complete');
+        //change the step number to a tick
         document.querySelector('#btn-course .step-number span').innerText = '✔';
 
-        //get all the batches(from selected course) and fill them into the tables
-
+        //get all the active weekday batches for the selected course and store it in weekDayBatches variable
         weekDayBatches = ajaxGetRequest("/Batch/getActiveWeekDayBatch/"+registration.courseID.id);
+        //get all the active weekend batches for the selected course and store it in weekEndBatches variable
         weekEndBatches = ajaxGetRequest("/Batch/getActiveWeekEndBatch/"+registration.courseID.id);
-        test = ajaxGetRequest("/Batch/findall")
-
-        displayPropertyListForWeekDay = [
-            {property: 'batchCode',dataType: 'text'},
-            {property: 'commenceDate',dataType: 'text'},
-            {property: 'endDate',dataType: 'text'},
-            {property: 'seatCount',dataType: 'text'},
-            {property: 'description',dataType: 'text'},
-
-        ];
-
-        displayPropertyListForWeekEnd = [
-            {property: 'batchCode',dataType: 'text'},
-            {property: 'commenceDate',dataType: 'text'},
-            {property: 'endDate',dataType: 'text'},
-            {property: 'seatCount',dataType: 'text'},
-            {property: 'description',dataType: 'text'},
-
-        ];
-        //fillDataIntoTableWithRadio(tblWeekDayBatches,weekDayBatches,displayPropertyListForWeekDay,radioFunctionForWeekDay,'batch');
-        // fillDataIntoTableWithRadio(tblWeekEndBatches,weekEndBatches,displayPropertyListForWeekEnd,radioFunctionForWeekEnd,'batch');
+        //create radio cards for each batch using createBatchRadioCards function
         createBatchRadioCards(weekDayBatches,handleBatchCardClick,containerA);
         createBatchRadioCards(weekEndBatches,handleBatchCardClick,containerB);
+        //check if there are no active weekend batches for the selected course
         if(weekEndBatches.length===0){
+            //this means there are no active weekend batches
+            //show a message to the user
             containerB.innerHTML = '<p class="text-red text-center small">No Active Weekend Batches Available! <br>Please Contact <strong>'+registration.courseID.name+'</strong> Course Coordinator</p>';
         }
+        //check if there are no active weekday batches for the selected course
         if(weekDayBatches.length===0){
+            //this means there are no active weekday batches
+            //show a message to the user
             containerA.innerHTML = '<p class="text-red text-center small">No Active Weekday Batches Available! <br>Please Contact <strong>'+registration.courseID.name+'</strong> Course Coordinator</p>';
         }
-
-
-
     }
     else{
+        //this means course is not selected
+        //show a warning message to the user using external function showCustomModal
         showCustomModal("Please Select a Course !","warning");
     }
 
