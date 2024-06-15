@@ -285,8 +285,12 @@ const newQuickPaymentSubmit = ()=>{
     }
 }
 
+//creating a function to generate the invoice for the new payment
+//this function expect a payment object as a parameter
 const generateInvoice = (object)=>{
+    //create a new window using window.open function and store it in newWindow variable
     let newWindow =   window.open()
+    //write the invoice content to the new window
     newWindow.document.write("<head>" +
         "    <meta charset='UTF-8'>" +
         "    <meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
@@ -371,12 +375,14 @@ const generateInvoice = (object)=>{
         "    </div>" +
         "</body>");
 
+    //print the invoice after 200 milliseconds
     setTimeout(function (){
         newWindow.print();
     },200)
 
 }
 
+//creating a function to check the quick payment form for errors
 const checkQuickPaymentFormErrors = ()=>{
     //check for binding
     //0 isn't allowed as a payment
@@ -397,5 +403,6 @@ const checkQuickPaymentFormErrors = ()=>{
     if(newPayment.amount>registration.balanceAmount){
         errors = errors +'The Current amount <span class="text-steam-green">Rs. '+newPayment.amount+ '.00</span> exceeds the total outstanding balance <span class="text-steam-green">Rs. '+registration.balanceAmount+'.00</span><br>';
     }
+    //return the errors
     return errors;
 }
