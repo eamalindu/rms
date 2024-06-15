@@ -645,12 +645,18 @@ const automateInitials = ()=>{
 
 }
 
+//creating a function to submit the student form when ever needed
 const newStudentSubmit = ()=>{
     console.log(newStudent);
+    //calling the checkStudentFormErrors function and catching the return value to errors variable
     let errors = checkStudentFormErrors();
+    //check if the errors variable is empty
     if(errors === '')
     {
+        //this means there are no errors
+        //get a user confirmation using external showCustomConfirm function
         showCustomConfirm("You are about to add a New Student<br>Are You Sure?", function (result) {
+            //check the user confirmation
             if (result) {
                 //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
                 //catch the return value from the backend and save it in the serviceResponse variable
@@ -663,8 +669,7 @@ const newStudentSubmit = ()=>{
                     //close the student offcanvas
                     offCanvasStudentCloseButton.click();
 
-                    //attach the student Objetc to the regitration(this wont work need to request it from database again)
-
+                    //attach the student Object to the registration(this wont work need to request it from database again)
                     registration.studentID = newStudent;
                     //ajaxGetRequest("/Student/getStudentByIdValue/"+newStudent.idValue);
 
@@ -673,6 +678,7 @@ const newStudentSubmit = ()=>{
 
                     //disable the add new student btn
                     document.getElementById('btn-new-student').classList.add('disabled');
+                    //disable the search student btn
                     document.getElementById('btn-search-student').classList.add('disabled');
 
                 } else {
@@ -681,15 +687,18 @@ const newStudentSubmit = ()=>{
                     showCustomModal("Operation Failed! <br>" + serviceResponse , "error");
                 }
             }
-                //will execute this block if the user confirmation is "no"
-            //show user an alert
+
             else {
+                //will execute this block if the user confirmation is "no"
+                //show user an alert
                 showCustomModal("Operation Cancelled!", "info");
             }
 
         });
     }
     else{
+        //this means there are errors
+        //display them to the user using external-ModalFunction()
         showCustomModal(errors, 'warning');
     }
 
