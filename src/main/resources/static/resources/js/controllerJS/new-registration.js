@@ -123,61 +123,98 @@ let next2 = () => {
     console.log(registration);
 
 }
-
+//creating a function to go to step 3 in the registration process
 let next3= ()=>{
+    //creating a variable to store the result of the registration
     let isRegistrationSuccess ;
+    //check if the student is selected
     if (registration.studentID != null) {
-    showCustomConfirm("You are about to add a New Registration to the batch <span class='text-steam-green'>"+registration.batchID.batchCode+"</span><br><br>Are You Sure?", function (result) {
-        if (result) {
-                //unfinished code start
+        //this means student is selected
+        //get a user confirmation using external showCustomConfirm function
+        showCustomConfirm("You are about to add a New Registration to the batch <span class='text-steam-green'>"+registration.batchID.batchCode+"</span><br><br>Are You Sure?", function (result) {
+        //check the user confirmation
+            if (result) {
+                //this means user confirmation is "yes"
+                //check if the registration is full payment
                 if (registration.isFullPayment) {
+                    //this means registration is full payment
+                    //save the registration to the database using ajaxHttpRequest function by send a POST request to the backend
+                    //get the response from the backend using ajaxHttpRequest function and store it in sever variable
                     const server = ajaxHttpRequest("/Registration", "POST", registration)
+                    //check the response from the backend
                     if (server === "OK") {
+                        //this means registration successfully added
+                        //show a success message to the user using external showCustomModal function
                         showCustomModal("Registration Successfully Added!","success");
-
+                        //set the isRegistrationSuccess to true
                         isRegistrationSuccess = true;
 
                     } else {
-
+                        //this means there was a problem with the query
+                        //show an error message to the user using external showCustomModal function
                         showCustomModal("Operation Failed! <br>" + server , "error");
+                        //set the isRegistrationSuccess to false
                         isRegistrationSuccess = false;
                     }
                 } else {
+                    //this means registration is installment payment
+                    //save the installment Plan to the database using ajaxHttpRequest function by send a POST request to the backend
+                    //get the response from the backend using ajaxHttpRequest function and store it in severResult variable
                     const serverResult = ajaxHttpRequest("/InstallmentPlan", "POST", installmentPlan);
+                    //check the response from the backend
                     if (serverResult === "OK") {
+                        //this means installment plan successfully added
+                        //show a success message to the user using external showCustomModal function
                         showCustomModal("Registration Successfully Added!","success");
+                        //set the isRegistrationSuccess to true
                         isRegistrationSuccess = true;
 
                     } else {
+                        //this means there was a problem with the query
+                        //show an error message to the user using external showCustomModal function
                         showCustomModal("Operation Failed! <br>" + serverResult , "error");
+                        //set the isRegistrationSuccess to false
                         isRegistrationSuccess = false;
                     }
                 }
-                //unfinished code end
 
+            //check the isRegistrationSuccess variable
             if(isRegistrationSuccess){
+                //this means registration is successful
+                //hide the footer_4 and show the footer_5
                 footer_4.classList.remove('show');
                 footer_5.classList.add('show');
+                //show step4 as completed
                 step4.classList.add('custom-step-complete');
+                //change the step number to a tick
                 document.querySelector('#btn-student .step-number span').innerText = '✔';
             }
 
 
         }
         else{
+            //this means user confirmation is "no"
+            // show a info message to the user using external showCustomModal function
             showCustomModal("Operation Cancelled!", "info");
         }
     });
+
     } else {
+        //this means student is not selected
+        //show a warning message to the user using external function showCustomModal
         showCustomModal("Please Select a Student or Add a New Student!", "warning");
     }
 
     //setting payment breakdown table info
     newPaymentCourseFee.innerText = "Rs. "+registration.batchID.paymentPlanID.courseFee.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
     newPaymentTabRegFee.innerText = "Rs. "+registration.batchID.paymentPlanID.registrationFee.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
+    //check if the discount is undefined
     if(registration.discountAmount===undefined){
+        //this means discount is undefined
+        //set the discount amount to 0
         registration.discountAmount = 0;
     }
+    //set payment info
     newPaymentTabDiscounts.innerText = "- Rs. "+registration.discountAmount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
     newPaymentTotalFee.innerText = "Rs. "+registration.fullAmount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
 
