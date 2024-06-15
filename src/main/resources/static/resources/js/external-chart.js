@@ -41,3 +41,48 @@ const generateChart=(elementID,title,categories,yAxis,series)=>{
     });
 
 }
+
+const generateMonochromePieChart = (elementID, title,axisName, series) => {
+    Highcharts.chart(elementID, {
+        chart: {
+            type: 'pie',
+            backgroundColor: '#ffffff'
+        },
+        title: {
+            text: title
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">'+axisName+'</span><table>',
+            pointFormat: '<tr><td style="color:rebeccapurple;padding:0">{point.name}: </td>' +
+                '<td style="padding:0"><b>&nbsp;{point.y}</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}: {point.y}',
+                    connectorColor: 'silver'
+                },
+                colors: (function () {
+                    var colors = [],
+                        base = Highcharts.getOptions().colors[0],
+                        i;
+
+                    for (i = 0; i < 10; i += 1) {
+                        colors.push(Highcharts.color(base).brighten((i - 3) / 7).get());
+                    }
+                    return colors;
+                }())
+            }
+        },
+        series: [{
+            name: 'Values',
+            data: series
+        }]
+    });
+}
