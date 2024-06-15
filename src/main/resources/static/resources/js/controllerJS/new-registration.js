@@ -111,19 +111,23 @@ let next1 = () => {
         showCustomModal("Please Select a Batch !","warning");
     }
 }
+//creating a function to go to step 3 in the registration process
 let next2 = () => {
+    //hide the footer_3 and show the footer_4
     footer_3.classList.remove('show');
     footer_4.classList.add('show');
+    //show step3 as completed
     step3.classList.add('custom-step-complete');
+    //change the step number to a tick
     document.querySelector('#btn-payment-str .step-number span').innerText = '✔';
-
+    //enable the add new student and search student buttons
     document.getElementById('btn-new-student').classList.remove('disabled');
     document.getElementById('btn-search-student').classList.remove('disabled');
 
     console.log(registration);
 
 }
-//creating a function to go to step 3 in the registration process
+//creating a function to go to step 4 in the registration process
 let next3= ()=>{
     //creating a variable to store the result of the registration
     let isRegistrationSuccess ;
@@ -219,6 +223,7 @@ let next3= ()=>{
     newPaymentTotalFee.innerText = "Rs. "+registration.fullAmount.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
 
 }
+//
 let next4= ()=>{
     step5.classList.add('custom-step-complete');
     document.querySelector('#btn-add-payment .step-number span').innerText = '✔';
