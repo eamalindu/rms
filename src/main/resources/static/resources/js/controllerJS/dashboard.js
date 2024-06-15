@@ -45,9 +45,9 @@ const refreshDashboardWidgets = ()=>{
     //monthly Income calculation end
 
     //monthly due calculation start
-    //get the start date of the current month using moment.js and store it in startDateCurrentMonth variable
+    //get the start date of the current month using moment.js,format it into YYYY-MM-DD format and store it in startDateCurrentMonth variable
     const startDateCurrentMonth =  moment().startOf('month').format('YYYY-MM-DD');
-    //get the end date of the current month using moment.js and store it in endDateCurrentMonth variable
+    //get the end date of the current month using moment.js,format it into YYYY-MM-DD format and store it in endDateCurrentMonth variable
     const endDateCurrentMonth =  moment().endOf('month').format('YYYY-MM-DD');
     //get the due payments from the one time payment registrations from the database using ajaxGetRequest function and store it in fullPaymentDue variable
     const fullPaymentDue = ajaxGetRequest("/Registration/getMonthlyDueRegistration/"+startDateCurrentMonth+"/"+endDateCurrentMonth)
@@ -90,22 +90,30 @@ const generateChartRegistrationBreakdown = ()=>{
     generateChart(chartRegistrationBreakdown,'',courseCode,'Registration Count',[{name: 'Courses', data: registrationCount, color: "#11306d"}])
 }
 
+//creating a function to generate the chart for registration breakdown by counsellor when ever needed
 const generateChartRegistrationCounsellorBreakdown =()=> {
 
+    //get the start date of the current month using moment.js, format it into YYYY-MM-DD format and store it in startDateCurrentMonth variable
     const startDateCurrentMonth = moment().startOf('month').format('YYYY-MM-DD');
+    //get the end date of the current month using moment.js, format it into YYYY-MM-DD format and store it in endDateCurrentMonth variable
     const endDateCurrentMonth = moment().endOf('month').format('YYYY-MM-DD');
 
     //setting dashboard title
     dashboardCharTitle.innerHTML = '<small>The above charts are based on Registration data collected from ' + startDateCurrentMonth + ' to ' + endDateCurrentMonth+'</small>';
 
+    //get all the counsellors present in the date range from the database using ajaxGetRequest function and store it in counsellors variable
     const counsellors = ajaxGetRequest("/Registration/getCounsellors/" + startDateCurrentMonth + "/" + endDateCurrentMonth)
+    //create a variable to store the registration count from all the counsellors
     let registrationCount = [];
+    //use forEach function to loop through the counsellors array
     counsellors.forEach((counsellor) => {
+        //get the monthly registrations for the current counsellor from the database using ajaxGetRequest function and store it in count variable
         count = ajaxGetRequest("/Registration/getRegistrationCountByCounsellorsByMonth/" + startDateCurrentMonth + "/" + endDateCurrentMonth + "/" + counsellor);
+        //push the counsellor name and count to registrationCount variable
         registrationCount.push({name: counsellor, y: count});
     })
 
-    //generateChart(chartRegistrationCounsellorBreakdown,`${new Date().getFullYear()}-${new Date().toLocaleString('default', { month: 'short' })}`,counsellors,'Registration Count',[{name: 'Counsellors', data: registrationCount, color: "#11306d"}])
+    //generate the chart using generateMonochromePieChart function
     generateMonochromePieChart('chartRegistrationCounsellorBreakdown', '', 'Registration Count', registrationCount)
 }
 
