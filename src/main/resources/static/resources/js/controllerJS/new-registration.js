@@ -1,9 +1,9 @@
 window.addEventListener("load",()=>{
-
+    //reset the registration object
     registration = {};
-
-
+    //get all the courses from the database using ajaxGetRequest function and store it in global courses variable
     courses =  ajaxGetRequest("/Course/findall");
+    //creating a display property list for the courses
     displayPropertyListForCourse = [
         {property: 'name',dataType: 'text'},
         {property: 'code',dataType: 'text'},
@@ -12,12 +12,11 @@ window.addEventListener("load",()=>{
         {property: 'lectureHours',dataType: 'text'},
         {property: getStatus,dataType: 'function'},
     ]
-
-    // fillDataIntoTableWithRadio(tblCourses,courses,displayPropertyListForCourse,radioFunction,'course');
-    // $('#tblCourses').DataTable();
-
+    //using the function createCourseRadioCards to create cards for each course
     createCourseRadioCards(courses,handleCourseCardClick,testA);
+    //reset student form
     resetStudentForm();
+    //reset payment form
     resetPaymentForm();
 
     $("#studentIdOption").chosen().change(function () {
