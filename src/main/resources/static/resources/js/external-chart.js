@@ -53,7 +53,7 @@ const generateMonochromePieChart = (elementID, title,axisName, series) => {
             text: title
         },
         subtitle: {
-            text: 'Total: ' + totalAmount
+            text: 'Total '+axisName+' : ' + totalAmount
         },
         tooltip: {
             headerFormat: '<span style="font-size:10px">'+axisName+'</span><table>',
