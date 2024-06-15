@@ -66,19 +66,20 @@ const generateChartRegistrationBreakdown = ()=>{
     generateChart(chartRegistrationBreakdown,`${new Date().getFullYear()}-${new Date().toLocaleString('default', { month: 'short' })}`,courseCode,'Registration Count',[{name: 'Courses', data: registrationCount, color: "#11306d"}])
 }
 
-const generateChartRegistrationCounsellorBreakdown =()=>{
+const generateChartRegistrationCounsellorBreakdown =()=> {
 
-    const startDateCurrentMonth =  moment().startOf('month').format('YYYY-MM-DD');
-    const endDateCurrentMonth =  moment().endOf('month').format('YYYY-MM-DD');
+    const startDateCurrentMonth = moment().startOf('month').format('YYYY-MM-DD');
+    const endDateCurrentMonth = moment().endOf('month').format('YYYY-MM-DD');
 
-    const counsellors = ajaxGetRequest("/Registration/getCounsellors/"+startDateCurrentMonth+"/"+endDateCurrentMonth)
+    const counsellors = ajaxGetRequest("/Registration/getCounsellors/" + startDateCurrentMonth + "/" + endDateCurrentMonth)
     let registrationCount = [];
-    counsellors.forEach((counsellor)=>{
-        count = ajaxGetRequest("/Registration/getRegistrationCountByCounsellorsByMonth/"+startDateCurrentMonth+"/"+endDateCurrentMonth+"/"+counsellor);
-        registrationCount.push(count);
+    counsellors.forEach((counsellor) => {
+        count = ajaxGetRequest("/Registration/getRegistrationCountByCounsellorsByMonth/" + startDateCurrentMonth + "/" + endDateCurrentMonth + "/" + counsellor);
+        registrationCount.push({name: counsellor, y: count});
     })
-    generateChart(chartRegistrationCounsellorBreakdown,`${new Date().getFullYear()}-${new Date().toLocaleString('default', { month: 'short' })}`,counsellors,'Registration Count',[{name: 'Counsellors', data: registrationCount, color: "#11306d"}])
 
+    //generateChart(chartRegistrationCounsellorBreakdown,`${new Date().getFullYear()}-${new Date().toLocaleString('default', { month: 'short' })}`,counsellors,'Registration Count',[{name: 'Counsellors', data: registrationCount, color: "#11306d"}])
+    generateMonochromePieChart('chartRegistrationCounsellorBreakdown', '', 'Counsellors', registrationCount)
 }
 
 
