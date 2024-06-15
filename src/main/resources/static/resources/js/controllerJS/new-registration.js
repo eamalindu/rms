@@ -457,7 +457,6 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
         tbody.appendChild(firstTR);
         //Display the first installment end
 
-        //push the first installment to the installmentPlan array
         //set the installment number to 1
         //set the payment to the installment fee plus the registration fee
         //set the paid amount to 0 since this is a new registration
@@ -465,31 +464,48 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
         //set the due date to the current date
         //set the status to "Not Paid" since this is a new registration
         //set the registration ID to the current registration
+        //push the first installment to the installmentPlan array
         installmentPlan.push({ installmentNumber: 1, payment: (installmentFee + registrationFee),paidAmount:0,balanceAmount:(installmentFee + registrationFee),dueDate: currentDate.toISOString().slice(0, 10),status:"Not Paid",registrationID:registration});
 
-        // Display the subsequent installments
+        //generate the rest of the installments by using a for loop
+        //start the loop from 1 since the first installment is already displayed
+        //end the loop at the number of installments
         for (let i = 1; i < installments; i++) {
-            // Calculate the new date for each installment
+            //get the next month date from the current date and save it in newDate variable
             const newDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, currentDate.getDate());
-
+            //create a new table row and save it in tr variable
             const tr = document.createElement('tr');
-
+            //create a new table data and save it in installmentTD variable
             const installmentTD = document.createElement('td');
+            //set the inner text of the installmentTD to the installment number
             installmentTD.innerText = i + 1;
+            //append the installmentTD to the tr
             tr.appendChild(installmentTD);
-
+            //create a new table data and save it in installmentAmountTD variable
             const installmentAmountTD = document.createElement('td');
+            //set the inner text of the installmentAmountTD to the installment fee
+            //format the installment fee to currency type using toLocaleString function
             installmentAmountTD.innerText = (installmentFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            //append the installmentAmountTD to the tr
             tr.appendChild(installmentAmountTD);
-
+            //create a new table data and save it in installmentDateTD variable
             const installmentDateTD = document.createElement('td');
+            //set the inner text of the installmentDateTD to the new date in ISO format
             installmentDateTD.innerText = newDate.toISOString().slice(0, 10);
+            //append the installmentDateTD to the tr
             tr.appendChild(installmentDateTD);
-
-            currentDate = newDate; // Update currentDate for the next iteration
-
-
+            // Update currentDate for the next iteration
+            currentDate = newDate;
+            //append the tr to the tbody
             tbody.appendChild(tr);
+            //set the installment number to i+1
+            //set the payment to the installment fee
+            //set the paid amount to 0 since this is a new registration
+            //set the balance amount to the installment fee
+            //set the due date to the new date
+            //set the status to "Not Paid" since this is a new registration
+            //set the registration ID to the current registration
+            //push the installment to the installmentPlan array
             installmentPlan.push({ installmentNumber: i+1, payment: installmentFee,paidAmount:0,balanceAmount:installmentFee,dueDate: newDate.toISOString().slice(0, 10),status:"Not Paid",registrationID:registration});
         }
 
