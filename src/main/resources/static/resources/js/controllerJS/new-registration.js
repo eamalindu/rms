@@ -822,36 +822,54 @@ const resetPaymentForm = ()=>{
 
 
 }
+
+//creating a function to submit the payment form when ever needed
 const newPaymentSubmit=()=>{
-
-    //attach the current registration object to the payment object
-    //get the current registration object from rowView function
+    //get the current registration from the database using ajaxGetRequest function and save it in currentRegistration variable
     currentRegistration = ajaxGetRequest("/Registration/getRegistrationFromBatchAndStudentNIC/"+registration.batchID.id+"/"+registration.studentID.idValue);
-
+    //bind the registration to the new payment
     newPayment.registrationID =currentRegistration;
+    //calling the checkPaymentFormErrors function and catching the return value to errors variable
     let errors = checkPaymentFormErrors();
+    //check if the errors variable is empty
     if(errors==='') {
+        //this means there are no errors
+        //get a user confirmation using external showCustomConfirm function
+        //display the payment amount in currency format using toLocaleString function
         showCustomConfirm("You are about to add a New Payment of <br><span class='text-steam-green'>Rs. " + parseFloat(newPayment.amount).toLocaleString('en-US', {
             maximumFractionDigits: 2,
             minimumFractionDigits: 2
         }) + "</span> To this registration <br><br>Are You Sure?", function (result) {
+            //check the user confirmation
             if (result) {
+                //this means user confirmation is "yes"
+                //save the new payment to the database using ajaxHttpRequest function by send a POST request to the backend
+                //get the response from the backend using ajaxHttpRequest function and store it in severResponse variable
                 let serviceResponse = ajaxHttpRequest("/Payment", 'POST', newPayment);
+                //check the serviceResponse value is "OK"
                 if (serviceResponse === "OK") {
                     //this means data successfully passed to the backend
-                    //show an alert to user
+                    //show an alert to user using external showCustomModal function
                     showCustomModal("Payment Successfully Added!", "success");
-
+                    //refresh the form using resetPaymentForm function
                     resetPaymentForm();
+                    //call the next4 function to go to step 4 in the registration process
                     next4();
+                    //show the print invoice button
                     btnPrintInvoice.classList.remove('d-none');
+                    //add an event listener to the print invoice button
+                    //when the button is clicked generate a new payment receipt
                     btnPrintInvoice.addEventListener('click',()=>{
-
-                        //add a code to generate a new payment receipt here
+                        //get the all added payments from the database using ajaxGetRequest function and save it in addedPayment variable
                         let addedPayment = ajaxGetRequest("Payment/getPaymentsByRegistrationID/"+currentRegistration.id);
+                        //get the first added payment from the addedPayment array and save it in addedPayment variable
+                        //since there is only one payment for a registration
                         addedPayment = addedPayment[0];
+                        //generate the invoice using generateInvoice function
                         generateInvoice(addedPayment);
+                        //print the invoice
                         setTimeout(function (){
+                            //call the next5 function to go to step 5 in the registration process after 250ms
                             next5();
                         },250)
 
