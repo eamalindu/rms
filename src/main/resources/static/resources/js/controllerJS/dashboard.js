@@ -233,47 +233,54 @@ const resetQuickPaymentForm = ()=>{
     $('#quickPaymentMethod').chosen({width: '100%'});
 }
 
+//creating a function to add a new payment when ever needed
 const newQuickPaymentSubmit = ()=>{
-
+    //check for errors in the form using checkQuickPaymentFormErrors function and store it in errors variable
     let errors = checkQuickPaymentFormErrors();
+    //check if there are no errors
+    //if it's empty that means all the required inputs are filled
     if(errors==='') {
-
+        //this means there are no errors
+        //get a user confirmation using external customConfirm js
         showCustomConfirm("You are about to add a New Payment of <br><span class='text-steam-green'>Rs. " + parseFloat(newPayment.amount).toLocaleString('en-US', {
             maximumFractionDigits: 2,
             minimumFractionDigits: 2
         }) + "</span> to the registration : <span class='text-steam-green'>" + registration.registrationNumber + "</span><br><br>Are You Sure?", function (result) {
+            //check if the user has confirmed the action
             if (result) {
-
+                //this means the user has confirmed the action
+                //save the new payment to the database using ajaxHttpRequest function by send a POST request to the backend
+                //get the response from the backend using ajaxHttpRequest function and store it in severResponse variable
                 const severResponse = ajaxHttpRequest("/Payment", "POST", newPayment);
-
+                //check if the response is OK
                 if (severResponse === "OK") {
                     //this means data successfully passed to the backend
-                    //show an alert to user
+                    //show a success alert to the user using external-ModalFunction()
                     showCustomModal("Payment Successfully Added!<br><br>Please Wait Generating Invoice", "success");
+                    //refresh the dashboard widgets
                     refreshDashboardWidgets();
+                    //generate the invoice for the new payment after 2 seconds
                     setTimeout(() => {
+                        //get all the payments for the registration from the database using ajaxHttpRequest function and pop the last payment
                         generateInvoice(ajaxHttpRequest('/Payment/getPaymentsByRegistrationID/' + newPayment.registrationID.id).pop());
+                        //reset the quick payment form
                         resetQuickPaymentForm();
                     }, 2000)
 
 
                 }
                 else{
-                    //this means there was a problem with the query
-                    //shows an error alert to the user
-                    showCustomModal("Operation Failed! <br>" + serviceResponse.responseJSON.error + " <span class='small'>(" + serviceResponse.responseJSON.status + ")</span>", "error");
+                    //this means there was a problem with the data passed to the backend
+                    //show an error alert to the user using external-ModalFunction()
+                    showCustomModal("Operation Failed! <br>" + serviceResponse, "error");
                 }
             }
 
-            else
-            {
-
-            }
         });
     }
     else{
-        //there are errors
-        //display them to the user using external-ModalFunction()
+        //this means there are errors in the form
+        //show the errors to the user using external-ModalFunction()
         showCustomModal(errors, 'warning');
     }
 }
