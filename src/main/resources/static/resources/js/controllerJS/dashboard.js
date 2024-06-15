@@ -31,7 +31,6 @@ const refreshDashboardWidgets = ()=>{
     dailyIncomeText.innerText = "Rs. "+dailyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})
     //daily Income calculation end
 
-
     //monthly Income calculation start
     //get the monthly payments from the database using ajaxGetRequest function and store it in monthlyPayments variable
     const monthlyPayments = ajaxGetRequest("Payment/getMonthlyTotalPayment");
@@ -45,19 +44,26 @@ const refreshDashboardWidgets = ()=>{
     monthlyIncomeText.innerText = "Rs. "+monthlyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})
     //monthly Income calculation end
 
-
     //monthly due calculation start
+    //get the start date of the current month using moment.js and store it in startDateCurrentMonth variable
     const startDateCurrentMonth =  moment().startOf('month').format('YYYY-MM-DD');
+    //get the end date of the current month using moment.js and store it in endDateCurrentMonth variable
     const endDateCurrentMonth =  moment().endOf('month').format('YYYY-MM-DD');
+    //get the due payments from the one time payment registrations from the database using ajaxGetRequest function and store it in fullPaymentDue variable
     const fullPaymentDue = ajaxGetRequest("/Registration/getMonthlyDueRegistration/"+startDateCurrentMonth+"/"+endDateCurrentMonth)
+    //create a variable to store the total monthly due and set the initial value to 0
     let balanceAmount = 0
+    //use forEach function to loop through the fullPaymentDue array and add the balanceAmount to balanceAmount variable
     fullPaymentDue.forEach((registration)=>{
         balanceAmount += registration.balanceAmount;
     })
+    //get the due payments from the part payment registrations from the database using ajaxGetRequest function and store it in partPaymentDue variable
     const partPaymentDue = ajaxGetRequest("/InstallmentPlan/getMonthlyDueRegistration/"+startDateCurrentMonth+"/"+endDateCurrentMonth)
+    //use forEach function to loop through the partPaymentDue array and add the balanceAmount to balanceAmount variable
     partPaymentDue.forEach((installment=>{
         balanceAmount += installment.balanceAmount;
     }))
+    //display the balanceAmount value in the monthlyDueText element
     monthlyDueText.innerText = "Rs. "+balanceAmount.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})
     //monthly due calculation end
 
