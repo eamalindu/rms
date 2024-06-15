@@ -351,25 +351,38 @@ const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount
 
 }
 
+//creating function to load the fee for the selected batch
+//this function has five arguments
+//1) ob -> the selected batch object
+//2) totalFeeInputID -> the element ID to display the total fee
+//3) registrationFeeInputID -> the element ID to display the registration fee
+//4) courseFeeInputID -> the element ID to display the course fee
+//5) isFullPayment -> boolean value to check if the registration is full payment or installment payment
 const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFullPayment)=>{
-
+    //display the total fee, registration fee, course fee in the respective elements using innerHTML
+    //format the total fee, registration fee, course fee to currency type using toLocaleString function
     totalFeeInputID.innerHTML = "Rs. "+(ob.paymentPlanID.totalFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     registrationFeeInputID.innerHTML = "Rs. "+(ob.paymentPlanID.registrationFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     courseFeeInputID.innerHTML = "Rs. "+(ob.paymentPlanID.courseFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
-
+    //reset the tbody of tblInstallments table using innerHTML
     tblInstallments.children[1].innerHTML = '';
 
+    //check if the registration is full payment
     if(isFullPayment) {
+        //this means registration is full payment
+        //set the discount amount to 0
         txtTotalDiscountFeeFullPayment.innerHTML = "-Rs. 0.00";
+        //set the oneTimePaymentAmount to object total fee
         registration.oneTimePaymentAmount = ob.paymentPlanID.totalFee;
+        //set the fullAmount to object total fee
         registration.fullAmount = ob.paymentPlanID.totalFee;
+        //since this is a new registration no payments are done yet. so set the paidAmount to 0
         registration.paidAmount = 0;
+        //set the balanceAmount to object total fee
         registration.balanceAmount = ob.paymentPlanID.totalFee;
 
     }
-
-
 }
 
 const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,installments)=>{
