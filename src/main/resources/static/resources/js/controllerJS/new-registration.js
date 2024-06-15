@@ -84,14 +84,19 @@ let next0 = () => {
     }
 
 }
-let next1 = () => {
 
+//creating a function to go to step 2 in the registration process
+let next1 = () => {
+    //check if the batch is selected
     if(registration.batchID !=null) {
+        //this means batch is selected
         console.log(registration);
-        //footer_2 should have a selected at least one before executing the bellow code
+        //show footer_3 and hide footer_2
         footer_2.classList.remove('show');
         footer_3.classList.add('show');
+        //show step2 as completed
         step2.classList.add('custom-step-complete');
+        //change the step number to a tick
         document.querySelector('#btn-batch .step-number span').innerText = '✔';
 
         //check the standard 0% discount radio
@@ -101,6 +106,8 @@ let next1 = () => {
 
     }
     else{
+        //this means batch is not selected
+        //show a warning message to the user using external function showCustomModal
         showCustomModal("Please Select a Batch !","warning");
     }
 }
