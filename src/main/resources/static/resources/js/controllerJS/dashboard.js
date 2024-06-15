@@ -33,11 +33,15 @@ const refreshDashboardWidgets = ()=>{
 
 
     //monthly Income calculation start
+    //get the monthly payments from the database using ajaxGetRequest function and store it in monthlyPayments variable
     const monthlyPayments = ajaxGetRequest("Payment/getMonthlyTotalPayment");
+    //create a variable to store the total monthly payment and set the initial value to 0
     let monthlyPayment = 0;
+    //use forEach function to loop through the monthlyPayments array and add the amount to monthlyPayment variable
     monthlyPayments.forEach((payment)=>{
         monthlyPayment += payment.amount;
     });
+    //display the monthlyPayment value in the monthlyIncomeText element
     monthlyIncomeText.innerText = "Rs. "+monthlyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})
     //monthly Income calculation end
 
