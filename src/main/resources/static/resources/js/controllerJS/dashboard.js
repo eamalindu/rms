@@ -117,37 +117,63 @@ const generateChartRegistrationCounsellorBreakdown =()=> {
     generateMonochromePieChart('chartRegistrationCounsellorBreakdown', '', 'Registration Count', registrationCount)
 }
 
-
+//creating a function to find registration when ever needed
 const findRegistration=()=>{
+    //get the registration number from the quickPaymentRegistrationNumber element and store it in registrationNumber variable
     registrationNumber =quickPaymentRegistrationNumber.value;
+    //check if the registration number is not empty
     if(registrationNumber!=='') {
-
+        //this means the registration number is not empty
+        //get the registration from the database using ajaxGetRequest function and store it in registration global variable
         registration = ajaxGetRequest("/Registration/getRegistrationByRegistrationNumber/" + registrationNumber);
+        //check if the registration is not empty
         if(registration!==''){
+            //this means the registration is not empty
+            //display the student title with student name with initials in the quickPaymentStudentName element
             quickPaymentStudentName.innerText = registration.studentID.title +". "+registration.studentID.nameWithInitials;
+            //display the course code in the quickPaymentCourseName element
             quickPaymentBatchCode.innerText = registration.batchID.batchCode;
+            //check if the registration is a full payment or a part payment registration
             if(registration.isFullPayment) {
+                //this means the registration is a full payment registration
+                //display the payment plan as One Time Payment in the quickPaymentPaymentPlan element
                 quickPaymentPaymentPlan.innerText = 'One Time Payment';
             }
             else{
+                //this means the registration is a part payment registration
+                //display the payment plan as Installment Plan in the quickPaymentPaymentPlan element
                 quickPaymentPaymentPlan.innerText ='Installment Plan';
             }
+            //display the total outstanding balance and format it using toLocalString function in the quickPaymentBalanceFee element
             quickPaymentBalanceFee.innerText = "Rs. "+registration.balanceAmount.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
 
+            //check the registration status and display the status in the quickPaymentRegistrationStatus element
             if (registration.registrationStatusID.name === "Active") {
+                //this means the registration status is Active
+                //display the status as Active in the quickPaymentRegistrationStatus element
                 quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0 w-auto" style="background: #3FB618">Active</span>';
             } else if (registration.registrationStatusID.name === "Suspended") {
+                //this means the registration status is Suspended
+                //display the status as Suspended in the quickPaymentRegistrationStatus element
                 quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0 w-auto" style="background: #ea8a1e">Suspended</span>';
             } else if (registration.registrationStatusID.name === "Cancelled") {
+                //this means the registration status is Cancelled
+                //display the status as Cancelled in the quickPaymentRegistrationStatus element
                 quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0 w-auto" style="background: #ea2f1e">Cancelled</span>';
             }
             else if (registration.registrationStatusID.name === "Pending"){
+                //this means the registration status is Pending
+                //display the status as Pending in the quickPaymentRegistrationStatus element
                 quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0 w-auto" style="background: #616161">Pending</span>';
             }
             else if (registration.registrationStatusID.name === "In Review"){
+                //this means the registration status is In Review
+                //display the status as In Review in the quickPaymentRegistrationStatus element
                 quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0 w-auto" style="background: #d8b73a">In Review</span>';
             }
             else{
+                //this means the registration status is Deleted
+                //display the status as Deleted in the quickPaymentRegistrationStatus element
                 quickPaymentRegistrationStatus.innerHTML= '<span class="badge rounded-0 w-auto" style="background: #000">Deleted</span>';
             }
 
