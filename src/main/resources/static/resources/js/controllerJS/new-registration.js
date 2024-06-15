@@ -19,6 +19,8 @@ window.addEventListener("load",()=>{
     //reset payment form
     resetPaymentForm();
 
+    //validation chosen select (for new student)
+    //add class select-validated when chosen select change an option
     $("#studentIdOption").chosen().change(function () {
         $("#studentIdOption_chosen .chosen-single").addClass('select-validated');
     });$("#studentLang").chosen().change(function () {
@@ -26,31 +28,29 @@ window.addEventListener("load",()=>{
     });$("#studentGuardianRelationship").chosen().change(function () {
         $("#studentGuardianRelationship_chosen .chosen-single").addClass('select-validated');
     });
+    //validation chosen select (for payment)
     $("#paymentMethod").chosen().change(function () {
         $("#paymentMethod_chosen .chosen-single").addClass('select-validated');
     });
 
 });
 
+//since we cant access the Course duration from the courses directly. creating a function to return the Course duration from the courses object
 const getDuration=(ob)=>{
     return ob.duration +" Months";
 }
 
+//since we cant access the course status from the courses directly. creating a function to return the course statys from the courses object
 const getStatus=(ob)=>{
+    //if the course status is true return a badge with Active status
     if(ob.status){
         return '<span class="badge rounded-0" style="background: #3FB618">Active</span>';
     }
+    //if the course status is false return a badge with Inactive status
     else{
         return '<span class="badge rounded-0" style="background: #FF0039">Inactive</span>';
     }
 }
-
-const radioFunction = (ob,index)=>{
-    textSelectedCourse.innerText = ob.name+" ("+ob.code+")";
-    registration.courseID =ob;
-
-}
-
 
 //get all the steppers
 let step1 = document.querySelector('#btn-course');
