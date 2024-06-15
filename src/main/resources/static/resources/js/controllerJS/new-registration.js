@@ -531,14 +531,19 @@ const handleCourseCardClick = (object , index)=>{
     registration.courseID = object;
 }
 
+//creating a function to reset the student form when ever needed
 const resetStudentForm = ()=>{
+    //reset the form
     frmNewStudent.reset();
-
+    //remove select-validated class from chosen select
     $("#studentIdOption_chosen .chosen-single").removeClass('select-validated');
     $("#studentLang_chosen .chosen-single").removeClass('select-validated');
     $("#studentGuardianRelationship_chosen .chosen-single").removeClass('select-validated');
+    //remove is-valid class from the studentIdOption Element
     studentIdOption.classList.remove('is-valid');
+    //remove is-valid class from the studentLang Element
     studentLang.classList.remove('is-valid');
+    //remove is-valid class from the studentGuardianRelationship Element
     studentGuardianRelationship.classList.remove('is-valid');
 
     //reset student object
@@ -557,15 +562,18 @@ const resetStudentForm = ()=>{
     //remove validation from the inputs all at once
     inputs = document.querySelectorAll('.newStudentInputs');
     inputs.forEach(function (input) {
+        //reset the inline css from input
         input.style = '';
         //remove bootstrap validation classes
         input.classList.remove('is-valid');
         input.classList.remove('is-invalid');
     });
 
+    //initialize chosen select
     $("#studentLang").chosen({width: '100%', disable_search: true});
     $("#studentIdOption").chosen({width: '100%', disable_search: true});
     $("#studentGuardianRelationship").chosen({width: '100%', disable_search: true});
+    //initialize daterangepicker
     $('#studentDOB').daterangepicker({
         "drops": "up",
         "singleDatePicker": true,
@@ -576,8 +584,10 @@ const resetStudentForm = ()=>{
             format: 'YYYY-MM-DD'
         }
     });
+    //bind data to the student object, once the "apply" button on studentDOB input is clicked
     $('#studentDOB').on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        //using inputTextValidator function to validate the input
         inputTextValidator(this, '^(19[89][0-9]|20[0-9]{2})[-][0-9]{2}[-][0-9]{2}$', 'newStudent', 'dob');
 
     });
