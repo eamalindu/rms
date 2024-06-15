@@ -788,15 +788,17 @@ const checkStudentFormErrors = () => {
     return errors;
 }
 
+//creating a function to reset the payment form when ever needed
 const resetPaymentForm = ()=>{
-
+    //remove the select-validated class from the paymentMethod chosen select
     $("#paymentMethod_chosen .chosen-single").removeClass('select-validated');
+    //remove the is-valid class from the paymentMethod Element
     paymentMethod.classList.remove('is-valid');
-
+    //reset the payment object
     newPayment = {};
-
+    //reset the form
     frmAddNewPayment.reset();
-
+    //set default option chosen
     setTimeout(function () {
         $('#paymentMethod').val('').trigger('chosen:updated');
     }, 0);
@@ -804,15 +806,18 @@ const resetPaymentForm = ()=>{
     //remove validation from the inputs all at once
     inputs = document.querySelectorAll('.newRegistrationPaymentInputs');
     inputs.forEach(function (input) {
+        //reset the inline css from input
         input.style = '';
         //remove bootstrap validation classes
         input.classList.remove('is-valid');
         input.classList.remove('is-invalid');
     });
 
-//setting payment inputs
+    //get all the payment methods from the database using ajaxGetRequest function and save it in paymentMethods variable
     const paymentMethods = ajaxGetRequest('/PaymentType/findall');
+    //fill the paymentMethod select options using fillSelectOptions function
     fillSelectOptions(paymentMethod,' ',paymentMethods,'name')
+    //initialize chosen select
     $('#paymentMethod').chosen({width: '100%'});
 
 
