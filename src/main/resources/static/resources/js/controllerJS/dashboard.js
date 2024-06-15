@@ -196,16 +196,19 @@ const findRegistration=()=>{
     }
 }
 
+//creating a function to reset the quick payment form when ever needed
 const resetQuickPaymentForm = ()=>{
     //remove collapse show class
     collapseRegistration.classList.remove('show');
-
+    //disable the add payment button
     btnAddPayment.disabled = true;
-
+    //remove the select-validated class from the quickPaymentMethod element
     $("#quickPaymentMethod_chosen .chosen-single").removeClass('select-validated');
+    //remove the is-valid class from the quickPaymentMethod element
     quickPaymentMethod.classList.remove('is-valid');
-
+    //reset the newPayment object
     newPayment = {}
+    //reset the registration form
     frmQuickPayment.reset();
 
     //set default option chosen
@@ -216,14 +219,17 @@ const resetQuickPaymentForm = ()=>{
     //remove validation from the inputs all at once
     inputs = document.querySelectorAll('.newQuickPaymentInputs');
     inputs.forEach(function (input) {
+        //remove inline css from the input
         input.style = '';
         //remove bootstrap validation classes
         input.classList.remove('is-valid');
         input.classList.remove('is-invalid');
     });
-
+    //get all the payment methods from the database using ajaxGetRequest function and store it in paymentMethods variable
     const paymentMethods = ajaxGetRequest('/PaymentType/findall');
+    //using the external function fillSelectOptions to fill the data from the database to the select element (dynamic select)
     fillSelectOptions(quickPaymentMethod,' ',paymentMethods,'name')
+    //initialize the chosen select
     $('#quickPaymentMethod').chosen({width: '100%'});
 }
 
