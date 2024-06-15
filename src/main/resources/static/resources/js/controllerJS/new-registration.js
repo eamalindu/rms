@@ -513,11 +513,14 @@ const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,insta
 
 }
 
+//creating a function to handle to batch card click
 const handleBatchCardClick = (object, index) => {
     console.log(object);
+    //set the batchID to the selected batch object
     registration.batchID = object;
+    //load fee for full payment using loadFee function
     loadFee(object,txtTotalFeeFullPayment,txtRegistrationFeeFullPayment,txtCourseFeeFullPayment,true);
-    //load fee for installment payment
+    //load fee for installment payment using loadFee function
     loadFee(object,txtTotalFeePartPayment,txtRegistrationFeePartPayment,txtCourseFeePartPayment,false);
 };
 
