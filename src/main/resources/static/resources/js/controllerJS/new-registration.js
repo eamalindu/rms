@@ -3,15 +3,6 @@ window.addEventListener("load",()=>{
     registration = {};
     //get all the courses from the database using ajaxGetRequest function and store it in global courses variable
     courses =  ajaxGetRequest("/Course/findall");
-    //creating a display property list for the courses
-    displayPropertyListForCourse = [
-        {property: 'name',dataType: 'text'},
-        {property: 'code',dataType: 'text'},
-        {property: getDuration,dataType: 'function'},
-        {property: 'minimumRequirement',dataType: 'text'},
-        {property: 'lectureHours',dataType: 'text'},
-        {property: getStatus,dataType: 'function'},
-    ]
     //using the function createCourseRadioCards to create cards for each course
     createCourseRadioCards(courses,handleCourseCardClick,testA);
     //reset student form
@@ -35,22 +26,6 @@ window.addEventListener("load",()=>{
 
 });
 
-//since we cant access the Course duration from the courses directly. creating a function to return the Course duration from the courses object
-const getDuration=(ob)=>{
-    return ob.duration +" Months";
-}
-
-//since we cant access the course status from the courses directly. creating a function to return the course statys from the courses object
-const getStatus=(ob)=>{
-    //if the course status is true return a badge with Active status
-    if(ob.status){
-        return '<span class="badge rounded-0" style="background: #3FB618">Active</span>';
-    }
-    //if the course status is false return a badge with Inactive status
-    else{
-        return '<span class="badge rounded-0" style="background: #FF0039">Inactive</span>';
-    }
-}
 
 //get all the steppers
 let step1 = document.querySelector('#btn-course');
