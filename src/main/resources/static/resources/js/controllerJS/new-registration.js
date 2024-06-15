@@ -358,6 +358,7 @@ const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount
 //3) registrationFeeInputID -> the element ID to display the registration fee
 //4) courseFeeInputID -> the element ID to display the course fee
 //5) isFullPayment -> boolean value to check if the registration is full payment or installment payment
+//example -> loadFee(testObject,txtTotalFeeFullPayment,txtRegistrationFeeFullPayment,txtCourseFeeFullPayment,true)
 const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFullPayment)=>{
     //display the total fee, registration fee, course fee in the respective elements using innerHTML
     //format the total fee, registration fee, course fee to currency type using toLocaleString function
@@ -385,6 +386,14 @@ const loadFee = (ob,totalFeeInputID,registrationFeeInputID,courseFeeInputID,isFu
     }
 }
 
+//creating a function to calculate the installment plan
+//this function has five arguments
+//1) elementID -> ID of the checkbox
+//2) totalFee -> total course fee
+//3) registrationFee -> registration fee
+//4) courseFee -> course fee
+//5) installments -> number of installments
+//example -> calculateInstallments(testElement,50000,3000,47000,8)
 const calculateInstallments =(elementID,totalFee,registrationFee,courseFee,installments)=>{
     if(elementID.checked){
         installmentPlan=[];
