@@ -276,16 +276,22 @@ let previous1 = () => {
 
 
 }
-
+//creating a function to go back to step3 in the registration process
 let previous2 = () => {
+    //check if the batch or course is selected
     if(registration.courseID!==undefined || registration.batchID!==undefined) {
+        //show footer_3 and hide footer_4
         footer_3.classList.add('show');
         footer_4.classList.remove('show');
+        //remove the custom-step-complete class from step3
         step3.classList.remove('custom-step-complete');
+        //change the step number to 3
         document.querySelector('#btn-payment-str .step-number span').innerText = '3';
 
     }
     else{
+        //this means course or batch is not selected
+        //show a warning message to the user using external function showCustomModal
         showCustomModal("Please Complete The Previous Step !","warning");
 
     }
