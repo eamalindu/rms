@@ -69,17 +69,24 @@ const refreshDashboardWidgets = ()=>{
 
 }
 
+//creating a function to generate the chart for registration breakdown when ever needed
 const generateChartRegistrationBreakdown = ()=>{
+    //get all the courses from the database using ajaxGetRequest function and store it in courses variable
     const courses = ajaxGetRequest("/Course/findall");
+    //create a variable to store the course code from all the courses
     let courseCode = [];
+    //create a variable to store the registration count from all the courses
     let registrationCount = [];
+    //use forEach function to loop through the courses array and add the course code to courseCode variable and registration count to registrationCount variable
     courses.forEach((course)=>{
         courseCode.push(course.code);
+        //get the monthly registrations for the current course from the database using ajaxGetRequest function and push the response array length to registrationCount variable
         registrationCount.push(ajaxGetRequest("/Registration/getMonthlyRegistrationByCourseID/"+course.id).length)
     });
+    //display the contents of the both array in the console
     console.log(courseCode);
     console.log(registrationCount);
-
+    //generate the chart using generateChart function
     generateChart(chartRegistrationBreakdown,'',courseCode,'Registration Count',[{name: 'Courses', data: registrationCount, color: "#11306d"}])
 }
 
