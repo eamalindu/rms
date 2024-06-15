@@ -615,19 +615,32 @@ const automateGender = ()=>{
     }
 }
 
+//creating a function to automate the name with initials when the full name is entered
 const automateInitials = ()=>{
+    //split the full name by space and save it in fullname variable
     let fullname = studentFullName.value.split(" ");
+    //create a variable to store the initials name and set it to empty
     let initialsName = '';
+    //loop through the fullname array
     fullname.forEach((word, index) => {
+        //check if the index is less than the length of the fullname array
         if (index < fullname.length - 1) {
+            //this means the index is less than the length of the fullname array
+            //add the first letter of the word and a dot to the initialsName variable
+            //this will create the initials name
             initialsName += word[0] + ".";
 
         }
         else{
+            //this means the index is equal to the length of the fullname array
+            //add the word to the initialsName variable
+            //this will add the last name to the initials name
             initialsName += word;
         }
     });
+    //display the initials name in the studentNameWithInitials input
     studentNameWithInitials.value=initialsName;
+    //validate the studentNameWithInitials input using inputTextValidator function
     inputTextValidator(studentNameWithInitials,'^[A-Z][.][A-Z][.][A-Z][.][A-Z][a-z]{5,}$','newStudent','nameWithInitials')
 
 }
