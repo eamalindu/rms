@@ -240,13 +240,17 @@ let next5 = ()=>{
     footer_6.classList.add('show');
 }
 
+//creating a function to go back to step1 in the registration process
 let previous0 = () => {
+    //show footer_1 and hide footer_2
     footer_1.classList.add('show');
     footer_2.classList.remove('show');
+    //remove the custom-step-complete class from step1
     step1.classList.remove('custom-step-complete');
+    //change the step number to 1
     document.querySelector('#btn-course .step-number span').innerText = '1';
 
-    //all the values should be null expect the course
+    //set batchID to null
     registration.batchID = null;
 
 }
