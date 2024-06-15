@@ -299,37 +299,54 @@ let previous2 = () => {
 
 }
 
-
+//creating a function to calculate the discount amount when ever needed
+//This function has five arguments
+//1) elementID -> ID of the radio button
+//2) totalFee -> total course fee
+//3) registrationFee -> registration fee
+//4) courseFee -> course fee
+//5) discount -> discount amount in percentage(with out % icon)
+//example -> calculateDiscount(testElement,50000,3000,47000,10)
 const calculateDiscount = (elementID,totalFee,registrationFee,courseFee,discount)=>{
-
+    //check if the radio button is checked
     if(elementID.checked){
-
-
-
-        //calculate discount amount and update relevant fields
+        //this means radio button is checked
+        //calculate the discount amount based on parameters and save it in discountReceived variable
+        //discount percentage is only applied to the course fee
         discountReceived = (courseFee * (discount)/100);
+        //calculate the final course fee by subtracting the discount amount from the course fee and save it in finalCourseFee variable
         finalCourseFee = (courseFee - discountReceived);
+        //calculate the final total fee by adding the registration fee to the final course fee and save it in finalTotalFee variable
         finalTotalFee =  finalCourseFee + registrationFee;
 
+        //since discount are only available for the full payment type registrations
+        //set the isFullPayment to true
         registration.isFullPayment = true;
+        //set the oneTimePaymentAmount to the finalTotalFee
         registration.oneTimePaymentAmount = finalTotalFee;
+        //set the discountRate to the discount
         registration.discountRate = discount;
+        //set the discountAmount to the discountReceived
         registration.discountAmount = discountReceived;
-
-        //new code for biding total amount,paid and balance amount to registration object
+        //set the fullAmount to the finalTotalFee
         registration.fullAmount = finalTotalFee;
+        //since this is a new registration no payments are done yet. so set the paidAmount to 0
         registration.paidAmount = 0;
+        //set the balanceAmount to the finalTotalFee
         registration.balanceAmount = finalTotalFee;
 
+        //display the discount amount in the lblDiscountFeeHeading element using innerHTML
         lblDiscountFeeHeading.innerHTML = "Discount "+discount+"% Off";
-
+        //display the discount amount in the lblDiscountFee element using innerHTML
+        //format the discount amount, registration fee, course fee, discount received, final total fee to currency type using toLocaleString function
+        //display the registration fee in the txtRegistrationFeeFullPayment element using innerHTML
         txtRegistrationFeeFullPayment.innerHTML = "Rs. "+ registrationFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        //display the course fee in the txtCourseFeeFullPayment element using innerHTML
         txtCourseFeeFullPayment.innerHTML = "Rs. "+ courseFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        //display the discount received in the txtTotalDiscountFeeFullPayment element using innerHTML
         txtTotalDiscountFeeFullPayment.innerHTML = "- Rs. "+discountReceived.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        //display the final total fee in the txtTotalFeeFullPayment element using innerHTML
         txtTotalFeeFullPayment.innerHTML = "Rs. "+ finalTotalFee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-
-
-
     }
 
 }
