@@ -524,8 +524,10 @@ const handleBatchCardClick = (object, index) => {
     loadFee(object,txtTotalFeePartPayment,txtRegistrationFeePartPayment,txtCourseFeePartPayment,false);
 };
 
+//creating a function to handle the course card click
 const handleCourseCardClick = (object , index)=>{
     console.log(object);
+    //set the courseID to the selected course object
     registration.courseID = object;
 }
 
