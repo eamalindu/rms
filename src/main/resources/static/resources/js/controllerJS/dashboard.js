@@ -2,12 +2,14 @@ window.addEventListener('load',()=>{
 
     //using refreshDashboardWidgets to refresh the dashboard widget values
     refreshDashboardWidgets();
+    //using generateChartRegistrationBreakdown to generate the chart for registration breakdown
     generateChartRegistrationBreakdown();
+    //using generateChartRegistrationCounsellorBreakdown to generate the chart for registration breakdown by counsellor
     generateChartRegistrationCounsellorBreakdown();
-
+    //using resetQuickPaymentForm to reset the quick payment form
     resetQuickPaymentForm();
 
-    //validation chosen select (for new batch)
+    //validation chosen select (for new quick payment)
     $("#quickPaymentMethod").chosen().change(function () {
         $("#quickPaymentMethod_chosen .chosen-single").addClass('select-validated');
     });
