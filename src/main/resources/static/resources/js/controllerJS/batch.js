@@ -690,7 +690,7 @@ const newBatchSubmit = () => {
     //calling the checkBatchFormErrors function and catching the return value to errors variable
     let errors = checkBatchFormErrors(newBatch);
     //check the errors variable is null
-    //if it's null that means all the required inputs are filled
+    //if it's empty that means all the required inputs are filled
     if (errors === '') {
         //get a user confirmation using external customConfirm js
         showCustomConfirm("You are about to add a New Batch<br>Are You Sure?", function (result) {
