@@ -15,14 +15,19 @@ window.addEventListener('load',()=>{
     });
 });
 
+//creating a function to refresh the dashboard widgets when ever needed
 const refreshDashboardWidgets = ()=>{
 
     //daily Income calculation start
+    //get the daily payments from the database using ajaxGetRequest function and store it in dailyPayments variable
     const dailyPayments = ajaxGetRequest("/Payment/getDailyIncome");
+    //create a variable to store the total daily payment and set the initial value to 0
     let dailyPayment=0;
+    //use forEach function to loop through the dailyPayments array and add the amount to dailyPayment variable
     dailyPayments.forEach((payment)=>{
         dailyPayment += payment.amount;
     });
+    //display the dailyPayment value in the dailyIncomeText element
     dailyIncomeText.innerText = "Rs. "+dailyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})
     //daily Income calculation end
 
