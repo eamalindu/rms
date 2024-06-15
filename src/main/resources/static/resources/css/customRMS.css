@@ -400,6 +400,11 @@ input, .form-control {
 .text-in-review{
     color: #d8b73a!important;
 }
+
+/*Custom css for highchart JS*/
+g text {
+    font-weight:normal!important;
+}
 /*Validated chosen select*/
 .select-validated {
     /*background: rgba(0,255,0,0.2)!important;*/
