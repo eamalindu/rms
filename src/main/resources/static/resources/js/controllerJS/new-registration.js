@@ -892,6 +892,8 @@ const newPaymentSubmit=()=>{
     }
 }
 
+//creating a reusable function to check all the required inputs are filled by checking bound values
+//this function will return if there are any unfilled inputs and unbind data
 const checkPaymentFormErrors = ()=>{
     //check for binding
     //0 isn't allowed as a payment
