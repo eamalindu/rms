@@ -84,7 +84,6 @@ let next0 = () => {
     }
 
 }
-
 //creating a function to go to step 2 in the registration process
 let next1 = () => {
     //check if the batch is selected
