@@ -186,7 +186,7 @@ const rowView = (ob, index) => {
     //using external function ajaxGetRequest to get all the batchStatus from the database and save it in batchStatus variable
     batchStatus = ajaxGetRequest("/BatchStatus/findall");
 
-    //using the external function fillDataIntoTable to fill the data from the database to the select element (dynamic select)
+    //using the external function fillSelectOptions to fill the data from the database to the select element (dynamic select)
     //this function is a variation of the fillSelectOption because it accepts a fifth parameter to display the selected value in the provided property
     fillSelectOptions(batchSheetCourse, 'Please Select a Course', courses, 'name', ob.courseID.name)
     fillSelectOptions(batchSheetPaymentPlan, 'Please Select a Payment Plan', paymentPlans, 'name', ob.paymentPlanID.name)
