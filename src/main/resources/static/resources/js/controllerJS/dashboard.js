@@ -63,7 +63,7 @@ const generateChartRegistrationBreakdown = ()=>{
     console.log(courseCode);
     console.log(registrationCount);
 
-    generateChart(chartRegistrationBreakdown,`${new Date().getFullYear()}-${new Date().toLocaleString('default', { month: 'short' })}`,courseCode,'Registration Count',[{name: 'Courses', data: registrationCount, color: "#11306d"}])
+    generateChart(chartRegistrationBreakdown,'',courseCode,'Registration Count',[{name: 'Courses', data: registrationCount, color: "#11306d"}])
 }
 
 const generateChartRegistrationCounsellorBreakdown =()=> {
@@ -79,7 +79,7 @@ const generateChartRegistrationCounsellorBreakdown =()=> {
     })
 
     //generateChart(chartRegistrationCounsellorBreakdown,`${new Date().getFullYear()}-${new Date().toLocaleString('default', { month: 'short' })}`,counsellors,'Registration Count',[{name: 'Counsellors', data: registrationCount, color: "#11306d"}])
-    generateMonochromePieChart('chartRegistrationCounsellorBreakdown', `${new Date().getFullYear()}-${new Date().toLocaleString('default', { month: 'short' })}`, 'Registration Count', registrationCount)
+    generateMonochromePieChart('chartRegistrationCounsellorBreakdown', '', 'Registration Count', registrationCount)
 }
 
 
