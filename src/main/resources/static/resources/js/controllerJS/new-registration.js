@@ -594,17 +594,24 @@ const resetStudentForm = ()=>{
 
 }
 
+//creating a function to automatically to select the gender once the radio button is clicked
 const automateGender = ()=>{
+    //check if the studentMr radio button is checked
     if(studentMr.checked){
+        //this means studentMr radio button is checked
+        //set the radioGender to false
         radioGender.checked = false;
+        //validate the radioGender using checkBoxValidator function
         checkBoxValidator(radioGender, leftMale, rightFemale, 'newStudent', 'gender', 'Female', 'Male');
 
     }
+    //check if the studentMs radio button or studentMrs radio button is checked
     if(studentMs.checked || studentMrs.checked){
+        //this means studentMs radio button or studentMrs radio button is checked
+        //set the radioGender to true
         radioGender.checked =true;
+        //validate the radioGender using checkBoxValidator function
         checkBoxValidator(radioGender, leftMale, rightFemale, 'newStudent', 'gender', 'Female', 'Male');
-
-
     }
 }
 
