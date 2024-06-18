@@ -1,10 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<head th:replace="~{fragments/head :: headFragment}"></head>
+
 <body>
 
+<!--Loader Start-->
+<div th:replace="~{fragments/loader :: loader}"></div>
+<!-- Loader end-->
+
+<!--Navbar start-->
+<nav th:replace="~{ fragments/navbar :: navbarFragment}"></nav>
+<!--Navbar end-->
+
+<!-- Display Current Page -->
+<div class="container-fluid bg-custom-white custom-banner">
+    <h5>Manage Day Plan</h5>
+</div>
+
+<div class="container-fluid pt-2">
+    <div class="card rounded-0">
+        <div class="card-body rounded-0">
+            <div class="row align-items-center d-flex justify-content-around">
+                <div class="col-12 col-lg-4 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1">
+
+<!--                    <label class="text-uppercase small m-0 p-0 text-muted" for="courseSearchID">Search</label>-->
+<!--                    <div class="input-group">-->
+<!--                        <span class="input-group-text bg-custom-white rounded-0"><i-->
+<!--                                class="fa-solid fa-magnifying-glass"></i></span>-->
+<!--                        <input class="form-control rounded-0" id="courseSearchID"-->
+<!--                               placeholder="Course Code">-->
+<!--                        <div class="d-flex align-items-center justify-content-evenly">-->
+<!--                            <button class="btn bg-steam-green rounded-0 text-white" id="courseSearchButton" onclick="" type="button"><i-->
+<!--                                    class="fa-solid fa-magnifying-glass small"></i></button>-->
+<!--                            <button class="btn btn-close-red rounded-0 text-white ms-3" id="courseSearchReset" onclick="" type="reset"><i-->
+<!--                                    class="fa-solid fa-xmark"></i></button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+                </div>
+                <div class="col-12 col-lg-7 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1 text-end">
+                    <p class="text-uppercase small m-0 p-0 text-muted">Create a New Day Plan</p>
+                    <button aria-controls="staticBackdrop"
+                            class="btn pointer bg-steam-green text-white rounded-0 text-end"
+                            data-bs-target="#offCanvasCourse" data-bs-toggle="offcanvas"><i
+                            class="fa-solid fa-plus"></i> Day Plan
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="/resources/js/external-commonFunction.js" type="text/javascript"></script>
+<script src="/resources/js/external-table.js" type="text/javascript"></script>
+<script src="/resources/js/external-modalFunction.js" type="text/javascript"></script>
+<script src="/resources/js/external-loader.js" type="text/javascript"></script>
+<script src="/resources/js/controllerJS/dayPlan.js"></script>
+<script th:replace="~{ fragments/logout :: logoutScript}"></script>
 </body>
 </html>
