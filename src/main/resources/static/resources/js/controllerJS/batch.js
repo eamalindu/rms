@@ -445,9 +445,11 @@ const resetTimeTableForm = ()=>{
     //remove validation class from the chosen select element
     $("#batchClassDay_chosen .chosen-single").removeClass('select-validated');
     $("#batchLectureRoom_chosen .chosen-single").removeClass('select-validated');
+    $("#batchLecturer_chosen .chosen-single").removeClass('select-validated');
     //remove boostrap validation classes from the select elements
     batchClassDay.classList.remove('is-valid');
     batchLectureRoom.classList.remove('is-valid');
+    batchLecturer.classList.remove('is-valid');
 
     //reset batchHasDay object
     batchHasDay = {};
@@ -459,6 +461,7 @@ const resetTimeTableForm = ()=>{
     setTimeout(function () {
         $('#batchClassDay').val('').trigger('chosen:updated');
         $('#batchLectureRoom').val('').trigger('chosen:updated');
+        $('#batchLecturer').val('').trigger('chosen:updated');
     }, 0);
 
     //remove the inline css from inputs
@@ -486,6 +489,7 @@ const resetTimeTableForm = ()=>{
     //initialize the 3rd party libraries (chosen)
     $('#batchClassDay').chosen({width: '100%'});
     $('#batchLectureRoom').chosen({width: '100%'});
+    $('#batchLecturer').chosen({width: '100%'});
 }
 
 //creating a function to auto generate the last registration date according to the selected commence date
