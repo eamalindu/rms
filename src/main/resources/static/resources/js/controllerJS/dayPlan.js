@@ -30,8 +30,15 @@ const getBatchInfo = ()=>{
     const selectedBatch = JSON.parse(dayPlanBatch.value);
     const attendances  = ajaxGetRequest("/Attendance/getAttendanceByBatchIDForToday/"+selectedBatch.id)
 
+    const displayPropertyListForAttendance = [
+        {},
+    ]
+
     //set information
     collapseBatchAttendance.innerText = attendances.length;
+
+    //set attendance
+    fillDataIntoTableWithOutAction(tblAttendance,attendances,displayPropertyListForAttendance)
 
     //test code
     // Create a new Date object for the current date and time
