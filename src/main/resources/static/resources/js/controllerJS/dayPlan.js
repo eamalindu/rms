@@ -25,5 +25,6 @@ const resetInnerForm = ()=>{
 }
 
 const getBatchInfo = ()=>{
-
+    const selectedBatch = JSON.parse(dayPlanBatch.value);
+    const attendances  = ajaxGetRequest("/Attendance/getAttendanceByBatchIDForToday/"+selectedBatch.id)
 }
