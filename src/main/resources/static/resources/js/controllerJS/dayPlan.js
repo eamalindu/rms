@@ -31,7 +31,9 @@ const getBatchInfo = ()=>{
     const attendances  = ajaxGetRequest("/Attendance/getAttendanceByBatchIDForToday/"+selectedBatch.id)
 
     const displayPropertyListForAttendance = [
-        {},
+        {property: getRegistrationNumber, dataType: 'function'},
+        {property: getStudentName, dataType: 'function'},
+        {property: getTimeStamp, dataType: 'function'},
     ]
 
     //set information
@@ -67,4 +69,14 @@ const getBatchInfo = ()=>{
         }
     }
 
+}
+
+const getRegistrationNumber = (ob)=>{
+    return ob.registrationID.registrationNumber;
+}
+const getStudentName = (ob)=>{
+    return ob.registrationID.studentID.nameWithInitials;
+}
+const getTimeStamp = (ob)=>{
+    return ob.timeStamp.replace('T',' ');
 }
