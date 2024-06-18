@@ -207,7 +207,8 @@ const refreshExamTable =()=>{
         {property: getLessonName, dataType: 'function'},
         {property: 'examDate', dataType: 'text'},
         {property: getRegistration, dataType: 'function'},
-        {property: getStudentName, dataType: 'function'}
+        {property: getStudentName, dataType: 'function'},
+        {property: getStatus, dataType: 'function'}
     ];
     fillDataIntoTable(tblExamAttempts,attempts,displayPropertyListForExamAttempts,rowView,'');
 }
@@ -226,6 +227,12 @@ const getRegistration=(ob)=>{
 }
 const getStudentName=(ob)=>{
     return ob.registrationID.studentID.title+" "+ob.registrationID.studentID.nameWithInitials;
+}
+
+const getStatus=(ob)=>{
+    if(ob.examDate<new Date()){
+        return "<span class='badge badge-success'>Completed</span>";
+    }
 }
 
 const rowView = (ob,index)=>{
