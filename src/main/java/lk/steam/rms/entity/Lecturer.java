@@ -30,7 +30,4 @@ public class Lecturer {
     @NotNull
     private String name;
 
-    @OneToOne
-    @JoinColumn(name = "employee_id",referencedColumnName = "id")
-    private Employee employeeID;
 }
