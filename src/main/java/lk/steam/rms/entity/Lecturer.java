@@ -30,7 +30,7 @@ public class Lecturer {
     @NotNull
     private String name;
 
-    @Column(name = "employeenumber")
+    @Column(name = "employeeid")
     @NotNull
     private Integer employeeID;
 
