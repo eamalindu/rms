@@ -594,17 +594,28 @@
             <div class="invalid-feedback">Please provide a valid End Time</div>
             <div class="text-muted small"><small>Lecture hours are 08:30 to 17:00</small></div>
         </div>
-        <div class="mb-4">
+        <div class="mb-2">
             <div class="form-label">
                 <label class="fw-bold small required" for="batchLectureRoom">Lecture Room</label>
             </div>
-            <select class="form-select rounded-0" data-placeholder="Please Select a Lecure Room"
+            <select class="form-select rounded-0" data-placeholder="Please Select a Lecture Room"
                     id="batchLectureRoom" onchange="selectDynamicValueValidator(this,'','batchHasDay','lectureRoomID')"
                     required>
             </select>
             <div class="valid-feedback">Value Accepted</div>
             <div class="invalid-feedback">Please provide a valid End Time</div>
         </div>
+            <div class="mb-4">
+                <div class="form-label">
+                    <label class="fw-bold small required" for="batchLectureRoom">Lecturer</label>
+                </div>
+                <select class="form-select rounded-0" data-placeholder="Please Select a Lecturer "
+                        id="batchLecturer" onchange="selectDynamicValueValidator(this,'','batchHasDay','lectureRoomID')"
+                        required>
+                </select>
+                <div class="valid-feedback">Value Accepted</div>
+                <div class="invalid-feedback">Please provide a valid Lecturer</div>
+            </div>
         <div class="d-flex justify-content-evenly">
         <button class="btn btn-sm bg-steam-green text-white rounded-0" type="button" onclick="addToTimeTable()"><i class="fa-solid fa-plus"></i> Add Schedule</button>
 
