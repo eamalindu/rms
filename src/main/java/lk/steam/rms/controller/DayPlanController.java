@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-@RequestMapping("/Day-Plan")
+@RequestMapping("/Daily Schedule")
 
 public class DayPlanController {
 
@@ -26,7 +26,7 @@ public class DayPlanController {
         dayPlanView.setViewName("dayplan.html");
 
         dayPlanView.addObject("username",auth.getName());
-        dayPlanView.addObject("title","Manage Day Plan | STEAM RMS");
+        dayPlanView.addObject("title","Daily Schedule | STEAM RMS");
         dayPlanView.addObject("activeNavItem","dayPlan");
 
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
