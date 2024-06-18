@@ -78,7 +78,7 @@
                             <label class="fw-bold small required" for="dayPlanBatch">Batch</label>
                         </div>
                         <select class="form-select rounded-0" data-placeholder="Please Select a Batch" id="dayPlanBatch"
-                                onchange="selectDynamicValueValidator(this,'','newDayPlan','batchID')" required>
+                                onchange="selectDynamicValueValidator(this,'','newDayPlan','batchID');getBatchInfo();" required>
                             <option>Dynamic Value 1</option>
                             <option>Dynamic Value 2</option>
                             <option>Dynamic Value 3</option>
@@ -89,10 +89,11 @@
                     </div>
                     <div class="collapse mb-2 show" id="collapseBatch">
                         <div class="card card-body rounded-0 small">
-                            <p class="mb-0">Attendance Count : <span><a id="collapseBatchAttendance" class="text-decoration-underline text-dark" data-bs-toggle="modal" data-bs-target="#modalBatchAttendance">123</a></span></p>
-                            <p class="mb-0">Start Time : <span id="collapseBatchStartTime"></span></p>
-                            <p class="mb-0">End Time : <span id="collapseBatchEndTime"></span></p>
-                            <p class="mb-0">Duration (Hr) : <span id="collapseBatchDuration"></span></p>
+                            <p class="mb-0">Attendance Count : <span class="text-muted"><a id="collapseBatchAttendance" class="text-decoration-underline text-dark" data-bs-toggle="modal" data-bs-target="#modalBatchAttendance">123</a></span></p>
+                            <br>
+                            <p class="mb-0">Start Time : <span class="text-muted" id="collapseBatchStartTime"></span></p>
+                            <p class="mb-0">End Time : <span class="text-muted" id="collapseBatchEndTime"></span></p>
+                            <p class="mb-0">Duration (Hr) : <span class="text-muted" id="collapseBatchDuration"></span></p>
                         </div>
                     </div>
                 </form>
