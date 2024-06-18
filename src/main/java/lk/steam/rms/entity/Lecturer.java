@@ -30,4 +30,8 @@ public class Lecturer {
     @NotNull
     private String name;
 
+    @Column(name = "employeenumber")
+    @NotNull
+    private String employeeNumber;
+
 }
