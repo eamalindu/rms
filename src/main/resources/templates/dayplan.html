@@ -89,7 +89,7 @@
                     </div>
                     <div class="collapse mb-2 show" id="collapseBatch">
                         <div class="card card-body rounded-0 small">
-                            <p class="mb-0">Attendance Count : <span id="collapseBatchAttendance"></span></p>
+                            <p class="mb-0">Attendance Count : <span id="collapseBatchAttendance"><a data-bs-toggle="modal" data-bs-target="#modalBatchAttendance"></a></span></p>
                             <p class="mb-0">Start Time : <span id="collapseBatchStartTime"></span></p>
                             <p class="mb-0">End Time : <span id="collapseBatchEndTime"></span></p>
                             <p class="mb-0">Duration (Hr) : <span id="collapseBatchDuration"></span></p>
@@ -101,6 +101,21 @@
     </div>
 </div>
 
+
+<div class="modal fade" id="modalBatchAttendance" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalBatchAttendance" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-0">
+            <div class="modal-header bg-custom-white">
+                <h5 class="modal-title" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">
+                    Attendance List </h5>
+
+            </div>
+            <div class="modal-body p-3">
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="/resources/js/external-validator.js" type="text/javascript"></script>
 <script src="/resources/js/external-commonFunction.js" type="text/javascript"></script>
