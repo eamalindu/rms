@@ -3,11 +3,17 @@ package lk.steam.rms.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalTime;
 
 @Entity
 @Table(name = "dayplan_has_lesson")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class DayPlanHasLesson {
     @Id
     @Column(name = "id",unique = true)
