@@ -14,7 +14,7 @@
 
 <!-- Display Current Page -->
 <div class="container-fluid bg-custom-white custom-banner">
-    <h5>Manage Day Plan</h5>
+    <h5>Daily Schedule</h5>
 </div>
 
 <div class="container-fluid pt-2">
@@ -66,7 +66,7 @@
         </div>
         <h3 class="float-end mt-2"
             style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">New
-            Day Plan</h3>
+            Daily Schedule</h3>
     </div>
     <div class="offcanvas-body">
         <p class="m-0 fw-bold text-end"><label class="required"></label><span class="text-danger"><sup> Mandatory Fields </sup></span></p>
@@ -97,12 +97,12 @@
                         </div>
                     </div>
                     <div class="mb-5 mt-3 border p-1 bg-light text-center">
-                        <p class="fw-bold mb-1 form-label">Add Session</p>
+                        <p class="fw-bold mb-1 form-label">Add a Session</p>
                         <button aria-controls="staticBackdrop" class="btn pointer bg-success btn-sm mb-1 text-white rounded-0 text-end" data-bs-target="#offCanvasSession" data-bs-toggle="offcanvas" type="button"><i class="fa-solid fa-plus"></i> Add
                         </button>
                         <div class="text-muted small">
-                            <small>Click "+ Add" to add a session for the Day Plan</small></div>
-                        <table class="table table-sm table-bordered small mb-0 mt-2" id="tblTimetable">
+                            <small>Click "+ Add" to add a session for Today's Schedule</small></div>
+                        <table class="table table-sm table-bordered small mb-0 mt-2 d-none" id="tblSession">
                             <thead class="align-middle">
                             <tr>
                                 <th class="small">#</th>
