@@ -27,8 +27,8 @@ public interface BatchDAO extends JpaRepository<Batch,Integer> {
     @Query("SELECT b from Batch b JOIN BatchHasDay bhd on b.id = bhd.batchID.id JOIN Day d ON bhd.dayID.id = d.id where d.name = DAYNAME(CURDATE()) and b.batchStatusID.id=2")
     List<Batch> getBatchesConductToday();
 
-    @Query("SELECT b from Batch b JOIN BatchHasDay bhd on b.id = bhd.batchID.id JOIN Day d ON bhd.dayID.id = d.id where d.name = DAYNAME(CURDATE()) and bhd.lecturerID.employeeNumber =?1 and b.batchStatusID.id=2")
-    List<Batch> getBatchesConductTodayByLecturer(String lecturerCode);
+    @Query("SELECT b from Batch b JOIN BatchHasDay bhd on b.id = bhd.batchID.id JOIN Day d ON bhd.dayID.id = d.id where d.name = DAYNAME(CURDATE()) and bhd.lecturerID.employeeID =?1 and b.batchStatusID.id=2")
+    List<Batch> getBatchesConductTodayByLecturer(Integer lecturerCode);
 
     @Query("SELECT b from Batch b where b.courseID.id=?1")
     List<Batch> getBatchesByCourseID(Integer courseID);
