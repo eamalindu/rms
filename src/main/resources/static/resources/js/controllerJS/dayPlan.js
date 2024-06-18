@@ -51,8 +51,8 @@ const getBatchInfo = ()=>{
     for(let i = 0; i < selectedBatch.batchHasDayList.length; i++){
         const day = selectedBatch.batchHasDayList[i];
         if(day.dayID.name === currentDayName){
-            collapseBatchStartTime.innerText = day.startTime;
-            collapseBatchEndTime.innerText = day.endTime;
+            collapseBatchStartTime.innerText = day.startTime.slice(0,-3);
+            collapseBatchEndTime.innerText = day.endTime.slice(0,-3);
             break;
         }
     }
