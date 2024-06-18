@@ -11,7 +11,7 @@ window.addEventListener("load", () => {
 const resetDayPlanForm = () => {
 
     newDayPlan = {}
-
+    const loggedInUserEmployee = ajaxGetRequest("/User/getEmployeeByUsername/"+btnProfileName.innerText);
     const batches = ajaxGetRequest("/Batch/getBatchesConductTodayByLecturer/" + btnProfileName.innerText);
     fillSelectOptions(dayPlanBatch, ' ', batches, "batchCode");
     $('#dayPlanBatch').chosen({width: '100%'});

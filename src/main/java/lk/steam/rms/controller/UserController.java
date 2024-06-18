@@ -1,6 +1,7 @@
 package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.UserDAO;
+import lk.steam.rms.entity.Employee;
 import lk.steam.rms.entity.Privilege;
 import lk.steam.rms.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,11 @@ public class UserController {
     @GetMapping(value = "/getUserByEmail/{email}",produces = "application/json")
     public User getUserByEmail(@PathVariable String email){
         return userDAO.getUserByEmail(email);
+    }
+
+    @GetMapping(value = "/getEmployeeByUsername/{username}",produces = "application/json")
+    public Employee getEmployeeByUsername(@PathVariable String username){
+        return userDAO.getEmployeeByUsername(username);
     }
 
     @GetMapping(value = "/findall")
