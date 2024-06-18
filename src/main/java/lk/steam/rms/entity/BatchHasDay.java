@@ -41,4 +41,8 @@ public class BatchHasDay {
     @OneToOne
     @JoinColumn(name = "lectureroom_id",referencedColumnName = "id")
     private LectureRoom lectureRoomID;
+
+    @OneToOne
+    @JoinColumn(name = "lecturer_id",referencedColumnName = "id")
+    private Lecturer lecturerID;
 }
