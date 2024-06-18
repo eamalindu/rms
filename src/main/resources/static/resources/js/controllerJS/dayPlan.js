@@ -33,26 +33,29 @@ const getBatchInfo = ()=>{
     //set information
     collapseBatchAttendance.innerText = attendances.length;
 
-    collapseBatchDuration.innerText =   selectedBatch.batchHasDayList;
-
     //test code
     // Create a new Date object for the current date and time
     const currentDate = new Date();
 
-// Define an array with the full names of the days of the week
-    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
 // Get the current day of the week as a number (0-6) using getDay()
-    const currentDayNumber = currentDate.getDay();
-
-// Use the day number to get the corresponding day name from the array
-    const currentDayName = daysOfWeek[currentDayNumber];
+    const currentDayNumber = currentDate.getDay()+1;
 
     for(let i = 0; i < selectedBatch.batchHasDayList.length; i++){
         const day = selectedBatch.batchHasDayList[i];
-        if(day.dayID.name === currentDayName){
+        if(day.dayID.id === currentDayNumber){
+            console.log(day.dayID.name);
             collapseBatchStartTime.innerText = day.startTime.slice(0,-3);
             collapseBatchEndTime.innerText = day.endTime.slice(0,-3);
+            //calculate difference
+            const startTime = moment(day.startTime, 'HH:mm');
+            const endTime = moment(day.endTime, 'HH:mm');
+            const duration = moment.duration(endTime.diff(startTime));
+            const adjustedDuration = duration.subtract(30, 'minutes');
+
+            const hours = Math.floor(adjustedDuration.asHours());
+            const minutes = adjustedDuration.minutes();
+
+            collapseBatchDuration.innerText =   hours + "h " + minutes + "m";
             break;
         }
     }
