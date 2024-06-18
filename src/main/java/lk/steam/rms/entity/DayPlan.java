@@ -24,7 +24,7 @@ public class DayPlan {
     @NotNull
     private String addedBy;
 
-    @OneToMany(mappedBy = "dayID",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "dayPlanID",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<DayPlanHasLesson> dayPlanHasLessonList;
 
 }
