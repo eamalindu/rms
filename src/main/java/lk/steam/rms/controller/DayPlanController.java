@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-@RequestMapping("/Daily Schedule")
+@RequestMapping("/Daily-Schedule")
 
 public class DayPlanController {
 
