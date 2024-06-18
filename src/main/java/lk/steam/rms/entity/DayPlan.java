@@ -24,6 +24,10 @@ public class DayPlan {
     @NotNull
     private String addedBy;
 
+    @ManyToOne
+    @JoinColumn(name = "batch_id",referencedColumnName = "id")
+    private Batch batchID;
+
     @OneToMany(mappedBy = "dayPlanID",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<DayPlanHasLesson> dayPlanHasLessonList;
 
