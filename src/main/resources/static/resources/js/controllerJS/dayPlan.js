@@ -23,3 +23,7 @@ const resetDayPlanForm = () => {
 const resetInnerForm = ()=>{
     dayPlanHasLesson = {}
 }
+
+const getBatchInfo = ()=>{
+
+}
