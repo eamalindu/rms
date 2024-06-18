@@ -1,9 +1,17 @@
 window.addEventListener("load", () => {
 
     resetDayPlanForm();
+
+    //validation chosen select (for new Day Plan)
+    $("#dayPlanBatch").chosen().change(function () {
+        $("#dayPlanBatch_chosen .chosen-single").addClass('select-validated');
+    });
 });
 
 const resetDayPlanForm = () => {
+
+    newDayPlan = {}
+
     const batches = ajaxGetRequest("/Batch/getBatchesConductTodayByLecturer/" + btnProfileName.innerText);
     fillSelectOptions(dayPlanBatch, ' ', batches, "batchCode");
     $('#dayPlanBatch').chosen({width: '100%'});
@@ -13,5 +21,5 @@ const resetDayPlanForm = () => {
 
 
 const resetInnerForm = ()=>{
-
+    dayPlanHasLesson = {}
 }
