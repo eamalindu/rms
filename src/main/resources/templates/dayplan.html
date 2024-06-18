@@ -39,11 +39,11 @@
 
                 </div>
                 <div class="col-12 col-lg-7 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1 text-end">
-                    <p class="text-uppercase small m-0 p-0 text-muted">Create a New Day Plan</p>
+                    <p class="text-uppercase small m-0 p-0 text-muted">Create a New Daily Schedule</p>
                     <button aria-controls="staticBackdrop"
                             class="btn pointer bg-steam-green text-white rounded-0 text-end"
                             data-bs-target="#offCanvasDayPlan" data-bs-toggle="offcanvas"><i
-                            class="fa-solid fa-plus"></i> Day Plan
+                            class="fa-solid fa-plus"></i> Daily Schedule
                     </button>
                 </div>
 
@@ -95,6 +95,26 @@
                             <p class="mb-0">Attendance Count : <span class="text-muted"><a id="collapseBatchAttendance" class="text-decoration-underline text-dark" data-bs-toggle="modal" data-bs-target="#modalBatchAttendance">123</a></span></p>
 
                         </div>
+                    </div>
+                    <div class="mb-5 mt-3 border p-1 bg-light text-center">
+                        <p class="fw-bold mb-1 form-label">Add Session</p>
+                        <button aria-controls="staticBackdrop" class="btn pointer bg-success btn-sm mb-1 text-white rounded-0 text-end" data-bs-target="#offCanvasSession" data-bs-toggle="offcanvas" type="button"><i class="fa-solid fa-plus"></i> Add
+                        </button>
+                        <div class="text-muted small">
+                            <small>Click "+ Add" to add a session for the Day Plan</small></div>
+                        <table class="table table-sm table-bordered small mb-0 mt-2" id="tblTimetable">
+                            <thead class="align-middle">
+                            <tr>
+                                <th class="small">#</th>
+                                <th class="small">Day</th>
+                                <th class="small">Start Time</th>
+                                <th class="small">End Time</th>
+                                <th class="small">Lecture Room</th>
+                                <th class="small">Remove</th>
+                            </tr>
+                            </thead>
+                            <tbody class="align-middle small"><tr><td colspan="6">No Records Found!</td></tr></tbody>
+                        </table>
                     </div>
                 </form>
             </div>
