@@ -26,6 +26,10 @@ public class Lecturer {
     @NotNull
     private Boolean status;
 
+    @Column(name = "name")
+    @NotNull
+    private String name;
+
     @OneToOne
     @JoinColumn(name = "employee_id",referencedColumnName = "id")
     private Employee employeeID;
