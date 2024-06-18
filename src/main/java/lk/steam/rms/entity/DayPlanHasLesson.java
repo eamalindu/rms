@@ -2,6 +2,9 @@ package lk.steam.rms.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "dayplan_has_lesson")
@@ -19,4 +22,18 @@ public class DayPlanHasLesson {
     @ManyToOne(optional = false)
     @JoinColumn(name = "lesson_id",referencedColumnName = "id")
     private Lesson lessonID;
+
+    @Column(name = "starttime")
+    @NotNull
+    private LocalTime startTime;
+
+    @Column(name = "endtime")
+    @NotNull
+    private LocalTime endTime;
+
+    @Column(name = "duration")
+    @NotNull
+    private Integer duration;
+
+
 }
