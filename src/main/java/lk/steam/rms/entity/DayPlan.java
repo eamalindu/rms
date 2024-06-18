@@ -1,12 +1,12 @@
 package lk.steam.rms.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Table(name = "dayplan")
@@ -20,13 +20,11 @@ public class DayPlan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private LocalTime startTime;
-
-    private LocalTime endTime;
-
+    @Column(name = "addedby")
+    @NotNull
     private String addedBy;
 
-    private LocalDateTime timeStamp;
+    @OneToMany(mappedBy = "dayID",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<DayPlanHasLesson> dayPlanHasLessonList;
 
-    //lesson id here
 }
