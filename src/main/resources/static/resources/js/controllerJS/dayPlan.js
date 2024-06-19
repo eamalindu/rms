@@ -100,7 +100,7 @@ const generateSchedule = ()=>{
         slotMinTime: '08:00:00', // Start time of the calendar
         slotMaxTime: '18:00:00', // End time of the calendar
         contentHeight: 'auto', // Adjust height to fit the content
-        slotDuration: '00:30:00', // 30 minute interval
+        slotDuration: '01:00:00', // 30 minute interval
         slotLabelInterval: '01:00', // Show time label every hour
         nowIndicator: true,
         slotLabelFormat: { hour: '2-digit', minute: '2-digit', hour12: false }, // Format for time slots
