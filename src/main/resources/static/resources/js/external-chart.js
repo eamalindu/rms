@@ -24,7 +24,7 @@ const generateChart=(elementID,title,categories,yAxis,series)=>{
         },
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:rebeccapurple;padding:0">'+yAxis+': </td>' +
+            pointFormat: '<tr><td style="color:#3788d8;padding:0">'+yAxis+': </td>' +
                 '<td style="padding:0"><b>&nbsp;{point.y}</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
@@ -57,7 +57,7 @@ const generateMonochromePieChart = (elementID, title,axisName, series) => {
         },
         tooltip: {
             headerFormat: '<span style="font-size:10px">'+axisName+'</span><table>',
-            pointFormat: '<tr><td style="color:rebeccapurple;padding:0">{point.name}: </td>' +
+            pointFormat: '<tr><td style="color:#3788d8;padding:0">{point.name}: </td>' +
                 '<td style="padding:0"><b>&nbsp;{point.y}</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
@@ -72,16 +72,7 @@ const generateMonochromePieChart = (elementID, title,axisName, series) => {
                     format: '{point.name}: {point.y}',
                     connectorColor: 'silver'
                 },
-                colors: (function () {
-                    var colors = [],
-                        base = Highcharts.getOptions().colors[0],
-                        i;
-
-                    for (i = 0; i < 10; i += 1) {
-                        colors.push(Highcharts.color(base).brighten((i - 3) / 7).get());
-                    }
-                    return colors;
-                }())
+                colors: ['#3788d8','#4ea0f2','#6eb5f7','#8ec9fc','#b0dcff','#d2f0ff']
             }
         },
         series: [{
