@@ -90,3 +90,42 @@ const generateMonochromePieChart = (elementID, title,axisName, series) => {
         }]
     });
 }
+
+const generateLineChart = (elementID, title, categories, yAxis, series) => {
+    Highcharts.chart(elementID, {
+        chart: {
+            type: 'line',
+            backgroundColor: '#ffffff'
+        },
+        title: {
+            text: title
+        },
+        xAxis: {
+            categories: categories,
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: yAxis
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:rebeccapurple;padding:0">'+yAxis+': </td>' +
+                '<td style="padding:0"><b>&nbsp;{point.y}</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: true
+            }
+        },
+        series: series
+    });
+}
