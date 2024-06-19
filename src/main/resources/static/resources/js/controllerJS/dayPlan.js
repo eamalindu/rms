@@ -109,7 +109,7 @@ const generateSchedule = ()=>{
         headerToolbar: {
             left: 'timeGridDay,listDay',
             center: '',
-            right: 'title' // Added listDay to view options
+            right: '' // Added listDay to view options
         },
         views: {
             listDay: { buttonText: 'List Day' }, // Custom text for the list day button
@@ -124,7 +124,7 @@ const generateSchedule = ()=>{
         nowIndicator: true,
         slotLabelFormat: { hour: '2-digit', minute: '2-digit', hour12: false }, // Format for time slots
         events: event,
-        eventColor: '#13357a',
+        eventColor: 'navyblue', // Set the event color
         eventTimeFormat: { // like '14:30:00'
             hour: '2-digit',
             minute: '2-digit',
