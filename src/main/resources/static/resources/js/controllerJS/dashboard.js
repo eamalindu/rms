@@ -87,7 +87,7 @@ const generateChartRegistrationBreakdown = ()=>{
     console.log(courseCode);
     console.log(registrationCount);
     //generate the chart using generateChart function
-    generateChart(chartRegistrationBreakdown,'',courseCode,'Registration Count',[{name: 'Courses', data: registrationCount, color: "#11306d"}])
+    generateChart(chartRegistrationBreakdown,'',courseCode,'Registration Count',[{name: 'Courses', data: registrationCount, color: "#3788d8"}])
 }
 
 //creating a function to generate the chart for registration breakdown by counsellor when ever needed
