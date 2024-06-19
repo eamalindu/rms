@@ -112,8 +112,8 @@ const generateLineChart = (elementID, title, categories, yAxis, series) => {
         },
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:rebeccapurple;padding:0">'+yAxis+': </td>' +
-                '<td style="padding:0"><b>&nbsp;{point.y}</b></td></tr>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y} {yAxis}</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
             useHTML: true
@@ -121,7 +121,7 @@ const generateLineChart = (elementID, title, categories, yAxis, series) => {
         plotOptions: {
             line: {
                 dataLabels: {
-                    enabled: true
+                    enabled: false
                 },
                 enableMouseTracking: true
             }
