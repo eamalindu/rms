@@ -86,7 +86,7 @@ const generateSchedule = ()=>{
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
         themeSystem: 'bootstrap5',
-        initialView: 'timeGridDay', // Set the initial view to day view
+        initialView: 'listDay', // Set the initial view to day view
         headerToolbar: {
             left: 'timeGridDay,listDay',
             center: '',
