@@ -124,7 +124,7 @@ const generateSchedule = ()=>{
         nowIndicator: true,
         slotLabelFormat: { hour: '2-digit', minute: '2-digit', hour12: false }, // Format for time slots
         events: event,
-        eventColor: '#663399',
+        eventColor: '#13357a',
         eventTimeFormat: { // like '14:30:00'
             hour: '2-digit',
             minute: '2-digit',
