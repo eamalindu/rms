@@ -1,7 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:replace="~{fragments/head :: headFragment}"></head>
-
+<style>
+    .fc-event {
+        width: 99%; /* Adjust the width as needed */
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 10px;
+    }
+    .fc-col-header-cell-cushion,.fc-list-day-text{
+        color: black;
+        text-decoration: none;
+        font-size: large;
+    }
+    .fc-direction-ltr .fc-timegrid-slot-label-frame{
+        text-align: left;
+    }
+    .fc .fc-timegrid-col.fc-day-today {
+        background-color:#f3f3f3;
+    }
+</style>
 <body>
 
 <!--Loader Start-->
@@ -47,6 +65,12 @@
                     </button>
                 </div>
 
+            </div>
+        </div>
+        <div class="card-footer show pt-4 pb-4">
+            <div class="d-flex">
+            <div class="w-50 mx-auto" id="currentSchedule"></div>
+            <div class="w-50 mx-auto"></div>
             </div>
         </div>
 
@@ -159,6 +183,7 @@
 <script src="/resources/js/external-table.js" type="text/javascript"></script>
 <script src="/resources/js/external-modalFunction.js" type="text/javascript"></script>
 <script src="/resources/js/external-loader.js" type="text/javascript"></script>
+<script src="/resources/fullcalendar-6.1.14/index.global.min.js" type="text/javascript"></script>
 <script src="/resources/js/controllerJS/dayPlan.js"></script>
 <script th:replace="~{ fragments/logout :: logoutScript}"></script>
 </body>

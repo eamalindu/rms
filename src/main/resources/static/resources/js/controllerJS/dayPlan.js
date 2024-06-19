@@ -1,7 +1,7 @@
 window.addEventListener("load", () => {
 
     resetDayPlanForm();
-
+    generateSchedule();
     //validation chosen select (for new Day Plan)
     $("#dayPlanBatch").chosen().change(function () {
         $("#dayPlanBatch_chosen .chosen-single").addClass('select-validated');
@@ -79,4 +79,59 @@ const getStudentName = (ob)=>{
 }
 const getTimeStamp = (ob)=>{
     return ob.timeStamp.replace('T',' ');
+}
+
+const generateSchedule = ()=>{
+    var calendarEl = document.getElementById('currentSchedule');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        themeSystem: 'bootstrap5',
+        initialView: 'timeGridDay', // Set the initial view to day view
+        headerToolbar: {
+            left: 'timeGridDay,listDay',
+            center: '',
+            right: '' // Added listDay to view options
+        },
+        views: {
+            listDay: { buttonText: 'List Day' }, // Custom text for the list day button
+            timeGridDay: { buttonText: 'Day' }, // Custom text for the list day button
+        },
+        allDaySlot: false, // Hide the all-day slot
+        slotMinTime: '08:00:00', // Start time of the calendar
+        slotMaxTime: '18:00:00', // End time of the calendar
+        contentHeight: 'auto', // Adjust height to fit the content
+        slotDuration: '00:30:00', // 30 minute interval
+        slotLabelInterval: '01:00', // Show time label every hour
+        nowIndicator: true,
+        slotLabelFormat: { hour: '2-digit', minute: '2-digit', hour12: false }, // Format for time slots
+        events: [
+            // Example events
+            {
+                title: 'Lecture 1',
+                start: '2024-06-19T08:30:00',
+                end: '2024-06-19T12:30:00',
+
+            },
+            {
+                title: 'Lecture 2',
+                start: '2024-06-19T13:00:00',
+                end: '2024-06-19T16:30:00',
+
+            },
+
+        ],
+        eventColor: '#663399',
+        eventTimeFormat: { // like '14:30:00'
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+        },
+
+
+
+
+    });
+
+    calendar.render();
+
 }
