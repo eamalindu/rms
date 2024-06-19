@@ -93,7 +93,7 @@ const generateSchedule = ()=>{
         for(let i = 0; i < batch.batchHasDayList.length; i++){
             const day = batch.batchHasDayList[i];
             if(day.dayID.id === currentDayNumber){
-                event.push({title:'Batch : '+batch.batchCode+' Location : '+day.lectureRoomID.name,start:moment(currentDate).format('YYYY-MM-DD')+"T"+day.startTime,end:moment(currentDate).format('YYYY-MM-DD')+"T"+day.endTime});
+                event.push({title:'Batch : '+batch.batchCode+'\xa0\xa0\xa0 Location : '+day.lectureRoomID.name,start:moment(currentDate).format('YYYY-MM-DD')+"T"+day.startTime,end:moment(currentDate).format('YYYY-MM-DD')+"T"+day.endTime});
 
             }
         }
