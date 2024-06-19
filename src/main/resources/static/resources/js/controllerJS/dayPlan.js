@@ -81,7 +81,7 @@ const getTimeStamp = (ob)=>{
     return ob.timeStamp.replace('T',' ');
 }
 
-const generateSchedule = (event)=>{
+const generateSchedule = ()=>{
     var calendarEl = document.getElementById('currentSchedule');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -104,8 +104,23 @@ const generateSchedule = (event)=>{
         slotLabelInterval: '01:00', // Show time label every hour
         nowIndicator: true,
         slotLabelFormat: { hour: '2-digit', minute: '2-digit', hour12: false }, // Format for time slots
-        events:event,
-        eventColor: '#18326e',
+        events: [
+            // Example events
+            {
+                title: 'Lecture 1',
+                start: '2024-06-19T08:30:00',
+                end: '2024-06-19T12:30:00',
+
+            },
+            {
+                title: 'Lecture 2',
+                start: '2024-06-19T13:00:00',
+                end: '2024-06-19T16:30:00',
+
+            },
+
+        ],
+        eventColor: '#663399',
         eventTimeFormat: { // like '14:30:00'
             hour: '2-digit',
             minute: '2-digit',
