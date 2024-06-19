@@ -109,7 +109,7 @@ const generateSchedule = ()=>{
         headerToolbar: {
             left: 'timeGridDay,listDay',
             center: '',
-            right: '' // Added listDay to view options
+            right: 'title' // Added listDay to view options
         },
         views: {
             listDay: { buttonText: 'List Day' }, // Custom text for the list day button
