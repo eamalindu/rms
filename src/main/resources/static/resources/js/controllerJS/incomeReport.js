@@ -1,6 +1,6 @@
 window.addEventListener('load', () => {
     resetSearchForm();
-
+    generateChart();
     $("#registrationSearchCourse").chosen().change(function () {
         $("#registrationSearchCourse_chosen .chosen-single").addClass('bg-light');
     });
@@ -67,6 +67,8 @@ const getIncomeReport = () => {
 }
 
 const generateChart = ()=>{
+    const startDate = moment().startOf('month').format('YYYY-MM-DD');
+    const endDate = moment().endOf('month').format('YYYY-MM-DD');
     const currentMonth = ajaxGetRequest("/Payment/getMonthlyTotalPayment")
-    const previousMonth = ajaxGetRequest("/Payment/")
+    const previousMonth = ajaxGetRequest("/Payment/getPaymentsByStartDateAndEndDate/"+startDate+"/"+endDate)
 }
