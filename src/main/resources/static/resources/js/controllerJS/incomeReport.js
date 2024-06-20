@@ -1,6 +1,6 @@
 window.addEventListener('load', () => {
     resetSearchForm();
-    generateChart();
+    generateTestChart();
     $("#registrationSearchCourse").chosen().change(function () {
         $("#registrationSearchCourse_chosen .chosen-single").addClass('bg-light');
     });
@@ -66,9 +66,12 @@ const getIncomeReport = () => {
 
 }
 
-const generateChart = ()=>{
+const generateTestChart = ()=>{
     const startDate = moment().startOf('month').format('YYYY-MM-DD');
     const endDate = moment().endOf('month').format('YYYY-MM-DD');
     const currentMonth = ajaxGetRequest("/Payment/getMonthlyTotalPayment")
     const previousMonth = ajaxGetRequest("/Payment/getPaymentsByStartDateAndEndDate/"+startDate+"/"+endDate)
+    const cate = [moment().startOf('month').format('MMMM'),moment().subtract(1, "month").startOf("month").format('MMMM')]
+
+    generateLineChart(test,'Income Comparison',cate,'Total Income',[{name:moment().startOf('month').format('MMMM'),data:[1000,2000]},{name:moment().subtract(1, "month").startOf("month").format('MMMM'),data:[1000,1000]}])
 }
