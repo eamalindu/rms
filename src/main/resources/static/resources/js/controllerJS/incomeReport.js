@@ -65,3 +65,8 @@ const getBatches = () => {
 const getIncomeReport = () => {
 
 }
+
+const generateChart = ()=>{
+    const currentMonth = ajaxGetRequest("/Payment/getMonthlyTotalPayment")
+    const previousMonth = ajaxGetRequest("/Payment/")
+}
