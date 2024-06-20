@@ -32,4 +32,7 @@ public interface PaymentDAO extends JpaRepository<Payment,Integer> {
 
     @Query(value = "SELECT p.* FROM payment p JOIN registration r ON p.registration_id = r.id JOIN batch b ON r.batch_id = b.id WHERE (?1 IS NULL OR r.course_id = ?1) AND (?2 IS NULL OR r.batch_id = ?2) AND (?3 IS NULL OR p.paymenttype_id = ?3) AND (?4 IS NULL OR p.addedby = ?4) AND (?5 IS NULL OR DATE(p.paiddatetime) >= ?5) AND (?6 IS NULL OR DATE(p.paiddatetime) <= ?6)", nativeQuery = true)
     List<Payment> getPaymentsForReport(Integer courseID, Integer batchID, Integer paymentTypeID, String addedBy, String startDate,String endDate);
+
+    @Query(value = "SELECT * FROM steam.payment where date(paiddatetime)>=?1 and date(paiddatetime)<=?2",nativeQuery = true)
+    List<Payment> getPaymentsByStartDateAndEndDate(String startDate, String endDate);
 }
