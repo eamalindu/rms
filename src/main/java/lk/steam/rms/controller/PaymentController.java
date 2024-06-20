@@ -204,6 +204,11 @@ public class PaymentController {
         return paymentDAO.getMonthlyTotalCashPayment();
     }
 
+    @GetMapping(value = "/getPaymentsByStartDateAndEndDate/{startDate}/{endDate}", produces = "application/json")
+    public List<Payment> getPaymentsByStartDateAndEndDate(@PathVariable String startDate, @PathVariable String endDate) {
+        return paymentDAO.getPaymentsByStartDateAndEndDate(startDate, endDate);
+    }
+
     @GetMapping(value = "/getCashiers", produces = "application/json")
     public List<String> getCashiers() {
         return paymentDAO.getCashiers();
