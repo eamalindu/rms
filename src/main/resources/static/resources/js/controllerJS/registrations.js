@@ -248,6 +248,16 @@ const rowView=(ob,index)=>{
     studentCourseTabNameWithInitials.innerText = ob.studentID.nameWithInitials;
     studentCourseTabBatchCode.innerText = ob.batchID.batchCode;
 
+    ob.batchID.batchHasDayList.forEach(day=>{
+        studentCourseTabLecturer.innerText += day.lecturerID.name;
+        studentCourseTabTimeTable.innerText +=day.dayID.name+" "
+    })
+
+    const displayListForLessonList = [{property: 'name', dataType: 'text'}]
+    ob.batchID.courseID.lessonList.sort((a, b) => a.id - b.id);
+    fillDataIntoTableWithOutAction(tblCurriculum,ob.batchID.courseID.lessonList,displayListForLessonList)
+
+
     //setting data for payment Tab
     if(ob.fullAmount===ob.balanceAmount){
 
