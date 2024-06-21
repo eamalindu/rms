@@ -248,10 +248,20 @@ const rowView=(ob,index)=>{
     studentCourseTabNameWithInitials.innerText = ob.studentID.nameWithInitials;
     studentCourseTabBatchCode.innerText = ob.batchID.batchCode;
 
-    ob.batchID.batchHasDayList.forEach(day=>{
-        studentCourseTabLecturer.innerText += day.lecturerID.name;
-        studentCourseTabTimeTable.innerText +=day.dayID.name+" "
-    })
+    let lecturerAppended = false;
+
+    ob.batchID.batchHasDayList.forEach((day, index) => {
+        if (!lecturerAppended) {
+            studentCourseTabLecturer.innerText += day.lecturerID.name;
+            lecturerAppended = true;
+        }
+        studentCourseTabTimeTable.innerText += day.dayID.name;
+
+        // Check if it is not the last item in the list
+        if (index < ob.batchID.batchHasDayList.length - 1) {
+            studentCourseTabTimeTable.innerText += ", ";
+        }
+    });
 
     const displayListForLessonList = [{property: 'name', dataType: 'text'}]
     ob.batchID.courseID.lessonList.sort((a, b) => a.id - b.id);
