@@ -239,7 +239,7 @@ const createCourseRadioCards = (dataList, functionEx, container) => {
         cardDiv.innerHTML = `
           <div class="card-body p-1">
             <div class="d-flex">
-            <div class="w-25">
+            <div class="w-auto">
                 <img src="data:image/png;base64,${element.logo}" width="100px">
             </div>
             <div class="w-100 d-flex align-items-center justify-content-center">
