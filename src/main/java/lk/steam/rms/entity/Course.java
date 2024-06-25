@@ -29,6 +29,10 @@ public class Course {
     @NotNull
     private String code; //5 unique
 
+    @Column(name = "logo")
+    @NotNull
+    private byte[] logo;
+
     @Column(name ="minimumrequirements",length = 45)
     @NotNull
     private String minimumRequirement; //45
