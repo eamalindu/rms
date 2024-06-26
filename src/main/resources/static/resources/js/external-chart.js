@@ -72,7 +72,13 @@ const generateMonochromePieChart = (elementID, title,axisName, series) => {
                     format: '{point.name}: {point.y}',
                     connectorColor: 'silver'
                 },
-                colors: ['#3788d8','#4ea0f2','#6eb5f7','#8ec9fc','#b0dcff','#d2f0ff']
+                colors: series.map(() => ({
+                    linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+                    stops: [
+                        [0, '#5ecde1'],
+                        [1, '#2caee2']
+                    ]
+                }))
             }
         },
         series: [{
