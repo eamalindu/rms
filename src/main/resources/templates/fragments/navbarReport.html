@@ -52,16 +52,17 @@
                             <div class="card w-100 p-0 m-0 border-0 rounded-0">
                                 <div class="card-body rounded-0">
                                     <div class="d-flex align-items-center justify-content-between gap-3">
-                                        <img class="" src="https://emc.sgp1.digitaloceanspaces.com/uploads/hris/employees/photos/1556/1556.jpeg" width="50px">
+                                        <img class="" th:src="${loggedInImage}" width="50px">
                                         <div>
                                             <p class="text-muted small text-small mb-0" th:text="${loggedInEmployeeName}">Employee Name</p>
                                             <p class="text-muted small text-small mb-0"><small th:text="${loggedInDesignationName}">Employee Destination</small></p>
                                         </div>
 
                                     </div>
-                                    <div class="btn btn-sm btn-danger w-100 text-white border-0 text-center mt-3" onclick="logout()">Logout</div>
-                                </div>
 
+                                    <div class="btn btn-sm btn-danger w-75 text-white border-0 text-center mt-3" onclick="logout()">Logout</div>
+                                    <div class="btn btn-sm btn-secondary w-25 mt-3"><i class="fa fa-user-gear"></i></div>
+                                </div>
                             </div>
                         </div>
                     </ul>
