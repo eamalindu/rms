@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Base64;
+
 @RestController
 @RequestMapping("/Daily-Schedule")
 
@@ -31,8 +33,12 @@ public class DayPlanController {
 
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
         String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
+        String base64Image = Base64.getEncoder().encodeToString(photoBytes);
+        String imageSrc = "data:image/png;base64," + base64Image;
         dayPlanView.addObject("loggedInEmployeeName",loggedInEmployeeName);
         dayPlanView.addObject("loggedInDesignationName",loggedInDesignationName);
+        dayPlanView.addObject("loggedInImage",imageSrc);
         return dayPlanView;
     }
 
