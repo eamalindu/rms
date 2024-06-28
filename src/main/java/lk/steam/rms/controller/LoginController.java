@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.Base64;
+
 @RestController
 public class LoginController {
 
@@ -37,8 +42,14 @@ public class LoginController {
         dashboardView.addObject("title","Dashboard | STEAM RMS");
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
         String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+
+        byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
+        String base64Image = Base64.getEncoder().encodeToString(photoBytes);
+        String imageSrc = "data:image/png;base64," + base64Image;
+
         dashboardView.addObject("loggedInEmployeeName",loggedInEmployeeName);
         dashboardView.addObject("loggedInDesignationName",loggedInDesignationName);
+        dashboardView.addObject("loggedInImage",imageSrc);
         return dashboardView;
     }
 }

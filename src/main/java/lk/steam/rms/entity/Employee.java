@@ -26,7 +26,7 @@ public class Employee {
 
     @Column(name = "photopath")
     @NotNull
-    private String photoPath;
+    private byte[] photoPath;
 
     @Column(name = "fullname")
     @NotNull
