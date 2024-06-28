@@ -52,8 +52,12 @@ public class ReportController {
 
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
         String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
+        String base64Image = Base64.getEncoder().encodeToString(photoBytes);
+        String imageSrc = "data:image/png;base64," + base64Image;
         reportView.addObject("loggedInEmployeeName",loggedInEmployeeName);
         reportView.addObject("loggedInDesignationName",loggedInDesignationName);
+        reportView.addObject("loggedInImage",imageSrc);
         return reportView;
     }
 
@@ -70,8 +74,12 @@ public class ReportController {
 
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
         String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
+        String base64Image = Base64.getEncoder().encodeToString(photoBytes);
+        String imageSrc = "data:image/png;base64," + base64Image;
         reportView.addObject("loggedInEmployeeName",loggedInEmployeeName);
         reportView.addObject("loggedInDesignationName",loggedInDesignationName);
+        reportView.addObject("loggedInImage",imageSrc);
         return reportView;
     }
 
@@ -88,8 +96,12 @@ public class ReportController {
 
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
         String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
+        String base64Image = Base64.getEncoder().encodeToString(photoBytes);
+        String imageSrc = "data:image/png;base64," + base64Image;
         reportView.addObject("loggedInEmployeeName",loggedInEmployeeName);
         reportView.addObject("loggedInDesignationName",loggedInDesignationName);
+        reportView.addObject("loggedInImage",imageSrc);
         return reportView;
     }
 
