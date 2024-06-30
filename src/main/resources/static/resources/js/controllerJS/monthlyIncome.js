@@ -2,6 +2,7 @@ window.addEventListener('load',()=>{
 
     refreshMonthlyBreakDownTable();
     refreshMonthlyCashBreakdownTable();
+    generateMonthlyBreakDownLineChart();
 
     reportColumnFormat = [
         {name: 'Added By', data: 'addedBy'},
@@ -142,4 +143,9 @@ const refreshMonthlyCashBreakdownTable = ()=>{
     // var tbody = tblCashIncome.children[1];
     // tbody.appendChild(trFinalAmount);
 
+}
+
+const generateMonthlyBreakDownLineChart = ()=>{
+    console.log("Start Date is"+startDate);
+    console.log("End Date is"+endDate);
 }
