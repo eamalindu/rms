@@ -97,12 +97,6 @@ const refreshMonthlyBreakDownTable = ()=>{
 
     fillDataIntoTableWithOutAction(tblMonthlyIncome,monthlyPayments,displayPropertyListForDailyIncome);
 
-    if(monthlyPayments.length!==0){
-        $('#tblMonthlyIncome').dataTable();
-    }
-
-
-
     // const trFinalAmount = document.createElement('tr');
     // trFinalAmount.innerHTML =`<td class="text-end" colspan="8">Total</td><td class="fw-bold">Rs. ${monthlyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>`;
     // var tbody = tblMonthlyIncome.children[1];
@@ -134,10 +128,6 @@ const refreshMonthlyCashBreakdownTable = ()=>{
     ];
 
     fillDataIntoTableWithOutAction(tblCashIncome,monthlyCashPayments,displayPropertyListForCashIncome);
-
-    if(monthlyCashPayments.length!==0) {
-        $('#tblCashIncome').dataTable();
-    }
 
     // const trFinalAmount = document.createElement('tr');
     // trFinalAmount.innerHTML =`<td class="text-end" colspan="8">Total</td><td class="fw-bold">Rs. ${monthlyCashPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>`;
