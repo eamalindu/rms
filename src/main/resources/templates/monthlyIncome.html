@@ -19,15 +19,14 @@
 <div class="container-fluid pt-2">
     <div class="card rounded-0">
         <div class="card-body rounded-0">
-            <h2 class="text-muted text-uppercase fs-6 mb-2">Showing all transactions that occurred from  <span id="currentStartDate"></span> to <span id="currentEndDate"></span></h2>
+            <h2 class="text-muted text-uppercase fs-6 mb-4">Showing all transactions that occurred from  <span id="currentStartDate"></span> to <span id="currentEndDate"></span></h2>
             <div id="test"></div>
         </div>
         <div class="card-footer show pb-4">
-
-            <div class="w-100 d-flex mt-5 mb-3">
-                <div class="w-75 d-flex align-items-center gap-3">
+            <div class="w-100 d-flex mt-3 mb-3">
+                <div class="w-75 d-flex align-items-center gap-2">
                     <h4 class="text-center fw-bold" style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Monthly Income Breakdown</h4>
-                    <h4 class="text-center fw-bold" style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Total : <span style="font-family: Arial,serif;text-transform: uppercase;font-size: medium" id="fullAmountText"></span></h4>
+                    <h4 class="text-center fw-bold" style="font-family: Arial,serif;text-transform: uppercase;font-size: medium"><span style="font-family: Arial,serif;text-transform: uppercase;font-size: medium" id="fullAmountText"></span></h4>
                 </div>
                 <div class="w-25 justify-content-end d-flex align-items-center">
                     <button class="btn btn-sm btn-success float-end rounded-0" onclick="monthlyIncomeToXlsx()">Export to Xlsx</button>
