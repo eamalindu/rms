@@ -149,6 +149,7 @@ const refreshMonthlyCashBreakdownTable = ()=>{
 const generateMonthlyBreakDownLineChart = ()=>{
     const endMonthDate = parseInt(endDate.split('-')[2], 10);
     let paymentData = [];
+    let cateDate =[];
     let currentMonthStartDate = startDate;
     for (i=1;i<=endMonthDate;i++)
     {
@@ -157,10 +158,12 @@ const generateMonthlyBreakDownLineChart = ()=>{
         payments.forEach((payment)=>{
             income += payment.amount;
         });
-        paymentData.push({
-            date: i,
-            income:income});
+        cateDate.push(i);
+        paymentData.push(income);
         currentMonthStartDate = moment(currentMonthStartDate).add(1, 'days').format('YYYY-MM-DD');
     }
     console.log(paymentData)
+
+    generateLineChart(test,'',cateDate,'Income Amount (Rs.)',[{name:moment().startOf('month').format('MMM'),data:paymentData}])
+
 }
