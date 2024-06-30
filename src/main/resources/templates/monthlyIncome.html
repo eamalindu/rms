@@ -1,7 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:replace="~{fragments/head :: headFragment}"></head>
+<head>
+    <style>
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+            background-color: white;
+        }
 
+        #pills-home-tab.nav-link.active {
+            color: #19459D!important;
+            border-bottom: 3px solid#19459D!important;
+        }
+        #pills-course-tab.nav-link.active {
+            color: red!important;
+            border-bottom: 3px solid red!important;
+        }
+
+        .nav-link {
+            color: black;
+        }
+    </style>
+</head>
 <body>
 <!--Loader Start-->
 <div th:replace="~{fragments/loader :: loader}"></div>
@@ -21,83 +40,97 @@
         <div class="card-body rounded-0">
             <h2 class="text-muted text-uppercase fs-6 mb-4">Showing all transactions that occurred from  <span id="currentStartDate"></span> to <span id="currentEndDate"></span></h2>
             <div id="test"></div>
+
+            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation" style="width: 50%">
+                    <button aria-controls="pills-home" aria-selected="true" class="nav-link w-100 active rounded-0 border-1 border border-grey text-muted"
+                            data-bs-target="#pills-info" data-bs-toggle="pill" id="pills-home-tab" role="tab"
+                            type="button"><i class="fa-solid fa-circle-info"></i> Info
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation" style="width: 50%">
+                    <button aria-controls="pills-profile" aria-selected="false" class="nav-link w-100 rounded-0 bg-custom-white border-1 border border-grey text-muted"
+                            data-bs-target="#pills-registration" data-bs-toggle="pill" id="pills-course-tab" role="tab"
+                            type="button"><i class="fa-solid fa-graduation-cap"></i> Registrations
+                    </button>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div aria-labelledby="pills-home-tab" class="tab-pane fade show active" id="pills-info" role="tabpanel"
+                     tabindex="0">
+                    <div class="w-100 d-flex mt-3">
+                        <div class="w-25 d-flex align-items-center">
+                            <span class="fw-bold">Total : <span id="fullAmountText"></span></span>
+                        </div>
+                        <div class="w-50 d-flex align-items-center justify-content-center">
+                            <h4 class="text-center fw-bold" style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Monthly Income Breakdown</h4>
+                        </div>
+                        <div class="w-25 justify-content-end d-flex align-items-center">
+                            <button class="btn btn-sm btn-success float-end rounded-0" onclick="monthlyIncomeToXlsx()">Export to Xlsx</button>
+                        </div>
+                    </div>
+                    <table class="custom-table text-start" id="tblMonthlyIncome">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Cashier</th>
+                            <th>Payment Method</th>
+                            <th>Time</th>
+                            <th>Registration</th>
+                            <th>Student</th>
+                            <th>Course</th>
+                            <th>Receipt</th>
+                            <th>Amount</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <!-- Ajax loader start-->
+                    <div class="loading-overlay mt-2">
+                        <img alt="loading animation" src="/resources/images/loader.svg" width="60px">
+                    </div>
+                    <!-- Ajax loader end-->
+                </div>
+
+                <div aria-labelledby="pills-profile-tab" class="tab-pane fade" id="pills-registration" role="tabpanel"
+                     tabindex="0">
+                    <div class="w-100 d-flex mt-3">
+                        <div class="w-25 d-flex align-items-center">
+                            <span class="fw-bold">Total : <span id="cashAmountText"></span></span>
+                        </div>
+                        <div class="w-50 d-flex align-items-center justify-content-center">
+                            <h4 class="text-center fw-bold" style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Cash Income</h4>
+                        </div>
+                        <div class="w-25 justify-content-end d-flex align-items-center">
+                            <button class="btn btn-sm btn-success rounded-0" onclick="monthlyCashToXlsx()">Export to Xlsx</button>
+                        </div>
+                    </div>
+                    <table class="custom-table text-start" id="tblCashIncome">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Cashier</th>
+                            <th>Payment Method</th>
+                            <th>Time</th>
+                            <th>Registration</th>
+                            <th>Student</th>
+                            <th>Course</th>
+                            <th>Receipt</th>
+                            <th>Amount</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <!-- Ajax loader start-->
+                    <div class="loading-overlay mt-2">
+                        <img alt="loading animation" src="/resources/images/loader.svg" width="60px">
+                    </div>
+                    <!-- Ajax loader end-->
+                </div>
+            </div>
         </div>
-        <div class="card-footer show pb-4">
-
-            <div class="w-100 d-flex mt-3 mb-3">
-                <div class="w-25 d-flex align-items-center">
-                    <span class="fw-bold">Total : <span id="fullAmountText"></span></span>
-                </div>
-                <div class="w-50 d-flex align-items-center justify-content-center">
-                    <h4 class="text-center fw-bold" style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Monthly Income Breakdown</h4>
-                </div>
-                <div class="w-25 justify-content-end d-flex align-items-center">
-                    <button class="btn btn-sm btn-success float-end rounded-0" onclick="monthlyIncomeToXlsx()">Export to Xlsx</button>
-                </div>
-
-            </div>
-            <table class="custom-table text-start" id="tblMonthlyIncome">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Cashier</th>
-                    <th>Payment Method</th>
-                    <th>Time</th>
-                    <th>Registration</th>
-                    <th>Student</th>
-                    <th>Course</th>
-                    <th>Receipt</th>
-                    <th>Amount</th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-
-            <!-- Ajax loader start-->
-            <div class="loading-overlay mt-2">
-                <img alt="loading animation" src="/resources/images/loader.svg" width="60px">
-            </div>
-            <!-- Ajax loader end-->
-
-            <hr>
-
-            <div class="w-100 d-flex mt-5 mb-3">
-                <div class="w-25 d-flex align-items-center">
-                    <span class="fw-bold">Total : <span id="cashAmountText"></span></span>
-                </div>
-                <div class="w-50 d-flex align-items-center justify-content-center">
-                    <h4 class="text-center fw-bold" style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Cash Income</h4>
-                </div>
-                <div class="w-25 justify-content-end d-flex align-items-center">
-                    <button class="btn btn-sm btn-success rounded-0" onclick="monthlyCashToXlsx()">Export to Xlsx</button>
-                </div>
-
-            </div>
-            <table class="custom-table text-start" id="tblCashIncome">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Cashier</th>
-                    <th>Payment Method</th>
-                    <th>Time</th>
-                    <th>Registration</th>
-                    <th>Student</th>
-                    <th>Course</th>
-                    <th>Receipt</th>
-                    <th>Amount</th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-            <!-- Ajax loader start-->
-            <div class="loading-overlay mt-2">
-                <img alt="loading animation" src="/resources/images/loader.svg" width="60px">
-            </div>
-            <!-- Ajax loader end-->
-        </div>
-
     </div>
 </div>
 
