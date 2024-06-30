@@ -35,4 +35,7 @@ public interface PaymentDAO extends JpaRepository<Payment,Integer> {
 
     @Query(value = "SELECT * FROM steam.payment where date(paiddatetime)>=?1 and date(paiddatetime)<=?2",nativeQuery = true)
     List<Payment> getPaymentsByStartDateAndEndDate(String startDate, String endDate);
+
+    @Query(value = "SELECT * from payment where date(paiddatetime)=?1",nativeQuery = true)
+    List<Payment> getPaymentsByDate(String Date);
 }
