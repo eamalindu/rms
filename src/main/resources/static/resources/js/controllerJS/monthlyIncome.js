@@ -2,7 +2,6 @@ window.addEventListener('load',()=>{
 
     refreshMonthlyBreakDownTable();
     refreshMonthlyCashBreakdownTable();
-    generateMonthlyBreakDownLineChart();
 
     reportColumnFormat = [
         {name: 'Added By', data: 'addedBy'},
@@ -21,6 +20,8 @@ window.addEventListener('load',()=>{
 
     currentStartDate.innerHTML = startDate;
     currentEndDate.innerHTML = endDate;
+
+    generateMonthlyBreakDownLineChart();
 })
 
 const getPaymentMethod = (ob)=>{
@@ -146,6 +147,20 @@ const refreshMonthlyCashBreakdownTable = ()=>{
 }
 
 const generateMonthlyBreakDownLineChart = ()=>{
-    console.log("Start Date is"+startDate);
-    console.log("End Date is"+endDate);
+    const endMonthDate = parseInt(endDate.split('-')[2], 10);
+    let paymentData = [];
+    let currentMonthStartDate = startDate;
+    for (i=1;i<=endMonthDate;i++)
+    {
+        let income = 0;
+        payments = ajaxGetRequest("/Payment/getPaymentsByDate/"+currentMonthStartDate);
+        payments.forEach((payment)=>{
+            income += payment.amount;
+        });
+        paymentData.push({
+            date: i,
+            income:income});
+        currentMonthStartDate = moment(currentMonthStartDate).add(1, 'days').format('YYYY-MM-DD');
+    }
+    console.log(paymentData)
 }
