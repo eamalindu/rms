@@ -416,3 +416,15 @@ const courseUpdate = ()=>{
 
     }
 }
+
+//this function will check for any updates by comparing old and edited Course object
+//this function will return if there are any updates
+const checkForCourseUpdate = ()=>{
+    let updates = '';
+
+    if(editedCourse.name !== oldCourse.name){
+        updates = updates + "Course Name was changed to <span class='text-steam-green'>" + editedCourse.name + "</span><br>";
+    }
+
+    return updates;
+}
