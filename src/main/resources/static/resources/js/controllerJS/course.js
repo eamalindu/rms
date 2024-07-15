@@ -409,4 +409,10 @@ const courseUpdate = ()=>{
         //check the updates variable is null
         //if it's null that means there are no any updates
     }
+    else {
+        //there are errors
+        //display them to the user using external-ModalFunction()
+        showCustomModal(errors, 'warning');
+
+    }
 }
