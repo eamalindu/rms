@@ -17,6 +17,7 @@ window.addEventListener("load", () => {
 
 });
 
+//creating a function to refresh the batch table when ever needed
 const refreshCourseTable = ()=>{
     //getting current Course from the database using ajaxGetRequest function and assign the response to the variable batches
     courses = ajaxGetRequest("/Course/findall");
@@ -29,10 +30,15 @@ const refreshCourseTable = ()=>{
         {property: 'lectureHours',dataType: 'text'},
         {property: getStatus,dataType: 'function'},
     ]
-
+    //using external function fillDataIntoTable to fill the data to the table tblCourse according to the displayPropertyListForCourse list
     fillDataIntoTable(tblCourse, courses, displayPropertyListForCourse, rowView, 'offcanvasCourseSheet');
 
-    $('#tblCourse').DataTable();
+    //initializing DataTable for the tblBatch table
+
+    if(courses.length!==0){
+        $('#tblCourse').DataTable();
+    }
+
 
 }
 
