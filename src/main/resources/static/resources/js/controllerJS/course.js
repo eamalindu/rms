@@ -422,7 +422,7 @@ const courseUpdate = ()=>{
                     if (serverResponse === "OK") {
                         //this means data successfully passed to the backend
                         //show an alert to user
-                        showCustomModal("Batch Successfully Updated!", "success");
+                        showCustomModal("Course Successfully Updated!", "success");
                         //close the offCanvas sheet
                         offCanvasCourseSheetCloseButton.click();
                         //refresh table
