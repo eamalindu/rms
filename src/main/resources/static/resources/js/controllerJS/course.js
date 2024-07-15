@@ -113,12 +113,12 @@ const rowView = (ob)=>{
     if (ob.status) {
         courseSheetCodeText.classList.add('text-success');
         courseSheetCodeText.classList.remove('text-danger');
-        courseSheetStatus.value = 'Active'
+        courseSheetStatus.value = 'true'
 
     } else {
         courseSheetCodeText.classList.remove('text-success');
         courseSheetCodeText.classList.add('text-danger');
-        courseSheetStatus.value = 'Deactivate'
+        courseSheetStatus.value = 'false'
 
     }
 
