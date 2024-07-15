@@ -263,7 +263,11 @@
                     <div class="invalid-feedback">Please provide a valid Course Name</div>
                 </td>
                 <td class="fw-bold w-25">Course Code</td>
-                <td><input class="small rounded-0 form-control-sm courseSheetInputs" id="courseSheetCode" disabled required></td>
+                <td>
+                    <input class="small rounded-0 form-control-sm courseSheetInputs" id="courseSheetCode" onkeyup=" inputTextValidator(this,'^[A-Z][a-z][A-Z]{1,}$','editedCourse','code')" disabled required>
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Course Code</div>
+                </td>
             </tr>
             <tr>
                 <td class="fw-bold w-25">Course Duration</td>
