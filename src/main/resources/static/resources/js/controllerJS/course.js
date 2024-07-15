@@ -93,7 +93,14 @@ const rowView = ()=>{
         input.classList.remove('is-invalid');
     });
 
-
+    //setting the data that can be directly accessible from the current object to the relevant input element
+    batchSheetCode.innerText = ob.batchCode;
+    batchSheetCreated.value = ob.createdBy;
+    batchSheetCommenceDate.value = ob.commenceDate;
+    batchSheetEndDate.value = ob.endDate;
+    batchSheetSeatCount.value = ob.seatCount;
+    batchSheetLastDate.value = ob.lastRegDate;
+    batchSheetDescription.value = ob.description;
 
 }
 const getDuration=(ob)=>{
