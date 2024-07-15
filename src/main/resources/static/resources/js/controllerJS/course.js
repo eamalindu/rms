@@ -480,7 +480,7 @@ const courseDelete = () => {
         if (result) {
             //pass the record to backend
             //receive the server response
-            let serviceResponse = ajaxHttpRequest("/Batch", "DELETE", oldBatch);
+            let serviceResponse = ajaxHttpRequest("/Course", "DELETE", oldBatch);
             if (serviceResponse === "OK") {
                 //show user the response
                 showCustomModal("Course Successfully Deleted!", "success");
