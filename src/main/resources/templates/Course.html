@@ -257,7 +257,11 @@
             <tbody class="small align-middle">
             <tr>
                 <td class="fw-bold w-25">Course Name</td>
-                <td class="w-25"><input class="small rounded-0 form-control-sm border-0 courseSheetInputs" id="courseSheetName" onkeyup="inputTextValidator(this,'^[A-Z][a-zA-Z]* in [A-Z][a-zA-Z ]+$','editedCourse','name')" disabled required></td>
+                <td class="w-25">
+                    <input class="small rounded-0 form-control-sm border-0 courseSheetInputs" id="courseSheetName" onkeyup="inputTextValidator(this,'^[A-Z][a-zA-Z]* in [A-Z][a-zA-Z ]+$','editedCourse','name')" disabled required>
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Course Name</div>
+                </td>
                 <td class="fw-bold w-25">Course Code</td>
                 <td><input class="small rounded-0 form-control-sm border-0 courseSheetInputs" id="courseSheetCode" disabled required></td>
             </tr>
