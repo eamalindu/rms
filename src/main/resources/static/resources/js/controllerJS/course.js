@@ -425,6 +425,20 @@ const checkForCourseUpdate = ()=>{
     if(editedCourse.name !== oldCourse.name){
         updates = updates + "Course Name was changed to <span class='text-steam-green'>" + editedCourse.name + "</span><br>";
     }
-
+    if(editedCourse.code !== oldCourse.code){
+        updates = updates + "Course Code was changed to <span class='text-steam-green'>" + editedCourse.code + "</span><br>";
+    }
+    if(editedCourse.duration !== oldCourse.duration){
+        updates = updates + "Course Duration was changed to <span class='text-steam-green'>" + editedCourse.duration + "</span><br>";
+    }
+    if(editedCourse.lectureHours !== oldCourse.lectureHours){
+        updates = updates + "Course Lecture Hours was changed to <span class='text-steam-green'>" + editedCourse.lectureHours + "</span><br>";
+    }
+    if(editedCourse.minimumRequirement !== oldCourse.minimumRequirement){
+        updates = updates + "Course Minimum Requirment was changed to <span class='text-steam-green'>" + editedCourse.minimumRequirement + "</span><br>";
+    }
+    if(editedCourse.status !== oldCourse.status){
+        updates = updates + "Course Status was changed to <span class='text-steam-green'>" + editedCourse.status + "</span><br>";
+    }
     return updates;
 }
