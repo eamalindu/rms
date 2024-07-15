@@ -100,6 +100,8 @@ const rowView = (ob)=>{
     courseSheetLogo.src = 'data:image/png;base64,'+ob.logo;
     courseSheetDuration.value = ob.duration;
     courseSheetLectureDuration.value = ob.lectureHours;
+    courseSheetRequirement.value = ob.minimumRequirement;
+
 
 }
 const getDuration=(ob)=>{
