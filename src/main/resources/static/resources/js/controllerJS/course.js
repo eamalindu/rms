@@ -126,6 +126,10 @@ const rowView = (ob)=>{
     ob.lessonList.sort((a, b) => a.id - b.id);
     fillDataIntoTableWithOutAction(tblModules,ob.lessonList,displayListForLessonList)
 
+    //save the current object as oldCourse and editedCourse for comparing purposes
+    //using deep copies of the current object for independent modification
+    oldCourse = JSON.parse(JSON.stringify(ob));
+    editedCourse = JSON.parse(JSON.stringify(ob));
 
 }
 const getDuration=(ob)=>{
