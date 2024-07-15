@@ -102,6 +102,20 @@ const rowView = (ob)=>{
     courseSheetLectureDuration.value = ob.lectureHours;
     courseSheetRequirement.value = ob.minimumRequirement;
 
+    //using an if conditional statement to set the value and background color of the courseSheetCodeText
+    //if the course is active add the relevant classes and remove unwanted classes
+    if (ob.status) {
+        courseSheetCodeText.classList.add('text-success');
+        courseSheetCodeText.classList.remove('text-danger');
+        courseSheetStatus.value = 'Active'
+
+    } else {
+        courseSheetCodeText.classList.remove('text-success');
+        courseSheetCodeText.classList.add('text-danger');
+        courseSheetStatus.value = 'Deactivate'
+
+    }
+
 
 }
 const getDuration=(ob)=>{
