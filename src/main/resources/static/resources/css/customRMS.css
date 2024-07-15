@@ -522,7 +522,7 @@ input {
     font-size: 13px;
 }
 
-.batchSheetInputs,.registrationSheetInputs,.studentModalInputs {
+.batchSheetInputs,.registrationSheetInputs,.studentModalInputs,.courseSheetInputs {
     border: 1px solid transparent;
     background: white;
     color: black;
