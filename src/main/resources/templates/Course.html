@@ -298,7 +298,7 @@
                 </td>
                 <td class="fw-bold w-25">Status</td>
                 <td class="" colspan="">
-                    <select class="courseSheetInputs form-select rounded-0 small form-select-sm" id="courseSheetStatus" disabled required >
+                    <select class="courseSheetInputs form-select rounded-0 small form-select-sm" id="courseSheetStatus" onchange="selectStaticValueValidator(this,'','editedCourse','status');" disabled required >
                         <option>Active</option>
                         <option>Deactivate</option>
                     </select>
