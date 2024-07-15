@@ -97,7 +97,7 @@ const rowView = (ob)=>{
     courseSheetCodeText.innerText = ob.code;
     courseSheetName.value = ob.name;
     courseSheetCode.value = ob.code;
-
+    courseSheetLogo.src = 'data:image/png;base64,'+ob.logo;
 
 }
 const getDuration=(ob)=>{
