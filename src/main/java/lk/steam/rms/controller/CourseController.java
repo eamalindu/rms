@@ -2,6 +2,8 @@ package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.CourseDAO;
 import lk.steam.rms.dao.UserDAO;
+import lk.steam.rms.entity.Batch;
+import lk.steam.rms.entity.BatchHasDay;
 import lk.steam.rms.entity.Course;
 import lk.steam.rms.entity.Privilege;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,5 +69,27 @@ public class CourseController {
         }
 
     }
+
+    @PutMapping
+    public String updateCourse(@RequestBody Course course) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(), "COURSE");
+        if(!loggedUserPrivilege.getUpdatePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
+
+        //check existing
+        Course existCourse = courseDAO.getReferenceById(course.getId());
+        if (existCourse == null) {
+            return "No Such Course Record";
+        }
+        try {
+            courseDAO.save(course);
+            return "OK";
+        } catch (Exception ex) {
+            return "Update Failed " + ex.getMessage();
+        }
+    }
+
 
 }
