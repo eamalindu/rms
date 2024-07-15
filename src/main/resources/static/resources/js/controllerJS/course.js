@@ -80,6 +80,21 @@ const rowView = ()=>{
     //show the deleted btn
     btnCourseSheetDelete.style.display = 'block';
 
+    //get all the inputs with the class name batchSheetInputs and save it as an array
+    inputs = document.querySelectorAll('.courseSheetInputs');
+    //using forEach Function to remove inline styles,boostrap validation classes and set the disabled property to true
+    inputs.forEach(function (input) {
+        //add the attribute disabled to make inputs block the user input values
+        //remove the edited border colors from the inputs
+        input.setAttribute('disabled', 'true');
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
+
+
+
 }
 const getDuration=(ob)=>{
     return ob.duration +" Months";
