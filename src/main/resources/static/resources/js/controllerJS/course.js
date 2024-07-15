@@ -476,11 +476,11 @@ const checkForCourseUpdate = ()=>{
 //creating a function to delete a course when ever needed
 const courseDelete = () => {
     //get user confirmation
-    showCustomConfirm("You are About to <b>Delete</b> this Course<br><br>Batch Code: <span class='text-steam-green'>" + oldBatch.code + "</span><br><br>Are You Sure?", function (result) {
+    showCustomConfirm("You are About to <b>Delete</b> this Course<br><br>Batch Code: <span class='text-steam-green'>" + oldCourse.code + "</span><br><br>Are You Sure?", function (result) {
         if (result) {
             //pass the record to backend
             //receive the server response
-            let serviceResponse = ajaxHttpRequest("/Course", "DELETE", oldBatch);
+            let serviceResponse = ajaxHttpRequest("/Course", "DELETE", oldCourse);
             if (serviceResponse === "OK") {
                 //show user the response
                 showCustomModal("Course Successfully Deleted!", "success");
