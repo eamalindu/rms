@@ -91,5 +91,26 @@ public class CourseController {
         }
     }
 
+    @DeleteMapping
+    public String deleteCourse(@RequestBody Course course){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(), "COURSE");
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
+        //check existing
+        Course existCourse = courseDAO.getReferenceById(course.getId());
+        if (existCourse == null) {
+            return "No Such Course Record";
+        }
+        try {
+            course.setStatus(false);
+            courseDAO.save(course);
+            return "OK";
+        } catch (Exception ex) {
+            return "Delete Failed " + ex.getMessage();
+        }
+    }
+
 
 }
