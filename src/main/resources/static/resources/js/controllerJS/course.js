@@ -472,3 +472,31 @@ const checkForCourseUpdate = ()=>{
     }
     return updates;
 }
+
+//creating a function to delete a course when ever needed
+const courseDelete = () => {
+    //get user confirmation
+    showCustomConfirm("You are About to <b>Delete</b> this Course<br><br>Batch Code: <span class='text-steam-green'>" + oldBatch.code + "</span><br><br>Are You Sure?", function (result) {
+        if (result) {
+            //pass the record to backend
+            //receive the server response
+            let serviceResponse = ajaxHttpRequest("/Batch", "DELETE", oldBatch);
+            if (serviceResponse === "OK") {
+                //show user the response
+                showCustomModal("Course Successfully Deleted!", "success");
+                //close the offCanvas sheet
+                offCanvasCourseSheetCloseButton.click();
+                //refresh table
+                refreshCourseTable();
+            } else {
+                showCustomModal("Operation Failed!" + serviceResponse, "error");
+            }
+
+
+        } else {
+            showCustomModal("Operation Cancelled!", "info");
+        }
+
+    });
+
+}
