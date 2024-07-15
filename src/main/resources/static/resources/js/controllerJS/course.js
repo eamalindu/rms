@@ -408,6 +408,36 @@ const courseUpdate = ()=>{
         let updates = checkForCourseUpdate();
         //check the updates variable is null
         //if it's null that means there are no any updates
+        if (updates === '') {
+            showCustomModal("No changes Detected!", "info");
+        } else {
+            showCustomConfirm("You are About to Update this Course<br><br>Following Changes Detected!<br/><br/><small>" + updates + "</small><br>Are You Sure?", function (result) {
+                //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+                //catch the return value from the backend and save it in the serviceResponse variable
+                if (result) {
+                    //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+                    //catch the return value from the backend and save it in the serviceResponse variable
+                    let serverResponse = ajaxHttpRequest("/Course", "PUT", editedCourse);
+                    //check the serviceResponse value is "OK"
+                    if (serverResponse === "OK") {
+                        //this means data successfully passed to the backend
+                        //show an alert to user
+                        showCustomModal("Batch Successfully Updated!", "success");
+                        //close the offCanvas sheet
+                        offCanvasCourseSheetCloseButton.click();
+                        //refresh table
+                        refreshCourseTable();
+
+                    } else {
+                        showCustomModal("Operation Failed!" + serverResponse, "error")
+                    }
+
+
+                } else {
+                    showCustomModal("Operation Cancelled!", "info");
+                }
+            });
+        }
     }
     else {
         //there are errors
