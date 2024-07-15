@@ -116,6 +116,10 @@ const rowView = (ob)=>{
 
     }
 
+    const displayListForLessonList = [{property: 'name', dataType: 'text'},{property: getExamStatus,dataType: 'function'}]
+    ob.lessonList.sort((a, b) => a.id - b.id);
+    fillDataIntoTableWithOutAction(tblModules,ob.lessonList,displayListForLessonList)
+
 
 }
 const getDuration=(ob)=>{
@@ -128,6 +132,15 @@ const getStatus=(ob)=>{
     }
     else{
         return '<span class="badge rounded-0" style="background: #FF0039">Inactive</span>';
+    }
+}
+
+const getExamStatus=(ob)=>{
+    if(ob.examAvailable){
+        return '<span class="badge rounded-0 w-25 mx-auto d-block" style="background: #3FB618">Yes</span>';
+    }
+    else{
+        return '<span class="badge rounded-0 w-25 mx-auto d-block" style="background: #FF0039">No</span>';
     }
 }
 
