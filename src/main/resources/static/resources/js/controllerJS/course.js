@@ -397,3 +397,16 @@ const courseEdit = ()=>{
         input.setAttribute('style', 'border:1px solid #0DCAF0!important;background-color:rgba(13,202,240,0.2);');
     });
 }
+
+const courseUpdate = ()=>{
+//calling the checkCourseFormErrors function and catching the return value to errors variable
+    let errors = checkCourseFormErrors(editedCourse);
+    //check the errors variable is null
+    //if it's null that means all the required inputs are filled
+    if (errors === '') {
+        //calling the checkForCourseUpdate function and catching the return value to updates variable
+        let updates = checkForCourseUpdate();
+        //check the updates variable is null
+        //if it's null that means there are no any updates
+    }
+}
