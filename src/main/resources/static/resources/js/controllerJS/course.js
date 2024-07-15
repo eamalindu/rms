@@ -98,6 +98,8 @@ const rowView = (ob)=>{
     courseSheetName.value = ob.name;
     courseSheetCode.value = ob.code;
     courseSheetLogo.src = 'data:image/png;base64,'+ob.logo;
+    courseSheetDuration.value = ob.duration;
+    courseSheetLectureDuration.value = ob.lectureHours;
 
 }
 const getDuration=(ob)=>{
