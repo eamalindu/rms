@@ -271,15 +271,22 @@
             </tr>
             <tr>
                 <td class="fw-bold w-25">Course Duration</td>
-                <td class="w-25"><input class="small rounded-0 form-control-sm courseSheetInputs" id="courseSheetDuration" disabled required>
+                <td class="w-25">
+                    <input class="small rounded-0 form-control-sm courseSheetInputs" id="courseSheetDuration" onkeyup="inputTextValidator(this,'^[0-9]{1,2}$','editedCourse','duration')" disabled required>
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Course Duration</div>
                 </td>
                 <td class="fw-bold w-25">Lecture Duration</td>
-                <td><input class="small rounded-0 form-control-sm courseSheetInputs" disabled required id="courseSheetLectureDuration"></td>
+                <td>
+                    <input class="small rounded-0 form-control-sm courseSheetInputs" disabled required id="courseSheetLectureDuration" onkeyup="inputTextValidator(this,'^[0-9]{3,4}$','editedCourse','lectureHours')">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Course Lecture Hours</div>
+                </td>
             </tr>
             <tr>
                 <td class="fw-bold w-25">Min Requirement</td>
                 <td class="" colspan="">
-                    <select class="courseSheetInputs form-select rounded-0 small form-select-sm" id="courseSheetRequirement" disabled required >
+                    <select class="courseSheetInputs form-select rounded-0 small form-select-sm" id="courseSheetRequirement" onchange="selectStaticValueValidator(this,'','editedCourse','minimumRequirement');" disabled required >
                         <option></option>
                         <option>Undergraduate</option>
                         <option>After A/L</option>
@@ -287,7 +294,7 @@
                         <option>Grade 9</option>
                     </select>
                     <div class="valid-feedback">Value Accepted</div>
-                    <div class="invalid-feedback">Please provide a valid Address</div>
+                    <div class="invalid-feedback">Please provide a valid Requirement</div>
                 </td>
                 <td class="fw-bold w-25">Status</td>
                 <td class="" colspan="">
