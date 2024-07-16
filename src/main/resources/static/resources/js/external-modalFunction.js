@@ -29,6 +29,7 @@ function showCustomModal(msg,type) {
     modalTitle.style.textTransform = 'uppercase';
     modalTitle.style.fontSize = 'medium';
     modalTitle.style.fontWeight = 'bold';
+
     modalTitle.style.fontFamily = 'Arial, serif';
 
     modalHeader.appendChild(modalTitle);
