@@ -168,7 +168,9 @@ public class BatchController {
         }
     }
 
+    //Delete Mapping
     @DeleteMapping
+    //Using @Transactional annotation to handle transactions
     @Transactional
     public String deleteBatch(@RequestBody Batch batch) {
         //get the logged user and check the privilege
