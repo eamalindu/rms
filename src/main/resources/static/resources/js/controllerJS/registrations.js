@@ -126,7 +126,6 @@ const resetPaymentForm = () => {
     //initialize the chosen select
     $('#paymentMethod').chosen({width: '100%'});
 
-
 }
 
 const rowView = (ob, index) => {

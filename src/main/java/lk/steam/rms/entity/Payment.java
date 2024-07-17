@@ -16,8 +16,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Payment {
 
+    //primary key mapping
     @Id
-    @Column(name = "id",unique = true)
+    @Column(name = "id", unique = true)
+    //enable auto increment
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -29,7 +31,7 @@ public class Payment {
     @NotNull
     private String invoiceCode;
 
-    @Column(name="paiddatetime")
+    @Column(name = "paiddatetime")
     @NotNull
     private LocalDateTime timeStamp;
 
@@ -40,12 +42,13 @@ public class Payment {
     @Column(name = "installmentid")
     private Integer installmentID;
 
+    //foreign key mapping
     @ManyToOne
-    @JoinColumn(name = "registration_id",referencedColumnName = "id")
-    private  Registrations registrationID;
+    @JoinColumn(name = "registration_id", referencedColumnName = "id")
+    private Registrations registrationID;
 
     @ManyToOne
-    @JoinColumn(name = "paymenttype_id",referencedColumnName = "id")
-    private  PaymentType paymentTypeID;
+    @JoinColumn(name = "paymenttype_id", referencedColumnName = "id")
+    private PaymentType paymentTypeID;
 
 }
