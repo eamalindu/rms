@@ -186,7 +186,7 @@ public class BatchController {
             //change batch Status to delete
             BatchStatus deleteStatus = batchStatusDAO.getReferenceById(5);
             batch.setBatchStatusID(deleteStatus);
-            //update the batch status
+            //update the batchhasday list
             for (BatchHasDay batchHasDay : batch.getBatchHasDayList()) {
                 batchHasDay.setBatchID(batch);
             }
