@@ -18,31 +18,28 @@ window.addEventListener("load", () => {
 });
 
 //creating a function to refresh the batch table when ever needed
-const refreshCourseTable = ()=>{
+const refreshCourseTable = () => {
     //getting current Course from the database using ajaxGetRequest function and assign the response to the variable batches
     courses = ajaxGetRequest("/Course/findall");
     //creating a display property list for the Course
-    displayPropertyListForCourse = [
-        {property: 'name',dataType: 'text'},
-        {property: 'code',dataType: 'text'},
-        {property: getDuration,dataType: 'function'},
-        {property: 'minimumRequirement',dataType: 'text'},
-        {property: 'lectureHours',dataType: 'text'},
-        {property: getStatus,dataType: 'function'},
-    ]
+    displayPropertyListForCourse = [{property: 'name', dataType: 'text'},
+        {property: 'code', dataType: 'text'},
+        {property: getDuration, dataType: 'function'},
+        {property: 'minimumRequirement', dataType: 'text'},
+        {property: 'lectureHours', dataType: 'text'},
+        {property: getStatus, dataType: 'function'},]
     //using external function fillDataIntoTable to fill the data to the table tblCourse according to the displayPropertyListForCourse list
     fillDataIntoTable(tblCourse, courses, displayPropertyListForCourse, rowView, 'offcanvasCourseSheet');
 
-    //initializing DataTable for the tblBatch table
-
-    if(courses.length!==0){
+    //check the length of the courses array
+    if (courses.length !== 0) {
+        //initializing DataTable for the tblBatch table
         $('#tblCourse').DataTable();
     }
 
-
 }
 
-const resetCourseForm = ()=>{
+const resetCourseForm = () => {
 
     $("#courseRequirement_chosen .chosen-single").removeClass('select-validated');
     courseRequirement.classList.remove('is-valid');
@@ -79,7 +76,7 @@ const resetCourseForm = ()=>{
     resetModuleForm();
 }
 
-const rowView = (ob)=>{
+const rowView = (ob) => {
 
     //hide the update btn
     btnCourseSheetUpdate.style.display = 'none';
@@ -103,7 +100,7 @@ const rowView = (ob)=>{
     courseSheetCodeText.innerText = ob.code;
     courseSheetName.value = ob.name;
     courseSheetCode.value = ob.code;
-    courseSheetLogo.src = 'data:image/png;base64,'+ob.logo;
+    courseSheetLogo.src = 'data:image/png;base64,' + ob.logo;
     courseSheetDuration.value = ob.duration;
     courseSheetLectureDuration.value = ob.lectureHours;
     courseSheetRequirement.value = ob.minimumRequirement;
@@ -122,9 +119,12 @@ const rowView = (ob)=>{
 
     }
 
-    const displayListForLessonList = [{property: 'name', dataType: 'text'},{property: getExamStatus,dataType: 'function'}]
+    const displayListForLessonList = [{property: 'name', dataType: 'text'}, {
+        property: getExamStatus,
+        dataType: 'function'
+    }]
     ob.lessonList.sort((a, b) => a.id - b.id);
-    fillDataIntoTableWithOutAction(tblModules,ob.lessonList,displayListForLessonList)
+    fillDataIntoTableWithOutAction(tblModules, ob.lessonList, displayListForLessonList)
 
     //save the current object as oldCourse and editedCourse for comparing purposes
     //using deep copies of the current object for independent modification
@@ -132,39 +132,37 @@ const rowView = (ob)=>{
     editedCourse = JSON.parse(JSON.stringify(ob));
 
 }
-const getDuration=(ob)=>{
-    return ob.duration +" Months";
+const getDuration = (ob) => {
+    return ob.duration + " Months";
 }
 
-const getStatus=(ob)=>{
-    if(ob.status){
+const getStatus = (ob) => {
+    if (ob.status) {
         return '<span class="badge rounded-0" style="background: #3FB618">Active</span>';
-    }
-    else{
+    } else {
         return '<span class="badge rounded-0" style="background: #FF0039">Inactive</span>';
     }
 }
 
-const getExamStatus=(ob)=>{
-    if(ob.examAvailable){
+const getExamStatus = (ob) => {
+    if (ob.examAvailable) {
         return '<span class="badge rounded-0 w-25 mx-auto d-block" style="background: #3FB618">Yes</span>';
-    }
-    else{
+    } else {
         return '<span class="badge rounded-0 w-25 mx-auto d-block" style="background: #FF0039">No</span>';
     }
 }
 
-const generateCourseCode = ()=>{
+const generateCourseCode = () => {
     const courseNameParts = courseName.value.split(" ");
     let code = '';
-    courseNameParts.forEach((word)=>{
+    courseNameParts.forEach((word) => {
         code += word[0];
     })
     courseCode.value = code;
-    inputTextValidator(courseCode,'^[A-Z][a-z][A-Z]{1,}$','newCourse','code')
+    inputTextValidator(courseCode, '^[A-Z][a-z][A-Z]{1,}$', 'newCourse', 'code')
 }
 
-const resetModuleForm = ()=>{
+const resetModuleForm = () => {
     //remove validation class from the chosen select element
     $("#courseExistModules_chosen .chosen-single").removeClass('select-validated');
     //remove boostrap validation classes from the select elements
@@ -184,10 +182,10 @@ const resetModuleForm = ()=>{
     $('#courseExistModules').chosen({width: '83%'});
 }
 
-const addToArray = ()=>{
-    if(courseExistModules.value!=='') {
-    currentLesson = JSON.parse(courseExistModules.value)
-    let isDuplicate = false;
+const addToArray = () => {
+    if (courseExistModules.value !== '') {
+        currentLesson = JSON.parse(courseExistModules.value)
+        let isDuplicate = false;
 
         // Iterate over each element in the array
         for (let i = 0; i < newCourse.lessonList.length; i++) {
@@ -213,34 +211,31 @@ const addToArray = ()=>{
             // Handle duplicate entry
             showCustomModal("Duplicate Found!<br><span class='text-steam-green'>" + currentLesson.name + " </span><br/>Module is Already Added", "error");
         }
-    }
-    else{
-        showCustomModal("Module is required!","warning")
+    } else {
+        showCustomModal("Module is required!", "warning")
     }
 }
 
-const displayLessons = ()=>{
+const displayLessons = () => {
     resetModuleForm();
     tblModule.classList.remove('d-none');
     let moduleTableBody = tblModule.querySelector('tbody'); // Select the tbody element
     moduleTableBody.innerHTML = '';
-    let displayPropertyListForModule =[
-        {property: 'name', dataType: 'text'}
-    ];
-    fillDataIntoTableWithDelete(tblModule,newCourse.lessonList,displayPropertyListForModule,removeRecord)
+    let displayPropertyListForModule = [{property: 'name', dataType: 'text'}];
+    fillDataIntoTableWithDelete(tblModule, newCourse.lessonList, displayPropertyListForModule, removeRecord)
 
 }
 
 
-const removeRecord = (ob)=>{
-    let extIndex = newCourse.lessonList.map(item=>item.id).indexOf(ob.id);
-    if(extIndex!=-1){
-        newCourse.lessonList.splice(extIndex,1)
+const removeRecord = (ob) => {
+    let extIndex = newCourse.lessonList.map(item => item.id).indexOf(ob.id);
+    if (extIndex != -1) {
+        newCourse.lessonList.splice(extIndex, 1)
         displayLessons();
     }
 }
 
-const resetModuleInnerForm = ()=>{
+const resetModuleInnerForm = () => {
 
     inputs = document.querySelectorAll('.newModuleInputs');
     inputs.forEach(function (input) {
@@ -257,12 +252,12 @@ const resetModuleInnerForm = ()=>{
 
 }
 
-const newCourseSubmit = ()=>{
+const newCourseSubmit = () => {
     //calling the checkCourseFormErrors function and catching the return value to errors variable
     let errors = checkCourseFormErrors(newCourse);
     //check the errors variable is null
     //if it's null that means all the required inputs are filled
-    if(errors===''){
+    if (errors === '') {
         //get a user confirmation using external customConfirm js
         showCustomConfirm("You are about to add a New Batch<br>Are You Sure?", function (result) {
             if (result) {
@@ -280,33 +275,30 @@ const newCourseSubmit = ()=>{
                     refreshCourseTable();
                     //refresh the form
                     resetCourseForm();
-                }
-                else{
+                } else {
                     //this means there was a problem with the query
                     //shows an error alert to the user
                     showCustomModal("Operation Failed!" + serviceResponse, "error");
                 }
             }
-            //will execute this block if the user confirmation is "no"
+                //will execute this block if the user confirmation is "no"
             //show user an alert
             else {
                 showCustomModal("Operation Cancelled!", "info");
             }
         });
-    }
-    else{
+    } else {
         //there are errors
         //display them to the user using external-ModalFunction()
         showCustomModal(errors, 'warning');
     }
 
 
-
 }
 
-const newModuleSubmit = ()=>{
+const newModuleSubmit = () => {
     let errors = checkInnerFormModule();
-    if(errors==='') {
+    if (errors === '') {
 
         showCustomConfirm("You are about to add a New Module<br>Are You Sure?", function (result) {
             if (result) {
@@ -328,51 +320,50 @@ const newModuleSubmit = ()=>{
             }
         });
 
-    }
-    else{
+    } else {
         showCustomModal(errors, 'warning');
     }
 }
 
-const checkInnerFormModule = ()=>{
+const checkInnerFormModule = () => {
     let errors = '';
 
-    if(newLesson.code==null){
+    if (newLesson.code == null) {
         errors = errors + 'Code is Required<br>';
     }
-    if(newLesson.name==null){
+    if (newLesson.name == null) {
         errors = errors + 'Name is Required<br>';
     }
 
     return errors;
 }
 
-const checkCourseFormErrors =(courseObject)=>{
+const checkCourseFormErrors = (courseObject) => {
     let errors = '';
 
-    if(courseObject.name==null){
+    if (courseObject.name == null) {
         errors = errors + 'Name is Required<br>';
     }
-    if(courseObject.code==null){
+    if (courseObject.code == null) {
         errors = errors + 'Code is Required<br>';
     }
-    if(courseObject.duration==null){
+    if (courseObject.duration == null) {
         errors = errors + 'Duration is Required<br>';
     }
-    if(courseObject.minimumRequirement==null){
+    if (courseObject.minimumRequirement == null) {
         errors = errors + 'Minimum Requirement is Required<br>';
     }
-    if(courseObject.lectureHours==null){
+    if (courseObject.lectureHours == null) {
         errors = errors + 'Lecture Hours is Required<br>';
     }
-    if(courseObject.lessonList.length===0){
+    if (courseObject.lessonList.length === 0) {
         errors = errors + 'Course Modules Are Required<br>';
     }
 
     return errors;
 }
 
-const courseEdit = ()=>{
+const courseEdit = () => {
     //getting the toast from its ID
     var myToastEl = document.getElementById('myToast');
     var myToast = new bootstrap.Toast(myToastEl);
@@ -398,7 +389,7 @@ const courseEdit = ()=>{
     });
 }
 
-const courseUpdate = ()=>{
+const courseUpdate = () => {
 //calling the checkCourseFormErrors function and catching the return value to errors variable
     let errors = checkCourseFormErrors(editedCourse);
     //check the errors variable is null
@@ -438,8 +429,7 @@ const courseUpdate = ()=>{
                 }
             });
         }
-    }
-    else {
+    } else {
         //there are errors
         //display them to the user using external-ModalFunction()
         showCustomModal(errors, 'warning');
@@ -449,25 +439,25 @@ const courseUpdate = ()=>{
 
 //this function will check for any updates by comparing old and edited Course object
 //this function will return if there are any updates
-const checkForCourseUpdate = ()=>{
+const checkForCourseUpdate = () => {
     let updates = '';
 
-    if(editedCourse.name !== oldCourse.name){
+    if (editedCourse.name !== oldCourse.name) {
         updates = updates + "Course Name was changed to <span class='text-steam-green'>" + editedCourse.name + "</span><br>";
     }
-    if(editedCourse.code !== oldCourse.code){
+    if (editedCourse.code !== oldCourse.code) {
         updates = updates + "Course Code was changed to <span class='text-steam-green'>" + editedCourse.code + "</span><br>";
     }
-    if(editedCourse.duration !== oldCourse.duration){
+    if (editedCourse.duration !== oldCourse.duration) {
         updates = updates + "Course Duration was changed to <span class='text-steam-green'>" + editedCourse.duration + " Months</span><br>";
     }
-    if(editedCourse.lectureHours !== oldCourse.lectureHours){
+    if (editedCourse.lectureHours !== oldCourse.lectureHours) {
         updates = updates + "Course Lecture Hours was changed to <span class='text-steam-green'>" + editedCourse.lectureHours + " Hours</span><br>";
     }
-    if(editedCourse.minimumRequirement !== oldCourse.minimumRequirement){
+    if (editedCourse.minimumRequirement !== oldCourse.minimumRequirement) {
         updates = updates + "Course Minimum Requirment was changed to <span class='text-steam-green'>" + editedCourse.minimumRequirement + "</span><br>";
     }
-    if(editedCourse.status !== oldCourse.status){
+    if (editedCourse.status !== oldCourse.status) {
         updates = updates + "Course Status was changed to <span class='text-steam-green'>" + editedCourse.status + "</span><br>";
     }
     return updates;
