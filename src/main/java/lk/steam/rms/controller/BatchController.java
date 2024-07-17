@@ -186,28 +186,29 @@ public class BatchController {
             //change batch Status to delete
             BatchStatus deleteStatus = batchStatusDAO.getReferenceById(5);
             batch.setBatchStatusID(deleteStatus);
-
+            //update the batch status
             for (BatchHasDay batchHasDay : batch.getBatchHasDayList()) {
                 batchHasDay.setBatchID(batch);
             }
-
-            //update the batch record
+            //save the batch record
             batchDAO.save(batch);
 
             //check weather registrations are present in the batch
             List<Registrations> currentBatchRegistrations = registrationDAO.getRegistrationsByBatchID(batch.getId());
-
+            //if registrations are present change the registration status to delete
             if (currentBatchRegistrations != null) {
                 for (Registrations registration : currentBatchRegistrations) {
                     registration.setRegistrationStatusID(registrationStatusDAO.getReferenceById(3));
+                    //save the registration
                     registrationDAO.save(registration);
                 }
-
             }
-
-
+            //return a message
             return "OK";
-        } catch (Exception ex) {
+        }
+        //catch the exception
+        catch (Exception ex) {
+            //return the error message
             return "Delete Failed " + ex.getMessage();
         }
     }
