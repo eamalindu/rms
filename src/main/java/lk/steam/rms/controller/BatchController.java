@@ -5,15 +5,12 @@ import lk.steam.rms.dao.*;
 import lk.steam.rms.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.net.Authenticator;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
@@ -39,33 +36,33 @@ public class BatchController {
         return batchDAO.findAll();
     }
 
-    @GetMapping(value = "getActiveWeekDayBatch/{courseId}",produces = "application/json")
+    @GetMapping(value = "getActiveWeekDayBatch/{courseId}", produces = "application/json")
     public List<Batch> getActiveWeekDayBatchesByCourseId(@PathVariable Integer courseId) {
         return batchDAO.getActiveWeekDayBatchesByCourseId(courseId);
     }
 
-    @GetMapping(value = "getActiveWeekEndBatch/{courseId}",produces = "application/json")
+    @GetMapping(value = "getActiveWeekEndBatch/{courseId}", produces = "application/json")
     public List<Batch> getActiveWeekendBatchesByCourseId(@PathVariable Integer courseId) {
         return batchDAO.getActiveWeekendBatchesByCourseId(courseId);
     }
 
-    @GetMapping(value = "getBatchInfo/{batchCode}",produces = "application/json")
-    public List<Batch> getBatchInfoByBatchCode(@PathVariable String batchCode){
+    @GetMapping(value = "getBatchInfo/{batchCode}", produces = "application/json")
+    public List<Batch> getBatchInfoByBatchCode(@PathVariable String batchCode) {
         return batchDAO.getBatchInfoByBatchCode(batchCode);
     }
 
-    @GetMapping(value = "getBatchesConductToday",produces = "application/json")
-    public List<Batch> getBatchesConductToday(){
+    @GetMapping(value = "getBatchesConductToday", produces = "application/json")
+    public List<Batch> getBatchesConductToday() {
         return batchDAO.getBatchesConductToday();
     }
 
-    @GetMapping(value = "getBatchesConductTodayByLecturer/{employeeID}",produces = "application/json")
-    public List<Batch> getBatchesConductTodayByLecturer(@PathVariable Integer employeeID){
+    @GetMapping(value = "getBatchesConductTodayByLecturer/{employeeID}", produces = "application/json")
+    public List<Batch> getBatchesConductTodayByLecturer(@PathVariable Integer employeeID) {
         return batchDAO.getBatchesConductTodayByLecturer(employeeID);
     }
 
-    @GetMapping(value = "getBatchesByCourseID/{courseID}",produces = "application/json")
-    public List<Batch> getBatchesByCourseID(@PathVariable Integer courseID){
+    @GetMapping(value = "getBatchesByCourseID/{courseID}", produces = "application/json")
+    public List<Batch> getBatchesByCourseID(@PathVariable Integer courseID) {
         return batchDAO.getBatchesByCourseID(courseID);
     }
 
@@ -77,9 +74,9 @@ public class BatchController {
         ModelAndView batchView = new ModelAndView();
         batchView.setViewName("batch.html");
 
-        batchView.addObject("username",auth.getName());
-        batchView.addObject("title","Manage Batches | STEAM RMS");
-        batchView.addObject("activeNavItem","batches");
+        batchView.addObject("username", auth.getName());
+        batchView.addObject("title", "Manage Batches | STEAM RMS");
+        batchView.addObject("activeNavItem", "batches");
 
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
         String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
@@ -88,18 +85,18 @@ public class BatchController {
         String base64Image = Base64.getEncoder().encodeToString(photoBytes);
         String imageSrc = "data:image/png;base64," + base64Image;
 
-        batchView.addObject("loggedInEmployeeName",loggedInEmployeeName);
-        batchView.addObject("loggedInDesignationName",loggedInDesignationName);
-        batchView.addObject("loggedInImage",imageSrc);
+        batchView.addObject("loggedInEmployeeName", loggedInEmployeeName);
+        batchView.addObject("loggedInDesignationName", loggedInDesignationName);
+        batchView.addObject("loggedInImage", imageSrc);
         return batchView;
     }
 
     @PostMapping()
     public String saveNewBatch(@RequestBody Batch batch) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(), "BATCH");
 
-        if(!loggedUserPrivilege.getInsertPrivilege()){
+        if (!loggedUserPrivilege.getInsertPrivilege()) {
             return "<br>User does not have sufficient privilege.";
         }
 
@@ -135,7 +132,7 @@ public class BatchController {
         batch.setSeatCountAvailable(batch.getSeatCount());
         batch.setBatchStatusID(batchStatusDAO.getReferenceById(1));
 
-        for(BatchHasDay batchHasDay: batch.getBatchHasDayList()){
+        for (BatchHasDay batchHasDay : batch.getBatchHasDayList()) {
             batchHasDay.setBatchID(batch);
         }
         batchDAO.save(batch);
@@ -145,9 +142,9 @@ public class BatchController {
     @PutMapping
     public String updateBatch(@RequestBody Batch batch) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(), "BATCH");
 
-        if(!loggedUserPrivilege.getUpdatePrivilege()){
+        if (!loggedUserPrivilege.getUpdatePrivilege()) {
             return "<br>User does not have sufficient privilege.";
         }
 
@@ -161,7 +158,7 @@ public class BatchController {
             return "No Such Privilege Record";
         }
         try {
-            for(BatchHasDay batchHasDay: batch.getBatchHasDayList()){
+            for (BatchHasDay batchHasDay : batch.getBatchHasDayList()) {
                 batchHasDay.setBatchID(batch);
             }
             batchDAO.save(batch);
@@ -174,19 +171,23 @@ public class BatchController {
     @DeleteMapping
     @Transactional
     public String deleteBatch(@RequestBody Batch batch) {
+        //get the logged user and check the privilege
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"BATCH");
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(), "BATCH");
 
-        if(!loggedUserPrivilege.getDeletePrivilege()){
-          return "<br>User does not have sufficient privilege.";
+        //check the privilege for delete
+        if (!loggedUserPrivilege.getDeletePrivilege()) {
+            //if the user does not have the privilege return a message
+            return "<br>User does not have sufficient privilege.";
         }
+        //use try catch to handle the exception
         try {
             //soft delete
             //change batch Status to delete
             BatchStatus deleteStatus = batchStatusDAO.getReferenceById(5);
             batch.setBatchStatusID(deleteStatus);
 
-            for(BatchHasDay batchHasDay: batch.getBatchHasDayList()){
+            for (BatchHasDay batchHasDay : batch.getBatchHasDayList()) {
                 batchHasDay.setBatchID(batch);
             }
 
@@ -196,8 +197,8 @@ public class BatchController {
             //check weather registrations are present in the batch
             List<Registrations> currentBatchRegistrations = registrationDAO.getRegistrationsByBatchID(batch.getId());
 
-            if(currentBatchRegistrations!=null){
-                for(Registrations registration : currentBatchRegistrations){
+            if (currentBatchRegistrations != null) {
+                for (Registrations registration : currentBatchRegistrations) {
                     registration.setRegistrationStatusID(registrationStatusDAO.getReferenceById(3));
                     registrationDAO.save(registration);
                 }
