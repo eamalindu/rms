@@ -18,6 +18,9 @@ window.addEventListener("load", () => {
     $("#batchLectureRoom").chosen().change(function () {
         $("#batchLectureRoom_chosen .chosen-single").addClass('select-validated');
     });
+    $("#batchLecturer").chosen().change(function () {
+        $("#batchLecturer_chosen .chosen-single").addClass('select-validated');
+    });
 
     //bind data to the batch object, once the "apply" button on batchCommenceDate input is clicked
     $('#batchCommenceDate').on('apply.daterangepicker', function (ev, picker) {
