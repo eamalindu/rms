@@ -352,12 +352,18 @@ const resetBatchForm = () => {
     //remove validation class from the chosen select element
     $("#batchCourse_chosen .chosen-single").removeClass('select-validated');
     $("#batchPaymentPlan_chosen .chosen-single").removeClass('select-validated');
+    $("#batchCourse_chosen .chosen-single").removeClass('select-invalidated');
+    $("#batchPaymentPlan_chosen .chosen-single").removeClass('select-invalidated');
 
     //remove boostrap validation classes from the select elements
     batchCourse.classList.remove('is-valid');
     batchClassDay.classList.remove('is-valid');
     batchPaymentPlan.classList.remove('is-valid');
     batchLectureRoom.classList.remove('is-valid');
+    batchCourse.classList.remove('is-invalid');
+    batchClassDay.classList.remove('is-invalid');
+    batchPaymentPlan.classList.remove('is-invalid');
+    batchLectureRoom.classList.remove('is-invalid');
 
     //reset batch object
     newBatch = {}
@@ -449,10 +455,16 @@ const resetTimeTableForm = ()=>{
     $("#batchClassDay_chosen .chosen-single").removeClass('select-validated');
     $("#batchLectureRoom_chosen .chosen-single").removeClass('select-validated');
     $("#batchLecturer_chosen .chosen-single").removeClass('select-validated');
+    $("#batchClassDay_chosen .chosen-single").removeClass('select-invalidated');
+    $("#batchLectureRoom_chosen .chosen-single").removeClass('select-invalidated');
+    $("#batchLecturer_chosen .chosen-single").removeClass('select-invalidated');
     //remove boostrap validation classes from the select elements
     batchClassDay.classList.remove('is-valid');
     batchLectureRoom.classList.remove('is-valid');
     batchLecturer.classList.remove('is-valid');
+    batchClassDay.classList.remove('is-invalid');
+    batchLectureRoom.classList.remove('is-invalid');
+    batchLecturer.classList.remove('is-invalid');
 
     //reset batchHasDay object
     batchHasDay = {};
