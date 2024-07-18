@@ -806,6 +806,8 @@ const checkBatchFormErrors = (batchObject) => {
 
     if (batchObject.courseID == null) {
         errors = errors + 'Course is Required<br>';
+        $("#batchCourse_chosen .chosen-single").addClass('select-invalidated');
+        batchCourse.classList.add('is-invalid');
     }
     if (batchObject.commenceDate == null) {
         errors = errors + 'Commence Date is Required<br>';
@@ -827,6 +829,9 @@ const checkBatchFormErrors = (batchObject) => {
     }
     if (batchObject.paymentPlanID == null) {
         errors = errors + 'Payment Plan is Required<br>';
+        $("#batchPaymentPlan_chosen .chosen-single").addClass('select-invalidated');
+        batchPaymentPlan.classList.add('is-invalid');
+
     }
 
     if(batchObject.batchHasDayList.length ===0){
