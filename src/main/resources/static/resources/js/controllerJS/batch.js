@@ -696,6 +696,8 @@ const checkTimeTableFormErrors =()=>{
     let errors = '';
     if(batchHasDay.dayID==null){
         errors = errors + 'Day is Required<br>';
+        $("#batchClassDay_chosen .chosen-single").addClass('select-invalidated');
+        batchClassDay.classList.add('is-invalid');
     }
     if(batchHasDay.startTime==null){
         errors = errors + 'Start Time is Required<br>';
@@ -705,6 +707,13 @@ const checkTimeTableFormErrors =()=>{
     }
     if(batchHasDay.lectureRoomID==null){
         errors = errors + 'Lecture Room is Required<br>';
+        $("#batchLectureRoom_chosen .chosen-single").addClass('select-invalidated');
+        batchLectureRoom.classList.add('is-invalid');
+    }
+    if(batchHasDay.lecturerID==null){
+        errors = errors + 'Lecturer is Required<br>';
+        $("#batchLecturer_chosen .chosen-single").addClass('select-invalidated');
+        batchLectureRoom.classList.add('is-invalid');
     }
     return errors;
 }
