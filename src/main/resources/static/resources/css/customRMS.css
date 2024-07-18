@@ -406,16 +406,17 @@ g text {
     font-weight:normal!important;
 }
 /*Validated chosen select*/
-.select-validated {
-    /*background: rgba(0,255,0,0.2)!important;*/
-    border: 1px solid green !important;
-    color: green !important;
-    background: white !important;
-}
 .select-invalidated {
     /*background: rgba(0,255,0,0.2)!important;*/
     border: 1px solid red !important;
     color: red !important;
+    background: white !important;
+}
+
+.select-validated {
+    /*background: rgba(0,255,0,0.2)!important;*/
+    border: 1px solid green !important;
+    color: green !important;
     background: white !important;
 }
 
