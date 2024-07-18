@@ -412,6 +412,12 @@ g text {
     color: green !important;
     background: white !important;
 }
+.select-invalidated {
+    /*background: rgba(0,255,0,0.2)!important;*/
+    border: 1px solid red !important;
+    color: red !important;
+    background: white !important;
+}
 
 .select-editable {
     /*background: rgba(0,255,0,0.2)!important;*/
