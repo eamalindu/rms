@@ -73,6 +73,9 @@ public class Inquiry {
     @Column(name = "registrationid")
     private Integer registrationID;
 
+    @Column(name = "registereddatetime")
+    private LocalDateTime registrationDateTime;
+
     //Foreign keys mapping
     @ManyToOne
     @JoinColumn(name = "source_id", referencedColumnName = "id")
