@@ -140,6 +140,7 @@ public class PaymentController {
                         Inquiry currentInquiry = inquiryDAO.getReferenceById(currentRegistration.getInquiryID());
                         newCommission.setPaidTo(currentInquiry.getAddedBy());
                         currentInquiry.setInquiryStatusId(inquiryStatusDAO.getReferenceById(5));
+                        currentInquiry.setRegistrationDateTime(LocalDateTime.now());
                         inquiryDAO.save(currentInquiry);
 
                     } else {
