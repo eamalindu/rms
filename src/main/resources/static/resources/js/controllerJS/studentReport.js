@@ -7,6 +7,9 @@ window.addEventListener('load',()=>{
 
 
 const resetSearchBar = ()=>{
+    var start = moment().startOf('month');
+    var end = moment().endOf('month');
+
     function cb(start, end) {
         $('#registrationSearchDateRange span').html(start.format('YYYY-MMMM-DD') + ' - ' + end.format('YYYY-MMMM-DD'));
     }
