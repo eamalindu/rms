@@ -641,7 +641,7 @@ const automateInitials = ()=>{
     //display the initials name in the studentNameWithInitials input
     studentNameWithInitials.value=initialsName;
     //validate the studentNameWithInitials input using inputTextValidator function
-    inputTextValidator(studentNameWithInitials,'^[A-Z][.][A-Z][.][A-Z][.][A-Z][a-z]{5,}$','newStudent','nameWithInitials')
+    inputTextValidator(studentNameWithInitials,'^([A-Z][.])+[A-Z][a-z]{5,}$','newStudent','nameWithInitials')
 
 }
 
