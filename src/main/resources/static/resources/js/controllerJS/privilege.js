@@ -200,6 +200,7 @@ const resetPrivilegeForm = ()=> {
     roles = ajaxGetRequest("/role/getRolesWithoutAdmin")
     fillSelectOptions(privilegeRole, 'Please Select a Role', roles, 'name');
 
+    modules = ajaxGetRequest("/module/findall");
 
     //reset privilege Module
     privilegeModule.innerHTML = '';
