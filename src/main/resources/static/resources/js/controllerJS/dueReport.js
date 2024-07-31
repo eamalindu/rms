@@ -45,6 +45,9 @@ const resetSearchForm = () => {
 const getDueReport = ()=>{
     //monthly due calculation start
     [startDate, endDate] = registrationSearchDateRange.value.split(' - ');
+    //set date data
+    currentStartDate.innerText = startDate;
+    currentEndDate.innerText = endDate;
     //get the due payments from the one time payment registrations from the database using ajaxGetRequest function and store it in fullPaymentDue variable
     const fullPaymentDue = ajaxGetRequest("/Registration/getMonthlyDueRegistration/"+startDate+"/"+endDate)
     //create a variable to store the total monthly due and set the initial value to 0
