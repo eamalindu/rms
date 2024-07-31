@@ -59,6 +59,39 @@
             </form>
 
         </div>
+        <div class="card-footer show pt-4 pb-4">
+            <h2 class="text-muted text-uppercase fs-6 mb-2 ">Showing all attendance records that marked on  <span id="currentStartDate">2024-07-01</span></h2>
+            <div class="w-100 d-flex mt-3 mb-2">
+                <div class="w-75 d-flex align-items-center">
+
+                </div>
+                <div class="w-25 justify-content-end d-flex align-items-center">
+                    <button class="btn btn-sm btn-success float-end rounded-0" onclick="attendanceReportToXlsx()">Export to Xlsx</button>
+                </div>
+            </div>
+            <table class="custom-table text-start" id="tblAttendanceReport">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Student ID</th>
+                    <th>Student</th>
+                    <th>Contact Number</th>
+                    <th>City</th>
+                    <th>NIC</th>
+                    <th>Guardian Name</th>
+                    <th>Guardian Contact Number</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <!-- Ajax loader start-->
+            <div class="loading-overlay mt-2">
+                <img alt="loading animation" src="/resources/images/loader.svg" width="60px">
+            </div>
+            <!-- Ajax loader end-->
+        </div>
 
     </div>
 </div>

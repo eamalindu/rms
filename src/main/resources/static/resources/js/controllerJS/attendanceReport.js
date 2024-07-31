@@ -21,5 +21,6 @@ const resetSearchBar = () => {
 
 const getAttendanceReport = () => {
     dateSelected = searchDateRange.value;
+    currentStartDate.innerText = dateSelected;
     attendances = ajaxGetRequest("/Attendance/getAttendanceByDate/"+dateSelected);
 }
