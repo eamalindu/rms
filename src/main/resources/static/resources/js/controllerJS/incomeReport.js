@@ -1,6 +1,7 @@
 window.addEventListener('load', () => {
     resetSearchForm();
     generateTestChart();
+    getIncomeReport();
     $("#registrationSearchCourse").chosen().change(function () {
         $("#registrationSearchCourse_chosen .chosen-single").addClass('bg-light');
     });
@@ -13,18 +14,22 @@ window.addEventListener('load', () => {
     $("#registrationSearchUser").chosen().change(function () {
         $("#registrationSearchUser_chosen .chosen-single").addClass('bg-light');
     });
+    $('#registrationSearchDateRange').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'));
+    });
 })
 
 const resetSearchForm = () => {
-    var start = moment();
-    var end = moment();
+    var start = moment().startOf('month');
+    var end = moment().endOf('month');
 
     function cb(start, end) {
         $('#registrationSearchDateRange span').html(start.format('YYYY-MMMM-DD') + ' - ' + end.format('YYYY-MMMM-DD'));
     }
 
     $('#registrationSearchDateRange').daterangepicker({
-        startDate: start, endDate: end, locale: {
+        startDate: start, endDate: end,
+        locale: {
             "format": "YYYY-MM-DD",
         }, ranges: {
             'Today': [moment(), moment()],
@@ -56,6 +61,14 @@ const getIncomeReport = () => {
         {property: getAmount, dataType: 'function'},
     ];
     fillDataIntoTableWithOutAction(tblIncomeReport,payments,displayPropertyListForIncomeReport);
+
+    //display total income
+    let totalIncome = 0;
+    payments.forEach((payment)=>{
+        totalIncome += payment.amount;
+    });
+    fullAmountText.innerHTML = "Rs. "+totalIncome.toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:2});
+
 }
 
 const generateTestChart = ()=>{
