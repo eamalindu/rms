@@ -31,4 +31,44 @@ const getBatchReport = ()=>{
     selectedBatch  = JSON.parse(SearchBatch.value);
    batchReport = ajaxGetRequest("/Batch/getBatchInfo/"+selectedBatch.batchCode);
    registrationsForBatch = ajaxGetRequest("/Registration/getRegistrations/"+selectedBatch.id);
+
+   //fill table for batch information
+    displayPropertyListForBatchInformation = [
+        {property:getCourseCode,dataType:'function'},
+        {property:'batchCode',dataType:'text'},
+        {property:'description',dataType:'text'},
+        {property:'commenceDate',dataType:'text'},
+        {property:'lastRegDate',dataType:'text'},
+        {property:'endDate',dataType:'text'},
+        {property:getWeekDay,dataType:'function'},
+        {property:getFee,dataType:'function'},
+        {property:getSchedule,dataType:'function'},
+        {property:getStatus,dataType:'function'},
+    ];
+    fillDataIntoTableWithOutAction(tblBatchReport,batchReport,displayPropertyListForBatchInformation);
+}
+
+const getCourseCode=(ob)=>{
+    return ob.courseID.code;
+}
+
+const getWeekDay=(ob)=>{
+    if(ob.isWeekday){
+        return 'Weekday';
+    }else{
+        return 'Weekend';
+    }
+}
+const getFee=(ob)=>{
+    return ob.paymentPlanID.totalFee;
+}
+const getSchedule=(ob)=>{
+    schduleString = '';
+    ob.batchHasDayList.forEach((schedule)=>{
+        schduleString += schedule.dayID.name + " [" + schedule.startTime.slice(0, -3) + " - " + schedule.endTime.slice(0, -3) + "]<br>";
+    });
+    return schduleString;
+}
+const getStatus=(ob)=>{
+    return ob.batchStatusID.name;
 }
