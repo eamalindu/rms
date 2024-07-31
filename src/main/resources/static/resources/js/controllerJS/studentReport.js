@@ -52,6 +52,9 @@ const getStudentReport = ()=>{
     //using ajaxGetRequest get student records for the selected dates
     students = ajaxGetRequest("/Student/getStudentByStartDateAndEndDate/"+startDate+"/"+endDate);
 
+    currentStartDate.innerText = startDate;
+    currentEndDate.innerText = endDate;
+
     const displayPropertyListForStudent = [
         {property:'studentNumber',dataType: 'text'},
         {property:getStudentName,dataType: 'function'},
