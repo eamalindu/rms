@@ -66,6 +66,11 @@ public class AttendanceController {
         return attendanceDAO.getAttendanceByBatchIDAndRegistrationID(batchID,registrationID);
     }
 
+    @GetMapping(value = "/getAttendanceByDate/{date}",produces = "application/json")
+    List<Attendance> getAttendanceByDate(@PathVariable String date){
+        return attendanceDAO.getAttendanceByDate(date);
+    }
+
     @PostMapping()
     public String saveNewAttendance(@RequestBody Attendance attendance){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

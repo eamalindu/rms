@@ -17,3 +17,8 @@ const resetSearchBar = () => {
         }
     });
 }
+
+const getAttendanceReport = () => {
+    date = searchDateRange.value;
+    attendances = ajaxGetRequest("/Attendance/getAttendanceByDate/")
+}
