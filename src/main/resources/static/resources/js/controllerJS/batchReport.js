@@ -2,6 +2,20 @@ window.addEventListener('load',()=>{
 
     resetSearchBar();
 
+    reportColumnFormatForBatch = [
+        {name: 'Course', data: 'courseID.code'},
+        {name: 'Batch', data: 'batchCode'},
+        {name: 'Description', data: 'description'},
+        {name: 'Batch Start Date', data: 'commenceDate'},
+        {name: 'Last Reg Date', data: 'lastRegDate'},
+        {name: 'Batch End Date', data: 'endDate'},
+        {name: 'Is Weekday', data: 'isWeekday'},
+        {name: 'Fee', data: 'paymentPlanID.totalFee'},
+        {name: 'Schedule', data: 'batchHasDayList'},
+        {name: 'Status', data: 'batchStatusID.name'},
+
+    ];
+
     //validation chosen select (for new quick payment)
     $("#SearchCourse").chosen().change(function () {
         $("#SearchCourse_chosen .chosen-single").addClass('bg-light');
@@ -71,4 +85,13 @@ const getSchedule=(ob)=>{
 }
 const getStatus=(ob)=>{
     return ob.batchStatusID.name;
+}
+
+const batchReportToXlsx = ()=>{
+    showCustomConfirm('You are about to export <span class="text-steam-green">Batch Report</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
+        if(result){
+            exportToExcel(batchReport,'Batch Report '+batchReport.batchCode,reportColumnFormatForBatch);
+            // exportTableToExcel('tblDailyIncome','test');
+        }
+    });
 }
