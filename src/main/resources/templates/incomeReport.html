@@ -21,25 +21,26 @@
         <div class="card-body rounded-0 mb-3">
             <form onsubmit="return false;" class="mb-2">
                 <div class="row align-items-center d-flex justify-content-evenly">
-                    <div class="col-12 col-lg-3">
+                    <div class="col-12 col-lg-4">
                         <label class="text-uppercase text-muted small m-0 p-0" for="registrationSearchDateRange">Date Range</label>
                         <div class="input-group">
                             <span class="input-group-text text-black bg-custom-white rounded-0"><i class="fa-solid fa-calendar-week"></i></span>
                             <input class="form-control rounded-0" style="width: 235px;" id="registrationSearchDateRange" placeholder="Date Range" />
+                            <button class="btn bg-steam-green rounded-0 text-white" id=""  onclick="getIncomeReport()" type="submit"><i class="fa-solid fa-magnifying-glass small"></i></button>
+                            <button class="btn btn-close-red rounded-0 text-white ms-3" id="btn-reset" type="reset">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="col-12 col-lg-4">
-                        <label class="text-uppercase small m-0 p-0 text-muted" >Search</label>
+<!--                        <label class="text-uppercase small m-0 p-0 text-muted" >Search</label>-->
                         <div class="input-group">
                             <div class="d-flex align-items-center justify-content-evenly">
-                                <button class="btn bg-steam-green rounded-0 text-white" id=""  onclick="getIncomeReport()" type="submit"><i class="fa-solid fa-magnifying-glass small"></i></button>
-                                <button class="btn btn-close-red rounded-0 text-white ms-3" id="btn-reset" type="reset">
-                                    <i class="fa-solid fa-xmark"></i>
-                                </button>
+
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-5">
+                    <div class="col-12 col-lg-4">
 <!--                        <label class="text-uppercase text-muted small m-0 p-0" for="registrationSearchCourse">Filters</label>-->
 <!--                        <div class="input-group">-->
 <!--                            <span class="input-group-text bg-custom-white rounded-0"><i class="fa-solid fa-filter"></i></span>-->
