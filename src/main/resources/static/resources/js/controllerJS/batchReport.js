@@ -18,7 +18,15 @@ window.addEventListener('load',()=>{
     ];
 
     //report column for registration exporting
-    reportColumnFormatForRegistration = [];
+    reportColumnFormatForRegistration = [
+        {name: 'Registration Number', data: 'registrationNumber'},
+        {name: 'Student', data: 'studentID.nameWithInitials'},
+        {name: 'Course Code', data: 'courseID.code'},
+        {name: 'Contact Number', data: 'studentID.mobileNumber'},
+        {name: 'Created', data: 'timestamp'},
+        {name: 'Added By', data: 'addedBy'},
+        {name: 'Status', data: 'registrationStatusID.name'},
+    ];
 
     //validation chosen select (for new quick payment)
     $("#SearchCourse").chosen().change(function () {
