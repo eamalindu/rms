@@ -2,6 +2,7 @@ window.addEventListener('load',()=>{
 
     resetSearchBar();
 
+    //report column for batch exporting
     reportColumnFormatForBatch = [
         {name: 'Course', data: 'courseID.code'},
         {name: 'Batch', data: 'batchCode'},
@@ -15,6 +16,9 @@ window.addEventListener('load',()=>{
         {name: 'Status', data: 'batchStatusID.name'},
 
     ];
+
+    //report column for registration exporting
+    reportColumnFormatForRegistration = [];
 
     //validation chosen select (for new quick payment)
     $("#SearchCourse").chosen().change(function () {
@@ -33,6 +37,7 @@ const resetSearchBar = ()=>{
     $('#SearchBatch').chosen({width: '225px'});
 }
 
+//get batches from the selected course
 const getBatches = ()=>{
     selectedCourse  = JSON.parse(SearchCourse.value);
     const batches = ajaxGetRequest("/Batch/getBatchesByCourseID/"+selectedCourse.id);
@@ -41,12 +46,12 @@ const getBatches = ()=>{
     $('#SearchBatch').val('').trigger('chosen:updated');
 }
 
+//function to get batch report and batch wise registrations
 const getBatchReport = ()=>{
     selectedBatch  = JSON.parse(SearchBatch.value);
    batchReport = ajaxGetRequest("/Batch/getBatchInfo/"+selectedBatch.batchCode);
    registrationsForBatch = ajaxGetRequest("/Registration/getRegistrations/"+selectedBatch.id);
 
-   //fill table for batch information
     displayPropertyListForBatchInformation = [
         {property:getCourseCode,dataType:'function'},
         {property:'batchCode',dataType:'text'},
@@ -69,8 +74,9 @@ const getBatchReport = ()=>{
         {property: 'addedBy', dataType: 'text'},
         {property: getRegStatus, dataType: 'function'}
     ];
-
+    //fill table for batch information
     fillDataIntoTableWithOutAction(tblBatchReport,batchReport,displayPropertyListForBatchInformation);
+    //fill table for batch wise registrations
     fillDataIntoTableWithOutAction(tblBatchWiseRegistrations,registrationsForBatch,displayPropertyListForRegistration);
 }
 
@@ -123,10 +129,21 @@ const getRegStatus = (ob) => {
     return ob.registrationStatusID.name;
 }
 
+//export batch report to excel
 const batchReportToXlsx = ()=>{
     showCustomConfirm('You are about to export <span class="text-steam-green">Batch Report</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
         if(result){
             exportToExcel(batchReport,'Batch Report '+batchReport[0].batchCode,reportColumnFormatForBatch);
+            // exportTableToExcel('tblDailyIncome','test');
+        }
+    });
+}
+
+//export batch wise registrations to excel
+const batchWiseRegistrationsToXlsx = ()=>{
+    showCustomConfirm('You are about to export <span class="text-steam-green">Batch Wise Registration</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
+        if(result){
+            exportToExcel(registrationsForBatch,'Batch Wise Registration Report '+batchReport[0].batchCode,reportColumnFormatForRegistration);
             // exportTableToExcel('tblDailyIncome','test');
         }
     });
