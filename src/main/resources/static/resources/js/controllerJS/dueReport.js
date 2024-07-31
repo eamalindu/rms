@@ -62,4 +62,30 @@ const getDueReport = ()=>{
 
     //registration from installmentObject
     console.log(registrations)
+
+    const displayPropertyListForDue = [
+        {property:'registrationNumber',dataType: 'text'},
+        {property:getStudentName,dataType: 'function'},
+        {property:getBatch,dataType: 'function'},
+        {property:getContactNumber,dataType: 'function'},
+        {property:getDueAmount,dataType: 'function'}
+    ]
+
+    fillDataIntoTableWithOutAction(tblDueReport, registrations,displayPropertyListForDue)
+}
+
+const getStudentName = (ob)=>{
+    return ob.studentID.title+" "+ob.studentID.nameWithInitials;
+}
+
+const getBatch = (ob)=>{
+    return ob.batchID.batchCode;
+}
+
+const getDueAmount = (ob)=>{
+    return "Rs. "+ob.dueAmount.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})
+}
+
+const getContactNumber = (ob)=>{
+    return ob.studentID.mobileNumber;
 }
