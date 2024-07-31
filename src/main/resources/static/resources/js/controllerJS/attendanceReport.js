@@ -8,6 +8,7 @@ const resetSearchBar = () => {
     //initialize 3rd party daterangepicker library
     //Set the minDate for the batchSheetCommenceDate as the current object's commenceDate value
     $('#searchDateRange').daterangepicker({
+        "maxDate":new Date(),
         "singleDatePicker": true,
         "linkedCalendars": false,
         "showCustomRangeLabel": false,
