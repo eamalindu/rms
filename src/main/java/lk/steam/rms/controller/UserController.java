@@ -1,6 +1,7 @@
 package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.UserDAO;
+import lk.steam.rms.entity.Employee;
 import lk.steam.rms.entity.Privilege;
 import lk.steam.rms.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,11 @@ public class UserController {
     public User getLoggedInUser(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return userDAO.getUserByUsername(auth.getName());
+    }
+
+    @GetMapping(value = "/getEmployeeByUsername/{username}",produces = "application/json")
+    public Employee getEmployeeByUsername(@PathVariable String username){
+        return userDAO.getEmployeeByUsername(username);
     }
 
     @PostMapping
