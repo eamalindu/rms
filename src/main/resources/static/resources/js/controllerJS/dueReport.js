@@ -101,7 +101,7 @@ const getContactNumber = (ob)=>{
 const dueReportToXlsx = ()=>{
     showCustomConfirm('You are about to export <span class="text-steam-green">Due Report</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
         if(result){
-            exportToExcel(registrations,'Income Report '+startDate+' to '+endDate,reportColumnFormat);
+            exportToExcel(registrations,'Due Report '+startDate+' to '+endDate,reportColumnFormat);
             // exportTableToExcel('tblDailyIncome','test');
         }
     });
