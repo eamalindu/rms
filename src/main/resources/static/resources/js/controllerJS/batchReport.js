@@ -59,7 +59,19 @@ const getBatchReport = ()=>{
         {property:getSchedule,dataType:'function'},
         {property:getStatus,dataType:'function'},
     ];
+
+    displayPropertyListForRegistration = [
+        {property: 'registrationNumber', dataType: 'text'},
+        {property: getStudentName, dataType: 'function'},
+        {property: getCourseName, dataType: 'function'},
+        {property: getContactNumber, dataType: 'function'},
+        {property: getDate, dataType: 'function'},
+        {property: 'addedBy', dataType: 'text'},
+        {property: getRegStatus, dataType: 'function'}
+    ];
+
     fillDataIntoTableWithOutAction(tblBatchReport,batchReport,displayPropertyListForBatchInformation);
+    fillDataIntoTableWithOutAction(tblBatchWiseRegistrations,registrationsForBatch,displayPropertyListForRegistration);
 }
 
 const getCourseCode=(ob)=>{
@@ -85,6 +97,30 @@ const getSchedule=(ob)=>{
 }
 const getStatus=(ob)=>{
     return ob.batchStatusID.name;
+}
+
+const getStudentName = (ob) => {
+
+    return ob.studentID.title + ' ' + ob.studentID.nameWithInitials + ' <br/><span class="badge w-50 rounded-0" style="background: darkgrey">' + ob.studentID.studentNumber + '</span>';
+}
+
+const getCourseName = (ob) => {
+
+    return ob.courseID.name + ' (' + ob.courseID.code + ')<br/><small class="text-muted">' + ob.batchID.batchCode + '</small>';
+}
+
+const getContactNumber = (ob) => {
+
+    return ob.studentID.mobileNumber;
+}
+
+
+const getDate = (ob) => {
+    return ob.timestamp.replace("T"," ");
+}
+
+const getRegStatus = (ob) => {
+    return ob.registrationStatusID.name;
 }
 
 const batchReportToXlsx = ()=>{
