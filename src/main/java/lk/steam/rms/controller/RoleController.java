@@ -20,4 +20,9 @@ public class RoleController {
     public List<Role> findAll(){
         return roleDAO.findAll();
     }
+
+    @GetMapping(value = "/getRolesWithoutAdmin",produces = "application/json")
+    public List<Role> getRolesWithoutAdmin(){
+        return roleDAO.getRolesWithoutAdmin();
+    }
 }

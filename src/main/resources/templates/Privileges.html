@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-12 col-lg-7 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1 text-end">
                     <p class="text-uppercase small m-0 p-0 text-muted">Add a new Privilege</p>
-                    <button aria-controls="staticBackdrop" class="btn pointer bg-purple text-white rounded-0 text-end"
+                    <button aria-controls="staticBackdrop" class="btn pointer bg-steam-green text-white rounded-0 text-end"
                             data-bs-target="#offCanvasPrivilege" data-bs-toggle="offcanvas"><i
                             class="fa-solid fa-plus"></i> Privilege
                     </button>
@@ -45,7 +45,7 @@
 
             </div>
         </div>
-        <div class="card-footer pt-4 pb-4">
+        <div class="card-footer show pt-4 pb-4">
             <h4 class="text-center fw-bold"
                 style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Search Privilege Info /
                 <small class="text-muted">No records</small></h4>
@@ -80,7 +80,7 @@
 <!-- Off canvas for privilege add start-->
 <div aria-labelledby="staticBackdropLabel" class="offcanvas offcanvas-end" data-bs-backdrop="static" id="offCanvasPrivilege"
      tabindex="-1">
-    <div class="offcanvas-header bg-light">
+    <div class="offcanvas-header bg-custom-white">
         <div>
             <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0" data-bs-dismiss="offcanvas"
                     type="button" id="offCanvasPrivilegeCloseButton"><i class="fas fa-times"></i></button>
@@ -92,6 +92,7 @@
             Privilege</h3>
     </div>
     <div class="offcanvas-body">
+        <p class="m-0 fw-bold text-end"><label class="required"></label><span class="text-danger"><sup> Mandatory Fields </sup></span></p>
         <div class="card border-0">
             <div class="card-body border-0">
                 <form onsubmit="return false" id="frmNewPrivilege">
@@ -229,7 +230,7 @@
                     </div>
 
                     <div class="mb-2">
-                        <button class="btn bg-purple text-white rounded-0 btn-block w-100" id="privilegeConfirm"
+                        <button class="btn bg-steam-green text-white rounded-0 btn-block w-100" id="privilegeConfirm"
                                 type="submit" onclick="newPrivilegeSubmit()">Confirm
                         </button>
                     </div>
