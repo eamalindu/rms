@@ -90,10 +90,6 @@ const refreshDailyBreakDownTable = ()=>{
 
     fillDataIntoTableWithOutAction(tblDailyIncome,dailyPayments,displayPropertyListForDailyIncome);
 
-    const trFinalAmount = document.createElement('tr');
-    trFinalAmount.innerHTML =`<td class="text-end" colspan="8">Total</td><td class="fw-bold">Rs. ${dailyPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>`;
-    var tbody = tblDailyIncome.children[1];
-    tbody.appendChild(trFinalAmount);
 }
 
 const refreshDailyCashBreakdownTable = ()=>{
@@ -119,10 +115,5 @@ const refreshDailyCashBreakdownTable = ()=>{
     ];
 
     fillDataIntoTableWithOutAction(tblCashIncome,dailyCashPayments,displayPropertyListForCashIncome);
-
-    const trFinalAmount = document.createElement('tr');
-    trFinalAmount.innerHTML =`<td class="text-end" colspan="8">Total</td><td class="fw-bold">Rs. ${dailyCashPayment.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>`;
-    var tbody = tblCashIncome.children[1];
-    tbody.appendChild(trFinalAmount);
 
 }

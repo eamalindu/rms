@@ -1,7 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:replace="~{fragments/head :: headFragment}"></head>
+<head>
+    <style>
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+            background-color: white;
+        }
 
+        #pills-home-tab.nav-link.active {
+            color: #19459D!important;
+            border-bottom: 3px solid#19459D!important;
+        }
+        #pills-course-tab.nav-link.active {
+            color: red!important;
+            border-bottom: 3px solid red!important;
+        }
+
+        .nav-link {
+            color: black;
+        }
+    </style>
+</head>
 <body>
 <!--Loader Start-->
 <div th:replace="~{fragments/loader :: loader}"></div>
@@ -18,64 +37,102 @@
 
 <div class="container-fluid pt-2">
     <div class="card rounded-0">
-        <div class="card-body rounded-0 text-center text-capitalize">
-            <h6 class="text-muted">Showing all transactions that occurred on <span id="currentDate"></span></h6>
-        </div>
-        <div class="card-footer show pt-4 pb-4">
-            <h4 class="text-center fw-bold"
-                style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Daily Income Breakdown</h4>
-            <button class="btn btn-sm btn-success float-end mb-2 rounded-0" onclick="dailyIncomeToXlsx()">Export to Xlsx</button>
-            <table class="custom-table text-start mt-4" id="tblDailyIncome">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Cashier</th>
-                    <th>Payment Method</th>
-                    <th>Time</th>
-                    <th>Registration</th>
-                    <th>Student</th>
-                    <th>Course</th>
-                    <th>Receipt</th>
-                    <th>Amount</th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-            <span id="fullAmountText"></span>
-            <!-- Ajax loader start-->
-            <div class="loading-overlay mt-2">
-                <img alt="loading animation" src="/resources/images/loader.svg" width="60px">
-            </div>
-            <!-- Ajax loader end-->
-
-
-                <h4 class="text-center fw-bold mt-5"
-                    style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Cash Income</h4>
-            <button class="btn btn-sm btn-success float-end mb-2 rounded-0" onclick="dailyCashToXlsx()">Export to Xlsx</button>
-                <table class="custom-table text-start mt-4" id="tblCashIncome">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Cashier</th>
-                        <th>Payment Method</th>
-                        <th>Time</th>
-                        <th>Registration</th>
-                        <th>Student</th>
-                        <th>Course</th>
-                        <th>Receipt</th>
-                        <th>Amount</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-                <!-- Ajax loader start-->
-                <div class="loading-overlay mt-2">
-                    <img alt="loading animation" src="/resources/images/loader.svg" width="60px">
+        <div class="card-body rounded-0">
+            <h2 class="text-muted text-uppercase fs-6 mb-4">Showing all transactions that occurred on <span id="currentDate"></span></h2>
+            <div id="test" class="mb-3"></div>
+            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation" style="width: 50%">
+                    <button aria-controls="pills-home" aria-selected="true" class="nav-link w-100 active rounded-0 border-1 border border-grey text-muted"
+                            data-bs-target="#pills-info" data-bs-toggle="pill" id="pills-home-tab" role="tab"
+                            type="button"><i class="fa-solid fa-calendar"></i> Daily Income Breakdown
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation" style="width: 50%">
+                    <button aria-controls="pills-profile" aria-selected="false" class="nav-link w-100 rounded-0 bg-custom-white border-1 border border-grey text-muted"
+                            data-bs-target="#pills-registration" data-bs-toggle="pill" id="pills-course-tab" role="tab"
+                            type="button"><i class="fa-solid fa-money-bill"></i> Cash Income Breakdown
+                    </button>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div aria-labelledby="pills-home-tab" class="tab-pane fade show active" id="pills-info" role="tabpanel"
+                     tabindex="0">
+                    <div class="card rounded-0 mt-0 border-0 border-start border-end border-bottom">
+                        <div class="card-body rounded-0 border-0 py-0 mb-3">
+                            <div class="w-100 d-flex mt-3 mb-2">
+                                <div class="w-75 d-flex align-items-center">
+                                    <span class="fw-bold">Total Monthly Income : <span id="fullAmountText"></span></span>
+                                </div>
+                                <div class="w-25 justify-content-end d-flex align-items-center">
+                                    <button class="btn btn-sm btn-success float-end rounded-0" onclick="dailyIncomeToXlsx()">Export to Xlsx</button>
+                                </div>
+                            </div>
+                            <table class="custom-table text-start mt-4" id="tblDailyIncome">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Cashier</th>
+                                    <th>Payment Method</th>
+                                    <th>Time</th>
+                                    <th>Registration</th>
+                                    <th>Student</th>
+                                    <th>Course</th>
+                                    <th>Receipt</th>
+                                    <th>Amount</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <!-- Ajax loader start-->
+                            <div class="loading-overlay mt-2">
+                                <img alt="loading animation" src="/resources/images/loader.svg" width="60px">
+                            </div>
+                            <!-- Ajax loader end-->
+                        </div>
+                    </div>
                 </div>
-                <!-- Ajax loader end-->
+
+                <div aria-labelledby="pills-profile-tab" class="tab-pane fade" id="pills-registration" role="tabpanel"
+                     tabindex="0">
+                    <div class="card rounded-0 mt-0 border-0 border-start border-end border-bottom">
+                        <div class="card-body rounded-0 border-0 py-0 mb-3">
+                            <div class="w-100 d-flex mt-3 mb-2">
+                                <div class="w-75 d-flex align-items-center">
+                                    <span class="fw-bold">Total Cash Income : <span id="cashAmountText"></span></span>
+                                </div>
+                                <div class="w-25 justify-content-end d-flex align-items-center">
+                                    <button class="btn btn-sm btn-success float-end rounded-0" onclick="dailyCashToXlsx()">Export to Xlsx</button>
+                                </div>
+                            </div>
+                            <table class="custom-table text-start" id="tblCashIncome">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Cashier</th>
+                                    <th>Payment Method</th>
+                                    <th>Time</th>
+                                    <th>Registration</th>
+                                    <th>Student</th>
+                                    <th>Course</th>
+                                    <th>Receipt</th>
+                                    <th>Amount</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <!-- Ajax loader start-->
+                            <div class="loading-overlay mt-2">
+                                <img alt="loading animation" src="/resources/images/loader.svg" width="60px">
+                            </div>
+                            <!-- Ajax loader end-->
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
 
     </div>
 </div>
