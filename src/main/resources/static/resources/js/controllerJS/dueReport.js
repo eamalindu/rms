@@ -2,6 +2,14 @@ window.addEventListener('load',()=>{
     resetSearchForm();
     getDueReport();
 
+    reportColumnFormat = [
+        {name: 'Registration Number', data: 'registrationNumber'},
+        {name: 'Student Name', data: 'studentID.nameWithInitials'},
+        {name: 'Batch Code', data: 'batchID.batchCode'},
+        {name: 'Due Amount (Rs.)', data: 'dueAmount'},
+        {name: 'Contact Number', data: 'studentID.mobileNumber'},
+    ]
+
     $('#registrationSearchDateRange').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'));
     });
@@ -41,7 +49,7 @@ const getDueReport = ()=>{
     const fullPaymentDue = ajaxGetRequest("/Registration/getMonthlyDueRegistration/"+startDate+"/"+endDate)
     //create a variable to store the total monthly due and set the initial value to 0
     let balanceAmount = 0
-    let registrations = []
+    registrations = []
     //use forEach function to loop through the fullPaymentDue array and add the balanceAmount to balanceAmount variable
     fullPaymentDue.forEach((registration)=>{
         balanceAmount += registration.balanceAmount;
@@ -88,4 +96,13 @@ const getDueAmount = (ob)=>{
 
 const getContactNumber = (ob)=>{
     return ob.studentID.mobileNumber;
+}
+
+const dueReportToXlsx = ()=>{
+    showCustomConfirm('You are about to export <span class="text-steam-green">Due Report</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
+        if(result){
+            exportToExcel(registrations,'Income Report '+startDate+' to '+endDate,reportColumnFormat);
+            // exportTableToExcel('tblDailyIncome','test');
+        }
+    });
 }
