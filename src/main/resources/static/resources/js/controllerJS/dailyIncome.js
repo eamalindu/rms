@@ -76,6 +76,7 @@ const refreshDailyBreakDownTable = ()=>{
         dailyPayment += payment.amount;
     });
     //daily Income calculation end
+    fullAmountText.innerHTML = "Rs. "+dailyPayment.toLocaleString('en-US',{maximumFractionDigits: 2,minimumFractionDigits: 2});
 
     const displayPropertyListForDailyIncome = [
         {property: 'addedBy', dataType: 'text'},
@@ -102,6 +103,7 @@ const refreshDailyCashBreakdownTable = ()=>{
         dailyCashPayment += payment.amount;
     });
     //daily Income calculation end
+    cashAmountText.innerHTML = "Rs. "+dailyCashPayment.toLocaleString('en-US',{maximumFractionDigits: 2,minimumFractionDigits: 2});
 
     const displayPropertyListForCashIncome = [
         {property: 'addedBy', dataType: 'text'},
