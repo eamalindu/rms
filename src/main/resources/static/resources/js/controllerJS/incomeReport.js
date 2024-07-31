@@ -62,6 +62,10 @@ const getIncomeReport = () => {
     ];
     fillDataIntoTableWithOutAction(tblIncomeReport,payments,displayPropertyListForIncomeReport);
 
+    //set date
+    currentStartDate.innerHTML = startDate;
+    currentEndDate.innerHTML = endDate;
+
     //display total income
     let totalIncome = 0;
     payments.forEach((payment)=>{
