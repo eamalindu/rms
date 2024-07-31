@@ -102,11 +102,6 @@ input,.form-control {
     box-shadow: none!important;
 }
 
-.table td{
-    padding: 10px!important;
-    color: #000;
-    border-color: rgba(0,0,0,0.05)!important;
-}
 .text-purple{
     color: rebeccapurple!important;
 }
@@ -168,13 +163,6 @@ select:invalid[multiple] {
 
 }
 
-.custom-table td {
-    background-color: white;
-    padding: 10px;
-    color: black;
-    border: 1px solid lightgrey;
-    text-align: center;
-}
 
 .custom-table {
     width: 100%;
