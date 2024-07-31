@@ -60,7 +60,7 @@ const getWeekDay=(ob)=>{
     }
 }
 const getFee=(ob)=>{
-    return ob.paymentPlanID.totalFee;
+    return "Rs. "+ob.paymentPlanID.totalFee.toLocaleString('en-US',{minimumFractionDigits:2});
 }
 const getSchedule=(ob)=>{
     schduleString = '';
