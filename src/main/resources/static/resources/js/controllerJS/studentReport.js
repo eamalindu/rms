@@ -34,4 +34,5 @@ const resetSearchBar = ()=>{
 
 const getStudentReport = ()=>{
 
+    students = ajaxGetRequest("/Student/getStudentByStartDateAndEndDate/");
 }

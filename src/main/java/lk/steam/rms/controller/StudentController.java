@@ -56,6 +56,11 @@ public class StudentController {
         return studentDAO.getStudentsByNicOrStudentNumberOrMobileNumber(value);
     }
 
+    @GetMapping(value = "getStudentByStartDateAndEndDate/{startDate}/{endDate}",produces = "application/json")
+    public List<Student> getStudentByStartDateAndEndDate(@PathVariable String startDate,@PathVariable String endDate){
+        return studentDAO.getStudentByStartDateAndEndDate(startDate,endDate);
+    }
+
     @GetMapping(value = "/edit")
     public ModelAndView studentEdit() {
         ModelAndView studentEditView = new ModelAndView();
