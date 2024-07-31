@@ -2,6 +2,7 @@ window.addEventListener('load',()=>{
 
     refreshDailyBreakDownTable();
     refreshDailyCashBreakdownTable();
+    generateDailyIncomeChart();
 
     reportColumnFormat = [
         {name: 'Added By', data: 'addedBy'},
@@ -118,4 +119,8 @@ const refreshDailyCashBreakdownTable = ()=>{
 
     fillDataIntoTableWithOutAction(tblCashIncome,dailyCashPayments,displayPropertyListForCashIncome);
 
+}
+
+const generateDailyIncomeChart=()=>{
+    const cashier = ajaxGetRequest("/Payment/getCashiers");
 }

@@ -221,6 +221,11 @@ public class PaymentController {
         return paymentDAO.getCashiers();
     }
 
+    @GetMapping(value = "/getPaymentsByStartDateAndEndDateAndCashier/{startDate}/{endDate}/{addedBy}", produces = "application/json")
+    public List<Payment> getPaymentsByStartDateAndEndDateAndCashier(@PathVariable String startDate, @PathVariable String endDate,@PathVariable String addedBy ) {
+        return paymentDAO.getPaymentsByStartDateAndEndDateAndCashier();
+    }
+
     @GetMapping(value = "/getPaymentsForReport", produces = "application/json")
     public List<Payment> getPaymentsForReport(
             @RequestParam(required = false) Integer courseID,
