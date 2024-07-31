@@ -21,4 +21,8 @@ public class Designation {
     @Column(name = "designation")
     @NotNull
     private String designation;
+
+    @Column(name = "useraccountneeded")
+    @NotNull
+    private Boolean userAccountNeeded;
 }

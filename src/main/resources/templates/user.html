@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/head :: headFragment}"></head>
+<body>
+<!--Loader-->
+<div th:replace="~{fragments/loader :: loader}"></div>
+<!-- Nav Bar Start -->
+<nav th:replace="~{ fragments/navbarAdministration :: navbarAdministrationFragment}"></nav>
+<!-- Nav Bar End -->
+
+<!-- Display Current Page /breadcrumbs -->
+<div class="container-fluid bg-custom-white custom-banner">
+    <h5>Manage Users</h5>
+</div>
+
+<div class="container-fluid pt-2">
+    <div class="card rounded-0">
+        <div class="card-body rounded-0">
+            <div class="row align-items-center d-flex justify-content-around">
+                <div class="col-12 col-lg-4 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1">
+                    <!--
+                    <label class="text-uppercase small m-0 p-0 text-muted" for="userSearchID">Search</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-custom-white rounded-0"><i
+                                class="fa-solid fa-magnifying-glass"></i></span>
+                        <input class="form-control rounded-0" id="userSearchID"
+                               placeholder="Employee ID, Mobile Number or NIC">
+                        <div class="d-flex align-items-center justify-content-evenly">
+                            <button class="btn bg-purple rounded-0 text-white" id="" type="submit"><i
+                                    class="fa-solid fa-magnifying-glass small"></i></button>
+                            <button class="btn btn-close-red rounded-0 text-white ms-3" id="btn-reset" type="reset"><i
+                                    class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    </div>
+                    -->
+                </div>
+                <div class="col-12 col-lg-7 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1 text-end">
+                    <p class="text-uppercase small m-0 p-0 text-muted">Add a new User</p>
+                    <button class="btn pointer bg-purple text-white rounded-0 text-end" data-bs-toggle="offcanvas"
+                            data-bs-target="#offCanvasUser" aria-controls="staticBackdrop"><i
+                            class="fa-solid fa-plus"></i> User
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-footer pt-4 pb-4">
+            <h4 class="text-center fw-bold"
+                style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Search User Info /
+                <small class="text-muted">No records</small></h4>
+            <table class="custom-table" id="tblUser">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <!-- Ajax loader start-->
+            <div class="loading-overlay mt-2">
+                <img src="/resources/images/loader.svg" width="60px" alt="loading animation">
+            </div>
+            <!-- Ajax loader end-->
+        </div>
+    </div>
+</div>
+
+<!-- Off canvas for user add start-->
+<div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offCanvasUser"
+     aria-labelledby="staticBackdropLabel">
+    <div class="offcanvas-header bg-light">
+        <div>
+            <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0" data-bs-dismiss="offcanvas" type="button" id="offCanvasUserCloseButton"><i class="fas fa-times"></i></button>
+            <button class="btn btn-sm bg-secondary text-white rounded-0" type="button" onclick="resetUserForm()"><i class="fas fa-refresh"></i></button>
+        </div>
+        <h3 class="float-end" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">New User</h3>
+    </div>
+    <div class="offcanvas-body">
+        <div class="card border-0">
+            <div class="card-body border-0">
+                <form onsubmit="return false" id="frmNewUser">
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="userEmployee">Employee</label>
+                        </div>
+                        <select class="form-select rounded-0" id="userEmployee" data-placeholder="Please Select an Employee" required onchange="selectDynamicValueValidator(this,'','newUser','employeeID')">
+                            <option>Dynamic Value 1</option>
+                            <option>Dynamic Value 2</option>
+                            <option>Dynamic Value 3</option>
+                            <option>Dynamic Value 4</option>
+                        </select>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Employee</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold required small" for="userUsername">Username</label>
+                        </div>
+                        <input class="form-control rounded-0 newUserInputs" id="userUsername" required onkeyup="inputTextValidator(this,'^[a-zA-z0-9]{5,45}$','newUser','username')">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Username</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold required small" for="userEmail">Email Address</label>
+                        </div>
+                        <input class="form-control rounded-0 newUserInputs" id="userEmail" required type="email" onkeyup="inputTextValidator(this,'^[a-z|A-Z]{2,19}[@][a-z|A-Z]{2,8}[.][a-z|A-Z]{2,3}$','newUser','email')">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Email</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold required small" for="userPassword">Password</label>
+                        </div>
+                        <input class="form-control rounded-0 newUserInputs" id="userPassword" required type="text" onkeyup="inputTextValidator(this,'^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$','newUser','password')">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Password</div>
+                        <div class="text-muted small"><small>Password must be at least 8 characters long.<br>At least contain one uppercase, numeric and special character </small></div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="userConfirmPassword">Confirm Password</label>
+                        </div>
+                        <input class="form-control rounded-0 newUserInputs" id="userConfirmPassword" onkeyup="checkPassword()" required type="text" >
+                        <div class="valid-feedback">Passwords Match</div>
+                        <div class="invalid-feedback">Passwords Don't Match</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="userRole">Role</label>
+                        </div>
+                        <select class="form-select rounded-0" id="userRole" name="userRole[]" required multiple onchange="selectDynamicMultiValueValidator('#userRole','newUser','roles')">
+                            <option>Dynamic Value 1</option>
+                            <option>Dynamic Value 2</option>
+                            <option>Dynamic Value 3</option>
+                            <option>Dynamic Value 4</option>
+                        </select>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Role</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="userStatus">Status</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input rounded-0" type="checkbox" value="" id="userStatus" onchange="if(this.checked){textUserStatus.innerText = 'Active'; newUser.status =true;}else{textUserStatus.innerText = 'Not Active';newUser.status =false; }">
+                            <label class="form-check-label" for="userStatus">User Account is <span class="fw-bold" id="textUserStatus">Not Active</span></label>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <button class="btn bg-purple text-white rounded-0 btn-block w-100" id="inquiryConfirm" type="submit" onclick="newUserSubmit()">Confirm
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Off canvas for user add end-->
+
+<!-- Off canvas for employee details start-->
+<div aria-labelledby="offcanvasRightLabel" class="offcanvas offcanvas-end w-50" data-bs-backdrop="static"
+     id="offcanvasUserSheet" tabindex="-1">
+    <div class="offcanvas-header bg-light">
+        <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0" id="offCanvasUserSheetCloseButton" data-bs-dismiss="offcanvas"
+                type="button"><i class="fas fa-times"></i></button>
+        <div class="container d-flex gap-3 ms-1" style="width: 55%">
+            <button class="btn btn-sm bg-info rounded-0 text-white" onclick="userEdit()"><i class="fa-regular fa-pen-to-square"></i> Edit Info </button>
+            <button class="btn btn-sm bg-warning rounded-0 text-white" id="btnUserSheetUpdate" onclick="userUpdate()"><i class="fa-solid fa-arrows-rotate"></i> Update </button>
+            <button class="btn btn-sm bg-danger rounded-0 text-white" id="" onclick="userDelete()"><i class="fa-solid fa-trash"></i> Delete </button>
+        </div>
+        <h3 class="align-items-center" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">User Details</h3>
+    </div>
+    <div class="offcanvas-body">
+        <img src="" id="imgProfile" class="placeholder-image img-thumbnail rounded-circle mx-auto d-block mb-3" alt="...">
+        <table class="table table-bordered table-responsive ">
+            <tbody class="small align-middle">
+            <tr>
+                <td class="fw-bold w-50">Employee ID</td>
+                <td><input class="small rounded-0 form-control-sm border-0 " id="userSheetEmpNumber" readonly value="EMP001"></td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-50">Employee Full Name</td>
+                <td class="w-100"><input class="small rounded-0 form-control-sm border-0" id="userSheetCallingName" readonly value="Kasun Malhara"></td>
+
+            </tr>
+            <tr>
+                <td class="fw-bold w-50">Username</td>
+                <td class="w-25">
+                    <input class="small rounded-0 form-control-sm userSheetInputs w-100" id="userSheetUsername" onkeyup="inputTextValidator(this,'^[a-zA-z0-9]{5,45}$','editedUser','username')" disabled value="kasun">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Username</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-50">Email Address</td>
+                <td>
+                    <input class="small rounded-0 form-control-sm userSheetInputs w-100" id="userSheetEmail" disabled value="eamalindu@gmail.com" onkeyup="inputTextValidator(this,'^[a-z|A-Z]{2,19}[@][a-z|A-Z]{2,8}[.][a-z|A-Z]{2,3}$','editedUser','email')">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Username</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-50" colspan="">Role</td>
+                <td class="" colspan="">
+                    <select class="form-select rounded-0 form-control-sm small" id="userSheetRole" required multiple onchange="selectDynamicMultiValueValidator('#userSheetRole','editedUser','roles')"></select>
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Role</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-50" colspan="">User Status</td>
+                <td class="" colspan="">
+                    <input class="small form-check-input rounded-0 userSheetInputs" disabled type="checkbox" value="" id="userSheetStatus" onchange="if(this.checked){textUserSheetStatus.innerText = 'Active'; editedUser.status =true;}else{textUserSheetStatus.innerText = 'Not Active';editedUser.status =false; }">
+                    <label class="form-check-label" for="userStatus">User Account is <span class="fw-bold" id="textUserSheetStatus">Not Active</span></label>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<!-- Off canvas for employee details end-->
+<script src="/resources/js/external-validator.js" type="text/javascript"></script>
+<script src="/resources/js/external-loader.js" type="text/javascript"></script>
+<script src="/resources/js/external-commonFunction.js" type="text/javascript"></script>
+<script src="/resources/js/external-table.js" type="text/javascript"></script>
+<script src="/resources/js/external-modalFunction.js" type="text/javascript"></script>
+<script src="/resources/js/controllerJS/user.js" type="text/javascript"></script>
+<script th:replace="~{ fragments/logout :: logoutScript}"></script>
+</body>
+</html>

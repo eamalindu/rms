@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/head :: headFragment}"></head>
+<body>
+<!--Loader-->
+<div th:replace="~{fragments/loader :: loader}"></div>
+<!-- Nav Bar Start -->
+<nav th:replace="~{ fragments/navbarAdministration :: navbarAdministrationFragment}"></nav>
+<!-- Nav Bar End -->
+
+<!-- Display Current Page /breadcrumbs -->
+<div class="container-fluid bg-custom-white custom-banner">
+    <h5>Manage Employees</h5>
+</div>
+
+
+<div class="container-fluid pt-2">
+    <div class="card rounded-0">
+        <div class="card-body rounded-0">
+            <div class="row align-items-center d-flex justify-content-around">
+                <div class="col-12 col-lg-4 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1">
+                    <!--
+                    <label class="text-uppercase small m-0 p-0 text-muted" for="employeeSearchID">Search</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-custom-white rounded-0"><i
+                                class="fa-solid fa-magnifying-glass"></i></span>
+                        <input class="form-control rounded-0" id="employeeSearchID"
+                               placeholder="Employee ID, Mobile Number or NIC">
+                        <div class="d-flex align-items-center justify-content-evenly">
+                            <button class="btn bg-purple rounded-0 text-white"  type="submit"><i
+                                    class="fa-solid fa-magnifying-glass small"></i></button>
+                            <button class="btn btn-close-red rounded-0 text-white ms-3" id="btn-reset" type="reset"><i
+                                    class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    </div>
+                    -->
+                </div>
+                <div class="col-12 col-lg-7 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1 text-end">
+                    <p class="text-uppercase small m-0 p-0 text-muted">Add a new Employee</p>
+                    <button class="btn pointer bg-steam-green text-white rounded-0 text-end" data-bs-toggle="offcanvas"
+                            data-bs-target="#offCanvasEmployee" aria-controls="staticBackdrop"><i
+                            class="fa-solid fa-plus"></i> Employee
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-footer show pt-4 pb-4">
+            <h4 class="text-center fw-bold"
+                style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Search Employee Info /
+                <small class="text-muted">No records</small></h4>
+            <table class="custom-table" id="tblEmployee">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Employee ID</th>
+                    <th>Full Name</th>
+                    <th>NIC</th>
+                    <th>Mobile</th>
+                    <th>Designation</th>
+                    <th>Status</th>
+                    <th>User Account</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <!-- Ajax loader start-->
+            <div class="loading-overlay mt-2">
+                <img src="/resources/images/loader.svg" width="60px" alt="loading animation">
+            </div>
+            <!-- Ajax loader end-->
+        </div>
+    </div>
+    <div class="w-100 d-flex align-items-center justify-content-center gap-3 mx-auto mt-2">
+        <p><i class="fa-solid fa-user-check text-success bg-custom-white p-2 rounded-circle"
+              title="Employee Working"></i> <span class="text-muted small"> - Working</span></p>
+        <p><i class="fa-solid fa-user-xmark text-danger bg-custom-white p-2 rounded-circle"
+              title="Employee Resigned"></i> <span class="text-muted small"> - Resigned</span></p>
+        <p><i class="fa-solid fa-user-slash text-warning bg-custom-white p-2 rounded-circle"
+              title="Employee Suspended"></i> <span class="text-muted small"> - Suspended</span></p>
+
+    </div>
+</div>
+
+<!-- Off canvas for employee add start-->
+<div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="offCanvasEmployee"
+     aria-labelledby="staticBackdropLabel">
+    <div class="offcanvas-header bg-light">
+        <div>
+            <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0" id="offCanvasEmployeeCloseButton" data-bs-dismiss="offcanvas" type="button"><i class="fas fa-times"></i></button>
+            <button class="btn btn-sm bg-secondary text-white rounded-0" type="button" onclick="resetEmployeeForm()"><i class="fas fa-refresh"></i></button>
+        </div>
+        <h3 class="float-end" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">New Employee</h3>
+    </div>
+    <div class="offcanvas-body">
+        <p class="m-0 fw-bold text-end"><label class="required"></label><span class="text-danger"><sup> Mandatory Fields </sup></span></p>
+        <div class="card border-0">
+            <div class="card-body border-0">
+                <form onsubmit="return false" id="frmNewEmployee">
+                    <div class="mb-3">
+                        <img src="" id="imgProfile" class="placeholder-image img-thumbnail rounded-0 mx-auto d-block" alt="...">
+                    </div>
+                    <div class="mb-2">
+                        <label for="employeeProfile" class="form-label fw-bold small required">Profile Photo</label>
+                        <input class="form-control rounded-0 small newEmployeeInputs" type="file" id="employeeProfile" accept="image/png, image/jpeg" required onchange="newEmployee.photoPath=this.value">
+                        <div class="invalid-feedback">Please provide a valid Profile Photo</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold required small" for="employeeFullName">Full Name</label>
+                        </div>
+                        <input class="form-control rounded-0 newEmployeeInputs" id="employeeFullName" required  onkeyup="inputTextValidator(this,'^[A-Z][a-z]{2,19}[ ][A-Z][a-z]{2,29}$','newEmployee','fullName');generateCallingName()">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid full name</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold required small" for="employeeCallingName">Calling Name</label>
+                        </div>
+                        <select class="form-select rounded-0" id="employeeCallingName" required data-placeholder="Please Select a Calling Name"  onchange="selectStaticValueValidator(this,'','newEmployee','callingName')">
+                            <option value=""></option>
+                        </select>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid calling name</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold required small" for="employeeNIC">NIC Number</label>
+                        </div>
+                        <input class="form-control rounded-0 newEmployeeInputs" id="employeeNIC" required onkeyup="inputTextValidator(this,'^(?:[6-9][0-9]{8}([V]|[X]|[v]|[x]){1})|(?:[19|20][0-9]{10})$','newEmployee','nic')">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid NIC</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold required small" for="employeeDOB">Date of birth</label>
+                        </div>
+                        <input class="form-control rounded-0 newEmployeeInputs" id="employeeDOB" required type="text" onkeydown="return false;">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Date of Birth</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="employeeGender">Gender</label>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="text-center">
+                                <div class="d-flex align-items-center justify-content-center mx-auto bg-success text-white" id="leftMale" style="border-radius: 50%;height: 40px;width: 40px;background:#ddd">
+                                    <i class="fa-solid fa-mars"></i>
+                                </div>
+                                <span class="text-muted small">Male</span>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" id="employeeGender" onchange="checkBoxValidator(this, leftMale, rightFemale, 'newEmployee', 'gender', 'Female', 'Male');" role="switch" style="scale: 1.7;" type="checkbox">
+                            </div>
+                            <div class="text-center">
+                                <div class="d-flex align-items-center justify-content-center mx-auto" id="rightFemale" style="border-radius: 50%;height: 40px;width: 40px;background:#ddd">
+                                    <i class="fa-solid fa-venus"></i>
+                                </div>
+                                <span class="text-muted small">Female</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold required small" for="employeeEmail">Email Address</label>
+                        </div>
+                        <input class="form-control rounded-0 newEmployeeInputs" id="employeeEmail" required type="email" onkeyup="inputTextValidator(this,'^[a-z|A-Z]{2,19}[@][a-z|A-Z]{2,8}[.][a-z|A-Z]{2,3}$','newEmployee','email')">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid email</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold required small" for="employeeMobile">Mobile Number</label>
+                        </div>
+                        <input class="form-control rounded-0 newEmployeeInputs" id="employeeMobile" required type="text"  onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','newEmployee','mobileNumber')">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Mobile Number</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold small" for="employeeLand">Land Number</label>
+                        </div>
+                        <input class="form-control rounded-0 newEmployeeInputs" id="employeeLand" type="text" placeholder="Optional" onkeyup="inputTextValidator(this,'^[0][12345689][0-9]{8}$','newEmployee','landNumber')">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Land Number</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="employeeAddress">Address</label>
+                        </div>
+                        <input class="form-control rounded-0 newEmployeeInputs" id="employeeAddress" required type="text" onkeyup="inputTextValidator(this,'^No:[\\s]*(\\d+\\/\\d*[A-Z]?)[,\\s]+(\\w+)[,\\s]+(\\w+)\\.$','newEmployee','address')">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid address</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="employeeHighestEducation">Highest Educational Qualification</label>
+                        </div>
+                        <select class="form-select rounded-0" id="employeeHighestEducation" required data-placeholder="Please Select a Highest Educational Qualification"  onchange="selectStaticValueValidator(this,'','newEmployee','highestEducationalQualification')">
+                            <option value=""></option>
+                            <option>Doctorate (PhD)</option>
+                            <option>Master's Degree (MA, MSc)</option>
+                            <option>Undergraduate Degree (BA, BSc)</option>
+                            <option>Higher National Diploma (HND)</option>
+                            <option>Diploma</option>
+                            <option>G.C.E A/L</option>
+                            <option>G.C.E O/L</option>
+                        </select>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Highest Educational Qualification</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="employeeCivilStatus">Civil Status</label>
+                        </div>
+                        <select class="form-select rounded-0" id="employeeCivilStatus" required data-placeholder="Please Select a Civil Status"  onchange="selectStaticValueValidator(this,'','newEmployee','civilStatus')">
+                            <option value=""></option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                        </select>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid civil status</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold small required" for="employeeDesignation">Designation</label>
+                        </div>
+                        <select class="form-select rounded-0" id="employeeDesignation" data-placeholder="Please Select a Designation" required onchange="selectDynamicValueValidator(this,'','newEmployee','designationID')">
+                            <option>Dynamic Value 1</option>
+                            <option>Dynamic Value 2</option>
+                            <option>Dynamic Value 3</option>
+                            <option>Dynamic Value 4</option>
+                        </select>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid designation</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-label">
+                            <label class="fw-bold small" for="employeeNote">Note</label>
+                        </div>
+                        <textarea class="rounded-0 form-control newEmployeeInputs" cols="80" id="employeeNote" placeholder="Optional" rows="4"  onkeyup="inputTextValidator(this,'^[a-zA-Z0-9\\s/]{20,}$','newEmployee','note')"></textarea>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Note</div>
+                        <div class="text-muted small"><small> a short description which will be useful for the
+                            counsellor who will be handling this inquiry</small></div>
+                    </div>
+                    <div class="mb-2">
+                        <button class="btn bg-steam-green text-white rounded-0 btn-block w-100" id="employeeConfirm" type="submit" onclick="newEmployeeSubmit()">Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Off canvas for employee add end-->
+
+<!-- Off canvas for employee details start-->
+<div aria-labelledby="offcanvasRightLabel" class="offcanvas offcanvas-end w-50" data-bs-backdrop="static" id="offCanvasEmployeeSheet" tabindex="-1">
+    <div class="offcanvas-header bg-custom-white">
+        <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0" id="offCanvasEmployeeSheetCloseButton" data-bs-dismiss="offcanvas" type="button"><i class="fas fa-times"></i></button>
+        <div class="container d-flex gap-3 ms-1" style="width: 55%">
+            <button class="btn btn-sm bg-info rounded-0 text-white" onclick="employeeEdit()"><i class="fa-regular fa-pen-to-square"></i> Edit Info </button>
+            <button class="btn btn-sm bg-warning rounded-0 text-white" onclick="employeeUpdate()" id="btnEmployeeSheetUpdate"><i class="fa-solid fa-arrows-rotate"></i> Update </button>
+            <button class="btn btn-sm bg-danger rounded-0 text-white" id="" onclick="employeeDelete()"><i class="fa-solid fa-trash"></i> Delete </button>
+        </div>
+        <h3 class="align-items-center" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Employee Details #<span id="employeeSheetEmpIDText">EMP001</span></h3>
+    </div>
+    <div class="offcanvas-body">
+        <div class="container-fluid text-end mb-2 px-0 d-flex align-items-center">
+            <div class="text-center w-75 me-5">
+                <span class="align-items-center display-3" id="employeeSheetCallingNameText" style="text-transform: uppercase;font-weight: bold;font-family: Arial, serif;">Kasun</span>
+                <p class="text-muted small lh-sm">Joined On <span id="employeeSheetJoinedDateText">2023-11-10</span></p>
+            </div>
+            <img src="resources/images/sample_profile_1.png" id="employeeSheetImage" class="placeholder-image img-thumbnail rounded-0 employeeSheetInputs">
+        </div>
+        <table class="table table-bordered table-responsive ">
+            <tbody class="small align-middle">
+            <tr>
+                <td class="fw-bold w-25">Full Name</td>
+                <td class="w-25">
+                    <input class="small rounded-0 form-control-sm employeeSheetInputs" id="employeeSheetFullName" disabled value="Kasun Malhara" required  onkeyup="inputTextValidator(this,'^[A-Z][a-z]{2,19}[ ][A-Z][a-z]{2,29}$','editedEmployee','fullName')">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid full name</div>
+                </td>
+                <td class="fw-bold w-25">Calling Name</td>
+                <td>
+                    <input class="small rounded-0 form-control-sm employeeSheetInputs" id="employeeSheetCallingName" disabled value="Kasun">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Calling Name</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-25">NIC Number</td>
+                <td class="w-25">
+                    <input class="small rounded-0 form-control-sm employeeSheetInputs" id="employeeSheetNIC" disabled value="983151108V" required onkeyup="inputTextValidator(this,'^(?:[6-9][0-9]{8}([V]|[X]|[v]|[x]){1})|(?:[19|20][0-9]{10})$','editedEmployee','nic')">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid NIC</div>
+                </td>
+                <td class="fw-bold w-25">Date of Birth</td>
+                <td>
+                    <input class="small rounded-0 form-control-sm employeeSheetInputs" id="employeeSheetDOB" disabled required onkeyup="inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','editedEmployee','dob')">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid DOB</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-25">Gender</td>
+                <td class="w-25">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input employeeSheetInputs" name="employeeGender" id="employeeSheetGenderMale" type="radio" value="Male"  disabled  onclick="editedEmployee.gender = 'Male'">
+                        <label class="form-check-label opacity-100" for="employeeSheetGenderMale">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input employeeSheetInputs"  name="employeeGender" id="employeeSheetGenderFemale" type="radio" value="Female" checked disabled onclick="editedEmployee.gender = 'Female'">
+                        <label class="form-check-label opacity-100" for="employeeSheetGenderFemale">Female</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-25">Email Address</td>
+                <td class="" colspan="3">
+                    <input class="small w-100 rounded-0 form-control-sm employeeSheetInputs" id="employeeSheetEmail" disabled value="eamalindu@gmail.com" required onkeyup="inputTextValidator(this,'^[a-z|A-Z]{2,19}[@][a-z|A-Z]{2,8}[.][a-z|A-Z]{2,3}$','editedEmployee','email')">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Email</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-25">Mobile Number</td>
+                <td class="w-25">
+                    <input class="small rounded-0 form-control-sm employeeSheetInputs" id="employeeSheetMobile" disabled value="0768008003" required onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','editedEmployee','mobileNumber')">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Mobile number</div>
+                </td>
+                <td class="fw-bold w-25">Land Number</td>
+                <td>
+                    <input class="small rounded-0 form-control-sm employeeSheetInputs" id="employeeSheetLand" disabled value="0768008003" onkeyup="inputTextValidator(this,'^[0][12345689][0-9]{8}$','editedEmployee','landNumber')">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Land number</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-25">Address</td>
+                <td class="" colspan="3">
+                    <input class="small rounded-0 form-control-sm w-100 employeeSheetInputs" id="employeeSheetAddress" disabled value="No: 9/3, Kaththota, Nittambuwa" required onkeyup="inputTextValidator(this,'^No:[\\s]*(\\d+\\/\\d*[A-Z]?)[,\\s]+(\\w+)[,\\s]+(\\w+)\\.$','editedEmployee','address')">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Address</div>
+                </td>
+
+            </tr>
+            <tr>
+                <td class="fw-bold w-25">Civil Status</td>
+                <td class="">
+                    <select class="employeeSheetInputs form-select small form-select-sm" id="employeeSheetCivilStatus" disabled required onchange="selectStaticValueValidator(this,'','editedEmployee','civilStatus')">
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Divorced">Divorced</option>
+                    </select>
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Civil Status</div>
+                </td>
+                <td class="fw-bold w-25">Designation</td>
+                <td class="">
+                    <select id="employeeSheetDesignation" class="employeeSheetInputs form-select rounded-0 small form-select-sm" disabled required onchange="selectDynamicValueValidator(this,'','editedEmployee','designationID')"></select>
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Designation</div>
+                </td>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-25">Note</td>
+                <td class="" colspan="3">
+                    <input class="small rounded-0 form-control-sm w-100 employeeSheetInputs" id="employeeSheetNote" disabled value="" placeholder="Optional" onkeyup="inputTextValidator(this,'^[a-zA-Z0-9\\s/]{20,}$','editedEmployee','note')">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Note</div>
+                </td>
+
+            </tr>
+            <tr>
+                <td class="fw-bold w-25" colspan="">Highest Education Qualification</td>
+                <td class="" colspan="3">
+                    <select class="employeeSheetInputs form-select rounded-0 small form-select-sm" id="employeeSheetHighestEducation" required onchange="selectStaticValueValidator(this,'','editedEmployee','highestEducationalQualification')">
+                        <option>Doctorate (PhD)</option>
+                        <option>Master's Degree (MA, MSc)</option>
+                        <option>Undergraduate Degree (BA, BSc)</option>
+                        <option>Higher National Diploma (HND)</option>
+                        <option>Diploma</option>
+                        <option>G.C.E A/L</option>
+                        <option>G.C.E O/L</option>
+                    </select>
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Qualification</div>
+
+                </td>
+                </tr>
+            <tr>
+                <td class="fw-bold w-25" colspan="">Employee Status</td>
+                <td class="" colspan="3">
+                    <select id="employeeSheetEmployeeStatus" class="employeeSheetInputs form-select rounded-0 small form-select-sm" disabled required onchange="selectDynamicValueValidator(this,'','editedEmployee','employeeStatusID')"></select>
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Qualification</div>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<!-- Off canvas for employee details end-->
+
+<script>
+    const employeeProfileInput = document.getElementById("employeeProfile");
+    const imgProfile = document.getElementById("imgProfile");
+
+    employeeProfileInput.addEventListener("change", function () {
+        const file = this.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                imgProfile.src = e.target.result;
+                imgProfile.classList.add('bg-success')
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            // Handle the case where no file is selected (e.g., clear the image preview)
+            imgProfile.src = "";
+        }
+    });
+
+</script>
+<script src="/resources/js/external-validator.js" type="text/javascript"></script>
+<script src="/resources/js/external-loader.js" type="text/javascript"></script>
+<script src="/resources/js/external-commonFunction.js" type="text/javascript"></script>
+<script src="/resources/js/external-table.js" type="text/javascript"></script>
+<script src="/resources/js/external-modalFunction.js" type="text/javascript"></script>
+<script src="/resources/js/controllerJS/employee.js" type="text/javascript"></script>
+<script th:replace="~{ fragments/logout :: logoutScript}"></script>
+</body>
+</html>

@@ -1,7 +1,6 @@
 package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.UserDAO;
-import lk.steam.rms.entity.Employee;
 import lk.steam.rms.entity.Privilege;
 import lk.steam.rms.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,19 +27,18 @@ public class UserController {
 
     @GetMapping
     public ModelAndView userUI(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView userView = new ModelAndView();
         userView.setViewName("user.html");
+
+        userView.addObject("username",auth.getName());
+        userView.addObject("title","Manage Users | STEAM IMS");
+        userView.addObject("activeNavItem","user");
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        userView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        userView.addObject("loggedInDesignationName",loggedInDesignationName);
         return  userView;
-    }
-
-    @GetMapping(value = "/getUserByEmail/{email}",produces = "application/json")
-    public User getUserByEmail(@PathVariable String email){
-        return userDAO.getUserByEmail(email);
-    }
-
-    @GetMapping(value = "/getEmployeeByUsername/{username}",produces = "application/json")
-    public Employee getEmployeeByUsername(@PathVariable String username){
-        return userDAO.getEmployeeByUsername(username);
     }
 
     @GetMapping(value = "/findall")
@@ -48,13 +46,40 @@ public class UserController {
         return userDAO.findAll();
     }
 
+    @GetMapping(value = "/getByUsername/{username}")
+    public User getUserByUsername(@PathVariable String username){
+        return userDAO.getUserByUsername(username);
+    }
+
+    @GetMapping(value = "/loggedInUser")
+    public User getLoggedInUser(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return userDAO.getUserByUsername(auth.getName());
+    }
+
     @PostMapping
     public String saveNewUser(@RequestBody User user){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"USER");
+
         if(!loggedUserPrivilege.getInsertPrivilege()){
             return "<br>User does not have sufficient privilege.";
         }
+        //check duplicate
+        String errors = "";
+
+        User existingUserUserName = userDAO.getUserByUsername(user.getUsername());
+        if(existingUserUserName!=null){
+            errors += "<br>This Username Already Exists";
+        }
+        User existingUserEmail = userDAO.getUserByEmail(user.getEmail());
+        if(existingUserEmail!=null){
+            errors += "<br>This Email Already Exists";
+        }
+        if(!errors.isEmpty()){
+            return errors;
+        }
+
         try{
             user.setAddedTime(LocalDateTime.now());
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -71,13 +96,30 @@ public class UserController {
     public String updateUser(@RequestBody User user){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"USER");
+
         if(!loggedUserPrivilege.getUpdatePrivilege()){
             return "<br>User does not have sufficient privilege.";
         }
+
         User currentUser = userDAO.getReferenceById(user.getId());
         if(currentUser==null){
             return "No Such User Account";
         }
+        //check duplicate
+        String errors = "";
+
+        User existingUserUserName = userDAO.getUserByUsername(user.getUsername());
+        if(existingUserUserName!=null){
+            errors += "<br>This Username Already Exists";
+        }
+        User existingUserEmail = userDAO.getUserByEmail(user.getEmail());
+        if(existingUserEmail!=null){
+            errors += "<br>This Email Already Exists";
+        }
+        if(!errors.isEmpty()){
+            return errors;
+        }
+
         try{
             userDAO.save(user);
             return "OK";
@@ -90,12 +132,14 @@ public class UserController {
 
     @DeleteMapping
     public String deleteUser(@RequestBody User user){
+
+        //authentication and authorization should be done first
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"USER");
+
         if(!loggedUserPrivilege.getDeletePrivilege()){
             return "<br>User does not have sufficient privilege.";
         }
-        //authentication and authorization should be done first
         //check existing
         User currentUser = userDAO.getReferenceById(user.getId());
         if(currentUser==null){

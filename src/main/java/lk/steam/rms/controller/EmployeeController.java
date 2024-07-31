@@ -2,17 +2,21 @@ package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.EmployeeDAO;
 import lk.steam.rms.dao.EmployeeStatusDAO;
-import lk.steam.rms.entity.Employee;
-import lk.steam.rms.entity.EmployeeStatus;
-import lk.steam.rms.entity.Privilege;
+import lk.steam.rms.dao.RoleDAO;
+import lk.steam.rms.dao.UserDAO;
+import lk.steam.rms.entity.*;
+import lk.steam.rms.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/Employee")
@@ -23,12 +27,30 @@ public class EmployeeController {
     @Autowired
     private EmployeeStatusDAO employeeStatusDAO;
     @Autowired
+    private UserDAO userDAO;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private RoleDAO roleDAO;
+    @Autowired
+    private MailService mailService;
+    @Autowired
     private PrivilegeController privilegeController;
 
     @GetMapping
     public ModelAndView employeeUI() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
         ModelAndView employeeView = new ModelAndView();
         employeeView.setViewName("employee.html");
+
+        employeeView.addObject("username",auth.getName());
+        employeeView.addObject("title","Manage Employees | STEAM IMS");
+        employeeView.addObject("activeNavItem","employee");
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        employeeView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        employeeView.addObject("loggedInDesignationName",loggedInDesignationName);
         return employeeView;
     }
 
@@ -42,6 +64,11 @@ public class EmployeeController {
     public List<Employee> getEmployeesWithoutUserAccount(){
 
         return employeeDAO.getEmployeesWithoutUserAccount();
+    }
+
+    @GetMapping(value = "/getActiveCounsellors",produces = "application/json")
+    public List<Employee> getActiveCounsellors(){
+        return employeeDAO.getActiveCounsellors();
     }
 
     @PutMapping
@@ -72,11 +99,50 @@ public class EmployeeController {
             return "<br>User does not have sufficient privilege.";
         }
         try{
-            //set auto generated values
-            employee.setAdded_timestamp(LocalDateTime.now());
-            employee.setEmployeeID("EMP005");
+            //check unique values exist or not
+            String errors = "";
 
-            employeeDAO.save(employee);
+            Employee existingEmployeeEmail = employeeDAO.getEmployeeByEmail(employee.getEmail());
+            if(existingEmployeeEmail!=null) {
+                errors += "<br>This Email Already Exists";
+            }
+            Employee existingEmployeeNIC = employeeDAO.getEmployeeByNIC(employee.getNic());
+            if(existingEmployeeNIC!=null) {
+                errors+= "<br>This NIC Already Exists";
+            }
+            Employee existingEmployeeMobileNumber = employeeDAO.getEmployeeByMobileNumber(employee.getMobileNumber());
+            if(existingEmployeeMobileNumber!=null) {
+                errors+= "<br>This Mobile Number Already Exists";
+            }
+            if(!errors.isEmpty()){
+                return errors;
+            }
+
+            employee.setAdded_timestamp(LocalDateTime.now());
+            employee.setEmployeeID(employeeDAO.getNextEmployeeID());
+            employee.setEmployeeStatusID(employeeStatusDAO.getReferenceById(1));
+            Employee savedEmployee =  employeeDAO.save(employee);
+
+            //check the selected Designation need a user account or not
+            if(savedEmployee.getDesignationID().getUserAccountNeeded()){
+                User user = new User();
+                user.setEmployeeID(savedEmployee);
+                user.setEmail(savedEmployee.getEmail());
+                user.setUsername(savedEmployee.getEmployeeID());
+                user.setStatus(true);
+                user.setAddedTime(LocalDateTime.now());
+                user.setNote("Auto Generated User Account");
+                user.setPassword(bCryptPasswordEncoder.encode(savedEmployee.getNic()));
+
+                Set<Role> userRoles = new HashSet<>();
+                Role roles = roleDAO.getRoleByName(savedEmployee.getDesignationID().getDesignation());
+                userRoles.add(roles);
+                user.setRoles(userRoles);
+                userDAO.save(user);
+                //send email
+                mailService.sendWelcomeUserMail(savedEmployee.getEmail(),savedEmployee.getEmployeeID(),savedEmployee.getFullName());
+            }
+
             return "OK";
         }
         catch (Exception ex){
@@ -86,6 +152,7 @@ public class EmployeeController {
     }
     @DeleteMapping
     public String deleteEmployee(@RequestBody Employee employee) {
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"EMPLOYEE");
 
@@ -100,6 +167,12 @@ public class EmployeeController {
             employee.setEmployeeStatusID(deleteStatus);
             //update the employee record
             employeeDAO.save(employee);
+            //get the user account and delete it
+            User user = userDAO.getUserByEmployeeID(employee.getId());
+            if(user!=null){
+                user.setStatus(false);
+                userDAO.save(user);
+            }
 
             return "OK";
         } catch (Exception ex) {
