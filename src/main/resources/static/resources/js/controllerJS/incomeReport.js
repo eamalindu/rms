@@ -2,6 +2,17 @@ window.addEventListener('load', () => {
     resetSearchForm();
     generateTestChart();
     getIncomeReport();
+    reportColumnFormat = [
+        {name: 'Added By', data: 'addedBy'},
+        {name: 'Payment Method', data: 'paymentTypeID.name'},
+        {name: 'Time Stamp', data: 'timeStamp'},
+        {name: 'Registration', data: 'registrationID.registrationNumber'},
+        {name: 'Student', data: 'registrationID.studentID.nameWithInitials'},
+        {name: 'Course', data: 'registrationID.courseID.name'},
+        {name: 'Receipt', data: 'invoiceCode'},
+        {name: 'Amount', data: 'amount'},
+    ]
+
     $("#registrationSearchCourse").chosen().change(function () {
         $("#registrationSearchCourse_chosen .chosen-single").addClass('bg-light');
     });
@@ -48,8 +59,8 @@ const resetSearchForm = () => {
 
 const getIncomeReport = () => {
 
-    const [startDate, endDate] = registrationSearchDateRange.value.split(' - ');
-    const payments = ajaxGetRequest("/Payment/getPaymentsByStartDateAndEndDate/"+startDate+"/"+endDate);
+    [startDate, endDate] = registrationSearchDateRange.value.split(' - ');
+     payments = ajaxGetRequest("/Payment/getPaymentsByStartDateAndEndDate/"+startDate+"/"+endDate);
     const displayPropertyListForIncomeReport = [
         {property: 'addedBy', dataType: 'text'},
         {property: getPaymentMethod, dataType: 'function'},
@@ -120,4 +131,13 @@ const getBatch = (ob)=>{
 
 const getAmount = (ob)=>{
     return "Rs. "+ob.amount.toLocaleString('en-US',{maximumFractionDigits: 2,minimumFractionDigits: 2})
+}
+
+const incomeReportToXlsx = ()=>{
+    showCustomConfirm('You are about to export <span class="text-steam-green">Monthly Income Breakdown</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
+        if(result){
+            exportToExcel(payments,'Income Report '+startDate+' to '+endDate,reportColumnFormat);
+            // exportTableToExcel('tblDailyIncome','test');
+        }
+    });
 }
