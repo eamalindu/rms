@@ -39,31 +39,23 @@ const resetSearchForm = () => {
 
     cb(start, end);
 
-    const courses = ajaxGetRequest("/Course/findall");
-    fillSelectOptions(registrationSearchCourse, ' ', courses, 'name')
-
-    const paymentMethods = ajaxGetRequest("/PaymentType/findall")
-    fillSelectOptions(registrationSearchPaymentMethod, ' ', paymentMethods, 'name')
-
-    const cashiers = ajaxGetRequest("/Payment/getCashiers")
-    fillSelectOptionsWithArray(registrationSearchUser,' ',cashiers)
-
-    $('#registrationSearchCourse').chosen({width: '225px'});
-    $('#registrationSearchBatch').chosen({width: '225px'});
-    $('#registrationSearchPaymentMethod').chosen({width: '225px'});
-    $('#registrationSearchUser').chosen({width: '225px'});
-}
-
-const getBatches = () => {
-
-    const batches = ajaxGetRequest("/Batch/getBatchesByCourseID/" + JSON.parse(registrationSearchCourse.value).id)
-    fillSelectOptions(registrationSearchBatch, ' ', batches, 'batchCode')
-    registrationSearchBatch.setAttribute('data-placeholder', 'Sort by a Batch');
-    $('#registrationSearchBatch').val('').trigger('chosen:updated');
 }
 
 const getIncomeReport = () => {
 
+    const [startDate, endDate] = registrationSearchDateRange.value.split(' - ');
+    const payments = ajaxGetRequest("/Payment/getPaymentsByStartDateAndEndDate/"+startDate+"/"+endDate);
+    const displayPropertyListForIncomeReport = [
+        {property: 'addedBy', dataType: 'text'},
+        {property: getPaymentMethod, dataType: 'function'},
+        {property: getTimeStamp, dataType: 'function'},
+        {property: getRegistration, dataType: 'function'},
+        {property: getStudentName, dataType: 'function'},
+        {property: getBatch, dataType: 'function'},
+        {property: 'invoiceCode', dataType: 'text'},
+        {property: getAmount, dataType: 'function'},
+    ];
+    fillDataIntoTableWithOutAction(tblIncomeReport,payments,displayPropertyListForIncomeReport);
 }
 
 const generateTestChart = ()=>{
@@ -87,4 +79,28 @@ const generateTestChart = ()=>{
 
 
     generateChart(test,'Income Comparison',monthNames,'Total Income',chartData)
+}
+
+const getPaymentMethod = (ob)=>{
+    return ob.paymentTypeID.name;
+}
+
+const getTimeStamp = (ob)=>{
+    return ob.timeStamp.replace('T','&nbsp;&nbsp;');
+}
+
+const getRegistration = (ob)=>{
+    return ob.registrationID.registrationNumber;
+}
+
+const getStudentName = (ob)=>{
+    return ob.registrationID.studentID.nameWithInitials;
+}
+
+const getBatch = (ob)=>{
+    return ob.registrationID.courseID.name;
+}
+
+const getAmount = (ob)=>{
+    return "Rs. "+ob.amount.toLocaleString('en-US',{maximumFractionDigits: 2,minimumFractionDigits: 2})
 }
