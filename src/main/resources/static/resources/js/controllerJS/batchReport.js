@@ -90,7 +90,7 @@ const getStatus=(ob)=>{
 const batchReportToXlsx = ()=>{
     showCustomConfirm('You are about to export <span class="text-steam-green">Batch Report</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
         if(result){
-            exportToExcel(batchReport,'Batch Report '+batchReport.batchCode,reportColumnFormatForBatch);
+            exportToExcel(batchReport,'Batch Report '+batchReport[0].batchCode,reportColumnFormatForBatch);
             // exportTableToExcel('tblDailyIncome','test');
         }
     });
