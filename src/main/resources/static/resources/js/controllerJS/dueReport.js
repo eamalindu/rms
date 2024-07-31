@@ -41,17 +41,23 @@ const getDueReport = ()=>{
     const fullPaymentDue = ajaxGetRequest("/Registration/getMonthlyDueRegistration/"+startDate+"/"+endDate)
     //create a variable to store the total monthly due and set the initial value to 0
     let balanceAmount = 0
+    let registrations = []
     //use forEach function to loop through the fullPaymentDue array and add the balanceAmount to balanceAmount variable
     fullPaymentDue.forEach((registration)=>{
         balanceAmount += registration.balanceAmount;
+        registrations.push(registration);
     })
     //get the due payments from the part payment registrations from the database using ajaxGetRequest function and store it in partPaymentDue variable
     const partPaymentDue = ajaxGetRequest("/InstallmentPlan/getMonthlyDueRegistration/"+startDate+"/"+endDate)
     //use forEach function to loop through the partPaymentDue array and add the balanceAmount to balanceAmount variable
     partPaymentDue.forEach((installment=>{
         balanceAmount += installment.balanceAmount;
+        registrations.push(installment.registrationID);
     }))
     //display the balanceAmount value in the monthlyDueText element
     fullAmountText.innerText = "Rs. "+balanceAmount.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})
     //monthly due calculation end
+
+    //registration from installmentObject
+    console.log(registrations)
 }
