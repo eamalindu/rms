@@ -45,6 +45,7 @@ const getDueReport = ()=>{
     //use forEach function to loop through the fullPaymentDue array and add the balanceAmount to balanceAmount variable
     fullPaymentDue.forEach((registration)=>{
         balanceAmount += registration.balanceAmount;
+        registration.dueAmount = registration.balanceAmount;
         registrations.push(registration);
     })
     //get the due payments from the part payment registrations from the database using ajaxGetRequest function and store it in partPaymentDue variable
@@ -52,6 +53,7 @@ const getDueReport = ()=>{
     //use forEach function to loop through the partPaymentDue array and add the balanceAmount to balanceAmount variable
     partPaymentDue.forEach((installment=>{
         balanceAmount += installment.balanceAmount;
+        installment.registrationID.dueAmount = installment.balanceAmount
         registrations.push(installment.registrationID);
     }))
     //display the balanceAmount value in the monthlyDueText element
