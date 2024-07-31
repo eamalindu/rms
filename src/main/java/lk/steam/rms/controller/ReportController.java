@@ -127,5 +127,27 @@ public class ReportController {
         return reportView;
     }
 
+    @GetMapping(value = "/Student-Report")
+    public ModelAndView studentReportUI(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        ModelAndView reportView = new ModelAndView();
+        reportView.setViewName("studentReport.html");
+
+        reportView.addObject("username",auth.getName());
+        reportView.addObject("title","Student Report | STEAM RMS");
+        reportView.addObject("activeNavItem","studentInfo");
+
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
+        String base64Image = Base64.getEncoder().encodeToString(photoBytes);
+        String imageSrc = "data:image/png;base64," + base64Image;
+        reportView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        reportView.addObject("loggedInDesignationName",loggedInDesignationName);
+        reportView.addObject("loggedInImage",imageSrc);
+        return reportView;
+    }
+
 
 }
