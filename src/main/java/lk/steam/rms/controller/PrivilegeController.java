@@ -1,6 +1,7 @@
 package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.PrivilegeDAO;
+import lk.steam.rms.dao.UserDAO;
 import lk.steam.rms.entity.Privilege;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -16,6 +17,8 @@ public class PrivilegeController {
 
     @Autowired
     private PrivilegeDAO privilegeDAO;
+    @Autowired
+    private UserDAO userDAO;
 
     @GetMapping(value = "/byModule/{moduleName}")
     public Privilege getPrivilegeByModule(@PathVariable String moduleName) {
@@ -48,8 +51,18 @@ public class PrivilegeController {
 
     @GetMapping
     public ModelAndView privilegeUI() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
         ModelAndView privilegeView = new ModelAndView();
         privilegeView.setViewName("privileges.html");
+
+        privilegeView.addObject("username",auth.getName());
+        privilegeView.addObject("title","Manage Privileges | STEAM IMS");
+        privilegeView.addObject("activeNavItem","privilege");
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        privilegeView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        privilegeView.addObject("loggedInDesignationName",loggedInDesignationName);
         return privilegeView;
     }
 
@@ -60,7 +73,19 @@ public class PrivilegeController {
 
     @PostMapping
     public String saveNewPrivilege(@RequestBody Privilege privilege) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = getPrivilegeByUserAndModule(auth.getName(),"PRIVILEGE");
+
+        if(!loggedUserPrivilege.getInsertPrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
         try {
+
+            Privilege existPrivilege = privilegeDAO.getPrivilegeByRoleAndModule(privilege.getRoleID().getId(),privilege.getModuleID().getId());
+            if(existPrivilege != null){
+                return "<br>Privilege Already Exists";
+            }
+
             privilegeDAO.save(privilege);
             return "OK";
         } catch (Exception ex) {
@@ -71,6 +96,14 @@ public class PrivilegeController {
     @PutMapping
     public String updatePrivilege(@RequestBody Privilege privilege) {
 
+        //check authentication needs to be added here
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = getPrivilegeByUserAndModule(auth.getName(),"PRIVILEGE");
+
+        if(!loggedUserPrivilege.getUpdatePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
+
         //check existing
         Privilege existPrivilege = privilegeDAO.getReferenceById(privilege.getId());
 
@@ -78,6 +111,11 @@ public class PrivilegeController {
             return "No Such Privilege Record";
         }
         try {
+            Privilege existPrivileges = privilegeDAO.getPrivilegeByRoleAndModule(privilege.getRoleID().getId(),privilege.getModuleID().getId());
+            if(existPrivileges != null){
+                return "<br>Privilege Already Exists";
+            }
+
             privilegeDAO.save(privilege);
             return "OK";
         } catch (Exception ex) {
@@ -87,6 +125,12 @@ public class PrivilegeController {
 
     @DeleteMapping
     public String deletePrivilege(@RequestBody Privilege privilege) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = getPrivilegeByUserAndModule(auth.getName(),"PRIVILEGE");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
         try {
 
             privilegeDAO.delete(privilege);
