@@ -1,6 +1,7 @@
 window.addEventListener('load',()=>{
 
-    resetSearchBar()
+    resetSearchBar();
+    getAttendanceReport();
 })
 
 const resetSearchBar = () => {
@@ -19,6 +20,6 @@ const resetSearchBar = () => {
 }
 
 const getAttendanceReport = () => {
-    date = searchDateRange.value;
-    attendances = ajaxGetRequest("/Attendance/getAttendanceByDate/")
+    dateSelected = searchDateRange.value;
+    attendances = ajaxGetRequest("/Attendance/getAttendanceByDate/"+dateSelected);
 }
