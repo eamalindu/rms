@@ -122,5 +122,29 @@ const refreshDailyCashBreakdownTable = ()=>{
 }
 
 const generateDailyIncomeChart=()=>{
-    const cashier = ajaxGetRequest("/Payment/getCashiers");
+    const startDate = moment().format('YYYY-MM-DD');
+    const cashiers = ajaxGetRequest("/Payment/getCashiers");
+    chartData = [];
+    cashiers.forEach((cashier)=>{
+        let paymentAmount = 0;
+        amounts = ajaxGetRequest("/Payment/getPaymentsByStartDateAndEndDateAndCashier/"+startDate+"/"+startDate+"/"+cashier);
+        amounts.forEach((amount)=>{
+            paymentAmount += amount.amount;
+        })
+        chartData.push({name: cashier, y: paymentAmount});
+    });
+
+    generateChart(test,'',cashiers,'Amount (Rs.)',[{name:'Cashiers',data:chartData,color: {
+            linearGradient: {
+                x1: 0,
+                x2: 0,
+                y1: 0,
+                y2: 1
+            },
+            stops: [
+                [0, '#5ecde1'],
+                [1, '#2caee2']
+            ]
+        }}]);
+
 }
