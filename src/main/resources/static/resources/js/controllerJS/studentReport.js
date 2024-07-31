@@ -1,6 +1,19 @@
 window.addEventListener('load',()=>{
     resetSearchBar();
     getStudentReport();
+
+    //report column format and data
+    reportColumnFormat = [
+        {name: 'Student Number', data: 'studentNumber'},
+        {name: 'Student Name', data: 'nameWithInitials'},
+        {name: 'Contact Number', data: 'mobileNumber'},
+        {name: 'City', data: 'city'},
+        {name: 'NIC', data: 'idValue'},
+        {name: 'Guardian Name', data: 'guardianName'},
+        {name: 'Guardian Contact Number', data: 'guardianContactNumber'},
+    ]
+
+    //date range picker
     $('#registrationSearchDateRange').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'));
     });
@@ -54,4 +67,13 @@ const getStudentReport = ()=>{
 
 const getStudentName = (ob)=>{
     return ob.title+" "+ob.nameWithInitials;
+}
+
+const studentReportToXlsx = ()=>{
+    showCustomConfirm('You are about to export <span class="text-steam-green">Student Report</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
+        if(result){
+            exportToExcel(students,'Student Report '+startDate+' to '+endDate,reportColumnFormat);
+            // exportTableToExcel('tblDailyIncome','test');
+        }
+    });
 }
