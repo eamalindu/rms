@@ -1,5 +1,6 @@
 window.addEventListener('load',()=>{
     resetSearchBar();
+    getStudentReport();
     $('#registrationSearchDateRange').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'));
     });
@@ -33,6 +34,24 @@ const resetSearchBar = ()=>{
 }
 
 const getStudentReport = ()=>{
+    //get startDate and endDate from input
+    [startDate, endDate] = registrationSearchDateRange.value.split(' - ');
+    //using ajaxGetRequest get student records for the selected dates
+    students = ajaxGetRequest("/Student/getStudentByStartDateAndEndDate/"+startDate+"/"+endDate);
 
-    students = ajaxGetRequest("/Student/getStudentByStartDateAndEndDate/");
+    const displayPropertyListForStudent = [
+        {property:'studentNumber',dataType: 'text'},
+        {property:getStudentName,dataType: 'function'},
+        {property:'mobileNumber',dataType: 'text'},
+        {property:'city',dataType: 'text'},
+        {property:'idValue',dataType: 'text'},
+        {property:'guardianName',dataType: 'text'},
+        {property:'guardianContactNumber',dataType: 'text'},
+    ]
+    fillDataIntoTableWithOutAction(tblStudentReport,students,displayPropertyListForStudent)
+
+}
+
+const getStudentName = (ob)=>{
+    return ob.title+" "+ob.nameWithInitials;
 }
