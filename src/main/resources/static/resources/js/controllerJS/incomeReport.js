@@ -67,11 +67,24 @@ const getIncomeReport = () => {
 }
 
 const generateTestChart = ()=>{
-    const startDate = moment().startOf('month').format('YYYY-MM-DD');
-    const endDate = moment().endOf('month').format('YYYY-MM-DD');
+    const startDate = moment().subtract(1, 'months').startOf('month').format('YYYY-MM-DD');
+    const endDate = moment().subtract(1, 'months').endOf('month').format('YYYY-MM-DD');
     const currentMonth = ajaxGetRequest("/Payment/getMonthlyTotalPayment")
     const previousMonth = ajaxGetRequest("/Payment/getPaymentsByStartDateAndEndDate/"+startDate+"/"+endDate)
-    const cate = [moment().startOf('month').format('MMMM'),moment().subtract(1, "month").startOf("month").format('MMMM')]
+    monthNames = [moment().startOf('month').format('MMMM'),moment().subtract(1, "month").startOf("month").format('MMMM')]
 
-    generateLineChart(test,'Income Comparison',cate,'Total Income',[{name:moment().startOf('month').format('MMMM'),data:[1000,2000]},{name:moment().subtract(1, "month").startOf("month").format('MMMM'),data:[1000,1000]}])
+    let currentMonthTotal = 0;
+    currentMonth.forEach((payment)=>{
+        currentMonthTotal += payment.amount
+    })
+
+    let previousMonthTotal = 0;
+    previousMonth.forEach((payment)=>{
+        previousMonthTotal += payment.amount
+    });
+
+    let chartData = [{name:monthNames[1],data:[previousMonthTotal]},{name:monthNames[0],data:[currentMonthTotal]}]
+
+
+    generateChart(test,'Income Comparison',monthNames,'Total Income',chartData)
 }
