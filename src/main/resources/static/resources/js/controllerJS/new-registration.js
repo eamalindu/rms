@@ -802,7 +802,7 @@ const checkStudentFormErrors = () => {
     //check if guardianRelationship is null
     if(newStudent.guardianRelationship==null){
         errors = errors + 'Guardian Relationship is Required<br>';
-        $("#studentGuardianRelationship .chosen-single").addClass('select-invalidated');
+        $("#studentGuardianRelationship_chosen .chosen-single").addClass('select-invalidated');
         studentGuardianRelationship.classList.add('is-invalid');
     }
     //check if guardianContactNumber is null
