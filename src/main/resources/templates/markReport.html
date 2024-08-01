@@ -24,10 +24,12 @@
                         <label class="text-uppercase text-muted small m-0 p-0" for="markSearchBatch">Search</label>
                         <div class="input-group">
                             <span class="input-group-text bg-custom-white rounded-0"><i class="fa-solid fa-magnifying-glass"></i></span>
-                            <select class="form-select rounded-0 chosen-registration-search" data-placeholder="Please Select Batch" id="markSearchBatch">
+                            <select class="form-select rounded-0 chosen-registration-search" data-placeholder="Please Select Batch" id="markSearchBatch" onchange="getRegistrations()">
 
                             </select>
-                            <input class="form-control rounded-0" id="markSearchID" placeholder="Registration Number">
+                            <select class="form-select rounded-0 chosen-registration-search" data-placeholder="Please Select Batch First" id="markSearchRegistration">
+
+                            </select>
                             <button class="btn bg-steam-green rounded-0 text-white" id=""  onclick="getMarkReport()" type="submit"><i class="fa-solid fa-magnifying-glass small"></i></button>
                         </div>
                     </div>
