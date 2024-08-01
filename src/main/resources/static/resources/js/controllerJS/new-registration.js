@@ -548,6 +548,8 @@ const resetStudentForm = ()=>{
 
     //reset student object
     newStudent ={};
+    //set idType to NIC
+    newStudent.idType = "NIC";
 
     //set default option chosen
     setTimeout(function () {
