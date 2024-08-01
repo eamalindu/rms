@@ -229,3 +229,20 @@ const checkMarkFormErrors = (object) => {
 
     return errors;
 }
+
+const markVerification = () => {
+    showCustomConfirm("You are about to Verify a Mark<br>Are You Sure?", function (result) {
+        if (result) {
+            let serviceResponse = ajaxHttpRequest("/Mark/verify", 'PUT', editedMark);
+            if (serviceResponse === "OK") {
+                showCustomModal("Mark Successfully Verified!", "success");
+                offcanvasMarkSheetCloseButton.click();
+                refreshMarkTable();
+            } else {
+                showCustomModal("Operation Failed!" + serviceResponse, "error");
+            }
+        } else {
+            showCustomModal("Operation Cancelled!", "info");
+        }
+    });
+}

@@ -90,4 +90,37 @@ public class MarkController {
 
     }
 
+    @PutMapping(value = "/verify")
+    public String verifyMark(@RequestBody Mark mark) {
+        // Get the logged user's privilege
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(), "MARK");
+
+        // Check if the logged user has the privilege to verify a mark
+        if (!loggedUserPrivilege.getUpdatePrivilege()) {
+            return "<br>User does not have sufficient privilege.";
+        }
+
+        // Check if the mark already exists
+        Mark existMark = markDAO.getMarkByRegistrationIDAndLessonID(mark.getRegistrationID().getId(), mark.getLessonID().getId());
+
+        // If the mark does not exist, return an error message
+        if (existMark == null) {
+            return "<br>Mark does not exist.";
+        }
+
+        try {
+            // Verify the mark
+            // Set the is verified to true
+            existMark.setIsVerified(true);
+            markDAO.save(existMark);
+            return "OK";
+
+        }
+        // If an exception occurs, return an error message
+        catch (Exception ex) {
+            return "Verification Failed " + ex.getMessage();
+        }
+    }
+
 }
