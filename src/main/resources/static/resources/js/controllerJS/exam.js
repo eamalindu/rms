@@ -138,6 +138,10 @@ const rowView = (ob)=>{
     lessonList.sort((a,b)=>a.id - b.id);
     fillSelectOptions(markSheetLesson,'',lessonList,'name',ob.lessonID.id);
 
+    //catching current object to compare them
+    editedMark = JSON.parse(JSON.stringify(ob));
+    oldMark  = JSON.parse(JSON.stringify(ob));
+
 }
 
 const getRegistrations = () => {
