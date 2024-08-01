@@ -8,6 +8,18 @@ window.addEventListener('load',()=>{
     $("#markSearchRegistration").chosen().change(function () {
         $("#markSearchRegistration_chosen .chosen-single").addClass('bg-light');
     });
+    reportColumnFormat = [
+        {name: 'Registration Number', data: 'registrationID.registrationNumber'},
+        {name: 'Student', data: 'registrationID.studentID.nameWithInitials'},
+        {name: 'Course', data: 'batchID.courseID.name'},
+        {name: 'Batch', data: 'batchID.batchCode'},
+        {name: 'Lesson', data: 'lessonID.name'},
+        {name: 'Lesson Code', data: 'lessonID.code'},
+        {name: 'Marks', data: 'marks'},
+        {name: 'Verified?', data: 'isVerified'},
+        {name: 'Added By', data: 'addedBy'},
+        {name: 'Date and Time', data: 'timeStamp'},
+    ];
 })
 
 const resetSearchBar = () => {
@@ -85,4 +97,13 @@ const getStatus =(ob)=>{
     else{
         return 'Not-Verified';
     }
+}
+
+const markReportToXlsx = ()=>{
+    showCustomConfirm('You are about to export <span class="text-steam-green">Mark Report</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
+        if(result){
+            exportToExcel(batchReport,'Mark Report',reportColumnFormat);
+            // exportTableToExcel('tblDailyIncome','test');
+        }
+    });
 }
