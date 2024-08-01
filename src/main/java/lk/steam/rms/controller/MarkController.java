@@ -143,7 +143,7 @@ public class MarkController {
         }
 
         try {
-            markDAO.save(existMark);
+            markDAO.save(mark);
             return "OK";
 
         }

@@ -345,5 +345,10 @@ const markUpdate = ()=>{
 }
 
 const checkForMarkUpdate = ()=>{
+    let updates = ''
+    if (editedMark.marks !== oldMark.marks) {
+        updates = updates + "Marks was changed to <span class='text-steam-green'>" + editedMark.marks + "</span><br>";
+    }
 
+    return updates;
 }
