@@ -642,7 +642,7 @@
                       <div class="form-label">
                           <label class="fw-bold small required" for="paymentPlanCourse">Course</label>
                       </div>
-                      <select class="form-select rounded-0" id="paymentPlanCourse" data-placeholder="Please Select a Course" required>
+                      <select class="form-select rounded-0" id="paymentPlanCourse" data-placeholder="Please Select a Course" required onchange="selectDynamicValueValidator(this,'','newPaymentPlan','courseID')">
                           <option></option>
                       </select>
                       <div class="valid-feedback">Value Accepted</div>

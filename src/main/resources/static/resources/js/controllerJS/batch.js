@@ -23,7 +23,9 @@ window.addEventListener("load", () => {
     $("#batchLecturer").chosen().change(function () {
         $("#batchLecturer_chosen .chosen-single").addClass('select-validated');
     });
-
+    $("#paymentPlanCourse").chosen().change(function () {
+        $("#paymentPlanCourse_chosen .chosen-single").addClass('select-validated');
+    });
     //bind data to the batch object, once the "apply" button on batchCommenceDate input is clicked
     $('#batchCommenceDate').on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD'));
@@ -991,6 +993,13 @@ const batchSearchReset = () => {
 }
 
 const resetPaymentPlanForm = ()=>{
+    //remove validation from chosen
+    $("#paymentPlanCourse_chosen .chosen-single").removeClass('select-validated');
+    $("#paymentPlanCourse_chosen .chosen-single").removeClass('select-invalidated');
+    //remove boostrap validation classes from the select elements
+    paymentPlanCourse.classList.remove('is-valid');
+    paymentPlanCourse.classList.remove('is-invalid');
+
     inputs = document.querySelectorAll('.newPaymentPlanInputs');
     inputs.forEach(function (input) {
         //remove the inline css from inputs
