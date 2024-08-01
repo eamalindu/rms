@@ -180,6 +180,20 @@ const checkMarkFormErrors = (object) => {
         $("#examMarksBatch_chosen .chosen-single").addClass('select-invalidated');
         examMarksBatch.classList.add('is-invalid');
     }
+    if(object.registrationID == null){
+        errors = errors + 'Registration is Required<br>';
+        $("#examMarksRegistration_chosen .chosen-single").addClass('select-invalidated');
+        examMarksRegistration.classList.add('is-invalid');
+    }
+    if(object.lessonID == null){
+        errors = errors + 'Registration is Required<br>';
+        $("#examLesson_chosen .chosen-single").addClass('select-invalidated');
+        examLesson.classList.add('is-invalid');
+    }
+    if(object.marks==null){
+        errors = errors + 'Marks is Required<br>';
+        examMarks.classList.add('is-invalid');
+    }
 
     return errors;
 }
