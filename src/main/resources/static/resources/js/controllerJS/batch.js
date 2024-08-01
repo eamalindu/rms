@@ -1047,3 +1047,61 @@ const calculateTotalFee = ()=>{
     paymentPlanTotalAmount.value = totalFee;
 
 }
+
+const newPaymentPlanSubmit = ()=>{
+    console.log(newPaymentPlan);
+    let errors = checkPaymentPlanFormErrors(newPaymentPlan);
+    if(errors===''){
+        showCustomConfirm("You are about to add a New Payment Plan<br>Are You Sure?", function (result) {
+            if(result){
+                let serviceResponse = ajaxHttpRequest("/PaymentPlan","POST",newPaymentPlan);
+                if(serviceResponse === "OK"){
+                    showCustomModal("Payment Plan Successfully Added!", "success");
+                    modalPaymentPlanCloseBtn.click();
+                    resetPaymentPlanForm();
+                    //refresh the paymentplan select here
+                }
+                else{
+                    showCustomModal("Operation Failed!" + serviceResponse, "error");
+                }
+            }
+            else{
+                showCustomModal("Operation Cancelled!", "info");
+            }
+        });
+    }
+    else{
+        showCustomModal(errors, 'warning');
+    }
+}
+
+const checkPaymentPlanFormErrors = ()=>{
+    let errors ='';
+    if(newPaymentPlan.courseID==null){
+        errors = errors + 'Course is Required<br>';
+        $("#paymentPlanCourse_chosen .chosen-single").addClass('select-invalidated');
+        paymentPlanCourse.classList.add('is-invalid');
+    }
+    if(newPaymentPlan.registrationFee==null){
+        errors = errors + 'Registration Fee is Required<br>';
+        paymentPlanRegistrationAmount.classList.add('is-invalid');
+    }
+    if(newPaymentPlan.courseFee==null){
+        errors = errors + 'Course Fee is Required<br>';
+        paymentPlanCourseAmount.classList.add('is-invalid');
+    }
+    if(newPaymentPlan.numberOfInstallments==null){
+        errors = errors + 'Number of Installments is Required<br>';
+        paymentPlanNumberOfInstallments.classList.add('is-invalid');
+    }
+    if(newPaymentPlan.name == null){
+        errors = errors + 'Payment Plan Name is Required<br>';
+        paymentPlanName.classList.add('is-invalid');
+    }
+    if(newPaymentPlan.expireDate==null){
+        errors = errors + 'Expire Date is Required<br>';
+        paymentPlanExpireDate.classList.add('is-invalid');
+
+    }
+    return errors;
+}
