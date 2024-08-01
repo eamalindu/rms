@@ -355,3 +355,31 @@ const checkForMarkUpdate = ()=>{
 
     return updates;
 }
+
+//creating a function to delete a mark when ever needed
+const markDelete = () => {
+    //get user confirmation
+    showCustomConfirm("You are About to <b>Delete</b> this Mark<br><br>Registration Number: <span class='text-steam-green'>" + oldMark.registrationID.registrationNumber + "</span><br><br>Are You Sure?", function (result) {
+        if (result) {
+            //pass the record to backend
+            //receive the server response
+            let serviceResponse = ajaxHttpRequest("/Mark", "DELETE", oldBatch);
+            if (serviceResponse === "OK") {
+                //show user the response
+                showCustomModal("Mark Successfully Deleted!", "success");
+                //close the offCanvas sheet
+                offcanvasMarkSheetCloseButton.click();
+                //refresh table
+                refreshMarkTable();
+            } else {
+                showCustomModal("Operation Failed!" + serviceResponse, "error");
+            }
+
+
+        } else {
+            showCustomModal("Operation Cancelled!", "info");
+        }
+
+    });
+
+}
