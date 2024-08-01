@@ -535,15 +535,19 @@ const resetStudentForm = ()=>{
     //reset the form
     frmNewStudent.reset();
     //remove select-validated class from chosen select
-    $("#studentIdOption_chosen .chosen-single").removeClass('select-validated');
+    //$("#studentIdOption_chosen .chosen-single").removeClass('select-validated');
     $("#studentLang_chosen .chosen-single").removeClass('select-validated');
+    $("#studentLang_chosen .chosen-single").removeClass('select-invalidated');
     $("#studentGuardianRelationship_chosen .chosen-single").removeClass('select-validated');
+    $("#studentGuardianRelationship_chosen .chosen-single").removeClass('select-invalidated');
     //remove is-valid class from the studentIdOption Element
     //studentIdOption.classList.remove('is-valid');
     //remove is-valid class from the studentLang Element
     studentLang.classList.remove('is-valid');
+    studentLang.classList.remove('is-invalid');
     //remove is-valid class from the studentGuardianRelationship Element
     studentGuardianRelationship.classList.remove('is-valid');
+    studentGuardianRelationship.classList.remove('is-invalid');
 
     //reset student object
     newStudent ={};
