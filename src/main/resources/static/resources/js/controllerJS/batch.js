@@ -1018,6 +1018,12 @@ const resetPaymentPlanForm = ()=>{
     newPaymentPlan = {}
     frmNewPaymentPlan.reset();
 
+    //set default option for chosen select elements
+    setTimeout(function () {
+        $('#paymentPlanCourse').val('').trigger('chosen:updated');
+    }, 0);
+
+
     fillSelectOptions(paymentPlanCourse,' ',courses,'name');
     $('#paymentPlanCourse').chosen({width:'100%'});
 
