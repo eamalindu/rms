@@ -99,24 +99,20 @@
                 <form id="frmNewExamAttempt" onsubmit="return false">
                     <div class="mb-2">
                         <div class="form-label">
-                            <label class="fw-bold small required" for="examCourse">Course</label>
+                            <label class="fw-bold small required" for="examMarksBatch">Batch</label>
                         </div>
-                        <select class="form-select rounded-0" data-placeholder="Please Select a Course" id="examCourse"
-                                onchange="selectDynamicValueValidator(this,'','newExamAttempt','courseID');getBatch();getLesson()" required>
-                            <option>Dynamic Value 1</option>
-                            <option>Dynamic Value 2</option>
-                            <option>Dynamic Value 3</option>
-                            <option>Dynamic Value 4</option>
+                        <select class="form-select rounded-0" data-placeholder="Please Select a Batch" id="examMarksBatch"
+                                onchange="selectDynamicValueValidator(this,'','newExamMark','batchID');getBatch();getLesson()" required>
                         </select>
                         <div class="valid-feedback">Value Accepted</div>
-                        <div class="invalid-feedback">Please provide a valid Course</div>
+                        <div class="invalid-feedback">Please provide a valid Batch</div>
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
-                            <label class="fw-bold small required" for="examCourse">Batch</label>
+                            <label class="fw-bold small required" for="examCourse">Registration</label>
                         </div>
-                        <select class="form-select rounded-0" data-placeholder="Please Select a Course First" id="examBatch"
-                                onchange="selectDynamicValueValidator(this,'','newExamAttempt','batchID');registration();" required>
+                        <select class="form-select rounded-0" data-placeholder="Please Select a Batch First" id="examMarksRegistration"
+                                onchange="selectDynamicValueValidator(this,'','newExamAttempt','batchID');" required>
                             <option value=""></option>
                         </select>
                         <div class="valid-feedback">Value Accepted</div>
