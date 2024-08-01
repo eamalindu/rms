@@ -1061,6 +1061,7 @@ const newPaymentPlanSubmit = ()=>{
                     modalPaymentPlanCloseBtn.click();
                     resetPaymentPlanForm();
                     //refresh the paymentplan select here
+                    fillPaymentPlan();
                 }
                 else{
                     showCustomModal("Operation Failed!" + serviceResponse, "error");
