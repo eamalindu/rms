@@ -1,14 +1,17 @@
 package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.MarkDAO;
+import lk.steam.rms.dao.UserDAO;
 import lk.steam.rms.entity.Mark;
 import lk.steam.rms.entity.Privilege;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
+import java.util.Base64;
 import java.util.List;
 
 @RestController
@@ -19,10 +22,35 @@ public class MarkController {
     private MarkDAO markDAO;
     @Autowired
     private PrivilegeController privilegeController;
+    @Autowired
+    private UserDAO userDAO;
 
     @GetMapping(value = "/findall", produces = "application/json")
     public List<Mark> findAll() {
         return markDAO.findAll();
+    }
+
+
+    @GetMapping()
+    public ModelAndView markUI() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        ModelAndView examView = new ModelAndView();
+        examView.setViewName("exam.html");
+
+        examView.addObject("username",auth.getName());
+        examView.addObject("title","Manage Exam Marks | STEAM RMS");
+        examView.addObject("activeNavItem","exams");
+
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
+        String base64Image = Base64.getEncoder().encodeToString(photoBytes);
+        String imageSrc = "data:image/png;base64," + base64Image;
+        examView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        examView.addObject("loggedInDesignationName",loggedInDesignationName);
+        examView.addObject("loggedInImage",imageSrc);
+        return examView;
     }
 
     // Save new mark
