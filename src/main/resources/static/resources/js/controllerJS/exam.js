@@ -109,6 +109,16 @@ const getStatus =(ob)=>{
 }
 
 const rowView = (ob)=>{
+    //hide the update btn
+    btnMarkSheetUpdate.style.display = 'none';
+    //show the deleted btn
+    btnMarkSheetDelete.style.display = 'block';
+    //show verify btn
+    btnMarkSheetVerify.style.display = 'block';
+
+    //set data
+    markSheetStudentName.innerText = ob.registrationID.studentID.nameWithInitials;
+    markSheetMarks.value = ob.marks;
 
 }
 
