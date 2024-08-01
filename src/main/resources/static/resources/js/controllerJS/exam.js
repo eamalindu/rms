@@ -363,7 +363,7 @@ const markDelete = () => {
         if (result) {
             //pass the record to backend
             //receive the server response
-            let serviceResponse = ajaxHttpRequest("/Mark", "DELETE", oldBatch);
+            let serviceResponse = ajaxHttpRequest("/Mark", "DELETE", oldMark);
             if (serviceResponse === "OK") {
                 //show user the response
                 showCustomModal("Mark Successfully Deleted!", "success");
