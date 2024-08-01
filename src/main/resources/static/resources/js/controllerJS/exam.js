@@ -55,6 +55,10 @@ const resetMarkForm = () => {
     const batches = ajaxGetRequest("/Batch/findall");
     fillSelectOptions(examMarksBatch,' ',batches,'batchCode');
 
+    //clear innerOptions of the select elements
+    examMarksRegistration.innerHTML = '';
+    examLesson.innerHTML = '';
+
     $('#examMarksBatch').chosen({width:'100%'});
     $('#examMarksRegistration').chosen({width:'100%'});
     $('#examLesson').chosen({width:'100%'});
