@@ -292,3 +292,58 @@ const markEdit = ()=>{
         input.setAttribute('style', 'border:1px solid #0DCAF0!important;background-color:rgba(13,202,240,0.2);');
     });
 }
+
+const markUpdate = ()=>{
+    console.log(editedMark);
+
+    //calling the checkMarkFormErrors function and catching the return value to errors variable
+    let errors = checkMarkFormErrors(editedMark);
+    //check the errors variable is null
+    //if it's null that means all the required inputs are filled
+    if (errors === '') {
+        //calling the checkForPrivilegeUpdate function and catching the return value to updates variable
+        let updates = checkForMarkUpdate();
+        //check the updates variable is null
+        //if it's null that means there are no any updates
+        if (updates === '') {
+            showCustomModal("No changes Detected!", "info");
+        } else {
+            showCustomConfirm("You are About to Update this Batch<br><br>Following Changes Detected!<br/><br/><small>" + updates + "</small><br>Are You Sure?", function (result) {
+                //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+                //catch the return value from the backend and save it in the serviceResponse variable
+                if (result) {
+                    //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+                    //catch the return value from the backend and save it in the serviceResponse variable
+                    let serverResponse = ajaxHttpRequest("/Mark", "PUT", editedMark);
+                    //check the serviceResponse value is "OK"
+                    if (serverResponse === "OK") {
+                        //this means data successfully passed to the backend
+                        //show an alert to user
+                        showCustomModal("Mark Successfully Updated!", "success");
+                        //close the offCanvas sheet
+                        offcanvasMarkSheetCloseButton.click();
+                        //refresh table
+                        refreshMarkTable();
+
+                    } else {
+                        showCustomModal("Operation Failed!" + serverResponse, "error")
+                    }
+
+
+                } else {
+                    showCustomModal("Operation Cancelled!", "info");
+                }
+            });
+        }
+
+    } else {
+        //there are errors
+        //display them to the user using external-ModalFunction()
+        showCustomModal(errors, 'warning');
+
+    }
+}
+
+const checkForMarkUpdate = ()=>{
+
+}
