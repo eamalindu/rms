@@ -35,6 +35,11 @@ public class MarkController {
         return markDAO.getByRegistrationID(registrationID);
     }
 
+    @GetMapping(value = "/getByBatchID/{batchID}")
+    public List<Mark> getByBatchID(@PathVariable Integer batchID){
+        return markDAO.getByBatchID(batchID);
+    }
+
 
     @GetMapping()
     public ModelAndView markUI() {

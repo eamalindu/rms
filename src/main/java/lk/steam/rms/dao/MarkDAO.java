@@ -13,4 +13,7 @@ public interface MarkDAO extends JpaRepository<Mark,Integer> {
 
     @Query(value = "select * from marks where registration_id=?1",nativeQuery = true)
     List<Mark> getByRegistrationID(Integer registrationID);
+
+    @Query(value = "select * from marks where batch_id=?1",nativeQuery = true)
+    List<Mark> getByBatchID(Integer batchID);
 }
