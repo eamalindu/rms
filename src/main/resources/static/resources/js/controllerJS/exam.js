@@ -127,9 +127,11 @@ const rowView = (ob)=>{
 
     if(ob.isVerified){
         markSheetStatus.innerText = 'Verified';
+        btnMarkSheetVerify.style.display = 'none';
     }
     else{
         markSheetStatus.innerText = 'Not Verified';
+
     }
 
     let lessonList = ob.batchID.courseID.lessonList;
