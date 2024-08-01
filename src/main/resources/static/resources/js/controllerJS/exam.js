@@ -118,7 +118,16 @@ const rowView = (ob)=>{
 
     //set data
     markSheetStudentName.innerText = ob.registrationID.studentID.nameWithInitials;
+    markSheetRegistrationNumber.innerText = ob.registrationID.registrationNumber;
+    markSheetCourse.innerText = ob.batchID.courseID.name;
+    markSheetBatch.innerText = ob.batchID.batchCode;
     markSheetMarks.value = ob.marks;
+    examMarkAddedBy.innerText = ob.addedBy;
+    examMarkTimeStamp.innerText = ob.timeStamp.replace("T"," ");
+
+    let lessonList = ob.batchID.courseID.lessonList;
+    lessonList.sort((a,b)=>a.id - b.id);
+    fillSelectOptions(markSheetLesson,'',lessonList,'name',ob.lessonID.id);
 
 }
 
