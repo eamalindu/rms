@@ -758,6 +758,8 @@ const checkStudentFormErrors = () => {
     //check if language is null
     if(newStudent.language==null){
         errors = errors + 'Language is Required<br>';
+        $("#studentLang_chosen .chosen-single").addClass('select-invalidated');
+        studentLang.classList.add('is-invalid');
     }
     //check if mobileNumber is null
     if(newStudent.mobileNumber==null){
@@ -796,6 +798,8 @@ const checkStudentFormErrors = () => {
     //check if guardianRelationship is null
     if(newStudent.guardianRelationship==null){
         errors = errors + 'Guardian Relationship is Required<br>';
+        $("#studentGuardianRelationship .chosen-single").addClass('select-invalidated');
+        studentGuardianRelationship.classList.add('is-invalid');
     }
     //check if guardianContactNumber is null
     if(newStudent.guardianContactNumber==null){
