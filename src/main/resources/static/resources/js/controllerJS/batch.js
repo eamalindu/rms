@@ -1001,7 +1001,7 @@ const resetPaymentPlanForm = ()=>{
     });
 
     newPaymentPlan = {}
-    frmAddNewModule.reset();
+    frmNewPaymentPlan.reset();
 
     fillSelectOptions(paymentPlanCourse,' ',courses,'name');
     $('#paymentPlanCourse').chosen({width:'100%'});
