@@ -1038,3 +1038,12 @@ const resetPaymentPlanForm = ()=>{
         inputTextValidator(this, '^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$', 'newPaymentPlan', 'expireDate');
     });
 }
+
+const calculateTotalFee = ()=>{
+    let registrationFee  = parseInt(paymentPlanRegistrationAmount.value);
+    let courseFee = parseInt(paymentPlanCourseAmount.value);
+    let totalFee = registrationFee+courseFee;
+    newPaymentPlan.totalFee = totalFee;
+    paymentPlanTotalAmount.value = totalFee;
+
+}

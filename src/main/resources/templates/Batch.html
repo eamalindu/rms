@@ -661,7 +661,7 @@
                       <div class="form-label">
                           <label class="fw-bold small required" for="paymentPlanRegistrationAmount">Registration Fee</label>
                       </div>
-                      <input class="form-control rounded-0 newPaymentPlanInputs" required id="paymentPlanRegistrationAmount" onkeyup="inputTextValidator(this,'^[1-9]{1}[0-9]{2,3}$','newPaymentPlan','registrationFee')">
+                      <input class="form-control rounded-0 newPaymentPlanInputs" required id="paymentPlanRegistrationAmount" onkeyup="inputTextValidator(this,'^[1-9]{1}[0-9]{2,3}$','newPaymentPlan','registrationFee');calculateTotalFee();">
                       <div class="valid-feedback">Value Accepted</div>
                       <div class="invalid-feedback">Please provide a valid Registration Fee</div>
                   </div>
@@ -669,7 +669,7 @@
                       <div class="form-label">
                           <label class="fw-bold small required" for="paymentPlanCourseAmount">Course Fee</label>
                       </div>
-                      <input class="form-control rounded-0 newPaymentPlanInputs" required id="paymentPlanCourseAmount" onkeyup="inputTextValidator(this,'^[1-9]{1}[0-9]{3,4}$','newPaymentPlan','courseFee')">
+                      <input class="form-control rounded-0 newPaymentPlanInputs" required id="paymentPlanCourseAmount" onkeyup="inputTextValidator(this,'^[1-9]{1}[0-9]{3,4}$','newPaymentPlan','courseFee');calculateTotalFee();">
                       <div class="valid-feedback">Value Accepted</div>
                       <div class="invalid-feedback">Please provide a valid Course Fee</div>
                   </div>
