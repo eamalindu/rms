@@ -53,5 +53,36 @@ const getMarkReport = () => {
     else if (batchSelected && registrationSelected) {
        marks = ajaxGetRequest('/Mark/getByRegistrationID/'+JSON.parse(markSearchRegistration.value).id);
     }
+    dataListForMarkReport = [
+        {property: getRegistrationNumber, dataType: 'function'},
+        {property: getStudent, dataType: 'function'},
+        {property: getBatch, dataType: 'function'},
+        {property: getLesson, dataType: 'function'},
+        {property: 'marks', dataType: 'text'},
+        {property: getStatus, dataType: 'function'},]
 
+    fillDataIntoTableWithOutAction(tblMarkReport,dataListForMarkReport,marks);
+
+
+}
+
+const getRegistrationNumber =(ob)=>{
+    return ob.registrationID.registrationNumber;
+}
+const getStudent =(ob)=>{
+    return ob.registrationID.studentID.nameWithInitials;
+}
+const getBatch =(ob)=>{
+    return ob.batchID.courseID.name + ' (' + ob.batchID.courseID.code + ')<br/><small class="text-muted">' + ob.batchID.batchCode + '</small>';
+}
+const getLesson =(ob)=>{
+    return ob.lessonID.name;
+}
+const getStatus =(ob)=>{
+    if(ob.isVerified) {
+        return 'Verified';
+    }
+    else{
+        return 'Not-Verified';
+    }
 }
