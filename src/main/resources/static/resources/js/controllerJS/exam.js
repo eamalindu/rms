@@ -111,6 +111,7 @@ const getRegistrations = () => {
     const selectedBatch = JSON.parse(examMarksBatch.value);
     registrations = ajaxGetRequest("/Registration/getRegistrations/"+selectedBatch.id);
     fillSelectOptionsWithTwo(examMarksRegistration,' ',registrations,'registrationNumber','studentID.nameWithInitials');
+    examMarksRegistration.setAttribute('data-placeholder','Please Select a Registration');
     $('#examMarksRegistration').trigger('chosen:updated');
 
 }
@@ -120,6 +121,7 @@ const getLessons = () => {
     let lessonList = selectedBatch.courseID.lessonList;
     lessonList.sort((a,b)=>a.id - b.id);
    fillSelectOptionsWithTwo(examLesson,' ',lessonList,'code','name');
+    examLesson.setAttribute('data-placeholder','Please Select a Lesson');
     $('#examLesson').trigger('chosen:updated');
 }
 
