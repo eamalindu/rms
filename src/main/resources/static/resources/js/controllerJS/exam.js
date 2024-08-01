@@ -74,7 +74,7 @@ const refreshMarkTable = () => {
         {property: getStudent, dataType: 'function'},
         {property: getBatch, dataType: 'function'},
         {property: getLesson, dataType: 'function'},
-        {property: 'mark', dataType: 'text'},
+        {property: 'marks', dataType: 'text'},
         {property: getStatus, dataType: 'function'},]
     //using external function fillDataIntoTable to fill the data to the table tblExamMarks according to the displayPropertyListForMark list
     fillDataIntoTable(tblExamMarks, marks, displayPropertyListForMark, rowView, 'offcanvasMarkSheet');
@@ -146,7 +146,7 @@ const newExamMarkSubmit = () => {
                 if (serviceResponse === "OK") {
                     //this means data successfully passed to the backend
                     //show an alert to user
-                    showCustomModal("Batch Successfully Added!", "success");
+                    showCustomModal("Mark Successfully Added!", "success");
                     //close the offcanvas sheet
                     offCanvasExamAttemptCloseButton.click();
                     //refresh the table
