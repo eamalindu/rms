@@ -25,28 +25,6 @@ public class ExamAttemptController {
     @Autowired
     private ExamAttemptDAO examAttemptDAO;
 
-    @GetMapping()
-    public ModelAndView examUI() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
-        ModelAndView examView = new ModelAndView();
-        examView.setViewName("exam.html");
-
-        examView.addObject("username",auth.getName());
-        examView.addObject("title","Manage Exam Attempts | STEAM RMS");
-        examView.addObject("activeNavItem","exams");
-
-        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
-        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
-        byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
-        String base64Image = Base64.getEncoder().encodeToString(photoBytes);
-        String imageSrc = "data:image/png;base64," + base64Image;
-        examView.addObject("loggedInEmployeeName",loggedInEmployeeName);
-        examView.addObject("loggedInDesignationName",loggedInDesignationName);
-        examView.addObject("loggedInImage",imageSrc);
-        return examView;
-    }
-
     @PostMapping
     public String saveNewExamAttempt(@RequestBody ExamAttempt examAttempt) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
