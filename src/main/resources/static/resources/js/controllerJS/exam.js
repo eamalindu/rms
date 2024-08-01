@@ -230,6 +230,7 @@ const checkMarkFormErrors = (object) => {
     return errors;
 }
 
+//function to validate mark
 const markVerification = () => {
     showCustomConfirm("You are about to Verify a Mark<br>Are You Sure?", function (result) {
         if (result) {
