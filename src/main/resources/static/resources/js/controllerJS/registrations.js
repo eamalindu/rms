@@ -254,6 +254,9 @@ const rowView = (ob, index) => {
     studentCourseTabBatchCode.innerText = ob.batchID.batchCode;
 
     let lecturerAppended = false;
+    //reset lecturer and timetable
+    studentCourseTabLecturer.innerText ='';
+    studentCourseTabTimeTable.innerText ='';
 
     ob.batchID.batchHasDayList.forEach((day, index) => {
         if (!lecturerAppended) {
