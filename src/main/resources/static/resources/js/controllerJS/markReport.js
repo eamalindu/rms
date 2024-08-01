@@ -61,7 +61,7 @@ const getMarkReport = () => {
         {property: 'marks', dataType: 'text'},
         {property: getStatus, dataType: 'function'},]
 
-    fillDataIntoTableWithOutAction(tblMarkReport,dataListForMarkReport,marks);
+    fillDataIntoTableWithOutAction(tblMarkReport,marks,dataListForMarkReport);
 
 
 }
