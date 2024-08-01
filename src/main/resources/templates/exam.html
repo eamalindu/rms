@@ -20,40 +20,20 @@
     <div class="card rounded-0">
         <div class="card-body rounded-0">
             <div class="row align-items-center d-flex justify-content-around">
-                <div class="col-12 col-lg-auto m-lg-0 p-0 ms-lg-2 ms-sm-0 mb-1">
-                    <label class="text-uppercase text-muted small m-0 p-0" for="examSearchDateRange">Exam Date</label>
+                <div class="col-12 col-lg-4 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1">
+
+                    <label class="text-uppercase small m-0 p-0 text-muted" for="batchSearchID">Search</label>
                     <div class="input-group">
-                        <span class="input-group-text text-black bg-custom-white rounded-0"><i class="fa-solid fa-calendar-week"></i></span>
-                        <input class="form-control rounded-0" style="width: 200px;" id="examSearchDateRange" placeholder="Exam Date" />
-                    </div>
-                </div>
-                <div class="col-12 col-lg-auto m-0 p-0">
-                    <label class="text-uppercase text-muted small m-0 p-0" for="examSearchCourse">Filters</label>
-                    <label class="text-uppercase small m-0 p-0 text-muted" style="margin-left: 785px!important;">Search</label>
-                    <div class="input-group">
-                        <span class="input-group-text bg-custom-white rounded-0"><i class="fa-solid fa-filter"></i></span>
-                        <select class="form-select rounded-0 chosen-registration-search" data-placeholder="Select Course First" onchange="getBatches()" id="examSearchCourse">
-
-                        </select>
-                        <select class="form-select rounded-0 chosen-registration-search" data-placeholder="Select Batch" id="examSearchBatch">
-
-                        </select>
-                        <select class="form-select rounded-0 chosen-registration-search" data-placeholder="Select Lesson" id="examSearchLesson">
-
-                        </select>
-                        <select class="form-select rounded-0 chosen-registration-search" data-placeholder="Select Registration" id="examSearchRegistration">
-
-                        </select>
+                        <span class="input-group-text bg-custom-white rounded-0"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input class="form-control rounded-0" id="batchSearchID" placeholder="Registration Number">
                         <div class="d-flex align-items-center justify-content-evenly">
-                            <button class="btn bg-steam-green rounded-0 text-white" id="" type="submit"><i class="fa-solid fa-magnifying-glass small"></i></button>
-                            <button class="btn btn-close-red rounded-0 text-white ms-3" id="btn-reset" type="reset" onclick="resetSearchBar()">
-                                <i class="fa-solid fa-xmark"></i>
-                            </button>
+                            <button class="btn bg-steam-green rounded-0 text-white" id="batchSearchButton" onclick="batchSearch()" type="button"><i class="fa-solid fa-magnifying-glass small"></i></button>
+                            <button class="btn btn-close-red rounded-0 text-white ms-3" id="batchSearchReset" onclick="batchSearchReset()" type="reset"><i class="fa-solid fa-xmark"></i></button>
                         </div>
                     </div>
 
                 </div>
-                <div class="col-12 col-lg-auto p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1 text-end">
+                <div class="col-12 col-lg-7 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1 text-end">
                     <p class="text-uppercase small m-0 p-0 text-muted">Add a New Exam Marks</p>
                     <button aria-controls="staticBackdrop"
                             class="btn pointer bg-steam-green text-white rounded-0 text-end"
@@ -73,12 +53,12 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Course</th>
-                    <th>Batch Code</th>
-                    <th>Lesson </th>
-                    <th>Exam Date</th>
-                    <th>Registration</th>
+                    <th>Registration Number</th>
                     <th>Student</th>
+                    <th>Course /  Batch</th>
+                    <th>Lesson</th>
+                    <th>Marks</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
                 </thead>
