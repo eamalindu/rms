@@ -454,6 +454,7 @@ const resetBatchForm = () => {
 
     //calling the resetTimeTableForm function to reset the inner form
     resetTimeTableForm();
+    resetPaymentPlanForm();
 }
 
 //creating a function to reset the Time Table (inner form) form when ever needed
