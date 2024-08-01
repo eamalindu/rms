@@ -349,6 +349,9 @@ const checkForMarkUpdate = ()=>{
     if (editedMark.marks !== oldMark.marks) {
         updates = updates + "Marks was changed to <span class='text-steam-green'>" + editedMark.marks + "</span><br>";
     }
+    if (editedMark.lessonID.name !== oldMark.lessonID.name) {
+        updates = updates + "Lesson was changed to <span class='text-steam-green'>" + editedMark.lessonID.name + "</span><br>";
+    }
 
     return updates;
 }
