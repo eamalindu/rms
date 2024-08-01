@@ -125,6 +125,13 @@ const rowView = (ob)=>{
     examMarkAddedBy.innerText = ob.addedBy;
     examMarkTimeStamp.innerText = ob.timeStamp.replace("T"," ");
 
+    if(ob.isVerified){
+        markSheetStatus.innerText = 'Verified';
+    }
+    else{
+        markSheetStatus.innerText = 'Not Verified';
+    }
+
     let lessonList = ob.batchID.courseID.lessonList;
     lessonList.sort((a,b)=>a.id - b.id);
     fillSelectOptions(markSheetLesson,'',lessonList,'name',ob.lessonID.id);
