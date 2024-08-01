@@ -43,7 +43,7 @@ const getMarkReport = () => {
     }
     // Condition 2: Only batch is selected
     else if (batchSelected && !registrationSelected) {
-        marks = ajaxGetRequest('/Mark/getByBatchID/')
+        marks = ajaxGetRequest('/Mark/getByBatchID/'+JSON.parse(markSearchBatch.value).id);
     }
     // Condition 3: Only registration is selected
     else if (!batchSelected && registrationSelected) {
@@ -51,7 +51,7 @@ const getMarkReport = () => {
     }
     // Condition 4: Both batch and registration are selected
     else if (batchSelected && registrationSelected) {
-        console.log("Both batch and registration are selected");
+       marks = ajaxGetRequest('/Mark/getByRegistrationID/'+JSON.parse(markSearchRegistration.value).id);
     }
 
 }
