@@ -118,6 +118,19 @@ const rowView = (ob)=>{
     //show the edit btn
     btnMarkSheetEdit.style.display = 'block';
 
+    //get all the inputs with the class name markSheetInputs and save it as an array
+    inputs = document.querySelectorAll('.markSheetInputs');
+    //using forEach Function to remove inline styles,boostrap validation classes and set the disabled property to true
+    inputs.forEach(function (input) {
+        //add the attribute disabled to make inputs block the user input values
+        //remove the edited border colors from the inputs
+        input.setAttribute('disabled', 'true');
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
+
     //set data
     markSheetStudentName.innerText = ob.registrationID.studentID.nameWithInitials;
     markSheetRegistrationNumber.innerText = ob.registrationID.registrationNumber;
@@ -136,6 +149,8 @@ const rowView = (ob)=>{
         markSheetStatus.innerText = 'Not Verified';
 
     }
+
+
 
     let lessonList = ob.batchID.courseID.lessonList;
     lessonList.sort((a,b)=>a.id - b.id);
