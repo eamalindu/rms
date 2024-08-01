@@ -39,12 +39,16 @@ public class MarkController {
         if (existMark != null) {
             return "<br>Mark already exists.";
         }
+        try {
+            mark.setAddedBy(auth.getName());
+            mark.setIsVerified(false);
+            mark.setTimeStamp(LocalDateTime.now());
+            markDAO.save(mark);
+            return "OK";
+        } catch (Exception ex) {
+            return "Save Failed " + ex.getMessage();
+        }
 
-        mark.setAddedBy(auth.getName());
-        mark.setIsVerified(false);
-        mark.setTimeStamp(LocalDateTime.now());
-        markDAO.save(mark);
-        return "OK";
 
     }
 
