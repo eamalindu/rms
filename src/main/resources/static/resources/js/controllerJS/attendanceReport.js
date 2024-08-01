@@ -2,6 +2,19 @@ window.addEventListener('load',()=>{
 
     resetSearchBar();
     getAttendanceReport();
+
+    reportColumnFormat = [
+        {name: 'Registration Number', data: 'registrationID.registrationNumber'},
+        {name: 'Student', data: 'registrationID.studentID.nameWithInitials'},
+        {name: 'Course', data: 'batchID.courseID.name'},
+        {name: 'Batch', data: 'batchID.batchCode'},
+        {name: 'Lesson', data: 'lessonID.name'},
+        {name: 'Lesson Code', data: 'lessonID.code'},
+        {name: 'Marks', data: 'marks'},
+        {name: 'Verified?', data: 'isVerified'},
+        {name: 'Added By', data: 'addedBy'},
+        {name: 'Date and Time', data: 'timeStamp'},
+    ];
 })
 
 const resetSearchBar = () => {
@@ -46,7 +59,7 @@ const getRegistration=(ob)=>{
 const attendanceReportToXlsx = ()=>{
     showCustomConfirm('You are about to export <span class="text-steam-green">Attendance Report</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
         if(result){
-            exportToExcel(marks,'Attendance Report '+dateSelected,reportColumnFormat);
+            exportToExcel(attendances,'Attendance Report '+dateSelected,reportColumnFormat);
             // exportTableToExcel('tblDailyIncome','test');
         }
     });

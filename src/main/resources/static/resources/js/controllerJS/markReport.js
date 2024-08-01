@@ -13,12 +13,7 @@ window.addEventListener('load',()=>{
         {name: 'Student', data: 'registrationID.studentID.nameWithInitials'},
         {name: 'Course', data: 'batchID.courseID.name'},
         {name: 'Batch', data: 'batchID.batchCode'},
-        {name: 'Lesson', data: 'lessonID.name'},
-        {name: 'Lesson Code', data: 'lessonID.code'},
-        {name: 'Marks', data: 'marks'},
-        {name: 'Verified?', data: 'isVerified'},
-        {name: 'Added By', data: 'addedBy'},
-        {name: 'Date and Time', data: 'timeStamp'},
+        {name: 'Attendance', data: 'timeStamp'},
     ];
 })
 
