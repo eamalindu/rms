@@ -665,7 +665,7 @@ const getLessonName = (ob)=>{
     return ob.lessonID.name;
 }
 const getExamDate = (ob)=>{
-    const [date,time] = ob.timeStamp.split(" - ");
+    const [date,time] = ob.timeStamp.split("T");
     return date;
 }
 const getMarks = (ob)=>{
