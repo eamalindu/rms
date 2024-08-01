@@ -12,11 +12,10 @@ window.addEventListener("load",()=>{
 
     //validation chosen select (for new student)
     //add class select-validated when chosen select change an option
-    $("#studentIdOption").chosen().change(function () {
-        $("#studentIdOption_chosen .chosen-single").addClass('select-validated');
-    });$("#studentLang").chosen().change(function () {
+    $("#studentLang").chosen().change(function () {
         $("#studentLang_chosen .chosen-single").addClass('select-validated');
-    });$("#studentGuardianRelationship").chosen().change(function () {
+    });
+    $("#studentGuardianRelationship").chosen().change(function () {
         $("#studentGuardianRelationship_chosen .chosen-single").addClass('select-validated');
     });
     //validation chosen select (for payment)
@@ -540,7 +539,7 @@ const resetStudentForm = ()=>{
     $("#studentLang_chosen .chosen-single").removeClass('select-validated');
     $("#studentGuardianRelationship_chosen .chosen-single").removeClass('select-validated');
     //remove is-valid class from the studentIdOption Element
-    studentIdOption.classList.remove('is-valid');
+    //studentIdOption.classList.remove('is-valid');
     //remove is-valid class from the studentLang Element
     studentLang.classList.remove('is-valid');
     //remove is-valid class from the studentGuardianRelationship Element
@@ -553,7 +552,7 @@ const resetStudentForm = ()=>{
 
     //set default option chosen
     setTimeout(function () {
-        $('#studentIdOption').val('').trigger('chosen:updated');
+        //$('#studentIdOption').val('').trigger('chosen:updated');
         $('#studentLang').val('').trigger('chosen:updated');
         $('#studentGuardianRelationship').val('').trigger('chosen:updated');
     }, 0);
@@ -573,7 +572,7 @@ const resetStudentForm = ()=>{
 
     //initialize chosen select
     $("#studentLang").chosen({width: '100%', disable_search: true});
-    $("#studentIdOption").chosen({width: '100%', disable_search: true});
+    //$("#studentIdOption").chosen({width: '100%', disable_search: true});
     $("#studentGuardianRelationship").chosen({width: '100%', disable_search: true});
     //initialize daterangepicker
     $('#studentDOB').daterangepicker({
