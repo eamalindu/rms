@@ -33,6 +33,13 @@ public class MarkController {
         if (!loggedUserPrivilege.getInsertPrivilege()) {
             return "<br>User does not have sufficient privilege.";
         }
+
+        Mark existMark = markDAO.getMarkByRegistrationIDAndLessonID(mark.getRegistrationID().getId(), mark.getLessonID().getId());
+
+        if (existMark != null) {
+            return "<br>Mark already exists.";
+        }
+
         mark.setAddedBy(auth.getName());
         mark.setIsVerified(false);
         mark.setTimeStamp(LocalDateTime.now());
