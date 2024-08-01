@@ -84,7 +84,7 @@
         <div>
             <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0" data-bs-dismiss="offcanvas"
                     id="offCanvasExamAttemptCloseButton" type="button"><i class="fas fa-times"></i></button>
-            <button class="btn btn-sm bg-secondary text-white rounded-0" onclick="resetExamAttemptForm()" type="button"><i
+            <button class="btn btn-sm bg-secondary text-white rounded-0" onclick="resetMarkForm()" type="button"><i
                     class="fas fa-refresh"></i>
             </button>
         </div>
@@ -102,17 +102,17 @@
                             <label class="fw-bold small required" for="examMarksBatch">Batch</label>
                         </div>
                         <select class="form-select rounded-0" data-placeholder="Please Select a Batch" id="examMarksBatch"
-                                onchange="selectDynamicValueValidator(this,'','newExamMark','batchID');getBatch();getLesson()" required>
+                                onchange="selectDynamicValueValidator(this,'','newExamMark','batchID');getRegistrations();getLessons()" required>
                         </select>
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Batch</div>
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
-                            <label class="fw-bold small required" for="examCourse">Registration</label>
+                            <label class="fw-bold small required" for="examMarksRegistration">Registration</label>
                         </div>
                         <select class="form-select rounded-0" data-placeholder="Please Select a Batch First" id="examMarksRegistration"
-                                onchange="selectDynamicValueValidator(this,'','newExamAttempt','batchID');" required>
+                                onchange="selectDynamicValueValidator(this,'','newExamAttempt','registrationID');" required>
                             <option value=""></option>
                         </select>
                         <div class="valid-feedback">Value Accepted</div>
