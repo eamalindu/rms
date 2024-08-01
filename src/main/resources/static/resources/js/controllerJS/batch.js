@@ -1014,4 +1014,16 @@ const resetPaymentPlanForm = ()=>{
 
     fillSelectOptions(paymentPlanCourse,' ',courses,'name');
     $('#paymentPlanCourse').chosen({width:'100%'});
+
+    $('#paymentPlanExpireDate').daterangepicker({
+        "minDate": new Date(),
+        "singleDatePicker": true,
+        "linkedCalendars": false,
+        "showCustomRangeLabel": false,
+        "autoUpdateInput": false,
+        "drops": "down",
+        "locale": {
+            "format": "YYYY-MM-DD"
+        }
+    });
 }
