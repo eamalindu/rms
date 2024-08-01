@@ -115,6 +115,8 @@ const rowView = (ob)=>{
     btnMarkSheetDelete.style.display = 'block';
     //show verify btn
     btnMarkSheetVerify.style.display = 'block';
+    //show the edit btn
+    btnMarkSheetEdit.style.display = 'block';
 
     //set data
     markSheetStudentName.innerText = ob.registrationID.studentID.nameWithInitials;
@@ -128,6 +130,7 @@ const rowView = (ob)=>{
     if(ob.isVerified){
         markSheetStatus.innerText = 'Verified';
         btnMarkSheetVerify.style.display = 'none';
+        btnMarkSheetEdit.style.display = 'none';
     }
     else{
         markSheetStatus.innerText = 'Not Verified';
