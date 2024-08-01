@@ -260,11 +260,11 @@ const markEdit = ()=>{
     }, 5000);
 
     //display the update button once the edit button is clicked
-    btnBatchSheetUpdate.style.display = 'block';
+    btnMarkSheetUpdate.style.display = 'block';
 
     //remove the attribute readonly to make inputs accept the user input values
     //give a border color to inputs indicate that the input's values are ready to be edited
-    inputs = document.querySelectorAll('.courseSheetInputs');
+    inputs = document.querySelectorAll('.markSheetInputs');
 
     //remove the disabled attribute from the select
     //give a border color to indicate that select can be now edited
