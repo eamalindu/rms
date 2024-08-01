@@ -42,3 +42,12 @@ const getMarkedDate=(ob)=>{
 const getRegistration=(ob)=>{
     return ob.registrationID.registrationNumber;
 }
+
+const attendanceReportToXlsx = ()=>{
+    showCustomConfirm('You are about to export <span class="text-steam-green">Attendance Report</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
+        if(result){
+            exportToExcel(marks,'Attendance Report '+dateSelected,reportColumnFormat);
+            // exportTableToExcel('tblDailyIncome','test');
+        }
+    });
+}
