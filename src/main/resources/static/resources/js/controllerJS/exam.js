@@ -1,11 +1,56 @@
 window.addEventListener('load',()=>{
     resetMarkForm();
     refreshMarkTable();
+
+    //validation chosen select (for new batch)
+    $("#examMarksBatch").chosen().change(function () {
+        $("#examMarksBatch_chosen .chosen-single").addClass('select-validated');
+    });
+    //validation chosen select (for new batch)
+    $("#examMarksRegistration").chosen().change(function () {
+        $("#examMarksRegistration_chosen .chosen-single").addClass('select-validated');
+    });
+    //validation chosen select (for new batch)
+    $("#examLesson").chosen().change(function () {
+        $("#examLesson_chosen .chosen-single").addClass('select-validated');
+    });
 })
 
 const resetMarkForm = () => {
 
+    //remove chosen validation
+    $("#examLesson_chosen .chosen-single").removeClass('select-validated');
+    $("#examLesson_chosen .chosen-single").removeClass('select-invalidated');
+    examLesson.classList.remove('is-valid');
+    examLesson.classList.remove('is-invalid');
+    $("#examMarksRegistration_chosen .chosen-single").removeClass('select-validated');
+    $("#examMarksRegistration_chosen .chosen-single").removeClass('select-invalidated');
+    examMarksRegistration.classList.remove('is-valid');
+    examMarksRegistration.classList.remove('is-invalid');
+    $("#examMarksBatch_chosen .chosen-single").removeClass('select-validated');
+    $("#examMarksBatch_chosen .chosen-single").removeClass('select-invalidated');
+    examMarksBatch.classList.remove('is-valid');
+    examMarksBatch.classList.remove('is-invalid');
+
+    frmNewMark.reset();
+
     newExamMark = {};
+
+    //set default option chosen
+    setTimeout(function () {
+        $('#examMarksBatch').val('').trigger('chosen:updated');
+        $('#examMarksRegistration').val('').trigger('chosen:updated');
+        $('#examLesson').val('').trigger('chosen:updated');
+    }, 0);
+
+    //remove validation from the inputs all at once
+    inputs = document.querySelectorAll('.newExamInputs');
+    inputs.forEach(function (input) {
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
 
     const batches = ajaxGetRequest("/Batch/findall");
     fillSelectOptions(examMarksBatch,' ',batches,'batchCode');
@@ -76,4 +121,8 @@ const getLessons = () => {
     lessonList.sort((a,b)=>a.id - b.id);
    fillSelectOptionsWithTwo(examLesson,' ',lessonList,'code','name');
     $('#examLesson').trigger('chosen:updated');
+}
+
+const newExamMarkSubmit = () => {
+
 }

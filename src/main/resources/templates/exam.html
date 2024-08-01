@@ -96,7 +96,7 @@
         <p class="m-0 fw-bold text-end"><label class="required"></label><span class="text-danger"><sup> Mandatory Fields </sup></span></p>
         <div class="card border-0">
             <div class="card-body border-0">
-                <form id="frmNewExamAttempt" onsubmit="return false">
+                <form id="frmNewMark" onsubmit="return false">
                     <div class="mb-2">
                         <div class="form-label">
                             <label class="fw-bold small required" for="examMarksBatch">Batch</label>
@@ -131,7 +131,7 @@
                     </div>
                     <div class="mb-4">
                         <div class="form-label">
-                            <label class="fw-bold small required" for="examMarks">Exam Date</label>
+                            <label class="fw-bold small required" for="examMarks">Exam Mark</label>
                         </div>
                         <input class="form-control rounded-0 newExamInputs" id="examMarks" required onkeyup="inputTextValidator(this,'^[0-9]{1,3}$','newExamMark','marks')">
                         <div class="valid-feedback">Value Accepted</div>
@@ -139,7 +139,7 @@
                     </div>
                     <div class="mb-0">
                         <button class="btn bg-steam-green text-white rounded-0 btn-block w-100" id="examConfirm"
-                                onclick="newExamAttemptSubmit()" type="submit">Confirm
+                                onclick="newExamMarkSubmit()" type="submit">Confirm
                         </button>
                     </div>
                 </form>
