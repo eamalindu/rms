@@ -277,7 +277,15 @@ const rowView = (ob, index) => {
 
     //setting exam marks for the registration
     console.log("EXAM MARKS HERE ****")
-    const marks = ajaxGetRequest("/Mark/getByRegistrationID"+ob.id);
+    const marks = ajaxGetRequest("/Mark/getByRegistrationID/"+ob.id);
+    const displayListForLessonListForMarks = [
+        {property:getLessonName,dataType:'function'},
+        {property:getExamDate,dataType:'function'},
+        {property:getMarks,dataType:'function'},
+        {property:getResult,dataType:'function'},
+        {property:getMarkStatus,dataType:'function'},
+    ];
+    fillDataIntoTableWithOutAction(tblMarks,marks,displayListForLessonListForMarks)
 
 
 
@@ -650,4 +658,34 @@ const checkForRegistrationUpdate = () => {
         updates = updates + "Registration Staus was changed to <span class='text-steam-green'>" + editedRegistration.tempRegistrationStatus.name + "</span><br>";
     }
     return updates;
+}
+
+
+const getLessonName = (ob)=>{
+    return ob.lessonID.name;
+}
+const getExamDate = (ob)=>{
+    const [date,time] = ob.timeStamp.split(" - ");
+    return date;
+}
+const getMarks = (ob)=>{
+    return ob.marks+"%";
+}
+const getResult = (ob)=>{
+    if(ob.marks>=40){
+        return "Pass";
+    }
+    else{
+        return "Fail";
+    }
+}
+const getMarkStatus = (ob)=>{
+   if(ob.isVerified){
+
+       return "Verified"
+   }
+   else{
+
+       return "Not-Verified"
+   }
 }

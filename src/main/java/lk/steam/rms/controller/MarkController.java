@@ -32,7 +32,7 @@ public class MarkController {
 
     @GetMapping(value = "/getByRegistrationID/{registrationID}")
     public List<Mark> getByRegistrationID(@PathVariable Integer registrationID){
-        return markDAO.getByRegistrationID();
+        return markDAO.getByRegistrationID(registrationID);
     }
 
 
