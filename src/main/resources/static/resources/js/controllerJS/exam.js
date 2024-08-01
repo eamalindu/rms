@@ -58,6 +58,7 @@ const resetMarkForm = () => {
     $('#examMarksBatch').chosen({width:'100%'});
     $('#examMarksRegistration').chosen({width:'100%'});
     $('#examLesson').chosen({width:'100%'});
+
 }
 
 const refreshMarkTable = () => {
@@ -108,19 +109,18 @@ const rowView = (ob)=>{
 }
 
 const getRegistrations = () => {
-    const selectedBatch = JSON.parse(examMarksBatch.value);
-    registrations = ajaxGetRequest("/Registration/getRegistrations/"+selectedBatch.id);
-    fillSelectOptionsWithTwo(examMarksRegistration,' ',registrations,'registrationNumber','studentID.nameWithInitials');
+     selectedBatch = newExamMark.batchID.id;
+    registrations = ajaxGetRequest("/Registration/getRegistrations/"+selectedBatch);
+    fillSelectOptions(examMarksRegistration,' ',registrations,'registrationNumber',);
     examMarksRegistration.setAttribute('data-placeholder','Please Select a Registration');
     $('#examMarksRegistration').trigger('chosen:updated');
 
 }
 
 const getLessons = () => {
-    const selectedBatch = JSON.parse(examMarksBatch.value);
-    let lessonList = selectedBatch.courseID.lessonList;
+    let lessonList = newExamMark.batchID.courseID.lessonList;
     lessonList.sort((a,b)=>a.id - b.id);
-   fillSelectOptionsWithTwo(examLesson,' ',lessonList,'code','name');
+    fillSelectOptionsWithTwo(examLesson,' ',lessonList,'code','name');
     examLesson.setAttribute('data-placeholder','Please Select a Lesson');
     $('#examLesson').trigger('chosen:updated');
 }
