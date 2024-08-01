@@ -4,6 +4,8 @@ window.addEventListener("load", () => {
     resetBatchForm();
     //refresh the batch table
     refreshBatchTable();
+    //reset paymentPlan form
+    resetPaymentPlanForm();
 
     //validation chosen select (for new batch)
     $("#batchCourse").chosen().change(function () {
@@ -445,7 +447,6 @@ const resetBatchForm = () => {
 
     //calling the resetTimeTableForm function to reset the inner form
     resetTimeTableForm();
-
 }
 
 //creating a function to reset the Time Table (inner form) form when ever needed
@@ -987,4 +988,21 @@ const batchSearchReset = () => {
     //refresh the table using refreshBatchTable function
     refreshBatchTable();
 
+}
+
+const resetPaymentPlanForm = ()=>{
+    inputs = document.querySelectorAll('.newPaymentPlanInputs');
+    inputs.forEach(function (input) {
+        //remove the inline css from inputs
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
+
+    newPaymentPlan = {}
+    frmAddNewModule.reset();
+
+    fillSelectOptions(paymentPlanCourse,' ',courses,'name');
+    $('#paymentPlanCourse').chosen({width:'100%'});
 }

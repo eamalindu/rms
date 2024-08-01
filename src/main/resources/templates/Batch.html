@@ -640,9 +640,9 @@
               <form onsubmit="return false;">
                   <div class="mb-2">
                       <div class="form-label">
-                          <label class="fw-bold small required" for="batchClassDay">Course</label>
+                          <label class="fw-bold small required" for="paymentPlanCourse">Course</label>
                       </div>
-                      <select class="form-select rounded-0" data-placeholder="Please Select a Day" required>
+                      <select class="form-select rounded-0" id="paymentPlanCourse" data-placeholder="Please Select a Day" required>
                           <option></option>
                       </select>
                       <div class="valid-feedback">Value Accepted</div>
@@ -650,41 +650,50 @@
                   </div>
                   <div class="mb-2">
                       <div class="form-label">
-                          <label class="fw-bold small required" for="batchClassDay">Name</label>
+                          <label class="fw-bold small required" for="paymentPlanName">Name</label>
                       </div>
-                      <input class="form-control rounded-0" required>
+                      <input class="form-control rounded-0 newPaymentPlanInputs" required id="paymentPlanName" onkeyup="inputTextValidator(this,'','newPaymentPlan','name')">
                       <div class="text-muted small">Example: Standard [Weekday]</div>
+                      <div class="valid-feedback">Value Accepted</div>
+                      <div class="invalid-feedback">Please provide a valid Name</div>
                   </div>
                   <div class="mb-2">
                       <div class="form-label">
-                          <label class="fw-bold small required" for="batchClassDay">Registration Fee</label>
+                          <label class="fw-bold small required" for="paymentPlanRegistrationAmount">Registration Fee</label>
                       </div>
-                      <input class="form-control rounded-0" required>
+                      <input class="form-control rounded-0 newPaymentPlanInputs" required id="paymentPlanRegistrationAmount" onkeyup="inputTextValidator(this,'^[1-9]{1}[0-9]{2,3}$','newPaymentPlan','registrationFee')">
+                      <div class="valid-feedback">Value Accepted</div>
+                      <div class="invalid-feedback">Please provide a valid Registration Fee</div>
                   </div>
                   <div class="mb-2">
                       <div class="form-label">
-                          <label class="fw-bold small required" for="batchClassDay">Course Fee</label>
+                          <label class="fw-bold small required" for="paymentPlanCourseAmount">Course Fee</label>
                       </div>
-                      <input class="form-control rounded-0" required>
+                      <input class="form-control rounded-0 newPaymentPlanInputs" required id="paymentPlanCourseAmount" onkeyup="inputTextValidator(this,'^[1-9]{1}[0-9]{3,4}$','newPaymentPlan','courseFee')">
+                      <div class="valid-feedback">Value Accepted</div>
+                      <div class="invalid-feedback">Please provide a valid Course Fee</div>
                   </div>
                   <div class="mb-2">
                       <div class="form-label">
-                          <label class="fw-bold small required" for="batchClassDay">Total Fee</label>
+                          <label class="fw-bold small required" for="paymentPlanTotalAmount">Total Fee</label>
                       </div>
-                      <input class="form-control rounded-0" required>
+                      <input class="form-control rounded-0 newPaymentPlanInputs" required id="paymentPlanTotalAmount" disabled>
                   </div>
                   <div class="mb-2">
                       <div class="form-label">
-                          <label class="fw-bold small required" for="batchClassDay">Number of Installments</label>
+                          <label class="fw-bold small required" for="paymentPlanNumberOfInstallments">Number of Installments</label>
                       </div>
-                      <input class="form-control rounded-0" required>
+                      <input class="form-control rounded-0 newPaymentPlanInputs" required id="paymentPlanNumberOfInstallments" onkeyup="inputTextValidator(this,'^[1-9]{1}$','newPaymentPlan','numberOfInstallments')">
+                      <div class="valid-feedback">Value Accepted</div>
+                      <div class="invalid-feedback">Please provide a valid number of Installments</div>
                   </div>
-                  <div class="mb-2">
+                  <div class="mb-4">
                       <div class="form-label">
-                          <label class="fw-bold small required" for="batchClassDay">Expire Date</label>
+                          <label class="fw-bold small required" for="paymentPlanExpireDate">Expire Date</label>
                       </div>
-                      <input class="form-control rounded-0" required >
+                      <input class="form-control rounded-0 newPaymentPlanInputs" required id="paymentPlanExpireDate" onkeydown="return false;">
                   </div>
+                  <button class="btn btn-success bg-steam-green mx-auto d-block rounded-0" type="button" onclick="newPaymentPlanSubmit()">Confirm</button>
               </form>
             </div>
         </div>
