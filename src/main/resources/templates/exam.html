@@ -112,7 +112,7 @@
                             <label class="fw-bold small required" for="examMarksRegistration">Registration</label>
                         </div>
                         <select class="form-select rounded-0" data-placeholder="Please Select a Batch First" id="examMarksRegistration"
-                                onchange="selectDynamicValueValidator(this,'','newExamAttempt','registrationID');" required>
+                                onchange="selectDynamicValueValidator(this,'','newExamMark','registrationID');" required>
                             <option value=""></option>
                         </select>
                         <div class="valid-feedback">Value Accepted</div>
@@ -123,46 +123,7 @@
                             <label class="fw-bold small required" for="examLesson">Lesson</label>
                         </div>
                         <select class="form-select rounded-0" data-placeholder="Please Select a Batch First" id="examLesson"
-                                onchange="selectDynamicValueValidator(this,'','newExamAttempt','lessonID')" required>
-                            <option value=""></option>
-                        </select>
-                        <div class="valid-feedback">Value Accepted</div>
-                        <div class="invalid-feedback">Please provide a valid Lesson</div>
-                    </div>
-
-                    <div class="mb-2">
-                        <div class="form-label">
-                            <label class="fw-bold small required" for="examMode">Exam Mode</label>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="text-center">
-                                <div class="d-flex align-items-center justify-content-center mx-auto bg-success text-white"
-                                     id="leftWeekday"
-                                     style="border-radius: 50%;height: 40px;width: 40px;background:#ddd">
-                                    <i class="fa-solid fa-user"></i>
-                                </div>
-                                <span class="text-muted small">Individual</span>
-                            </div>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" id="examMode" onchange="checkBoxValidator(this, leftWeekday, rightWeekday, 'newExamAttempt', 'isIndividual', false, true);" role="switch"
-                                       style="scale: 1.7;"
-                                       type="checkbox">
-                            </div>
-                            <div class="text-center">
-                                <div class="d-flex align-items-center justify-content-center mx-auto" id="rightWeekday"
-                                     style="border-radius: 50%;height: 40px;width: 40px;background:#ddd">
-                                    <i class="fa-solid fa-users"></i>
-                                </div>
-                                <span class="text-muted small">Batch</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2" id="containerExamRegistration">
-                        <div class="form-label">
-                            <label class="fw-bold small required" for="examRegistration">Registration</label>
-                        </div>
-                        <select class="form-select rounded-0" data-placeholder="Please Select a Batch First" id="examRegistration"
-                                onchange="selectDynamicValueValidator(this,'','newExamAttempt','registrationID')" required>
+                                onchange="selectDynamicValueValidator(this,'','newExamMark','lessonID')" required>
                             <option value=""></option>
                         </select>
                         <div class="valid-feedback">Value Accepted</div>
@@ -170,11 +131,11 @@
                     </div>
                     <div class="mb-4">
                         <div class="form-label">
-                            <label class="fw-bold small required" for="examDate">Exam Date</label>
+                            <label class="fw-bold small required" for="examMarks">Exam Date</label>
                         </div>
-                        <input class="form-control rounded-0 newExamInputs" id="examDate" required onkeydown="return false;">
+                        <input class="form-control rounded-0 newExamInputs" id="examMarks" required onkeyup="inputTextValidator(this,'^[0-9]{1,3}$','newExamMark','marks')">
                         <div class="valid-feedback">Value Accepted</div>
-                        <div class="invalid-feedback">Please provide a valid Date</div>
+                        <div class="invalid-feedback">Please provide a valid Mark</div>
                     </div>
                     <div class="mb-0">
                         <button class="btn bg-steam-green text-white rounded-0 btn-block w-100" id="examConfirm"
