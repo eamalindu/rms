@@ -30,6 +30,11 @@ public class MarkController {
         return markDAO.findAll();
     }
 
+    @GetMapping(value = "/getByRegistrationID/{registrationID}")
+    public List<Mark> getByRegistrationID(@PathVariable Integer registrationID){
+        return markDAO.getByRegistrationID();
+    }
+
 
     @GetMapping()
     public ModelAndView markUI() {

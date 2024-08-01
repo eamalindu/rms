@@ -275,6 +275,11 @@ const rowView = (ob, index) => {
     ob.batchID.courseID.lessonList.sort((a, b) => a.id - b.id);
     fillDataIntoTableWithOutAction(tblCurriculum, ob.batchID.courseID.lessonList, displayListForLessonList)
 
+    //setting exam marks for the registration
+    console.log("EXAM MARKS HERE ****")
+    const marks = ajaxGetRequest("/Mark/getByRegistrationID"+ob.id);
+
+
 
     //setting data for payment Tab
     if (ob.fullAmount === ob.balanceAmount) {
