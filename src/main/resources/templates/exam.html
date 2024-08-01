@@ -178,48 +178,42 @@
             <tbody class="small align-middle">
             <tr>
                 <td class="fw-bold w-25">Student Name</td>
-                <td class="w-25">
-                    <input class="small rounded-0 form-control-sm markSheetInputs" id="courseSheetName"  disabled required style="">
-                    <div class="valid-feedback">Value Accepted</div>
-                    <div class="invalid-feedback">Please provide a valid Course Name</div>
+                <td >
+                    <p class="small mb-0" id="markSheetStudentName"></p>
                 </td>
+                </tr>
+            <tr>
                 <td class="fw-bold w-25">Registration Number</td>
                 <td>
-                    <input class="small rounded-0 form-control-sm markSheetInputs" id="courseSheetCode"  disabled required style="">
-                    <div class="valid-feedback">Value Accepted</div>
-                    <div class="invalid-feedback">Please provide a valid Course Code</div>
+                    <p class="small mb-0" id="markSheetRegistrationNumber"></p>
                 </td>
             </tr>
             <tr>
                 <td class="fw-bold w-25">Course</td>
-                <td class="w-25">
-                    <input class="small rounded-0 form-control-sm markSheetInputs" id="courseSheetDuration"  disabled required style="">
-                    <div class="valid-feedback">Value Accepted</div>
-                    <div class="invalid-feedback">Please provide a valid Course Duration</div>
+                <td >
+                    <p class="small mb-0" id="markSheetCourse"></p>
                 </td>
+                </tr>
+            <tr>
                 <td class="fw-bold w-25">Batch</td>
                 <td>
-                    <input class="small rounded-0 form-control-sm markSheetInputs" disabled="true" required="" id="courseSheetLectureDuration"  style="">
-                    <div class="valid-feedback">Value Accepted</div>
-                    <div class="invalid-feedback">Please provide a valid Course Lecture Hours</div>
+                    <p class="small mb-0" id="markSheetBatch"></p>
                 </td>
             </tr>
             <tr>
                 <td class="fw-bold w-25">Lesson</td>
                 <td class="" colspan="">
-                    <select class="courseSheetInputs form-select rounded-0 small form-select-sm" id="courseSheetRequirement" onchange="selectStaticValueValidator(this,'','editedCourse','minimumRequirement');" disabled="true" required="" style="">
-                        <option></option>
-                        <option>Undergraduate</option>
-                        <option>After A/L</option>
-                        <option>After O/L</option>
-                        <option>Grade 9</option>
+                    <select class="courseSheetInputs form-select rounded-0 small form-select-sm" id="markSheetLesson"  disabled required>
+
                     </select>
                     <div class="valid-feedback">Value Accepted</div>
                     <div class="invalid-feedback">Please provide a valid Requirement</div>
                 </td>
+            </tr>
+            <tr>
                 <td class="fw-bold w-25">Mark</td>
                 <td class="" colspan="">
-                    <input class="small rounded-0 form-control-sm markSheetInputs" disabled required id=""  style>
+                    <input class="small rounded-0 form-control-sm markSheetInputs" id="markSheetMarks" disabled required>
                     <div class="valid-feedback">Value Accepted</div>
                     <div class="invalid-feedback">Please provide a valid Status</div>
                 </td>
