@@ -731,14 +731,19 @@ const checkStudentFormErrors = () => {
     //check if title is null
     if(newStudent.title==null){
         errors = errors + 'Title is Required<br>';
+
     }
     //check if fullname is null
     if(newStudent.fullName==null){
         errors = errors + 'Full Name is Required<br>';
+        studentFullName.style.borderColor = 'red';
+        studentFullName.classList.add('is-invalid');
     }
     //check if nameWithInitials is null
     if(newStudent.nameWithInitials==null){
         errors = errors + 'Name With Initials is Required<br>';
+        studentNameWithInitials.style.borderColor = 'red';
+        studentNameWithInitials.classList.add('is-invalid');
     }
     //check if gender is null
     if(newStudent.gender==null){
@@ -747,6 +752,8 @@ const checkStudentFormErrors = () => {
     //check if dob is null
     if(newStudent.dob==null){
         errors = errors + 'DOB is Required<br>';
+        studentDOB.style.borderColor = 'red';
+        studentDOB.classList.add('is-invalid');
     }
     //check if language is null
     if(newStudent.language==null){
@@ -755,14 +762,20 @@ const checkStudentFormErrors = () => {
     //check if mobileNumber is null
     if(newStudent.mobileNumber==null){
         errors = errors + 'Mobile Number is Required<br>';
+        studentMobileNumber.style.borderColor = 'red';
+        studentMobileNumber.classList.add('is-invalid');
     }
     //check if addressLine1 is null
     if(newStudent.addressLine1==null){
         errors = errors + 'Address Line 1 is Required<br>';
+        studentAddressLine1.style.borderColor = 'red';
+        studentAddressLine1.classList.add('is-invalid');
     }
     //check if city is null
     if(newStudent.city==null){
         errors = errors + 'City is Required<br>';
+        studentCity.style.borderColor = 'red';
+        studentCity.classList.add('is-invalid');
     }
     //check if idType is null
     if(newStudent.idType==null){
@@ -771,10 +784,14 @@ const checkStudentFormErrors = () => {
     //check if idValue is null
     if(newStudent.idValue==null){
         errors = errors + 'ID Value is Required<br>';
+        studentID.style.borderColor = 'red';
+        studentID.classList.add('is-invalid');
     }
     //check if guardianName is null
     if(newStudent.guardianName==null){
         errors = errors + 'Guardian Name is Required<br>';
+        studentGuardianName.style.borderColor = 'red';
+        studentGuardianName.classList.add('is-invalid');
     }
     //check if guardianRelationship is null
     if(newStudent.guardianRelationship==null){
@@ -783,6 +800,8 @@ const checkStudentFormErrors = () => {
     //check if guardianContactNumber is null
     if(newStudent.guardianContactNumber==null){
         errors = errors + 'Guardian Contact Number is Required<br>';
+        studentGuardianContact.style.borderColor = 'red';
+        studentGuardianContact.classList.add('is-invalid');
     }
 
     //return the errors
