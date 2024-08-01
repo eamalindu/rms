@@ -36,6 +36,11 @@ window.addEventListener("load", () => {
         //calling the calculateLastRegDate function to auto generated the batch end date according to the selected commence date
         calculateEndDate();
     });
+    $('#paymentPlanExpireDate').on('apply.daterangepicker', function (ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        //binding data to newBatch object
+        inputTextValidator(this, '^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$', 'newPaymentPlan', 'expireDate');
+    });
 
     //toggle the visibility of the table when the h5 tag is clicked
     toggleRegistrationSheetTable(currentPaymentPlanHeadingText,tblCurrentPaymentPlan,currentPaymentPlanIcon);
@@ -1021,9 +1026,15 @@ const resetPaymentPlanForm = ()=>{
         "linkedCalendars": false,
         "showCustomRangeLabel": false,
         "autoUpdateInput": false,
-        "drops": "down",
+        "drops": "up",
         "locale": {
             "format": "YYYY-MM-DD"
         }
+    });
+
+    $('#paymentPlanExpireDate').on('apply.daterangepicker', function (ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        //binding data to newBatch object
+        inputTextValidator(this, '^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$', 'newPaymentPlan', 'expireDate');
     });
 }
