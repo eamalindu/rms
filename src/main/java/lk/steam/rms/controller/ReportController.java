@@ -198,11 +198,11 @@ public class ReportController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         ModelAndView reportView = new ModelAndView();
-        reportView.setViewName("attendanceReport.html");
+        reportView.setViewName("markReport.html");
 
         reportView.addObject("username",auth.getName());
-        reportView.addObject("title","Attendance Report | STEAM RMS");
-        reportView.addObject("activeNavItem","attendance");
+        reportView.addObject("title","Mark Report | STEAM RMS");
+        reportView.addObject("activeNavItem","mark");
 
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
         String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
