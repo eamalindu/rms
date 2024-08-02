@@ -718,6 +718,8 @@ const searchStudent=()=>{
     console.log(responseStudent);
     //create radio cards for student using createStudentRadioCards function
     createStudentRadioCards(responseStudent,handleStudentCardClick,existStudentResults);
+    //get the inquiry from the database using ajaxGetRequest function and store it in  responseInquiry global variable
+    responseInquiry = ajaxGetRequest("/inquiry/getActiveInquiryByNicOrMobileNumberAndCourseId/")
 }
 
 //creating a function to handle to student card click

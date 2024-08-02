@@ -57,5 +57,7 @@ public interface InquiryDAO extends JpaRepository<Inquiry,Integer> {
     @Query(value = "SELECT i from Inquiry i where i.idValue=?1 and i.courseId.id=?2 and (i.inquiryStatusId.id=1 or i.inquiryStatusId.id=2)")
     Inquiry getActiveInquiryByIDAndCourseId(String idValue,Integer courseId);
 
+    @Query(value = "SELECT i from Inquiry i where (i.idValue=?1 or i.primaryMobileNumber =?1) and i.courseId.id=?2 and (i.inquiryStatusId.id=1 or i.inquiryStatusId.id=2)")
+    Inquiry getActiveInquiryByNicOrMobileNumberAndCourseId(String value, Integer courseID);
 }
 

@@ -68,6 +68,11 @@ public class InquiryController {
         return inquiryDAO.getNewInquiryCount();
     }
 
+    @GetMapping(value = "/getActiveInquiryByNicOrMobileNumberAndCourseId/{value}/{courseID}")
+    public Inquiry getActiveInquiryByNicOrMobileNumberAndCourseId(@PathVariable String value,@PathVariable Integer courseID){
+        return inquiryDAO.getActiveInquiryByNicOrMobileNumberAndCourseId(value,courseID);
+    }
+
     @PostMapping
     public String saveNewInquiry(@RequestBody Inquiry inquiry){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
