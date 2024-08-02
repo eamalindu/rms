@@ -266,7 +266,21 @@ const removeRecord = (ob)=>{
 
 
 const checkInnerFormErrors = ()=>{
-    return '';
+    let errors = '';
+    if(dayPlanHasLesson.lessonID == null){
+        errors += 'Please select a Lesson<br>';
+        sessionLesson.classList.add('is-invalid');
+        $("#sessionLesson_chosen .chosen-single").addClass('select-invalidated');
+    }
+    if(dayPlanHasLesson.startTime == null){
+        errors += 'Please select a Start Time<br>';
+        sessionStartTime.classList.add('is-invalid');
+    }
+    if(dayPlanHasLesson.endTime == null){
+        errors += 'Please select an End Time<br>';
+        sessionEndTime.classList.add('is-invalid');
+    }
+    return errors;
 }
 
 const calculateDuration = ()=>{
