@@ -68,7 +68,7 @@ public class UserController {
         String errors = "";
 
         User existingUserUserName = userDAO.getUserByUsername(user.getUsername());
-        if(existingUserUserName!=null){
+        if (existingUserUserName != null && !existingUserUserName.getId().equals(user.getId())) {
             errors += "<br>This Username Already Exists";
         }
         if(!errors.isEmpty()){
@@ -79,7 +79,8 @@ public class UserController {
             if(bCryptPasswordEncoder.matches(user.getPassword(),currentUser.getPassword())){
                 return "<br>Cannot Use the Old Password";
             }
-            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            currentUser.setUsername(user.getUsername());
+            currentUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
             userDAO.save(user);
             return "OK";
