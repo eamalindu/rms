@@ -162,7 +162,17 @@ let next3= ()=>{
 
                         }
                         if(registration.discountRate ===7.5){
-
+                            // Select the card option
+                            // Enable the second and third options
+                            $('#paymentMethod option').each(function(index) {
+                                if (index !== 2 && index !== 3) {
+                                    $(this).prop('disabled', true);
+                                } else {
+                                    $(this).prop('disabled', false);
+                                }
+                            });
+                            // Trigger the chosen:updated event to refresh the Chosen UI
+                            $('#paymentMethod').trigger('chosen:updated');
                         }
 
                     } else {
