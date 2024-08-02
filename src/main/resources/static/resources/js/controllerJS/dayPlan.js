@@ -6,6 +6,9 @@ window.addEventListener("load", () => {
     $("#dayPlanBatch").chosen().change(function () {
         $("#dayPlanBatch_chosen .chosen-single").addClass('select-validated');
     });
+    $("#sessionLesson").chosen().change(function () {
+        $("#sessionLesson_chosen .chosen-single").addClass('select-validated');
+    });
 });
 
 const resetDayPlanForm = () => {
@@ -22,7 +25,9 @@ const resetDayPlanForm = () => {
 
 const resetInnerForm = ()=>{
     dayPlanHasLesson = {}
+
     $('#sessionLesson').chosen({width: '100%'});
+
 }
 
 const getBatchInfo = ()=>{
@@ -78,7 +83,7 @@ const getBatchInfo = ()=>{
     $('#sessionLesson').trigger('chosen:updated');
 
     //show add session btn
-    sessionBtn.classList.remove('d-none');
+    sessionBtn.classList.remove('d-none')
 
 }
 

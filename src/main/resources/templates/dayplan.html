@@ -201,9 +201,6 @@
         <div>
             <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0" data-bs-dismiss="offcanvas"
                     id="offCanvasSessionCloseButton" type="button"><i class="fas fa-times"></i></button>
-            <button class="btn btn-sm bg-secondary text-white rounded-0" onclick="resetInnerForm()" type="button"><i
-                    class="fas fa-refresh"></i>
-            </button>
         </div>
         <h3 class="float-end mt-2"
             style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">New
@@ -219,6 +216,7 @@
                     </div>
                     <select class="form-select rounded-0" data-placeholder="Please Select a Batch" id="sessionLesson"
                             onchange="selectDynamicValueValidator(this,'','dayPlanHasLesson','lessonID');" required>
+                        <option></option>
                     </select>
                     <div class="valid-feedback">Value Accepted</div>
                     <div class="invalid-feedback">Please provide a valid Course</div>
