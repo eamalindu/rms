@@ -21,9 +21,11 @@ const getLoggedInUser=()=>{
     loggedInUsername.setAttribute('disabled', 'true');
     loggedInUsername.style = '';
     loggedInUsername.classList.remove('is-valid');
+    loggedInUsername.classList.remove('is-invalid');
     loggedInPassword.setAttribute('disabled', 'true');
     loggedInPassword.style = '';
     loggedInPassword.classList.remove('is-valid');
+    loggedInPassword.classList.remove('is-invalid');
     loggedInPassword.value = '*******';
     passwordHint.classList.add('d-none');
 
