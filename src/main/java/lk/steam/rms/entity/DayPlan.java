@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -23,6 +24,10 @@ public class DayPlan {
     @Column(name = "addedby")
     @NotNull
     private String addedBy;
+
+    @Column(name = "timestamp")
+    @NotNull
+    private LocalDateTime timestamp;
 
     @ManyToOne
     @JoinColumn(name = "batch_id",referencedColumnName = "id")

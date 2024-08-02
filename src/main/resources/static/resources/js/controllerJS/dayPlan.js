@@ -299,5 +299,27 @@ const calculateDuration = ()=>{
 
 const refreshLectureLogTable = ()=>{
     const lectureLogs = ajaxGetRequest("/Lecturer-Log/getLectureLogsForLecturer");
+    let displayPropertyList = [
+        {property: getBatchCode, dataType: 'function'},
+        {property: 'addedBy', dataType: 'text'},
+        {property: getAddedTimeStamp, dataType: 'text'},
+        {property: getSession, dataType: 'function'},
 
+    ]
+    fillDataIntoTableWithOutAction(tblLecturerLog,lectureLogs,displayPropertyList)
+
+}
+
+const getBatchCode = (ob)=>{
+    return ob.batchID.batchCode;
+}
+const getAddedTimeStamp = (ob)=>{
+    return ob.timeStamp.replace('T',' ');
+}
+const getSession = (ob)=>{
+    let session = '';
+    ob.dayPlanHasLessonList.forEach(function (lesson) {
+        session += lesson.lessonID.code + ' ';
+    })
+    return session;
 }
