@@ -432,7 +432,7 @@ const rowView = (ob, index) => {
         studentModalLang.value = studentRecordToBeEdited.language;
 
         //setting idType
-        StudentModalIDType.value = studentRecordToBeEdited.idType;
+        //StudentModalIDType.value = studentRecordToBeEdited.idType;
 
         //setting guardian relationship
         StudentModalRelationship.value = studentRecordToBeEdited.guardianRelationship;
