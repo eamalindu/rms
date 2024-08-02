@@ -12,20 +12,39 @@ window.addEventListener("load", () => {
 });
 
 const resetDayPlanForm = () => {
+    $("#dayPlanBatch_chosen .chosen-single").removeClass('select-validated');
+    $("#dayPlanBatch_chosen .chosen-single").removeClass('select-invalidated');
+    dayPlanBatch.classList.remove('is-valid');
+    dayPlanBatch.classList.remove('is-invalid');
+
+    frmNewLecturerLog.reset();
 
     newDayPlan = {}
+    //set default option chosen
+    setTimeout(function () {
+        $('#dayPlanBatch').val('').trigger('chosen:updated');
+    }, 0);
+
     const loggedInUserEmployee = ajaxGetRequest("/User/getEmployeeByUsername/"+btnProfileName.innerText);
     const batches = ajaxGetRequest("/Batch/getBatchesConductTodayByLecturer/" + loggedInUserEmployee.id);
     fillSelectOptions(dayPlanBatch, ' ', batches, "batchCode");
     $('#dayPlanBatch').chosen({width: '100%'});
-
+    sessionBtn.classList.add('d-none')
+    collapseBatch.classList.remove('show')
     resetInnerForm();
 }
 
 
 const resetInnerForm = ()=>{
-    dayPlanHasLesson = {}
+    $("#sessionLesson_chosen .chosen-single").removeClass('select-validated');
+    $("#sessionLesson_chosen .chosen-single").removeClass('select-invalidated');
+    sessionLesson.classList.remove('is-valid');
+    sessionLesson.classList.remove('is-invalid');
 
+    dayPlanHasLesson = {}
+    setTimeout(function () {
+        $('#sessionLesson').val('').trigger('chosen:updated');
+    }, 0);
     $('#sessionLesson').chosen({width: '100%'});
 
 }
