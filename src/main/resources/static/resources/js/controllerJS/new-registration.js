@@ -923,6 +923,8 @@ const newPaymentSubmit=()=>{
                     showCustomModal("Payment Successfully Added!", "success");
                     //refresh the form using resetPaymentForm function
                     resetPaymentForm();
+                    //diabled add payment btn
+                    paymentConfirm.disabled = true;
                     //call the next4 function to go to step 4 in the registration process
                     next4();
                     //show the print invoice button
