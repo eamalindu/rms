@@ -97,10 +97,9 @@ const getBatchInfo = ()=>{
             const startTime = moment(day.startTime, 'HH:mm');
             const endTime = moment(day.endTime, 'HH:mm');
             const duration = moment.duration(endTime.diff(startTime));
-            const adjustedDuration = duration.subtract(30, 'minutes');
 
-            const hours = Math.floor(adjustedDuration.asHours());
-            const minutes = adjustedDuration.minutes();
+            const hours = Math.floor(duration.asHours());
+            const minutes = duration.minutes();
 
             collapseBatchDuration.innerText =   hours + "h " + minutes + "m";
             break;
