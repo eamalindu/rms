@@ -40,11 +40,23 @@ const resetInnerForm = ()=>{
     $("#sessionLesson_chosen .chosen-single").removeClass('select-invalidated');
     sessionLesson.classList.remove('is-valid');
     sessionLesson.classList.remove('is-invalid');
+
     frmSession.reset();
+
     dayPlanHasLesson = {}
+    //set default option chosen
     setTimeout(function () {
         $('#sessionLesson').val('').trigger('chosen:updated');
     }, 0);
+
+    //remove validation from the inputs all at once
+    inputs = document.querySelectorAll('.newDayPlanHasLessonInputs');
+    inputs.forEach(function (input) {
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
     $('#sessionLesson').chosen({width: '100%'});
 
 }
