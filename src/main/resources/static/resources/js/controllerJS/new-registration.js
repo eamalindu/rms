@@ -727,6 +727,15 @@ const searchStudent=()=>{
 
 const handleInquiryCardClick = (object)=>{
     //open the offcanavs with data filled;
+    $('#btn-new-student').click();
+    //set student info
+    studentFullName.value = object.firstName+" "+object.lastName;
+    studentID.value = object.idValue;
+    studentMobileNumber.value = object.primaryMobileNumber;
+    //bind data to object
+    newStudent.fullName = object.firstName+" "+object.lastName;
+    newStudent.idValue = object.idValue;
+    newStudent.mobileNumber = object.primaryMobileNumber;
 }
 
 //creating a function to handle to student card click
