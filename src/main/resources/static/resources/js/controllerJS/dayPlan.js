@@ -40,7 +40,7 @@ const resetInnerForm = ()=>{
     $("#sessionLesson_chosen .chosen-single").removeClass('select-invalidated');
     sessionLesson.classList.remove('is-valid');
     sessionLesson.classList.remove('is-invalid');
-
+    frmSession.reset();
     dayPlanHasLesson = {}
     setTimeout(function () {
         $('#sessionLesson').val('').trigger('chosen:updated');
