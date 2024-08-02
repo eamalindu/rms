@@ -97,7 +97,16 @@ const updateLoggedInUser=()=>{
     }
 }
 
-const checkLoggedInUserUpdate=()=>{}
+const checkLoggedInUserUpdate=()=>{
+    let updates = '';
+    if(oldLoggedInUser.username !== editedLoggedInUser.username){
+        updates = updates + "Username was changed to <span class='text-steam-green'>" + editedLoggedInUser.username + "</span><br>";
+    }
+    if(oldLoggedInUser.password !== editedLoggedInUser.password){
+        updates = updates + "Password was changed<br>";
+    }
+    return updates;
+}
 
 const checkLoggedInUserErrors=()=>{
     let errors = ''
