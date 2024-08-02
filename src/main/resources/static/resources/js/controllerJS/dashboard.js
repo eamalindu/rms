@@ -283,7 +283,7 @@ const newQuickPaymentSubmit = ()=>{
                 else{
                     //this means there was a problem with the data passed to the backend
                     //show an error alert to the user using external-ModalFunction()
-                    showCustomModal("Operation Failed! <br>" + serviceResponse, "error");
+                    showCustomModal("Operation Failed! <br>" + severResponse, "error");
                 }
             }
 
