@@ -62,10 +62,6 @@ public class StudentController {
             return "<br>User does not have sufficient privilege.";
         }
 
-        Student existStudent = studentDAO.getStudentsByIdValue(student.getIdValue());
-        if(existStudent!=null){
-            return "Duplicate NIC Value <br>Student Record Already Exists";
-        }
         try {
             studentDAO.save(student);
             return "OK";
