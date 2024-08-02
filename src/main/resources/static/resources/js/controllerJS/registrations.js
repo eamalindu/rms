@@ -30,6 +30,14 @@ window.addEventListener("load", () => {
         $("#paymentMethod_chosen .chosen-single").addClass('select-validated');
     });
 
+    //bind data to the student object, once the "apply" button on studentDOB input is clicked
+    $('#StudentModalDob').on('apply.daterangepicker', function (ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        //using inputTextValidator function to validate the input
+        inputTextValidator(this, '^(19[89][0-9]|20[0-9]{2})[-][0-9]{2}[-][0-9]{2}$', 'editedStudent', 'dob');
+
+    });
+
 });
 
 //creating a function to refresh the registrations table when ever needed
