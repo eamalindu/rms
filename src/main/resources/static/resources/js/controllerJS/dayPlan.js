@@ -9,6 +9,7 @@ window.addEventListener("load", () => {
     $("#sessionLesson").chosen().change(function () {
         $("#sessionLesson_chosen .chosen-single").addClass('select-validated');
     });
+    refreshLectureLogTable();
 });
 
 const resetDayPlanForm = () => {
@@ -294,4 +295,9 @@ const calculateDuration = ()=>{
     const minutes = duration.minutes();
     sessionDuration.value = hours;
     dayPlanHasLesson.duration = hours;
+}
+
+const refreshLectureLogTable = ()=>{
+    const lectureLogs = ajaxGetRequest("/Lecturer-Log/getLectureLogsForLecturer");
+
 }

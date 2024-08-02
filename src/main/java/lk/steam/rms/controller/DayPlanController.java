@@ -1,6 +1,8 @@
 package lk.steam.rms.controller;
 
+import lk.steam.rms.dao.DayPlanDAO;
 import lk.steam.rms.dao.UserDAO;
+import lk.steam.rms.entity.DayPlan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Base64;
+import java.util.List;
 
 @RestController
 @RequestMapping("/Lecturer-Log")
@@ -18,6 +21,8 @@ public class DayPlanController {
 
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    private DayPlanDAO dayPlanDAO;
 
 
     @GetMapping()
@@ -40,6 +45,12 @@ public class DayPlanController {
         dayPlanView.addObject("loggedInDesignationName",loggedInDesignationName);
         dayPlanView.addObject("loggedInImage",imageSrc);
         return dayPlanView;
+    }
+
+    @GetMapping("/getLectureLogsForLecturer")
+    public List<DayPlan> getLectureLogsForLecturer() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return dayPlanDAO.getLectureLogsForLecturer(auth.getName());
     }
 
 }
