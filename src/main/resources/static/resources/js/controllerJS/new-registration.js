@@ -1082,3 +1082,18 @@ const generateInvoice = (object)=>{
     },200)
 
 }
+
+//custom validation function
+const validateGuardianContactNumber = ()=>{
+    let studentNumber = newStudent.mobileNumber;
+    let guardianNumber = studentGuardianContact.value;
+    if(studentNumber === guardianNumber){
+        studentGuardianContact.style.borderColor = 'red';
+        studentGuardianContact.classList.add('is-invalid');
+        newStudent.guardianContactNumber = null;
+    }
+    else{
+        inputTextValidator(studentGuardianContact,'^[0][7][01245678][0-9]{7}$','newStudent','guardianContactNumber')
+    }
+
+}
