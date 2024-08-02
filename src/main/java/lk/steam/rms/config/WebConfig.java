@@ -36,6 +36,7 @@ public class WebConfig {
                             .requestMatchers("/Report/Monthly-Income").hasAnyAuthority("Admin", "Manager", "Counsellor")
                             .requestMatchers("/Report/Mark-Report").hasAnyAuthority("Admin", "Manager", "Lecturer","Coordinator")
                             .requestMatchers("/Lecturer-Log").hasAnyAuthority("Admin", "Manager", "Lecturer","Coordinator")
+                            .requestMatchers("/Mark").hasAnyAuthority("Admin", "Manager", "Lecturer","Coordinator")
                             .requestMatchers("/New-Registration").hasAnyAuthority("Admin", "Manager", "Counsellor")
                             .anyRequest().authenticated();
 
