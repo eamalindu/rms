@@ -30,6 +30,12 @@ public class WebConfig {
                             .requestMatchers("/Batch/**").hasAnyAuthority("Admin", "Manager", "Coordinator", "Counsellor","Lecturer")
                             .requestMatchers("/Batch").hasAnyAuthority("Admin", "Manager", "Coordinator", "Counsellor","Lecturer")
                             .requestMatchers("/Attendance").hasAnyAuthority("Admin", "Manager", "Counsellor","Lecturer")
+                            .requestMatchers("/Report/Daily-Income").hasAnyAuthority("Admin", "Manager", "Counsellor")
+                            .requestMatchers("/Report/Due-Report").hasAnyAuthority("Admin", "Manager", "Counsellor")
+                            .requestMatchers("/Report/Income-Report").hasAnyAuthority("Admin", "Manager", "Counsellor")
+                            .requestMatchers("/Report/Monthly-Income").hasAnyAuthority("Admin", "Manager", "Counsellor")
+                            .requestMatchers("/Report/Mark-Report").hasAnyAuthority("Admin", "Manager", "Lecturer","Coordinator")
+                            .requestMatchers("/Lecturer-Log").hasAnyAuthority("Admin", "Manager", "Lecturer","Coordinator")
                             .anyRequest().authenticated();
 
                 })

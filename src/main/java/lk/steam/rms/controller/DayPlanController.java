@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Base64;
 
 @RestController
-@RequestMapping("/Daily-Schedule")
+@RequestMapping("/Lecturer-Log")
 
 public class DayPlanController {
 
