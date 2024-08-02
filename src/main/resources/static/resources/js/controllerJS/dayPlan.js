@@ -32,6 +32,8 @@ const resetDayPlanForm = () => {
     $('#dayPlanBatch').chosen({width: '100%'});
     sessionBtn.classList.add('d-none')
     collapseBatch.classList.remove('show')
+    //hide timetable table
+    tblSession.classList.add('d-none');
     resetInnerForm();
 }
 
