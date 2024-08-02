@@ -729,5 +729,48 @@ const studentUpdate = ()=>{
 }
 
 const checkForStudentUpdate = ()=>{
+    let updates = '';
+    if(editedStudent.title !== oldStudent.title){
+        updates = updates + "Title Staus was changed to <span class='text-steam-green'>" + editedStudent.title + "</span><br>";
+    }
+    if(editedStudent.nameWithInitials !== oldStudent.nameWithInitials) {
+        updates = updates + "Name With Initials was changed to <span class='text-steam-green'>" + editedStudent.nameWithInitials + "</span><br>";
+    }
+    if(editedStudent.fullName !== oldStudent.fullName) {
+        updates = updates + "Full Name was changed to <span class='text-steam-green'>" + editedStudent.fullName + "</span><br>";
+    }
+    if(editedStudent.dob !== oldStudent.dob) {
+        updates = updates + "DOB was changed to <span class='text-steam-green'>" + editedStudent.dob + "</span><br>";
+    }
+    if(editedStudent.mobileNumber !== oldStudent.mobileNumber) {
+        updates = updates + "Mobile Number was changed to <span class='text-steam-green'>" + editedStudent.mobileNumber + "</span><br>";
+    }
+    if(editedStudent.addressLine1 !== oldStudent.addressLine1) {
+        updates = updates + "Address Line 1 was changed to <span class='text-steam-green'>" + editedStudent.addressLine1 + "</span><br>";
+    }
+    if(editedStudent.addressLine2 !== oldStudent.addressLine2) {
+        updates = updates + "Address Line 2 was changed to <span class='text-steam-green'>" + editedStudent.addressLine2 + "</span><br>";
+    }
+    if(editedStudent.city !== oldStudent.city) {
+        updates = updates + "City was changed to <span class='text-steam-green'>" + editedStudent.city + "</span><br>";
+    }
+    if(editedStudent.email !== oldStudent.email) {
+        updates = updates + "Email was changed to <span class='text-steam-green'>" + editedStudent.email + "</span><br>";
+    }
+    if(editedStudent.idValue !== oldStudent.idValue) {
+        updates = updates + "NIC was changed to <span class='text-steam-green'>" + editedStudent.idValue + "</span><br>";
+    }
+    if(editedStudent.guardianName !== oldStudent.guardianName) {
+        updates = updates + "Guardian Name was changed to <span class='text-steam'> " + editedStudent.guardianName + "</span><br>";
+
+    }
+    if(editedStudent.guardianContactNumber !== oldStudent.guardianContactNumber) {
+        updates = updates + "Guardian Contact Number was changed to <span class='text-steam-green'>" + editedStudent.guardianContactNumber + "</span><br>";
+    }
+    if (editedStudent.language !== oldStudent.language) {
+        updates = updates + "Language was changed to <span class='text-steam-green'>" + editedStudent.language + "</span><br>";
+    }
+
+    return updates;
 
 }
