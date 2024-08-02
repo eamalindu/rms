@@ -22,6 +22,7 @@ const resetDayPlanForm = () => {
 
 const resetInnerForm = ()=>{
     dayPlanHasLesson = {}
+    $('#sessionLesson').chosen({width: '100%'});
 }
 
 const getBatchInfo = ()=>{
@@ -68,6 +69,16 @@ const getBatchInfo = ()=>{
             break;
         }
     }
+    //get lessons from the selected batch
+    let lessonList = selectedBatch.courseID.lessonList;
+    //sort lessons
+    lessonList.sort((a,b)=>a.id - b.id);
+    fillSelectOptions(sessionLesson,' ',lessonList,'name');
+    //initialise chosen
+    $('#sessionLesson').trigger('chosen:updated');
+
+    //show add session btn
+    sessionBtn.classList.remove('d-none');
 
 }
 

@@ -525,7 +525,7 @@ input {
 
 }
 
-.newBatchInputs,.newCourseInputs,.newStudentInputs,.newRegistrationPaymentInputs,.newModuleInputs,.newQuickPaymentInputs,.newExamInputs,.newPaymentPlanInputs {
+.newBatchInputs,.newCourseInputs,.newStudentInputs,.newRegistrationPaymentInputs,.newModuleInputs,.newQuickPaymentInputs,.newExamInputs,.newPaymentPlanInputs,.newDayPlanHasLessonInputs {
     font-size: 13px;
 }
 
