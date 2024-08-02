@@ -236,7 +236,7 @@
                     <div class="form-label">
                         <label class="fw-bold small required" for="sessionEndTime">End Time</label>
                     </div>
-                    <input class="form-control rounded-0 newDayPlanHasLessonInputs pe-3" id="sessionEndTime" required onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','dayPlanHasLesson','endTime')" type="time" style>
+                    <input class="form-control rounded-0 newDayPlanHasLessonInputs pe-3" id="sessionEndTime" required onchange="inputTextValidator(this,'^(0[8-9]|1[0-6]):[0-5][0-9]|17:00$','dayPlanHasLesson','endTime');calculateDuration()" type="time" style>
                     <div class="valid-feedback">Value Accepted</div>
                     <div class="invalid-feedback">Please provide a valid End Time</div>
                     <div class="text-muted small"><small>Lecture hours are 08:30 to 17:00</small></div>

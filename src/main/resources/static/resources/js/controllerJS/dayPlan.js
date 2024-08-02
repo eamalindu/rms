@@ -235,9 +235,47 @@ const addToLecturerLog = ()=>{
 }
 
 const saveSession = ()=>{
-
+    tblSession.classList.remove('d-none');
+    let timeTableBody = tblSession.querySelector('tbody'); // Select the tbody element
+    timeTableBody.innerHTML = '';
+    let displayPropertyListForTimeTable =[
+        {property: getLesson, dataType: 'function'},
+        {property: getStartTime, dataType: 'function'},
+        {property: getEndTime, dataType: 'function'},
+        {property: 'duration', dataType: 'text'},
+    ];
+    fillDataIntoTableWithDelete(tblSession,newDayPlan.dayPlanHasLessonList,displayPropertyListForTimeTable,removeRecord)
 }
+const getLesson =(ob)=>{
+    return ob.lessonID.code;
+}
+const getStartTime =(ob)=>{
+    return ob.startTime;
+}
+const getEndTime =(ob)=>{
+    return ob.endTime;
+}
+
+const removeRecord = (ob)=>{
+    let extIndex = newDayPlan.dayPlanHasLessonList.map(item=>item.lessonID.id).indexOf(ob.lessonID.id);
+    if(extIndex!=-1){
+        newDayPlan.dayPlanHasLessonList.splice(extIndex,1)
+        saveSession();
+    }
+}
+
 
 const checkInnerFormErrors = ()=>{
     return '';
+}
+
+const calculateDuration = ()=>{
+
+    let startTime = moment(dayPlanHasLesson.startTime, 'HH:mm');
+    let endTime =moment(dayPlanHasLesson.endTime, 'HH:mm');
+    let duration = moment.duration(moment(endTime).diff(moment(startTime)));
+    const hours = Math.floor(duration.asHours());
+    const minutes = duration.minutes();
+    sessionDuration.value = hours;
+    dayPlanHasLesson.duration = hours;
 }
