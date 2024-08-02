@@ -723,9 +723,34 @@ const studentUpdate = ()=>{
     if(updates===''){
         showCustomModal("No changes Detected!","info");
     }
-    else{
+    else {
+        //get a user confirmation using external customConfirm js
+        showCustomConfirm("You are About to Update this Student<br><br>Following Changes Detected!<br/><br/><small>" + updates + "</small><br>Are You Sure?",function (result){
+            //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+            //catch the return value from the backend and save it in the serviceResponse variable
+            if(result){
+                //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+                //catch the return value from the backend and save it in the serviceResponse variable
+                let serverResponse = ajaxHttpRequest("/Student","PUT",editedStudent);
+
+                //check the serviceResponse value is "OK"
+                if(serverResponse==="OK"){
+                    //this means data successfully passed to the backend
+                    //show an alert to user
+
+                }
+                else{
+                    showCustomModal("Operation Failed!" + serviceResponse, "error")
+                }
+
+            }
+            else{
+                showCustomModal("Operation Cancelled!", "info");
+            }
+        });
 
     }
+
 }
 
 const checkForStudentUpdate = ()=>{
@@ -769,6 +794,9 @@ const checkForStudentUpdate = ()=>{
     }
     if (editedStudent.language !== oldStudent.language) {
         updates = updates + "Language was changed to <span class='text-steam-green'>" + editedStudent.language + "</span><br>";
+    }
+    if (editedStudent.gender !== oldStudent.gender) {
+        updates = updates + "Gender was changed to <span class='text-steam-green'>" + editedStudent.gender + "</span><br>";
     }
 
     return updates;
