@@ -20,6 +20,7 @@ const resetDayPlanForm = () => {
     frmNewLecturerLog.reset();
 
     newDayPlan = {}
+    newDayPlan.dayPlanHasLessonList= [];
     //set default option chosen
     setTimeout(function () {
         $('#dayPlanBatch').val('').trigger('chosen:updated');
@@ -186,4 +187,58 @@ const generateSchedule = ()=>{
     calendar.render();
 
 
+}
+
+const addToLecturerLog = ()=>{
+    let isDuplicate = false;
+
+    // Iterate over each element in the array
+    for (let i = 0; i < newDayPlan.dayPlanHasLessonList.length; i++) {
+        const existingLog = newDayPlan.dayPlanHasLessonList[i];
+
+        // Compare each property
+        if (
+            existingLog.lessonID.id === dayPlanHasLesson.lessonID.id &&
+            existingLog.startTime === dayPlanHasLesson.startTime &&
+            existingLog.endTime === dayPlanHasLesson.endTime
+            // Add more properties if needed
+        ) {
+            // If a match is found, set isDuplicate to true and break out of the loop
+            isDuplicate = true;
+            break;
+        }
+    }
+
+    // If it's not a duplicate, add it to the array
+    if (!isDuplicate) {
+        let errors = checkInnerFormErrors();
+        if(errors==='') {
+
+            showCustomConfirm("You are about to add a New Session<br>Are You Sure?", function (result) {
+                if(result){
+                    newDayPlan.dayPlanHasLessonList.push(dayPlanHasLesson);
+                    resetInnerForm()
+                }
+                else{
+                    showCustomModal("Operation Cancelled!", "info");
+                }
+            })
+
+        }
+        else{
+            showCustomModal(errors, 'warning');
+        }
+
+    } else {
+        // Handle duplicate entry
+        showCustomModal('Duplicate Session','error');
+    }
+}
+
+const saveSession = ()=>{
+
+}
+
+const checkInnerFormErrors = ()=>{
+    return '';
 }
