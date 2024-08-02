@@ -12,6 +12,7 @@ const getLoggedInUser=()=>{
     loggedInUsername.value = loggedInUser.username;
     loggedInEmail.value = loggedInUser.email;
     loggedInUserTimestamp.innerText = loggedInUser.addedTime.replace("T"," ");
+    loggedInRoles.value = '';
     loggedInUser.roles.forEach((role)=>{
         loggedInRoles.value += role.name+" ";
     })
@@ -56,5 +57,55 @@ const editLoggedInUser=()=>{
 }
 
 const updateLoggedInUser=()=>{
+    let errors = checkLoggedInUserErrors();
+    if(errors ==='') {
+        let updates = checkLoggedInUserUpdate();
+        if (updates === '') {
+            showCustomModal('No Changes Detected', 'info');
+        } else {
+            showCustomConfirm("You are About to Update Your Account<br><br>Following Changes Detected!<br/><br/><small>" + updates + "</small><br>Are You Sure?", function (result) {
+                //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+                //catch the return value from the backend and save it in the serviceResponse variable
+                if (result) {
+                    //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+                    //catch the return value from the backend and save it in the serviceResponse variable
+                    let serverResponse = ajaxHttpRequest("/User/loggedInUser", "PUT", editedLoggedInUser);
+                    //check the serviceResponse value is "OK"
+                    if (serverResponse === "OK") {
+                        //this means data successfully passed to the backend
+                        //show an alert to user
+                        showCustomModal("Your Account Successfully Updated!", "success");
+                        //close the modal
+                        userModalCloseBtn.click();
+                        getLoggedInUser();
+                        //refresh table
+                        refreshCourseTable();
 
+                    } else {
+                        showCustomModal("Operation Failed!" + serverResponse, "error")
+                    }
+
+
+                } else {
+                    showCustomModal("Operation Cancelled!", "info");
+                }
+            });
+        }
+    }
+    else{
+        showCustomModal(errors,'warning');
+    }
+}
+
+const checkLoggedInUserUpdate=()=>{}
+
+const checkLoggedInUserErrors=()=>{
+    let errors = ''
+    if(editedLoggedInUser.username==null){
+        errors += 'Username is Required<br>';
+    }
+    if(editedLoggedInUser.password == null){
+        errors += 'Password is Required<br>';
+    }
+    return errors;
 }
