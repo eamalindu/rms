@@ -150,6 +150,20 @@ let next3= ()=>{
                         showCustomModal("Registration Successfully Added!","success");
                         //set the isRegistrationSuccess to true
                         isRegistrationSuccess = true;
+                        //after registration is done check discount rate
+                        if(registration.discountRate===10){
+                            // Select the first option
+                            let cashOption = $('#paymentMethod option:eq(1)').val();
+                            // Set the value of the select element to the first option's value
+                            $('#paymentMethod').val(cashOption).trigger('chosen:updated');
+                            $('#paymentMethod').prop('disabled', true).trigger('chosen:updated');
+                            //bind data to payment
+                            newPayment.paymentTypeID = JSON.parse(cashOption);
+
+                        }
+                        if(registration.discountRate ===7.5){
+
+                        }
 
                     } else {
                         //this means there was a problem with the query
