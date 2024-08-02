@@ -745,10 +745,16 @@ const studentUpdate = ()=>{
                 if(serverResponse==="OK"){
                     //this means data successfully passed to the backend
                     //show an alert to user
+                    showCustomModal("Student Successfully Updated!","success");
+                    //close the modal
+                    studentModalCloseBtn.click();
+                    offcanvasRegistrationSheetCloseButton.click();
+                    //refresh table
+                    refreshRegistrationTable();
 
                 }
                 else{
-                    showCustomModal("Operation Failed!" + serviceResponse, "error")
+                    showCustomModal("Operation Failed!" + serverResponse, "error")
                 }
 
             }
