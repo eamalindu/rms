@@ -157,6 +157,9 @@ const rowView = (ob, index) => {
         input.classList.remove('is-invalid');
     });
 
+    //reset studentModal
+    resetStudentModal();
+
 
     //show the info tab first
     document.getElementById("pills-home-tab").click();
@@ -844,4 +847,21 @@ const automateInitials = ()=>{
     //validate the studentNameWithInitials input using inputTextValidator function
     inputTextValidator(StudentModalNameWithInitials,'^([A-Z][.])+[A-Z][a-z]{5,}$','editedStudent','nameWithInitials')
 
+}
+
+const resetStudentModal = ()=>{
+    //hide the update button
+    btnStudentModalUpdate.style.display='none';
+
+    //add the attribute disabled to make inputs block the user input values
+    //remove the edited border colors from the inputs
+    inputs = document.querySelectorAll('.studentModalInputs');
+    inputs.forEach(function (input) {
+        input.setAttribute('disabled', 'true');
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
+    StudentModalGender.disabled = true;
 }
