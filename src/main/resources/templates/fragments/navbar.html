@@ -90,7 +90,7 @@
                         <button class="btn btn-sm bg-info rounded-0 text-white" onclick="editLoggedInUser()"><i
                                 class="fa-regular fa-pen-to-square"></i> Edit Info
                         </button>
-                        <button class="btn btn-sm bg-warning rounded-0 text-white" id="loggedInUserUpdateBtn" onclick=""><i
+                        <button class="btn btn-sm bg-warning rounded-0 text-white" id="loggedInUserUpdateBtn" onclick="updateLoggedInUser()"><i
                                 class="fa-solid fa-arrows-rotate"></i> Update
                         </button>
 
@@ -110,7 +110,7 @@
                         <tr>
                             <td class="fw-bold w-25">Username</td>
                             <td class="w-25">
-                                <input class="small rounded-0 form-control-sm loggedInUserInputs" id="loggedInUsername" disabled required >
+                                <input class="small rounded-0 form-control-sm loggedInUserInputs" id="loggedInUsername" onkeyup="inputTextValidator(this,'^[a-zA-z0-9]{5,45}$','editedLoggedInUser','username')" disabled required >
                                 <div class="valid-feedback">Value Accepted</div>
                                 <div class="invalid-feedback">Please provide a valid Username</div>
                             </td>
@@ -118,9 +118,10 @@
                         <tr>
                             <td class="fw-bold w-25">Password</td>
                             <td>
-                                <input class="small rounded-0 form-control-sm loggedInUserInputs" type="password" id="loggedInPassword" disabled value="******">
+                                <input class="small rounded-0 form-control-sm loggedInUserInputs" type="password" id="loggedInPassword" onkeyup="inputTextValidator(this,'^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$','editedLoggedInUser','password')" disabled value="******">
                                 <div class="valid-feedback">Value Accepted</div>
                                 <div class="invalid-feedback">Please provide a valid Password</div>
+                                <div class="text-muted small d-none" id="passwordHint"><small>Password must be at least 8 characters long.<br>At least contain one uppercase, numeric and special character </small></div>
                             </td>
                         </tr>
                         <tr>
