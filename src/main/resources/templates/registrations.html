@@ -563,31 +563,31 @@
                         <td class="fw-bold w-25">Title</td>
                         <td>
                             <div class="form-check form-check-inline" style="margin-right: 0.5rem!important;">
-                                <input class="form-check-input studentModalInputs" id="studentModalMr" name="studentTitle"
+                                <input class="form-check-input studentModalInputs" id="studentModalMr" name="studentTitle" onchange="editedStudent.title=this.value"
                                        type="radio" value="Mr" disabled>
                                 <label class="form-check-label" for="studentModalMr" style="opacity: 1!important;">Mr.</label>
                             </div>
                             <div class="form-check form-check-inline" style="margin-right: 0.5rem!important;">
-                                <input class="form-check-input studentModalInputs" id="studentModalMs" name="studentTitle"
+                                <input class="form-check-input studentModalInputs" onchange="editedStudent.title=this.value" id="studentModalMs" name="studentTitle"
                                        type="radio" value="Ms" disabled>
                                 <label class="form-check-label" for="studentModalMs" style="opacity: 1!important;">Ms.</label>
                             </div>
                             <div class="form-check form-check-inline" style="margin-right: 0.5rem!important;">
-                                <input class="form-check-input studentModalInputs" id="studentModalMrs" name="studentTitle"
+                                <input class="form-check-input studentModalInputs" onchange="editedStudent.title=this.value" id="studentModalMrs" name="studentTitle"
                                        type="radio" value="Mrs" disabled>
                                 <label class="form-check-label" for="studentModalMrs" style="opacity: 1!important;">Mrs.</label>
                             </div>
                         </td>
                         <td class="fw-bold w-25">Name With Initials</td>
                         <td>
-                            <input type="text" class="small rounded-0 form-control studentModalInputs-sm border-0 text-black" id="StudentModalNameWithInitials"  disabled value="E.A.M.Prabodhitha" >
+                            <input type="text" onkeyup=" inputTextValidator(this,'^([A-Z][.])+[A-Z][a-z]{5,}$','editedStudent','nameWithInitials')" class="small rounded-0 form-control studentModalInputs-sm border-0 text-black" id="StudentModalNameWithInitials"  disabled value="E.A.M.Prabodhitha" >
                         </td>
 
                     </tr>
                     <tr>
                         <td class="fw-bold w-25">Full Name</td>
                         <td colspan="3">
-                            <input type="text" class="small rounded-0 studentModalInputs form-control-sm border-0 text-black w-100" id="StudentModalFullName" disabled value="Eduppili Arachchige Malindu Prabodhitha" >
+                            <input type="text" onkeyup="inputTextValidator(this,'^([A-Z][a-zA-Z]{5,} [A-Z][a-zA-Z]{5,})( [A-Z][a-zA-Z]{5,}){0,2}$','editedStudent','fullName')" class="small rounded-0 studentModalInputs form-control-sm border-0 text-black w-100" id="StudentModalFullName" disabled value="Eduppili Arachchige Malindu Prabodhitha" >
                         </td>
                     </tr>
                     <tr>
@@ -631,27 +631,27 @@
                         </td>
                         <td class="fw-bold w-25">Mobile Number</td>
                         <td>
-                            <input type="text" class="small rounded-0 form-control-sm studentModalInputs border-0 text-black" id="StudentModalMobile" disabled value="0768008003" >
+                            <input type="text" onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','editedStudent','mobileNumber')" class="small rounded-0 form-control-sm studentModalInputs border-0 text-black" id="StudentModalMobile" disabled value="0768008003" >
                         </td>
                     </tr>
                     <tr>
                         <td class="fw-bold w-25">Address Line 1</td>
                         <td>
-                            <input type="text" class="small rounded-0 form-control-sm studentModalInputs border-0 text-black" id="StudentModalAddress1"  disabled value="No: 9/3, Kaththota" >
+                            <input type="text" onkeyup="inputTextValidator(this,'','editedStudent','addressLine1')" class="small rounded-0 form-control-sm studentModalInputs border-0 text-black" id="StudentModalAddress1"  disabled value="No: 9/3, Kaththota" >
                         </td>
                         <td class="fw-bold w-25">Address Line 2</td>
                         <td>
-                            <input type="text" class="small rounded-0 form-control-sm studentModalInputs border-0 text-black" id="StudentModalAddress2"  disabled value="" >
+                            <input type="text" onkeyup="inputTextValidator(this,'','editedStudent','addressLine2')" class="small rounded-0 form-control-sm studentModalInputs border-0 text-black" id="StudentModalAddress2"  disabled value="" >
                         </td>
                     </tr>
                     <tr>
                         <td class="fw-bold w-25">City</td>
                         <td>
-                            <input type="text" class="small rounded-0 form-control-sm studentModalInputs border-0 text-black" id="StudentModalCity"  disabled value="Nittambuwa" >
+                            <input type="text" onkeyup="inputTextValidator(this,'^[A-Z][a-z]{4,}$','editedStudent','city')" class="small rounded-0 form-control-sm studentModalInputs border-0 text-black" id="StudentModalCity"  disabled value="Nittambuwa" >
                         </td>
                         <td class="fw-bold w-25">Email</td>
                         <td>
-                            <input type="text" class="small rounded-0 form-control-sm border-0 studentModalInputs text-black" id="StudentModalEmail" disabled value="eamalindu@gmail.com" >
+                            <input type="text" onkeyup="inputTextValidator(this,'^[a-z|A-Z]{2,19}[@][a-z|A-Z]{2,8}[.][a-z|A-Z]{2,3}$','editedStudent','email')" class="small rounded-0 form-control-sm border-0 studentModalInputs text-black" id="StudentModalEmail" disabled value="eamalindu@gmail.com" >
                         </td>
                     </tr>
                     <tr>
@@ -664,13 +664,13 @@
                         </td>
                         <td class="fw-bold w-25">ID Value</td>
                         <td>
-                            <input type="text" class="small rounded-0 form-control-sm border-0 studentModalInputs text-black" id="StudentModalIDValue"  disabled value="983151108V" >
+                            <input type="text" onkeyup="inputTextValidator(this,'^(?:[6-9][0-9]{8}([V]|[X]|[v]|[x]){1})|(?:[19|20][0-9]{10})$','editedStudent','idValue')" class="small rounded-0 form-control-sm border-0 studentModalInputs text-black" id="StudentModalIDValue"  disabled value="983151108V" >
                         </td>
                     </tr>
                     <tr>
                         <td class="fw-bold w-25">Guardian Name</td>
                         <td colspan="3">
-                            <input type="text" class="small rounded-0 form-control-sm border-0 studentModalInputs text-black w-100" id="StudentModalGuardian" disabled value="Eduppili Arachchige Nihal" >
+                            <input type="text" onkeyup="inputTextValidator(this,'^[A-Z][a-z]{4,}[ ][A-Z][a-z]{5,}$','editedStudent','guardianName')" class="small rounded-0 form-control-sm border-0 studentModalInputs text-black w-100" id="StudentModalGuardian" disabled value="Eduppili Arachchige Nihal" >
                         </td>
                     </tr>
                     <tr>
