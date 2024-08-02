@@ -719,7 +719,14 @@ const searchStudent=()=>{
     //create radio cards for student using createStudentRadioCards function
     createStudentRadioCards(responseStudent,handleStudentCardClick,existStudentResults);
     //get the inquiry from the database using ajaxGetRequest function and store it in  responseInquiry global variable
-    responseInquiry = ajaxGetRequest("/inquiry/getActiveInquiryByNicOrMobileNumberAndCourseId/")
+    responseInquiry = ajaxGetRequest("/inquiry/getActiveInquiryByNicOrMobileNumberAndCourseId/"+searchText+"/"+registration.courseID.id);
+    console.log(responseInquiry);
+    //create radio cards for student using createStudentRadioCards function
+    createInquiryRadioCards(responseInquiry,handleInquiryCardClick,inquiryResults);
+}
+
+const handleInquiryCardClick = (object)=>{
+    //open the offcanavs with data filled;
 }
 
 //creating a function to handle to student card click
