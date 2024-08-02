@@ -719,5 +719,15 @@ const studentEdit = () => {
 }
 
 const studentUpdate = ()=>{
+    let updates = checkForStudentUpdate();
+    if(updates===''){
+        showCustomModal("No changes Detected!","info");
+    }
+    else{
+
+    }
+}
+
+const checkForStudentUpdate = ()=>{
 
 }
