@@ -399,13 +399,13 @@ const rowView = (ob, index) => {
         StudentModalGuardianContactNumber.value = studentRecordToBeEdited.guardianContactNumber;
 
         //setting radio button
-        if (studentRecordToBeEdited.title === "Mr") {
+        if (studentRecordToBeEdited.title === "MR") {
             studentModalMr.checked = true;
         }
-        if (studentRecordToBeEdited.title === "Ms") {
+        if (studentRecordToBeEdited.title === "MS") {
             studentModalMs.checked = true;
         }
-        if (studentRecordToBeEdited.title === "Mrs") {
+        if (studentRecordToBeEdited.title === "MRS") {
             studentModalMrs.checked = true;
         }
         //setting custom radio button
@@ -716,4 +716,8 @@ const studentEdit = () => {
         input.setAttribute('style', 'border:1px solid #0DCAF0!important;background-color:rgba(13,202,240,0.2);');
     });
     StudentModalGender.disabled = false;
+}
+
+const studentUpdate = ()=>{
+
 }
