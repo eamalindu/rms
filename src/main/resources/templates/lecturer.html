@@ -13,6 +13,63 @@
     <h5>Manage Lecturers</h5>
 </div>
 
+<div class="container-fluid pt-2">
+    <div class="card rounded-0">
+        <div class="card-body rounded-0">
+            <div class="row align-items-center d-flex justify-content-around">
+                <div class="col-12 col-lg-4 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1">
+
+<!--                    <label class="text-uppercase small m-0 p-0 text-muted" for="batchSearchID">Search</label>-->
+<!--                    <div class="input-group">-->
+<!--                        <span class="input-group-text bg-custom-white rounded-0"><i class="fa-solid fa-magnifying-glass"></i></span>-->
+<!--                        <input class="form-control rounded-0" id="batchSearchID" placeholder="Registration Number">-->
+<!--                        <div class="d-flex align-items-center justify-content-evenly">-->
+<!--                            <button class="btn bg-steam-green rounded-0 text-white" id="batchSearchButton" onclick="batchSearch()" type="button"><i class="fa-solid fa-magnifying-glass small"></i></button>-->
+<!--                            <button class="btn btn-close-red rounded-0 text-white ms-3" id="batchSearchReset" onclick="batchSearchReset()" type="reset"><i class="fa-solid fa-xmark"></i></button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+                </div>
+                <div class="col-12 col-lg-7 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1 text-end">
+                    <p class="text-uppercase small m-0 p-0 text-muted">Add a New Lecturer</p>
+                    <button aria-controls="staticBackdrop"
+                            class="btn pointer bg-steam-green text-white rounded-0 text-end"
+                            data-bs-target="#offCanvasLecturer" data-bs-toggle="offcanvas"><i
+                            class="fa-solid fa-plus"></i> Lecturer
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-footer show pt-4 pb-4">
+            <h4 class="text-center fw-bold"
+                style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Display Lecturers Info</h4>
+
+            <table class="custom-table" id="tblLecturers">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Lecturer Code</th>
+                    <th>Name</th>
+                    <th>Employee Number</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <!-- Ajax loader start-->
+            <div class="loading-overlay mt-2">
+                <img alt="loading animation" src="/resources/images/loader.svg" width="60px">
+            </div>
+            <!-- Ajax loader end-->
+        </div>
+
+
+    </div>
+</div>
+
 
 <script src="/resources/js/external-validator.js" type="text/javascript"></script>
 <script src="/resources/js/external-loader.js" type="text/javascript"></script>

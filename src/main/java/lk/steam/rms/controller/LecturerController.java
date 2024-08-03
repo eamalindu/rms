@@ -28,6 +28,11 @@ public class LecturerController {
        return lecturerDAO.getActiveLecturers();
     }
 
+    @GetMapping(value = "/findall")
+    public List<Lecturer> findAll() {
+        return lecturerDAO.findAll();
+    }
+
     @GetMapping()
     public ModelAndView lecturerUI() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
