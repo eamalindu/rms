@@ -15,6 +15,7 @@
             </ul>
             <!-- Navbar Right side -->
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a th:attr="class=${activeNavItem=='lecturer' ? 'nav-link text-white custom-width-max-content custom-active' : 'nav-link text-white custom-width-max-content'}" href="/Lecturer">Lecturer</a></li>
                 <li class="nav-item"><a th:attr="class=${activeNavItem=='payment' ? 'nav-link text-white custom-width-max-content custom-active' : 'nav-link text-white custom-width-max-content'}" href="/Payment">Payment</a></li>
 
                 <li class="nav-item"><a th:attr="class=${activeNavItem=='employee' ? 'nav-link text-white custom-width-max-content custom-active' : 'nav-link text-white custom-width-max-content'}" href="/Employee">Employees</a>
