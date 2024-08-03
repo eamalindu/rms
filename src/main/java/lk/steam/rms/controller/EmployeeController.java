@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
+import java.util.Base64;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -49,8 +50,14 @@ public class EmployeeController {
         employeeView.addObject("activeNavItem","employee");
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
         String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+
+        byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
+        String base64Image = Base64.getEncoder().encodeToString(photoBytes);
+        String imageSrc = "data:image/png;base64," + base64Image;
+
         employeeView.addObject("loggedInEmployeeName",loggedInEmployeeName);
         employeeView.addObject("loggedInDesignationName",loggedInDesignationName);
+        employeeView.addObject("loggedInImage", imageSrc);
         return employeeView;
     }
 

@@ -61,7 +61,7 @@
                                     </div>
 
                                     <div class="btn btn-sm btn-danger w-75 text-white border-0 text-center mt-3" onclick="logout()">Logout</div>
-                                    <div class="btn btn-sm btn-secondary w-25 mt-3"><i class="fa fa-user-gear"></i></div>
+                                    <div class="btn btn-sm btn-secondary w-25 mt-3" data-bs-toggle="modal" onclick="getLoggedInUser()" data-bs-target="#userAccModal"><i class="fa fa-user-gear"></i></div>
                                 </div>
                             </div>
                         </div>
@@ -71,6 +71,72 @@
 
 
             </ul>
+        </div>
+    </div>
+
+    <div aria-hidden="true" aria-labelledby="staticBackdropLabel" class="modal fade"
+         data-bs-backdrop="static" data-bs-keyboard="false" id="userAccModal"
+         tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered rounded-0">
+            <div class="modal-content rounded-0">
+                <div class="modal-header bg-custom-white">
+                    <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0" id="userModalCloseBtn" data-bs-dismiss="modal" type="button"><i class="fas fa-times"></i></button>
+                    <div class="container d-flex gap-3 ms-1" style="width: 55%">
+                        <button class="btn btn-sm bg-info rounded-0 text-white" onclick="editLoggedInUser()"><i
+                                class="fa-regular fa-pen-to-square"></i> Edit Info
+                        </button>
+                        <button class="btn btn-sm bg-warning rounded-0 text-white" id="loggedInUserUpdateBtn" onclick="updateLoggedInUser()"><i
+                                class="fa-solid fa-arrows-rotate"></i> Update
+                        </button>
+
+                    </div>
+                    <h3 class="align-items-center text-nowrap ms-3 mt-2" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Your Account</h3>
+                </div>
+                <div class="modal-body pb-0">
+                    <div class="container-fluid text-end mb-2 px-0 d-flex align-items-center">
+                        <div class="text-center w-100">
+                            <img th:src="${loggedInImage}" width="150px" id="" class="placeholder-image img-thumbnail rounded-0">
+                            <p class="text-muted small mb-0 mt-1">User Account was Created On <span id="loggedInUserTimestamp">2023-11-10</span></p>
+                        </div>
+
+                    </div>
+                    <table class="table table-bordered table-responsive mb-4">
+                        <tbody class="small align-middle">
+                        <tr>
+                            <td class="fw-bold w-25">Username</td>
+                            <td class="w-25">
+                                <input class="small rounded-0 form-control-sm loggedInUserInputs" id="loggedInUsername" onkeyup="inputTextValidator(this,'^[a-zA-z0-9]{5,45}$','editedLoggedInUser','username')" disabled required >
+                                <div class="valid-feedback">Value Accepted</div>
+                                <div class="invalid-feedback">Please provide a valid Username</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold w-25">Password</td>
+                            <td>
+                                <input class="small rounded-0 form-control-sm loggedInUserInputs" type="password" id="loggedInPassword" onkeyup="inputTextValidator(this,'^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$','editedLoggedInUser','password')" disabled value="******">
+                                <div class="valid-feedback">Value Accepted</div>
+                                <div class="invalid-feedback">Please provide a valid Password</div>
+                                <div class="text-muted small d-none" id="passwordHint"><small>Password must be at least 8 characters long.<br>At least contain one uppercase, numeric and special character </small></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold w-25">Email</td>
+                            <td class="w-25" colspan="3">
+                                <input class="small rounded-0 form-control-sm loggedInUserInputs w-100" id="loggedInEmail" disabled required  onkeyup="inputTextValidator(this,'^[A-Z][a-z]{2,19}[ ][A-Z][a-z]{2,29}$','editedEmployee','fullName')">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold w-25">Role</td>
+                            <td colspan="3">
+                                <input class="small rounded-0 form-control-sm loggedInUserInputs w-100" disabled  id="loggedInRoles">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
         </div>
     </div>
 </nav>
