@@ -16,4 +16,7 @@ public interface MarkDAO extends JpaRepository<Mark,Integer> {
 
     @Query(value = "select * from marks where batch_id=?1",nativeQuery = true)
     List<Mark> getByBatchID(Integer batchID);
+
+    @Query(value = "select m from Mark m where m.batchID.createdBy=?1 and m.isVerified=false")
+    List<Mark> getUnverifiedMarks(String addedBy);
 }

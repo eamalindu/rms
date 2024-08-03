@@ -40,6 +40,12 @@ public class MarkController {
         return markDAO.getByBatchID(batchID);
     }
 
+    @GetMapping(value = "/getUnverifiedMarks")
+    public List<Mark> getUnverifiedMarks(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return markDAO.getUnverifiedMarks(auth.getName());
+    }
+
 
     @GetMapping()
     public ModelAndView markUI() {

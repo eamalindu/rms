@@ -1,14 +1,5 @@
 window.addEventListener('load',()=>{
 
-    //using refreshDashboardWidgets to refresh the dashboard widget values
-    refreshDashboardWidgets();
-    //using generateChartRegistrationBreakdown to generate the chart for registration breakdown
-    generateChartRegistrationBreakdown();
-    //using generateChartRegistrationCounsellorBreakdown to generate the chart for registration breakdown by counsellor
-    generateChartRegistrationCounsellorBreakdown();
-    //using resetQuickPaymentForm to reset the quick payment form
-    resetQuickPaymentForm();
-
     loadDashboard();
 
     //validation chosen select (for new quick payment)
@@ -435,6 +426,15 @@ const loadDashboard = ()=>{
         widgetLecturer.classList.add('d-none');
         //show the common dashboard
         widgetCommon.classList.remove('d-none');
+
+        //using refreshDashboardWidgets to refresh the dashboard widget values
+        refreshDashboardWidgets();
+        //using generateChartRegistrationBreakdown to generate the chart for registration breakdown
+        generateChartRegistrationBreakdown();
+        //using generateChartRegistrationCounsellorBreakdown to generate the chart for registration breakdown by counsellor
+        generateChartRegistrationCounsellorBreakdown();
+        //using resetQuickPaymentForm to reset the quick payment form
+        resetQuickPaymentForm();
     }
 
 
@@ -512,4 +512,7 @@ const generateSchedule = ()=>{
     })
     batchScheduled.innerText = pendingBatches;
     batchStarted.innerText = startedBatches;
+
+    const marksList = ajaxGetRequest("/Mark/getUnverifiedMarks")
+    marksVerified.innerText = marksList.length;
 }
