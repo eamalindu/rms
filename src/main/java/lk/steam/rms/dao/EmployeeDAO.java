@@ -24,4 +24,7 @@ public interface EmployeeDAO extends JpaRepository<Employee,Integer> {
 
     @Query(value = "select concat('EMP',lpad((substring(max(employeeid),5)+1) ,3 ,0)) from employee",nativeQuery = true)
     String getNextEmployeeID();
+
+    @Query(value = "select e.employeeID from Employee e where e.id=?1")
+    String getEmployeeIDByEmployee(Integer id);
 }

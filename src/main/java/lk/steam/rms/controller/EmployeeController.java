@@ -78,6 +78,11 @@ public class EmployeeController {
         return employeeDAO.getActiveCounsellors();
     }
 
+    @GetMapping(value = "/getEmployeeIDByEmployee/{id}")
+    public String getEmployeeIDByEmployee(@PathVariable Integer id){
+        return employeeDAO.getEmployeeIDByEmployee(id);
+    }
+
     @PutMapping
     public String updateEmployee(@RequestBody Employee employee){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
