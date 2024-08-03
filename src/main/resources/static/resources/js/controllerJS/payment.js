@@ -97,6 +97,10 @@ const rowView = (ob)=>{
     const paymentMethods = ajaxGetRequest("/PaymentType/findall");
     fillSelectOptions(paymentSheetMethod,' ',paymentMethods,'name',ob.paymentTypeID.name);
     paymentSheetAmount.value = ob.amount;
+
+    //catching current object to compare them
+    editedPayment = JSON.parse(JSON.stringify(ob));
+    oldPayment  = JSON.parse(JSON.stringify(ob));
 }
 
 const paymentEdit = ()=>{
@@ -124,4 +128,9 @@ const paymentEdit = ()=>{
         input.removeAttribute('disabled');
         input.setAttribute('style', 'border:1px solid #0DCAF0!important;background-color:rgba(13,202,240,0.2);');
     });
+}
+
+const paymentUpdate = ()=>{
+    const serverResponse =  ajaxHttpRequest("/Payment","PUT",editedPayment)
+    showCustomModal(serverResponse,'warning')
 }
