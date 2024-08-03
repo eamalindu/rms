@@ -13,6 +13,39 @@
     #quickPaymentRupees{
         max-width: 15%!important;
     }
+    .fc-event {
+        width: 99%; /* Adjust the width as needed */
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 10px;
+    }
+    .fc-col-header-cell-cushion,.fc-list-day-text{
+        color: black;
+        text-decoration: none;
+        font-size: large;
+    }
+    .fc .fc-timegrid-slot-label{
+        padding: 8px;
+    }
+    .fc-direction-ltr .fc-timegrid-slot-label-frame{
+        text-align: left;
+    }
+    .fc .fc-timegrid-col.fc-day-today {
+        background-color:#f3f3f3;
+    }
+    .fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active{
+        background: #13357a!important;
+        border-color: #13357a;
+    }
+    .fc .fc-button-primary{
+        background: #19459D !important;
+    }
+    .fc-toolbar-title{
+        font-size: larger!important;
+    }
+    .fc .fc-toolbar.fc-header-toolbar{
+        margin-bottom: 0.5em;
+    }
 
 </style>
 <body>
@@ -31,7 +64,7 @@
 </div>
 
 <!-- widgets-->
-<div class="container-fluid">
+<div class="container-fluid" id="widgetCommon">
     <div class="card-body rounded-0 pt-3 pb-3">
         <div class="row">
             <div class="col-lg-3 col-12">
@@ -122,6 +155,57 @@
     <h2 class="text-center text-muted mt-2 small text-capitalize" id="dashboardCharTitle"></h2>
 </div>
 
+<!--widgets for lecturers-->
+<div class="container-fluid d-none" id="widgetLecturer">
+    <div class="card-body rounded-0 pt-3 pb-3 d-flex gap-3 align-items-center justify-content-center">
+        <div class="row w-50">
+            <div class="col-lg-6 col-12" style="height: min-content">
+                <a href="Report/Daily-Income" class="text-decoration-none">
+                    <div class="card card-body  rounded-0 h-100 pointer text-muted dashboard-widget-yellow">
+                        <div class="row h-100">
+                            <div class="col-3 d-flex align-items-center justify-content-center">
+                                <div class="d-flex align-items-center justify-content-center" style="border-radius: 50%;height: 60px;width: 60px;background: #fff7e5">
+                                    <i class="fa-solid fa-coins" style="color:#FDE74C;font-size: 25px" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="col-9 ">
+                                <div class="text-uppercase text-center">Batches Assigned</div>
+                                <div class="text-dark text-center h5 mt-2 fw-bold" id="">10</div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-6 col-12" style="height: min-content">
+                <a href="Report/Monthly-Income" class="text-decoration-none">
+                    <div class="card card-body rounded-0 h-100 text-muted dashboard-widget-green">
+                        <div class="row h-100">
+                            <div class="col-3 d-flex align-items-center justify-content-center">
+                                <div class="d-flex align-items-center justify-content-center" style="border-radius: 50%;height: 60px;width: 60px;background: #DDF6F7">
+                                    <i class="fa-solid fa-money-bills" style="color:#1ec781;font-size: 25px" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="col-9 ">
+                                <div class="text-uppercase text-center">Marks To be Verified</div>
+                                <div class="text-dark text-center h5 mt-2 fw-bold" id="">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+        <div class="row w-50">
+            <div class="col-lg-12 col-12">
+                <div id="currentSchedule"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div aria-labelledby="offcanvasRightLabel" class="offcanvas offcanvas-end" data-bs-backdrop="static"
      id="offCanvasQuickPayment" tabindex="-1">
     <div class="offcanvas-header bg-custom-white">
@@ -210,6 +294,7 @@
 <script src="/resources/js/external-loader.js" type="text/javascript"></script>
 <script src="/resources/js/external-chart.js" type="text/javascript"></script>
 <script src="/resources/js/numberstowords.js" type="text/javascript"></script>
+<script src="/resources/fullcalendar-6.1.14/index.global.min.js" type="text/javascript"></script>
 <script src="/resources/js/controllerJS/dashboard.js" type="text/javascript"></script>
 <script th:replace="~{ fragments/logout :: logoutScript}"></script>
 </body>
