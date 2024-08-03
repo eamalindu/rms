@@ -1,9 +1,32 @@
 window.addEventListener('load',()=>{
     resetLecturerForm();
     refreshLecturerTable();
+
+    //validation chosen select (for new batch)
+    $("#lecturerEmployee").chosen().change(function () {
+        $("#lecturerEmployee_chosen .chosen-single").addClass('select-validated');
+    });
 });
 
-const resetLecturerForm = () => {}
+const resetLecturerForm = () => {
+
+    $("#lecturerEmployee_chosen .chosen-single").removeClass('select-validated');
+    $("#lecturerEmployee_chosen .chosen-single").removeClass('select-invalidated');
+    lecturerEmployee.classList.remove('is-valid');
+    lecturerEmployee.classList.remove('is-invalid');
+
+    frmNewLecturer.reset();
+    newLecturer = {};
+
+    //set default option chosen
+    setTimeout(function () {
+        $('#lecturerEmployee').val('').trigger('chosen:updated');
+    }, 0);
+
+    const employee = ajaxGetRequest("Employee/findall");
+    fillSelectOptionsWithTwo(lecturerEmployee,' ',employee,'employeeID','callingName');
+    $('#lecturerEmployee').chosen({width: "100%"});
+}
 
 const refreshLecturerTable = () => {
     const lecturers = ajaxGetRequest("/Lecturer/findall");
