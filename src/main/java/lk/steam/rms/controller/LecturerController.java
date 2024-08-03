@@ -72,7 +72,7 @@ public class LecturerController {
             Lecturer existLecturer = lecturerDAO.getLecturerByEmployeeID(lecturer.getEmployeeID());
 
             if(existLecturer != null){
-                return "Lecturer already exists";
+                return "<br>Lecturer already exists";
             }
 
            lecturer.setLecturerCode(lecturerDAO.getNextLecturerNumber());
