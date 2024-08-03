@@ -71,5 +71,57 @@ const getAmount = (ob)=>{
 }
 
 const rowView = (ob)=>{
+//hide the update btn
+    btnPaymentSheetUpdate.style.display = 'none';
 
+    //get all the inputs with the class name markSheetInputs and save it as an array
+    inputs = document.querySelectorAll('.paymentSheetInputs');
+    //using forEach Function to remove inline styles,boostrap validation classes and set the disabled property to true
+    inputs.forEach(function (input) {
+        //add the attribute disabled to make inputs block the user input values
+        //remove the edited border colors from the inputs
+        input.setAttribute('disabled', 'true');
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
+
+    //set data
+    paymentSheetCashier.innerText = ob.addedBy;
+    paymentSheetBatch.innerText = ob.registrationID.batchID.batchCode;
+    paymentSheetCourse.innerText = ob.registrationID.courseID.name;
+    paymentSheetRegistrationNumber.innerText = ob.registrationID.registrationNumber;
+    paymentSheetStudentName.innerText =ob.registrationID.studentID.nameWithInitials;
+    //set editable data
+    const paymentMethods = ajaxGetRequest("/PaymentType/findall");
+    fillSelectOptions(paymentSheetMethod,' ',paymentMethods,'name',ob.paymentTypeID.name);
+    paymentSheetAmount.value = ob.amount;
+}
+
+const paymentEdit = ()=>{
+    //getting the toast from its ID
+    var myToastEl = document.getElementById('myToast');
+    var myToast = new bootstrap.Toast(myToastEl);
+    //Displaying toast
+    myToast.show();
+    //hide the toast after 5s
+    setTimeout(function () {
+        myToast.hide();
+    }, 5000);
+
+    //display the update button once the edit button is clicked
+    btnPaymentSheetUpdate.style.display = 'block';
+
+    //remove the attribute readonly to make inputs accept the user input values
+    //give a border color to inputs indicate that the input's values are ready to be edited
+    inputs = document.querySelectorAll('.paymentSheetInputs');
+
+    //remove the disabled attribute from the select
+    //give a border color to indicate that select can be now edited
+
+    inputs.forEach(function (input) {
+        input.removeAttribute('disabled');
+        input.setAttribute('style', 'border:1px solid #0DCAF0!important;background-color:rgba(13,202,240,0.2);');
+    });
 }
