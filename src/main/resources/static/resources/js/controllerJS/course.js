@@ -523,10 +523,27 @@ const checkForCourseUpdate = () => {
     if (editedCourse.lessonList.length !== oldCourse.lessonList.length) {
         updates += "Course Modules were changed<br>";
     }
+    // Check if the modules have changed
+    let contentChanged = false;
+    for (let i = 0; i < Math.max(editedCourse.lessonList.length, oldCourse.lessonList.length); i++) {
+        const editedItem = editedCourse.lessonList[i];
+        const oldItem = oldCourse.lessonList[i];
+
+        if (JSON.stringify(editedItem) !== JSON.stringify(oldItem)) {
+            contentChanged = true;
+            break;
+        }
+    }
+
+    if (contentChanged) {
+        updates += "Content of modules has changed.<br>";
+    }
     if(editedCourse.logo!==oldCourse.logo){
         updates += "Course Logo was changed<br>";
 
     }
+
+
 
     return updates;
 }
