@@ -126,3 +126,15 @@ const checkLecturerFormErrors = (object)=>{
 const correctAssign =()=>{
     newLecturer.employeeID = newLecturer.employeeID.id;
 }
+
+const updateLecturer = () => {
+
+}
+
+const deleteLecturer = () => {
+
+}
+
+const editLecturer = () => {
+
+}
