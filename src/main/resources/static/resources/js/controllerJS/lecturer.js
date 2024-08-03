@@ -62,7 +62,47 @@ const getStatus = (ob) => {
 }
 
 const rowView=(ob)=>{
+    //hide the update btn
+    btnLecturerSheetUpdate.style.display = 'none';
+    //show the deleted btn
+    btnLecturerSheetDelete.style.display = 'block';
+    //show the edit btn
+    btnLecturerSheetEdit.style.display = 'block';
 
+    //get all the inputs with the class name markSheetInputs and save it as an array
+    inputs = document.querySelectorAll('.lecturerSheetInputs');
+    //using forEach Function to remove inline styles,boostrap validation classes and set the disabled property to true
+    inputs.forEach(function (input) {
+        //add the attribute disabled to make inputs block the user input values
+        //remove the edited border colors from the inputs
+        input.setAttribute('disabled', 'true');
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
+
+    //get employee
+    const employee = ajaxGetRequest("/Employee/getEmployeeByID/"+ob.employeeID);
+    //set data
+    lecturerSheetEmpName.innerText =employee.fullName;
+    lecturerSheetNumber.innerText = ob.lecturerCode;
+    lecturerSheetEmpNumber.innerText = employee.employeeID;
+    lecturerSheetName.value = ob.name;
+
+    if(ob.status){
+        lecturerSheetStatus.innerText= 'Active';
+    }
+    else{
+        //hide the update btn
+        btnLecturerSheetUpdate.style.display = 'none';
+        //show the deleted btn
+        btnLecturerSheetDelete.style.display = 'none';
+        //show the edit btn
+        btnLecturerSheetEdit.style.display = 'none';
+
+        lecturerSheetStatus.innerText = 'Deleted'
+    }
 }
 
 const newLecturerSubmit = ()=>{

@@ -78,9 +78,14 @@ public class EmployeeController {
         return employeeDAO.getActiveCounsellors();
     }
 
-    @GetMapping(value = "/getEmployeeIDByEmployee/{id}")
+    @GetMapping(value = "/getEmployeeIDByEmployee/{id}",produces = "application/json")
     public String getEmployeeIDByEmployee(@PathVariable Integer id){
         return employeeDAO.getEmployeeIDByEmployee(id);
+    }
+
+    @GetMapping(value = "/getEmployeeByID/{id}")
+    public Employee getEmployeeByID(@PathVariable Integer id){
+        return employeeDAO.getReferenceById(id);
     }
 
     @PutMapping
