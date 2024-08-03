@@ -11,4 +11,5 @@ public interface LecturerDAO extends JpaRepository<Lecturer,Integer> {
     @Query("Select l from Lecturer l where l.status = true")
     List<Lecturer> getActiveLecturers();
 
+
 }
