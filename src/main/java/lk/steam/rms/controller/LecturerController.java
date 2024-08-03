@@ -103,4 +103,22 @@ public class LecturerController {
             return "Update Failed "+ex.getMessage();
         }
     }
+
+    @DeleteMapping
+    public String deleteLecturer(@RequestBody Lecturer lecturer) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"EMPLOYEE");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
+        try {
+            lecturer.setStatus(false);
+            lecturerDAO.save(lecturer);
+            return "OK";
+        }
+        catch (Exception ex){
+            return "Delete Failed "+ex.getMessage();
+        }
+    }
 }
