@@ -18,6 +18,7 @@ window.addEventListener("load", () => {
     //initialize the 3rd party libraries (chosen)
     $('.chosen-registration-search').chosen({width: '190px'});
     $('#registrationSearchDateRange').daterangepicker({
+        "autoUpdateInput": false,
         "locale": {
             "format": "YYYY-MM-DD", //"separator": " to "
         }
@@ -39,6 +40,10 @@ window.addEventListener("load", () => {
         //using inputTextValidator function to validate the input
         inputTextValidator(this, '^(19[89][0-9]|20[0-9]{2})[-][0-9]{2}[-][0-9]{2}$', 'editedStudent', 'dob');
 
+    });
+
+    $('#registrationSearchDateRange').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'));
     });
 
     //reset chosen select using jquery
@@ -931,3 +936,37 @@ const filterRegistration = () => {
     console.log(filteredRegistration);
     fillDataIntoTable(tblInquiry, filteredRegistration, displayPropertyListForBatches, rowView, 'offCanvasInquirySheet');
 };
+
+const searchInquiry = () => {
+    let dateRangeSelected = false;
+    let inputAdded = false;
+
+    if (registrationSearchDateRange.value !== '') {
+        dateRangeSelected = true;
+    }
+    if (inquirySearchID.value !== '') {
+        inputAdded = true;
+    }
+
+    if (dateRangeSelected && !inputAdded) {
+        //dateRange only
+        const [startDate, endDate] = registrationSearchDateRange.value.split(' - ');
+        const results = ajaxGetRequest("/Inquiry/getAllInquiriesByDateRange/" + startDate + "/" + endDate);
+        fillDataIntoTable(tblInquiry, results, displayPropertyList, rowView, 'offCanvasInquirySheet');
+
+    } else if (!dateRangeSelected && inputAdded) {
+        //input only
+        const inputText = inquirySearchID.value;
+        const results = ajaxGetRequest("/Inquiry/searchInquiryByInput/" + inputText);
+        fillDataIntoTable(tblInquiry, results, displayPropertyList, rowView, 'offCanvasInquirySheet');
+    } else if (dateRangeSelected && inputAdded) {
+        //Both dateRange and input
+        const [startDate, endDate] = registrationSearchDateRange.value.split(' - ');
+        const inputText = inquirySearchID.value;
+        const results = ajaxGetRequest("/Inquiry/searchInquiryByDateRangeAndInput/" + startDate + "/" + endDate + "/" + inputText);
+        fillDataIntoTable(tblInquiry, results, displayPropertyList, rowView, 'offCanvasInquirySheet');
+
+    } else {
+        showCustomModal("Date range or input is needed for search", "warning");
+    }
+}
