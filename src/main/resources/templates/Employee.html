@@ -276,7 +276,8 @@
                 <span class="align-items-center display-3" id="employeeSheetCallingNameText" style="text-transform: uppercase;font-weight: bold;font-family: Arial, serif;">Kasun</span>
                 <p class="text-muted small lh-sm">Joined On <span id="employeeSheetJoinedDateText">2023-11-10</span></p>
             </div>
-            <img src="resources/images/sample_profile_1.png" id="employeeSheetImage" class="placeholder-image img-thumbnail rounded-0 employeeSheetInputs">
+            <input type="file" id="employeeSheetImageInput" style="display:none;">
+            <img src="resources/images/sample_profile_1.png" id="employeeSheetImage" onclick="loadNewImage();" class="employeeSheetInputs placeholder-image img-thumbnail rounded-0 employeeSheetInputs">
         </div>
         <table class="table table-bordered table-responsive ">
             <tbody class="small align-middle">
