@@ -1,17 +1,17 @@
 window.addEventListener('load', () => {
-
+    loggedInUser = ajaxGetRequest("/User/loggedInUser");
+    loggedInImageIcon.src = atob(loggedInUser.employeeID.photoPath);
 })
 
 const getLoggedInUser=()=>{
     //hide the update button
     loggedInUserUpdateBtn.classList.add('d-none');
 
-    loggedInUser = ajaxGetRequest("/User/loggedInUser");
+
 
     //setting data
     loggedInUsername.value = loggedInUser.username;
     loggedInImage.src = atob(loggedInUser.employeeID.photoPath);
-    loggedInImageIcon.src = atob(loggedInUser.employeeID.photoPath);
     loggedInEmail.value = loggedInUser.email;
     loggedInUserTimestamp.innerText = loggedInUser.addedTime.replace("T"," ");
     loggedInRoles.value = '';
