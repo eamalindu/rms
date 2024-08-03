@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Base64;
 import java.util.List;
 
 @RestController
@@ -41,6 +43,8 @@ public class PaymentController {
     private InquiryDAO inquiryDAO;
     @Autowired
     private InquiryStatusDAO inquiryStatusDAO;
+    @Autowired
+    private UserDAO userDAO;
 
     @PostMapping
     @Transactional
@@ -235,6 +239,30 @@ public class PaymentController {
             @RequestParam(required = false) String startDate,
             @RequestParam(required = false) String endDate) {
         return paymentDAO.getPaymentsForReport(courseID, batchID, paymentType, addedBy, startDate, endDate);
+    }
+
+    @GetMapping()
+    public ModelAndView paymentUI() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        ModelAndView paymentView = new ModelAndView();
+        paymentView.setViewName("payment.html");
+
+        paymentView.addObject("username", auth.getName());
+        paymentView.addObject("title", "Manage Payment | STEAM RMS");
+        paymentView.addObject("activeNavItem", "payment");
+
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+
+        byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
+        String base64Image = Base64.getEncoder().encodeToString(photoBytes);
+        String imageSrc = "data:image/png;base64," + base64Image;
+
+        paymentView.addObject("loggedInEmployeeName", loggedInEmployeeName);
+        paymentView.addObject("loggedInDesignationName", loggedInDesignationName);
+        paymentView.addObject("loggedInImage", imageSrc);
+        return paymentView;
     }
 
 }

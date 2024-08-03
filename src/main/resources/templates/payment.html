@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/head :: headFragment}"></head>
+<body>
+<!--Loader-->
+<div th:replace="~{fragments/loader :: loader}"></div>
+<!-- Nav Bar Start -->
+<nav th:replace="~{ fragments/navbarAdministration :: navbarAdministrationFragment}"></nav>
+<!-- Nav Bar End -->
+
+<!-- Display Current Page /breadcrumbs -->
+<div class="container-fluid bg-custom-white custom-banner">
+    <h5>Manage Payment</h5>
+</div>
+
+<script src="/resources/js/external-validator.js" type="text/javascript"></script>
+<script src="/resources/js/external-loader.js" type="text/javascript"></script>
+<script src="/resources/js/external-commonFunction.js" type="text/javascript"></script>
+<script src="/resources/js/external-table.js" type="text/javascript"></script>
+<script src="/resources/js/external-modalFunction.js" type="text/javascript"></script>
+<script src="/resources/js/controllerJS/payment.js" type="text/javascript"></script>
+<script th:replace="~{ fragments/logout :: logoutScript}"></script>
+</body>
+</html>
