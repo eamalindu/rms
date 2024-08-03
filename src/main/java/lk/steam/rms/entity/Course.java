@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -48,6 +49,12 @@ public class Course {
     @Column(name = "status")
     @NotNull
     private Boolean status;
+
+    @Column(name = "addedby")
+    private String addedBy;
+
+    @Column(name="timestamp")
+    private LocalDateTime timestamp;
 
     @ManyToMany
     @JoinTable(name = "course_has_lesson",joinColumns = @JoinColumn(name = "course_id"),inverseJoinColumns = @JoinColumn(name = "lesson_id"))

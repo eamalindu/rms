@@ -12,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.List;
 
@@ -61,6 +62,8 @@ public class CourseController {
         }
         try {
             course.setStatus(true);
+            course.setAddedBy(auth.getName());
+            course.setTimestamp(LocalDateTime.now());
             courseDAO.save(course);
             return "OK";
         }

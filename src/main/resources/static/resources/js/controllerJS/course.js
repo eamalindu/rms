@@ -109,6 +109,7 @@ const rowView = (ob) => {
     courseSheetDuration.value = ob.duration;
     courseSheetLectureDuration.value = ob.lectureHours;
     courseSheetRequirement.value = ob.minimumRequirement;
+    courseSheetCreatedDateText.innerText = ob.timestamp.replace('T', ' ');
 
     //using an if conditional statement to set the value and background color of the courseSheetCodeText
     //if the course is active add the relevant classes and remove unwanted classes
