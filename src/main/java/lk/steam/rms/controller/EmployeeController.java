@@ -1,9 +1,6 @@
 package lk.steam.rms.controller;
 
-import lk.steam.rms.dao.EmployeeDAO;
-import lk.steam.rms.dao.EmployeeStatusDAO;
-import lk.steam.rms.dao.RoleDAO;
-import lk.steam.rms.dao.UserDAO;
+import lk.steam.rms.dao.*;
 import lk.steam.rms.entity.*;
 import lk.steam.rms.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +34,8 @@ public class EmployeeController {
     private MailService mailService;
     @Autowired
     private PrivilegeController privilegeController;
+    @Autowired
+    private LecturerDAO lecturerDAO;
 
     @GetMapping
     public ModelAndView employeeUI() {
@@ -184,6 +183,12 @@ public class EmployeeController {
             if(user!=null){
                 user.setStatus(false);
                 userDAO.save(user);
+            }
+            //check for lecturer and delete the lecturer record
+            Lecturer lecturer = lecturerDAO.getLecturerByEmployeeID(employee.getId());
+            if(lecturer!=null){
+                lecturer.setStatus(false);
+                lecturerDAO.save(lecturer);
             }
 
             return "OK";
