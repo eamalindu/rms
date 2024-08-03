@@ -186,17 +186,17 @@ const paymentUpdate = ()=>{
 const checkMarkFormPayment = (object)=>{
     let errors = '';
     if (object.amount === null) {
-        errors += 'Payment Method is Required<br>';
-    }
-    if (object.paymentTypeID.id === '') {
         errors += 'Amount is Required<br>';
+    }
+    if (object.paymentTypeID.id === null) {
+        errors += 'Payment Type is Required<br>';
     }
 
     if(object.amount<=0){
         errors = errors + 'Amount Can Not Be Rs. 0.00<br>';
     }
-    if(object.amount>oldPayment.registrationID.balanceAmount){
-        errors = errors +'The Current amount <span class="text-steam-green">Rs. '+object.amount+ '.00</span> exceeds the total outstanding balance <span class="text-steam-green">Rs. '+oldPayment.registrationID.balanceAmount+'.00</span><br>';
+    if(object.amount>oldPayment.registrationID.fullAmount){
+        errors = errors +'The Current amount <span class="text-steam-green">Rs. '+object.amount+ '.00</span> exceeds the total outstanding balance <span class="text-steam-green">Rs. '+oldPayment.registrationID.fullAmount+'.00</span><br>';
     }
     return errors;
 }
