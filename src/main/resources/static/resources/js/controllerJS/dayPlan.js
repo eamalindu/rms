@@ -305,7 +305,7 @@ const refreshLectureLogTable = ()=>{
     let displayPropertyList = [
         {property: getBatchCode, dataType: 'function'},
         {property: 'addedBy', dataType: 'text'},
-        {property: getAddedTimeStamp, dataType: 'text'},
+        {property: getAddedTimeStamp, dataType: 'function'},
         {property: getSession, dataType: 'function'},
 
     ]
@@ -317,12 +317,12 @@ const getBatchCode = (ob)=>{
     return ob.batchID.batchCode;
 }
 const getAddedTimeStamp = (ob)=>{
-    return ob.timeStamp.replace('T',' ');
+    return ob.timestamp.replace('T',' ');
 }
 const getSession = (ob)=>{
     let session = '';
     ob.dayPlanHasLessonList.forEach(function (lesson) {
-        session += lesson.lessonID.code + ' ';
+        session += 'Lesson : '+lesson.lessonID.code + ' ['+lesson.startTime+' - '+lesson.endTime+']<br>';
     })
     return session;
 }

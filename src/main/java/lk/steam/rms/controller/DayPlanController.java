@@ -2,15 +2,14 @@ package lk.steam.rms.controller;
 
 import lk.steam.rms.dao.DayPlanDAO;
 import lk.steam.rms.dao.UserDAO;
-import lk.steam.rms.entity.DayPlan;
+import lk.steam.rms.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.List;
 
@@ -23,6 +22,8 @@ public class DayPlanController {
     private UserDAO userDAO;
     @Autowired
     private DayPlanDAO dayPlanDAO;
+    @Autowired
+    private PrivilegeController privilegeController;
 
 
     @GetMapping()
@@ -51,6 +52,33 @@ public class DayPlanController {
     public List<DayPlan> getLectureLogsForLecturer() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return dayPlanDAO.getLectureLogsForLecturer(auth.getName());
+    }
+
+    @PostMapping()
+    public String saveNewDayPlan(@RequestBody DayPlan dayPlan){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(), "BATCH");
+
+        if (!loggedUserPrivilege.getInsertPrivilege()) {
+            return "<br>User does not have sufficient privilege.";
+        }
+
+        //check duplicate
+        DayPlan existDayPlan = dayPlanDAO.getLectureLogByDateAndBatchAndAddedBy(dayPlan.getBatchID().getId(),auth.getName());
+        if(existDayPlan != null){
+            return "<br>Lecture Log already added for today.";
+        }
+
+            dayPlan.setAddedBy(auth.getName());
+            dayPlan.setTimestamp(LocalDateTime.now());
+
+        for (DayPlanHasLesson dayPlanHasLesson : dayPlan.getDayPlanHasLessonList()) {
+            dayPlanHasLesson.setDayPlanID(dayPlan);
+        }
+
+            dayPlanDAO.save(dayPlan);
+
+        return "OK";
     }
 
 }
