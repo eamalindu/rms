@@ -952,19 +952,19 @@ const searchInquiry = () => {
         //dateRange only
         const [startDate, endDate] = registrationSearchDateRange.value.split(' - ');
         const results = ajaxGetRequest("/Registration/getAllRegistrationsByDateRange/" + startDate + "/" + endDate);
-        fillDataIntoTable(tblInquiry, results, displayPropertyList, rowView, 'offCanvasInquirySheet');
+        fillDataIntoTable(tblInquiry, results, displayPropertyListForBatches, rowView, 'offCanvasInquirySheet');
 
     } else if (!dateRangeSelected && inputAdded) {
         //input only
         const inputText = inquirySearchID.value;
         const results = ajaxGetRequest("/Registration/searchRegistrationByInput/" + inputText);
-        fillDataIntoTable(tblInquiry, results, displayPropertyList, rowView, 'offCanvasInquirySheet');
+        fillDataIntoTable(tblInquiry, results, displayPropertyListForBatches, rowView, 'offCanvasInquirySheet');
     } else if (dateRangeSelected && inputAdded) {
         //Both dateRange and input
         const [startDate, endDate] = registrationSearchDateRange.value.split(' - ');
         const inputText = inquirySearchID.value;
         const results = ajaxGetRequest("/Registration/searchRegistrationByDateRangeAndInput/" + startDate + "/" + endDate + "/" + inputText);
-        fillDataIntoTable(tblInquiry, results, displayPropertyList, rowView, 'offCanvasInquirySheet');
+        fillDataIntoTable(tblInquiry, results, displayPropertyListForBatches, rowView, 'offCanvasInquirySheet');
 
     } else {
         showCustomModal("Date range or input is needed for search", "warning");
