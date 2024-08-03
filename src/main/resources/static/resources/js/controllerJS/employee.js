@@ -117,7 +117,7 @@ const rowView=(ob,index) =>{
     employeeSheetNIC.value =ob.nic;
     employeeSheetDOB.value =ob.dob;
 
-    employeeSheetImage.src = 'data:image/png;base64,'+ob.photoPath;
+    employeeSheetImage.src = atob(ob.photoPath);
 
     //setting gender
     if(ob.gender=="Male"){
@@ -435,7 +435,7 @@ const checkForEmployeeUpdate = ()=>{
     if (editedEmployee.note !== oldEmployee.note) {
         updates = updates + "Note was changed to <span class='text-purple'>" + editedEmployee.note + "</span><br>";
     }
-    if(editedEmployee.photoPath!==editedEmployee.photoPath){
+    if(editedEmployee.photoPath!==oldEmployee.photoPath){
         updates += "Employee Image was changed<br>";
 
     }
