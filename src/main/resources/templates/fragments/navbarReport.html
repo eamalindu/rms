@@ -52,7 +52,7 @@
                             <div class="card w-100 p-0 m-0 border-0 rounded-0">
                                 <div class="card-body rounded-0">
                                     <div class="d-flex align-items-center justify-content-between gap-3">
-                                        <img class="" th:src="${loggedInImage}" width="50px">
+                                        <img class="" id="loggedInImageIcon" width="50px">
                                         <div>
                                             <p class="text-muted small text-small mb-0" th:text="${loggedInEmployeeName}">Employee Name</p>
                                             <p class="text-muted small text-small mb-0"><small th:text="${loggedInDesignationName}">Employee Destination</small></p>
@@ -95,7 +95,7 @@
                 <div class="modal-body pb-0">
                     <div class="container-fluid text-end mb-2 px-0 d-flex align-items-center">
                         <div class="text-center w-100">
-                            <img th:src="${loggedInImage}" width="150px" id="" class="placeholder-image img-thumbnail rounded-0">
+                            <img  width="150px" id="loggedInImage" class="placeholder-image img-thumbnail rounded-0">
                             <p class="text-muted small mb-0 mt-1">User Account was Created On <span id="loggedInUserTimestamp">2023-11-10</span></p>
                         </div>
 

@@ -10,6 +10,8 @@ const getLoggedInUser=()=>{
 
     //setting data
     loggedInUsername.value = loggedInUser.username;
+    loggedInImage.src = atob(loggedInUser.employeeID.photoPath);
+    loggedInImageIcon.src = atob(loggedInUser.employeeID.photoPath);
     loggedInEmail.value = loggedInUser.email;
     loggedInUserTimestamp.innerText = loggedInUser.addedTime.replace("T"," ");
     loggedInRoles.value = '';
