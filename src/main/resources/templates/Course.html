@@ -311,6 +311,7 @@
             </tbody>
         </table>
         <div class="mb-2">
+            <div class="btn btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#modalEditModules" onclick="loadModules()">Edit Modules</div>
             <div class="w-100">
                 <div class="border border-bottom-0">
                     <h5 class="small text-steam-green fw-bold border-bottom-0 p-2 mb-0 bg-custom-white" id="currentLesson"><i class="fa-solid fa-list"></i> Modules
@@ -447,6 +448,33 @@
         </div>
     </div>
 </div>
+
+<!-- modal for attendance start-->
+<div class="modal fade" id="modalEditModules" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalEditModules" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-0">
+            <div class="modal-header bg-custom-white">
+                <h5 class="modal-title" id="staticBackdropLabels" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">
+                    Attendance List</h5>
+                <button aria-label="Close" class="btn btn-sm btn-close-red text-white rounded-0" data-bs-dismiss="modal" type="button"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body p-3">
+                <table class="table table-sm table-bordered small" id="tblEditModules">
+                    <thead class="align-middle text-center">
+                    <tr>
+                        <th>#</th>
+                        <th>Module Name</th>
+                        <th>Module Code</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody class="align-middle small text-center"><tr><td colspan="4">No Records Found!</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal for attendance end-->
 
 
 <script>

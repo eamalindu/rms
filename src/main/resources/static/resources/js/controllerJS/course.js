@@ -387,6 +387,23 @@ const courseEdit = () => {
         input.removeAttribute('disabled');
         input.setAttribute('style', 'border:1px solid #0DCAF0!important;background-color:rgba(13,202,240,0.2);');
     });
+
+    //display moddule edit btn
+    btnModuleEdit.style.display = 'block';
+}
+
+const loadModules = () => {
+    const lessonList = editedCourse.lessonList;
+    lessonList.sort((a, b) => a.id - b.id);
+    const displayPropertyListForModule = [
+        {property: 'name', dataType: 'text'},
+        {property: 'code', dataType: 'text'}
+    ]
+    fillDataIntoTableWithDelete(tblEditModules, lessonList, displayPropertyListForModule, removeEditRecord)
+}
+
+const removeEditRecord = (ob)=>{
+
 }
 
 const courseUpdate = () => {
