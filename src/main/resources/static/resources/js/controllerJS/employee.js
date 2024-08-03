@@ -81,7 +81,13 @@ const getEmployeeStatus = (ob)=>{
 }
 
 const getUserAccountStatus = (ob)=>{
-    return '<span class="badge rounded-0" style="background: #3FB618">Created</span>';
+    if(ob.designationID.userAccountNeeded){
+        return '<span class="badge rounded-0" style="background: #3FB618">Created</span>';
+    }
+    else{
+        return '<span class="badge rounded-0" style="background: red">Not Created</span>';
+    }
+
 }
 
 const rowView=(ob,index) =>{
