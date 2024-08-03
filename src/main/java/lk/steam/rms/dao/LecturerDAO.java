@@ -11,5 +11,9 @@ public interface LecturerDAO extends JpaRepository<Lecturer,Integer> {
     @Query("Select l from Lecturer l where l.status = true")
     List<Lecturer> getActiveLecturers();
 
+    @Query(value = "SELECT concat('L',lpad((substring(max(lecturenumber),3)+1) ,4 ,0)) FROM lecturer",nativeQuery = true)
+    String getNextLecturerNumber();
 
+    @Query("Select l from Lecturer l where l.employeeID = ?1")
+    Lecturer getLecturerByEmployeeID(Integer employeeID);
 }
