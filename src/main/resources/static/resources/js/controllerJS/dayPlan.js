@@ -104,6 +104,8 @@ const getBatchInfo = ()=>{
             const hours = Math.floor(duration.asHours());
             const minutes = duration.minutes();
 
+            requiredHours = hours+(minutes/60);
+
             collapseBatchDuration.innerText =   hours + "h " + minutes + "m";
             break;
         }
@@ -323,4 +325,36 @@ const getSession = (ob)=>{
         session += lesson.lessonID.code + ' ';
     })
     return session;
+}
+
+const newDayPlanSubmit = ()=>{
+    let errors = checkDayPlanFormErrors();
+    if(errors ===''){
+
+    }
+    else{
+        showCustomModal(errors,'warning');
+    }
+}
+
+const  checkDayPlanFormErrors = ()=>{
+    let errors = '';
+    if(newDayPlan.dayPlanHasLessonList.length === 0){
+        errors += 'Please Add Sessions<br>';
+    }
+    if(newDayPlan.batchID.id === null){
+        errors += 'Please select a Batch<br>';
+        dayPlanBatch.classList.add('is-invalid');
+        $("#dayPlanBatch_chosen .chosen-single").addClass('select-invalidated');
+    }
+    //check duration
+    let totalDuration = 0;
+    newDayPlan.dayPlanHasLessonList.forEach(function (lesson) {
+        totalDuration += lesson.duration;
+    })
+    if(totalDuration !== requiredHours){
+        errors += 'Total Duration of Sessions should be '+requiredHours+' Hours<br>';
+    }
+
+    return errors;
 }
