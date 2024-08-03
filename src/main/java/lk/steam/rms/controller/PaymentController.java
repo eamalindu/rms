@@ -265,4 +265,132 @@ public class PaymentController {
         return paymentView;
     }
 
+
+    @PutMapping()
+    @Transactional
+    public String updatePayment(@RequestBody Payment payment) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(), "PAYMENT");
+
+        if (!loggedUserPrivilege.getUpdatePrivilege()) {
+            return "<br>User does not have sufficient privilege.";
+        }
+
+        Payment existingPayment = paymentDAO.getReferenceById(payment.getId());
+
+        BigDecimal oldAmount = existingPayment.getAmount();
+        BigDecimal newAmount = payment.getAmount();
+        BigDecimal amountDifference = newAmount.subtract(oldAmount);
+
+        // Update payment details
+        existingPayment.setAmount(newAmount);
+        existingPayment.setPaymentTypeID(payment.getPaymentTypeID());
+
+
+        if (existingPayment.getRegistrationID().getIsFullPayment()) {
+            existingPayment.setInstallmentID(null);
+        } else {
+            // Handle part payment installments
+            List<InstallmentPlan> currentRegistrationInstallments = installmentPlanDAO
+                    .getInstallmentPlanByRegistrationID(existingPayment.getRegistrationID().getId());
+
+            BigDecimal remainingAmount = amountDifference;
+            for (InstallmentPlan installment : currentRegistrationInstallments) {
+                if (remainingAmount.compareTo(BigDecimal.ZERO) <= 0) {
+                    break;
+                }
+
+                BigDecimal balance = installment.getBalanceAmount();
+                if (balance.compareTo(BigDecimal.ZERO) > 0) {
+                    if (balance.compareTo(remainingAmount) <= 0) {
+                        installment.setPaidAmount(installment.getPaidAmount().add(balance));
+                        installment.setBalanceAmount(BigDecimal.ZERO);
+                        installment.setStatus("Paid");
+                        remainingAmount = remainingAmount.subtract(balance);
+                    } else {
+                        installment.setPaidAmount(installment.getPaidAmount().add(remainingAmount));
+                        installment.setBalanceAmount(balance.subtract(remainingAmount));
+                        installment.setStatus("Partially Paid");
+                        remainingAmount = BigDecimal.ZERO;
+                    }
+                    installmentPlanDAO.save(installment);
+                }
+            }
+        }
+
+        paymentDAO.save(existingPayment);
+
+        // Update registration details
+        Registrations currentRegistration = registrationDAO
+                .getRegistrationsByID(existingPayment.getRegistrationID().getId());
+        BigDecimal currentBalance = currentRegistration.getBalanceAmount();
+        BigDecimal currentPaidAmount = currentRegistration.getPaidAmount();
+
+        BigDecimal updatedBalance = currentBalance.subtract(amountDifference);
+        BigDecimal updatedPaidAmount = currentPaidAmount.add(amountDifference);
+
+        currentRegistration.setPaidAmount(updatedPaidAmount);
+        currentRegistration.setBalanceAmount(updatedBalance);
+
+        BigDecimal currentRegistrationRegistrationFee = currentRegistration.getBatchID()
+                .getPaymentPlanID().getRegistrationFee();
+
+        // Change the registration status if necessary
+        if (currentRegistration.getRegistrationStatusID().getName().equals("Pending")) {
+            if (updatedPaidAmount.compareTo(currentRegistrationRegistrationFee) >= 0) {
+                // Handle the case where the payment amount is sufficient or more
+                currentRegistration.setRegistrationStatusID(registrationStatusDAO.getReferenceById(1));
+
+                // Check if this registration already has a commission
+                Commission existCommission = commissionDAO.getCommissionByRegistrationID(currentRegistration.getId());
+
+                if (existCommission == null) {
+                    // Calculate commission
+                    CommissionRate currentCommissionRate = commissionRateDAO
+                            .getCommissionRateByCourseID(currentRegistration.getCourseID().getId());
+                    BigDecimal fullCommission = currentCommissionRate.getFullPaymentRate();
+                    BigDecimal partCommission = currentCommissionRate.getPartPaymentRate();
+
+                    // Create a new commission object
+                    Commission newCommission = new Commission();
+                    newCommission.setTimestamp(LocalDateTime.now());
+                    newCommission.setRegistrationID(currentRegistration);
+
+                    // Check if an inquiry is available
+                    if (currentRegistration.getInquiryID() != null) {
+                        Inquiry currentInquiry = inquiryDAO.getReferenceById(currentRegistration.getInquiryID());
+                        newCommission.setPaidTo(currentInquiry.getAddedBy());
+                        newCommission.setInquiryID(currentInquiry.getId());
+                        currentInquiry.setInquiryStatusId(inquiryStatusDAO.getReferenceById(5));
+                        currentInquiry.setRegistrationDateTime(LocalDateTime.now());
+                        inquiryDAO.save(currentInquiry);
+                    } else {
+                        newCommission.setPaidTo(currentRegistration.getCommissionPaidTo());
+                    }
+
+                    if (currentRegistration.getIsFullPayment()) {
+                        newCommission.setAmount(fullCommission);
+                    } else {
+                        newCommission.setAmount(partCommission);
+                    }
+
+                    commissionDAO.save(newCommission);
+                }
+            }
+        }
+
+        registrationDAO.save(currentRegistration);
+
+        // After the payment, check if the registration fee is covered
+        // If covered, particular batch's available seat count should be deducted by 1
+        if (updatedPaidAmount.compareTo(currentRegistrationRegistrationFee) >= 0) {
+            Batch currentRegistrationBatch = currentRegistration.getBatchID();
+            Integer currentBatchAvailableSeatCount = currentRegistrationBatch.getSeatCountAvailable();
+            currentRegistrationBatch.setSeatCountAvailable(currentBatchAvailableSeatCount - 1);
+            batchDAO.save(currentRegistrationBatch);
+        }
+
+        return "OK";
+    }
+
 }
