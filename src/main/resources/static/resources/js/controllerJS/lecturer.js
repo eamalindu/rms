@@ -39,7 +39,7 @@ const refreshLecturerTable = () => {
         {property: getEmployeeNumber, dataType: 'function'},
         {property: getStatus, dataType: 'function'},]
     //using external function fillDataIntoTable to fill the data to the table tblExamMarks according to the displayPropertyListForMark list
-    fillDataIntoTable(tblLecturers, lecturers, displayPropertyListForLecturers, rowView, 'offcanvasLecturerSheet');
+    fillDataIntoTable(tblLecturers, lecturers, displayPropertyListForLecturers, rowView, 'offCanvasLecturerSheet');
 
     //check the length of the marks array
     if (lecturers.length !== 0) {
