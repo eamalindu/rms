@@ -100,7 +100,7 @@ const rowView = (ob) => {
     courseSheetCodeText.innerText = ob.code;
     courseSheetName.value = ob.name;
     courseSheetCode.value = ob.code;
-    courseSheetLogo.src = `data:image/png;base64,${ob.logo}`
+    courseSheetLogo.src = atob(ob.logo)
     courseSheetDuration.value = ob.duration;
     courseSheetLectureDuration.value = ob.lectureHours;
     courseSheetRequirement.value = ob.minimumRequirement;
@@ -497,14 +497,12 @@ const checkForCourseUpdate = () => {
     // Check if the number of modules has changed
     if (editedCourse.lessonList.length !== oldCourse.lessonList.length) {
         updates += "Course Modules were changed<br>";
-    } else {
-        // Check if individual modules have changed
-        for (let i = 0; i < oldCourse.lessonList.length; i++) {
-            if (oldCourse.lessonList[i] !== editedCourse.lessonList[i]) {
-                updates += "Module at position " + (i + 1) + " was changed<br>";
-            }
-        }
     }
+    if(editedCourse.logo!==oldCourse.logo){
+        updates += "Course Logo was changed<br>";
+
+    }
+
     return updates;
 }
 
@@ -534,4 +532,32 @@ const courseDelete = () => {
 
     });
 
+}
+
+
+const loadNewImage = ()=>{
+    // Get the input element and the image element
+    const imageInput = document.getElementById('courseSheetImageInput');
+    const courseSheetLogo = document.getElementById('courseSheetLogo');
+
+    // Open file dialog when image is clicked
+    courseSheetLogo.addEventListener('click', () => {
+        imageInput.click();
+    });
+
+    // Handle the file selection
+    imageInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+
+            // Read the file and set the image source
+            reader.onload = () => {
+                courseSheetLogo.src = reader.result;
+                editedCourse.logo = btoa(reader.result)
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
 }
