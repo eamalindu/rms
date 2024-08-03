@@ -131,6 +131,76 @@ const paymentEdit = ()=>{
 }
 
 const paymentUpdate = ()=>{
-    const serverResponse =  ajaxHttpRequest("/Payment","PUT",editedPayment)
-    showCustomModal(serverResponse,'warning')
+
+    console.log(editedPayment);
+
+    //calling the checkMarkFormErrors function and catching the return value to errors variable
+    let errors = checkMarkFormPayment(editedPayment);
+    //check the errors variable is null
+    //if it's null that means all the required inputs are filled
+    if (errors === '') {
+        //calling the checkForPrivilegeUpdate function and catching the return value to updates variable
+        let updates = checkForPaymentUpdate();
+        //check the updates variable is null
+        //if it's null that means there are no any updates
+        if (updates === '') {
+            showCustomModal("No changes Detected!", "info");
+        } else {
+            showCustomConfirm("You are About to Update this Batch<br><br>Following Changes Detected!<br/><br/><small>" + updates + "</small><br>Are You Sure?", function (result) {
+                //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+                //catch the return value from the backend and save it in the serviceResponse variable
+                if (result) {
+                    //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+                    //catch the return value from the backend and save it in the serviceResponse variable
+                    let serverResponse = ajaxHttpRequest("/Payment","PUT",editedPayment);
+                    //check the serviceResponse value is "OK"
+                    if (serverResponse === "OK") {
+                        //this means data successfully passed to the backend
+                        //show an alert to user
+                        showCustomModal("Payment Successfully Updated!", "success");
+                        //close the offCanvas sheet
+                        offcanvasPaymentSheetCloseBtn.click();
+                        //refresh table
+                        refreshPaymentTable();
+
+                    } else {
+                        showCustomModal("Operation Failed!" + serverResponse, "error")
+                    }
+
+
+                } else {
+                    showCustomModal("Operation Cancelled!", "info");
+                }
+            });
+        }
+
+    } else {
+        //there are errors
+        //display them to the user using external-ModalFunction()
+        showCustomModal(errors, 'warning');
+
+    }
+
+}
+
+const checkMarkFormPayment = (object)=>{
+    let errors = '';
+    if (object.amount === null) {
+        errors += 'Payment Method is Required<br>';
+    }
+    if (object.paymentTypeID.id === '') {
+        errors += 'Amount is Required<br>';
+    }
+    return errors;
+}
+
+const checkForPaymentUpdate = ()=>{
+    let updates = '';
+    if (editedPayment.paymentTypeID.id !== oldPayment.paymentTypeID.id) {
+        updates = updates + "Payment Type was changed to <span class='text-steam-green'>" + oldPayment.paymentTypeID.name + "</span><br>";
+    }
+    if (editedPayment.amount !== oldPayment.amount) {
+        updates = updates + "Amount was changed to <span class='text-steam-green'>" + oldPayment.amount + "</span><br>";
+    }
+    return updates;
 }
