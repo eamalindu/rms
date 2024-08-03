@@ -176,7 +176,7 @@ const resetModuleForm = () => {
         $('#courseExistModules').val('').trigger('chosen:updated');
     }, 0);
 
-    const lessons = ajaxGetRequest("/Lesson/findall")
+     lessons = ajaxGetRequest("/Lesson/findall")
     fillSelectOptions(courseExistModules, ' ', lessons, 'name');
 
     $('#courseExistModules').chosen({width: '83%'});
@@ -393,6 +393,11 @@ const courseEdit = () => {
 }
 
 const loadModules = () => {
+
+    fillSelectOptions(test, ' ', lessons, 'name');
+
+    $('#test').chosen({width: '83%'});
+
     const lessonList = editedCourse.lessonList;
     lessonList.sort((a, b) => a.id - b.id);
     const displayPropertyListForModule = [
@@ -408,6 +413,13 @@ const removeEditRecord = (ob)=>{
         editedCourse.lessonList.splice(extIndex, 1)
         loadModules();
     }
+
+}
+
+const addModulesToEdited = ()=>{
+    const selectedModule = JSON.parse(test.value);
+    editedCourse.lessonList.push(selectedModule);
+    loadModules();
 
 }
 
