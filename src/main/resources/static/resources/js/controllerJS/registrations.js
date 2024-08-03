@@ -12,6 +12,9 @@ window.addEventListener("load", () => {
     registrationStatus = ajaxGetRequest("/RegistrationStatus/findall");
     fillSelectOptions(registrationSearchStatus, ' ', registrationStatus, 'name');
 
+    counsellors = ajaxGetRequest("/Employee/getActiveCounsellors")
+    fillSelectOptions(registrationSearchCounsellor, ' ', counsellors, 'fullName')
+
     //initialize the 3rd party libraries (chosen)
     $('.chosen-registration-search').chosen({width: '190px'});
     $('#registrationSearchDateRange').daterangepicker({
@@ -38,12 +41,34 @@ window.addEventListener("load", () => {
 
     });
 
+    //reset chosen select using jquery
+    $('#btn-reset').on('click', function () {
+        $("#registrationSearchStatus_chosen .chosen-single").removeClass('bg-light');
+        $("#registrationSearchCourse_chosen .chosen-single").removeClass('bg-light');
+        $("#registrationSearchCounsellor_chosen .chosen-single").removeClass('bg-light');
+        setTimeout(function () {
+            $('.chosen-registration-search').val('').trigger('chosen:updated');
+        }, 0);
+        refreshRegistrationTable();
+    });
+
+    //chosen select change event
+    $("#registrationSearchStatus").chosen().change(function () {
+        $("#registrationSearchStatus_chosen .chosen-single").addClass('bg-light');
+    });
+    $("#registrationSearchCourse").chosen().change(function () {
+        $("#registrationSearchCourse_chosen .chosen-single").addClass('bg-light');
+    });
+    $("#registrationSearchCounsellor").chosen().change(function () {
+        $("#registrationSearchCounsellor_chosen .chosen-single").addClass('bg-light');
+    });
+
 });
 
 //creating a function to refresh the registrations table when ever needed
 const refreshRegistrationTable = () => {
 
-    const registrations = ajaxGetRequest("/Registration/findall");
+    registrations = ajaxGetRequest("/Registration/findall");
     //creating a display property list for the batches
     displayPropertyListForBatches = [{property: 'registrationNumber', dataType: 'text'}, {
         property: getStudentName,
@@ -865,3 +890,44 @@ const resetStudentModal = ()=>{
     });
     StudentModalGender.disabled = true;
 }
+
+const filterRegistration = () => {
+    let statusSelected = false;
+    let courseSelected = false;
+    let counsellorSelected = false;
+
+    if (registrationSearchStatus.value !== '') {
+        statusSelected = true;
+    }
+    if (registrationSearchCourse.value !== '') {
+        courseSelected = true;
+    }
+    if (registrationSearchCounsellor.value !== '') {
+        counsellorSelected = true;
+    }
+
+    const filteredRegistration = registrations.filter(registration => {
+        let sourceMatch = true;
+        let courseMatch = true;
+        let counsellorMatch = true;
+
+        if (statusSelected) {
+            const statusID = JSON.parse(registrationSearchStatus.value).id;
+            sourceMatch = registration.registrationStatusID.id === statusID;
+        }
+        if (courseSelected) {
+            const courseID = JSON.parse(registrationSearchCourse.value).id;
+            courseMatch = registration.courseID.id === courseID;
+        }
+        if (counsellorSelected) {
+            const counsellorName = JSON.parse(registrationSearchCounsellor.value).callingName
+            counsellorMatch = registration.addedBy === counsellorName;
+        }
+
+        return sourceMatch && courseMatch && counsellorMatch;
+    });
+
+
+    console.log(filteredRegistration);
+    fillDataIntoTable(tblInquiry, filteredRegistration, displayPropertyListForBatches, rowView, 'offCanvasInquirySheet');
+};
