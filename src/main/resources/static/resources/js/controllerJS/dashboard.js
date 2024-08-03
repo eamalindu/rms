@@ -423,10 +423,6 @@ const checkQuickPaymentFormErrors = ()=>{
 const loadDashboard = ()=>{
     loggedInDashboardUserEmployee = ajaxGetRequest("/User/getEmployeeByUsername/"+btnProfileName.innerText);
 
-    let event = [];
-    const currentDate = new Date();
-    const currentDayNumber = currentDate.getDay()+1;
-
     if(loggedInDashboardUserEmployee.designationID.designation === 'Lecturer'){
         generateSchedule();
         //hide the common dahsbaord
@@ -447,7 +443,11 @@ const loadDashboard = ()=>{
 }
 
 const generateSchedule = ()=>{
-    const batches = ajaxGetRequest("/Batch/getBatchesConductTodayByLecturer/" + loggedInUserEmployee.id);
+    const batches = ajaxGetRequest("/Batch/getBatchesConductTodayByLecturer/" + loggedInDashboardUserEmployee.id);
+    let event = [];
+    const currentDate = new Date();
+    const currentDayNumber = currentDate.getDay()+1;
+
     batches.forEach( batch=>{
         console.log(batch.batchHasDayList.length);
         for(let i = 0; i < batch.batchHasDayList.length; i++){
@@ -497,4 +497,19 @@ const generateSchedule = ()=>{
     });
 
     calendar.render();
+
+    const bathesCreated = ajaxGetRequest("/Batch/getByAddedBy")
+    batchAssigned.innerText = bathesCreated.length;
+    let startedBatches = 0;
+    let pendingBatches = 0;
+    bathesCreated.forEach(batch=>{
+        if(batch.batchStatusID.name === 'Started'){
+            startedBatches++;
+        }
+        else{
+            pendingBatches++;
+        }
+    })
+    batchScheduled.innerText = pendingBatches;
+    batchStarted.innerText = startedBatches;
 }

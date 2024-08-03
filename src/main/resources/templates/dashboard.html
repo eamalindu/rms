@@ -157,20 +157,38 @@
 
 <!--widgets for lecturers-->
 <div class="container-fluid d-none" id="widgetLecturer">
-    <div class="card-body rounded-0 pt-3 pb-3 d-flex gap-3 align-items-center justify-content-center">
-        <div class="row w-50">
-            <div class="col-lg-6 col-12" style="height: min-content">
+    <div class="card-body rounded-0 pt-3 pb-3 ">
+        <div class="row">
+            <div class="col-lg-3 col-12">
+                <a aria-controls="offcanvasRight" aria-current="page" class="text-decoration-none" data-bs-target="#offCanvasQuickPayment" data-bs-toggle="offcanvas">
+                    <div class="card card-body rounded-0 h-100 pointer text-muted dashboard-widget-blue">
+                        <div class="row h-100">
+                            <div class="col-3 d-flex align-items-center justify-content-center">
+                                <div class="d-flex align-items-center justify-content-center" style="border-radius: 50%;height: 60px;width: 60px;background: #c1eaff">
+                                    <i class="fa-solid fa-user-check" style="color:#1e7bc7;font-size: 25px" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="col-9 ">
+                                <div class="text-uppercase text-center">Assigned Batches</div>
+                                <div class="text-dark text-center h5 mt-2 fw-bold" id="batchAssigned">4</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-3 col-12">
                 <a href="Report/Daily-Income" class="text-decoration-none">
                     <div class="card card-body  rounded-0 h-100 pointer text-muted dashboard-widget-yellow">
                         <div class="row h-100">
                             <div class="col-3 d-flex align-items-center justify-content-center">
                                 <div class="d-flex align-items-center justify-content-center" style="border-radius: 50%;height: 60px;width: 60px;background: #fff7e5">
-                                    <i class="fa-solid fa-coins" style="color:#FDE74C;font-size: 25px" aria-hidden="true"></i>
+                                    <i class="fa-solid fa-hourglass-half" style="color:#FDE74C;font-size: 25px" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="col-9 ">
-                                <div class="text-uppercase text-center">Batches Assigned</div>
-                                <div class="text-dark text-center h5 mt-2 fw-bold" id="">10</div>
+                                <div class="text-uppercase text-center">Scheduled Batches</div>
+                                <div class="text-dark text-center h5 mt-2 fw-bold" id="batchScheduled">2</div>
                             </div>
 
                         </div>
@@ -179,26 +197,42 @@
                     </div>
                 </a>
             </div>
-            <div class="col-lg-6 col-12" style="height: min-content">
+
+            <div class="col-lg-3 col-12">
                 <a href="Report/Monthly-Income" class="text-decoration-none">
                     <div class="card card-body rounded-0 h-100 text-muted dashboard-widget-green">
                         <div class="row h-100">
                             <div class="col-3 d-flex align-items-center justify-content-center">
                                 <div class="d-flex align-items-center justify-content-center" style="border-radius: 50%;height: 60px;width: 60px;background: #DDF6F7">
-                                    <i class="fa-solid fa-money-bills" style="color:#1ec781;font-size: 25px" aria-hidden="true"></i>
+                                    <i class="fa-solid fa-calendar-check" style="color:#1ec781;font-size: 25px" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="col-9 ">
-                                <div class="text-uppercase text-center">Marks To be Verified</div>
-                                <div class="text-dark text-center h5 mt-2 fw-bold" id="">0</div>
+                                <div class="text-uppercase text-center">Started Batches</div>
+                                <div class="text-dark text-center h5 mt-2 fw-bold" id="batchStarted">2</div>
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
+            <div class="col-lg-3 col-12">
+                <div class="card card-body rounded-0 h-100 pointer text-muted dashboard-widget-red">
+                    <div class="row h-100">
+                        <div class="col-3 d-flex align-items-center justify-content-center">
+                            <div class="d-flex align-items-center justify-content-center" style="border-radius: 50%;height: 60px;width: 60px;background: #f7dddd">
+                                <i class="fa-solid fa-check-double" style="color:#fd4c4c;font-size: 25px" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="col-9 ">
+                            <div class="text-uppercase text-center">Marks to be Verified</div>
+                            <div class="text-dark text-center h5 mt-2 fw-bold" id="marksVerified">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
-        <div class="row w-50">
+        <div class="row w-50 mx-auto mt-3">
             <div class="col-lg-12 col-12">
                 <div id="currentSchedule"></div>
             </div>

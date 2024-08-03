@@ -66,6 +66,11 @@ public class BatchController {
         return batchDAO.getBatchesByCourseID(courseID);
     }
 
+    @GetMapping(value = "getByAddedBy",produces = "application/json")
+    public List<Batch> getByAddedBy() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return batchDAO.getByAddedBy(auth.getName());
+    }
 
     @GetMapping()
     public ModelAndView batchUI() {

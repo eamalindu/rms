@@ -40,6 +40,6 @@ public interface BatchDAO extends JpaRepository<Batch,Integer> {
     @Query(value = "SELECT * from batch where commencedate = date(now())",nativeQuery = true)
     List<Batch> getBatchesStartToday();
 
-
-
+    @Query(value = "select * from batch where createdby=?1 and (batchstatus_id =1 or batchstatus_id=2)",nativeQuery = true)
+    List<Batch> getByAddedBy(String name);
 }
