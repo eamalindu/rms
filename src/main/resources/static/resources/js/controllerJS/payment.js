@@ -44,6 +44,10 @@ const refreshPaymentTable = ()=>{
         {property: getAmount, dataType: 'function'},
     ];
     fillDataIntoTable(tblPayment,payments,displayPropertyListForPayments,rowView,'offcanvasPaymentSheet');
+
+    if(payments.length!==0){
+        $('#tblPayment').dataTable();
+    }
 }
 
 const getPaymentMethod = (ob)=>{
