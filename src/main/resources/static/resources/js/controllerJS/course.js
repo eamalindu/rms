@@ -15,6 +15,9 @@ window.addEventListener("load", () => {
         $("#courseExistModules_chosen .chosen-single").addClass('select-validated');
     });
 
+    // $("#test").chosen().change(function () {
+    //     $("#test_chosen .chosen-single").addClass('select-validated');
+    // });
 });
 
 //creating a function to refresh the batch table when ever needed
@@ -400,6 +403,7 @@ const loadModules = () => {
 
     $('#test').chosen({width: '90%'});
 
+
     const lessonList = editedCourse.lessonList;
     lessonList.sort((a, b) => a.id - b.id);
     const displayPropertyListForModule = [
@@ -420,8 +424,27 @@ const removeEditRecord = (ob)=>{
 
 const addModulesToEdited = ()=>{
     const selectedModule = JSON.parse(test.value);
-    editedCourse.lessonList.push(selectedModule);
-    loadModules();
+    let isDuplicate = false;
+
+    // Iterate over each element in the array
+    for (let i = 0; i < editedCourse.lessonList.length; i++) {
+        const existingLesson = editedCourse.lessonList[i];
+        // Compare each property
+        if (existingLesson.id === selectedModule.id) {
+            // If a match is found, set isDuplicate to true and break out of the loop
+            isDuplicate = true;
+            break;
+        }
+    }
+    if (!isDuplicate) {
+
+        editedCourse.lessonList.push(selectedModule);
+        $('#test').val('').trigger('chosen:updated');
+        loadModules();
+    }
+    else{
+        showCustomModal("Duplicate Found!<br><span class='text-steam-green'>" + selectedModule.name + " </span><br/>Module is Already Exist", "error");
+    }
 
 }
 
