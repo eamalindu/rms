@@ -82,6 +82,8 @@ const rowView = (ob) => {
     btnCourseSheetUpdate.style.display = 'none';
     //show the deleted btn
     btnCourseSheetDelete.style.display = 'block';
+    //hide edit modules btn
+    btnModuleEdit.classList.add('d-none');
 
     //get all the inputs with the class name batchSheetInputs and save it as an array
     inputs = document.querySelectorAll('.courseSheetInputs');
