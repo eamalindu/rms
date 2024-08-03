@@ -44,4 +44,13 @@ public interface RegistrationDAO extends JpaRepository<Registrations, Integer> {
 
     @Query(value = "select count(*) from registration where  date(timestamp)>=?1 and date(timestamp)<=?2 and addedby=?3 ",nativeQuery = true)
     Integer getRegistrationCountByCounsellorsByMonth(String startDate, String endDate,String counsellor);
+
+    @Query(value = "select * from registration where date(timestamp)>=?1 and date(timestamp)<=?2",nativeQuery = true)
+    List<Registrations> getAllRegistrationsByDateRange(String startDate, String endDate);
+
+    @Query(value ="select r from Registrations r where r.registrationNumber=?1 or r.studentID.idValue=?1 or r.studentID.mobileNumber=?1")
+    List<Registrations> searchRegistrationByInput(String input);
+
+    @Query(value = "select * from registration where date(timestamp)>=?1 and date(timestamp)<=?2 and (registrationnumber =?3)",nativeQuery = true)
+    List<Registrations> searchRegistrationByDateRangeAndInput(String startDate, String endDate, String input);
 }

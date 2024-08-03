@@ -186,6 +186,21 @@ public class RegistrationController {
         return registrationDAO.getCounsellorsByMonth(startDate,endDate);
     }
 
+    @GetMapping(value = "getAllRegistrationsByDateRange/{startDate}/{endDate}",produces = "application/json")
+    public List<Registrations> getAllRegistrationsByDateRange(@PathVariable String startDate, @PathVariable String endDate) {
+        return registrationDAO.getAllRegistrationsByDateRange(startDate,endDate);
+    }
+
+    @GetMapping(value = "searchRegistrationByInput/{input}",produces = "application/json")
+    public List<Registrations> searchRegistrationByInput(@PathVariable String input) {
+        return registrationDAO.searchRegistrationByInput(input);
+    }
+
+    @GetMapping(value = "searchRegistrationByDateRangeAndInput/{startDate}/{endDate}/{input}",produces = "application/json")
+    public List<Registrations> searchRegistrationByDateRangeAndInput(@PathVariable String startDate, @PathVariable String endDate, @PathVariable String input) {
+        return registrationDAO.searchRegistrationByDateRangeAndInput(startDate,endDate,input);
+    }
+
     @GetMapping(value = "getRegistrationCountByCounsellorsByMonth/{startDate}/{endDate}/{counsellor}",produces = "application/json")
     public Integer getRegistrationCountByCounsellorsByMonth(@PathVariable String startDate, @PathVariable String endDate,@PathVariable String counsellor) {
         return registrationDAO.getRegistrationCountByCounsellorsByMonth(startDate,endDate,counsellor);

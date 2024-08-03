@@ -951,19 +951,19 @@ const searchInquiry = () => {
     if (dateRangeSelected && !inputAdded) {
         //dateRange only
         const [startDate, endDate] = registrationSearchDateRange.value.split(' - ');
-        const results = ajaxGetRequest("/Inquiry/getAllInquiriesByDateRange/" + startDate + "/" + endDate);
+        const results = ajaxGetRequest("/Registration/getAllRegistrationsByDateRange/" + startDate + "/" + endDate);
         fillDataIntoTable(tblInquiry, results, displayPropertyList, rowView, 'offCanvasInquirySheet');
 
     } else if (!dateRangeSelected && inputAdded) {
         //input only
         const inputText = inquirySearchID.value;
-        const results = ajaxGetRequest("/Inquiry/searchInquiryByInput/" + inputText);
+        const results = ajaxGetRequest("/Registration/searchRegistrationByInput/" + inputText);
         fillDataIntoTable(tblInquiry, results, displayPropertyList, rowView, 'offCanvasInquirySheet');
     } else if (dateRangeSelected && inputAdded) {
         //Both dateRange and input
         const [startDate, endDate] = registrationSearchDateRange.value.split(' - ');
         const inputText = inquirySearchID.value;
-        const results = ajaxGetRequest("/Inquiry/searchInquiryByDateRangeAndInput/" + startDate + "/" + endDate + "/" + inputText);
+        const results = ajaxGetRequest("/Registration/searchRegistrationByDateRangeAndInput/" + startDate + "/" + endDate + "/" + inputText);
         fillDataIntoTable(tblInquiry, results, displayPropertyList, rowView, 'offCanvasInquirySheet');
 
     } else {
