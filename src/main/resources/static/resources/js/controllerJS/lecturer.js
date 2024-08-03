@@ -25,8 +25,8 @@ const resetLecturerForm = () => {
         $('#lecturerEmployee').val('').trigger('chosen:updated');
     }, 0);
 
-    const employee = ajaxGetRequest("Employee/findall");
-    fillSelectOptionsWithTwo(lecturerEmployee,' ',employee,'employeeID','callingName');
+    employees = ajaxGetRequest("Employee/findall");
+    fillSelectOptionsWithTwo(lecturerEmployee,' ',employees,'employeeID','callingName');
     $('#lecturerEmployee').chosen({width: "100%"});
 }
 
@@ -83,11 +83,17 @@ const rowView=(ob)=>{
     });
 
     //get employee
-    const employee = ajaxGetRequest("/Employee/getEmployeeByID/"+ob.employeeID);
+    employees.forEach((employee)=>{
+        if(employee.id===ob.employeeID) {
+            selectedEmp = employee;
+        }
+    })
+
+
     //set data
-    lecturerSheetEmpName.innerText =employee.fullName;
+    lecturerSheetEmpName.innerText =selectedEmp.fullName;
     lecturerSheetNumber.innerText = ob.lecturerCode;
-    lecturerSheetEmpNumber.innerText = employee.employeeID;
+    lecturerSheetEmpNumber.innerText = selectedEmp.employeeID;
     lecturerSheetName.value = ob.name;
 
     if(ob.status){
@@ -103,6 +109,10 @@ const rowView=(ob)=>{
 
         lecturerSheetStatus.innerText = 'Deleted'
     }
+
+    //catching current object to compare them
+    editedLecturer = JSON.parse(JSON.stringify(ob));
+    oldLecturer  = JSON.parse(JSON.stringify(ob));
 }
 
 const newLecturerSubmit = ()=>{
@@ -176,5 +186,29 @@ const deleteLecturer = () => {
 }
 
 const editLecturer = () => {
+    //getting the toast from its ID
+    var myToastEl = document.getElementById('myToast');
+    var myToast = new bootstrap.Toast(myToastEl);
+    //Displaying toast
+    myToast.show();
+    //hide the toast after 5s
+    setTimeout(function () {
+        myToast.hide();
+    }, 5000);
+
+    //display the update button once the edit button is clicked
+    btnLecturerSheetUpdate.style.display = 'block';
+
+    //remove the attribute readonly to make inputs accept the user input values
+    //give a border color to inputs indicate that the input's values are ready to be edited
+    inputs = document.querySelectorAll('.lecturerSheetInputs');
+
+    //remove the disabled attribute from the select
+    //give a border color to indicate that select can be now edited
+
+    inputs.forEach(function (input) {
+        input.removeAttribute('disabled');
+        input.setAttribute('style', 'border:1px solid #0DCAF0!important;background-color:rgba(13,202,240,0.2);');
+    });
 
 }
