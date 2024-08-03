@@ -389,7 +389,7 @@ const courseEdit = () => {
     });
 
     //display moddule edit btn
-    btnModuleEdit.style.display = 'block';
+    btnModuleEdit.classList.remove('d-none');
 }
 
 const loadModules = () => {
@@ -403,6 +403,11 @@ const loadModules = () => {
 }
 
 const removeEditRecord = (ob)=>{
+    let extIndex = editedCourse.lessonList.map(item => item.id).indexOf(ob.id);
+    if (extIndex != -1) {
+        editedCourse.lessonList.splice(extIndex, 1)
+        loadModules();
+    }
 
 }
 
@@ -476,6 +481,9 @@ const checkForCourseUpdate = () => {
     }
     if (editedCourse.status !== oldCourse.status) {
         updates = updates + "Course Status was changed to <span class='text-steam-green'>" + editedCourse.status + "</span><br>";
+    }
+    if(editedCourse.lessonList.length !== oldCourse.lessonList.length){
+        updates = updates + "Course Modules were changed<br>";
     }
     return updates;
 }
