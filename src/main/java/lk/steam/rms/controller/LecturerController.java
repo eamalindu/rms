@@ -84,4 +84,23 @@ public class LecturerController {
             return "Save Failed "+ex.getMessage();
         }
     }
+
+    @PutMapping
+    public String updateLecturer(@RequestBody Lecturer lecturer) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"EMPLOYEE");
+
+        if(!loggedUserPrivilege.getUpdatePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
+        try {
+            //no need to check anything, because there are no any unique values
+            lecturerDAO.save(lecturer);
+            return "OK";
+
+        }
+        catch (Exception ex){
+            return "Update Failed "+ex.getMessage();
+        }
+    }
 }

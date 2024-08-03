@@ -205,7 +205,7 @@ const updateLecturer = () => {
                         //show an alert to user
                         showCustomModal("Lecturer Successfully Updated!", "success");
                         //close the offCanvas sheet
-                        offCanvasLecturerSheet.click();
+                        offCanvasLecturerSheetCloseButton.click();
                         //refresh table
                         refreshLecturerTable();
 
@@ -229,7 +229,27 @@ const updateLecturer = () => {
 }
 
 const deleteLecturer = () => {
-
+    showCustomConfirm("You are About to Delete this Lecturer<br><br>Lecturer Number: <span class='text-steam-green'>" + editedLecturer.lecturerCode + "</span><br><br>Are You Sure?", function (result) {
+        if (result) {
+            //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+            //catch the return value from the backend and save it in the serviceResponse variable
+            let serverResponse = ajaxHttpRequest("/Lecturer", "DELETE", editedLecturer);
+            //check the serviceResponse value is "OK"
+            if (serverResponse === "OK") {
+                //this means data successfully passed to the backend
+                //show an alert to user
+                showCustomModal("Lecturer Successfully Deleted!", "success");
+                //close the offCanvas sheet
+                offCanvasLecturerSheetCloseButton.click();
+                //refresh table
+                refreshLecturerTable();
+            } else {
+                showCustomModal("Operation Failed!" + serverResponse, "error")
+            }
+        } else {
+            showCustomModal("Operation Cancelled!", "info");
+        }
+    });
 }
 
 const editLecturer = () => {
