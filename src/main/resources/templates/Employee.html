@@ -426,6 +426,7 @@
             reader.onload = function (e) {
                 imgProfile.src = e.target.result;
                 imgProfile.classList.add('bg-success')
+                newEmployee.photoPath = btoa(e.target.result)
             };
 
             reader.readAsDataURL(file);

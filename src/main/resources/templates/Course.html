@@ -127,7 +127,7 @@
                     </div>
                     <div class="mb-2">
                         <label for="courseLogo" class="form-label fw-bold small required">Course Logo</label>
-                        <input class="form-control rounded-0 small newCourseInputs" type="file" id="courseLogo" accept="image/png, image/jpeg" required onchange="newCourse.photoPath=this.value">
+                        <input class="form-control rounded-0 small newCourseInputs" type="file" id="courseLogo" accept="image/png, image/jpeg" required onchange="">
                         <div class="text-muted small"><small>Resolution should at least 512 x 512 pixels</small></div>
                     </div>
                     <div class="mb-2">
@@ -460,6 +460,13 @@
                 <button aria-label="Close" class="btn btn-sm btn-close-red text-white rounded-0" data-bs-dismiss="modal" type="button"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body p-3">
+                <div class="input-group">
+                    <select class="form-select rounded-0" data-placeholder="Please Select a Module"
+                            id="test" onchange=""
+                            required>
+                    </select>
+                    <button class="btn btn-sm bg-success text-white" onclick="addModulesToEdited()">Add</button>
+                </div>
                 <table class="table table-sm table-bordered small" id="tblEditModules">
                     <thead class="align-middle text-center">
                     <tr>
@@ -471,13 +478,7 @@
                     </thead>
                     <tbody class="align-middle small text-center"><tr><td colspan="4">No Records Found!</td></tr></tbody>
                 </table>
-                <div class="input-group">
-                    <select class="form-select rounded-0" data-placeholder="Please Select a Module"
-                            id="test" onchange=""
-                            required>
-                    </select>
-                    <button class="btn btn-sm bg-success text-white" onclick="addModulesToEdited()">Add</button>
-                </div>
+
             </div>
         </div>
     </div>
@@ -501,6 +502,7 @@
                     if (img.width >= 512 && img.height >= 512) {
                         imgProfile.src = e.target.result;
                         imgProfile.classList.add('bg-success');
+                        newCourse.logo = btoa(e.target.result);
                     } else {
                         // Provide feedback to the user or prevent displaying the image
                         showCustomModal("Image resolution should be at least <small>512 x 512 pixels</small>","warning");

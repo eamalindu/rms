@@ -100,7 +100,7 @@ const rowView = (ob) => {
     courseSheetCodeText.innerText = ob.code;
     courseSheetName.value = ob.name;
     courseSheetCode.value = ob.code;
-    courseSheetLogo.src = 'data:image/png;base64,' + ob.logo;
+    courseSheetLogo.src = `data:image/png;base64,${ob.logo}`
     courseSheetDuration.value = ob.duration;
     courseSheetLectureDuration.value = ob.lectureHours;
     courseSheetRequirement.value = ob.minimumRequirement;
@@ -396,7 +396,7 @@ const loadModules = () => {
 
     fillSelectOptions(test, ' ', lessons, 'name');
 
-    $('#test').chosen({width: '83%'});
+    $('#test').chosen({width: '90%'});
 
     const lessonList = editedCourse.lessonList;
     lessonList.sort((a, b) => a.id - b.id);
@@ -494,8 +494,16 @@ const checkForCourseUpdate = () => {
     if (editedCourse.status !== oldCourse.status) {
         updates = updates + "Course Status was changed to <span class='text-steam-green'>" + editedCourse.status + "</span><br>";
     }
-    if(editedCourse.lessonList.length !== oldCourse.lessonList.length){
-        updates = updates + "Course Modules were changed<br>";
+    // Check if the number of modules has changed
+    if (editedCourse.lessonList.length !== oldCourse.lessonList.length) {
+        updates += "Course Modules were changed<br>";
+    } else {
+        // Check if individual modules have changed
+        for (let i = 0; i < oldCourse.lessonList.length; i++) {
+            if (oldCourse.lessonList[i] !== editedCourse.lessonList[i]) {
+                updates += "Module at position " + (i + 1) + " was changed<br>";
+            }
+        }
     }
     return updates;
 }
