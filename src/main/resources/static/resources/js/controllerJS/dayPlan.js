@@ -293,8 +293,9 @@ const calculateDuration = ()=>{
     let duration = moment.duration(moment(endTime).diff(moment(startTime)));
     const hours = Math.floor(duration.asHours());
     const minutes = duration.minutes();
-    sessionDuration.value = hours;
-    dayPlanHasLesson.duration = hours;
+    const minutesInHours = minutes/60;
+    sessionDuration.value = hours+minutesInHours;
+    dayPlanHasLesson.duration = hours+minutesInHours;
 }
 
 const refreshLectureLogTable = ()=>{

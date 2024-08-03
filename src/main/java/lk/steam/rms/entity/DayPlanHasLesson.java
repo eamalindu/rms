@@ -39,7 +39,7 @@ public class DayPlanHasLesson {
 
     @Column(name = "duration")
     @NotNull
-    private Integer duration;
+    private Double duration;
 
 
 }
