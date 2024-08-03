@@ -191,6 +191,13 @@ const checkMarkFormPayment = (object)=>{
     if (object.paymentTypeID.id === '') {
         errors += 'Amount is Required<br>';
     }
+
+    if(object.amount<=0){
+        errors = errors + 'Amount Can Not Be Rs. 0.00<br>';
+    }
+    if(object.amount>oldPayment.registrationID.balanceAmount){
+        errors = errors +'The Current amount <span class="text-steam-green">Rs. '+object.amount+ '.00</span> exceeds the total outstanding balance <span class="text-steam-green">Rs. '+oldPayment.registrationID.balanceAmount+'.00</span><br>';
+    }
     return errors;
 }
 
@@ -200,7 +207,7 @@ const checkForPaymentUpdate = ()=>{
         updates = updates + "Payment Type was changed to <span class='text-steam-green'>" + oldPayment.paymentTypeID.name + "</span><br>";
     }
     if (editedPayment.amount !== oldPayment.amount) {
-        updates = updates + "Amount was changed to <span class='text-steam-green'>" + oldPayment.amount + "</span><br>";
+        updates = updates + "Amount was changed to <span class='text-steam-green'>Rs. " + oldPayment.amount + ".00</span><br>";
     }
     return updates;
 }
