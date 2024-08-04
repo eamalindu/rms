@@ -117,8 +117,8 @@ const checkLoggedInUserErrors=()=>{
     if(editedLoggedInUser.username==null){
         errors += 'Username is Required<br>';
     }
-    if(editedLoggedInUser.newPassword == null){
-        errors += 'Password is Required<br>';
-    }
+    // if(editedLoggedInUser.newPassword == null){
+    //     errors += 'Password is Required<br>';
+    // }
     return errors;
 }
