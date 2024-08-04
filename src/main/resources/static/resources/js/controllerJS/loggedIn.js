@@ -1,6 +1,6 @@
 window.addEventListener('load', () => {
-    loggedInUser = ajaxGetRequest("/User/loggedInUser");
-    loggedInImageIcon.src = atob(loggedInUser.employeeID.photoPath);
+    loggedInUser = ajaxGetRequest("/loggedInUser");
+    loggedInImageIcon.src = atob(loggedInUser.photoPath);
 })
 
 const getLoggedInUser=()=>{
@@ -11,7 +11,7 @@ const getLoggedInUser=()=>{
 
     //setting data
     loggedInUsername.value = loggedInUser.username;
-    loggedInImage.src = atob(loggedInUser.employeeID.photoPath);
+    loggedInImage.src = atob(loggedInUser.photoPath);
     loggedInEmail.value = loggedInUser.email;
     loggedInUserTimestamp.innerText = loggedInUser.addedTime.replace("T"," ");
     loggedInRoles.value = '';
@@ -73,7 +73,7 @@ const updateLoggedInUser=()=>{
                 if (result) {
                     //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
                     //catch the return value from the backend and save it in the serviceResponse variable
-                    let serverResponse = ajaxHttpRequest("/User/loggedInUser", "PUT", editedLoggedInUser);
+                    let serverResponse = ajaxHttpRequest("/loggedInUser", "PUT", editedLoggedInUser);
                     //check the serviceResponse value is "OK"
                     if (serverResponse === "OK") {
                         //this means data successfully passed to the backend

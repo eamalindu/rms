@@ -52,44 +52,6 @@ public class UserController {
         return userDAO.getUserByUsername(username);
     }
 
-    @GetMapping(value = "/loggedInUser")
-    public User getLoggedInUser(){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        return userDAO.getUserByUsername(auth.getName());
-    }
-
-    @PutMapping(value = "/loggedInUser")
-    public String updateLoggedInUser(@RequestBody User user){
-        User currentUser = userDAO.getReferenceById(user.getId());
-        if(currentUser==null){
-            return "No Such User Account";
-        }
-        //check duplicate
-        String errors = "";
-
-        User existingUserUserName = userDAO.getUserByUsername(user.getUsername());
-        if (existingUserUserName != null && !existingUserUserName.getId().equals(user.getId())) {
-            errors += "<br>This Username Already Exists";
-        }
-        if(!errors.isEmpty()){
-            return errors;
-        }
-
-        try{
-            if(bCryptPasswordEncoder.matches(user.getPassword(),currentUser.getPassword())){
-                return "<br>Cannot Use the Old Password";
-            }
-            currentUser.setUsername(user.getUsername());
-            currentUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-
-            userDAO.save(user);
-            return "OK";
-        }
-        catch (Exception ex){
-            return "Update Failed "+ex.getMessage();
-        }
-
-    }
 
     @GetMapping(value = "/getEmployeeByUsername/{username}",produces = "application/json")
     public Employee getEmployeeByUsername(@PathVariable String username){
