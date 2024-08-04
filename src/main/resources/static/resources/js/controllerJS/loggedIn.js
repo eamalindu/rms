@@ -80,7 +80,10 @@ const updateLoggedInUser=()=>{
                         userModalCloseBtn.click();
                         getLoggedInUser();
                         //logout
-                        window.location.assign("/logout");
+                        setTimeout(function () {
+                            window.location.assign("/logout");
+                        }, 1000);
+
 
                     } else {
                         showCustomModal("Operation Failed!" + serverResponse, "error")
