@@ -60,7 +60,7 @@
                                         <img class="" id="loggedInImageIcon" width="50px">
                                         <div>
                                             <p class="text-muted small text-small mb-0" th:text="${loggedInEmployeeName}">Employee Name</p>
-                                            <p class="text-muted small text-small mb-0"><small th:text="${loggedInDesignationName}">Employee Destination</small></p>
+                                            <p class="text-muted small text-small mb-0"><small th:text="${loggedInDesignationName}" id="loggedinDesg">Employee Destination</small></p>
                                         </div>
 
                                     </div>
@@ -118,7 +118,7 @@
                         <tr>
                             <td class="fw-bold w-25">Password</td>
                             <td>
-                                <input class="small rounded-0 form-control-sm loggedInUserInputs" type="password" id="loggedInPassword" onkeyup="inputTextValidator(this,'^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$','editedLoggedInUser','password')" disabled value="******">
+                                <input class="small rounded-0 form-control-sm loggedInUserInputs" type="password" id="loggedInPassword" onkeyup="inputTextValidator(this,'^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$','editedLoggedInUser','newPassword')" disabled value="******">
                                 <div class="valid-feedback">Value Accepted</div>
                                 <div class="invalid-feedback">Please provide a valid Password</div>
                                 <div class="text-muted small d-none" id="passwordHint"><small>Password must be at least 8 characters long.<br>At least contain one uppercase, numeric and special character </small></div>

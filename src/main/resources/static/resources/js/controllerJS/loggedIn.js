@@ -14,10 +14,7 @@ const getLoggedInUser=()=>{
     loggedInImage.src = atob(loggedInUser.photoPath);
     loggedInEmail.value = loggedInUser.email;
     loggedInUserTimestamp.innerText = loggedInUser.addedTime.replace("T"," ");
-    loggedInRoles.value = '';
-    loggedInUser.roles.forEach((role)=>{
-        loggedInRoles.value += role.name+" ";
-    })
+    loggedInRoles.value = loggedinDesg.innerText;
 
     //remove editable attributes set
     loggedInUsername.setAttribute('disabled', 'true');
@@ -78,12 +75,12 @@ const updateLoggedInUser=()=>{
                     if (serverResponse === "OK") {
                         //this means data successfully passed to the backend
                         //show an alert to user
-                        showCustomModal("Your Account Successfully Updated!", "success");
+                        showCustomModal("Your Account Successfully Updated!<br> Please Log Back in!", "success");
                         //close the modal
                         userModalCloseBtn.click();
                         getLoggedInUser();
-                        //refresh table
-                        refreshCourseTable();
+                        //logout
+                        window.location.assign("/logout");
 
                     } else {
                         showCustomModal("Operation Failed!" + serverResponse, "error")
@@ -106,7 +103,7 @@ const checkLoggedInUserUpdate=()=>{
     if(oldLoggedInUser.username !== editedLoggedInUser.username){
         updates = updates + "Username was changed to <span class='text-steam-green'>" + editedLoggedInUser.username + "</span><br>";
     }
-    if(oldLoggedInUser.password !== editedLoggedInUser.password){
+    if(oldLoggedInUser.newPassword !== editedLoggedInUser.newPassword){
         updates = updates + "Password was changed<br>";
     }
     return updates;
@@ -117,7 +114,7 @@ const checkLoggedInUserErrors=()=>{
     if(editedLoggedInUser.username==null){
         errors += 'Username is Required<br>';
     }
-    if(editedLoggedInUser.password == null){
+    if(editedLoggedInUser.newPassword == null){
         errors += 'Password is Required<br>';
     }
     return errors;
