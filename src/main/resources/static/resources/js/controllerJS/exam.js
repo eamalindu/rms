@@ -75,6 +75,7 @@ const refreshMarkTable = () => {
         {property: getBatch, dataType: 'function'},
         {property: getLesson, dataType: 'function'},
         {property: 'marks', dataType: 'text'},
+        {property: 'grade', dataType: 'text'},
         {property: getStatus, dataType: 'function'},]
     //using external function fillDataIntoTable to fill the data to the table tblExamMarks according to the displayPropertyListForMark list
     fillDataIntoTable(tblExamMarks, marks, displayPropertyListForMark, rowView, 'offcanvasMarkSheet');
@@ -138,6 +139,7 @@ const rowView = (ob)=>{
     markSheetBatch.innerText = ob.batchID.batchCode;
     markSheetMarks.value = ob.marks;
     examMarkAddedBy.innerText = ob.addedBy;
+    markSheetGrade.innerText = ob.grade;
     examMarkTimeStamp.innerText = ob.timeStamp.replace("T"," ");
 
     if(ob.isVerified){
@@ -243,6 +245,10 @@ const checkMarkFormErrors = (object) => {
     if(object.marks==null){
         errors = errors + 'Marks is Required<br>';
         examMarks.classList.add('is-invalid');
+    }
+    if(object.grade ==null){
+        errors = errors +"Grade is Required<br>"
+        examGrade.classList.add('is-invalid');
     }
 
     return errors;
@@ -381,5 +387,36 @@ const markDelete = () => {
         }
 
     });
+
+}
+//modification
+
+//generate exam grade by exam marks
+const getGrade = ()=>{
+    //get already validated mark
+    let addedMarks = newExamMark.marks;
+    let grade ='';
+    //check for null
+    if(addedMarks!=null){
+        if(addedMarks>=70){
+            grade = 'A'
+        }
+        else if (addedMarks>=60 && addedMarks <70){
+            grade = 'B'
+        }
+        else{
+            grade = 'C'
+        }
+    }
+    //check the grade current value
+    if(grade!==''){
+        //bind data to newExamMark object
+        newExamMark.grade = grade;
+        //show the data in input field
+        examGrade.value = grade;
+    }
+    else{
+        newExamMark.grade = null;
+    }
 
 }

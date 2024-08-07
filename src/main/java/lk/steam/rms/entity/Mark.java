@@ -30,6 +30,10 @@ public class Mark {
     @Column(name = "timestamp")
     private LocalDateTime timeStamp;
 
+    //newly added grade
+    @Column(name = "grade")
+    private String grade;
+
     //foreign keys mapping
     @ManyToOne
     @JoinColumn(name = "registration_id",referencedColumnName = "id")
